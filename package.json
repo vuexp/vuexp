@@ -1,0 +1,25 @@
+{
+  "name": "vuexp",
+  "description": "Vue Cross Platform",
+  "version": "0.1.0",
+  "scripts": {},
+  "main": "src/main.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuexp/vuexp.git"
+  },
+  "keywords": [
+    "cross platform development",
+    "nativescript",
+    "vue",
+    "web",
+    "components"
+  ],
+  "bugs": {
+    "url": "https://github.com/vuexp/vuexp/issues"
+  },
+  "homepage": "https://github.com/vuexp/vuexp#readme"
+}
