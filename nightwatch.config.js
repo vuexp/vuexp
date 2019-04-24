@@ -10,10 +10,10 @@ module.exports = {
   src_folders: ['tests/e2e/specs'],
   output_folder: 'tests/e2e/reports',
   custom_assertions_path: ['node_modules/nightwatch-vrt/assertions'],
-  custom_commands_path: [
-    /*'tests/e2e/customCommands', 'node_modules/nightwatch-vrt/commands'*/
+  custom_commands_path: ['tests/e2e/customCommands', 'node_modules/nightwatch-vrt/commands'],
+  page_objects_path: [
+    /*'tests/e2e/pageObjects'*/
   ],
-  page_objects_path: ['tests/e2e/pageObjects'],
   globals_path: 'tests/e2e/globals.js',
 
   selenium: {
