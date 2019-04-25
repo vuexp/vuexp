@@ -94,12 +94,12 @@ describe('ActionItem', () => {
     const mountedWrapper = mount(Wrapper);
 
     mountedWrapper.vm.$nextTick(() => {
-      const style1 = window.getComputedStyle(mountedWrapper.findAll('.nvw-navigation-button').at(0).element);
-      const style2 = window.getComputedStyle(mountedWrapper.findAll('.nvw-navigation-button').at(1).element);
+      const style1 = window.getComputedStyle(mountedWrapper.findAll('.vxp-navigation-button').at(0).element);
+      const style2 = window.getComputedStyle(mountedWrapper.findAll('.vxp-navigation-button').at(1).element);
 
       expect(style1._values.display).to.equal('none');
       expect(style2._values.display).to.not.equal('none');
-      expect(mountedWrapper.findAll('.nvw-navigation-button').length).to.equal(2);
+      expect(mountedWrapper.findAll('.vxp-navigation-button').length).to.equal(2);
       done();
     });
   });
@@ -120,7 +120,7 @@ describe('ActionItem', () => {
     const mountedWrapper = mount(Wrapper);
 
     mountedWrapper.vm.$nextTick(() => {
-      expect(mountedWrapper.findAll('.nvw-action-item').length).to.equal(2);
+      expect(mountedWrapper.findAll('.vxp-action-item').length).to.equal(2);
       done();
     });
   });

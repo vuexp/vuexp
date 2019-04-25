@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
-import NavigationButton from '../../../src/components/NavigationButton.vue';
+import { NavigationButton } from '../../../src/main';
 
 describe('NavigationButton', () => {
   const text = 'Main Page';
