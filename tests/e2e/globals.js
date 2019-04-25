@@ -1,3 +1,8 @@
+const caseResultMapper = require('./mappers/mapResultToResultDto');
+const allureWriter = require('./integrations/allure');
+const testRailReporter = require('./integrations/testrail').reporter;
+const nightwatchVrtSettings = require('./nightwatch-vrt-settings');
+
 const defaultRunId = 412;
 const defaultDevUrl = 'http://localhost';
 
@@ -8,13 +13,32 @@ module.exports = {
   devUrl: devUrl,
   runId: runId,
   preDefinedData: {},
+  visual_regression_settings: nightwatchVrtSettings(this),
   before: function(done) {
+    nightwatchVrtConfigBugFix(this);
     done();
   },
   reporter: function(results, callback) {
-    callback();
+    const self = this;
+    try {
+      caseResultMapper.call(self, runId, results, function(err, resultDto) {
+        allureWriter.call(self, resultDto, function() {
+          testRailReporter.call(self, runId, resultDto, function() {
+            callback();
+          });
+        });
+      });
+    } catch (err) {
+      console.debug(err); // eslint-disable-line no-console
+    }
   },
   after: function(done) {
     done();
   },
 };
+
+function nightwatchVrtConfigBugFix(context) {
+  if (context.test_settings) {
+    context.test_settings.visual_regression_settings = nightwatchVrtSettings(context);
+  }
+}
