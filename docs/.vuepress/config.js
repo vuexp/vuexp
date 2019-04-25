@@ -24,6 +24,13 @@ module.exports = {
               "components/label.md",
             ]
           },
+          {
+            title: "Dialogs",
+            collapsable: true,
+            children: [
+              "components/dialogs/confirmDialog.md",
+            ]
+          },
         ]
       }
     },

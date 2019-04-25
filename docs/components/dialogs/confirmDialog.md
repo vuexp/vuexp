@@ -22,9 +22,13 @@ confirm("Your message").then(result => {
 
 ```js
 showConfirmDialog: function() {
-    confirm("Your title", "Your message", "OK", "Cancel").then(() => {
-    });
-}
+     confirm({ title: 'Your title',message: 'Your message',okButtonText: 'OK',cancelButtonText: 'Cancel'})
+       .then((
+         result
+       ) => {
+        this.result= result ? 'ok' : 'cancel';
+       })
+    }
 ```
 
 <ConfirmDialogDoc />
