@@ -1,7 +1,6 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
 import Label from '../../../src/components/Label.vue';
-//import Span from '../../../src/components/Span';
 
 describe('Label.vue', () => {
   const emptyLabel = mount(Label);
