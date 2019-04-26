@@ -22,33 +22,16 @@
 		methods: {
     onTapShare(event) {
       event.stopImmediatePropagation();
-      alert("shared");
+      alert("Share button clicked.");
     },
     onTapDelete(event) {
       event.stopImmediatePropagation();
-      alert("deleted");
+      alert("Delete button clicked.");
     }
 		}
 	};
 </script>
 
 <style lang="scss">
-	@font-face {
-		font-family: 'FontAwesome';
-		src: url('/fonts/fontawesome-webfont.ttf') format('truetype');
-		font-weight: normal;
-		font-style: normal;
-	}
-
-	.fa {
-		font-family: 'FontAwesome';
-	}
-
-	.fa-share:before {
-		content: '\f064';
-	}
-
-	.fa-remove:before {
-		content: '\f00d';
-	}
+	@import url('/fonts/fontawesome.min.css');
 </style>
