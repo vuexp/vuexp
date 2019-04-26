@@ -27,7 +27,7 @@ describe('Helpers Test', () => {
       setTimeout(() => {
         expect(spy.callCount).to.equal(1);
         done();
-      }, 501);
+      }, 600);
     });
   });
   it('camelCaseToDash', () => {
