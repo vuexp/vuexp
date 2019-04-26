@@ -10,7 +10,7 @@
       @keyup.enter="$emit('submit')"
       @input="updateValue"
     />
-    <Label v-if="text" @click="onClear" class="vxp-searchbar__clear-icon" />
+    <Label v-if="text" @tap="onClear" class="vxp-searchbar__clear-icon" />
   </div>
 </template>
 
