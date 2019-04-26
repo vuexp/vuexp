@@ -4,6 +4,7 @@
       :text="searchPhrase" 
       :hint="hint" 
       :textFieldBackgroundColor="background"
+      :textFieldHintColor="hintColor"
       @submit="onSubmit" 
       @textChange="onTextChange($event)"
       @clear="onClear"
@@ -17,6 +18,10 @@
     <div class="flex m-t-10">
       <Label text="Text:" class="label"></Label>
       <input v-model="searchPhrase" class="form-input" id="searchbar__text__input">
+    </div>
+        <div class="flex m-t-10">
+      <Label text="Hint Color:" class="label"></Label>
+      <input v-model="hintColor" class="form-input" type="color" id="searchbar__textFieldHintColor__input">
     </div>
     <div class="flex m-t-10">
       <Label text="Background:" class="label"></Label>
@@ -39,7 +44,8 @@ export default {
   data() {
     return {
       searchPhrase: '',
-      hint: 'Search hint', 
+      hint: 'Search hint',
+      hintColor: '',
       background: '',
       eventLabelText: '-'
     };

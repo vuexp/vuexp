@@ -33,7 +33,7 @@ onSubmit(){
 | hint                     | String |         | ✔   | ✔      |
 | text                     | String |         | ✔   | ✘      |
 | textFieldBackgroundColor | String |         | ✔   | ✔      |
-| textFieldHintColor       | String |         | ✘   | ✔      |
+| textFieldHintColor       | String |         | ✔   | ✔      |
 
 ## Events
 

@@ -4,6 +4,7 @@
     <input
       ref="searchbar"
       class="vxp-searchbar__search-input"
+      :style="{ '--hint-color': this.textFieldHintColor }"
       :placeholder="hint"
       :type="keyboardType"
       :value="text"
@@ -30,7 +31,7 @@ export default {
     hint: String,
     text: String,
     textFieldBackgroundColor: String,
-    textFieldHintColor: String, // TODO
+    textFieldHintColor: String,
   },
   methods: {
     updateValue: function($event) {
@@ -84,6 +85,9 @@ export default {
     border: solid 1px rgba(0, 0, 0, 0.1);
     &:focus {
       outline: solid 1px rgba(0, 0, 0, 0.2);
+    }
+    &::placeholder {
+      color: var(--hint-color);
     }
   }
 
