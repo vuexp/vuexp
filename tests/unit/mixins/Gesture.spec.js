@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
 import sinon from 'sinon';
 import Gestures from '../../../src/mixins/GestureMixin';
-import { StackLayout } from '../../../src/main';
+import StackLayout from '../../../src/layouts/StackLayout';
 
 describe('Gesture Mixin Unit Test.', () => {
   let mockGesture;
@@ -56,7 +56,7 @@ describe('Gesture Mixin Unit Test.', () => {
     });
   });
   describe('StackLayout is now able to be supporting tap, doubleTap, longPress and touch gestures.', () => {
-    it('StackLayout will be clicked and it will emit tab event.', done => {
+    it('StackLayout will be clicked and it will emit tap event.', done => {
       wrapper.find(StackLayout).trigger('click');
       expect(tap.called).to.equal(true);
       expect(wrapper.emitted().tap.length).to.equal(1);

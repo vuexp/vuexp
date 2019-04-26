@@ -4,11 +4,13 @@
   "version": "0.1.0",
   "scripts": {
     "lint": "vue-cli-service lint",
+    "test": "vue-cli-service test:unit --require tests/unit/pre-setup.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "test:e2e": "vue-cli-service test:e2e --config nightwatch.config.js --env chrome,firefox",
     "test:unit": "vue-cli-service test:unit --require tests/unit/pre-setup.js",
-    "coverage": "nyc npm run test:unit"
+    "coverage": "nyc npm run test:unit",
+    "report": "nyc npm test && nyc report --reporter=text-lcov > coverage.lcov"
   },
   "main": "src/main.js",
   "dependencies": {
@@ -43,6 +45,7 @@
     "babel-plugin-istanbul": "5.1.1",
     "babel-traverse": "6.26.0",
     "chai": "4.2.0",
+    "codecov": "3.1.0",
     "clean-webpack-plugin": "^2.0.1",
     "copy-webpack-plugin": "5.0.2",
     "cross-env": "5.2.0",
