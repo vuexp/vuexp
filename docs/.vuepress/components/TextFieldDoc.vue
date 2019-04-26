@@ -47,11 +47,11 @@
 		<StackLayout orientation="horizontal">
 			<Label text="returnKeyType:" />
 			<select v-model="returnKeyType" id="TextField_returnKeyType_select">
-				<option value="done" id="TextField_returnKeyType_dateTime_option">done</option>
-				<option value="next" id="TextField_returnKeyType_phone_option">next</option>
-				<option value="go" id="TextField_returnKeyType_number_option">go</option>
-				<option value="search" id="TextField_returnKeyType_url_option">search</option>
-				<option value="send" id="TextField_returnKeyType_email_option">send</option>
+				<option value="done" id="TextField_returnKeyType_done_option">done</option>
+				<option value="next" id="TextField_returnKeyType_next_option">next</option>
+				<option value="go" id="TextField_returnKeyType_go_option">go</option>
+				<option value="search" id="TextField_returnKeyType_search_option">search</option>
+				<option value="send" id="TextField_returnKeyType_send_option">send</option>
 			</select>
 		</StackLayout>
 		<StackLayout orientation="horizontal">
