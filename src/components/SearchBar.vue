@@ -1,22 +1,23 @@
 <template>
-  <div v-common-directive :style="{ backgroundColor: textFieldBackgroundColor }" class="nvw-searchbar">
-    <span @click="$emit('submit')" class="nvw-searchbar__search-icon" />
+  <div v-common-directive :style="{ backgroundColor: textFieldBackgroundColor }" class="vxp-searchbar">
+    <Label @tap="$emit('submit')" class="vxp-searchbar__search-icon" />
     <input
       ref="searchbar"
-      class="nvw-searchbar__search-input"
+      class="vxp-searchbar__search-input"
       :placeholder="hint"
       :type="keyboardType"
       :value="text"
       @keyup.enter="$emit('submit')"
       @input="updateValue"
     />
-    <span v-if="text" @click="onClear" class="nvw-searchbar__clear-icon" />
+    <Label v-if="text" @click="onClear" class="vxp-searchbar__clear-icon" />
   </div>
 </template>
 
 <script>
 import CommonDirective from '../directives/CommonDirective';
 import Gestures from '../mixins/GestureMixin';
+import Label from './Label';
 
 export default {
   model: {
@@ -55,12 +56,15 @@ export default {
   directives: {
     'common-directive': CommonDirective,
   },
+  components: {
+    Label,
+  },
   mixins: [Gestures],
 };
 </script>
 
 <style lang="scss">
-.nvw-searchbar {
+.vxp-searchbar {
   display: flex;
   align-items: stretch;
   background-color: #ebebeb75;
