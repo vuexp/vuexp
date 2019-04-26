@@ -94,7 +94,7 @@ describe('SearchBar Test.', () => {
       expect(textChange.called).to.equal(true);
     });
     it('the clearIcon gets clicked, the event is emitted and text becomes an empty string.', () => {
-      wrapper.find('.nvw-searchbar__clear-icon').trigger('click');
+      wrapper.find('.vxp-searchbar__clear-icon').trigger('click');
       expect(onClear.called).to.equal(true);
       expect(wrapper.emitted().clear.length).to.equal(1);
       expect(clear.called).to.equal(true);
@@ -104,7 +104,7 @@ describe('SearchBar Test.', () => {
       wrapper.find('input').setValue('newest value');
       expect(wrapper.find('input').element.value).to.equal('newest value');
       expect(updateValueSpy.called).to.equal(true);
-      wrapper.find('.nvw-searchbar__search-icon').trigger('click');
+      wrapper.find('.vxp-searchbar__search-icon').trigger('click');
       expect(submit.called).to.equal(true);
       expect(wrapper.emitted().submit.length).to.equal(1);
     });
@@ -117,7 +117,7 @@ describe('SearchBar Test.', () => {
       wrapper.vm.$listeners.input = null;
       wrapper.vm.$listeners.textChange = null;
       wrapper.vm.$listeners.clear = null;
-      wrapper.find('.nvw-searchbar__clear-icon').trigger('click');
+      wrapper.find('.vxp-searchbar__clear-icon').trigger('click');
       expect(input.callCount).to.not.equal(4);
       expect(textChange.callCount).to.not.equal(4);
       expect(clear.callCount).to.not.equal(2);
