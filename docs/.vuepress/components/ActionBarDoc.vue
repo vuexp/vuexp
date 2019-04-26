@@ -11,11 +11,11 @@
 			</StackLayout>
 		</ActionBar>
 		<div style="margin-top:75px" class="form-group">
-			<input type="text" v-model="title" placeholder="Enter title..." />
+			<input id="actionbar__title__input" type="text" v-model="title" placeholder="Enter title..." />
 			<label for="input" class="control-label">Change Title</label><i class="bar"></i>
 		</div>
 		<div style="margin-top:15px" class="form-group">
-			<select v-model="selectedShareIcon">
+			<select id="actionbar__shareicon__select" v-model="selectedShareIcon">
 				<option v-for="icon in shareIcons" v-bind:value="icon">
 					{{ icon }}
 				</option>
@@ -23,7 +23,7 @@
 			<label for="select" class="control-label">Change Share Icon</label><i class="bar"></i>
 		</div>
 		<div style="margin-top:15px" class="form-group">
-			<select v-model="selectedDeleteIcon">
+			<select id="actionbar__deleteicon__select" v-model="selectedDeleteIcon">
 				<option v-for="icon in deleteIcons" v-bind:value="icon">
 					{{ icon }}
 				</option>

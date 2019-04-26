@@ -4,11 +4,11 @@
 			<NavigationButton text="Go back" android.systemIcon="ic_menu_back" @tap="goBack($event)" :webIcon="'fa ' + selectedIcon" />
 		</ActionBar>
 		<div style="margin-top:75px" class="form-group">
-			<input type="text" v-model="title" placeholder="Enter title..." />
+			<input id="navigationbutton__title__input" type="text" v-model="title" placeholder="Enter title..." />
 			<label for="input" class="control-label">Change Title</label><i class="bar"></i>
 		</div>
 		<div style="margin-top:15px" class="form-group">
-			<select v-model="selectedIcon">
+			<select id="navigationbutton__webicon__select" v-model="selectedIcon">
 				<option v-for="icon in icons" v-bind:value="icon">
 					{{ icon }}
 				</option>

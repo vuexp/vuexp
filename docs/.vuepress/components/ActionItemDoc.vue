@@ -5,7 +5,7 @@
 			<ActionItem @tap="onTapDelete($event)" ios.systemIcon="16" ios.position="right" text="delete" android.position="popup" :webIcon="'fa ' + selectedDeleteIcon" />
 		</ActionBar>
 		<div style="margin-top:75px" class="form-group">
-			<select v-model="selectedShareIcon">
+			<select id="actionitem__shareicon__select" v-model="selectedShareIcon">
 				<option v-for="icon in shareIcons" v-bind:value="icon">
 					{{ icon }}
 				</option>
@@ -13,7 +13,7 @@
 			<label for="select" class="control-label">Change Share Icon</label><i class="bar"></i>
 		</div>
 		<div style="margin-top:15px" class="form-group">
-			<select v-model="selectedDeleteIcon">
+			<select id="actionitem__deleteicon__select" v-model="selectedDeleteIcon">
 				<option v-for="icon in deleteIcons" v-bind:value="icon">
 					{{ icon }}
 				</option>
