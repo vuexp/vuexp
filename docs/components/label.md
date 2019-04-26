@@ -23,7 +23,3 @@ This is an overview of the most common usage of `<Label>`.
 | text     | String  |         | ✔   | ✔      |
 | textWrap | Boolean | `false` | ✔   | ✔      |
 
-## References
-
-> For more information about the available properties, methods, or events head over to the complete [NativeScript-Vue Documentation](https://nativescript-vue.org/en/docs/elements/components/label/)
-> or [NativeScript Documentation](https://docs.nativescript.org/api-reference/classes/_ui_label_.label)
