@@ -4,18 +4,22 @@
 			<ActionItem @tap="onTapShare($event)" ios.systemIcon="9" ios.position="left" android.systemIcon="ic_menu_share" android.position="actionBar" :webIcon="'fa ' + selectedShareIcon" />
 			<ActionItem @tap="onTapDelete($event)" ios.systemIcon="16" ios.position="right" text="delete" android.position="popup" :webIcon="'fa ' + selectedDeleteIcon" />
 		</ActionBar>
-		<Label style="margin-top:45px" v-text="'Change Share Icon'"></Label>
-		<select style="height: 2rem; margin-top:5px" v-model="selectedShareIcon">
-			<option v-for="icon in shareIcons" v-bind:value="icon">
-				{{ icon }}
-			</option>
-		</select>
-		<Label style="margin-top:15px" v-text="'Change Delete Icon'"></Label>
-		<select style="height: 2rem; margin-top:5px" v-model="selectedDeleteIcon">
-			<option v-for="icon in deleteIcons" v-bind:value="icon">
-				{{ icon }}
-			</option>
-		</select>
+		<div style="margin-top:75px" class="form-group">
+			<select v-model="selectedShareIcon">
+				<option v-for="icon in shareIcons" v-bind:value="icon">
+					{{ icon }}
+				</option>
+			</select>
+			<label for="select" class="control-label">Change Share Icon</label><i class="bar"></i>
+		</div>
+		<div style="margin-top:15px" class="form-group">
+			<select v-model="selectedDeleteIcon">
+				<option v-for="icon in deleteIcons" v-bind:value="icon">
+					{{ icon }}
+				</option>
+			</select>
+			<label for="select" class="control-label">Change Delete Icon</label><i class="bar"></i>
+		</div>
 	</StackLayout>
 </template>
 
@@ -54,4 +58,5 @@
 
 <style lang="scss">
 	@import url('/fonts/fontawesome.min.css');
+	@import url('/custom-input.css');
 </style>

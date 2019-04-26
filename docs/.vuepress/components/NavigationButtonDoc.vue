@@ -3,14 +3,18 @@
 		<ActionBar :title="title">
 			<NavigationButton text="Go back" android.systemIcon="ic_menu_back" @tap="goBack($event)" :webIcon="'fa ' + selectedIcon" />
 		</ActionBar>
-		<Label style="margin-top:45px" v-text="'Change Title'"></Label>
-		<input style="height: 2rem; margin-top:5px" type="text" v-model="title" placeholder="Enter title...">
-
-		<Label style="margin-top:15px" v-text="'Change Icon'"></Label>
-		<select style="height: 2rem; margin-top:5px" v-model="selectedIcon">
-			<option v-for="icon in icons" v-bind:value="icon">
-				{{ icon }}
-			</option>
+		<div style="margin-top:75px" class="form-group">
+			<input type="text" v-model="title" placeholder="Enter title..." />
+			<label for="input" class="control-label">Change Title</label><i class="bar"></i>
+		</div>
+		<div style="margin-top:15px" class="form-group">
+			<select v-model="selectedIcon">
+				<option v-for="icon in icons" v-bind:value="icon">
+					{{ icon }}
+				</option>
+			</select>
+			<label for="select" class="control-label">Change Icon</label><i class="bar"></i>
+		</div>
 		</select>
 	</StackLayout>
 </template>
@@ -45,4 +49,5 @@
 
 <style lang="scss">
 	@import url('/fonts/fontawesome.min.css');
+	@import url('/custom-input.css');
 </style>
