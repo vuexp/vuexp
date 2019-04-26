@@ -4,11 +4,13 @@
   "version": "0.1.0",
   "scripts": {
     "lint": "vue-cli-service lint",
+    "test": "vue-cli-service test:unit --require tests/unit/pre-setup.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "test:e2e": "vue-cli-service test:e2e --config nightwatch.config.js --env chrome,firefox",
     "test:unit": "vue-cli-service test:unit --require tests/unit/pre-setup.js",
-    "coverage": "nyc npm run test:unit"
+    "coverage": "nyc npm run test:unit",
+    "report": "nyc npm test && nyc report --reporter=text-lcov > coverage.lcov"
   },
   "main": "src/main.js",
   "dependencies": {
