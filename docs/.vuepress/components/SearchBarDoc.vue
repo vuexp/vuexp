@@ -23,7 +23,7 @@
       <input v-model="background" class="form-input" type="color" id="searchbar__textFieldBackgroundColor__input">
     </div>
     <div class="flex m-t-10">
-      <Label text="Last Event:" class="label"></Label>
+      <Label text="Last Event:" class="label"></Label> 
       <Label :text="eventLabelText" class="form-input"></Label>
     </div>
   </StackLayout>
