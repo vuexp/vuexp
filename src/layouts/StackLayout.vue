@@ -20,7 +20,7 @@ export default {
   },
   computed: {
     stackLayoutClass: function() {
-      return `nvw-stack-layout nvw-stack-layout--${camelCaseToDash(this.orientation)}`;
+      return `vxp-stack-layout vxp-stack-layout--${camelCaseToDash(this.orientation)}`;
     },
   },
   directives: {
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss">
-.nvw-stack-layout {
+.vxp-stack-layout {
   display: flex;
   flex-direction: column;
 
