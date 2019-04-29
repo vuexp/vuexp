@@ -6,9 +6,9 @@
     <button @click="incrementValue" id="progress__increment__button">Increment</button>
     <button @click="decrementValue" id="progress__decrement__button">Decrement</button>
     <Label text="Increment: "/>
-    <TextField id="progress__increment__input" v-model.number="increment" :editable="true" keyboardType="number"/>
+    <TextField id="progress__increment__input" v-model="increment" :editable="true" keyboardType="number"/>
     <Label text="Max Value: "/>
-    <TextField id="progress__maxValue__input" v-model.number="maxValueProgress" :editable="true" keyboardType="number"/>
+    <TextField id="progress__maxValue__input" v-model="modifiedMaxVal" :editable="true" keyboardType="number" @input="onMaxValueChange($event)"/>
     <Label :text="currentProgressLabel" id="progress__value__label"/>
   </StackLayout>
 </template>
@@ -26,27 +26,39 @@ export default {
     return {
       currentProgress: 10,
       maxValueProgress: 70,
-      increment: 10,
+      modifiedMaxVal: "70",
+      increment: "10",
     };
   },
   computed: {
-    currentProgressLabel: function() {
+    currentProgressLabel() {
       return `Current Progress: ${this.currentProgress}`;
     },
+    incrementAsNumber(){
+      return Number(this.increment);
+    }
   },
   methods: {
     progressChange({ eventName, oldValue, value }) {
-      if (this.currentProgress > this.maxValueProgress) return;
+      if (this.currentProgress > this.maxValueProgressAsNumber) return;
       alert(`${eventName} ${oldValue} to ${value}`);
     },
     incrementValue() {
-      if (this.currentProgress >= this.maxValueProgress) return;
-      this.currentProgress += this.increment;
+      if (this.currentProgress >= this.maxValueProgressAsNumber) return;
+      this.currentProgress += this.incrementAsNumber;
     },
     decrementValue() {
       if (this.currentProgress <= 0) return;
-      this.currentProgress -= this.increment;
+      this.currentProgress -= this.incrementAsNumber;
     },
+    /**
+    * Changes max value of progress bar, TextField always returns string value so we need convert it to Number
+    * @param {String} event The Event bubble up on input changed 
+    * @return {void}
+    */
+    onMaxValueChange(event){
+      this.maxValueProgress = Number(event);
+    }
   },
 };
 </script>
