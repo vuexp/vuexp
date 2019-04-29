@@ -23,6 +23,7 @@ module.exports = {
             children: [
               "components/label.md",
               "components/search-bar.md",
+              "components/frame.md",
             ]
           },
         ]
@@ -31,4 +32,3 @@ module.exports = {
     dest: "./docs/.vuepress/dist",
     serviceWorker: true
   };
-  
