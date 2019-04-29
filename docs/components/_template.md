@@ -35,6 +35,7 @@ hint="This is placeholder"
 | autocorrect   | Boolean                                           |         | ✔   | ✔      |
 
 ## Events
+⬇⬇⬇ This section will contain detailed information about events 
 
 | Name        | Web | Mobile |
 | ----------- | --- | ------ |
@@ -45,7 +46,7 @@ hint="This is placeholder"
 
 
 ## Additional Children Props
-⬇⬇⬇ This section will contain additional props 
+⬇⬇⬇ This section will contain additional props. Like dock attribute that DockLayout's children needs to include.
 
 ---
 
