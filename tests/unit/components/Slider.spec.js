@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
 import sinon from 'sinon';
-import { Slider } from '../../../src/main';
+import Slider from '../../../src/components/Slider';
 
 describe('Slider', () => {
   const value = 20;
