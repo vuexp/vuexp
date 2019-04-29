@@ -22,6 +22,7 @@ module.exports = {
             collapsable: true,
             children: [
               "components/label.md",
+              "components/progress.md", 
             ]
           },
         ]
