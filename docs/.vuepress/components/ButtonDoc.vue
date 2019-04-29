@@ -2,18 +2,18 @@
   <StackLayout>
     <Button id="button" :text="buttonText" @tap="onButtonTap" :textWrap="textWrap" horizontalAlignment="center" />
     <br>
-    Text :<input type="text" v-model="buttonText" />
+    Text :<input type="text" id="text" v-model="buttonText" />
     <br>
-    Label :<Label :text="labelText" />
+    Label :<Label :text="labelText" id="label" />
     <br>
-    Word Wrap :<input type="checkbox" v-model="textWrap" />
+    Word Wrap :<input type="checkbox" v-model="textWrap" id="textWrap" />
   </StackLayout>
 </template>
 
 <script>
+import Button from "../../../src/components/Button";
+import Label from "../../../src/components/Label";
 
-import Button from "../../../src/components/Button"
-import Label from "../../../src/components/Label"
 export default {
   name: "ButtonDoc",
   data(){

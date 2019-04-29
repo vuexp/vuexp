@@ -1,7 +1,7 @@
 <template>
   <button
     v-common-directive
-    class="nvw-button"
+    class="vxp-button"
     :class="fontClass"
     :type="type"
     :style="{ 'white-space': textWrap ? 'normal' : 'nowrap' }"
