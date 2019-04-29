@@ -5,44 +5,49 @@ sidebarDepth: 0
 # ComponentName
 ⬇⬇⬇ Brief description of the component
 
-<DocExampleBox codeBox="https://codesandbox.io/s/1zlq9x6954?module=%2Fsrc%2FApp.vue">
+<DocExampleBox>
 
 ```html
 ⬇⬇⬇ This section will contain static usage examples of the component like following 
 
-<DockLayout :stretchLastChild="false" backgroundColor="#3c495e" class="container">
-  <Label text="left" dock="left" width="40" backgroundColor="#43b883"/>
-  <Label text="top" dock="top" height="40" backgroundColor="#289062"/>
-  <Label text="right" dock="right" width="40" backgroundColor="#43b883"/>
-  <Label text="bottom" dock="bottom" height="40" backgroundColor="#289062"/>
-</DockLayout>
-
-
-<DockLayout :stretchLastChild="true" backgroundColor="#3c495e" class="container">
-  <Label text="left" dock="left" width="40" backgroundColor="#43b883"/>
-  <Label text="top" dock="top" height="40" backgroundColor="#289062"/>
-  <Label text="right" dock="right" width="40" backgroundColor="#43b883"/>
-  <Label text="bottom" dock="bottom" height="40" backgroundColor="#289062"/>
-  <Label text="center" backgroundColor="#1c6b48" />
-</DockLayout>
+<TextField
+v-model="textFieldInput"
+hint="This is placeholder"
+:editable="true"
+@returnPress="textFieldreturnPress"
+@textChange="textFieldtextChange" />
 ```
 
-<DockLayoutDoc />
+  <DockLayoutDoc />
 </DocExampleBox>
 
 ## Props
-⬇⬇⬇ This section will contain attribute details.
 
-| Name             | Type    | Default | Web | Mobile |
-| ---------------- | ------- | ------- | --- | ------ |
-| stretchLastChild | Boolean | `false` | ✔   | ✔      |
+| Name          | Type                                              | Default | Web | Mobile |
+| ------------- | ------------------------------------------------- | ------- | --- | ------ |
+| text          | String                                            |         | ✔   | ✔      |
+| hint          | String                                            |         | ✔   | ✔      |
+| editable      | Boolean                                           |         | ✔   | ✔      |
+| maxLength     | Number                                            |         | ✔   | ✔      |
+| secure        | Boolean                                           | `false` | ✔   | ✔      |
+| keyboardType  | `datetime` , `phone` , `number` , `url` , `email` |         | ✔   | ✔      |
+| returnKeyType | `done`,`next`,`go`,`search`,`send`                |         | ✘   | ✔      |
+| autocorrect   | Boolean                                           |         | ✔   | ✔      |
+
+## Events
+
+| Name        | Web | Mobile |
+| ----------- | --- | ------ |
+| textChange  | ✔   | ✔      |
+| returnPress | ✔   | ✔      |
+| focus       | ✔   | ✔      |
+| blur        | ✔   | ✔      |
+
 
 ## Additional Children Props
 ⬇⬇⬇ This section will contain additional props like following; ⬇
 
-
 When an element is a direct child of `<DockLayout>`, you can work with the following additional properties.
-
 
 
 | Name | Type                                        | Default | Web | Mobile |
