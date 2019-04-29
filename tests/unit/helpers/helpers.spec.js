@@ -33,6 +33,12 @@ describe('Helpers Test', () => {
   it('camelCaseToDash', () => {
     const camelCaseText = helpers.camelCaseToDash('NativescriptVueWeb');
     expect(camelCaseText).to.equal('-nativescript-vue-web');
+      }, 600);
+    });
+  });
+  it('camelCaseToDash', () => {
+    const camelCaseText = helpers.camelCaseToDash('VueXpTest');
+    expect(camelCaseText).to.equal('-vue-xp-test');
   });
   it('addPx', () => {
     const pxValue = helpers.addPx('50');
