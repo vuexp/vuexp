@@ -23,6 +23,7 @@ module.exports = {
             children: [
               "components/label.md",
               "components/button.md",
+              "components/textfield.md"
             ]
           },
         ]
