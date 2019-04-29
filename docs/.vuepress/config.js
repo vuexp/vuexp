@@ -21,7 +21,7 @@ module.exports = {
             title: "Components",
             collapsable: true,
             children: [
-              "components/label.md",
+              "components/label.md", "components/slider.md"
             ]
           },
         ]
