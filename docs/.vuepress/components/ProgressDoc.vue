@@ -6,20 +6,22 @@
     <button @click="incrementValue" id="progress__increment__button">Increment</button>
     <button @click="decrementValue" id="progress__decrement__button">Decrement</button>
     <Label text="Increment: "/>
-    <input type="number" v-model.number="increment" id="progress__increment__input">
+    <TextField id="progress__increment__input" v-model.number="increment" :editable="true" keyboardType="number"/>
     <Label text="Max Value: "/>
-    <input type="number" v-model.number="maxValueProgress" id="progress__maxValue__input">
+    <TextField id="progress__maxValue__input" v-model.number="maxValueProgress" :editable="true" keyboardType="number"/>
     <Label :text="currentProgressLabel" id="progress__value__label"/>
   </StackLayout>
 </template>
 
 <script>
 import Label from '../../../src/components/Label';
-import StackLayout from '../../../src/layouts/StackLayout';
 import Progress from '../../../src/components/Progress';
+import TextField from '../../../src/components/TextField';
+import StackLayout from '../../../src/layouts/StackLayout';
+
 export default {
   name: 'ProgressDoc',
-  components: { Label, StackLayout, Progress },
+  components: { Label, StackLayout, Progress, TextField },
   data() {
     return {
       currentProgress: 10,
@@ -27,10 +29,10 @@ export default {
       increment: 10,
     };
   },
-  computed:{
-      currentProgressLabel: function(){
-        return `Current Progress: ${this.currentProgress}`
-      }
+  computed: {
+    currentProgressLabel: function() {
+      return `Current Progress: ${this.currentProgress}`;
+    },
   },
   methods: {
     progressChange({ eventName, oldValue, value }) {
