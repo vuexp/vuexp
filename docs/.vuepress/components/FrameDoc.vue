@@ -1,29 +1,35 @@
 <template>
-    <div class="nvw-frame">
-        <StackLayout>
-            <Label id="frameDoc-label" :text="labelValue" :textWrap="textWrap" />
-            <slot></slot>
-        </StackLayout>
-    </div>
+    <StackLayout>
+        <Frame id="Frame" />
+            <Label id="Frame_label" text="FRAME" />
+        <Frame />
+    </StackLayout>
 </template>
 
 <script>
-    import Label from '../../../src/components/Label'
     import StackLayout from '../../../src/layouts/StackLayout'
-    import Gestures from '../../../src/mixins/GestureMixin';
+    import Label from '../../../src/components/Label'
+    import Frame from '../../../src/components/Frame'
 
     export default {
-        name: 'Frame',
-        mixins: [Gestures],
+        name: "FrameDoc",
         data() {
             return {
-                labelValue: 'FRAME',
-                textWrap: true
+                textViewInput: "default \n value"
             };
         },
+        methods: {
+            webViewLoadStarted(event) {
+                console.log("WebView Loading Started");
+            },
+            webViewLoadFinished(event) {
+                console.log("WebView Loading finished.");
+            }
+        },
         components: {
-            Label,
-            StackLayout
+            StackLayout,
+            Frame,
+            Label
         }
     };
 </script>
