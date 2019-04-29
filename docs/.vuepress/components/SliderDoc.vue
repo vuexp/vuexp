@@ -7,17 +7,17 @@
         </div>
         <div>
             <Label text="Min Value: ">
-                <input type="number" v-model="minValue" id="slider__minValue__input"/>
+                <TextField keyboard-type="number" v-model="minValue" id="slider__minValue__input"/>
             </Label>
         </div>
         <div>
             <Label text="Max Value: ">
-                <input type="number" v-model="maxValue" id="slider__maxValue__input"/>
+                <TextField keyboard-type="number" v-model="maxValue" id="slider__maxValue__input"/>
             </Label>
         </div>
         <div>
             <Label text="Set Value: ">
-                <input type="number" v-model="value" id="slider__setValue__input"/>
+                <TextField keyboard-type="number" v-model="value" id="slider__setValue__input"/>
             </Label>
         </div>
     </div>
@@ -26,12 +26,14 @@
 <script>
     import Slider from '../../../src/components/Slider';
     import Label from '../../../src/components/Label';
+    import TextField from "../../../src/components/TextField";
 
     export default {
         name: "SliderDoc",
         components: {
             Slider,
-            Label
+            Label,
+            TextField
         },
         data() {
             return {
