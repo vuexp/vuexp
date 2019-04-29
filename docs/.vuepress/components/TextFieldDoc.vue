@@ -12,7 +12,11 @@
 			:keyboardType="keyboardType"
 			:returnKeyType="returnKeyType"
 			:autocorrect="autocorrect"
-			@input="text = $event" />
+			@input="text = $event"
+			@textChange="eventOutput = 'textChange'"
+			@returnPress="eventOutput = 'returnPress'"
+			@focus="eventOutput = 'focus'"
+			@blur="eventOutput = 'blur'" />
 		</StackLayout>
 		<StackLayout orientation="horizontal">
 			<Label text="text:" horizontalAlignment="50%" />
@@ -58,6 +62,10 @@
 			<Label text="autocorrect:" />
 			<input type="checkbox" v-model="autocorrect" id="TextField_autocorrect_input">
 		</StackLayout>
+		<StackLayout orientation="horizontal">
+			<Label text="Event output:" />
+			<Label :text="eventOutput" id="TextField_eventOutput_Label"/>
+		</StackLayout>
 	</StackLayout>
 </template>
 
@@ -78,6 +86,7 @@
 				keyboardType: 'email',
 				returnKeyType: 'done',
 				autocorrect: false,
+				eventOutput: ''
 			};
 		},
 		computed: {
