@@ -21,7 +21,9 @@ module.exports = {
             title: "Components",
             collapsable: true,
             children: [
-              "components/label.md", "components/slider.md"
+              "components/label.md",
+              "components/textfield.md",
+              "components/slider.md"
             ]
           },
         ]
@@ -30,4 +32,3 @@ module.exports = {
     dest: "./docs/.vuepress/dist",
     serviceWorker: true
   };
-  
