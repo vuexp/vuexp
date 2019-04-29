@@ -18,7 +18,7 @@ hint="This is placeholder"
 @textChange="textFieldtextChange" />
 ```
 
-  <DockLayoutDoc />
+  <TextFieldDoc />
 </DocExampleBox>
 
 ## Props
@@ -45,14 +45,7 @@ hint="This is placeholder"
 
 
 ## Additional Children Props
-⬇⬇⬇ This section will contain additional props like following; ⬇
-
-When an element is a direct child of `<DockLayout>`, you can work with the following additional properties.
-
-
-| Name | Type                                        | Default | Web | Mobile |
-| ---- | ------------------------------------------- | ------- | --- | ------ |
-| dock | `top`, `right`, `bottom`, `left` , `center` |         | ✔   | ✔      |
+⬇⬇⬇ This section will contain additional props 
 
 ---
 
@@ -63,5 +56,5 @@ All attributes of the component should be able to be adjusted with a control pan
 ❗️Important! Live demo of components that includes vue slots/children should let users to add/remove slots/children through demo editor panel. 
 
 <DocExampleBox :liveDemoMode="true">
-  <DockLayoutLiveDemo />
+  <TextFieldLiveDemo />
 </DocExampleBox>
