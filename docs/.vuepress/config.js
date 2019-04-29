@@ -26,6 +26,13 @@ module.exports = {
               "components/textfield.md"
             ]
           },
+          {
+            title: "Dialogs",
+            collapsable: false,
+            children: [
+              "dialogs/alert-dialog"
+            ]
+          }
         ]
       }
     },
