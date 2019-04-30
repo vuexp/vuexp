@@ -1,8 +1,8 @@
 <template>
 	<StackLayout>
 		<ActionBar :title="title">
-			<ActionItem @tap="onTapShare($event)" ios.systemIcon="9" ios.position="left" android.systemIcon="ic_menu_share" android.position="actionBar" :webIcon="'fa ' + selectedShareIcon" />
-			<ActionItem @tap="onTapDelete($event)" ios.systemIcon="16" ios.position="right" text="delete" android.position="popup" :webIcon="'fa ' + selectedDeleteIcon" />
+			<ActionItem @tap="onTapShare($event)" :webIcon="'fa ' + selectedShareIcon" />
+			<ActionItem @tap="onTapDelete($event)" :webIcon="'fa ' + selectedDeleteIcon" />
 		</ActionBar>
 		<ActionBar style="margin-top:15px">
 			<StackLayout orientation="horizontal">
@@ -10,26 +10,26 @@
 				<Label text="Vue Web" verticalAlignment="center" />
 			</StackLayout>
 		</ActionBar>
-		<div style="margin-top:75px" class="form-group">
+		<StackLayout style="margin-top:75px" class="form-group">
 			<input id="actionbar__title__input" type="text" v-model="title" placeholder="Enter title..." />
 			<label for="input" class="control-label">Change Title</label><i class="bar"></i>
-		</div>
-		<div style="margin-top:15px" class="form-group">
+		</StackLayout>
+		<StackLayout style="margin-top:15px" class="form-group">
 			<select id="actionbar__shareicon__select" v-model="selectedShareIcon">
 				<option v-for="icon in shareIcons" v-bind:value="icon">
 					{{ icon }}
 				</option>
 			</select>
 			<label for="select" class="control-label">Change Share Icon</label><i class="bar"></i>
-		</div>
-		<div style="margin-top:15px" class="form-group">
+		</StackLayout>
+		<StackLayout style="margin-top:15px" class="form-group">
 			<select id="actionbar__deleteicon__select" v-model="selectedDeleteIcon">
 				<option v-for="icon in deleteIcons" v-bind:value="icon">
 					{{ icon }}
 				</option>
 			</select>
 			<label for="select" class="control-label">Change Delete Icon</label><i class="bar"></i>
-		</div>
+		</StackLayout>
 	</StackLayout>
 </template>
 
@@ -70,6 +70,6 @@
 </script>
 
 <style lang="scss" scoped>
-  @import url('/fonts/fontawesome.min.css');
-	@import url('/custom-input.css');  
+	@import url('/fonts/fontawesome.min.css');
+	@import url('/custom-input.css');
 </style>

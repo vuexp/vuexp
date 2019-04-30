@@ -54,17 +54,13 @@ The `<ActionItem>` component is used to add additional action buttons to the Act
 
 ## Props
 
-| Name    | Type   | Default | Web | Mobile |
-| ------- | ------ | ------- | --- | ------ |
-| webIcon | String |         | ✔   | ✘      |
+| Name    | Type   | Default | Web | Mobile | Description |
+| ------- | ------ | ------- | --- | ------ | ----------- |
+| webIcon | String |         | ✔   | ✘      | Gets or sets the icon of the ActionItem |
 
 ## Events
 
-| Name | Web | Mobile |
-| ---- | --- | ------ |
-| tap  | ✔   | ✔      |
+| Name | Web | Mobile | Description |
+| ---- | --- | ------ | ----------- |
+| tap  | ✔   | ✔      | Emitted when the `<ActionItem>` is tapped.
 
-## References
-
-> For more information about the available properties, methods, or events head over to the complete [NativeScript-Vue Documentation](https://nativescript-vue.org/en/docs/elements/action-bar/action-item/)
-> or [NativeScript Documentation](https://docs.nativescript.org/api-reference/classes/_ui_action_bar_.actionitem)

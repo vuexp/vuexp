@@ -1,7 +1,7 @@
 <template>
 	<StackLayout>
 		<ActionBar :title="title">
-			<NavigationButton text="Go back" android.systemIcon="ic_menu_back" @tap="goBack($event)" :webIcon="'fa ' + selectedIcon" />
+			<NavigationButton text="Go back" @tap="goBack($event)" :webIcon="'fa ' + selectedIcon" />
 		</ActionBar>
 		<div style="margin-top:75px" class="form-group">
 			<input id="navigationbutton__title__input" type="text" v-model="title" placeholder="Enter title..." />

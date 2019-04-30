@@ -40,18 +40,14 @@ The `<NavigationButton>` component is a NativeScript abstraction for the Android
 
 ## Props
 
-| Name    | Type   | Default | Web | Mobile |
-| ------- | ------ | ------- | --- | ------ |
-| text    | String |         | ✔   | ✔      |
-| webIcon | String |         | ✔   | ✘      |
+| Name    | Type   | Default | Web | Mobile | Description |
+| ------- | ------ | ------- | --- | ------ | ----------- |
+| text    | String |         | ✔   | ✔      | (iOS-only) Sets the text of the button. |
+| webIcon | String |         | ✔   | ✘      | The icon to be shown in the button. |
 
 ## Events
 
-| Name | Web | Mobile |
-| ---- | --- | ------ |
-| tap  | ✔   | ✔      |
+| Name | Web | Mobile | Description |
+| ---- | --- | ------ | ----------- |
+| tap  | ✔   | ✔      | Emitted when the `<NavigationButton>` is tapped. |
 
-## References
-
-> For more information about the available properties, methods, or events head over to the complete [NativeScript-Vue Documentation](https://nativescript-vue.org/en/docs/elements/action-bar/navigation-button/)
-> or [NativeScript Documentation](https://docs.nativescript.org/api-reference/classes/_ui_action_bar_.navigationbutton)

@@ -60,11 +60,7 @@ The `<ActionBar>` component is a NativeScript abstraction for the Android Action
 
 ## Props
 
-| Name  | Type   | Default | Web | Mobile |
-| ----- | ------ | ------- | --- | ------ |
-| title | String |         | ✔   | ✔      |
+| Name  | Type   | Default | Web | Mobile | Description |
+| ----- | ------ | ------- | --- | ------ | ----------- |
+| title | String |         | ✔   | ✔      | Gets or sets the title shown in the bar. |
 
-## References
-
-> For more information about the available properties, methods, or events head over to the complete [NativeScript-Vue Documentation](https://nativescript-vue.org/en/docs/elements/action-bar/action-bar/)
-> or [NativeScript Documentation](https://docs.nativescript.org/api-reference/classes/_ui_action_bar_.actionbar)
