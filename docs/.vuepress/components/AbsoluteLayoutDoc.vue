@@ -29,19 +29,19 @@
 			<StackLayout orientation="horizontal">
 				<label class="row-label"><i class="fa fa-list-ul"></i> {{layoutChild.text}}</label>
 				<div class="form-group">
-					<input :id="'absolutelayout__childleft__select' + index" type="number" v-model="layoutChild.left" placeholder="Left..." />
+					<input :id="'absolutelayout__childleft__input' + index" type="number" v-model="layoutChild.left" placeholder="Left..." />
 					<label for="input" class="control-label p-l-1">Left</label><i class="bar"></i>
 				</div>
 				<div class="form-group p-l-2">
-					<input :id="'absolutelayout__childtop__select' + index" type="number" v-model="layoutChild.top" placeholder="Top..." />
+					<input :id="'absolutelayout__childtop__input' + index" type="number" v-model="layoutChild.top" placeholder="Top..." />
 					<label for="input" class="control-label p-l-2">Top</label><i class="bar"></i>
 				</div>
 				<div class="form-group p-l-2">
-					<input :id="'absolutelayout__childwidth__select' + index" type="number" v-model="layoutChild.width" placeholder="Width..." />
+					<input :id="'absolutelayout__childwidth__input' + index" type="number" v-model="layoutChild.width" placeholder="Width..." />
 					<label for="input" class="control-label p-l-2">Width</label><i class="bar"></i>
 				</div>
 				<div class="form-group p-l-2">
-					<input :id="'absolutelayout__childheight__select' + index" type="number" v-model="layoutChild.height" placeholder="Height..." />
+					<input :id="'absolutelayout__childheight__input' + index" type="number" v-model="layoutChild.height" placeholder="Height..." />
 					<label for="input" class="control-label p-l-2">Height</label><i class="bar"></i>
 				</div>
 				<div class="form-group p-l-2 row-color-container">
