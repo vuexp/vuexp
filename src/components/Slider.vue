@@ -1,6 +1,6 @@
 <template>
-  <div class="nvw-slider">
-    <input class="nvw-slider__scroll" type="range" :min="minValue" :max="maxValue" :value="value" @change="$emit('valueChange', $event)" @input="updateValue" />
+  <div class="vxp-slider">
+    <input class="vxp-slider__scroll" type="range" :min="minValue" :max="maxValue" :value="value" @change="$emit('valueChange', $event)" @input="updateValue" />
   </div>
 </template>
 
@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style lang="scss">
-.nvw-slider {
+.vxp-slider {
   width: 100%;
   &__scroll {
     -webkit-appearance: none;
