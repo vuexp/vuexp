@@ -47,7 +47,7 @@ describe('AlertDialog', () => {
 
   describe('Events testing', () => {
     it('the click event of Button element with ok-button class is passed to the component successfully.', () => {
-      const button = wrapper.find('.nvw-alert-dialog__footer__ok-button');
+      const button = wrapper.find('.vxp-alert-dialog__footer__ok-button');
       button.trigger('click');
       expect(wrapper.emitted().submit.length).to.equal(1);
       expect(close.called).to.equal(true);
@@ -56,7 +56,7 @@ describe('AlertDialog', () => {
 
     it('triggered close event on alert-dialog close', () => {
       wrapper.setData({ isModalVisible: true });
-      const modal = wrapper.find('.nvw-alert-dialog');
+      const modal = wrapper.find('.vxp-alert-dialog');
       modal.trigger('click');
       expect(wrapper.emitted().submit.length).to.equal(2);
       expect(close.called).to.equal(true);

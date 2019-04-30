@@ -1,13 +1,13 @@
 <template>
-  <ModalDialog v-if="isModalVisible" class="nvw-alert-dialog" @close="close">
-    <span class="nvw-alert-dialog__header" slot="header">{{ title }}</span>
+  <ModalDialog v-if="isModalVisible" class="vxp-alert-dialog" @close="close">
+    <span class="vxp-alert-dialog__header" slot="header">{{ title }}</span>
 
-    <div class="nvw-alert-dialog__body" slot="body">
+    <div class="vxp-alert-dialog__body" slot="body">
       <div>{{ message }}</div>
     </div>
 
-    <div class="nvw-alert-dialog__footer" slot="footer">
-      <Button class="nvw-alert-dialog__footer__ok-button" :text="okButtonText" @tap="close" :link="true" />
+    <div class="vxp-alert-dialog__footer" slot="footer">
+      <Button class="vxp-alert-dialog__footer__ok-button" :text="okButtonText" @tap="close" :link="true" />
     </div>
   </ModalDialog>
 </template>
@@ -50,10 +50,10 @@ export default {
 <style lang="scss">
 @import '../../assets/styles/components/dialogs';
 
-.nvw-alert-dialog {
+.vxp-alert-dialog {
   &__footer {
     &__ok-button {
-      @include nvw-dialog-button;
+      @include vxp-dialog-button;
     }
   }
 }

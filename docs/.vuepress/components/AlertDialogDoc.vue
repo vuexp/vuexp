@@ -11,6 +11,7 @@
 <script>
     import Label from '../../../src/components/Label';
     import StackLayout from '../../../src/layouts/StackLayout';
+    import Button from '../../../src/components/Button';
 
     export default {
         name: "AlertDialogDoc",
@@ -21,15 +22,15 @@
         },
         methods: {
             showAlertDialog: function() {
-                var currentInstance = this;
-                alert("Your title", "Your message", "OK").then(() => {
-                    currentInstance.eventText = 'OK';
+                alert({title: "Your title", message: "Your message", okButtonText: "OK"}).then(() => {
+                    this.eventText = 'OK';
                 });
             }
         },
         components: {
             StackLayout,
-            Label
+            Label,
+            Button
         }
     };
 </script>
