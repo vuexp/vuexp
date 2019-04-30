@@ -11,7 +11,14 @@ The `<DockLayout>` is a layout container that lets you dock child elements to th
 - Enforces layout constraints to its children.
 - Resizes its children at runtime when its size changes.
 
+## Live Demo
 
+<DocExampleBox :liveDemoMode="true">
+  <DockLayoutLiveDemo />
+</DocExampleBox>
+
+
+## Example Usages
 <DocExampleBox codeBox="https://codesandbox.io/s/1zlq9x6954?module=%2Fsrc%2FApp.vue">
 
 ```html
@@ -48,12 +55,3 @@ When an element is a direct child of `<DockLayout>`, you can work with the follo
 | Name | Type                                        | Default | Web | Mobile | Description |
 | ---- | ------------------------------------------- | ------- | --- | ------ | ----------- |
 | dock | `top`, `right`, `bottom`, `left` , `center` |         | ✔   | ✔      | Specifies which side to dock the element to. |
-
-
-
-## Live Demo
-
-
-<DocExampleBox :liveDemoMode="true">
-  <DockLayoutLiveDemo />
-</DocExampleBox>
