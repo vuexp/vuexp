@@ -1,5 +1,5 @@
 <template>
-  <div class="nvw-frame">
+  <div class="vxp-frame">
     <slot></slot>
   </div>
 </template>
