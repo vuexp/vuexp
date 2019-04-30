@@ -1,51 +1,109 @@
 <template>
   <StackLayout>
-    <WrapLayout :width="width" :height="height" :orientation="orientation" id="wraplayout_">
-      <Label
-        v-for="(label, index) in labels"
-        :id="'dynamic-generated-label' + ' label_'+ index"
-        :text="label.text"
-        :key="label.text + '__' + index"
-        :width="label.width"
-        :height="label.height"
-        :backgroundColor="label.bgColor"
-      ></Label>
-    </WrapLayout>
-    <WrapLayout class="beautify-stylings">
-      <WrapLayout>
-        <Label text="Children: "/>
-        <button horizontalAlignment="50%"  @click="addNewLabel()">Add New Child</button>
-        <button horizontalAlignment="50%" @click="removeLabels()">Remove Children</button>
-        <button horizontalAlignment="50%" @click="removeLast()">Remove Last Child</button>
-      </WrapLayout>
-      <StackLayout orientation="horizontal">
-        <Label text="Item Text: "></Label>
-        <TextField
-          v-model="itemText"
-          @returnPress="onKeyUp"
-          keyboardType="text"
-          ref="itemInput"
-          hint="Item Text"
-        ></TextField>
+    <StackLayout class="demo-panel">
+      <Label class="demo-panel__title" text="Container Configuration"></Label>
+      <StackLayout class="form-group">
+        <StackLayout orientation="horizontal">
+          <Label text="Background Color: " class="editor-param" width="200"/>
+          <input type="color" v-model="containerBackground">
+        </StackLayout>
+        <StackLayout orientation="horizontal" class="m-t-5">
+          <Label text="Width: " class="editor-param" width="200"/>
+          <TextField keyboardType="number" v-model="width"/>
+        </StackLayout>
+        <StackLayout orientation="horizontal" class="m-t-5">
+          <Label text="Height: " class="editor-param" width="200"/>
+          <TextField keyboardType="number" v-model="height"/>
+        </StackLayout>
+        <StackLayout orientation="horizontal" class="m-t-5">
+          <Label text="Orientation: " width="200"></Label>
+          <select horizontalAlignment="50%" v-model="orientation">
+            <option value="horizontal">Horizontal</option>
+            <option value="vertical">Vertical</option>
+          </select>
+        </StackLayout>
       </StackLayout>
-      <WrapLayout orientation="horizontal">
-        <StackLayout>
-          <Label text="Item Width: "></Label>
+    </StackLayout>
+
+    <StackLayout class="demo-panel">
+      <Label class="demo-panel__title" text="Add Children"></Label>
+      <StackLayout class="form-group">
+        <StackLayout orientation="horizontal">
+          <Label text="Actions: " width="110"/>
+          <button class="btn m-g-3" @click="addNewLabel()">Add New Child</button>
+          <button class="btn m-g-3" @click="removeLabels()">Remove Children</button>
+          <button class="btn m-g-3" @click="removeLast()">Remove Last Child</button>
+        </StackLayout>
+        <StackLayout orientation="horizontal" class="m-t-5">
+          <Label text="Text: " width="140"></Label>
+          <TextField
+            v-model="itemText"
+            @returnPress="onKeyUp"
+            keyboardType="text"
+            ref="itemInput"
+            hint="Item Text"
+          ></TextField>
+        </StackLayout>
+        <StackLayout orientation="horizontal" class="m-t-5">
+          <Label text="Width: " width="140"></Label>
           <TextField keyboardType="number" v-model="itemWidth" hint="Item Width"></TextField>
         </StackLayout>
-        <StackLayout>
-          <Label text="Item Height: "></Label>
+        <StackLayout orientation="horizontal" class="m-t-5">
+          <Label text="Height: " width="140"></Label>
           <TextField keyboardType="number" v-model="itemHeight" hint="Item Height"></TextField>
         </StackLayout>
-      </WrapLayout>
-      <StackLayout orientation="horizontal">
-        <Label text="Orientation: "></Label>
-        <select horizontalAlignment="50%" v-model="orientation">
-          <option value="horizontal">Horizontal</option>
-          <option value="vertical">Vertical</option>
-        </select>
       </StackLayout>
-    </WrapLayout>
+    </StackLayout>
+
+    <StackLayout class="demo-panel">
+      <Label class="demo-panel__title" text="Children List"></Label>
+      <StackLayout class="form-group">
+        <StackLayout
+          orientation="horizontal"
+          v-for="(label,index) in labels"
+          :key="index"
+          class="m-t-5"
+        >
+          <Label :text="(index +1) + '.'" width="30"></Label>
+
+          <Label text="Text :" class="m-g-3"></Label>
+          <TextField v-model="label.text" width="100"></TextField>
+
+          <Label text="Width: " class="m-g-3"></Label>
+          <TextField keyboardType="number" v-model="label.width" width="100"></TextField>
+
+          <Label text="Height: " class="m-g-3"></Label>
+          <TextField keyboardType="number" v-model="label.height" width="100"></TextField>
+
+          <Label text="Color: " class="m-g-3"></Label>
+          <input type="color" v-model="label.bgColor" style="width:100px">
+
+          <i class="fa fa-remove c-pointer" @click="removeItem(index)"></i>
+        </StackLayout>
+      </StackLayout>
+    </StackLayout>
+
+    <StackLayout class="demo-panel">
+      <Label class="demo-panel__title" text="Rendered Result"></Label>
+      <WrapLayout
+        :width="width"
+        :height="height"
+        :orientation="orientation"
+        :backgroundColor="containerBackground"
+        id="wraplayout_"
+        class="wrap_demo_item"
+      >
+        <Label
+          v-for="(label, index) in labels"
+          :id="'dynamic-generated-label' + ' label_'+ index"
+          :text="label.text"
+          :key="label.text + '__' + index"
+          :width="label.width"
+          :height="label.height"
+          :backgroundColor="label.bgColor"
+        ></Label>
+      </WrapLayout>
+    </StackLayout>
   </StackLayout>
 </template>
 
@@ -86,12 +144,13 @@ export default {
   data() {
     return {
       labels: [],
-      width: 350,
-      height: 400,
+      width: 660,
+      height: 380,
       orientation: 'vertical',
       itemWidth: '150',
       itemHeight: '150',
       itemText: '',
+      containerBackground: '#aa9a99',
     };
   },
   mounted() {
@@ -113,6 +172,9 @@ export default {
     removeLast() {
       this.labels.splice(this.labels.length - 1, 1);
       colorAlternator.back();
+    },
+    removeItem(index) {
+      this.labels.splice(index, 1);
     },
     onKeyUp() {
       this.addNewLabel();
@@ -166,7 +228,51 @@ function generateNumericOrderName(number) {
 </script>
 
 <style lang="scss" scoped>
-.beautify-stylings * {
+@import url('/fonts/fontawesome.min.css');
+@import url('/custom-input.css');
+.m-g-3 {
   margin: 3px;
+}
+
+.m-t-5 {
+  margin-top: 5px;
+}
+
+.c-pointer {
+  cursor: pointer;
+}
+
+.btn {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: #fef;
+  padding: 5px;
+  cursor: pointer;
+  &:hover {
+    background: #ccc;
+  }
+}
+
+.demo-panel { 
+  padding: 10px;
+  background-color: #eee;
+  border: #6c495e;
+  border-radius: 5px;
+  margin: 10px;
+  &__title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+}
+
+.editor-param {
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.editor-param-input {
+  width: 40px;
+  margin-left: 5px;
 }
 </style>
