@@ -223,13 +223,11 @@ describe('TextView', () => {
 
     it(`the user pushes the enter button to return a value so while the input field prevents next line,
       only the event handler named returnPress gets thrown.`, () => {
-      wrapper.find('textarea').trigger('keydown', {
+      wrapper.find('textarea').trigger('keydown.enter', {
         shiftKey: false,
-        which: 13,
       });
       wrapper.find('textarea').trigger('keyup.enter', {
         shiftKey: false,
-        which: 13,
       });
       expect(wrapper.emitted().returnPress.length).to.equal(1);
       expect(returnPress.called).to.equal(true);
@@ -239,7 +237,6 @@ describe('TextView', () => {
       the input gets next line but does not throw returnpress.`, () => {
       wrapper.find('textarea').trigger('keyup.enter', {
         shiftKey: true,
-        which: 13,
       });
       expect(wrapper.emitted().returnPress.length).to.equal(1);
       expect(returnPress.called).to.equal(true);
@@ -250,7 +247,6 @@ describe('TextView', () => {
       wrapper.setProps({ preventNextLine: false });
       wrapper.find('textarea').trigger('keyup.enter', {
         shiftKey: false,
-        which: 13,
       });
       expect(wrapper.emitted().returnPress.length).to.equal(2);
       expect(returnPress.called).to.equal(true);
@@ -274,12 +270,12 @@ describe('TextView', () => {
       expect(wrapper.emitted().onKeyDown.length).to.equal(1);
 
       expect(onPaste.called).to.equal(false);
-      wrapper.find('textarea').trigger('paste', { type: 'paste', isTrusted: true, clipboardData: {} });
+      wrapper.find('textarea').trigger('paste', { type: 'paste', clipboardData: {} });
       expect(onPaste.called).to.equal(true);
       expect(wrapper.emitted().onPaste.length).to.equal(1);
 
       wrapper.vm.$listeners.onPaste = null;
-      wrapper.find('textarea').trigger('paste', { type: 'paste', isTrusted: true, clipboardData: {} });
+      wrapper.find('textarea').trigger('paste', { type: 'paste', clipboardData: {} });
       expect(wrapper.emitted().onPaste.length).to.equal(1);
     });
   });
