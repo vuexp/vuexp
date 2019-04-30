@@ -6,6 +6,12 @@ sidebarDepth: 0
 
 The `<DockLayout>` is a layout container that lets you dock child elements to the sides or the center of the layout.
 
+- Uses the dock property to dock its children to the `left`, `right`, `top`, `bottom` or `center` of the layout.
+- To dock a child element to the `center`, it **must** be the **last** child of the container and you must set the `stretchLastChild` property of the parent to `true`.
+- Enforces layout constraints to its children.
+- Resizes its children at runtime when its size changes.
+
+
 <DocExampleBox codeBox="https://codesandbox.io/s/1zlq9x6954?module=%2Fsrc%2FApp.vue">
 
 ```html
@@ -31,22 +37,23 @@ The `<DockLayout>` is a layout container that lets you dock child elements to th
 
 ## Props
 
-| Name             | Type    | Default | Web | Mobile |
-| ---------------- | ------- | ------- | --- | ------ |
-| stretchLastChild | Boolean | `false` | ✔   | ✔      |
+| Name             | Type    | Default | Web | Mobile | Description |
+| ---------------- | ------- | ------- | --- | ------ | ----------- |
+| stretchLastChild | Boolean | `false` | ✔   | ✔      | Enables or disables stretching the last child to fit the remaining space. |
 
 ## Additional Children Props
 
 When an element is a direct child of `<DockLayout>`, you can work with the following additional properties.
 
-| Name | Type                                        | Default | Web | Mobile |
-| ---- | ------------------------------------------- | ------- | --- | ------ |
-| dock | `top`, `right`, `bottom`, `left` , `center` |         | ✔   | ✔      |
+| Name | Type                                        | Default | Web | Mobile | Description |
+| ---- | ------------------------------------------- | ------- | --- | ------ | ----------- |
+| dock | `top`, `right`, `bottom`, `left` , `center` |         | ✔   | ✔      | Specifies which side to dock the element to. |
 
 
----
 
 ## Live Demo
-<DocExampleBox :liveDemoMode="true" codeBox="https://codesandbox.io/s/1zlq9x6954?module=%2Fsrc%2FApp.vue">
+
+
+<DocExampleBox :liveDemoMode="true">
   <DockLayoutLiveDemo />
 </DocExampleBox>
