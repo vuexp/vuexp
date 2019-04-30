@@ -3,19 +3,18 @@
 		<ActionBar :title="title">
 			<NavigationButton text="Go back" @tap="goBack($event)" :webIcon="'fa ' + selectedIcon" />
 		</ActionBar>
-		<div style="margin-top:75px" class="form-group">
+		<StackLayout style="margin-top:75px" class="form-group">
 			<input id="navigationbutton__title__input" type="text" v-model="title" placeholder="Enter title..." />
 			<label for="input" class="control-label">Change Title</label><i class="bar"></i>
-		</div>
-		<div style="margin-top:15px" class="form-group">
+		</StackLayout>
+		<StackLayout style="margin-top:15px" class="form-group">
 			<select id="navigationbutton__webicon__select" v-model="selectedIcon">
 				<option v-for="icon in icons" v-bind:value="icon">
 					{{ icon }}
 				</option>
 			</select>
 			<label for="select" class="control-label">Change Icon</label><i class="bar"></i>
-		</div>
-		</select>
+		</StackLayout>
 	</StackLayout>
 </template>
 
