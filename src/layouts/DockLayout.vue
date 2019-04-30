@@ -1,11 +1,11 @@
 <template>
-  <div v-common-directive class="vxp-dock-layout">
+  <div v-common-directive class="vxp-dock-layout" ref="myRoot">
     <div class="vxp-dock-layout__left" data-area="left" ref="left"></div>
-    <div class="vxp-dock-layout__right">
+    <div class="vxp-dock-layout__right" :class="{ 'vxp-dock-layout__nonFlexible': queryIsNonFlexibleBySiblingDockName('left') }">
       <div class="vxp-dock-layout__right__top" data-area="top" ref="top"></div>
-      <div class="vxp-dock-layout__right__bottom">
-        <div class="vxp-dock-layout__right__bottom__left">
-          <div class="vxp-dock-layout__right__bottom__left__top">
+      <div class="vxp-dock-layout__right__bottom" :class="{ 'vxp-dock-layout__nonFlexible': queryIsNonFlexibleBySiblingDockName('top') }">
+        <div class="vxp-dock-layout__right__bottom__left" :class="{ 'vxp-dock-layout__nonFlexible': queryIsNonFlexibleBySiblingDockName('right') }">
+          <div class="vxp-dock-layout__right__bottom__left__top" :class="{ 'vxp-dock-layout__nonFlexible': queryIsNonFlexibleBySiblingDockName('bottom') }">
             <div class="vxp-dock-layout__right__bottom__left__top_center" data-area="center" ref="center"></div>
           </div>
           <div class="vxp-dock-layout__right__bottom__left__bottom" data-area="bottom" ref="bottom"></div>
@@ -37,6 +37,19 @@ export default {
     this.processSlots();
   },
   methods: {
+    getLastChildsDockName() {
+      if (!this.$slots.default) {
+        return undefined; // there no slots
+      }
+      let [last] = this.$slots.default.slice(-1);
+      return last.data && last.data.attrs && last.data.attrs.dock ? last.data.attrs.dock : '';
+    },
+    queryIsNonFlexibleBySiblingDockName(dockName) {
+      if (!this.stretchLastChild) {
+        return false;
+      }
+      return this.getLastChildsDockName() === dockName;
+    },
     processSlots() {
       if (!this.$slots.default) {
         return; // there no slots
@@ -63,40 +76,21 @@ export default {
 
           if (parent.previousSibling && parent.previousSibling.classList) {
             parent.previousSibling.classList.remove('vxp-dock-layout__nonFlexible');
-            // console.log("111111");
           } else if (parent.nextSibling && parent.nextSibling.classList) {
             parent.nextSibling.classList.remove('vxp-dock-layout__nonFlexible');
-            // console.log("22222222");
           }
 
           if (slot === last && this.stretchLastChild) {
             if (parent.previousSibling && parent.previousSibling.classList) {
               parent.previousSibling.classList.add('vxp-dock-layout__nonFlexible');
-              //   console.log("3333333");
             } else if (parent.nextSibling && parent.nextSibling.classList) {
               parent.nextSibling.classList.add('vxp-dock-layout__nonFlexible');
-              //  console.log("4444444");
             }
-
-            // console.log(slot.elm.parentElement.classList);
-            // if (slot.elm.parentElement.classList.value.indexOf("vxp-dock-layout__right__bottom__left__top_center") != -1) {
-            //   console.log("slot.elm.parentElement: ", slot.elm.parentElement);
-            // }
-
-            // console.log(slot.elm.parentElement)
             slot.elm.parentElement.classList.add('vxp-dock-layout__stretchLastChild');
-            // slot.elm.parentElement.nextSibling.style.flex = "0";
-
-            // if (slot.elm.classList.value.indexOf("vxp-dock-layout__right__bottom__left__top_center") != -1) {
-            //   console.log("slot.elm. ", slot.elm);
-            // }
-
             slot.elm.classList.add('vxp-dock-layout__stretchLastChild');
-            // slot.elm.nextSibling.style.flex = "0";
           } else {
             // when dockLayout slots are updated on runtime, following classes may sometimes remain on classList although they must not.
             // we need to be sure that they are removed from class list
-
             if (slot.elm.parentElement.classList) {
               slot.elm.parentElement.classList.remove('vxp-dock-layout__stretchLastChild');
             }
