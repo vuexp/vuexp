@@ -5,6 +5,20 @@ sidebarDepth: 0
 # ComponentName
 ⬇⬇⬇ Brief description of the component
 
+---
+
+## Live Demo
+⬇⬇⬇ This section will contain interactive live demo of the component.
+All attributes of the component should be able to be adjusted with a control panel.
+
+❗️Important! Live demo of components that includes vue slots/children should let users to add/remove slots/children through demo editor panel. 
+
+<DocExampleBox :liveDemoMode="true">
+  <TextFieldLiveDemo />
+</DocExampleBox>
+
+
+## Example Usages
 <DocExampleBox>
 
 ```html
@@ -20,6 +34,7 @@ hint="This is placeholder"
 
   <TextFieldDoc />
 </DocExampleBox>
+
 
 ## Props
 
@@ -46,15 +61,3 @@ hint="This is placeholder"
 
 ## Additional Children Props
 ⬇⬇⬇ This section will contain additional props. Like dock attribute that DockLayout's children needs to include.
-
----
-
-## Live Demo
-⬇⬇⬇ This section will contain interactive live demo of the component.
-All attributes of the component should be able to be adjusted with a control panel.
-
-❗️Important! Live demo of components that includes vue slots/children should let users to add/remove slots/children through demo editor panel. 
-
-<DocExampleBox :liveDemoMode="true">
-  <TextFieldLiveDemo />
-</DocExampleBox>
