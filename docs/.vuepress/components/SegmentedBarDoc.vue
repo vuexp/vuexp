@@ -7,9 +7,10 @@
     >
       <SegmentedBarItem v-for="(segment, index) in segments" :title="segment.name" :key="index"/>
     </SegmentedBar>
-    <Label :text="selectedIndexTitle"></Label>
+    <Label :text="selectedIndexTitle" id="segmentedBar__selectedIndex__label"></Label>
     <TextField
       v-for="(segment, index) in segments"
+      :id="`segmentedBar__title__input__${index}`"
       :key="index"
       v-model="segment.name"
       hint="This is placeholder"
