@@ -60,18 +60,43 @@ export default {
           parent.appendChild(slot.elm);
 
           let [last] = this.$slots.default.slice(-1);
+
+          if (parent.previousSibling && parent.previousSibling.classList) {
+            parent.previousSibling.classList.remove('vxp-dock-layout__nonFlexible');
+            // console.log("111111");
+          } else if (parent.nextSibling && parent.nextSibling.classList) {
+            parent.nextSibling.classList.remove('vxp-dock-layout__nonFlexible');
+            // console.log("22222222");
+          }
+
           if (slot === last && this.stretchLastChild) {
             if (parent.previousSibling && parent.previousSibling.classList) {
               parent.previousSibling.classList.add('vxp-dock-layout__nonFlexible');
+              //   console.log("3333333");
             } else if (parent.nextSibling && parent.nextSibling.classList) {
               parent.nextSibling.classList.add('vxp-dock-layout__nonFlexible');
+              //  console.log("4444444");
             }
 
+            // console.log(slot.elm.parentElement.classList);
+            // if (slot.elm.parentElement.classList.value.indexOf("vxp-dock-layout__right__bottom__left__top_center") != -1) {
+            //   console.log("slot.elm.parentElement: ", slot.elm.parentElement);
+            // }
+
+            // console.log(slot.elm.parentElement)
             slot.elm.parentElement.classList.add('vxp-dock-layout__stretchLastChild');
+            // slot.elm.parentElement.nextSibling.style.flex = "0";
+
+            // if (slot.elm.classList.value.indexOf("vxp-dock-layout__right__bottom__left__top_center") != -1) {
+            //   console.log("slot.elm. ", slot.elm);
+            // }
+
             slot.elm.classList.add('vxp-dock-layout__stretchLastChild');
+            // slot.elm.nextSibling.style.flex = "0";
           } else {
             // when dockLayout slots are updated on runtime, following classes may sometimes remain on classList although they must not.
             // we need to be sure that they are removed from class list
+
             if (slot.elm.parentElement.classList) {
               slot.elm.parentElement.classList.remove('vxp-dock-layout__stretchLastChild');
             }
