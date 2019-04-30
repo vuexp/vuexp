@@ -25,13 +25,14 @@ This is an overview of the most common usage of `<Button>`.
 
 ## Props
 
-| Name     | Type    | Default | Web | Mobile |
-| -------- | ------- | ------- | --- | ------ |
-| text     | String  |         | ✔   | ✔      |
-| textWrap | Boolean | `false` | ✔   | ✔      |
+| Name     | Type    | Default | Web | Mobile | Desctiption |
+| -------- | ------- | ------- | --- | ------ |------|
+| text     | String  |         | ✔   | ✔      |Sets the label of the button.|
+| textWrap | Boolean | `false` | ✔   | ✔      |Gets or sets whether the widget wraps the text of the label. Useful for longer labels. Default value is false.|
 
 ## Events
 
-| Name | Web | Mobile |
-| ---- | --- | ------ |
-| tap  | ✔   | ✔      |
+| Name | Web | Mobile | Description |
+| ---- | --- | ------ |------|
+| tap  | ✔   | ✔      |Emitted when the button is tapped.|
+
