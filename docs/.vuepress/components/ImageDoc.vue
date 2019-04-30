@@ -1,24 +1,24 @@
 <template>
-  <StackLayout rows="*, *" columns="*, *" style="height: 600px; width: 400px; margin:auto;">
-    <StackLayout row="0" col="0" class="stack-cell">
+  <StackLayout style="width: 400px; margin:auto;">
+    <StackLayout class="stack-cell" style="height: auto;">
       <Label text="none" class="label-text" />
       <!-- >> image-stretch-none -->
       <Img src="~/images/logo.png" stretch="none" />
       <!-- << image-stretch-none -->
     </StackLayout>
-    <StackLayout row="1" col="0" class="stack-cell">
+    <StackLayout class="stack-cell" style="height: 150px;">
       <Label text="fill" class="label-text" />
       <!-- >> image-stretch-fill -->
       <Img src="~/images/logo.png" stretch="fill" />
       <!-- << image-stretch-fill -->
     </StackLayout>
-    <StackLayout row="0" col="1" class="stack-cell">
+    <StackLayout class="stack-cell" style="height: 150px;">
       <Label text="aspectFill" class="label-text" />
       <!-- >> image-stretch-aspect-fill -->
       <Img src="~/images/logo.png" stretch="aspectFill" />
       <!-- << image-stretch-aspect-fill -->
     </StackLayout>
-    <StackLayout row="1" col="1" class="stack-cell">
+    <StackLayout class="stack-cell" style="height: 150px;">
       <Label text="aspectFit" class="label-text" />
       <!-- >> image-stretch-aspect-fit -->
       <Img src="~/images/logo.png" stretch="aspectFit" />
