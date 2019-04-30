@@ -27,12 +27,12 @@ describe('Helpers Test', () => {
       setTimeout(() => {
         expect(spy.callCount).to.equal(1);
         done();
-      }, 501);
+      }, 600);
     });
   });
   it('camelCaseToDash', () => {
-    const camelCaseText = helpers.camelCaseToDash('NativescriptVueWeb');
-    expect(camelCaseText).to.equal('-nativescript-vue-web');
+    const camelCaseText = helpers.camelCaseToDash('VueXpTest');
+    expect(camelCaseText).to.equal('-vue-xp-test');
   });
   it('addPx', () => {
     const pxValue = helpers.addPx('50');
