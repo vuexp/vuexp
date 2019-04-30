@@ -1,5 +1,5 @@
 <template>
-  <div v-common-directive class="nvw-wrap-layout" :style="{ flexDirection: orientation === 'vertical' ? 'column' : 'row' }">
+  <div v-common-directive class="vxp-wrap-layout" :style="{ flexDirection: orientation === 'vertical' ? 'column' : 'row' }">
     <slot></slot>
   </div>
 </template>
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style lang="scss">
-.nvw-wrap-layout {
+.vxp-wrap-layout {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
