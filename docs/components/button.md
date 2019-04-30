@@ -6,20 +6,6 @@ sidebarDepth: 0
 
 This is an overview of the most common usage of `<Button>`.
 
-<DocExampleBox codeBox="https://codesandbox.io/s/n5y3lym66p?module=%2Fsrc%2FApp.vue">
-
-```html
-<Button text="Button" @tap="onButtonTap" horizontalAlignment="center" />
-```
-
-```js
- onButtonTap() {
-      console.log("clicked");
-    }
-```
-
-<ButtonDoc />
-</DocExampleBox>
 
 `Button` is a UI component that displays a button which reacts to a user gesture.
 
@@ -35,4 +21,22 @@ This is an overview of the most common usage of `<Button>`.
 | Name | Web | Mobile | Description |
 | ---- | --- | ------ |------|
 | tap  | ✔   | ✔      |Emitted when the button is tapped.|
+
+
+## Live Demo
+
+<DocExampleBox codeBox="https://codesandbox.io/s/n5y3lym66p?module=%2Fsrc%2FApp.vue">
+
+```html
+<Button text="Button" @tap="onButtonTap" horizontalAlignment="center" />
+```
+
+```js
+ onButtonTap() {
+      console.log("clicked");
+    }
+```
+
+<ButtonDoc />
+</DocExampleBox>
 
