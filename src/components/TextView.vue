@@ -53,7 +53,7 @@ export default {
       if (this.$listeners.onKeyDown) {
         this.$emit('onKeyDown', $event);
       }
-      if (!$event.shiftKey && ($event.keyCode === 13 || $event.which === 13) && this.preventNextLine) {
+      if (!$event.shiftKey && $event.keyCode === 13 && this.preventNextLine) {
         $event.preventDefault();
       }
     },
@@ -71,7 +71,7 @@ export default {
       }
     },
     returnPress($event) {
-      if (!$event.shiftKey && ($event.keyCode === 13 || $event.which === 13) && this.$listeners.returnPress) {
+      if (!$event.shiftKey && $event.keyCode === 13 && this.$listeners.returnPress) {
         this.$emit('returnPress', $event.target.value);
       }
     },
