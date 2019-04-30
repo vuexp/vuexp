@@ -2,9 +2,11 @@
   <StackLayout class="progress">
     <Label text="Default Progress"/>
     <Progress :value="currentProgress" @valueChange="progressChange" :maxValue="maxValueProgress"/>
-    <!-- <Button @tap="incrementValue" text="Increment" class="progress__button" value="Button"/> -->
+    <Button @tap="incrementValue" id="progress__increment__button" text="Increment" class="progress__button" value="Button"/>
+    <Button @tap="decrementValue" id="progress__increment__button" text="Increment" class="progress__button" value="Button"/>
+<!-- 
     <button @click="incrementValue" id="progress__increment__button">Increment</button>
-    <button @click="decrementValue" id="progress__decrement__button">Decrement</button>
+    <button @click="decrementValue" id="progress__decrement__button">Decrement</button> -->
     <Label text="Increment: "/>
     <TextField id="progress__increment__input" v-model="increment" :editable="true" keyboardType="number"/>
     <Label text="Max Value: "/>
