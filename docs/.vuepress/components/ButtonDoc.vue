@@ -2,11 +2,11 @@
   <StackLayout>
     <Button id="button" :text="buttonText" @tap="onButtonTap" :textWrap="textWrap" horizontalAlignment="center" />
     <br>
-    Text :<input type="text" id="button_text" v-model="buttonText" />
+    Text :<input type="text" id="button_text_input" v-model="buttonText" />
     <br>
     Label :<Label :text="labelText" id="button_label" />
     <br>
-    Word Wrap :<input type="checkbox" v-model="textWrap" id="button_textWrap" />
+    Text Wrap :<input type="checkbox" v-model="textWrap" id="button_textWrap_input" />
   </StackLayout>
 </template>
 
