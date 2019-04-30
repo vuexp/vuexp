@@ -59,7 +59,7 @@ export default {
 </script>
 
 <style lang="scss">
-.nvw-button {
+.vxp-button {
   background-color: #d6d7d7;
   padding: 10px;
   min-width: 60px;
