@@ -60,13 +60,13 @@ describe('ScrollView', () => {
 
   describe('the component receives given props correctly.', () => {
     it(`Orientation property is equal to horizontal`, () => {
-      expect(wrapper.classes()).to.include('nvw-scrollview--horizontal');
+      expect(wrapper.classes()).to.include('vxp-scrollview--horizontal');
     });
 
     it(`Changing orientation property to vertical and it must be equal to vertical`, () => {
       wrapper.setProps({ orientation: 'vertical' });
-      expect(wrapper.classes()).to.include('nvw-scrollview--vertical');
-      expect(wrapper.classes()).to.not.include('nvw-scrollview--horizontal');
+      expect(wrapper.classes()).to.include('vxp-scrollview--vertical');
+      expect(wrapper.classes()).to.not.include('vxp-scrollview--horizontal');
     });
 
     it(`Changing scrollBarIndicatorVisible property`, () => {

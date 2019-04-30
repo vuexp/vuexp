@@ -24,7 +24,7 @@ export default {
   },
   computed: {
     scrollViewClass: function() {
-      return `nvw-scrollview nvw-scrollview--${camelCaseToDash(this.orientation)}${this.scrollBarIndicatorVisible ? '' : '--hide'}`;
+      return `vxp-scrollview vxp-scrollview--${camelCaseToDash(this.orientation)}${this.scrollBarIndicatorVisible ? '' : '--hide'}`;
     },
   },
   methods: {
@@ -40,7 +40,7 @@ export default {
 </script>
 
 <style lang="scss">
-.nvw-scrollview {
+.vxp-scrollview {
   &--horizontal {
     overflow-x: auto;
     overflow-y: hidden;
