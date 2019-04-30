@@ -17,6 +17,9 @@ import Gestures from '../mixins/GestureMixin';
 
 export default {
   name: 'Button',
+  data: function() {
+    return {};
+  },
   props: {
     text: String,
     textWrap: {
@@ -44,7 +47,9 @@ export default {
     },
     //removes text when fonticon filter is present
     textValue() {
-      if (typeof this.text === 'string') {
+      if (this.$slots.default) {
+        return this.$slots.default[0].text;
+      } else if (typeof this.text === 'string') {
         return this.text.includes(' | fonticon') ? '' : this.text;
       } else {
         return this.text;

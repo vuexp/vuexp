@@ -1,6 +1,8 @@
 <template>
   <StackLayout>
     <Button id="button" :text="buttonText" @tap="onButtonTap" :textWrap="textWrap" horizontalAlignment="left" />
+    <Button id="button"  @tap="onButtonTap" :textWrap="textWrap" horizontalAlignment="left"> Button Text </Button>
+
     <StackLayout orientation="horizontal">
       <Label text="Text:" width="100"></Label>
       <input type="text" id="button_text_input" v-model="buttonText" />
