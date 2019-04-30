@@ -252,7 +252,7 @@ button {
 
 .demo-panel {
   padding: 10px;
-  background-color: cyan;
+  background-color: lightgray;
   border: #3c495e;
   border-radius: 5px;
   margin:10px;
