@@ -4,7 +4,7 @@
 			<Label v-for="(layoutChild, index) in layoutChildren" :key="index" :text="layoutChild.left + ', ' + layoutChild.top" :left="layoutChild.left" :top="layoutChild.top" :width="layoutChild.width" :height="layoutChild.height" :backgroundColor="layoutChild.backgroundColor" />
 		</AbsoluteLayout>
 		<StackLayout orientation="horizontal">
-			<button @click="setInitialState" class="reset-btn"><span><i class="fa fa-refresh"></i> Reset</span></button>
+			<button id="absolutelayout__reset__button" @click="setInitialState" class="reset-btn"><span><i class="fa fa-refresh"></i> Reset</span></button>
 		</StackLayout>
 		<Label style="margin-top: 50px;" text="Container"></Label>
 		<StackLayout orientation="horizontal">
@@ -13,7 +13,7 @@
 				<label for="input" class="control-label">Container Height</label><i class="bar"></i>
 			</div>
 			<div class="form-group p-l-2">
-				<select style="height: 1.9rem;" id="absolutelayout__color__select" v-model="selectedContainerColor">
+				<select style="height: 1.9rem;" id="absolutelayout__background__select" v-model="selectedContainerColor">
 					<option v-for="colorOption in containerColorOptions" v-bind:value="colorOption">
 						{{ colorOption.title }}
 					</option>
@@ -29,23 +29,23 @@
 			<StackLayout orientation="horizontal">
 				<label class="row-label"><i class="fa fa-list-ul"></i> {{layoutChild.text}}</label>
 				<div class="form-group">
-					<input type="number" v-model="layoutChild.left" placeholder="Height..." />
+					<input :id="'absolutelayout__childleft__select' + index" type="number" v-model="layoutChild.left" placeholder="Left..." />
 					<label for="input" class="control-label p-l-1">Left</label><i class="bar"></i>
 				</div>
 				<div class="form-group p-l-2">
-					<input type="number" v-model="layoutChild.top" placeholder="Height..." />
+					<input :id="'absolutelayout__childtop__select' + index" type="number" v-model="layoutChild.top" placeholder="Top..." />
 					<label for="input" class="control-label p-l-2">Top</label><i class="bar"></i>
 				</div>
 				<div class="form-group p-l-2">
-					<input type="number" v-model="layoutChild.width" placeholder="Height..." />
+					<input :id="'absolutelayout__childwidth__select' + index" type="number" v-model="layoutChild.width" placeholder="Width..." />
 					<label for="input" class="control-label p-l-2">Width</label><i class="bar"></i>
 				</div>
 				<div class="form-group p-l-2">
-					<input type="number" v-model="layoutChild.height" placeholder="Height..." />
+					<input :id="'absolutelayout__childheight__select' + index" type="number" v-model="layoutChild.height" placeholder="Height..." />
 					<label for="input" class="control-label p-l-2">Height</label><i class="bar"></i>
 				</div>
 				<div class="form-group p-l-2 row-color-container">
-					<select style="height: 1.9rem; min-width: 10%;" id="actionitem__deleteicon__select" v-model="layoutChild.backgroundColor">
+					<select :id="'absolutelayout__childbackground__select' + index" style="height: 1.9rem; min-width: 10%;" id="actionitem__deleteicon__select" v-model="layoutChild.backgroundColor">
 						<option v-for="boxColorOption in boxColorOptions" v-bind:value="boxColorOption.value">
 							{{ boxColorOption.title }}
 						</option>
@@ -53,7 +53,7 @@
 					<label for="select" class="control-label p-l-2">Background</label><i class="bar"></i>
 				</div>
 				<div class="form-group remove-btn-container">
-					<button @click="removeChild(index)" class="remove-btn"><span><i class="fa fa-times"></i></span></button>
+					<button :id="'absolutelayout__removechild__button' + index" @click="removeChild(index)" class="remove-btn"><span><i class="fa fa-times"></i></span></button>
 				</div>
 			</StackLayout>
 		</div>
