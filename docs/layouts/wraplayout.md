@@ -60,7 +60,11 @@ The following example creates a column of equally-sized items. When the row runs
 | itemWidth   | Number | `Number.NaN` | X   | ✔      |
 | itemHeight  | Number | `Number.NaN` | X   | ✔      |
 
-## References
+## Live Demo
+<DocExampleBox>
+  ```html
+    <WrapLayout height="width" width="height">
+  ```
 
-> For more information about the available properties, methods, or events head over to the complete [NativeScript-Vue Documentation](https://nativescript-vue.org/en/docs/elements/layouts/wrap-layout/)
-> or [NativeScript Documentation](https://docs.nativescript.org/api-reference/modules/_ui_layouts_wrap_layout_)
+  <WrapLayoutLiveDemoDoc />
+</DocExampleBox>
