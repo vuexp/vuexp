@@ -14,6 +14,7 @@ module.exports = {
             title: "Layouts",
             collapsable: true,
             children: [
+              "layouts/absolute-layout.md",
               "layouts/stacklayout.md",
             ]
           },
