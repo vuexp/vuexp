@@ -1,5 +1,5 @@
 <template>
-  <GridLayout rows="*, *" columns="*, *" style="height: 600px; width: 400px; margin:auto;">
+  <StackLayout rows="*, *" columns="*, *" style="height: 600px; width: 400px; margin:auto;">
     <StackLayout row="0" col="0" class="stack-cell">
       <Label text="none" class="label-text" />
       <!-- >> image-stretch-none -->
@@ -24,7 +24,7 @@
       <Img src="~/images/logo.png" stretch="aspectFit" />
       <!-- << image-stretch-aspect-fit -->
     </StackLayout>
-  </GridLayout>
+  </StackLayout>
 </template>
 <style lang="scss">
 .label-text {
@@ -49,8 +49,7 @@ export default {
   components: {
     StackLayout,
     Label,
-    Img,
-    GridLayout
+    Img
   }
 };
 </script>

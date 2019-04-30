@@ -24,7 +24,7 @@ Displaying an image from a URL
 <DocExampleBox codeBox="https://codesandbox.io/s/vnxyxz9553?module=%2Fsrc%2FApp.vue">
 
 ```html
-<GridLayout rows="*, *" columns="*, *" style="height: 600px; width: 400px; margin:auto;">
+<StackLayout rows="*, *" columns="*, *" style="height: 600px; width: 400px; margin:auto;">
   <StackLayout row="0" col="0" class="stack-cell">
     <Label text="none" class="label-text" />
     <!-- >> image-stretch-none -->
@@ -49,7 +49,7 @@ Displaying an image from a URL
     <Img src="~/images/logo.png" stretch="aspectFit" />
     <!-- << image-stretch-aspect-fit -->
   </StackLayout>
-</GridLayout>
+</StackLayout>
 ```
 
 <ImageDoc />
