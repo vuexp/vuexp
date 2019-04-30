@@ -35,8 +35,3 @@ This is an overview of the most common usage of `<Button>`.
 | Name | Web | Mobile |
 | ---- | --- | ------ |
 | tap  | ✔   | ✔      |
-
-## References
-
-> For more information about the available properties, methods, or events head over to the complete [NativeScript-Vue Documentation](https://nativescript-vue.org/en/docs/elements/components/button/)
-> or [NativeScript Documentation](https://docs.nativescript.org/api-reference/classes/_ui_button_.button)
