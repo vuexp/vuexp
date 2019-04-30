@@ -71,11 +71,11 @@ describe('StackLayout', () => {
 
   describe('the component receives given props correctly.', () => {
     it(`Orientation property is equal to horizontal`, () => {
-      expect(stackLayoutHorizontal.classes()).to.include('nvw-stack-layout--horizontal');
+      expect(stackLayoutHorizontal.classes()).to.include('vxp-stack-layout--horizontal');
     });
 
     it(`Orientation property is equal to vertical`, () => {
-      expect(stackLayoutVertical.classes()).to.include('nvw-stack-layout--vertical');
+      expect(stackLayoutVertical.classes()).to.include('vxp-stack-layout--vertical');
     });
   });
 
