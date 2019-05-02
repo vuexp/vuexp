@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
-import { ActionBar, ActionItem, NavigationButton, StackLayout } from '../../../src/main';
+import { ActionBar, ActionItem, NavigationButton } from '../../../src/main';
+import StackLayout from '../../../src/layouts/StackLayout';
 
 describe('ActionItem', () => {
   const title = 'Main Page';
