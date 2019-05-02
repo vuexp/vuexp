@@ -51,7 +51,3 @@ webViewLoadFinished(event) {
 <FrameDoc />
 </DocExampleBox>
 
-## References
-
-> For more information about the available properties, methods, or events head over to the complete [NativeScript-Vue Documentation](https://nativescript-vue.org/en/docs/elements/components/frame/)
-> or [NativeScript Documentation](https://docs.nativescript.org/api-reference/classes/_ui_frame_.frame)
