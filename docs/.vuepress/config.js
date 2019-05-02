@@ -15,6 +15,8 @@ module.exports = {
             collapsable: true,
             children: [
               "layouts/stacklayout.md",
+              "layouts/flexbox-layout.md",
+              "layouts/dock-layout.md",
             ]
           },
           {
@@ -22,9 +24,11 @@ module.exports = {
             collapsable: true,
             children: [
               "components/label.md",
+              "components/search-bar.md",
               "components/button.md",
               "components/textfield.md",
               "components/scrollview.md",
+              "components/slider.md"
             ]
           },
         ]
@@ -33,4 +37,3 @@ module.exports = {
     dest: "./docs/.vuepress/dist",
     serviceWorker: true
   };
-  
