@@ -15,6 +15,7 @@ module.exports = {
             collapsable: true,
             children: [
               "layouts/stacklayout.md",
+              "layouts/flexbox-layout.md",
               "layouts/dock-layout.md",
             ]
           },
