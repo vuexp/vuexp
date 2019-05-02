@@ -1,7 +1,10 @@
 <template>
   <StackLayout>
     <Button text="Show Confirm Dialog" width="200" @tap="showConfirmDialog" />
-    <Label id="label_result_text" :text ="result"/>
+    <StackLayout orientation="horizontal" class="confirm_dialog__margin">
+      <Label text ="Result: "/>
+      <Label id="label_result_text" :text ="result"/>
+    </StackLayout>
   </StackLayout>
 </template>
 
@@ -20,7 +23,7 @@ export default {
   methods: {
     showConfirmDialog() {
       confirm("Your title", "Your message", "OK", "Cancel").then((result) => {
-        this.result = result;
+        this.result = result ? "Pressed OK" : "Pressed Cancel";
       });
     }
   },
@@ -31,3 +34,12 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.confirm_dialog {
+   &__margin {
+   margin-top: 25px;
+   margin-left: 2px;
+  }
+}
+</style>
