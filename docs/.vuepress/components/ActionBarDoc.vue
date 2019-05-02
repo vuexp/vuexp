@@ -10,25 +10,28 @@
 				<Label text="Cross Platform" verticalAlignment="center" />
 			</StackLayout>
 		</ActionBar>
-		<StackLayout style="margin-top:75px" class="form-group">
-			<input id="actionbar__title__input" type="text" v-model="title" placeholder="Enter title..." />
-			<label for="input" class="control-label">Change Title</label><i class="bar"></i>
-		</StackLayout>
-		<StackLayout style="margin-top:15px" class="form-group">
-			<select id="actionbar__shareicon__select" v-model="selectedShareIcon">
-				<option v-for="icon in shareIcons" v-bind:value="icon">
-					{{ icon }}
-				</option>
-			</select>
-			<label for="select" class="control-label">Change Share Icon</label><i class="bar"></i>
-		</StackLayout>
-		<StackLayout style="margin-top:15px" class="form-group">
-			<select id="actionbar__deleteicon__select" v-model="selectedDeleteIcon">
-				<option v-for="icon in deleteIcons" v-bind:value="icon">
-					{{ icon }}
-				</option>
-			</select>
-			<label for="select" class="control-label">Change Delete Icon</label><i class="bar"></i>
+		<StackLayout class="prop-container">
+			<Label text="Properties"></Label>
+			<StackLayout style="margin-top:75px" class="form-group">
+				<input id="actionbar__title__input" type="text" v-model="title" placeholder="Enter title..." />
+				<label for="input" class="control-label">Change Title</label><i class="bar"></i>
+			</StackLayout>
+			<StackLayout style="margin-top:15px" class="form-group">
+				<select id="actionbar__shareicon__select" v-model="selectedShareIcon">
+					<option v-for="icon in shareIcons" v-bind:value="icon">
+						{{ icon }}
+					</option>
+				</select>
+				<label for="select" class="control-label">Change Share Icon</label><i class="bar"></i>
+			</StackLayout>
+			<StackLayout style="margin-top:15px" class="form-group">
+				<select id="actionbar__deleteicon__select" v-model="selectedDeleteIcon">
+					<option v-for="icon in deleteIcons" v-bind:value="icon">
+						{{ icon }}
+					</option>
+				</select>
+				<label for="select" class="control-label">Change Delete Icon</label><i class="bar"></i>
+			</StackLayout>
 		</StackLayout>
 	</StackLayout>
 </template>
@@ -72,4 +75,10 @@
 <style lang="scss" scoped>
 	@import url('/fonts/fontawesome.min.css');
 	@import url('/custom-input.css');
+
+	.prop-container {
+		margin-top: 50px;
+		background: rgb(243, 243, 243);
+		padding: 1rem;
+	}
 </style>
