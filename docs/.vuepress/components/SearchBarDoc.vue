@@ -11,32 +11,33 @@
       @input="searchPhrase = $event"
       id="searchbar__docs"
       />
-    <div class="flex m-t-10">
+    <StackLayout orientation="horizontal" class="flex m-t-10">
       <Label text="Hint:" class="label"></Label>
-      <input v-model="hint" class="form-input" id="searchbar__hint__input">
-    </div>
-    <div class="flex m-t-10">
+      <TextField v-model="hint" class="form-input" id="searchbar__hint__input" />
+    </StackLayout>
+    <StackLayout orientation="horizontal" class="flex m-t-10">
       <Label text="Text:" class="label"></Label>
-      <input v-model="searchPhrase" class="form-input" id="searchbar__text__input">
-    </div>
-        <div class="flex m-t-10">
+      <TextField v-model="searchPhrase" class="form-input" id="searchbar__text__input" />
+    </StackLayout>
+    <StackLayout orientation="horizontal" class="flex m-t-10">
       <Label text="Hint Color:" class="label"></Label>
-      <input v-model="hintColor" class="form-input" type="color" id="searchbar__textFieldHintColor__input">
-    </div>
-    <div class="flex m-t-10">
+      <TextField v-model="hintColor" class="form-input" type="color" id="searchbar__textFieldHintColor__input" />
+    </StackLayout>
+    <StackLayout orientation="horizontal" class="flex m-t-10">
       <Label text="Background:" class="label"></Label>
-      <input v-model="background" class="form-input" type="color" id="searchbar__textFieldBackgroundColor__input">
-    </div>
-    <div class="flex m-t-10">
+      <TextField v-model="background" class="form-input" type="color" id="searchbar__textFieldBackgroundColor__input" />
+    </StackLayout>
+    <StackLayout orientation="horizontal" class="flex m-t-10">
       <Label text="Last Event:" class="label"></Label> 
       <Label :text="eventLabelText" class="form-input"></Label>
-    </div>
+    </StackLayout>
   </StackLayout>
 </template>
 
 <script>
 import Label from '../../../src/components/Label';
 import SearchBar from '../../../src/components/SearchBar';
+import TextField from '../../../src/components/TextField';
 import StackLayout from '../../../src/layouts/StackLayout';
 
 export default {
@@ -65,6 +66,7 @@ export default {
     StackLayout,
     Label,
     SearchBar,
+    TextField
   },
 };
 </script>
