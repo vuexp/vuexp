@@ -1,29 +1,29 @@
 <template>
   <StackLayout style="width: 400px; margin:auto;">
-    <StackLayout class="stack-cell" style="height: auto;">
-      <Label text="none" class="label-text" />
-      <!-- >> image-stretch-none -->
-      <Img src="~/images/logo.png" stretch="none" />
-      <!-- << image-stretch-none -->
+    <StackLayout class="stack-cell">
+      <Img :src="src" :tintColor="tintColor" :stretch="stretch" :loadMode="loadMode" />
     </StackLayout>
-    <StackLayout class="stack-cell" style="height: 150px;">
-      <Label text="fill" class="label-text" />
-      <!-- >> image-stretch-fill -->
-      <Img src="~/images/logo.png" stretch="fill" />
-      <!-- << image-stretch-fill -->
-    </StackLayout>
-    <StackLayout class="stack-cell" style="height: 150px;">
-      <Label text="aspectFill" class="label-text" />
-      <!-- >> image-stretch-aspect-fill -->
-      <Img src="~/images/logo.png" stretch="aspectFill" />
-      <!-- << image-stretch-aspect-fill -->
-    </StackLayout>
-    <StackLayout class="stack-cell" style="height: 150px;">
-      <Label text="aspectFit" class="label-text" />
-      <!-- >> image-stretch-aspect-fit -->
-      <Img src="~/images/logo.png" stretch="aspectFit" />
-      <!-- << image-stretch-aspect-fit -->
-    </StackLayout>
+
+    <Label text="Source URL: ">
+      <TextField v-model="src" id="image__src__input"></TextField>
+    </Label>
+    <Label text="Tint Color: ">
+      <TextField v-model="tintColor" id="image__tintColor__input"></TextField>
+    </Label>
+    <Label text="Stretch Mode: ">
+      <select v-model="stretch" id="image__stretchMode__select">
+        <option value="none">none</option>
+        <option value="aspectFill">aspectFill</option>
+        <option value="aspectFit">aspectFit</option>
+        <option value="fill">fill</option>
+      </select>
+    </Label>
+    <Label text="Load Mode: ">
+      <select v-model="loadMode" id="image__loadMode__select">
+        <option value="async">async</option>
+        <option value="sync">sync</option>
+      </select>
+    </Label>
   </StackLayout>
 </template>
 <style lang="scss">
@@ -43,10 +43,20 @@
 import StackLayout from "../../../src/layouts/StackLayout";
 import Label from "../../../src/components/Label";
 import Img from "../../../src/components/Img";
+import TextField from "../../../src/components/TextField";
 
 export default {
   name: "ImageDoc",
+  data() {
+    return {
+      src: "~/images/logo.png",
+      tintColor: "#000000",
+      stretch: "none",
+      loadMode: "async"
+    }
+  },
   components: {
+    TextField,
     StackLayout,
     Label,
     Img
