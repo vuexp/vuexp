@@ -11,7 +11,7 @@
 			</StackLayout>
 			<StackLayout style="margin-top:15px" class="form-group">
 				<select id="navigationbutton__webicon__select" v-model="selectedIcon">
-					<option v-for="icon in icons" v-bind:value="icon">
+					<option v-for="(icon, index) in icons" v-bind:value="icon" :key="index">
 						{{ icon }}
 					</option>
 				</select>

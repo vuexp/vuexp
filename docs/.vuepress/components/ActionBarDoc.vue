@@ -26,7 +26,7 @@
 			</StackLayout>
 			<StackLayout style="margin-top:15px" class="form-group">
 				<select id="actionbar__deleteicon__select" v-model="selectedDeleteIcon">
-					<option v-for="icon in deleteIcons" v-bind:value="icon">
+					<option v-for="(icon, index) in deleteIcons" v-bind:value="icon" :key="index">
 						{{ icon }}
 					</option>
 				</select>
