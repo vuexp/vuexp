@@ -65,8 +65,8 @@ The following example creates a column of equally-sized items. When the row runs
 
 ## Props
 
-| Name        | Type   | Default      | Web | Mobile |
-| ----------- | ------ | ------------ | --- | ------ |
-| orientation | String | `horizontal` | ✔   | ✔      |
-| itemWidth   | Number | `Number.NaN` | X   | ✔      |
-| itemHeight  | Number | `Number.NaN` | X   | ✔      |
+| Name        | Type   | Default      | Web | Mobile | Description |
+| ----------- | ------ | ------------ | --- | ------ | ----------- |
+| orientation | String | `horizontal` | ✔   | ✔     | Orientation for inner children |
+| itemWidth   | Number | `Number.NaN` | ✔   | ✔     | Sets the width used to measure and layout each child |
+| itemHeight  | Number | `Number.NaN` | ✔   | ✔     | Sets the height used to measure and layout each child |
