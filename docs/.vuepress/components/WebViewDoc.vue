@@ -9,6 +9,10 @@
 			<Label text="html:"  width="50" />
 			<TextField v-model="html" id="WebView_html_textfield" />
 		</StackLayout>
+		<StackLayout orientation="horizontal">
+			<Label text="Event output:" />
+			<Label :text="eventOutput" id="WebView_eventOutput_Label"/>
+		</StackLayout>
 	</StackLayout>
 </template>
 
@@ -28,15 +32,18 @@
 		},
 		data() {
 			return {
-				src: '<div><h1>WebView</h1></div>',
-				html: '<div><h1>WebView</h1></div>'
+				src: '',
+				html: '',
+				eventOutput: '',
 			}
 		},
 		methods: {
 			webViewLoadStarted(event) {
+				this.eventOutput = 'loadStarted';
 				console.log("WebView Loading started.");
 			},
 			webViewLoadFinished(event) {
+				this.eventOutput = 'loadFinished';
 				console.log("WebView Loading finished.");
 			}
 		}
