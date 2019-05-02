@@ -1,6 +1,6 @@
 <template>
-  <iframe v-if="isURL" class="nvw-webview" :src="srcValue" @load="$emit('loadFinished', $event)" />
-  <div v-else v-html="src"></div>
+  <iframe v-if="isURL" class="vxp-webview" :src="srcValue" @load="$emit('loadFinished', $event)" />
+  <div v-else v-html="src ? src : html"></div>
 </template>
 
 <script>
@@ -10,6 +10,7 @@ export default {
   name: 'WebView',
   props: {
     src: String,
+    html: String,
   },
   // Event called @loadstart does not get fired in the iframe so, the below method is a temporarily workaround to the problem.
   created(event) {
@@ -19,7 +20,11 @@ export default {
   },
   computed: {
     isURL: function() {
-      return this.src.startsWith('http://') || this.src.startsWith('https://') || this.src.startsWith('~');
+      if (!this.src) {
+        return false;
+      } else {
+        return this.src.startsWith('http://') || this.src.startsWith('https://') || this.src.startsWith('~');
+      }
     },
     srcValue: function() {
       return this.src.startsWith('~') ? this.src.replace('~', '') : this.src;
@@ -30,7 +35,7 @@ export default {
 </script>
 
 <style lang="scss">
-.nvw-webview {
+.vxp-webview {
   display: flex;
 }
 </style>
