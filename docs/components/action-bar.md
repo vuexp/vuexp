@@ -19,8 +19,8 @@ The `<ActionBar>` component is a NativeScript abstraction for the Android Action
 </ActionBar>
 <ActionBar style="margin-top:15px">
   <StackLayout orientation="horizontal">
-    <Label text="NativeScript" verticalAlignment="center" />
-      <Label text="Vue Web" verticalAlignment="center" />
+    <Label text="VueXP" verticalAlignment="center" />
+      <Label text="Cross Platform" verticalAlignment="center" />
     </StackLayout>
   </ActionBar>
 ```
