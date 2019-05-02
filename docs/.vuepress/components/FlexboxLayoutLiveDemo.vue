@@ -5,12 +5,12 @@
 
       <StackLayout orientation="horizontal">
         <Label text="Width" class="option-label"/>
-        <input id="flexboxlayout_containerwidth_input" type="text" v-model="containerWidth">
+        <TextField id="flexboxlayout_containerwidth_input" v-model="containerWidth" />
       </StackLayout>
 
       <StackLayout orientation="horizontal">
         <Label text="Height" class="option-label"/>
-        <input id="flexboxlayout_containerheight_input" type="text" v-model="containerHeight">
+        <TextField id="flexboxlayout_containerheight_input" v-model="containerHeight"/>
       </StackLayout>
 
       <StackLayout orientation="horizontal">
@@ -83,17 +83,17 @@
 
       <StackLayout orientation="horizontal">
         <Label text="Name" class="option-label"/>
-        <input id="flexboxlayout_childname_input" type="text" v-model="childName">
+        <TextField id="flexboxlayout_childname_input" v-model="childName"/>
       </StackLayout>
 
       <StackLayout orientation="horizontal">
         <Label text="Width" class="option-label"/>
-        <input id="flexboxlayout_childwidth_input" type="text" v-model="childWidth">
+        <TextField id="flexboxlayout_childwidth_input" v-model="childWidth"/>
       </StackLayout>
 
       <StackLayout orientation="horizontal">
         <Label text="Height" class="option-label"/>
-        <input id="flexboxlayout_childheight_input" type="text" v-model="childHeight">
+        <TextField id="flexboxlayout_childheight_input" v-model="childHeight"/>
       </StackLayout>
 
       <StackLayout orientation="horizontal">
@@ -109,17 +109,17 @@
 
       <StackLayout orientation="horizontal">
         <Label text="Order" class="option-label"/>
-        <input id="flexboxlayout_childorder_input" type="text" v-model="childOrder">
+        <TextField id="flexboxlayout_childorder_input" v-model="childOrder"/>
       </StackLayout>
 
       <StackLayout orientation="horizontal">
         <Label text="Flex Grow" class="option-label"/>
-        <input id="flexboxlayout_childflexgrow_input" type="text" v-model="childFlexGrow">
+        <TextField id="flexboxlayout_childflexgrow_input" v-model="childFlexGrow"/>
       </StackLayout>
 
       <StackLayout orientation="horizontal">
         <Label text="Flex Shrink" class="option-label"/>
-        <input id="flexboxlayout_childflexshrink_input" type="text" v-model="childFlexShrink">
+        <TextField id="flexboxlayout_childflexshrink_input" v-model="childFlexShrink"/>
       </StackLayout>
 
       <StackLayout orientation="horizontal">
@@ -151,25 +151,23 @@
       <StackLayout orientation="horizontal" v-for="(child, index) in childrenList">
         <StackLayout orientation="horizontal" class="editor-param">
           <Label class="editor-param-title" text="T: "/>
-          <input :id="'docklayout_childreneditor_name' + index" type="text" style="width:50px" v-model="childrenList[index].text">
+          <TextField :id="'docklayout_childreneditor_name' + index" style="width:50px" v-model="childrenList[index].text" />
         </StackLayout>
         <StackLayout orientation="horizontal" class="editor-param">
           <Label class="editor-param-title" text="W:"/>
-          <input
+          <TextField
             :id="'docklayout_childreneditor_width' + index"
             class="editor-param-input"
-            type="text"
             v-model="childrenList[index].width"
-          >
+          />
         </StackLayout>
         <StackLayout orientation="horizontal" class="editor-param">
           <Label class="editor-param-title" text="H: "/>
-          <input
+          <TextField
             :id="'docklayout_childreneditor_height' + index"
             class="editor-param-input"
-            type="text"
             v-model="childrenList[index].height"
-          >
+          />
         </StackLayout>
         <StackLayout orientation="horizontal" class="editor-param">
           <Label class="editor-param-title" text="C: "/>
@@ -224,6 +222,7 @@
 <script>
 import Label from '../../../src/components/Label';
 import Button from '../../../src/components/Button';
+import TextField from '../../../src/components/TextField';
 import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
 import StackLayout from '../../../src/layouts/StackLayout';
 
@@ -234,6 +233,7 @@ export default {
     StackLayout,
     Label,
     Button,
+    TextField,
   },
   data() {
     return {
