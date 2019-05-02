@@ -1,14 +1,14 @@
 <template>
   <transition name="modal-fade">
-    <div @click="close" class="nvw-modal-dialog">
-      <div @click.stop class="nvw-modal-dialog__backdrop" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
-        <header class="nvw-modal-dialog__header" id="modalTitle">
+    <div @click="close" class="vxp-modal-dialog">
+      <div @click.stop class="vxp-modal-dialog__backdrop" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
+        <header class="vxp-modal-dialog__header" id="modalTitle">
           <slot name="header"> </slot>
         </header>
-        <section class="nvw-modal-dialog__body" id="modalDescription">
+        <section class="vxp-modal-dialog__body" id="modalDescription">
           <slot name="body"> </slot>
         </section>
-        <footer class="nvw-modal-dialog__footer">
+        <footer class="vxp-modal-dialog__footer">
           <slot name="footer"> </slot>
         </footer>
       </div>
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss">
-.nvw-modal-dialog {
+.vxp-modal-dialog {
   position: fixed;
   top: 0;
   border-radius: 6px;

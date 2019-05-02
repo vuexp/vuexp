@@ -1,7 +1,7 @@
 <template>
   <button
     v-common-directive
-    class="nvw-button"
+    class="vxp-button"
     :class="fontClass"
     :type="type"
     :style="{ 'white-space': textWrap ? 'normal' : 'nowrap' }"
@@ -17,6 +17,9 @@ import Gestures from '../mixins/GestureMixin';
 
 export default {
   name: 'Button',
+  data: function() {
+    return {};
+  },
   props: {
     text: String,
     textWrap: {
@@ -44,7 +47,9 @@ export default {
     },
     //removes text when fonticon filter is present
     textValue() {
-      if (typeof this.text === 'string') {
+      if (this.$slots.default) {
+        return this.$slots.default[0].text;
+      } else if (typeof this.text === 'string') {
         return this.text.includes(' | fonticon') ? '' : this.text;
       } else {
         return this.text;
@@ -59,7 +64,7 @@ export default {
 </script>
 
 <style lang="scss">
-.nvw-button {
+.vxp-button {
   background-color: #d6d7d7;
   padding: 10px;
   min-width: 60px;
