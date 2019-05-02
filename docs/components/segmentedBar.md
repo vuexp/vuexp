@@ -3,6 +3,8 @@
 
 `<SegmentedBar>` is a UI bar component that displays a set of buttons for discrete selection. Can show text or images.
 
+## Live Demo
+
 <DocExampleBox>
 
 ```html
@@ -21,7 +23,7 @@
 
 ```js
 export default {
-  name: 'SegmentedBarDoc',
+  name: 'SegmentedBarLiveDemo',
   components: { SegmentedBar, SegmentedBarItem, StackLayout, TextField, Label },
   data() {
     return {
@@ -43,14 +45,15 @@ export default {
 
 ```
 
-<SegmentedBarDoc />
+<SegmentedBarLiveDemo />
 </DocExampleBox>
 
-`<SegmentedBar>` provides two-way data binding using v-model. The 'title' field is rendered as segmented bar item's title.
 
-```html
-<SegmentedBar v-model="selectedIndex" :items="items" @selectedIndexChanged="changed" />
-```
+
+## Example Usages
+<DocExampleBox>
+<SegmentedBarDoc></SegmentedBarDoc>
+</DocExampleBox>
 
 ## Props
 
@@ -61,6 +64,6 @@ export default {
 
 ## Events
 
-| Name                | Type   | Web | Mobile |
-|---------------------|--------|-----|--------|
-| selectedIndexChange | Number | ✔   | ✔      |
+| Name                | Type   | Web | Mobile | Description                                    |
+|---------------------|--------|-----|--------|------------------------------------------------|
+| selectedIndexChange | Number | ✔   | ✔      | Outputs the index of selected segment bar item |
