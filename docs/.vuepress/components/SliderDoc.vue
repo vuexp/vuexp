@@ -32,9 +32,9 @@
         },
         data() {
             return {
-                value: 70,
-                minValue: 0,
-                maxValue: 100
+                value: "70",
+                minValue: "0",
+                maxValue: "100"
             };
         },
         methods: {
