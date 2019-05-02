@@ -12,8 +12,8 @@
 		</ActionBar>
 		<StackLayout class="prop-container">
 			<Label text="Properties"></Label>
-			<StackLayout style="margin-top:75px" class="form-group">
-				<input id="actionbar__title__input" type="text" v-model="title" placeholder="Enter title..." />
+			<StackLayout style="margin-top:50px" class="form-group">
+				<TextField id="actionbar__title__input" type="text" v-model="title" placeholder="Enter title..."></TextField>
 				<label for="input" class="control-label">Change Title</label><i class="bar"></i>
 			</StackLayout>
 			<StackLayout style="margin-top:15px" class="form-group">
@@ -22,7 +22,7 @@
 						{{ icon }}
 					</option>
 				</select>
-				<label for="select" class="control-label">Change Share Icon</label><i class="bar"></i>
+				<Label for="select" class="control-label" text="Change Share Icon"></Label><i class="bar"></i>
 			</StackLayout>
 			<StackLayout style="margin-top:15px" class="form-group">
 				<select id="actionbar__deleteicon__select" v-model="selectedDeleteIcon">
@@ -30,7 +30,7 @@
 						{{ icon }}
 					</option>
 				</select>
-				<label for="select" class="control-label">Change Delete Icon</label><i class="bar"></i>
+				<Label for="select" class="control-label" text="Change Delete Icon"></Label><i class="bar"></i>
 			</StackLayout>
 		</StackLayout>
 	</StackLayout>
@@ -39,6 +39,7 @@
 <script>
 	import Label from '../../../src/components/Label'
 	import ActionBar from '../../../src/components/ActionBar'
+	import TextField from '../../../src/components/TextField'
 	import ActionItem from '../../../src/components/ActionItem'
 	import StackLayout from '../../../src/layouts/StackLayout'
 
@@ -48,7 +49,8 @@
 			Label,
 			StackLayout,
 			ActionBar,
-			ActionItem
+			ActionItem,
+			TextField
 		},
 		data() {
 			return {
