@@ -6,57 +6,61 @@
 		<StackLayout orientation="horizontal">
 			<button id="absolutelayout__reset__button" @click="setInitialState" class="reset-btn"><span><i class="fa fa-refresh"></i> Reset</span></button>
 		</StackLayout>
-		<Label style="margin-top: 50px;" text="Container"></Label>
-		<StackLayout orientation="horizontal">
-			<div class="form-group">
-				<input id="absolutelayout__height__input" type="number" v-model="containerHeight" placeholder="Height..." />
-				<label for="input" class="control-label">Container Height</label><i class="bar"></i>
-			</div>
-			<div class="form-group p-l-2">
-				<select style="height: 1.9rem;" id="absolutelayout__background__select" v-model="selectedContainerColor">
-					<option v-for="colorOption in containerColorOptions" v-bind:value="colorOption">
-						{{ colorOption.title }}
-					</option>
-				</select>
-				<label for="select" class="control-label p-l-2">Container Background Color</label><i class="bar"></i>
-			</div>
-		</StackLayout>
-		<Label style="margin-top: 25px; margin-bottom: 15px" text="Layout Children"></Label>
-		<StackLayout orientation="horizontal">
-			<button id="absolutelayout__addchild__button" @click="addChild" class="add-btn"><span><i class="fa fa-plus"></i> Add Child</span></button>
-		</StackLayout>
-		<div v-for="(layoutChild, index) in layoutChildren" class="child-row">
+		<StackLayout class="prop-container">
+			<Label text="Container"></Label>
 			<StackLayout orientation="horizontal">
-				<label class="row-label"><i class="fa fa-list-ul"></i> {{layoutChild.text}}</label>
 				<div class="form-group">
-					<input :id="'absolutelayout__childleft__input' + index" type="number" v-model="layoutChild.left" placeholder="Left..." />
-					<label for="input" class="control-label p-l-1">Left</label><i class="bar"></i>
+					<input id="absolutelayout__height__input" type="number" v-model="containerHeight" placeholder="Height..." />
+					<label for="input" class="control-label">Container Height</label><i class="bar"></i>
 				</div>
 				<div class="form-group p-l-2">
-					<input :id="'absolutelayout__childtop__input' + index" type="number" v-model="layoutChild.top" placeholder="Top..." />
-					<label for="input" class="control-label p-l-2">Top</label><i class="bar"></i>
-				</div>
-				<div class="form-group p-l-2">
-					<input :id="'absolutelayout__childwidth__input' + index" type="number" v-model="layoutChild.width" placeholder="Width..." />
-					<label for="input" class="control-label p-l-2">Width</label><i class="bar"></i>
-				</div>
-				<div class="form-group p-l-2">
-					<input :id="'absolutelayout__childheight__input' + index" type="number" v-model="layoutChild.height" placeholder="Height..." />
-					<label for="input" class="control-label p-l-2">Height</label><i class="bar"></i>
-				</div>
-				<div class="form-group p-l-2 row-color-container">
-					<select :id="'absolutelayout__childbackground__select' + index" style="height: 1.9rem; min-width: 10%;" id="actionitem__deleteicon__select" v-model="layoutChild.backgroundColor">
-						<option v-for="boxColorOption in boxColorOptions" v-bind:value="boxColorOption.value">
-							{{ boxColorOption.title }}
+					<select style="height: 1.9rem;" id="absolutelayout__background__select" v-model="selectedContainerColor">
+						<option v-for="colorOption in containerColorOptions" v-bind:value="colorOption">
+							{{ colorOption.title }}
 						</option>
 					</select>
-					<label for="select" class="control-label p-l-2">Background</label><i class="bar"></i>
-				</div>
-				<div class="form-group remove-btn-container">
-					<button :id="'absolutelayout__removechild__button' + index" @click="removeChild(index)" class="remove-btn"><span><i class="fa fa-times"></i></span></button>
+					<label for="select" class="control-label p-l-2">Container Background Color</label><i class="bar"></i>
 				</div>
 			</StackLayout>
-		</div>
+		</StackLayout>
+		<StackLayout class="prop-container">
+			<Label style="margin-top: 25px; margin-bottom: 15px" text="Layout Children"></Label>
+			<StackLayout style="margin-bottom: 25px" orientation="horizontal">
+				<button id="absolutelayout__addchild__button" @click="addChild" class="add-btn"><span><i class="fa fa-plus"></i> Add Child</span></button>
+			</StackLayout>
+			<StackLayout v-for="(layoutChild, index) in layoutChildren" :key="index" class="child-row">
+				<StackLayout orientation="horizontal">
+					<label class="row-label"><i class="fa fa-list-ul"></i> {{layoutChild.text}}</label>
+					<div class="form-group">
+						<input :id="'absolutelayout__childleft__input' + index" type="number" v-model="layoutChild.left" placeholder="Left..." />
+						<label for="input" class="control-label p-l-1">Left</label><i class="bar"></i>
+					</div>
+					<div class="form-group p-l-2">
+						<input :id="'absolutelayout__childtop__input' + index" type="number" v-model="layoutChild.top" placeholder="Top..." />
+						<label for="input" class="control-label p-l-2">Top</label><i class="bar"></i>
+					</div>
+					<div class="form-group p-l-2">
+						<input :id="'absolutelayout__childwidth__input' + index" type="number" v-model="layoutChild.width" placeholder="Width..." />
+						<label for="input" class="control-label p-l-2">Width</label><i class="bar"></i>
+					</div>
+					<div class="form-group p-l-2">
+						<input :id="'absolutelayout__childheight__input' + index" type="number" v-model="layoutChild.height" placeholder="Height..." />
+						<label for="input" class="control-label p-l-2">Height</label><i class="bar"></i>
+					</div>
+					<div class="form-group p-l-2 row-color-container">
+						<select :id="'absolutelayout__childbackground__select' + index" style="height: 1.9rem; min-width: 10%;" id="actionitem__deleteicon__select" v-model="layoutChild.backgroundColor">
+							<option v-for="boxColorOption in boxColorOptions" v-bind:value="boxColorOption.value">
+								{{ boxColorOption.title }}
+							</option>
+						</select>
+						<label for="select" class="control-label p-l-2">Background</label><i class="bar"></i>
+					</div>
+					<div class="form-group remove-btn-container">
+						<button :id="'absolutelayout__removechild__button' + index" @click="removeChild(index)" class="remove-btn"><span><i class="fa fa-times"></i></span></button>
+					</div>
+				</StackLayout>
+			</StackLayout>
+		</StackLayout>
 	</StackLayout>
 </template>
 
@@ -130,27 +134,30 @@
 		padding-left: 2rem !important;
 	}
 
-	.child-row {
-		border-bottom: 1px solid #43b883;
-		margin-bottom: 1rem;
-		.row-label {
-			// margin-top: 2rem;
-			min-width: 20%;
-			// border: 1px solid;
-			padding: 2rem 0;
-		}
-		.form-group {
-			margin-top: 1.25rem;
-			margin-bottom: 0.25rem;
-			padding: 1rem;
-			&.row-color-container {
-				min-width: 10%;
+	.prop-container {
+		margin-top: 50px;
+		background: rgb(238, 238, 238);
+		padding: 1rem;
+		.child-row {
+			border-bottom: 1px solid #43b883;
+			margin-bottom: 1rem;
+			.row-label {
+				min-width: 20%;
+				padding: 2rem 0;
 			}
-			&.remove-btn-container {
-				padding: 0;
-				text-align: center;
-				margin-top: 2rem;
-				margin-bottom: 0;
+			.form-group {
+				margin-top: 1.25rem;
+				margin-bottom: 0.25rem;
+				padding: 1rem;
+				&.row-color-container {
+					min-width: 10%;
+				}
+				&.remove-btn-container {
+					padding: 0;
+					text-align: center;
+					margin-top: 2rem;
+					margin-bottom: 0;
+				}
 			}
 		}
 	}
