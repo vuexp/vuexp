@@ -23,9 +23,9 @@ module.exports = {
             collapsable: true,
             children: [
               "components/label.md",
+              "components/frame.md",
               "components/button.md",
-              "components/textfield.md",
-              "components/frame.md"
+              "components/textfield.md"
             ]
           },
         ]
