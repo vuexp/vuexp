@@ -26,7 +26,8 @@ module.exports = {
               "components/label.md",
               "components/search-bar.md",
               "components/button.md",
-              "components/textfield.md"
+              "components/textfield.md",
+              "components/slider.md"
             ]
           },
         ]
@@ -35,4 +36,3 @@ module.exports = {
     dest: "./docs/.vuepress/dist",
     serviceWorker: true
   };
-  
