@@ -1,44 +1,6 @@
 <template>
   <StackLayout class="progress">
-    <Progress
-      :value="currentProgress"
-      @valueChange="progressChange"
-      :maxValue="maxValueProgress"
-      style="margin-bottom:2em;"
-    />
-    <StackLayout orientation="horizontal">
-      <Button
-        @tap="incrementValue"
-        id="progress__increment__button"
-        text="Increment"
-        class="progress__button"
-        value="Button"
-      />
-      <Button
-        @tap="decrementValue"
-        id="progress__increment__button"
-        text="Decrement"
-        class="progress__button"
-        value="Button"
-      />
-    </StackLayout>
-
-    <Label text="Increment: "/>
-    <TextField
-      id="progress__increment__input"
-      v-model="increment"
-      :editable="true"
-      keyboardType="number"
-    />
-    <Label text="Max Value: "/>
-    <TextField
-      id="progress__maxValue__input"
-      v-model="maxValueInput"
-      :editable="true"
-      keyboardType="number"
-      @input="onMaxValueChange($event)"
-    />
-    <Label :text="currentProgressLabel" id="progress__value__label"/>
+    <Progress :value="currentProgress" :maxValue="maxValueProgress"/>
   </StackLayout>
 </template>
 
@@ -54,52 +16,20 @@ export default {
   components: { Label, StackLayout, Progress, TextField, Button },
   data() {
     return {
-      currentProgress: 10,
-      maxValueProgress: 70,
-      maxValueInput: '70',
-      increment: '10',
+      currentProgress: 0,
+      incrementValue: 25,
+      maxValueProgress: 100,
     };
   },
-  computed: {
-    currentProgressLabel() {
-      return `Current Progress: ${this.currentProgress}`;
-    },
-    incrementAsNumber() {
-      return Number(this.increment);
-    },
-    maxValueInputAsNumber(){
-      return  parseInt(this.maxValueInput);
-    }
-  },
-  methods: {
-    progressChange({ eventName, oldValue, value }) {
-      if (this.currentProgress > this.maxValueInputAsNumber) return;
-      alert `${eventName} ${oldValue} to ${value}`;
-    },
-    incrementValue() {
-      const maxValErr = this.maxValueInputAsNumber <= this.incrementAsNumber + this.currentProgress;
-      if(maxValErr){
-        alert `Incremented value is greater than max value`;
-        return;
+  created() {
+    setInterval(() => {
+      this.currentProgress += this.incrementValue;
+      if (this.currentProgress > this.maxValueProgress) {
+        this.currentProgress = 0;
       }
-      if (this.currentProgress >= this.maxValueInputAsNumber){
-        return;
-      } 
-      this.currentProgress += this.incrementAsNumber;
-    },
-    decrementValue() {
-      if (this.currentProgress <= 0) return;
-      this.currentProgress -= this.incrementAsNumber;
-    },
-    /**
-     * Changes max value of progress bar, TextField always returns string value so we need convert it to Number
-     * @param {String} event The Event bubble up on input changed
-     * @return {void}
-     */
-    onMaxValueChange(event) {
-      this.maxValueProgress = Number(event);
-    },
+    }, 1000);
   },
+
 };
 </script>
 
@@ -110,4 +40,5 @@ export default {
     margin-top: 20px;
   }
 }
+
 </style>
