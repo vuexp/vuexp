@@ -44,7 +44,7 @@ The `<NavigationButton>` component is a NativeScript abstraction for the Android
 
 | Name    | Type   | Default | Web | Mobile | Description |
 | ------- | ------ | ------- | --- | ------ | ----------- |
-| text    | String |         | ✔   | ✔      | (iOS-only) Sets the text of the button. |
+| text    | String |         | ✘   | ✔      | (iOS-only) Sets the text of the button. |
 | webIcon | String |         | ✔   | ✘      | The icon to be shown in the button. |
 
 ## Events
