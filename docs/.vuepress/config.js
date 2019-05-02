@@ -22,7 +22,8 @@ module.exports = {
             collapsable: true,
             children: [
               "components/label.md",
-              "components/textfield.md"
+              "components/textfield.md",
+              "components/tabview.md"
             ]
           },
         ]
