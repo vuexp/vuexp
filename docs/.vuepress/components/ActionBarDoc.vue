@@ -14,7 +14,7 @@
 			<Label text="Properties"></Label>
 			<StackLayout style="margin-top:50px" class="form-group">
 				<TextField id="actionbar__title__input" type="text" v-model="title" placeholder="Enter title..."></TextField>
-				<label for="input" class="control-label">Change Title</label><i class="bar"></i>
+				<Label class="control-label" text="Change Title"></Label><i class="bar"></i>
 			</StackLayout>
 			<StackLayout style="margin-top:15px" class="form-group">
 				<select id="actionbar__shareicon__select" v-model="selectedShareIcon">
@@ -22,7 +22,7 @@
 						{{ icon }}
 					</option>
 				</select>
-				<Label for="select" class="control-label" text="Change Share Icon"></Label><i class="bar"></i>
+				<Label class="control-label" text="Change Share Icon"></Label><i class="bar"></i>
 			</StackLayout>
 			<StackLayout style="margin-top:15px" class="form-group">
 				<select id="actionbar__deleteicon__select" v-model="selectedDeleteIcon">
@@ -30,7 +30,7 @@
 						{{ icon }}
 					</option>
 				</select>
-				<Label for="select" class="control-label" text="Change Delete Icon"></Label><i class="bar"></i>
+				<Label class="control-label" text="Change Delete Icon"></Label><i class="bar"></i>
 			</StackLayout>
 		</StackLayout>
 	</StackLayout>

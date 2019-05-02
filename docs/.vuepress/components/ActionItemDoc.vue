@@ -12,7 +12,7 @@
 						{{ icon }}
 					</option>
 				</select>
-				<label for="select" class="control-label">Change Share Icon</label><i class="bar"></i>
+				<Label class="control-label" text="Change Share Icon"></Label><i class="bar"></i>
 			</StackLayout>
 			<StackLayout style="margin-top:15px" class="form-group">
 				<select id="actionitem__deleteicon__select" v-model="selectedDeleteIcon">
@@ -20,7 +20,7 @@
 						{{ icon }}
 					</option>
 				</select>
-				<label for="select" class="control-label">Change Delete Icon</label><i class="bar"></i>
+				<Label class="control-label" text="Change Delete Icon"></Label><i class="bar"></i>
 			</StackLayout>
 		</StackLayout>
 	</StackLayout>

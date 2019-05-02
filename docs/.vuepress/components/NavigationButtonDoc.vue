@@ -6,8 +6,8 @@
 		<StackLayout class="prop-container">
 			<Label text="Properties"></Label>
 			<StackLayout style="margin-top:75px" class="form-group">
-				<input id="navigationbutton__title__input" type="text" v-model="title" placeholder="Enter title..." />
-				<label for="input" class="control-label">Change Title</label><i class="bar"></i>
+				<TextField id="navigationbutton__title__input" type="text" v-model="title" placeholder="Enter title..."></TextField>
+				<Label class="control-label" text="Change Title"></Label><i class="bar"></i>
 			</StackLayout>
 			<StackLayout style="margin-top:15px" class="form-group">
 				<select id="navigationbutton__webicon__select" v-model="selectedIcon">
@@ -15,7 +15,7 @@
 						{{ icon }}
 					</option>
 				</select>
-				<label for="select" class="control-label">Change Icon</label><i class="bar"></i>
+				<Label class="control-label" text="Change Icon"></Label><i class="bar"></i>
 			</StackLayout>
 		</StackLayout>
 
@@ -25,6 +25,7 @@
 <script>
 	import ActionBar from '../../../src/components/ActionBar'
 	import NavigationButton from '../../../src/components/NavigationButton'
+	import TextField from '../../../src/components/TextField'
 	import StackLayout from '../../../src/layouts/StackLayout'
 	import Label from '../../../src/components/Label'
 
