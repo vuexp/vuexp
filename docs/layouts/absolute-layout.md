@@ -12,6 +12,9 @@ The `<AbsoluteLayout>` container is the simplest layout container in NativeScrip
 * Doesn't enforce any layout constraints on its children.
 * Doesn't resize its children at runtime when its size changes.
 
+
+## Live Demo
+
 The following example creates a simple grid. For more information about creating grid layouts
 
 <DocExampleBox codeBox="https://codesandbox.io/s/lrv8061359?module=%2Fsrc%2FApp.vue">
@@ -36,4 +39,3 @@ When an element is a direct child of `<AbsoluteLayout>`, you can work with the f
 | ---- | ------ | ------- | --- | ------ | ----------- |
 | top  | Number |         | ✔   | ✔      | Gets or sets the distance, in pixels, between the top edge of the child and the top edge of its parent. |
 | left | Number |         | ✔   | ✔      | Gets or sets the distance, in pixels, between the left edge of the child and the left edge of its parent. |
-

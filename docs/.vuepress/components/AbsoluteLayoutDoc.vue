@@ -4,60 +4,60 @@
 			<Label v-for="(layoutChild, index) in layoutChildren" :key="index" :text="layoutChild.left + ', ' + layoutChild.top" :left="layoutChild.left" :top="layoutChild.top" :width="layoutChild.width" :height="layoutChild.height" :backgroundColor="layoutChild.backgroundColor" />
 		</AbsoluteLayout>
 		<StackLayout orientation="horizontal">
-			<button id="absolutelayout__reset__button" @click="setInitialState" class="reset-btn"><span><i class="fa fa-refresh"></i> Reset</span></button>
+			<Button id="absolutelayout__reset__button" @tap="setInitialState" class="reset-btn" text="Reset"></Button>
 		</StackLayout>
 		<StackLayout class="prop-container">
 			<Label text="Container"></Label>
 			<StackLayout orientation="horizontal">
-				<div class="form-group">
-					<input id="absolutelayout__height__input" type="number" v-model="containerHeight" placeholder="Height..." />
-					<label for="input" class="control-label">Container Height</label><i class="bar"></i>
-				</div>
-				<div class="form-group p-l-2">
+				<StackLayout class="form-group">
+					<TextField id="absolutelayout__height__input" type="number" v-model="containerHeight" placeholder="Height..."></TextField>
+					<Label class="control-label">Container Height</Label><i class="bar"></i>
+				</StackLayout>
+				<StackLayout class="form-group p-l-2">
 					<select style="height: 1.9rem;" id="absolutelayout__background__select" v-model="selectedContainerColor">
 						<option v-for="colorOption in containerColorOptions" v-bind:value="colorOption">
 							{{ colorOption.title }}
 						</option>
 					</select>
-					<label for="select" class="control-label p-l-2">Container Background Color</label><i class="bar"></i>
-				</div>
+					<Label for="select" class="control-label p-l-2">Container Background Color</Label><i class="bar"></i>
+				</StackLayout>
 			</StackLayout>
 		</StackLayout>
 		<StackLayout class="prop-container">
 			<Label style="margin-top: 25px; margin-bottom: 15px" text="Layout Children"></Label>
 			<StackLayout style="margin-bottom: 25px" orientation="horizontal">
-				<button id="absolutelayout__addchild__button" @click="addChild" class="add-btn"><span><i class="fa fa-plus"></i> Add Child</span></button>
+				<Button id="absolutelayout__addchild__button" @tap="addChild" class="add-btn" text="Add Child"></Button>
 			</StackLayout>
 			<StackLayout v-for="(layoutChild, index) in layoutChildren" :key="index" class="child-row">
 				<StackLayout orientation="horizontal">
-					<label class="row-label"><i class="fa fa-list-ul"></i> {{layoutChild.text}}</label>
-					<div class="form-group">
-						<input :id="'absolutelayout__childleft__input' + index" type="number" v-model="layoutChild.left" placeholder="Left..." />
-						<label for="input" class="control-label p-l-1">Left</label><i class="bar"></i>
-					</div>
-					<div class="form-group p-l-2">
-						<input :id="'absolutelayout__childtop__input' + index" type="number" v-model="layoutChild.top" placeholder="Top..." />
-						<label for="input" class="control-label p-l-2">Top</label><i class="bar"></i>
-					</div>
-					<div class="form-group p-l-2">
-						<input :id="'absolutelayout__childwidth__input' + index" type="number" v-model="layoutChild.width" placeholder="Width..." />
-						<label for="input" class="control-label p-l-2">Width</label><i class="bar"></i>
-					</div>
-					<div class="form-group p-l-2">
-						<input :id="'absolutelayout__childheight__input' + index" type="number" v-model="layoutChild.height" placeholder="Height..." />
-						<label for="input" class="control-label p-l-2">Height</label><i class="bar"></i>
-					</div>
-					<div class="form-group p-l-2 row-color-container">
+					<Label class="row-label"><i class="fa fa-list-ul"></i> {{layoutChild.text}}</Label>
+					<StackLayout class="form-group">
+						<TextField :id="'absolutelayout__childleft__input' + index" type="number" v-model="layoutChild.left" placeholder="Left..."></TextField>
+						<Label for="input" class="control-label p-l-1">Left</Label><i class="bar"></i>
+					</StackLayout>
+					<StackLayout class="form-group p-l-2">
+						<TextField :id="'absolutelayout__childtop__input' + index" type="number" v-model="layoutChild.top" placeholder="Top..."></TextField>
+						<Label for="input" class="control-label p-l-2">Top</Label><i class="bar"></i>
+					</StackLayout>
+					<StackLayout class="form-group p-l-2">
+						<TextField :id="'absolutelayout__childwidth__input' + index" type="number" v-model="layoutChild.width" placeholder="Width..."></TextField>
+						<Label for="input" class="control-label p-l-2">Width</Label><i class="bar"></i>
+					</StackLayout>
+					<StackLayout class="form-group p-l-2">
+						<TextField :id="'absolutelayout__childheight__input' + index" type="number" v-model="layoutChild.height" placeholder="Height..."></TextField>
+						<Label for="input" class="control-label p-l-2">Height</Label><i class="bar"></i>
+					</StackLayout>
+					<StackLayout class="form-group p-l-2 row-color-container">
 						<select :id="'absolutelayout__childbackground__select' + index" style="height: 1.9rem; min-width: 10%;" id="actionitem__deleteicon__select" v-model="layoutChild.backgroundColor">
 							<option v-for="boxColorOption in boxColorOptions" v-bind:value="boxColorOption.value">
 								{{ boxColorOption.title }}
 							</option>
 						</select>
-						<label for="select" class="control-label p-l-2">Background</label><i class="bar"></i>
-					</div>
-					<div class="form-group remove-btn-container">
-						<button :id="'absolutelayout__removechild__button' + index" @click="removeChild(index)" class="remove-btn"><span><i class="fa fa-times"></i></span></button>
-					</div>
+						<Label for="select" class="control-label p-l-2">Background</Label><i class="bar"></i>
+					</StackLayout>
+					<StackLayout class="form-group remove-btn-container">
+						<Button :id="'absolutelayout__removechild__button' + index" @tap="removeChild(index)" class="remove-btn" text="X"></Button>
+					</StackLayout>
 				</StackLayout>
 			</StackLayout>
 		</StackLayout>
@@ -67,6 +67,8 @@
 <script>
 
 	import Label from '../../../src/components/Label'
+	import TextField from '../../../src/components/TextField'
+	import Button from '../../../src/components/Button'
 	import StackLayout from '../../../src/layouts/StackLayout'
 	import AbsoluteLayout from '../../../src/layouts/AbsoluteLayout'
 
@@ -75,7 +77,9 @@
 		components: {
 			StackLayout,
 			AbsoluteLayout,
-			Label
+			Label,
+			TextField,
+			Button
 		},
 		data() {
 			return {
@@ -85,7 +89,7 @@
 					{ title: 'Purple', value: '#b84368' },
 					{ title: 'Yellow', value: '#debb34' },
 				],
-				containerHeight: 0,
+				containerHeight: '0',
 				selectedContainerColor: {},
 				boxColorOptions: [
 					{ title: 'Green', value: '#43b883' },
@@ -97,21 +101,22 @@
 		},
 		methods: {
 			setInitialState() {
-				this.containerHeight = 230;
+				this.containerHeight = '230';
 				this.selectedContainerColor = { title: 'Blue', value: '#3c495e' };
 				this.layoutChildren = [
-					{ text: '10,10', left: 10, top: 10, width: 100, height: 100, backgroundColor: "#43b883" },
-					{ text: '120,10', left: 120, top: 10, width: 100, height: 100, backgroundColor: "#43b883" },
-					{ text: '10,120', left: 10, top: 120, width: 100, height: 100, backgroundColor: "#43b883" },
-					{ text: '120,120', left: 120, top: 120, width: 100, height: 100, backgroundColor: "#43b883" },
+					{ text: '10,10', left: '10', top: '10', width: '100', height: '100', backgroundColor: "#43b883" },
+					{ text: '120,10', left: '120', top: '10', width: '100', height: '100', backgroundColor: "#43b883" },
+					{ text: '10,120', left: '10', top: '120', width: '100', height: '100', backgroundColor: "#43b883" },
+					{ text: '120,120', left: '120', top: '120', width: '100', height: '100', backgroundColor: "#43b883" },
 				]
 			},
 			addChild() {
 				const lastChild = this.layoutChildren[this.layoutChildren.length - 1];
 				this.layoutChildren.push(
-					{ text: `10, ${lastChild.top + 10}`, left: 10, top: lastChild.top + lastChild.height + 10, width: 100, height: 100, backgroundColor: "#43b883" }
+					{ text: `10, ${lastChild.top + 10}`, left: '10', top: (parseInt(lastChild.top) + parseInt(lastChild.height) + 10).toString(), width: '100', height: '100', backgroundColor: "#43b883" }
 				);
-				this.containerHeight += lastChild.height + 10;
+				this.containerHeight = parseInt(this.containerHeight) + parseInt(lastChild.height) + 10;
+				this.containerHeight = this.containerHeight.toString();
 			},
 			removeChild(index) {
 				this.layoutChildren.splice(index, 1);
@@ -193,9 +198,8 @@
 		cursor: pointer;
 	}
 
-	.reset-btn span,
-	.add-btn span {
-		display: block;
+	.reset-btn,
+	.add-btn {
 		padding: 12px 24px;
 	}
 </style>
