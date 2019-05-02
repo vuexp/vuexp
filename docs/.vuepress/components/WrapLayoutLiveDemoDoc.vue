@@ -5,7 +5,7 @@
       <StackLayout class="form-group">
         <StackLayout orientation="horizontal">
           <Label text="Background Color: " class="editor-param" width="200"/>
-          <input type="color" v-model="containerBackground" id="wraplayout_backgroundColor_input">
+          <TextField type="color" v-model="containerBackground" id="wraplayout_backgroundColor_input" />
         </StackLayout>
         <StackLayout orientation="horizontal" class="m-t-5">
           <Label text="Width: " class="editor-param" width="200"/>
@@ -46,21 +46,21 @@
       <StackLayout class="form-group">
         <StackLayout orientation="horizontal">
           <Label text="Actions: " width="110"/>
-          <button
-            class="btn m-g-3"
-            @click="addNewLabel()"
+          <Button
+            class="m-g-3"
+            @tap="addNewLabel()"
             id="wraplayout_addNewChild__button"
-          >Add New Child</button>
-          <button
-            class="btn m-g-3"
-            @click="removeLabels()"
+          >Add New Child</Button>
+          <Button
+            class="m-g-3"
+            @tap="removeLabels()"
             id="wraplayout_removeAll__button"
-          >Remove Children</button>
-          <button
-            class="btn m-g-3"
-            @click="removeLast()"
+          >Remove Children</Button>
+          <Button
+            class="m-g-3"
+            @tap="removeLast()"
             id="wraplayout_removeLast__button"
-          >Remove Last Child</button>
+          >Remove Last Child</Button>
         </StackLayout>
         <StackLayout orientation="horizontal" class="m-t-5">
           <Label text="Text: " width="140"></Label>
@@ -108,7 +108,7 @@
           <Label text="Text :" class="m-g-3"></Label>
           <TextField
             v-model="label.text"
-            width="100"
+            width="80"
             :id="'wraplayout_childreneditor_text_input' + index"
           ></TextField>
 
@@ -116,7 +116,7 @@
           <TextField
             keyboardType="number"
             v-model="label.width"
-            width="100"
+            width="80"
             :id="'wraplayout_childreneditor_width_input' + index"
           ></TextField>
 
@@ -124,23 +124,23 @@
           <TextField
             keyboardType="number"
             v-model="label.height"
-            width="100"
+            width="80"
             :id="'wraplayout_childreneditor_height_input' + index"
           ></TextField>
 
           <Label text="Color: " class="m-g-3"></Label>
-          <input
-            type="color"
+          <TextField
+            type="color"      
             v-model="label.bgColor"
-            style="width:100px"
+            width="100"
             :id="'wraplayout_childreneditor_bgColor_input' + index"
-          >
+          />
 
-          <i
-            class="fa fa-remove c-pointer"
-            @click="removeItem(index)"
+          <Button
+            class="fa fa-remove"             
+            @tap="removeItem(index)"
             :id="'wraplayout_childreneditor_removeItem_button' + index"
-          ></i>
+          ></Button>
         </StackLayout>
       </StackLayout>
     </StackLayout>
@@ -174,6 +174,7 @@
 
 <script>
 import Label from '../../../src/components/Label';
+import Button from '../../../src/components/Button';
 import TextField from '../../../src/components/TextField';
 import WrapLayout from '../../../src/layouts/WrapLayout';
 import StackLayout from '../../../src/layouts/StackLayout';
@@ -267,6 +268,7 @@ export default {
     TextField,
     WrapLayout,
     Label,
+    Button
   },
 };
 
