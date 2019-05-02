@@ -8,10 +8,36 @@ This is an overview of the most common usage of `<Slider>`.
 
 `Slider` is a UI component that displays a line and indicator that provides value selection in a value range.
 
+---
+
+## Live Demo
+
+<DocExampleBox :liveDemoMode="true">
+<SliderDoc />
+</DocExampleBox>
+
+## Example Usages
 `Slider` provides two-way data binding using v-model.
 
 ```html
 <Slider v-model="value" />
+```
+
+`Slider` can be initialized with minimum, maximum and initial values.
+
+```html
+<Slider :minValue="-100" :maxValue)="100" :value="70" />
+```
+
+`Slider` emits `valueChange` event, which can be sent to a function
+
+```html
+<Slider @valueChange="onValueChanged($event)" />
+```
+```js
+onValueChanged(event) {
+    console.log("Current slider value: " + event.target.value);
+}
 ```
 
 ## Props
@@ -27,21 +53,3 @@ This is an overview of the most common usage of `<Slider>`.
 | Name        | Web | Mobile | Description |
 | ----------- | --- | ------ | ----------- |
 | valueChange | ✔   | ✔      | Emitted after slider indicator slid and released. |
-
-## Live Demo
-
-<DocExampleBox codeBox="https://codesandbox.io/s/8l36nz28p8?module=%2Fsrc%2FApp.vue">
-
-```html
-<Slider :value="80" @valueChange="onValueChanged($event)" />
-```
-
-```js
-onValueChanged(event)
-{
-    console.log("Current Slider value: ", event.target.value);
-}
-```
-
-<SliderDoc />
-</DocExampleBox>
