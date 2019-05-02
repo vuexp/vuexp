@@ -19,7 +19,7 @@
 							{{ colorOption.title }}
 						</option>
 					</select>
-					<Label for="select" class="control-label p-l-2" text="Container Background Color"></Label><i class="bar"></i>
+					<Label class="control-label p-l-2" text="Container Background Color"></Label><i class="bar"></i>
 				</StackLayout>
 			</StackLayout>
 		</StackLayout>
@@ -33,19 +33,19 @@
 					<Label class="row-label"><i class="fa fa-list-ul"></i> {{layoutChild.text}}</Label>
 					<StackLayout class="form-group">
 						<TextField :id="'absolutelayout__childleft__input' + index" type="number" v-model="layoutChild.left" placeholder="Left..."></TextField>
-						<Label for="input" class="control-label p-l-1" text="Left"></Label><i class="bar"></i>
+						<Label class="control-label p-l-1" text="Left"></Label><i class="bar"></i>
 					</StackLayout>
 					<StackLayout class="form-group p-l-2">
 						<TextField :id="'absolutelayout__childtop__input' + index" type="number" v-model="layoutChild.top" placeholder="Top..."></TextField>
-						<Label for="input" class="control-label p-l-2" text="Top"></Label><i class="bar"></i>
+						<Label class="control-label p-l-2" text="Top"></Label><i class="bar"></i>
 					</StackLayout>
 					<StackLayout class="form-group p-l-2">
 						<TextField :id="'absolutelayout__childwidth__input' + index" type="number" v-model="layoutChild.width" placeholder="Width..."></TextField>
-						<Label for="input" class="control-label p-l-2" text="Width"></Label><i class="bar"></i>
+						<Label class="control-label p-l-2" text="Width"></Label><i class="bar"></i>
 					</StackLayout>
 					<StackLayout class="form-group p-l-2">
 						<TextField :id="'absolutelayout__childheight__input' + index" type="number" v-model="layoutChild.height" placeholder="Height..."></TextField>
-						<Label for="input" class="control-label p-l-2" text="Height"></Label><i class="bar"></i>
+						<Label class="control-label p-l-2" text="Height"></Label><i class="bar"></i>
 					</StackLayout>
 					<StackLayout class="form-group p-l-2 row-color-container">
 						<select :id="'absolutelayout__childbackground__select' + index" style="height: 1.9rem; min-width: 10%;" id="actionitem__deleteicon__select" v-model="layoutChild.backgroundColor">
@@ -53,7 +53,7 @@
 								{{ boxColorOption.title }}
 							</option>
 						</select>
-						<Label for="select" class="control-label p-l-2" text="Background"></Label><i class="bar"></i>
+						<Label class="control-label p-l-2" text="Background"></Label><i class="bar"></i>
 					</StackLayout>
 					<StackLayout class="form-group remove-btn-container">
 						<Button :id="'absolutelayout__removechild__button' + index" @tap="removeChild(index)" class="remove-btn" text="X"></Button>
