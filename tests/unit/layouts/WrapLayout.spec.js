@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
 import Label from '../../../src/components/Label';
@@ -12,6 +13,8 @@ describe('WrapLayout', () => {
   const wrapLayoutHeight = 450;
 
   // Defining the child components which are Labels.
+  const labelSizes = 100;
+
   const FirstLabel = {
     render(h) {
       return h(Label, {
@@ -19,8 +22,8 @@ describe('WrapLayout', () => {
           text: 'First',
         },
         attrs: {
-          height: 140,
-          width: 140,
+          width: labelSizes,
+          height: labelSizes,
         },
       });
     },
@@ -32,8 +35,8 @@ describe('WrapLayout', () => {
           text: 'Second',
         },
         attrs: {
-          height: 140,
-          width: 140,
+          height: labelSizes,
+          width: labelSizes,
         },
       });
     },
@@ -45,8 +48,8 @@ describe('WrapLayout', () => {
           text: 'Third',
         },
         attrs: {
-          height: 140,
-          width: 140,
+          height: labelSizes,
+          width: labelSizes,
         },
       });
     },
@@ -58,8 +61,8 @@ describe('WrapLayout', () => {
           text: 'Forth',
         },
         attrs: {
-          height: 140,
-          width: 140,
+          height: labelSizes,
+          width: labelSizes,
         },
       });
     },
@@ -72,9 +75,19 @@ describe('WrapLayout', () => {
         type: String,
         default: 'horizontal',
       },
+      itemWidth: {
+        type: Number,
+        default: NaN,
+      },
+      itemHeight: {
+        type: Number,
+        default: NaN,
+      },
     },
     propsData: {
       orientation,
+      itemWidth: NaN,
+      itemHeight: NaN,
     },
     attrs: {
       backgroundColor: 'red',
@@ -92,6 +105,24 @@ describe('WrapLayout', () => {
     });
     it(`flexDirection style of the layout component is equal to ${orientation === 'vertical' ? 'vertical' : 'horizontal'} `, () => {
       expect(wrapLayoutWrapper.element.style.flexDirection).to.equal('column');
+    });
+  });
+
+  describe('component should resize the children according the itemWidth and itemHeight property', () => {
+    it(`itemWidth and itemHeight property giving proper sizes to children elements`, () => {
+      const itemWidth = 150;
+      const itemHeight = 180;
+      wrapLayoutWrapper.setProps({
+        itemWidth: itemWidth,
+        itemHeight: itemHeight,
+      });
+      return Vue.nextTick().then(() => {
+        const labelWrappers = wrapLayoutWrapper.findAll(Label).wrappers;
+        labelWrappers.forEach(wrapper => {
+          expect(wrapper.element.style.width).to.equal(`${itemWidth}px`);
+          expect(wrapper.element.style.height).to.equal(`${itemHeight}px`);
+        });
+      });
     });
   });
 
@@ -128,4 +159,6 @@ describe('WrapLayout', () => {
       expect(label.element.textContent.trim()).to.equal('Second');
     });
   });
+
+  describe('the layout will render all its children elements with given itemWidth and itemHeight sizes', () => {});
 });

@@ -11,6 +11,14 @@ import Gestures from '../mixins/GestureMixin';
 export default {
   name: 'WrapLayout',
   props: {
+    itemWidth: {
+      type: Number,
+      default: NaN,
+    },
+    itemHeight: {
+      type: Number,
+      default: NaN,
+    },
     orientation: {
       type: String,
       default: 'horizontal',
@@ -18,6 +26,29 @@ export default {
   },
   directives: {
     'common-directive': CommonDirective,
+  },
+  mounted() {
+    this.calculateChildrenSizes();
+  },
+  updated() {
+    this.calculateChildrenSizes();
+  },
+  methods: {
+    calculateChildrenSizes() {
+      if (this.itemWidth) {
+        const childrenArray = Array.from(this.$el.children);
+        childrenArray.forEach(childElement => {
+          childElement.style.width = this.itemWidth + 'px';
+        });
+      }
+
+      if (this.itemHeight) {
+        const childrenArray = Array.from(this.$el.children);
+        childrenArray.forEach(childElement => {
+          childElement.style.height = this.itemHeight + 'px';
+        });
+      }
+    },
   },
   mixins: [Gestures],
 };

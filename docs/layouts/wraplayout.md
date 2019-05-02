@@ -6,6 +6,17 @@ sidebarDepth: 0
 
 `<WrapLayout>` is a layout container that lets you stack the child elements vertically (default) or horizontally.
 
+## Live Demo
+<DocExampleBox>
+  ```html
+    <WrapLayout height="width" width="height">
+  ```
+
+  <WrapLayoutLiveDemoDoc />
+</DocExampleBox>
+
+## Example Usages
+
 The following example creates a row of equally-sized items. When the row runs out of space, the container wraps the last item on a new row.
 
 <DocExampleBox codeBox="https://codesandbox.io/s/xmj262j64?module=%2Fsrc%2FApp.vue">
@@ -59,12 +70,3 @@ The following example creates a column of equally-sized items. When the row runs
 | orientation | String | `horizontal` | ✔   | ✔      |
 | itemWidth   | Number | `Number.NaN` | X   | ✔      |
 | itemHeight  | Number | `Number.NaN` | X   | ✔      |
-
-## Live Demo
-<DocExampleBox>
-  ```html
-    <WrapLayout height="width" width="height">
-  ```
-
-  <WrapLayoutLiveDemoDoc />
-</DocExampleBox>

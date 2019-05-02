@@ -22,6 +22,22 @@
             <option value="vertical">Vertical</option>
           </select>
         </StackLayout>
+        <StackLayout orientation="horizontal" class="m-t-5">
+          <Label text="Item Width: " class="editor-param" width="200"/>
+          <TextField
+            keyboardType="number"
+            v-model="containerItemWidth"
+            id="wraplayout_itemWidth_input"
+          />
+        </StackLayout>
+        <StackLayout orientation="horizontal" class="m-t-5">
+          <Label text="Item Height: " class="editor-param" width="200"/>
+          <TextField
+            keyboardType="number"
+            v-model="containerItemHeight"
+            id="wraplayout_itemHeight_input"
+          />
+        </StackLayout>
       </StackLayout>
     </StackLayout>
 
@@ -30,9 +46,21 @@
       <StackLayout class="form-group">
         <StackLayout orientation="horizontal">
           <Label text="Actions: " width="110"/>
-          <button class="btn m-g-3" @click="addNewLabel()" id="wraplayout_addNewChild__button">Add New Child</button>
-          <button class="btn m-g-3" @click="removeLabels()" id="wraplayout_removeAll__button">Remove Children</button>
-          <button class="btn m-g-3" @click="removeLast()" id="wraplayout_removeLast__button">Remove Last Child</button>
+          <button
+            class="btn m-g-3"
+            @click="addNewLabel()"
+            id="wraplayout_addNewChild__button"
+          >Add New Child</button>
+          <button
+            class="btn m-g-3"
+            @click="removeLabels()"
+            id="wraplayout_removeAll__button"
+          >Remove Children</button>
+          <button
+            class="btn m-g-3"
+            @click="removeLast()"
+            id="wraplayout_removeLast__button"
+          >Remove Last Child</button>
         </StackLayout>
         <StackLayout orientation="horizontal" class="m-t-5">
           <Label text="Text: " width="140"></Label>
@@ -47,11 +75,21 @@
         </StackLayout>
         <StackLayout orientation="horizontal" class="m-t-5">
           <Label text="Width: " width="140"></Label>
-          <TextField keyboardType="number" v-model="itemWidth" hint="Item Width" id="wraplayout_itemWidth_input"></TextField>
+          <TextField
+            keyboardType="number"
+            v-model="itemWidth"
+            hint="Item Width"
+            id="wraplayout_innerItem_itemWidth_input"
+          ></TextField>
         </StackLayout>
         <StackLayout orientation="horizontal" class="m-t-5">
           <Label text="Height: " width="140"></Label>
-          <TextField keyboardType="number" v-model="itemHeight" hint="Item Height"  id="wraplayout_itemHeight_input"></TextField>
+          <TextField
+            keyboardType="number"
+            v-model="itemHeight"
+            hint="Item Height"
+            id="wraplayout_innerItem_itemHeight_input"
+          ></TextField>
         </StackLayout>
       </StackLayout>
     </StackLayout>
@@ -68,18 +106,41 @@
           <Label :text="(index +1) + '.'" width="30"></Label>
 
           <Label text="Text :" class="m-g-3"></Label>
-          <TextField v-model="label.text" width="100" :id="'wraplayout_childreneditor_text_input' + index"></TextField>
+          <TextField
+            v-model="label.text"
+            width="100"
+            :id="'wraplayout_childreneditor_text_input' + index"
+          ></TextField>
 
           <Label text="Width: " class="m-g-3"></Label>
-          <TextField keyboardType="number" v-model="label.width" width="100" :id="'wraplayout_childreneditor_width_input' + index"></TextField>
+          <TextField
+            keyboardType="number"
+            v-model="label.width"
+            width="100"
+            :id="'wraplayout_childreneditor_width_input' + index"
+          ></TextField>
 
           <Label text="Height: " class="m-g-3"></Label>
-          <TextField keyboardType="number" v-model="label.height" width="100" :id="'wraplayout_childreneditor_height_input' + index"></TextField>
+          <TextField
+            keyboardType="number"
+            v-model="label.height"
+            width="100"
+            :id="'wraplayout_childreneditor_height_input' + index"
+          ></TextField>
 
           <Label text="Color: " class="m-g-3"></Label>
-          <input type="color" v-model="label.bgColor" style="width:100px" :id="'wraplayout_childreneditor_bgColor_input' + index">
+          <input
+            type="color"
+            v-model="label.bgColor"
+            style="width:100px"
+            :id="'wraplayout_childreneditor_bgColor_input' + index"
+          >
 
-          <i class="fa fa-remove c-pointer" @click="removeItem(index)" :id="'wraplayout_childreneditor_removeItem_button' + index"></i>
+          <i
+            class="fa fa-remove c-pointer"
+            @click="removeItem(index)"
+            :id="'wraplayout_childreneditor_removeItem_button' + index"
+          ></i>
         </StackLayout>
       </StackLayout>
     </StackLayout>
@@ -89,6 +150,8 @@
       <WrapLayout
         :width="width"
         :height="height"
+        :itemWidth="containerItemWidth"
+        :itemHeight="containerItemHeight"
         :orientation="orientation"
         :backgroundColor="containerBackground"
         id="wraplayout_thewraplayout"
@@ -148,7 +211,9 @@ export default {
       width: 660,
       height: 380,
       orientation: 'vertical',
-      itemWidth: '150',
+      containerItemWidth: NaN,
+      containerItemHeight: NaN,
+      itemWidth: '150', 
       itemHeight: '150',
       itemText: '',
       containerBackground: '#aa9a99',
@@ -254,7 +319,7 @@ function generateNumericOrderName(number) {
   }
 }
 
-.demo-panel { 
+.demo-panel {
   padding: 10px;
   background-color: #eee;
   border: #6c495e;
