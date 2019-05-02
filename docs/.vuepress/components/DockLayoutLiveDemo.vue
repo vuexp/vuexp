@@ -24,7 +24,6 @@
           <TextField
             id="docklayout_childtwidth_input"
             class="editor-param-input"
-            type="text"
             v-model="dockChildWidth"
           />
         </StackLayout>
@@ -33,7 +32,6 @@
           <TextField
             id="docklayout_childheight_input"
             class="editor-param-input"
-            type="text"
             v-model="dockChildHeight"
           />
         </StackLayout>
@@ -104,7 +102,6 @@
           <Label class="editor-param-title" text="T: "/>
           <TextField
             :id="'docklayout_childreneditor_name' + index"
-            type="text"
             style="width:50px"
             v-model="dockChildrenList[index].text"
           />
