@@ -22,6 +22,8 @@
 				</select>
 				<Label class="control-label" text="Change Delete Icon"></Label><i class="bar"></i>
 			</StackLayout>
+			<Label v-if="shareClickedVisible" id="actionitem__shareicon__label" text="Share Icon Clicked"></Label>
+			<Label v-if="deleteClickedVisible" id="actionitem__deleteicon__label" text="Delete Icon Clicked"></Label>
 		</StackLayout>
 	</StackLayout>
 </template>
@@ -45,17 +47,21 @@
 				shareIcons: ['fa-share', 'fa-share-alt', 'fa-share-square-o'],
 				selectedShareIcon: 'fa-share',
 				deleteIcons: ['fa-close', 'fa-window-close', 'fa-window-close-o'],
-				selectedDeleteIcon: 'fa-close'
+				selectedDeleteIcon: 'fa-close',
+				shareClickedVisible: false,
+				deleteClickedVisible: false
 			}
 		},
 		methods: {
 			onTapShare(event) {
 				event.stopImmediatePropagation();
-				alert("Share button clicked.");
+				this.shareClickedVisible = true;
+				this.deleteClickedVisible = false;
 			},
 			onTapDelete(event) {
 				event.stopImmediatePropagation();
-				alert("Delete button clicked.");
+				this.shareClickedVisible = false;
+				this.deleteClickedVisible = true;
 			}
 		}
 	};

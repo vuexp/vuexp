@@ -17,8 +17,8 @@
 				</select>
 				<Label class="control-label" text="Change Icon"></Label><i class="bar"></i>
 			</StackLayout>
+			<Label v-if="backLabelVisible" id="navigationbutton__backicon__label" text="Back Icon Clicked"></Label>
 		</StackLayout>
-
 	</StackLayout>
 </template>
 
@@ -35,19 +35,21 @@
 			ActionBar,
 			NavigationButton,
 			StackLayout,
-			Label
+			Label,
+			TextField
 		},
 		data() {
 			return {
 				title: 'My App',
 				icons: ['fa-arrow-left', 'fa-angle-left', 'fa-angle-double-left', 'fa-arrow-circle-left'],
-				selectedIcon: 'fa-arrow-left'
+				selectedIcon: 'fa-arrow-left',
+				backLabelVisible: false
 			};
 		},
 		methods: {
 			goBack(event) {
 				event.stopImmediatePropagation();
-				alert("Back button clicked.");
+				this.backLabelVisible = true;
 			}
 		}
 	};
