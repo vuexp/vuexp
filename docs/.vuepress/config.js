@@ -28,7 +28,7 @@ module.exports = {
             "components/search-bar.md",
             "components/button.md",
             "components/textfield.md",
-            "components/slider.md"
+            "components/slider.md",
             "components/segmentedBar.md",
           ]
         },
