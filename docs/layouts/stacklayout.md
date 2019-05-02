@@ -6,6 +6,16 @@ sidebarDepth: 0
 
 The `<StackLayout>` is a layout container that lets you stack the child elements vertically (default) or horizontally.
 
+- Lets you stack the child views vertically or horizontally with **orientation** property.
+- Positioning is determined by the order views were added to the layout and the layout options of the views.
+- Views in a StackLayout can be positioned using layout options. Each view can be given **VerticalAlignment** and **HorizontalAlignment**, defining how the views will position themselves relative to the layout.
+
+## Live Demo
+
+<DocExampleBox :liveDemoMode="true">
+  <StackLayoutLiveDemo />
+</DocExampleBox>
+
 Default stacking
 
 <DocExampleBox codeBox="https://codesandbox.io/s/9yv6r4ok7y?module=%2Fsrc%2FApp.vue">
@@ -82,8 +92,3 @@ Horizontal stack layout with vertically aligned children
 | ----------- | ------------------------ | ---------- | --- | ------ |
 | orientation | `vertical`, `horizontal` | `vertical` | ✔   | ✔      |
 
-## Live Demo
-
-<DocExampleBox :liveDemoMode="true">
-  <StackLayoutLiveDemo />
-</DocExampleBox>
