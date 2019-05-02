@@ -1,6 +1,7 @@
 module.exports = {
   title: "VueXP Documentation",
   description: "",
+  base: '/vuexp/',
   themeConfig: {
     nav: [
       { text: "Home", link: "/docs/" },
@@ -37,3 +38,4 @@ module.exports = {
   dest: "./docs/.vuepress/dist",
   serviceWorker: true
 };
+
