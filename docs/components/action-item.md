@@ -6,6 +6,8 @@ sidebarDepth: 0
 
 The `<ActionItem>` component is used to add additional action buttons to the ActionBar.
 
+## Live Demo
+
 <DocExampleBox codeBox="https://codesandbox.io/s/ooqn530l26?module=%2Fsrc%2FApp.vue">
 
 ```html

@@ -6,6 +6,8 @@ sidebarDepth: 0
 
 The `<ActionBar>` component is a NativeScript abstraction for the Android ActionBar, iOS NavigationBar and Web Toolbar.
 
+## Live Demo
+
 <DocExampleBox codeBox="https://codesandbox.io/s/92p675pw4r?module=%2Fsrc%2FApp.vue">
 
 ```html
