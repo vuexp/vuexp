@@ -6,8 +6,8 @@
 		</ActionBar>
 		<ActionBar style="margin-top:15px">
 			<StackLayout orientation="horizontal">
-				<Label text="NativeScript" verticalAlignment="center" />
-				<Label text="Vue Web" verticalAlignment="center" />
+				<Label text="VueXP" verticalAlignment="center" />
+				<Label text="Cross Platform" verticalAlignment="center" />
 			</StackLayout>
 		</ActionBar>
 		<StackLayout style="margin-top:75px" class="form-group">
