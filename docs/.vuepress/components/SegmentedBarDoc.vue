@@ -10,8 +10,8 @@
           hint="This is placeholder"
           :editable="true"
         />
-        <Button text="+" @tap="addItem" style="background=dodgerblue"></Button>
-        <Button text="-" @tap="removeItem(index)" v-show="segments.length > 1"></Button>
+        <Button text="+" @tap="addItem" style="background=dodgerblue" id="segmentedBar__items__increment"></Button>
+        <Button text="-" @tap="removeItem(index)" v-show="segments.length > 1"  id="segmentedBar__items__decrement"></Button>
       </StackLayout>
     </StackLayout>
     <StackLayout style="margin-top:20px" class="demo-panel">
