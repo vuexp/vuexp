@@ -12,6 +12,15 @@ This is an overview of the most common usage of `<TextView>`.
   <TextView v-model="textViewInput" :editable=true />
 ```
 
+## Live Demo
+
+<DocExampleBox codeBox="https://codesandbox.io/s/w61lryop88?module=%2Fsrc%2FApp.vue">
+```html
+<TextView text="Multi\nLine\nText" />
+```
+<TextViewDoc />
+</DocExampleBox>
+
 ## Props
 
 | Name          | Type                                              | Default | Web | Mobile | Description                                                                  |
@@ -32,13 +41,3 @@ This is an overview of the most common usage of `<TextView>`.
 | returnPress | ✔   | ✔      | Emitted when the return key is pressed. |
 | focus       | ✔   | ✔      | Emitted when the container is in focus. |
 | blur        | ✔   | ✔      | Emitted when the container loses focus. |
-
-
-## Live Demo
-
-<DocExampleBox codeBox="https://codesandbox.io/s/w61lryop88?module=%2Fsrc%2FApp.vue">
-```html
-<TextView text="Multi\nLine\nText" />
-```
-<TextViewDoc />
-</DocExampleBox>

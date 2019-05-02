@@ -1,7 +1,7 @@
 <template>
 	<StackLayout class="textView-wrapper">
 		<StackLayout orientation="horizontal">
-			<Label text="Textfield:" />
+			<Label text="Textview:" />
 			<TextView id="TextView" 
         v-model="text"
         :hint="hint"
