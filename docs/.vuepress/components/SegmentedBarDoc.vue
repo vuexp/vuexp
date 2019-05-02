@@ -1,5 +1,15 @@
 <template>
   <StackLayout>
+    <StackLayout style="margin-top:20px" class="demo-panel">
+      <Label text="Live example" class="demo-panel__title"/>
+      <SegmentedBar
+        @selectedIndexChanged="onIdxChanged($event)"
+        v-model="selectedIndex"
+        style="padding-bottom:2em;"
+      >
+        <SegmentedBarItem v-for="(segment, index) in segments" :title="segment.name" :key="index"/>
+      </SegmentedBar>
+    </StackLayout>
     <StackLayout class="demo-panel">
       <Label text="Manage Segmented Bar Items" class="demo-panel__title"/>
       <Label :text="selectedIndexTitle" id="segmentedBar__selectedIndex__label"></Label>
@@ -10,19 +20,19 @@
           hint="This is placeholder"
           :editable="true"
         />
-        <Button text="+" @tap="addItem" style="background=dodgerblue" id="segmentedBar__items__increment"></Button>
-        <Button text="-" @tap="removeItem(index)" v-show="segments.length > 1"  id="segmentedBar__items__decrement"></Button>
+        <Button
+          text="+"
+          @tap="addItem"
+          style="background=dodgerblue"
+          id="segmentedBar__items__increment"
+        ></Button>
+        <Button
+          text="-"
+          @tap="removeItem(index)"
+          v-show="segments.length > 1"
+          id="segmentedBar__items__decrement"
+        ></Button>
       </StackLayout>
-    </StackLayout>
-    <StackLayout style="margin-top:20px" class="demo-panel">
-      <Label text="Live example" class="demo-panel__title"/>
-      <SegmentedBar
-        @selectedIndexChanged="onIdxChanged($event)"
-        v-model="selectedIndex"
-        style="padding-bottom:2em;"
-      >
-        <SegmentedBarItem v-for="(segment, index) in segments" :title="segment.name" :key="index"/>
-      </SegmentedBar>
     </StackLayout>
   </StackLayout>
 </template>
@@ -53,12 +63,12 @@ export default {
     onIdxChanged(evt) {
       console.log(evt);
     },
-    addItem(){
+    addItem() {
       this.segments.push({ name: 'Example Title' });
     },
-    removeItem(i){
-      this.segments.splice(i,1);
-    }
+    removeItem(i) {
+      this.segments.splice(i, 1);
+    },
   },
 };
 </script>
