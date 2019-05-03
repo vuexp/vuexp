@@ -87,7 +87,7 @@
         <StackLayout class="editor-param">
           <Button
             id="docklayoutdoc_rendersample_button"
-            @click="renderSampleSet"
+            @tap="renderSampleSet"
             text=" 🔷 Render Sample Set"
           />
         </StackLayout>
