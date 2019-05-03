@@ -5,7 +5,8 @@
 			<ActionItem @tap="onTapDelete($event)" :webIcon="'fa ' + selectedDeleteIcon" />
 		</ActionBar>
 		<ActionBar style="margin-top:15px">
-			<ActionItem v-for="(child, index) in children" :key="index" @tap="onTapDelete($event)" :webIcon="'fa ' + child.icon" />
+			<ActionItem v-if="child.type === 'ActionItem'" v-for="(child, index) in children" :key="index" @tap="onTapDelete($event)" :webIcon="'fa ' + child.icon" />
+			<NavigationButton v-if="child.type === 'NavigationButton'" v-for="(child, index) in children" :key="index + Math.floor(Math.random() * 100000)" @tap="goBack($event)" :webIcon="'fa ' + child.icon" text="Go back" />
 
 			<!-- <StackLayout v-for="(child, index) in children" :key="index" orientation="horizontal">
 				<Label text="VueXP" verticalAlignment="center" />
@@ -18,41 +19,48 @@
 		</ActionBar>
 		<StackLayout class="prop-container">
 			<Label text="Properties"></Label>
-			<StackLayout style="margin-top:50px" class="form-group">
-				<TextField id="actionbar__title__input" type="text" v-model="title" placeholder="Enter title..."></TextField>
-				<Label class="control-label" text="Change Title"></Label><i class="bar"></i>
+			<StackLayout style="margin-top:10px" orientation="horizontal">
+				<StackLayout class="form-group">
+					<TextField id="actionbar__title__input" type="text" v-model="title" placeholder="Enter title..."></TextField>
+					<Label class="control-label" text="Change Title"></Label><i class="bar"></i>
+				</StackLayout>
+				<StackLayout class="form-group">
+					<select id="actionbar__shareicon__select" v-model="selectedShareIcon">
+						<option v-for="icon in shareIcons" v-bind:value="icon">
+							{{ icon }}
+						</option>
+					</select>
+					<Label class="control-label" text="Change Share Icon"></Label><i class="bar"></i>
+				</StackLayout>
+				<StackLayout class="form-group">
+					<select id="actionbar__deleteicon__select" v-model="selectedDeleteIcon">
+						<option v-for="(icon, index) in deleteIcons" v-bind:value="icon" :key="index">
+							{{ icon }}
+						</option>
+					</select>
+					<Label class="control-label" text="Change Delete Icon"></Label><i class="bar"></i>
+				</StackLayout>
+				<Label v-if="shareClickedVisible" id="actionbar__shareicon__label" text="Share Icon Clicked"></Label>
+				<Label v-if="deleteClickedVisible" id="actionbar__deleteicon__label" text="Delete Icon Clicked"></Label>
 			</StackLayout>
-			<StackLayout style="margin-top:15px" class="form-group">
-				<select id="actionbar__shareicon__select" v-model="selectedShareIcon">
-					<option v-for="icon in shareIcons" v-bind:value="icon">
-						{{ icon }}
-					</option>
-				</select>
-				<Label class="control-label" text="Change Share Icon"></Label><i class="bar"></i>
-			</StackLayout>
-			<StackLayout style="margin-top:15px" class="form-group">
-				<select id="actionbar__deleteicon__select" v-model="selectedDeleteIcon">
-					<option v-for="(icon, index) in deleteIcons" v-bind:value="icon" :key="index">
-						{{ icon }}
-					</option>
-				</select>
-				<Label class="control-label" text="Change Delete Icon"></Label><i class="bar"></i>
-			</StackLayout>
-			<Label v-if="shareClickedVisible" id="actionbar__shareicon__label" text="Share Icon Clicked"></Label>
-			<Label v-if="deleteClickedVisible" id="actionbar__deleteicon__label" text="Delete Icon Clicked"></Label>
+
 		</StackLayout>
 		<StackLayout class="prop-container">
 			<Label text="Children"></Label>
 			<StackLayout style="margin-top: 25px; margin-bottom: 15px;" orientation="horizontal">
-				<Button @tap="addChild" text="➕ Add Child"></Button>
+				<Button @tap="addChild('ActionItem')" text="➕ Add Action Item"></Button>
+				<Button style="margin-left: 15px;" @tap="addChild('NavigationButton')" text="➕ Add Navigation Button"></Button>
 				<Button style="margin-left: 15px;" @tap="setInitialState" text="↺ Reset Children"></Button>
 			</StackLayout>
 			<StackLayout class="child-row" v-for="(child, index) in children" :key="index">
 				<StackLayout orientation="horizontal">
-					<Label class="child-label" :text="'∗ ' + (index + 1)"></Label>
+					<Label class="child-label" :text="'∗ ' + child.type + ' ' + (index + 1)"></Label>
 					<StackLayout class="form-group">
 						<select id="actionbar__deleteicon__select" v-model="child.icon">
-							<option v-for="(icon, index) in deleteIcons" v-bind:value="icon" :key="index">
+							<option v-if="child.type === 'ActionItem'" v-for="(icon, index) in deleteIcons" v-bind:value="icon" :key="index">
+								{{ icon }}
+							</option>
+							<option v-if="child.type === 'NavigationButton'" v-for="(icon, index) in backIcons" v-bind:value="icon" :key="index">
 								{{ icon }}
 							</option>
 						</select>
@@ -70,6 +78,7 @@
 	import ActionBar from '../../../src/components/ActionBar'
 	import TextField from '../../../src/components/TextField'
 	import Button from '../../../src/components/Button'
+	import NavigationButton from '../../../src/components/NavigationButton'
 	import ActionItem from '../../../src/components/ActionItem'
 	import StackLayout from '../../../src/layouts/StackLayout'
 
@@ -81,15 +90,17 @@
 			ActionBar,
 			ActionItem,
 			TextField,
-			Button
+			Button,
+			NavigationButton
 		},
 		data() {
 			return {
 				title: 'My App',
 				shareIcons: ['fa-share', 'fa-share-alt', 'fa-share-square-o'],
+				backIcons: ['fa-arrow-left', 'fa-angle-left', 'fa-angle-double-left', 'fa-arrow-circle-left'],
 				selectedShareIcon: 'fa-share',
 				deleteIcons: ['fa-remove', 'fa-window-close', 'fa-window-close-o'],
-				selectedDeleteIcon: 'fa-close',
+				selectedDeleteIcon: 'fa-remove',
 				shareClickedVisible: false,
 				deleteClickedVisible: false,
 				children: []
@@ -116,8 +127,8 @@
 				this.shareClickedVisible = false;
 				this.deleteClickedVisible = true;
 			},
-			addChild() {
-				this.children.push({ icon: 'fa-remove', type: 'ActionItem' });
+			addChild(type) {
+				this.children.push({ icon: type === 'ActionItem' ? 'fa-remove' : 'fa-arrow-left', type })
 			},
 			removeChild(index) {
 				this.children.splice(index, 1);
@@ -152,7 +163,7 @@
 				margin-top: 1rem;
 			}
 			.child-label {
-				min-width: 10%;
+				min-width: 35%;
 				margin-top: 1.5rem;
 			}
 		}

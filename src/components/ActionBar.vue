@@ -30,20 +30,29 @@ export default {
   },
   mounted() {
     // Only last navigation button will show
-    if (this.$slots.default) {
-      for (let i = this.$slots.default.length - 1; i >= 0; i--) {
-        let slot = this.$slots.default[i];
-        if (slot.componentOptions && slot.componentOptions.tag && slot.componentOptions.tag === 'NavigationButton') {
-          if (!this.navigationButtonCreated) {
-            this.navigationButtonCreated = true;
-          } else {
-            slot.elm.style.display = 'none';
+    this.processSlots();
+  },
+  updated() {
+    this.processSlots();
+  },
+  methods: {
+    processSlots() {
+      this.navigationButtonCreated = false;
+      if (this.$slots.default) {
+        for (let i = this.$slots.default.length - 1; i >= 0; i--) {
+          let slot = this.$slots.default[i];
+          if (slot.componentOptions && slot.componentOptions.tag && slot.componentOptions.tag === 'NavigationButton') {
+            if (!this.navigationButtonCreated) {
+              this.navigationButtonCreated = true;
+              slot.elm.style.display = 'inherit';
+            } else {
+              slot.elm.style.display = 'none';
+            }
           }
         }
       }
-    }
+    },
   },
-  updated() {},
   mixins: [Gestures],
 };
 </script>
