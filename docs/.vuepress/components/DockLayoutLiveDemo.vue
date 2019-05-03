@@ -80,7 +80,7 @@
         <StackLayout class="editor-param">
           <Button
             id="docklayout_removeallchildren_button"
-            @tap="addChildNode"
+            @tap="clearDockChildList"
             text="❌ Remove All Children"
           />
         </StackLayout>
