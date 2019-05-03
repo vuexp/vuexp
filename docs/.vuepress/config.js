@@ -16,6 +16,8 @@ module.exports = {
             children: [
               "layouts/stacklayout.md",
               "layouts/wraplayout.md",
+              "layouts/flexbox-layout.md",
+              "layouts/dock-layout.md"
             ]
           },
           {
@@ -23,6 +25,7 @@ module.exports = {
             collapsable: true,
             children: [
               "components/label.md",
+              "components/search-bar.md",
               "components/button.md",
               "components/textfield.md"
             ]
