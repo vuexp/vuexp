@@ -2,7 +2,7 @@
   <StackLayout>
     <StackLayout class="demo-panel">
       <Label text="Add new child" class="demo-panel__title"/>
-      <StackLayout orientation="horizontal" style="margin-bottom:5px">
+      <FlexboxLayout flexDirection="row" flexWrap="wrap" style="margin-bottom:5px; margin-right:auto; margin-left:auto">
         <StackLayout orientation="horizontal" class="editor-param">
           <Label text="Stretch Last child: "/>
           <input
@@ -35,9 +35,9 @@
             v-model="dockChildHeight"
           />
         </StackLayout>
-      </StackLayout>
+      </FlexboxLayout>
 
-      <StackLayout orientation="horizontal">
+      <FlexboxLayout flexDirection="row" flexWrap="wrap" class="bottom-border"  style="margin-right:auto; margin-left:auto">
         <StackLayout orientation="horizontal" class="editor-param">
           <Label class="editor-param-title" text="Color: "/>
 
@@ -71,9 +71,9 @@
             <option>center</option>
           </select>
         </StackLayout>
-      </StackLayout>
+      </FlexboxLayout>
 
-      <StackLayout orientation="horizontal" class="editor-param">
+      <FlexboxLayout flexDirection="row" flexWrap="wrap" class="editor-param" style="margin-right:auto; margin-left:auto">
         <StackLayout class="editor-param">
           <Button id="docklayout_addchild_button" text="➕ Add Child" @tap="addChildNode"/>
         </StackLayout>
@@ -91,13 +91,13 @@
             text=" 🔷 Render Sample Set"
           />
         </StackLayout>
-      </StackLayout>
+      </FlexboxLayout>
     </StackLayout>
 
     <!-- Children list editor -->
     <StackLayout orientation="vertical" class="demo-panel">
       <Label :text="'Children list (' + dockChildrenList.length + ')'" class="demo-panel__title"/>
-      <StackLayout orientation="horizontal" v-for="(dockChild, index) in dockChildrenList">
+      <FlexboxLayout  flexDirection="row" flexWrap="wrap" v-for="(dockChild, index) in dockChildrenList"  class="bottom-border" style="margin-right:auto; margin-left:auto">
         <StackLayout orientation="horizontal" class="editor-param">
           <Label class="editor-param-title" text="T: "/>
           <TextField
@@ -162,16 +162,17 @@
             style="font-size:9px"
           />
         </StackLayout>
-      </StackLayout>
+      </FlexboxLayout>
     </StackLayout>
     <!-- Children list editor -->
 
-    <StackLayout style="margin-top:20px" class="demo-panel">
+    <StackLayout style="margin-top:20px" class="demo-panel" >
       <Label text="Rendered Result" class="demo-panel__title"/>
       <DockLayout
         id="docklayout_thedocklayout"
         :stretchLastChild="stretchLastChildSelected"
         class="dock"
+        style="margin-right:auto; margin-left:auto"
       >
         <Label
           v-for="(dockChild, index) in dockChildrenList"
@@ -189,6 +190,7 @@ import Button from '../../../src/components/Button';
 import DockLayout from '../../../src/layouts/DockLayout';
 import TextField from '../../../src/components/TextField';
 import StackLayout from '../../../src/layouts/StackLayout';
+import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
 
 export default {
   name: 'DockLayoutLiveDemo',
@@ -238,6 +240,7 @@ export default {
     Label,
     DockLayout,
     StackLayout,
+    FlexboxLayout,
     Button,
     TextField,
   },
@@ -268,6 +271,13 @@ export default {
   padding-left: 5px;
   padding-right: 5px;
   min-width: unset;
+}
+
+.bottom-border {
+  border:0px; 
+  border-bottom:1px; 
+  border-color:gray; 
+  border-style:solid
 }
 
 .demo-panel {
