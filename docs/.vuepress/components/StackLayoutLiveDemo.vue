@@ -95,16 +95,16 @@
 
             <StackLayout orientation="horizontal" class="editor-param">
                 <StackLayout class="editor-param">
-                    <button id="stacklayout_addchild_button" @click="addChildNode">➕Add Child</button>
+                    <Button id="stacklayout_addchild_button" @tap="addChildNode">➕ Add Child</Button>
                 </StackLayout>
                 <StackLayout class="editor-param">
-                    <button
+                    <Button
                             id="stacklayout_removeallchildren_button"
-                            @click="clearStackChildList"
-                    >❌Remove All Children</button>
+                            @tap="clearStackChildList"
+                    >❌ Remove All Children</Button>
                 </StackLayout>
                 <StackLayout class="editor-param">
-                    <button id="stacklayoutdoc-checkbox-textwrap" @click="renderSampleSet">Render Sample Set</button>
+                    <Button id="stacklayoutdoc-checkbox-textwrap" @tap="renderSampleSet">🔷 Render Sample Set</Button>
                 </StackLayout>
             </StackLayout>
         </StackLayout>
@@ -183,7 +183,7 @@
                 </StackLayout>
 
                 <StackLayout orientation="horizontal" class="editor-param">
-                    <button :id="'stacklayout_childreneditor_removechild' + index" @click="removeChildAtIndex(index)">❌</button>
+                    <Button :id="'stacklayout_childreneditor_removechild' + index" @tap="removeChildAtIndex(index)">❌</Button>
                 </StackLayout>
             </StackLayout>
         </StackLayout>
@@ -205,6 +205,7 @@
 <script>
     import Label from '../../../src/components/Label';
     import StackLayout from '../../../src/layouts/StackLayout';
+    import Button from '../../../src/components/Button';
     export default {
         name: 'StackLayoutLiveDemo',
         data() {
@@ -265,6 +266,7 @@
         components: {
             Label,
             StackLayout,
+            Button
         },
     };
 </script>
@@ -289,8 +291,9 @@
         width: 100px;
         margin-left: 5px
     }
-    button {
-        height: 22px;
+    .vxp-button {
+        padding: 5px;
+        min-width: unset;
     }
     .demo-panel {
         padding: 10px;
