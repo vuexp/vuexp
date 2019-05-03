@@ -1,18 +1,18 @@
 <template>
-    <StackLayout style="margin-top:20px" class="demo-panel">
-      <Label text="Live example" class="demo-panel__title"/>
-      <TabView class="container" :selectedIndex="selectedIndex" @selectedIndexChanged="changed">
-        <TabViewItem
-          :title="tab.title"
-          :webIcon="tab.webIcon"
-          :id="tab.id"
-          v-for="(tab,i) in tabs"
-          :key="i"
-        >
-          <Label :text="tab.innerText"/>
-        </TabViewItem>
-      </TabView>
-    </StackLayout>
+  <StackLayout style="margin-top:20px" class="demo-panel">
+    <TabView class="container" @selectedIndexChanged="changed">
+      <TabViewItem title="La Liga">
+        <StackLayout>
+          <Label text="Content for Tab 1"/>
+          <Label text="Content for Tab 1"/>
+          <Label text="Content for Tab 1"/>
+        </StackLayout>
+      </TabViewItem>
+      <TabViewItem title="Premier League">
+        <Label text="Man city"/>
+      </TabViewItem>
+    </TabView>
+  </StackLayout>
 </template>
 
 <script>
@@ -22,33 +22,8 @@ import TabView from '../../../src/components/TabView';
 import TextField from '../../../src/components/TextField';
 import StackLayout from '../../../src/layouts/StackLayout';
 export default {
-  name: 'TabViewLiveDemo',
+  name: 'TabViewDoc',
   components: { Label, TabViewItem, TabView, StackLayout, TextField },
-  data() {
-    return {
-      selectedIndex: 2,
-      tabs: [
-        {
-          id: '1',
-          title: 'Tab 1',
-          webIcon: 'fa fa-eye',
-          innerText: 'Content for Tab 1',
-        },
-        {
-          id: '2',
-          title: 'Tab 2',
-          webIcon: 'fa fa-list',
-          innerText: 'Content for Tab 2',
-        },
-        {
-          id: '3',
-          title: 'Tab 3',
-          webIcon: 'fa fa-check',
-          innerText: 'Content for Tab 3',
-        },
-      ],
-    };
-  },
   methods: {
     changed({ index }) {
       this.selectedIndex = index;

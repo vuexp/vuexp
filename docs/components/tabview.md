@@ -28,6 +28,12 @@ sidebarDepth: 0
 </DocExampleBox>
 
 ## Example Usages
+<DocExampleBox  codeBox="">
+
+<TabViewDoc />
+</DocExampleBox> 
+
+
 
 
 
