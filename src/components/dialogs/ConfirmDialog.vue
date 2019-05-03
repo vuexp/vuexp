@@ -7,8 +7,8 @@
     </div>
 
     <div class="vxp-confirm-dialog__footer" slot="footer">
-      <Button class="vxp-confirm-dialog__footer__cancel-button" :text="cancelButtonText" @tap="close(false)" />
-      <Button class="vxp-confirm-dialog__footer__ok-button" :text="okButtonText" @tap="close(true)" />
+      <Button class="nvw-confirm-dialog__footer__cancel-button" :text="cancelButtonText" @tap="close(false)" />
+      <Button class="nvw-confirm-dialog__footer__ok-button" :text="okButtonText" @tap="close(true)" />
     </div>
   </ModalDialog>
 </template>
