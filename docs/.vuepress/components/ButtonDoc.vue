@@ -11,7 +11,7 @@
     </StackLayout>
     <StackLayout orientation="horizontal">
       <Label text="Text Wrap :" width="100" class="scroll-view__margin_top"></Label>
-      <input type="checkbox" v-model="textWrap" id="button_textWrap_input" class="scroll-view__margin_top" />
+      <input type="checkbox" v-model="textWrap" id="button_textWrap_selectbox" class="scroll-view__margin_top" />
     </StackLayout>
      <StackLayout orientation="horizontal">
       <Label text="Width :" width="100" class="scroll-view__margin_top"></Label>
