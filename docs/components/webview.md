@@ -8,6 +8,19 @@ sidebarDepth: 0
 
 > Note: If provided src starts with "~/", it will be stripped and new path will be relative to the root "/".
 
+## Live Demo
+
+<DocExampleBox codeBox="https://codesandbox.io/s/o4zv94romq?module=%2Fsrc%2FApp.vue">
+```html
+<WebView src="<div><h1>WebView</h1></div>" />
+<WebView html="<div><p>WebView</p></div>" />
+```
+<WebViewDoc />
+</DocExampleBox>
+
+## Example Usages
+
+
 ```html
 <WebView src="http://nativescript-vue.org/" />
 ```
@@ -20,17 +33,11 @@ sidebarDepth: 0
 <WebView html="<div><h1>Some static HTML</h1></div>" />
 ```
 
+
+
 > Note: If src and html properties are used together, remember that src property has precedence over html property.
 
-## Live Demo
 
-<DocExampleBox codeBox="https://codesandbox.io/s/o4zv94romq?module=%2Fsrc%2FApp.vue">
-```html
-<WebView src="<div><h1>WebView</h1></div>" />
-<WebView html="<div><p>WebView</p></div>" />
-```
-<WebViewDoc />
-</DocExampleBox>
 
 ## Props
 
