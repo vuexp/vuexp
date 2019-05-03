@@ -8,9 +8,6 @@ This is an overview of the most common usage of `<TextView>`.
 
 `TextView` provides two-way data binding using v-model.
 
-```html
-  <TextView v-model="textViewInput" :editable=true />
-```
 
 ## Live Demo
 
@@ -20,6 +17,12 @@ This is an overview of the most common usage of `<TextView>`.
 ```
 <TextViewDoc />
 </DocExampleBox>
+
+## Example Usages
+
+```html
+  <TextView v-model="textViewInput" :editable=true />
+```
 
 ## Props
 
