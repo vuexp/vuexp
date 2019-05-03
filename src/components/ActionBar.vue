@@ -43,6 +43,7 @@ export default {
       }
     }
   },
+  updated() {},
   mixins: [Gestures],
 };
 </script>
