@@ -45,7 +45,6 @@
 			<Label text="Children"></Label>
 			<StackLayout style="margin-top: 25px; margin-bottom: 15px;" orientation="horizontal">
 				<Button @tap="addChild" text="➕ Add Child"></Button>
-				<Button style="margin-left: 15px;" @tap="removeChild" text="❌ Remove Child"></Button>
 				<Button style="margin-left: 15px;" @tap="setInitialState" text="↺ Reset Children"></Button>
 			</StackLayout>
 			<StackLayout class="child-row" v-for="(child, index) in children" :key="index">
@@ -59,6 +58,7 @@
 						</select>
 						<Label class="control-label" text="Icon"></Label><i class="bar"></i>
 					</StackLayout>
+					<Button class="remove-child-btn" style="margin-left: 15px; padding: 0;" @tap="removeChild(index)" text="❌"></Button>
 				</StackLayout>
 			</StackLayout>
 		</StackLayout>
@@ -119,8 +119,8 @@
 			addChild() {
 				this.children.push({ icon: 'fa-remove', type: 'ActionItem' });
 			},
-			removeChild() {
-				this.children.pop();
+			removeChild(index) {
+				this.children.splice(index, 1);
 			}
 		}
 	};
@@ -143,6 +143,13 @@
 			.form-group {
 				margin-top: 1.25rem;
 				margin-bottom: 1.25rem;
+			}
+			.remove-child-btn {
+				padding: 0px;
+				height: 2rem;
+				width: 2rem;
+				min-width: 2rem;
+				margin-top: 1rem;
 			}
 			.child-label {
 				min-width: 10%;
