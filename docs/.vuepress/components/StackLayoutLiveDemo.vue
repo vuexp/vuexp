@@ -2,7 +2,7 @@
     <StackLayout>
         <StackLayout  class="demo-panel">
             <Label text="Add new child" class="demo-panel__title"/>
-            <StackLayout orientation="horizontal" style="margin-bottom:5px">
+            <FlexboxLayout flex-wrap="wrap" style="margin-bottom:5px">
                 <StackLayout orientation="horizontal" class="editor-param">
                     <Label text="Orientation: "/>
                     <select
@@ -60,9 +60,9 @@
                         <option>gray</option>
                     </select>
                 </StackLayout>
-            </StackLayout>
+            </FlexboxLayout>
 
-            <StackLayout orientation="horizontal">
+            <FlexboxLayout flex-wrap="wrap">
                 <StackLayout orientation="horizontal" class="editor-param">
                     <Label class="editor-param-title" text="Child Alignment Type: "/>
                     <select
@@ -91,9 +91,9 @@
                         <option>stretch</option>
                     </select>
                 </StackLayout>
-            </StackLayout>
+            </FlexboxLayout>
 
-            <StackLayout orientation="horizontal" class="editor-param">
+            <FlexboxLayout flex-wrap="wrap" class="editor-param">
                 <StackLayout class="editor-param">
                     <Button id="stacklayout_addchild_button" @tap="addChildNode">➕ Add Child</Button>
                 </StackLayout>
@@ -106,13 +106,13 @@
                 <StackLayout class="editor-param">
                     <Button id="stacklayoutdoc-checkbox-textwrap" @tap="renderSampleSet">🔷 Render Sample Set</Button>
                 </StackLayout>
-            </StackLayout>
+            </FlexboxLayout>
         </StackLayout>
 
         <!-- Children list editor -->
         <StackLayout orientation="vertical" class="demo-panel">
             <Label :text="'Children list (' + stackChildrenList.length + ')'" class="demo-panel__title"/>
-            <StackLayout orientation="horizontal" v-for="(stackChild, index) in stackChildrenList">
+            <FlexboxLayout flex-wrap="wrap" v-for="(stackChild, index) in stackChildrenList">
                 <StackLayout orientation="horizontal" class="editor-param">
                     <Label class="editor-param-title" text="T: "/>
                     <input :id="'stacklayout_childreneditor_name' + index" type="text" style="width:50px" v-model="stackChildrenList[index].text">
@@ -183,9 +183,9 @@
                 </StackLayout>
 
                 <StackLayout orientation="horizontal" class="editor-param">
-                    <Button :id="'stacklayout_childreneditor_removechild' + index" @tap="removeChildAtIndex(index)">❌</Button>
+                    <Button :id="'stacklayout_childreneditor_removechild' + index" @tap="removeChildAtIndex(index)" class="vxp-button-remove">❌</Button>
                 </StackLayout>
-            </StackLayout>
+            </FlexboxLayout>
         </StackLayout>
         <!-- Children list editor -->
 
@@ -205,6 +205,7 @@
 <script>
     import Label from '../../../src/components/Label';
     import StackLayout from '../../../src/layouts/StackLayout';
+    import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
     import Button from '../../../src/components/Button';
     export default {
         name: 'StackLayoutLiveDemo',
@@ -264,6 +265,7 @@
             },
         },
         components: {
+            FlexboxLayout,
             Label,
             StackLayout,
             Button
@@ -273,7 +275,7 @@
 
 <style lang="scss" scoped>
     .stack {
-        width: 300px;
+        width: 100%;
         height: 150px;
         margin-bottom: 30px;
         background-color: #3c495e;
@@ -292,8 +294,11 @@
         margin-left: 5px
     }
     .vxp-button {
-        padding: 5px;
+        padding: 8px;
         min-width: unset;
+    }
+    .vxp-button-remove {
+        padding: 2px;
     }
     .demo-panel {
         padding: 10px;
