@@ -1,5 +1,6 @@
-export { default as Img } from './components/Img';
-
 const placeholder = {};
 
 export default placeholder;
+
+// Dialogs
+export { default as ModalDialog } from './components/ModalDialog';
