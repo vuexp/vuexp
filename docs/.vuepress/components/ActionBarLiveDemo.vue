@@ -1,22 +1,16 @@
 <template>
 	<StackLayout>
-		<ActionBar :title="title">
-			<ActionItem @tap="onTapShare($event)" :webIcon="'fa ' + selectedShareIcon" />
-			<ActionItem @tap="onTapDelete($event)" :webIcon="'fa ' + selectedDeleteIcon" />
-		</ActionBar>
-		<ActionBar style="margin-top:15px">
-			<ActionItem v-if="child.type === 'ActionItem'" v-for="(child, index) in children" :key="index" @tap="onTapDelete($event)" :webIcon="'fa ' + child.icon" />
-			<NavigationButton v-if="child.type === 'NavigationButton'" v-for="(child, index) in children" :key="index + Math.floor(Math.random() * 100000)" @tap="goBack($event)" :webIcon="'fa ' + child.icon" text="Go back" />
-
-			<!-- <StackLayout v-for="(child, index) in children" :key="index" orientation="horizontal">
-				<Label text="VueXP" verticalAlignment="center" />
-				<Label text="Cross Platform" verticalAlignment="center" />
-			</StackLayout> -->
-			<!-- <StackLayout orientation="horizontal">
-				<Label text="VueXP" verticalAlignment="center" />
-				<Label text="Cross Platform" verticalAlignment="center" />
-			</StackLayout> -->
-		</ActionBar>
+		<StackLayout class="result-container">
+			<Label text="Result" style="margin-bottom: 20px;"></Label>
+			<ActionBar :title="title">
+				<ActionItem @tap="onTapShare($event)" :webIcon="'fa ' + selectedShareIcon" />
+				<ActionItem @tap="onTapDelete($event)" :webIcon="'fa ' + selectedDeleteIcon" />
+			</ActionBar>
+			<ActionBar style="margin-top:15px">
+				<ActionItem v-if="child.type === 'ActionItem'" v-for="(child, index) in children" :key="index" @tap="onTapDelete($event)" :webIcon="'fa ' + child.icon" />
+				<NavigationButton v-if="child.type === 'NavigationButton'" v-for="(child, index) in children" :key="index + Math.floor(Math.random() * 100000)" @tap="goBack($event)" :webIcon="'fa ' + child.icon" text="Go back" />
+			</ActionBar>
+		</StackLayout>
 		<StackLayout class="prop-container">
 			<Label text="Properties"></Label>
 			<StackLayout style="margin-top:15px" orientation="horizontal">
@@ -151,6 +145,12 @@
 	.form-group {
 		margin-top: 1rem;
 		margin-bottom: 1rem;
+	}
+
+	.result-container {
+		border-bottom: 1px solid;
+		padding-bottom: 40px;
+		margin-bottom: 20px;
 	}
 	.prop-container {
 		margin-top: 25px;
