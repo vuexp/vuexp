@@ -6,6 +6,8 @@ sidebarDepth: 0
 
 The `<ActionBar>` component is a NativeScript abstraction for the Android ActionBar, iOS NavigationBar and Web Toolbar.
 
+This component is a UI component that provides a toolbar at the top of the activity window.
+
 ## Live Demo
 
 <DocExampleBox :liveDemoMode="true">
@@ -70,6 +72,9 @@ goBack(event) {
 
 <ActionBarDoc />
 </DocExampleBox>
+
+### Removing the border
+By default, a border is drawn at the bottom of the `<ActionBar>`. In addition to the border, on iOS devices a translucency filter is also applied over the `<ActionBar>`.
 
 ## Props
 

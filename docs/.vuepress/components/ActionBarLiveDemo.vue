@@ -19,26 +19,26 @@
 		</ActionBar>
 		<StackLayout class="prop-container">
 			<Label text="Properties"></Label>
-			<StackLayout style="margin-top:10px" orientation="horizontal">
+			<StackLayout style="margin-top:15px" orientation="horizontal">
 				<StackLayout class="form-group">
 					<TextField id="actionbar__title__input" type="text" v-model="title" placeholder="Enter title..."></TextField>
 					<Label class="control-label" text="Change Title"></Label><i class="bar"></i>
 				</StackLayout>
-				<StackLayout class="form-group">
-					<select id="actionbar__shareicon__select" v-model="selectedShareIcon">
+				<StackLayout class="form-group p-l-2">
+					<select style="height: 1.9rem;" id="actionbar__shareicon__select" v-model="selectedShareIcon">
 						<option v-for="icon in shareIcons" v-bind:value="icon">
 							{{ icon }}
 						</option>
 					</select>
-					<Label class="control-label" text="Change Share Icon"></Label><i class="bar"></i>
+					<Label class="control-label p-l-2" text="Change Share Icon"></Label><i class="bar"></i>
 				</StackLayout>
-				<StackLayout class="form-group">
-					<select id="actionbar__deleteicon__select" v-model="selectedDeleteIcon">
+				<StackLayout class="form-group p-l-2">
+					<select style="height: 1.9rem;" id="actionbar__deleteicon__select" v-model="selectedDeleteIcon">
 						<option v-for="(icon, index) in deleteIcons" v-bind:value="icon" :key="index">
 							{{ icon }}
 						</option>
 					</select>
-					<Label class="control-label" text="Change Delete Icon"></Label><i class="bar"></i>
+					<Label class="control-label p-l-2" text="Change Delete Icon"></Label><i class="bar"></i>
 				</StackLayout>
 				<Label v-if="shareClickedVisible" id="actionbar__shareicon__label" text="Share Icon Clicked"></Label>
 				<Label v-if="deleteClickedVisible" id="actionbar__deleteicon__label" text="Delete Icon Clicked"></Label>
@@ -141,6 +141,17 @@
 	@import url('/fonts/fontawesome.min.css');
 	@import url('/custom-input.css');
 
+	.p-l-1 {
+		padding-left: 1rem;
+	}
+
+	.p-l-2 {
+		padding-left: 2rem;
+	}
+	.form-group {
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+	}
 	.prop-container {
 		margin-top: 25px;
 		background: rgb(243, 243, 243);
@@ -151,10 +162,7 @@
 			background: #e3e4e4;
 			margin-bottom: 1rem;
 			padding: 1rem;
-			.form-group {
-				margin-top: 1.25rem;
-				margin-bottom: 1.25rem;
-			}
+
 			.remove-child-btn {
 				padding: 0px;
 				height: 2rem;
