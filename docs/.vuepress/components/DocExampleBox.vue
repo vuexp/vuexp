@@ -1,8 +1,8 @@
 <template>
   <div class="nudoc-example">
     <div class="nudoc-example__header">
-      <div class="nudoc-example__header__title">Usage</div>
-      <div class="nudoc-example__header__expand" @click="expand">Expand</div>
+      <div v-show="!liveDemoMode" class="nudoc-example__header__title">Usage</div>
+      <div v-show="!liveDemoMode" class="nudoc-example__header__expand" @click="expand">Expand</div>
       <div class="nudoc-example__header__codebox" v-if="codeBox">
         <a :href="codeBox" target="_blank">Sandbox</a>
       </div>
@@ -33,7 +33,11 @@ export default {
     };
   },
   props: {
-    codeBox: String
+    codeBox: String,
+    liveDemoMode: {
+      default: false,
+      type: Boolean,
+    }
   },
   computed: {
     contentClass: function() {
