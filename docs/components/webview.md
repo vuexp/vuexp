@@ -22,6 +22,8 @@ sidebarDepth: 0
 
 > Note: If src and html properties are used together, remember that src property has precedence over html property.
 
+## Live Demo
+
 <DocExampleBox codeBox="https://codesandbox.io/s/o4zv94romq?module=%2Fsrc%2FApp.vue">
 ```html
 <WebView src="<div><h1>WebView</h1></div>" />
