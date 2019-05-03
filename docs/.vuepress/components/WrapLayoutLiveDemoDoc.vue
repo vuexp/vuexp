@@ -3,8 +3,9 @@
     <StackLayout class="demo-panel">
       <Label class="demo-panel__title" text="Container Configuration"></Label>
       <StackLayout class="form-group">
-        <StackLayout orientation="horizontal">
-          <Label text="Background Color: " class="editor-param" width="200"/>
+        <StackLayout orientation="horizontal">          
+          <Label text="Background Color: " class="editor-param hidden-sm" width="200"/>
+          <Label text="Bg Color: " class="editor-param hidden-lg" width="200"/>
           <TextField type="color" v-model="containerBackground" id="wraplayout_backgroundColor_input" />
         </StackLayout>
         <StackLayout orientation="horizontal" class="m-t-5">
@@ -42,10 +43,10 @@
     </StackLayout>
 
     <StackLayout class="demo-panel">
-      <Label class="demo-panel__title" text="Add Children"></Label>
+      <Label class="demo-panel__title hidden-sm" text="Add Children"></Label>
       <StackLayout class="form-group">
         <StackLayout orientation="horizontal">
-          <Label text="Actions: " width="110"/>
+          <Label text="Actions: " class="hidden-sm" width="110"/>
           <Button
             class="m-g-3"
             @tap="addNewLabel()"
@@ -57,7 +58,7 @@
             id="wraplayout_removeAll__button"
           >Remove Children</Button>
           <Button
-            class="m-g-3"
+            class="m-g-3 hidden-sm"
             @tap="removeLast()"
             id="wraplayout_removeLast__button"
           >Remove Last Child</Button>
@@ -95,57 +96,6 @@
     </StackLayout>
 
     <StackLayout class="demo-panel">
-      <Label class="demo-panel__title" text="Children List"></Label>
-      <StackLayout class="form-group">
-        <StackLayout
-          orientation="horizontal"
-          v-for="(label,index) in labels"
-          :key="index"
-          class="m-t-5"
-        >
-          <Label :text="(index +1) + '.'" width="30"></Label>
-
-          <Label text="Text :" class="m-g-3"></Label>
-          <TextField
-            v-model="label.text"
-            width="80"
-            :id="'wraplayout_childreneditor_text_input' + index"
-          ></TextField>
-
-          <Label text="Width: " class="m-g-3"></Label>
-          <TextField
-            keyboardType="number"
-            v-model="label.width"
-            width="80"
-            :id="'wraplayout_childreneditor_width_input' + index"
-          ></TextField>
-
-          <Label text="Height: " class="m-g-3"></Label>
-          <TextField
-            keyboardType="number"
-            v-model="label.height"
-            width="80"
-            :id="'wraplayout_childreneditor_height_input' + index"
-          ></TextField>
-
-          <Label text="Color: " class="m-g-3"></Label>
-          <TextField
-            type="color"      
-            v-model="label.bgColor"
-            width="100"
-            :id="'wraplayout_childreneditor_bgColor_input' + index"
-          />
-
-          <Button
-            class="fa fa-remove"             
-            @tap="removeItem(index)"
-            :id="'wraplayout_childreneditor_removeItem_button' + index"
-          ></Button>
-        </StackLayout>
-      </StackLayout>
-    </StackLayout>
-
-    <StackLayout class="demo-panel">
       <Label class="demo-panel__title" text="Rendered Result"></Label>
       <WrapLayout
         :width="width"
@@ -168,6 +118,51 @@
         ></Label>
       </WrapLayout>
     </StackLayout>
+
+    <StackLayout class="demo-panel">
+      <Label class="demo-panel__title" text="Children List"></Label>
+      <StackLayout class="form-group">
+          <WrapLayout  
+              class="child-panel-container"
+              orientation="vertical"
+              v-for="(label,index) in labels"
+              :key="index" 
+              >          
+          <Label text="Text :" class="m-g-3"></Label>
+          <TextField
+            v-model="label.text"      
+            :id="'wraplayout_childreneditor_text_input' + index"
+          ></TextField>
+
+          <Label text="Width: " class="m-g-3"></Label>
+          <TextField
+            keyboardType="number"
+            v-model="label.width"
+            :id="'wraplayout_childreneditor_width_input' + index"
+          ></TextField>
+
+          <Label text="Height: " class="m-g-3"></Label>
+          <TextField
+            keyboardType="number"
+            v-model="label.height"
+            :id="'wraplayout_childreneditor_height_input' + index"
+          ></TextField>
+
+          <Label text="Color: " class="m-g-3"></Label>
+          <TextField
+            type="color"      
+            v-model="label.bgColor"
+            :id="'wraplayout_childreneditor_bgColor_input' + index"
+          />          
+          <Button
+            class="fa fa-remove hidden-sm"             
+            @tap="removeItem(index)"
+            :id="'wraplayout_childreneditor_removeItem_button' + index"
+          ></Button>
+          </WrapLayout>
+      </StackLayout>
+    </StackLayout>
+    
   </StackLayout>
 </template>
 
@@ -209,7 +204,7 @@ export default {
   data() {
     return {
       labels: [],
-      width: 660,
+      width: 460,
       height: 380,
       orientation: 'vertical',
       containerItemWidth: NaN,
@@ -298,6 +293,19 @@ function generateNumericOrderName(number) {
 <style lang="scss" scoped>
 @import url('/fonts/fontawesome.min.css');
 @import url('/custom-input.css');
+
+@media only screen and (max-width: 800px) {
+  .hidden-sm {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .hidden-lg {
+    display: none;
+  }
+}
+
 .m-g-3 {
   margin: 3px;
 }
@@ -321,7 +329,15 @@ function generateNumericOrderName(number) {
   }
 }
 
+.child-panel-container {
+  border:1px solid #c3bbbb;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 3px;
+}
+
 .demo-panel {
+  overflow:auto;
   padding: 10px;
   background-color: #eee;
   border: #6c495e;
