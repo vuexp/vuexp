@@ -1,4 +1,5 @@
 <template>
+  <StackLayout>
     <StackLayout style="margin-top:20px" class="demo-panel">
       <Label text="Live example" class="demo-panel__title"/>
       <TabView class="container" :selectedIndex="selectedIndex" @selectedIndexChanged="changed">
@@ -12,7 +13,27 @@
           <Label :text="tab.innerText"/>
         </TabViewItem>
       </TabView>
+      <Label :text="selectedIndex"/>
     </StackLayout>
+
+    <StackLayout style="margin-top:20px" class="demo-panel">
+      <Label text="Manage props" class="demo-panel__title"/>
+      <StackLayout v-for="(tab, index) in tabs" :key="index" orientation="horizontal">
+        <TextField
+          :id="`segmentedBar__title__input__${index}`"
+          v-model="tab.title"
+          hint="This is placeholder"
+          :editable="true"
+          @input="titleChanged($event, index)"
+        />
+      </StackLayout>
+      <!-- <StackLayout>
+        <Label :text="tab.id"></Label>
+        <Label :text="tab.title"></Label>
+        <Label :text="tab.webIcon"></Label>
+      </StackLayout>-->
+    </StackLayout>
+  </StackLayout>
 </template>
 
 <script>
