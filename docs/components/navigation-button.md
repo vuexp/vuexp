@@ -46,6 +46,7 @@ The `<NavigationButton>` component is a NativeScript abstraction for the Android
 | ------- | ------ | ------- | --- | ------ | ----------- |
 | text    | String |         | ✘   | ✔      | (iOS-only) Sets the text of the button. |
 | webIcon | String |         | ✔   | ✘      | The icon to be shown in the button. |
+| android.systemIcon | String |         | ✘   | ✔      | (Android-only) The icon to be shown in the button. You can specify any system icon whose name begins with the ic_ prefix. For a complete list of the available icons, see the R.drawable Android class. |
 
 ## Events
 
