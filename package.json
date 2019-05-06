@@ -8,6 +8,7 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "test:e2e": "vue-cli-service test:e2e --config nightwatch.config.js --env chrome,firefox",
+    "test:e2e-safari": "vue-cli-service test:e2e --config nightwatch.config.js --env safari",
     "test:unit": "vue-cli-service test:unit --require tests/unit/pre-setup.js",
     "coverage": "nyc npm run test:unit",
     "report": "nyc npm test && nyc report --reporter=text-lcov > coverage.lcov"
@@ -45,8 +46,9 @@
     "babel-plugin-istanbul": "5.1.1",
     "babel-traverse": "6.26.0",
     "chai": "4.2.0",
-    "codecov": "3.1.0",
+    "chromedriver": "^74.0.0",
     "clean-webpack-plugin": "^2.0.1",
+    "codecov": "3.1.0",
     "copy-webpack-plugin": "5.0.2",
     "cross-env": "5.2.0",
     "cross-fetch": "3.0.2",
