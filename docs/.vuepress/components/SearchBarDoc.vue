@@ -28,7 +28,7 @@
         v-model="hintColor"
       >
         <option disabled value>Color</option>
-        <option v-for="color in colors" :value="color.value">{{color.label}}</option>
+        <option v-for="color in colors" :key="color.value" :value="color.value">{{color.label}}</option>
       </select>
     </StackLayout>
     <StackLayout orientation="horizontal" class="flex m-t-10">
@@ -40,7 +40,7 @@
         v-model="background"
       >
         <option disabled value>Color</option>
-        <option v-for="color in colors" :value="color.value">{{color.label}}</option>
+        <option v-for="color in colors" :key="color.value" :value="color.value">{{color.label}}</option>
       </select>
     </StackLayout>
     <StackLayout orientation="horizontal" class="flex m-t-10">
