@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { shallowMount, createLocalVue } from '@vue/test-utils';
-import { Nvw } from '../../../../src/main';
+import Nvw from '../../../../src/plugins';
 
 describe('Alert Dialog Plugin Testing', () => {
   const localVue = createLocalVue();
