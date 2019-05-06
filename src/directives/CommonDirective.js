@@ -13,7 +13,7 @@ const applyCss = function(el, binding, vnode) {
     cssString += typeof $attrs.top !== 'undefined' ? `top: ${$attrs.top}px;` : '';
     cssString += typeof $attrs.left !== 'undefined' ? `left: ${$attrs.left}px;` : '';
     cssString += $attrs.alignSelf ? `align-self: ${$attrs.alignSelf};` : '';
-    cssString += $attrs.flexWrapBefore ? `flex-wrap: wrap;` : '';
+    cssString += $attrs.flexWrapBefore ? ` flex-wrap: wrap; width: 100%; ` : '';
     cssString += typeof $attrs.row !== 'undefined' ? `grid-row:${parseInt($attrs.row) + 1};` : '';
     cssString += typeof $attrs.col !== 'undefined' ? `grid-column:${parseInt($attrs.col) + 1};` : '';
     cssString += typeof $attrs.rowSpan !== 'undefined' ? `grid-row-end: span ${$attrs.rowSpan};` : '';

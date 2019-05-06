@@ -3,71 +3,71 @@
     <StackLayout class="demo-panel">
       <Label text="Container Properties" class="demo-panel__title"/>
 
-      <StackLayout orientation="horizontal">
+      <FlexboxLayout flexWrap="wrap">
         <Label text="Width" class="option-label"/>
-        <TextField id="flexboxlayout_containerwidth_input" v-model="containerWidth" />
-      </StackLayout>
+        <TextField id="flexboxlayout_containerwidth_input" v-model="containerWidth" class="option-input"/>
+      </FlexboxLayout>
 
-      <StackLayout orientation="horizontal">
+      <FlexboxLayout flexWrap="wrap">
         <Label text="Height" class="option-label"/>
-        <TextField id="flexboxlayout_containerheight_input" v-model="containerHeight"/>
-      </StackLayout>
+        <TextField id="flexboxlayout_containerheight_input" v-model="containerHeight" class="option-input"/>
+      </FlexboxLayout>
 
-      <StackLayout orientation="horizontal">
+      <FlexboxLayout flexWrap="wrap">
         <Label text="Color" class="option-label"/>
-        <select id="flexboxlayout_containercolor_selectbox" v-model="containerColor">
+        <select id="flexboxlayout_containercolor_selectbox" v-model="containerColor" class="option-input">
           <option value="transparent">transparent</option>
           <option value="red">red</option>
           <option value="green">green</option>
           <option value="blue">blue</option>
           <option value="yellow">yellow</option>
         </select>
-      </StackLayout>
+      </FlexboxLayout>
 
-      <StackLayout orientation="horizontal">
+      <FlexboxLayout flexWrap="wrap">
         <Label text="Flex Direction" class="option-label"/>
-        <select id="flexboxlayout_flexdirection_selectbox" v-model="containerFlexDirection">
+        <select id="flexboxlayout_flexdirection_selectbox" v-model="containerFlexDirection" class="option-input">
           <option value="row">row</option>
           <option value="row-reverse">row-reverse</option>
           <option value="column">column</option>
           <option value="column-reverse">column-reverse</option>
         </select>
-      </StackLayout>
+      </FlexboxLayout>
 
-      <StackLayout orientation="horizontal">
+      <FlexboxLayout flexWrap="wrap">
         <Label text="Flex Wrap" class="option-label"/>
-        <select id="flexboxlayout_flexwrap_selectbox" v-model="flexWrap">
+        <select id="flexboxlayout_flexwrap_selectbox" v-model="flexWrap" class="option-input">
           <option value="nowrap">nowrap</option>
           <option value="wrap">wrap</option>
           <option value="wrap-reverse">wrap-reverse</option>
         </select>
-      </StackLayout>
+      </FlexboxLayout>
 
-      <StackLayout orientation="horizontal">
+      <FlexboxLayout flexWrap="wrap">
         <Label text="Justify Content" class="option-label"/>
-        <select id="flexboxlayout_justifycontent_selectbox" v-model="justifyContent">
+        <select id="flexboxlayout_justifycontent_selectbox" v-model="justifyContent" class="option-input">
           <option value="flex-start">flex-start</option>
           <option value="flex-end">flex-end</option>
           <option value="center">center</option>
           <option value="space-between">space-between</option>
           <option value="space-around">space-around</option>
         </select>
-      </StackLayout>
+      </FlexboxLayout>
 
-      <StackLayout orientation="horizontal">
+      <FlexboxLayout flexWrap="wrap">
         <Label text="Align Items" class="option-label"/>
-        <select id="flexboxlayout_alignitems_selectbox" v-model="alignItems">
+        <select id="flexboxlayout_alignitems_selectbox" v-model="alignItems" class="option-input">
           <option value="flex-start">flex-start</option>
           <option value="flex-end">flex-end</option>
           <option value="center">center</option>
           <option value="baseline">baseline</option>
           <option value="stretch">stretch</option>
         </select>
-      </StackLayout>
+      </FlexboxLayout>
 
-      <StackLayout orientation="horizontal">
+      <FlexboxLayout flexWrap="wrap">
         <Label text="Align Content" class="option-label"/>
-        <select id="flexboxlayout_aligncontent_selectbox" v-model="alignContent">
+        <select id="flexboxlayout_aligncontent_selectbox" v-model="alignContent" class="option-input">
           <option value="flex-start">flex-start</option>
           <option value="flex-end">flex-end</option>
           <option value="center">center</option>
@@ -75,73 +75,73 @@
           <option value="space-around">space-around</option>
           <option value="stretch">stretch</option>
         </select>
-      </StackLayout>
+      </FlexboxLayout>
     </StackLayout>
 
     <StackLayout class="demo-panel">
       <Label text="Child Properties" class="demo-panel__title"/>
 
-      <StackLayout orientation="horizontal">
+      <FlexboxLayout flexWrap="wrap">
         <Label text="Name" class="option-label"/>
-        <TextField id="flexboxlayout_childname_input" v-model="childName"/>
-      </StackLayout>
+        <TextField id="flexboxlayout_childname_input" v-model="childName" class="option-input"/>
+      </FlexboxLayout>
 
-      <StackLayout orientation="horizontal">
+      <FlexboxLayout flexWrap="wrap">
         <Label text="Width" class="option-label"/>
-        <TextField id="flexboxlayout_childwidth_input" v-model="childWidth"/>
-      </StackLayout>
+        <TextField id="flexboxlayout_childwidth_input" v-model="childWidth" class="option-input"/>
+      </FlexboxLayout>
 
-      <StackLayout orientation="horizontal">
+      <FlexboxLayout flexWrap="wrap">
         <Label text="Height" class="option-label"/>
-        <TextField id="flexboxlayout_childheight_input" v-model="childHeight"/>
-      </StackLayout>
+        <TextField id="flexboxlayout_childheight_input" v-model="childHeight" class="option-input"/>
+      </FlexboxLayout>
 
-      <StackLayout orientation="horizontal">
+      <FlexboxLayout flexWrap="wrap">
         <Label text="Color" class="option-label"/>
-        <select id="flexboxlayout_childcolor_selectbox" v-model="childColor">
+        <select id="flexboxlayout_childcolor_selectbox" v-model="childColor" class="option-input">
           <option value="transparent">transparent</option>
           <option value="red">red</option>
           <option value="green">green</option>
           <option value="blue">blue</option>
           <option value="yellow">yellow</option>
         </select>
-      </StackLayout>
+      </FlexboxLayout>
 
-      <StackLayout orientation="horizontal">
+      <FlexboxLayout flexWrap="wrap">
         <Label text="Order" class="option-label"/>
-        <TextField id="flexboxlayout_childorder_input" v-model="childOrder"/>
-      </StackLayout>
+        <TextField id="flexboxlayout_childorder_input" v-model="childOrder" class="option-input"/>
+      </FlexboxLayout>
 
-      <StackLayout orientation="horizontal">
+      <FlexboxLayout flexWrap="wrap">
         <Label text="Flex Grow" class="option-label"/>
-        <TextField id="flexboxlayout_childflexgrow_input" v-model="childFlexGrow"/>
-      </StackLayout>
+        <TextField id="flexboxlayout_childflexgrow_input" v-model="childFlexGrow" class="option-input"/>
+      </FlexboxLayout>
 
-      <StackLayout orientation="horizontal">
+      <FlexboxLayout flexWrap="wrap">
         <Label text="Flex Shrink" class="option-label"/>
-        <TextField id="flexboxlayout_childflexshrink_input" v-model="childFlexShrink"/>
-      </StackLayout>
+        <TextField id="flexboxlayout_childflexshrink_input" v-model="childFlexShrink" class="option-input"/>
+      </FlexboxLayout>
 
-      <StackLayout orientation="horizontal">
+      <FlexboxLayout flexWrap="wrap">
         <Label text="Align Self" class="option-label"/>
-        <select id="flexboxlayout_childalignself_selectbox" v-model="childAlignSelf">
+        <select id="flexboxlayout_childalignself_selectbox" v-model="childAlignSelf" class="option-input">
           <option value="flex-start">flex-start</option>
           <option value="flex-end">flex-end</option>
           <option value="center">center</option>
           <option value="baseline">baseline</option>
           <option value="stretch">stretch</option>
         </select>
-      </StackLayout>
+      </FlexboxLayout>
 
-      <StackLayout orientation="horizontal">
+      <FlexboxLayout flexWrap="wrap">
         <Label text="Flex Wrap Before" class="option-label"/>
         <input id="flexboxlayout_childflexwrapbefore_cb" type="checkbox" v-model="childWrapBefore">
-      </StackLayout>
+      </FlexboxLayout>
 
-      <StackLayout orientation="horizontal">
+      <FlexboxLayout flexWrap="wrap">
         <Button id="flexboxlayout_addchild_button" text="Add Child" @tap="addChild" style="margin: 10px 10px 10px 0px" />
         <Button id="flexboxlayout_removeallchildren_button" text="Remove All Children" @tap="removeChildren" style="margin: 10px 10px 10px 10px" />
-      </StackLayout>
+      </FlexboxLayout>
 
     </StackLayout>
 
@@ -149,27 +149,24 @@
     <StackLayout orientation="vertical" class="demo-panel">
       <Label :text="'Children list (' + childrenList.length + ')'" class="demo-panel__title"/>
       <StackLayout orientation="horizontal" v-for="(child, index) in childrenList">
-        <StackLayout orientation="horizontal" class="editor-param">
+        <FlexboxLayout flexWrap="wrap" class="option-row">
           <Label class="editor-param-title" text="T: "/>
           <TextField :id="'docklayout_childreneditor_name' + index" style="width:50px" v-model="childrenList[index].text" />
-        </StackLayout>
-        <StackLayout orientation="horizontal" class="editor-param">
+
           <Label class="editor-param-title" text="W:"/>
           <TextField
             :id="'docklayout_childreneditor_width' + index"
             class="editor-param-input"
             v-model="childrenList[index].width"
           />
-        </StackLayout>
-        <StackLayout orientation="horizontal" class="editor-param">
+
           <Label class="editor-param-title" text="H: "/>
           <TextField
             :id="'docklayout_childreneditor_height' + index"
             class="editor-param-input"
             v-model="childrenList[index].height"
           />
-        </StackLayout>
-        <StackLayout orientation="horizontal" class="editor-param">
+
           <Label class="editor-param-title" text="C: "/>
           <select
             :id="'docklayout_childreneditor_color' + index"
@@ -185,11 +182,10 @@
             <option>orange</option>
             <option>gray</option>
           </select>
-        </StackLayout>
-        
-        <StackLayout orientation="horizontal" class="editor-param">
+
           <Button :id="'docklayout_childreneditor_removechild' + index" @tap="removeChildAtIndex(index)" text="❌" style="min-width: auto; padding: 2px; margin-left: 5px" />
-        </StackLayout>
+
+        </FlexboxLayout>
       </StackLayout>
     </StackLayout>
     <!-- Children list editor -->
@@ -264,13 +260,11 @@ export default {
         width: this.childWidth,
         height: this.childHeight,
         backgroundColor: this.childColor,
-        style: {
-          order: this.childOrder,
-          flexGrow: this.childFlexGrow,
-          flexShrink: this.childFlexShrink,
-          alignSelf: this.childAlignSelf,
-          flexWrapBefore: this.childWrapBefore,
-        },
+        order: this.childOrder,
+        flexGrow: this.childFlexGrow,
+        flexShrink: this.childFlexShrink,
+        alignSelf: this.childAlignSelf,
+        flexWrapBefore: this.childWrapBefore,
       });
     },
     removeChildren() {
@@ -293,10 +287,10 @@ export default {
 
 .demo-panel {
   padding: 10px;
-  background-color: lightgray;
   border: #3c495e;
   border-radius: 5px;
-  margin:10px;
+  margin: 10px;
+  border: 1px solid #f1f1f1;
 
   &__title {
     font-size:20px; 
@@ -305,17 +299,41 @@ export default {
   }
 }
 
+.editor-param-input {
+  width: 50px;
+}
+
 .option-label {
   margin-right: 10px;
   margin-bottom: 5px;
   width: 130px;
 }
 
-.editor-param {
-  margin: 10px 0 5px 0;
+.option-input {
+  width: 130px;
+}
+
+.option-row {
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid gray;
+  width: 100%;
 }
 
 .editor-param-title {
-  margin-left: 5px;
+  margin: 0 5px 0 5px;
+}
+
+select {
+  border: 1px solid #eaeaea;
+  border-radius: 3px;
+  padding: 2px 10px 2px 0;
+}
+
+button {
+  padding: unset;
+  padding-left: 5px;
+  padding-right: 5px;
+  min-width: unset;
 }
 </style>
