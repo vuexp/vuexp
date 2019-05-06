@@ -9,6 +9,7 @@
     "docs:build": "vuepress build docs",
     "test:e2e": "vue-cli-service test:e2e --config nightwatch.config.js --env chrome,firefox",
     "test:e2e-safari": "vue-cli-service test:e2e --config nightwatch.config.js --env safari",
+    "test:e2e-edge": "vue-cli-service test:e2e --config nightwatch.config.js --env edge",
     "test:unit": "vue-cli-service test:unit --require tests/unit/pre-setup.js",
     "coverage": "nyc npm run test:unit",
     "report": "nyc npm test && nyc report --reporter=text-lcov > coverage.lcov"
@@ -57,7 +58,7 @@
     "geckodriver": "1.16.0",
     "lint-staged": "8.1.5",
     "nightwatch-vrt": "0.2.10",
-    "nightwatch_testrail": "1.0.647",
+    "nightwatch_testrail": "1.0.627",
     "node-sass": "^4.9.4",
     "nyc": "13.3.0",
     "rimraf": "^2.6.2",
