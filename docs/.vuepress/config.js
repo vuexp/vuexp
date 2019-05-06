@@ -18,6 +18,7 @@ module.exports = {
             "layouts/stacklayout.md",
             "layouts/flexbox-layout.md",
             "layouts/dock-layout.md",
+            "layouts/wraplayout.md"
           ]
         },
         {
@@ -27,7 +28,7 @@ module.exports = {
                 "components/action-bar.md",
                 "components/action-item.md",
                 "components/navigation-button.md",
-            ]
+              ]
         },
         {
           title: "Components",
@@ -40,7 +41,7 @@ module.exports = {
             "components/slider.md",
             "components/page.md"
           ]
-        },
+        }
       ]
     }
   },
