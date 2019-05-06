@@ -20,7 +20,7 @@
 		</StackLayout>
 		<StackLayout orientation="horizontal">
 			<Label text="text:" horizontalAlignment="50%" />
-			<TextField v-model="text" id="TextField_text_textfield" horizontalAlignment="50%" />
+			<TextField v-model="text" id="TextField_text_textfield" horizontalAlignment="50%" :maxLength="maxLengthNumeric" :keyboardType="keyboardType" />
 		</StackLayout>
 		<StackLayout orientation="horizontal">
 			<Label text="hint:" />

@@ -35,6 +35,25 @@ module.exports = {
       selenium_host: 'localhost',
       silent: true,
     },
+    safari: {
+      launch_url: 'localhost',
+      desiredCapabilities: {
+        browserName: 'safari',
+      },
+      globals: {
+        env: 'dev',
+      },
+    },
+    edge: {
+      launch_url: 'localhost',
+      desiredCapabilities: {
+        browserName: 'MicrosoftEdge',
+        acceptSslCerts: true,
+      },
+      globals: {
+        env: 'dev',
+      },
+    },
     chrome: {
       screenshots: {
         enabled: false,
