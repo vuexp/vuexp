@@ -6,7 +6,10 @@
         <StackLayout orientation="horizontal">          
           <Label text="Background Color: " class="editor-param hidden-sm" width="200"/>
           <Label text="Bg Color: " class="editor-param hidden-lg" width="200"/>
-          <TextField type="color" v-model="containerBackground" id="wraplayout_backgroundColor_input" />
+          <select v-model="containerBackground" id="wraplayout_backgroundColor_input">
+            <option disabled value>Color</option>
+            <option v-for="color in colors" :value="color.value">{{color.label}}</option>
+          </select>
         </StackLayout>
         <StackLayout orientation="horizontal" class="m-t-5">
           <Label text="Width: " class="editor-param" width="200"/>
@@ -100,8 +103,8 @@
       <WrapLayout
         :width="width"
         :height="height"
-        :itemWidth="containerItemWidth"
-        :itemHeight="containerItemHeight"
+        :itemWidth="containerWidth"
+        :itemHeight="containerHeight"
         :orientation="orientation"
         :backgroundColor="containerBackground"
         id="wraplayout_thewraplayout"
@@ -149,11 +152,10 @@
           ></TextField>
 
           <Label text="Color: " class="m-g-3"></Label>
-          <TextField
-            type="color"      
-            v-model="label.bgColor"
-            :id="'wraplayout_childreneditor_bgColor_input' + index"
-          />          
+          <select v-model="label.bgColor" :id="'wraplayout_childreneditor_bgColor_input' + index">
+            <option disabled value>Color</option>
+            <option v-for="color in colors" :value="color.value">{{color.label}}</option>
+          </select>             
           <Button
             class="fa fa-remove hidden-sm"             
             @tap="removeItem(index)"
@@ -173,6 +175,7 @@ import Button from '../../../src/components/Button';
 import TextField from '../../../src/components/TextField';
 import WrapLayout from '../../../src/layouts/WrapLayout';
 import StackLayout from '../../../src/layouts/StackLayout';
+import PredefinedColors from '../../shared/colors';
 
 class ColorAlternator {
   currentIndex = 0;
@@ -197,22 +200,23 @@ class ColorAlternator {
   }
 }
 
-const colorAlternator = new ColorAlternator();
+const colorAlternator = new ColorAlternator(PredefinedColors.map(i=> i.value));
 
 export default {
   name: 'WrapLayoutLiveDemoDoc',
   data() {
     return {
       labels: [],
-      width: 460,
-      height: 380,
+      width: "460",
+      height: "380",
       orientation: 'vertical',
-      containerItemWidth: NaN,
-      containerItemHeight: NaN,
+      containerItemWidth: '',
+      containerItemHeight: '',
       itemWidth: '150', 
       itemHeight: '150',
       itemText: '',
-      containerBackground: '#aa9a99',
+      containerBackground: '',
+      colors: PredefinedColors
     };
   },
   mounted() {
@@ -257,6 +261,20 @@ export default {
         bgColor: colorAlternator.next(),
       });
     },
+  },
+  computed: {
+    containerWidth(){
+      if(this.containerItemWidth) {
+        return Number(this.containerItemWidth);
+      }
+      return null;
+    },
+    containerHeight(){
+      if(this.containerItemHeight) {
+        return Number(this.containerItemHeight);
+      }
+      return null;
+    }
   },
   components: {
     StackLayout,
