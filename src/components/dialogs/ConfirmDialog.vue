@@ -7,8 +7,8 @@
     </div>
 
     <div class="vxp-confirm-dialog__footer" slot="footer">
-      <Button class="nvw-confirm-dialog__footer__cancel-button" :text="cancelButtonText" @tap="close(false)" />
-      <Button class="nvw-confirm-dialog__footer__ok-button" :text="okButtonText" @tap="close(true)" />
+      <Button class="vxp-confirm-dialog__footer__cancel-button" :text="cancelButtonText" @tap="close(false)" />
+      <Button class="vxp-confirm-dialog__footer__ok-button" :text="okButtonText" @tap="close(true)" />
     </div>
   </ModalDialog>
 </template>
@@ -61,7 +61,7 @@ export default {
     justify-content: space-between;
     &__cancel-button,
     &__ok-button {
-      @include nvw-dialog-button;
+      @include vxp-dialog-button;
     }
     &__ok-button {
       margin-left: 20px;
