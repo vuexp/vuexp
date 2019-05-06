@@ -31,6 +31,13 @@ module.exports = {
             "components/slider.md"
           ]
         },
+        {
+          title: "Dialogs",
+          collapsable: true,
+          children: [
+            "components/dialogs/alert-dialog.md",
+          ]
+        }
       ]
     }
   },
