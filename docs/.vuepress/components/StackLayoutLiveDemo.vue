@@ -1,8 +1,8 @@
 <template>
     <StackLayout>
         <StackLayout  class="demo-panel">
-            <Label text="Add new child" class="demo-panel__title"/>
-            <FlexboxLayout flex-wrap="wrap" style="margin-bottom:5px">
+            <Label text="Add New Child" class="demo-panel__title"/>
+            <FlexboxLayout alignSelf="center" flex-wrap="wrap" style="margin-bottom:5px">
                 <StackLayout orientation="horizontal" class="editor-param">
                     <Label text="Orientation: "/>
                     <select
@@ -17,30 +17,27 @@
                 </StackLayout>
                 <StackLayout orientation="horizontal" class="editor-param">
                     <Label class="editor-param-title" text="Text: "/>
-                    <input
+                    <TextField
                             id="stacklayout_childname_input"
                             class="editor-param-input"
-                            type="text"
                             v-model="stackChildText"
-                    >
+                    ></TextField>
                 </StackLayout>
                 <StackLayout orientation="horizontal" class="editor-param">
                     <Label class="editor-param-title" text="Width: "/>
-                    <input
+                    <TextField
                             id="stacklayout_childtwidth_input"
                             class="editor-param-input"
-                            type="text"
                             v-model="stackChildWidth"
-                    >
+                    ></TextField>
                 </StackLayout>
                 <StackLayout orientation="horizontal" class="editor-param">
                     <Label class="editor-param-title" text="Height: "/>
-                    <input
+                    <TextField
                             id="stacklayout_childheight_input"
                             class="editor-param-input"
-                            type="text"
                             v-model="stackChildHeight"
-                    >
+                    ></TextField>
                 </StackLayout>
                 <StackLayout orientation="horizontal" class="editor-param">
                     <Label class="editor-param-title" text="Color: "/>
@@ -62,7 +59,7 @@
                 </StackLayout>
             </FlexboxLayout>
 
-            <FlexboxLayout flex-wrap="wrap">
+            <FlexboxLayout flex-wrap="wrap" alignSelf="center">
                 <StackLayout orientation="horizontal" class="editor-param">
                     <Label class="editor-param-title" text="Child Alignment Type: "/>
                     <select
@@ -93,7 +90,7 @@
                 </StackLayout>
             </FlexboxLayout>
 
-            <FlexboxLayout flex-wrap="wrap" class="editor-param">
+            <FlexboxLayout flex-wrap="wrap" class="editor-param" alignSelf="center">
                 <StackLayout class="editor-param">
                     <Button id="stacklayout_addchild_button" @tap="addChildNode">➕ Add Child</Button>
                 </StackLayout>
@@ -111,32 +108,31 @@
 
         <!-- Children list editor -->
         <StackLayout orientation="vertical" class="demo-panel">
-            <Label :text="'Children list (' + stackChildrenList.length + ')'" class="demo-panel__title"/>
-            <FlexboxLayout flex-wrap="wrap" v-for="(stackChild, index) in stackChildrenList">
+            <Label :text="'Children List (' + stackChildrenList.length + ')'" class="demo-panel__title"/>
+            <StackLayout v-for="(stackChild, index) in stackChildrenList" class="child-panel" alignSelf="center">
+                <FlexboxLayout flex-wrap="wrap" alignSelf="center">
                 <StackLayout orientation="horizontal" class="editor-param">
-                    <Label class="editor-param-title" text="T: "/>
-                    <input :id="'stacklayout_childreneditor_name' + index" type="text" style="width:50px" v-model="stackChildrenList[index].text">
+                    <Label class="editor-param-title" text="Top: "/>
+                    <TextField :id="'stacklayout_childreneditor_name' + index" style="width:50px" v-model="stackChildrenList[index].text"></TextField>
                 </StackLayout>
                 <StackLayout orientation="horizontal" class="editor-param">
-                    <Label class="editor-param-title" text="W:"/>
-                    <input
+                    <Label class="editor-param-title" text="Width:"/>
+                    <TextField
                             :id="'stacklayout_childreneditor_width' + index"
                             class="editor-param-input"
-                            type="text"
                             v-model="stackChildrenList[index].width"
-                    >
+                    ></TextField>
                 </StackLayout>
                 <StackLayout orientation="horizontal" class="editor-param">
-                    <Label class="editor-param-title" text="H: "/>
-                    <input
+                    <Label class="editor-param-title" text="Height: "/>
+                    <TextField
                             :id="'stacklayout_childreneditor_height' + index"
                             class="editor-param-input"
-                            type="text"
                             v-model="stackChildrenList[index].height"
-                    >
+                    ></TextField>
                 </StackLayout>
                 <StackLayout orientation="horizontal" class="editor-param">
-                    <Label class="editor-param-title" text="C: "/>
+                    <Label class="editor-param-title" text="Color: "/>
                     <select
                             :id="'stacklayout_childreneditor_color' + index"
                             style="margin-left: 5px"
@@ -152,9 +148,10 @@
                         <option>gray</option>
                     </select>
                 </StackLayout>
-
+                </FlexboxLayout>
+                <FlexboxLayout flex-wrap="wrap"  alignSelf="center">
                 <StackLayout orientation="horizontal" class="editor-param">
-                    <Label class="editor-param-title" text="AT: "/>
+                    <Label class="editor-param-title" text="Alignment Type: "/>
                     <select
                             :id="'stacklayout_childreneditor_alignment_type' + index"
                             style="margin-left: 5px"
@@ -166,7 +163,7 @@
                     </select>
                 </StackLayout>
                 <StackLayout orientation="horizontal" class="editor-param">
-                    <Label class="editor-param-title" text="AV: "/>
+                    <Label class="editor-param-title" text="Alignment Value: "/>
                     <select
                             :id="'stacklayout_childreneditor_alignment_value' + index"
                             class="editor-param-select"
@@ -185,7 +182,8 @@
                 <StackLayout orientation="horizontal" class="editor-param">
                     <Button :id="'stacklayout_childreneditor_removechild' + index" @tap="removeChildAtIndex(index)" class="vxp-button-remove">❌</Button>
                 </StackLayout>
-            </FlexboxLayout>
+                </FlexboxLayout>
+            </StackLayout>
         </StackLayout>
         <!-- Children list editor -->
 
@@ -207,6 +205,8 @@
     import StackLayout from '../../../src/layouts/StackLayout';
     import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
     import Button from '../../../src/components/Button';
+    import TextField from '../../../src/components/TextField';
+
     export default {
         name: 'StackLayoutLiveDemo',
         data() {
@@ -251,10 +251,10 @@
             },
             renderSampleSet() {
                 this.stackChildrenList = [];
-                this.stackChildrenList.push({ text: 'left', alignmentType: 'horizontalAlignment', alignmentValue: 'left', width: 41, height: '', backgroundColor: 'gray' });
-                this.stackChildrenList.push({ text: 'top', alignmentType: 'horizontalAlignment', alignmentValue: 'center', width: '', height: 42, backgroundColor: 'red' });
-                this.stackChildrenList.push({ text: 'right', alignmentType: 'horizontalAlignment', alignmentValue: 'right', width: 43, height: '', backgroundColor: 'yellow' });
-                this.stackChildrenList.push({ text: 'bottom', alignmentType: 'horizontalAlignment', alignmentValue: 'left', width: '', height: 44, backgroundColor: 'blue' });
+                this.stackChildrenList.push({ text: 'left', alignmentType: 'horizontalAlignment', alignmentValue: 'left', width: "41", height: '', backgroundColor: 'gray' });
+                this.stackChildrenList.push({ text: 'top', alignmentType: 'horizontalAlignment', alignmentValue: 'center', width: '', height: "42", backgroundColor: 'red' });
+                this.stackChildrenList.push({ text: 'right', alignmentType: 'horizontalAlignment', alignmentValue: 'right', width: "43", height: '', backgroundColor: 'yellow' });
+                this.stackChildrenList.push({ text: 'bottom', alignmentType: 'horizontalAlignment', alignmentValue: 'left', width: '', height: "44", backgroundColor: 'blue' });
                 this.stackChildrenList.push({ text: 'center', alignmentType: 'horizontalAlignment', alignmentValue: 'left', backgroundColor: 'green' });
             },
             removeChildAtIndex(index) {
@@ -268,7 +268,8 @@
             FlexboxLayout,
             Label,
             StackLayout,
-            Button
+            Button,
+            TextField
         },
     };
 </script>
@@ -286,7 +287,7 @@
         margin-bottom: 5px;
     }
     .editor-param-input {
-        width: 40px;
+        width: 30px;
         margin-left: 5px;
     }
     .editor-param-select {
@@ -302,7 +303,6 @@
     }
     .demo-panel {
         padding: 10px;
-        background-color: lightgray;
         border: #3c495e;
         border-radius: 5px;
         margin:10px;
@@ -311,5 +311,11 @@
             font-weight:bold;
             margin-bottom:10px;
         }
+    }
+    .child-panel{
+        margin-bottom: 10px;
+        border-bottom-color: #989898;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
     }
 </style>
