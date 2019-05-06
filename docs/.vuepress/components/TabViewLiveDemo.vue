@@ -59,19 +59,19 @@ export default {
         {
           id: '1',
           title: 'Tab 1',
-          webIcon: 'fa fa-laugh',
+          webIcon: 'fa fa-eye',
           innerText: 'Content for Tab 1',
         },
         {
           id: '2',
           title: 'Tab 2',
-          webIcon: 'fa fa-laugh-wink',
+          webIcon: 'fa fa-list',
           innerText: 'Content for Tab 2',
         },
         {
           id: '3',
           title: 'Tab 3',
-          webIcon: 'fa fa-smile',
+          webIcon: 'fa fa-check',
           innerText: 'Content for Tab 3',
         },
       ],

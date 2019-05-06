@@ -43,34 +43,13 @@ export default {
   },
   mounted() {
     if (this.$slots && this.$slots.default && this.$slots.default.length) {
-      for (let tab of this.$slots.default) {
-        if (tab.componentOptions && tab.componentOptions.tag === 'TabViewItem') {
-          this.children.push({
-            title: tab.componentInstance.title,
-            icon: tab.componentInstance.webIcon,
-            id: tab.componentInstance.computedId,
-          });
-        } else {
-          console.warn('Mounted::TabView component only accepts TabViewItem as child'); // eslint-disable-line
-        }
-      }
+      this._filterChildren();
       this.updateChild();
     }
   },
   beforeUpdate() {
     if (this.$slots && this.$slots.default && this.$slots.default.length) {
-      this.children = this.$slots.default.reduce((accum, tab) => {
-        if (tab.componentOptions && tab.componentOptions.propsData && tab.componentOptions.tag === 'TabViewItem') {
-          accum.push({
-            title: tab.componentOptions.propsData.title,
-            webIcon: tab.componentOptions.propsData.webIcon,
-            id: tab.componentOptions.propsData.id,
-          });
-        } else {
-          console.warn('BeforeUpdate::TabView component only accepts TabViewItem as child'); // eslint-disable-line
-        }
-        return accum;
-      }, []);
+      this._filterChildren();
     }
   },
   updated() {
@@ -113,6 +92,20 @@ export default {
 
         this.updateChild();
       }
+    },
+    _filterChildren() {
+      this.children = this.$slots.default.reduce((accum, tab) => {
+        if (tab.componentOptions && tab.componentOptions.propsData && tab.componentOptions.tag === 'TabViewItem') {
+          accum.push({
+            title: tab.componentOptions.propsData.title,
+            webIcon: tab.componentOptions.propsData.webIcon,
+            id: tab.componentOptions.propsData.id,
+          });
+        } else {
+          console.warn('TabView component only accepts TabViewItem as child'); // eslint-disable-line
+        }
+        return accum;
+      }, []);
     },
   },
   mixins: [Gestures],
