@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
-import { StackLayout, Label } from '../../../src/main';
+import StackLayout from '../../../src/layouts/StackLayout';
+import Label from '../../../src/components/Label';
 
 describe('StackLayout', () => {
   // StackLayout Mock up values.
