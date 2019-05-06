@@ -32,11 +32,17 @@
           hint="title of selected tab"
         />
         <Label text="Web icon"/>
-        <TextField
+        <select
+          id="actionbar__shareicon__select"
+          v-model="tabs[selectedIndex].webIcon"
+        >
+          <option v-for="icon in icons" v-bind:value="icon">{{ icon }}</option>
+        </select>
+        <!-- <TextField
           v-model="tabs[selectedIndex].webIcon"
           :id="`segmentedBar__title__input__${selectedIndex}`"
           hint="webicon of selected tab"
-        />
+        />-->
       </StackLayout>
     </StackLayout>
   </StackLayout>
@@ -74,6 +80,7 @@ export default {
           innerText: 'Content for Tab 3',
         },
       ],
+      icons: ['fa fa-laugh', 'fa fa-laugh-wink', 'fa fa-smile'], 
     };
   },
   computed: {

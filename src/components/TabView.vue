@@ -81,7 +81,7 @@ export default {
       if (this.currentTabIndex < this.children.length) {
         return this.children[this.currentTabIndex];
       } else {
-        return null;
+        return undefined;
       }
     },
     direction() {
