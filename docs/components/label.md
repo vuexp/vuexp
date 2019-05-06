@@ -3,16 +3,16 @@ sidebarDepth: 0
 ---
 
 # Label
+## Live Demo
 
-This is an overview of the most common usage of `<Label>`.
-
-<DocExampleBox codeBox="https://codesandbox.io/s/lrn8qy0yv9?module=%2Fsrc%2FApp.vue">
-
+<DocExampleBox :liveDemoMode="true">
 ```html
 <Label text="Label" />
 ```
-<LabelDoc />
+<LabelLiveDemo />
 </DocExampleBox>
+
+This is an overview of the most common usage of `<Label>`.
 
 `Label` is a UI component that displays read-only text.
 
