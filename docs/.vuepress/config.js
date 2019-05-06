@@ -41,6 +41,13 @@ module.exports = {
               "components/textview.md",
             ]
           },
+          {
+            title: "Dialogs",
+            collapsable: true,
+            children: [
+              "components/dialogs/alert-dialog.md",
+            ]
+          }
         ]
       }
     },
