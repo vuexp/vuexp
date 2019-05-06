@@ -8,7 +8,7 @@
           <Label text="Bg Color: " class="editor-param hidden-lg" width="200"/>
           <select v-model="containerBackground" id="wraplayout_backgroundColor_input">
             <option disabled value>Color</option>
-            <option v-for="color in colors" :value="color.value">{{color.label}}</option>
+            <option v-for="color in colors" :key="color.value" :value="color.value">{{color.label}}</option>
           </select>
         </StackLayout>
         <StackLayout orientation="horizontal" class="m-t-5">
@@ -154,7 +154,7 @@
           <Label text="Color: " class="m-g-3"></Label>
           <select v-model="label.bgColor" :id="'wraplayout_childreneditor_bgColor_input' + index">
             <option disabled value>Color</option>
-            <option v-for="color in colors" :value="color.value">{{color.label}}</option>
+            <option v-for="color in colors" :key="color.value" :value="color.value">{{color.label}}</option>
           </select>             
           <Button
             class="fa fa-remove hidden-sm"             
