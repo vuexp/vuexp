@@ -287,10 +287,10 @@ export default {
 
 .demo-panel {
   padding: 10px;
-  background-color: lightgray;
   border: #3c495e;
   border-radius: 5px;
-  margin:10px;
+  margin: 10px;
+  border: 1px solid #f1f1f1;
 
   &__title {
     font-size:20px; 
@@ -322,5 +322,18 @@ export default {
 
 .editor-param-title {
   margin: 0 5px 0 5px;
+}
+
+select {
+  border: 1px solid #eaeaea;
+  border-radius: 3px;
+  padding: 2px 10px 2px 0;
+}
+
+button {
+  padding: unset;
+  padding-left: 5px;
+  padding-right: 5px;
+  min-width: unset;
 }
 </style>
