@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
-import { AbsoluteLayout, Label } from '../../../src/main';
+import { Label } from '../../../src/main';
+import AbsoluteLayout from '../../../src/layouts/AbsoluteLayout.vue';
 
 describe('Absolute Layout', () => {
   const Label1Position = { left: 10, top: 10 };
