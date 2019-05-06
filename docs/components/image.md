@@ -21,13 +21,13 @@ This is an overview of the most common usage of `<Image>`.
 Displaying an image relative to the app directory
 
 ```html
-<Img src="/docs/.vuepress/public/images/logo.png" stretch="none" />
+<Img src="~/vuexp/images/logo.png"/>
 ```
 
 Displaying an image from a URL
 
 ```html
-<Img src="https://art.nativescript-vue.org/NativeScript-Vue-White-Green.png" stretch="fill"/>
+<Img src="https://art.nativescript-vue.org/NativeScript-Vue-White-Green.png"/>
 ```
 
 
@@ -35,7 +35,7 @@ Displaying an image from a URL
 
 | Name      | Type                                      | Default | Web | Mobile | Description |
 | --------- | ----------------------------------------- | ------- | --- | ------ | ----------- |
-| src       | String                                    |         | ✔   | ✔      | Path of the image resource. It can be a full URL or starting with '~' for project asset. |
-| tintColor | String                                    |         | ✘   | ✔      | tint color |
-| stretch   | `none`, `aspectFill`, `aspectFit`, `fill` | `none`  | ✔   | ✔      | How should image be streched inside its container? |
-| loadMode  | `async`, `sync`                           | `async` | ✘   | ✔      | load mode |
+| src       | String                                    |         | ✔   | ✔      | Path of the image resource. Full URL for external image, relative URL starting with '~' for application asset. |
+| tintColor | String                                    |         | ✘   | ✔      | Tint color shown over image. |
+| stretch   | `none`, `aspectFill`, `aspectFit`, `fill` | `none`  | ✔   | ✔      | Image stretching strategy inside image container. |
+| loadMode  | `async`, `sync`                           | `async` | ✘   | ✔      | Image loading strategy. `async` fetches and loads image in background. |

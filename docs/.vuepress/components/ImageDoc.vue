@@ -1,7 +1,7 @@
 <template>
   <StackLayout style="width: 300px; margin:auto;">
     <StackLayout class="stack-cell">
-      <Img :src="src" :tintColor="tintColor" :stretch="stretch" :loadMode="loadMode" />
+      <Img :src="src" :stretch="stretch" />
     </StackLayout>
 
     <Label text="Source URL: ">
@@ -40,10 +40,8 @@ export default {
   name: "ImageDoc",
   data() {
     return {
-      src: "/vuexp/images/logo.png",
-      tintColor: "#000000",
-      stretch: "none",
-      loadMode: "async"
+      src: "~/vuexp/images/logo.png",
+      stretch: "none"
     }
   },
   components: {
