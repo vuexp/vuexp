@@ -87,7 +87,7 @@ function extractSingleTestRailId(description) {
 }
 
 function checkTestRailId(text) {
-  return /^(C)([0-9]{6,6}$)/.test(text);
+  return /^(C)([0-9]{6,10}$)/.test(text);
 }
 
 module.exports = {
