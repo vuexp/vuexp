@@ -55,7 +55,7 @@
     "geckodriver": "1.16.0",
     "lint-staged": "8.1.5",
     "nightwatch-vrt": "0.2.10",
-    "nightwatch_testrail": "1.0.647",
+    "nightwatch_testrail": "1.0.627",
     "node-sass": "^4.9.4",
     "nyc": "13.3.0",
     "rimraf": "^2.6.2",

@@ -11,9 +11,7 @@ module.exports = {
   output_folder: 'tests/e2e/reports',
   custom_assertions_path: ['node_modules/nightwatch-vrt/assertions'],
   custom_commands_path: ['tests/e2e/customCommands', 'node_modules/nightwatch-vrt/commands'],
-  page_objects_path: [
-    /*'tests/e2e/pageObjects'*/
-  ],
+  page_objects_path: ['tests/e2e/pageObjects/components/'],
   globals_path: 'tests/e2e/globals.js',
 
   selenium: {
@@ -45,7 +43,7 @@ module.exports = {
         acceptSslCerts: true,
         nativeEvents: true,
         chromeOptions: {
-          args: ['headless', 'disable-web-security', 'ignore-certificate-errors'],
+          args: ['disable-web-security', 'ignore-certificate-errors'],
         },
         loggingPrefs: { driver: 'INFO', server: 'OFF', browser: 'INFO' },
       },
@@ -58,7 +56,7 @@ module.exports = {
         marionette: true,
         nativeEvents: true,
         'moz:firefoxOptions': {
-          args: ['--headless', 'no-sandbox'],
+          args: ['no-sandbox'],
         },
       },
     },
