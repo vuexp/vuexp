@@ -6,6 +6,25 @@ sidebarDepth: 0
 
 This is an overview of the most common usage of `<Button>`.
 
+
+`Button` is a UI component that displays a button which reacts to a user gesture.
+
+## Props
+
+| Name     | Type    | Default | Web | Mobile | Desctiption |
+| -------- | ------- | ------- | --- | ------ |------|
+| text     | String  |         | ✔   | ✔      |Sets the label of the button.|
+| textWrap | Boolean | `false` | ✔   | ✔      |Gets or sets whether the widget wraps the text of the label. Useful for longer labels. Default value is false.|
+
+## Events
+
+| Name | Web | Mobile | Description |
+| ---- | --- | ------ |------|
+| tap  | ✔   | ✔      |Emitted when the button is tapped.|
+
+
+## Live Demo
+
 <DocExampleBox codeBox="https://codesandbox.io/s/n5y3lym66p?module=%2Fsrc%2FApp.vue">
 
 ```html
@@ -21,22 +40,3 @@ This is an overview of the most common usage of `<Button>`.
 <ButtonDoc />
 </DocExampleBox>
 
-`Button` is a UI component that displays a button which reacts to a user gesture.
-
-## Props
-
-| Name     | Type    | Default | Web | Mobile |
-| -------- | ------- | ------- | --- | ------ |
-| text     | String  |         | ✔   | ✔      |
-| textWrap | Boolean | `false` | ✔   | ✔      |
-
-## Events
-
-| Name | Web | Mobile |
-| ---- | --- | ------ |
-| tap  | ✔   | ✔      |
-
-## References
-
-> For more information about the available properties, methods, or events head over to the complete [NativeScript-Vue Documentation](https://nativescript-vue.org/en/docs/elements/components/button/)
-> or [NativeScript Documentation](https://docs.nativescript.org/api-reference/classes/_ui_button_.button)

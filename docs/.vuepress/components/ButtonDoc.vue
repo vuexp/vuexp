@@ -1,18 +1,27 @@
 <template>
   <StackLayout>
-    <Button id="button" :text="buttonText" @tap="onButtonTap" :textWrap="textWrap" horizontalAlignment="center" />
-    <br>
-    Text :<input type="text" id="text" v-model="buttonText" />
-    <br>
-    Label :<Label :text="labelText" id="label" />
-    <br>
-    Word Wrap :<input type="checkbox" v-model="textWrap" id="textWrap" />
+    <Button id="button" :text="buttonText" @tap="onButtonTap" :textWrap="textWrap" horizontalAlignment="left" />
+    <Button id="button"  @tap="onButtonTap" :textWrap="textWrap" horizontalAlignment="left"> Button Text </Button>
+
+    <StackLayout orientation="horizontal">
+      <Label text="Text:" width="100"></Label>
+      <input type="text" id="button_text_input" v-model="buttonText" />
+    </StackLayout>  
+    <StackLayout orientation="horizontal">
+      <Label text="Label:" width="100"></Label>
+      <Label :text="labelText" id="button_label" ></Label>
+    </StackLayout>
+    <StackLayout orientation="horizontal">
+      <Label text="Text Wrap :" width="100"></Label>
+      <input type="checkbox" v-model="textWrap" id="button_textWrap_input" />
+    </StackLayout>
   </StackLayout>
 </template>
 
 <script>
 import Button from "../../../src/components/Button";
 import Label from "../../../src/components/Label";
+import StackLayout from "../../../src/layouts/StackLayout";
 
 export default {
   name: "ButtonDoc",
@@ -25,12 +34,13 @@ export default {
   },
   methods: {
     onButtonTap() {
-        this.labelText="pressed";
+        this.labelText="Button Pressed";
     }
   },
   components:{
      Button,
-     Label
+     Label,
+     StackLayout
   }
 };
 </script>
