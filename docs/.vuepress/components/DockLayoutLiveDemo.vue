@@ -80,14 +80,14 @@
         <StackLayout class="editor-param">
           <Button
             id="docklayout_removeallchildren_button"
-            @tap="addChildNode"
+            @tap="clearDockChildList"
             text="❌ Remove All Children"
           />
         </StackLayout>
         <StackLayout class="editor-param">
           <Button
             id="docklayoutdoc_rendersample_button"
-            @click="renderSampleSet"
+            @tap="renderSampleSet"
             text=" 🔷 Render Sample Set"
           />
         </StackLayout>
