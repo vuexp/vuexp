@@ -15,7 +15,17 @@ module.exports = {
             collapsable: true,
             children: [
               "layouts/stacklayout.md",
+              "layouts/flexbox-layout.md",
               "layouts/dock-layout.md",
+            ]
+          },
+          {
+            title: "Action Bars",
+            collapsable: true,
+            children: [
+              "components/action-bar.md",
+              "components/action-item.md",
+              "components/navigation-button.md",
             ]
           },
           {
@@ -25,7 +35,8 @@ module.exports = {
               "components/label.md",
               "components/search-bar.md",
               "components/button.md",
-              "components/textfield.md"
+              "components/textfield.md",
+              "components/slider.md"
             ]
           },
         ]
@@ -34,4 +45,3 @@ module.exports = {
     dest: "./docs/.vuepress/dist",
     serviceWorker: true
   };
-  
