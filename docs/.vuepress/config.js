@@ -20,6 +20,15 @@ module.exports = {
             ]
           },
           {
+            title: "Action Bars",
+            collapsable: true,
+            children: [
+              "components/action-bar.md",
+              "components/action-item.md",
+              "components/navigation-button.md",
+            ]
+          },
+          {
             title: "Components",
             collapsable: true,
             children: [
