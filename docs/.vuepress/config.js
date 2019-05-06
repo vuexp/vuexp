@@ -17,6 +17,7 @@ module.exports = {
               "layouts/stacklayout.md",
               "layouts/flexbox-layout.md",
               "layouts/dock-layout.md",
+              "layouts/wraplayout.md",
             ]
           },
           {
