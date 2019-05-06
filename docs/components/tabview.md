@@ -28,7 +28,26 @@ sidebarDepth: 0
 </DocExampleBox>
 
 ## Example Usages
+
 <DocExampleBox  codeBox="">
+```html
+<TabView class="container" @selectedIndexChanged="changed">
+    <TabViewItem title="La Liga" id="la-liga">
+        <StackLayout>
+            <Label text="Barcelona"/>
+            <Label text="Atletico Madrid"/>
+            <Label text="Real Madrid"/>
+        </StackLayout>
+    </TabViewItem>
+    <TabViewItem title="Premier League" id="premier">
+        <StackLayout>
+            <Label text="Liverpool"/>
+            <Label text="Man. City"/>
+            <Label text="Chelsea"/>
+        </StackLayout>
+    </TabViewItem>
+</TabView>
+```
 
 <TabViewDoc />
 </DocExampleBox> 

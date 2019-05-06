@@ -51,7 +51,7 @@ export default {
             id: tab.componentInstance.computedId,
           });
         } else {
-          console.warn`TabView component only accepts TabViewItem as child`; // eslint-disable-line
+          console.warn('Mounted::TabView component only accepts TabViewItem as child'); // eslint-disable-line
         }
       }
       this.updateChild();
@@ -64,15 +64,17 @@ export default {
           accum.push({
             title: tab.componentOptions.propsData.title,
             webIcon: tab.componentOptions.propsData.webIcon,
-            id: tab.componentOptions.propsData.computedId,
+            id: tab.componentOptions.propsData.id,
           });
         } else {
-          console.warn('SegmentedBar component only accepts SegmentedBarItem as child'); // eslint-disable-line
+          console.warn('BeforeUpdate::TabView component only accepts TabViewItem as child'); // eslint-disable-line
         }
         return accum;
       }, []);
-      this.updateChild();
     }
+  },
+  updated() {
+    this.updateChild();
   },
   computed: {
     activeChild() {
@@ -90,7 +92,7 @@ export default {
     updateChild() {
       for (let tab of this.$slots.default) {
         if (tab.componentOptions && tab.componentOptions.tag === 'TabViewItem') {
-          tab.componentOptions.propsData.selectedId = this.activeChild.id;
+          tab.componentInstance.selectedId = this.activeChild.id;
         }
       }
     },

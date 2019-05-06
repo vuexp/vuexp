@@ -13,25 +13,31 @@
           <Label :text="tab.innerText"/>
         </TabViewItem>
       </TabView>
-      <Label :text="selectedIndex"/>
     </StackLayout>
 
     <StackLayout style="margin-top:20px" class="demo-panel">
       <Label text="Manage props" class="demo-panel__title"/>
-      <StackLayout v-for="(tab, index) in tabs" :key="index" orientation="horizontal">
+      <Label :text="selectedIndexComputed"/>
+      <StackLayout>
+        <Label text="ID:"/>
         <TextField
-          :id="`segmentedBar__title__input__${index}`"
-          v-model="tab.title"
-          hint="This is placeholder"
-          :editable="true"
-          @input="titleChanged($event, index)"
+          v-model="tabs[selectedIndex].id"
+          :id="`segmentedBar__id__input__${selectedIndex}`"
+          hint="ID of selected tab"
+        />
+        <Label text="Title:"/>
+        <TextField
+          v-model="tabs[selectedIndex].title"
+          :id="`segmentedBar__title__input__${selectedIndex}`"
+          hint="title of selected tab"
+        />
+        <Label text="Web icon"/>
+        <TextField
+          v-model="tabs[selectedIndex].webIcon"
+          :id="`segmentedBar__title__input__${selectedIndex}`"
+          hint="webicon of selected tab"
         />
       </StackLayout>
-      <!-- <StackLayout>
-        <Label :text="tab.id"></Label>
-        <Label :text="tab.title"></Label>
-        <Label :text="tab.webIcon"></Label>
-      </StackLayout>-->
     </StackLayout>
   </StackLayout>
 </template>
@@ -69,6 +75,11 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    selectedIndexComputed() {
+      return `Selected Index: ${this.selectedIndex}`;
+    },
   },
   methods: {
     changed({ index }) {

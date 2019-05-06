@@ -1,15 +1,19 @@
 <template>
   <StackLayout style="margin-top:20px" class="demo-panel">
     <TabView class="container" @selectedIndexChanged="changed">
-      <TabViewItem title="La Liga">
+      <TabViewItem title="La Liga" id="la-liga">
         <StackLayout>
-          <Label text="Content for Tab 1"/>
-          <Label text="Content for Tab 1"/>
-          <Label text="Content for Tab 1"/>
+          <Label text="Barcelona"/>
+          <Label text="Atletico Madrid"/>
+          <Label text="Real Madrid"/>
         </StackLayout>
       </TabViewItem>
-      <TabViewItem title="Premier League">
-        <Label text="Man city"/>
+      <TabViewItem title="Premier League" id="premier">
+        <StackLayout>
+          <Label text="Liverpool"/>
+          <Label text="Man. City"/>
+          <Label text="Chelsea"/>
+        </StackLayout>
       </TabViewItem>
     </TabView>
   </StackLayout>
