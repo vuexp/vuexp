@@ -45,7 +45,7 @@
     </StackLayout>
     <StackLayout orientation="horizontal" class="flex m-t-10">
       <Label text="Last Event:" class="label"></Label>
-      <Label :text="eventLabelText" class="form-input"></Label>
+      <Label :text="eventLabelText" class="form-input" id="searchbar_event_label"></Label>
     </StackLayout>
   </StackLayout>
 </template>
@@ -74,7 +74,7 @@ export default {
       this.eventLabelText = 'submit';
     },
     onTextChange(text) {
-      this.eventLabelText = 'textChangeEvent: ' + text;
+      this.eventLabelText = 'textChangeEvent';
     },
     onClear() {
       this.eventLabelText = 'clear';
