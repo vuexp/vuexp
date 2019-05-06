@@ -38,11 +38,6 @@
         >
           <option v-for="icon in icons" v-bind:value="icon">{{ icon }}</option>
         </select>
-        <!-- <TextField
-          v-model="tabs[selectedIndex].webIcon"
-          :id="`segmentedBar__title__input__${selectedIndex}`"
-          hint="webicon of selected tab"
-        />-->
       </StackLayout>
     </StackLayout>
   </StackLayout>
@@ -64,19 +59,19 @@ export default {
         {
           id: '1',
           title: 'Tab 1',
-          webIcon: 'fa fa-eye',
+          webIcon: 'fa fa-laugh',
           innerText: 'Content for Tab 1',
         },
         {
           id: '2',
           title: 'Tab 2',
-          webIcon: 'fa fa-list',
+          webIcon: 'fa fa-laugh-wink',
           innerText: 'Content for Tab 2',
         },
         {
           id: '3',
           title: 'Tab 3',
-          webIcon: 'fa fa-check',
+          webIcon: 'fa fa-smile',
           innerText: 'Content for Tab 3',
         },
       ],
