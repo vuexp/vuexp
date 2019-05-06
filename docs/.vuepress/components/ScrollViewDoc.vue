@@ -2,7 +2,8 @@
 <StackLayout class="scroll-view" orientation="horizontal">
         <ScrollView :orientation="scrollType" id="scrollview_container" class="scroll-view__vertical" :scrollBarIndicatorVisible="scrollBarIndicatorVisible" >
           <StackLayout orientation="vertical">
-            <div>Native Vue Web project is web components for Nativescript-Vue. NativeScript is an open source framework for building truly native mobile applications using JavaScript.</div>
+            
+            <div>Vuexp project is web components for Nativescript-Vue. NativeScript is an open source framework for building truly native mobile applications using JavaScript.</div>
           </StackLayout>
         </ScrollView>
        <StackLayout orientation="horizontal">
