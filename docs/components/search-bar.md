@@ -28,22 +28,17 @@ onSubmit(){
 
 ## Props
 
-| Name                     | Type   | Default | Web | Mobile |
-| ------------------------ | ------ | ------- | --- | ------ |
-| hint                     | String |         | ✔   | ✔      |
-| text                     | String |         | ✔   | ✘      |
-| textFieldBackgroundColor | String |         | ✔   | ✔      |
-| textFieldHintColor       | String |         | ✘   | ✔      |
+| Name                     | Type   | Default | Web | Mobile |  Description |
+| ------------------------ | ------ | ------- | --- | ------ | ------ |
+| hint                     | String |         | ✔   | ✔      | A hint text written in the input when input value is empty |
+| text                     | String |         | ✔   | ✘      | The value of the input |
+| textFieldBackgroundColor | String |         | ✔   | ✔      | Background color for the searchbar |
+| textFieldHintColor       | String |         | ✔   | ✔      | Hint color of the search bar |
 
 ## Events
 
-| Name       | Web | Mobile |
-| ---------- | --- | ------ |
-| textChange | ✔   | ✔      |
-| submit     | ✔   | ✔      |
-| clear      | ✔   | ✔      |
-
-## References
-
-> For more information about the available properties, methods, or events head over to the complete [NativeScript-Vue Documentation](https://nativescript-vue.org/en/docs/elements/components/search-bar/)
-> or [NativeScript Documentation](https://docs.nativescript.org/api-reference/classes/_ui_search_bar_.searchbar)
+| Name       | Web | Mobile |  Description |
+| ---------- | --- | ------ | ------ |
+| textChange | ✔   | ✔      | Event occurs whenever a text value changes by user interaction |
+| submit     | ✔   | ✔      | Event occurs when user taps search icon or submit key |
+| clear      | ✔   | ✔      | Event occurs when after user taps clear button |
