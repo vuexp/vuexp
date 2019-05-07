@@ -57,7 +57,7 @@ describe('ConfirmDialog', () => {
 
   describe('Events testing', () => {
     it('the click event of Button element with ok-button class is passed to the component successfully.', () => {
-      const button = wrapper.find('.nvw-confirm-dialog__footer__ok-button');
+      const button = wrapper.find('.vxp-confirm-dialog__footer__ok-button');
       button.trigger('click');
       expect(wrapper.emitted().submit.length).to.equal(1);
       expect(wrapper.emitted().submit[0][0]).to.equal(true);
@@ -67,7 +67,7 @@ describe('ConfirmDialog', () => {
 
     it('the click event of Button element with cancel-button class is passed to the component successfully.', () => {
       wrapper.setData({ isModalVisible: true });
-      const button = wrapper.find('.nvw-confirm-dialog__footer__cancel-button');
+      const button = wrapper.find('.vxp-confirm-dialog__footer__cancel-button');
       button.trigger('click');
       expect(wrapper.emitted().submit.length).to.equal(2);
       expect(wrapper.emitted().submit[1][0]).to.equal(false);

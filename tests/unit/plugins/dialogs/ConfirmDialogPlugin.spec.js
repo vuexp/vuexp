@@ -1,10 +1,10 @@
 import { expect } from 'chai';
 import { shallowMount, createLocalVue } from '@vue/test-utils';
-import NvwPlugin from '../../../../src/plugins/index';
+import VxpPlugin from '../../../../src/plugins';
 
 describe('Confirm Dialog Plugin Testing', () => {
   const localVue = createLocalVue();
-  localVue.use(NvwPlugin);
+  localVue.use(VxpPlugin);
 
   const title = 'Some title.';
   const message = 'Some message';
@@ -40,36 +40,36 @@ describe('Confirm Dialog Plugin Testing', () => {
     it(`The ConfirmDialog is shown on the document.`, done => {
       wrapper.find('.first_button').trigger('click');
       setTimeout(() => {
-        expect(document.querySelector('.nvw-confirm-dialog')).to.not.be.null;
-        document.querySelector('.nvw-modal-dialog').click();
+        expect(document.querySelector('.vxp-confirm-dialog')).to.not.be.null;
+        document.querySelector('.vxp-modal-dialog').click();
         done();
       }, 500);
     });
     it(`The message inside the header slot of the element equals to ${message}.`, done => {
       wrapper.find('.first_button').trigger('click');
       setTimeout(() => {
-        expect(document.querySelector('.nvw-confirm-dialog__body').firstChild.textContent.trim()).to.equal(message);
-        document.querySelector('.nvw-modal-dialog').click();
+        expect(document.querySelector('.vxp-confirm-dialog__body').firstChild.textContent.trim()).to.equal(message);
+        document.querySelector('.vxp-modal-dialog').click();
         done();
       }, 500);
     });
     it(`The message inside the header slot of the element equals to ${message}.`, done => {
       wrapper.find('.first_button').trigger('click');
       setTimeout(() => {
-        expect(document.querySelector('.nvw-confirm-dialog__body').firstChild.textContent.trim()).to.equal(message);
+        expect(document.querySelector('.vxp-confirm-dialog__body').firstChild.textContent.trim()).to.equal(message);
         expect(
           document
-            .querySelector('.nvw-confirm-dialog__footer__cancel-button')
+            .querySelector('.vxp-confirm-dialog__footer__cancel-button')
             .textContent.trim()
             .toLocaleLowerCase(),
         ).to.equal('cancel');
         expect(
           document
-            .querySelector('.nvw-confirm-dialog__footer__ok-button')
+            .querySelector('.vxp-confirm-dialog__footer__ok-button')
             .textContent.trim()
             .toLocaleLowerCase(),
         ).to.equal('ok');
-        document.querySelector('.nvw-modal-dialog').click();
+        document.querySelector('.vxp-modal-dialog').click();
         done();
       }, 500);
     });
@@ -78,26 +78,26 @@ describe('Confirm Dialog Plugin Testing', () => {
     it(`The ConfirmDialog is shown on the document.`, done => {
       wrapper.find('.second_button').trigger('click');
       setTimeout(() => {
-        expect(document.querySelector('.nvw-confirm-dialog')).to.not.be.null;
-        document.querySelector('.nvw-modal-dialog').click();
+        expect(document.querySelector('.vxp-confirm-dialog')).to.not.be.null;
+        document.querySelector('.vxp-modal-dialog').click();
         done();
       }, 500);
     });
     it(`The title inside the header slot of the element equals to ${title}.`, done => {
       wrapper.find('.second_button').trigger('click');
       setTimeout(() => {
-        expect(document.querySelector('.nvw-confirm-dialog__header').firstChild.textContent.trim()).to.equal(title);
-        document.querySelector('.nvw-modal-dialog').click();
+        expect(document.querySelector('.vxp-confirm-dialog__header').firstChild.textContent.trim()).to.equal(title);
+        document.querySelector('.vxp-modal-dialog').click();
         done();
       }, 500);
     });
     it(`The message inside the header slot of the element equals to ${message}.`, done => {
       wrapper.find('.second_button').trigger('click');
       setTimeout(() => {
-        expect(document.querySelector('.nvw-confirm-dialog__body').firstChild.textContent.trim()).to.equal(message);
-        expect(document.querySelector('.nvw-confirm-dialog__footer__cancel-button').textContent.trim()).to.equal(cancelButtonText);
-        expect(document.querySelector('.nvw-confirm-dialog__footer__ok-button').textContent.trim()).to.equal(okButtonText);
-        document.querySelector('.nvw-modal-dialog').click();
+        expect(document.querySelector('.vxp-confirm-dialog__body').firstChild.textContent.trim()).to.equal(message);
+        expect(document.querySelector('.vxp-confirm-dialog__footer__cancel-button').textContent.trim()).to.equal(cancelButtonText);
+        expect(document.querySelector('.vxp-confirm-dialog__footer__ok-button').textContent.trim()).to.equal(okButtonText);
+        document.querySelector('.vxp-modal-dialog').click();
         done();
       }, 500);
     });
