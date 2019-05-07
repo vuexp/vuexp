@@ -32,10 +32,7 @@
           hint="title of selected tab"
         />
         <Label text="Web icon"/>
-        <select
-          id="actionbar__shareicon__select"
-          v-model="tabs[selectedIndex].webIcon"
-        >
+        <select id="actionbar__shareicon__select" v-model="tabs[selectedIndex].webIcon">
           <option v-for="icon in icons" v-bind:value="icon">{{ icon }}</option>
         </select>
       </StackLayout>
@@ -59,23 +56,23 @@ export default {
         {
           id: '1',
           title: 'Tab 1',
-          webIcon: 'fa fa-eye',
+          webIcon: 'fa fa-laugh',
           innerText: 'Content for Tab 1',
         },
         {
           id: '2',
           title: 'Tab 2',
-          webIcon: 'fa fa-list',
+          webIcon: 'fa fa-laugh-wink',
           innerText: 'Content for Tab 2',
         },
         {
           id: '3',
           title: 'Tab 3',
-          webIcon: 'fa fa-check',
+          webIcon: 'fa fa-smile',
           innerText: 'Content for Tab 3',
         },
       ],
-      icons: ['fa fa-laugh', 'fa fa-laugh-wink', 'fa fa-smile'], 
+      icons: ['fa fa-laugh', 'fa fa-laugh-wink', 'fa fa-smile'],
     };
   },
   computed: {
