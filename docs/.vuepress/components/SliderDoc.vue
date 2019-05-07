@@ -5,7 +5,6 @@
       :min-value="minValue"
       :max-value="maxValue"
       @valueChange="onValueChanged($event)"
-      style="color: red; background: red"
     />
     <Label text="Value: ">
       <Label id="slider__value__label" :text="value"/>
