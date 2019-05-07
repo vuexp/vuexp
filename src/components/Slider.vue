@@ -1,5 +1,5 @@
 <template>
-  <div class="vxp-slider">
+  <div class="vxp-slider" :class="{ 'vxp-slider-edge': isEdgeBrowser }">
     <input class="vxp-slider__scroll" type="range" :min="minValue" :max="maxValue" :value="value" @change="$emit('valueChange', $event)" @input="updateValue" />
   </div>
 </template>
@@ -22,6 +22,16 @@ export default {
       type: [String, Number],
       default: 100,
     },
+  },
+  data() {
+    return {
+      isEdgeBrowser: false,
+    };
+  },
+  mounted() {
+    const isIE = false || !!document.documentMode;
+    const isEdge = !isIE && !!window.StyleMedia;
+    if (isEdge) this.isEdgeBrowser = true;
   },
   methods: {
     updateValue: function(event) {
@@ -64,6 +74,75 @@ export default {
       cursor: pointer;
       -webkit-appearance: none;
       border-radius: 50%;
+    }
+  }
+
+  //MARK: MS Edge Support
+  &.vxp-slider-edge {
+    $ui-color-rangeslider: #d3d3d3;
+
+    @mixin rangetrack {
+      background: $ui-color-rangeslider;
+      height: 2px;
+      cursor: pointer;
+      border: 0;
+    }
+
+    @mixin rangethumb {
+      width: 15px;
+      height: 15px;
+      border-radius: 2em;
+      background: #51abff;
+      cursor: pointer;
+      border: solid 2px #51abff;
+      // box-shadow:0px 2px 1px 1px rgba(0,0,0,.25);
+      margin: 0;
+
+      &:focus {
+        box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.5);
+      }
+      &:hover {
+        box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.3);
+      }
+      &:active {
+        box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.8);
+      }
+    }
+
+    @mixin rangethumb-focus {
+      background: rgb(73, 135, 218);
+    }
+
+    input[type='range'] {
+      background-color: transparent;
+      -webkit-appearance: none;
+      width: 100%;
+      margin: 5px 0;
+      position: relative;
+      height: 30px;
+
+      &:focus {
+        outline: none;
+
+        &::-ms-thumb {
+          @include rangethumb-focus;
+        }
+      }
+    }
+    input[type='range']:focus {
+      outline: none;
+    }
+    // Microsoft Track
+    input[type='range']::-ms-track {
+      @include rangetrack;
+    }
+    // Microsoft Thumb
+    input[type='range']::-ms-thumb {
+      @include rangethumb;
+    }
+    // Microsoft Tooltip
+    input::-ms-tooltip {
+      display: none;
     }
   }
 }
