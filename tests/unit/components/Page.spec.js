@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
-import { Page, Label } from '../../../src/main';
+import Page from '../../../src/components/Page';
+import Label from '../../../src/components/Label';
 
 describe('Page.vue', () => {
   const LabelWrapper = {

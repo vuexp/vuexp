@@ -10,7 +10,7 @@ sidebarDepth: 0
 
 ## Live Demo
 
-<DocExampleBox codeBox="https://codesandbox.io/s/n5y3lym66p?module=%2Fsrc%2FApp.vue">
+< DocExampleBox :liveDemoMode="true" >
 
 ```html
 <Page :actionBarHidden="actionBarHidden">
