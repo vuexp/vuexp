@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import { shallowMount, mount } from '@vue/test-utils';
-import { SegmentedBar, SegmentedBarItem } from '../../../src/main.js';
+import SegmentedBar from '../../../src/components/SegmentedBar';
+import SegmentedBarItem from '../../../src/components/SegmentedBarItem';
 
 describe('SegmentedBar', () => {
   // Mock up values.

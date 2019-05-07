@@ -10,6 +10,7 @@
       @click="updateSegmentedBarIndexes(index)"
       @keyup.enter="updateSegmentedBarIndexes(index)"
       @keyup.space="updateSegmentedBarIIndexes(index)"
+      :style="currentIndex === index ? activeColorStyle : {}"
     >
       <span class="nvw-segmentedBar__button__title">{{ tab.title }}</span>
     </button>
@@ -31,6 +32,9 @@ export default {
     selectedIndex: {
       type: Number,
       default: 0,
+    },
+    selectedBackgroundColor: {
+      type: String,
     },
   },
   data() {
@@ -54,6 +58,12 @@ export default {
         return this.items;
       }
       return this.childrenFromSlots;
+    },
+    activeColorStyle() {
+      return {
+        'background-color': this.selectedBackgroundColor,
+        borderColor: this.selectedBackgroundColor,
+      };
     },
   },
   methods: {
