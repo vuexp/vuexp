@@ -26,14 +26,25 @@ export default {
 <style lang="scss" scoped>
 .demo-panel {
   padding: 10px;
-  background-color: lightgray;
   border: #3c495e;
   border-radius: 5px;
   margin: 10px;
+  border: 1px solid #f1f1f1;
   &__title {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
   }
+}
+
+select {
+  border: 1px solid #eaeaea;
+  border-radius: 3px;
+  padding: 2px 10px 2px 0;
+}
+
+button {
+  padding: 10px 20px;
+  font-weight: lighter;
 }
 </style>
