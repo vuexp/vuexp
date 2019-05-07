@@ -4,11 +4,15 @@
   "version": "0.1.0",
   "scripts": {
     "lint": "vue-cli-service lint",
+    "test": "vue-cli-service test:unit --require tests/unit/pre-setup.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "test:e2e": "vue-cli-service test:e2e --config nightwatch.config.js --env chrome,firefox",
+    "test:e2e-safari": "vue-cli-service test:e2e --config nightwatch.config.js --env safari",
+    "test:e2e-edge": "vue-cli-service test:e2e --config nightwatch.config.js --env edge",
     "test:unit": "vue-cli-service test:unit --require tests/unit/pre-setup.js",
-    "coverage": "nyc npm run test:unit"
+    "coverage": "nyc npm run test:unit",
+    "report": "nyc npm test && nyc report --reporter=text-lcov > coverage.lcov"
   },
   "main": "src/main.js",
   "dependencies": {
@@ -43,7 +47,9 @@
     "babel-plugin-istanbul": "5.1.1",
     "babel-traverse": "6.26.0",
     "chai": "4.2.0",
+    "chromedriver": "^74.0.0",
     "clean-webpack-plugin": "^2.0.1",
+    "codecov": "3.1.0",
     "copy-webpack-plugin": "5.0.2",
     "cross-env": "5.2.0",
     "cross-fetch": "3.0.2",
@@ -52,7 +58,7 @@
     "geckodriver": "1.16.0",
     "lint-staged": "8.1.5",
     "nightwatch-vrt": "0.2.10",
-    "nightwatch_testrail": "1.0.647",
+    "nightwatch_testrail": "1.0.627",
     "node-sass": "^4.9.4",
     "nyc": "13.3.0",
     "rimraf": "^2.6.2",
