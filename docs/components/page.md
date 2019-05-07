@@ -10,17 +10,17 @@ sidebarDepth: 0
 
 ## Live Demo
 
-< DocExampleBox :liveDemoMode="true" >
+<DocExampleBox :liveDemoMode="true" >
 
 ```html
 <Page :actionBarHidden="actionBarHidden">
   <ActionBar title="My App" />
   <StackLayout class="page-wrapper">
     <StackLayout>
-      <label text="My Content" />
+      <Label text="My Content" />
     </StackLayout>
     <StackLayout orientation="horizontal">
-      <label text="actionBarHidden:" />
+      <Label text="actionBarHidden:" />
       <input type="checkbox" v-model="actionBarHidden" id="Page_actionBarHidden_input" />
     </StackLayout>
   </StackLayout>
@@ -65,6 +65,7 @@ export default {
   margin: 3px;
 }
 ```
+
 <PageDoc />
 </DocExampleBox>
 
@@ -77,7 +78,7 @@ wrap content such as an `<ActionBar>` and other UI widgets.
 <Page>
   <ActionBar title="My App" />
   <GridLayout>
-    <label text="My Content" />
+    <Label text="My Content" />
   </GridLayout>
 </Page>
 ```
