@@ -61,11 +61,11 @@ describe('SegmentedBar', () => {
       },
     });
 
-    it(`when the button is active must be class "nvw-segmentedBar__button--active" `, () => {
-      expect(wrapper.find('.nvw-segmentedBar__button--active').exists()).to.equal(true);
+    it(`when the button is active must be class "vxp-segmentedBar__button--active" `, () => {
+      expect(wrapper.find('.vxp-segmentedBar__button--active').exists()).to.equal(true);
     });
-    it(`when the button is inactive must be class "nvw-segmentedBar__button" `, () => {
-      expect(wrapper.find('.nvw-segmentedBar__button').exists()).to.equal(true);
+    it(`when the button is inactive must be class "vxp-segmentedBar__button" `, () => {
+      expect(wrapper.find('.vxp-segmentedBar__button').exists()).to.equal(true);
     });
   });
 
@@ -119,8 +119,8 @@ describe('SegmentedBar', () => {
       },
     });
     it('there is one div.', () => {
-      expect(wrapper.contains('div.nvw-segmentedBar')).to.equal(true);
-      expect(wrapper.findAll('div.nvw-segmentedBar').length).to.equal(1);
+      expect(wrapper.contains('div.vxp-segmentedBar')).to.equal(true);
+      expect(wrapper.findAll('div.vxp-segmentedBar').length).to.equal(1);
     });
   });
 

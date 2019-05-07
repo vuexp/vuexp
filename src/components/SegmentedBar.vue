@@ -1,10 +1,10 @@
 <template>
-  <div class="nvw-segmentedBar">
+  <div class="vxp-segmentedBar">
     <button
-      class="nvw-segmentedBar__button"
+      class="vxp-segmentedBar__button"
       v-for="(tab, index) in children"
       :key="index"
-      :class="{ 'nvw-segmentedBar__button--active': currentIndex === index }"
+      :class="{ 'vxp-segmentedBar__button--active': currentIndex === index }"
       role="tab"
       :aria-controls="`tab-${index}`"
       @click="updateSegmentedBarIndexes(index)"
@@ -12,7 +12,7 @@
       @keyup.space="updateSegmentedBarIIndexes(index)"
       :style="currentIndex === index ? activeColorStyle : {}"
     >
-      <span class="nvw-segmentedBar__button__title">{{ tab.title }}</span>
+      <span class="vxp-segmentedBar__button__title">{{ tab.title }}</span>
     </button>
   </div>
 </template>
@@ -103,7 +103,7 @@ export default {
 </script>
 
 <style lang="scss">
-.nvw-segmentedBar {
+.vxp-segmentedBar {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
