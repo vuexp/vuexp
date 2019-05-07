@@ -41,14 +41,14 @@ sidebarDepth: 0
 
 ## Props
 
-| Name          | Type                                              | Default | Web | Mobile | Description |
-| ------------- | ------------------------------------------------- | ------- | --- | ------ | ----------- |
-| src          | String                                            |         | ✔   | ✔      | Gets or sets the displayed web content. Valid values: an absolute URL, the path to a local HTML file, or static HTML. |
-| html          | String                                            |         | ✔   | ✔      | The HTML content to be shown. |
+| Name | Type | Web | Mobile | Description |
+| --- | --- | --- | --- | --- |
+| src | String | ✔ | ✔ | Gets or sets the displayed web content. Valid values: an absolute URL, the path to a local HTML file, or static HTML. |
+| html | String | ✔ | ✔ | The HTML content to be shown. |
 
 ## Events
 
-| Name        | Web | Mobile | Description |
-| ----------- | --- | ------ | ----------- |
-| loadStarted  | ✔   | ✔      | Emitted when the page has started loading in the \<WebView\>. |
-| loadFinished | ✔   | ✔      | Emitted when the page has finished loading in the \<WebView\>. |
+| Name | Web | Mobile | Description |
+| --- | --- | --- | --- |
+| loadStarted | ✔ | ✔ | Emitted when the page has started loading in the \<WebView\>. |
+| loadFinished | ✔ | ✔ | Emitted when the page has finished loading in the \<WebView\>. |
