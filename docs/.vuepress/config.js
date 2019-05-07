@@ -18,6 +18,7 @@ module.exports = {
               "layouts/stacklayout.md",
               "layouts/flexbox-layout.md",
               "layouts/dock-layout.md",
+              "layouts/wraplayout.md",
             ]
           },
           {
@@ -37,7 +38,8 @@ module.exports = {
               "components/search-bar.md",
               "components/button.md",
               "components/textfield.md",
-              "components/slider.md"
+              "components/slider.md",
+              "components/textview.md",
             ]
           },
         ]
