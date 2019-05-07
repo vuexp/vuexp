@@ -32,24 +32,8 @@ export default {
   name: 'PageDoc',
   data() {
     return {
-      actionBarHidden: false,
-      backgroundSpanUnderStatusBar: false,
-      statusBarStyle: 'light',
+      actionBarHidden: false
     };
-  },
-  methods: {
-    navigatedFrom(event) {
-      console.log('Emitted after the app has navigated away from the current page.');
-    },
-    navigatedTo(event) {
-      console.log('Emitted after the app has navigated to the current page.');
-    },
-    navigatingFrom(event) {
-      console.log('Emitted before the app has navigated away from the current page.');
-    },
-    navigatingTo(event) {
-      console.log('Emitted before the app has navigated to the current page.');
-    },
   },
   components: {
     StackLayout,

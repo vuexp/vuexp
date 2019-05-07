@@ -12,7 +12,7 @@
         <Label text="Text Wrap" class="option-label"/>
         <input id="label_textwrap_cb" type="checkbox" v-model="textWrap">
       </FlexboxLayout>
-      
+
     </StackLayout>
 
     <StackLayout class="demo-panel">
@@ -26,6 +26,7 @@
 import Label from '../../../src/components/Label'
 import StackLayout from '../../../src/layouts/StackLayout'
 import TextField from '../../../src/components/TextField';
+import FlexboxLayout from "../../../src/layouts/FlexboxLayout";
 
 export default {
   name: 'LabelLiveDemo',
@@ -36,6 +37,7 @@ export default {
     };
   },
   components: {
+    FlexboxLayout,
     Label,
     StackLayout,
     TextField
@@ -56,8 +58,8 @@ export default {
   border: 1px solid #f1f1f1;
 
   &__title {
-    font-size:20px; 
-    font-weight:bold; 
+    font-size:20px;
+    font-weight:bold;
     margin-bottom:10px;
   }
 }
