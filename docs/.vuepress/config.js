@@ -43,7 +43,7 @@ module.exports = {
             title: "Dialogs",
             collapsable: true,
             children: [
-              "components/dialogs/confirmDialog.md",
+              "components/dialogs/confirm-dialog.md",
             ]
           },
         ]
