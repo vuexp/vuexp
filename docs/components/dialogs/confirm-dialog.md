@@ -8,7 +8,7 @@ This is an overview of the most common usage of ConfirmDialog.
 
 ## Live Demo
 
-<DocExampleBox codeBox="https://codesandbox.io/s/m7xmj8xnxj?module=%2Fsrc%2FApp.vue">
+<DocExampleBox>
 
 ```html
 <Button text="Show Confirm Dialog" width="200" @tap="showConfirmDialog" />
