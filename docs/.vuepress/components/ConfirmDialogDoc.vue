@@ -1,6 +1,6 @@
 <template>
   <StackLayout>
-    <Button text="Show Confirm Dialog" width="200" @tap="showConfirmDialog" />
+    <Button text="Show Confirm Dialog" width="200" id="confirm_dialog_container" @tap="showConfirmDialog" />
     <StackLayout orientation="horizontal" class="confirm_dialog__margin">
       <Label text ="Result: "/>
       <Label id="label_result_text" :text ="result"/>
