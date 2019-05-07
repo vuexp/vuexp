@@ -1,6 +1,15 @@
 <template>
-  <div class="vxp-slider" :class="{ 'vxp-slider-edge': isEdgeBrowser }">
-    <input class="vxp-slider__scroll" type="range" :min="minValue" :max="maxValue" :value="value" @change="$emit('valueChange', $event)" @input="updateValue" />
+  <div class="vxp-slider" ref="slider" :class="{ 'vxp-slider--edge': isEdgeBrowser }">
+    <input
+      class="vxp-slider__scroll"
+      type="range"
+      :style="{ '--thumb-color': thumbColor, '--background-color': backgroundColor }"
+      :min="minValue"
+      :max="maxValue"
+      :value="value"
+      @change="$emit('valueChange', $event)"
+      @input="updateValue"
+    />
   </div>
 </template>
 
@@ -26,14 +35,30 @@ export default {
   data() {
     return {
       isEdgeBrowser: false,
+      thumbColor: 'dodgerblue',
+      backgroundColor: '#d3d3d3',
     };
   },
+  updated() {
+    this.setStyle();
+  },
   mounted() {
+    this.setStyle();
+  },
+  beforeMount() {
     const isIE = false || !!document.documentMode;
     const isEdge = !isIE && !!window.StyleMedia;
     if (isEdge) this.isEdgeBrowser = true;
   },
   methods: {
+    setStyle() {
+      if (this.$refs.slider.style.color) {
+        this.thumbColor = this.$refs.slider.style.color;
+      }
+      if (this.$refs.slider.style.background) {
+        this.backgroundColor = this.$refs.slider.style.background;
+      }
+    },
     updateValue: function(event) {
       // Since the value returned from DOM input element is in the type of String,
       // we convert it to the integer so that we avoid the warning of mismatching of the prop type.
@@ -47,11 +72,12 @@ export default {
 <style lang="scss">
 .vxp-slider {
   width: 100%;
+  background: transparent !important;
   &__scroll {
     -webkit-appearance: none;
     width: 100%;
     height: 2px;
-    background: #d3d3d3;
+    background: var(--background-color);
     outline: none;
     opacity: 0.7;
     -webkit-transition: 0.2s;
@@ -62,7 +88,7 @@ export default {
     &::-webkit-slider-thumb {
       width: 15px;
       height: 15px;
-      background: dodgerblue;
+      background: var(--thumb-color);
       cursor: pointer;
       -webkit-appearance: none;
       border-radius: 50%;
@@ -78,7 +104,7 @@ export default {
   }
 
   //MARK: MS Edge Support
-  &.vxp-slider-edge {
+  &.vxp-slider--edge {
     $ui-color-rangeslider: #d3d3d3;
 
     @mixin rangetrack {
