@@ -17,6 +17,7 @@ module.exports = {
               "layouts/stacklayout.md",
               "layouts/flexbox-layout.md",
               "layouts/dock-layout.md",
+              "layouts/wraplayout.md",
             ]
           },
           {
@@ -38,6 +39,7 @@ module.exports = {
               "components/textfield.md",
               "components/slider.md",
               "components/webview.md",
+              "components/textview.md",
             ]
           },
         ]
