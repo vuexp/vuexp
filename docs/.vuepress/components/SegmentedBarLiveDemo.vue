@@ -14,12 +14,22 @@
     <StackLayout class="demo-panel">
       <Label text="Manage Segmented Bar Items" class="demo-panel__title"/>
       <StackLayout orientation="horizontal">
-        <Label text="Selected Tab Background Color : "></Label>
-        <input type="color" v-model="selectedTabColor" id="segmentedBar__selectedBackgroundColor__label"> 
+        <Label text="Selected Tab Background Color:"></Label>
+        <input
+          type="color"
+          v-model="selectedTabColor"
+          class="m-l-10"
+          id="segmentedBar__selectedBackgroundColor__label"
+        >
       </StackLayout>
-      <Label :text="selectedIndexTitle" id="segmentedBar__selectedIndex__label"></Label>
+      <Label :text="selectedIndexTitle" id="segmentedBar__selectedIndex__label" class="m-b-10"></Label>
 
-      <StackLayout v-for="(segment, index) in segments" :key="index" orientation="horizontal">
+      <StackLayout
+        v-for="(segment, index) in segments"
+        :key="index"
+        orientation="horizontal"
+        class="m-b-10"
+      >
         <TextField
           :id="`segmentedBar__title__input__${index}`"
           v-model="segment.name"
@@ -30,12 +40,14 @@
           text="+"
           @tap="addItem"
           style="background=dodgerblue"
+          class="m-l-10"
           id="segmentedBar__items__increment"
         ></Button>
         <Button
           text="-"
           @tap="removeItem(index)"
           v-show="segments.length > 1"
+          class="m-l-10"
           id="segmentedBar__items__decrement"
         ></Button>
       </StackLayout>
@@ -102,5 +114,12 @@ select {
 button {
   padding: 10px 20px;
   font-weight: lighter;
+}
+
+.m-l-10 {
+  margin-left: 10px;
+}
+.m-b-10 {
+  margin-bottom: 10px;
 }
 </style>
