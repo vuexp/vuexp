@@ -29,6 +29,25 @@
   border: solid 1px #a6b2b5;
   margin: 10px;
 }
+
+.demo-panel {
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+  border: 1px solid #f1f1f1;
+
+  &__title {
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:10px;
+  }
+}
+
+select {
+  border: 1px solid #eaeaea;
+  border-radius: 3px;
+  padding: 2px 10px 2px 0;
+}
 </style>
 <script>
 import StackLayout from "../../../src/layouts/StackLayout";
@@ -40,7 +59,7 @@ export default {
   name: "ImageDoc",
   data() {
     return {
-      src: "~/vuexp/images/logo.png",
+      src: "~/images/logo.png",
       stretch: "none"
     }
   },

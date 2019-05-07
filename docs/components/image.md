@@ -21,7 +21,7 @@ This is an overview of the most common usage of `<Image>`.
 Displaying an image relative to the app directory
 
 ```html
-<Img src="~/vuexp/images/logo.png"/>
+<Img src="~/images/logo.png"/>
 ```
 
 Displaying an image from a URL
@@ -39,3 +39,11 @@ Displaying an image from a URL
 | tintColor | String                                    |         | ✘   | ✔      | Tint color shown over image. |
 | stretch   | `none`, `aspectFill`, `aspectFit`, `fill` | `none`  | ✔   | ✔      | Image stretching strategy inside image container. |
 | loadMode  | `async`, `sync`                           | `async` | ✘   | ✔      | Image loading strategy. `async` fetches and loads image in background. |
+
+
+## Events
+
+| Name        | Web | Mobile |  Description |
+| ----------- | --- | ------ | ------------ |
+| onLoad      | ✔   | ✔      | Emitted when image load is completed successfully. |
+| onLoadError | ✔   | ✔      | Emitted when image load has encountered an error. |
