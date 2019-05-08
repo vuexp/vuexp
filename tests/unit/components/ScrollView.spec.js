@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
-import { ScrollView, Label } from '../../../src/main';
+import ScrollView from '../../../src/components/ScrollView';
+import Label from '../../../src/components/Label';
 
 describe('ScrollView', () => {
   // Mock up values.
