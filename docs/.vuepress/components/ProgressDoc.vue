@@ -5,15 +5,12 @@
 </template>
 
 <script>
-import Label from '../../../src/components/Label';
 import Progress from '../../../src/components/Progress';
-import TextField from '../../../src/components/TextField';
 import StackLayout from '../../../src/layouts/StackLayout';
-import Button from '../../../src/components/Button';
 
 export default {
   name: 'ProgressDoc',
-  components: { Label, StackLayout, Progress, TextField, Button },
+  components: { StackLayout, Progress},
   data() {
     return {
       currentProgress: 0,
