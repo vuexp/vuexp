@@ -3,16 +3,16 @@
     <TabView class="container" @selectedIndexChanged="changed">
       <TabViewItem title="La Liga" id="la-liga">
         <StackLayout>
-          <Label text="Barcelona"/>
-          <Label text="Atletico Madrid"/>
-          <Label text="Real Madrid"/>
+          <Label text="Barcelona" />
+          <Label text="Atletico Madrid" />
+          <Label text="Real Madrid" />
         </StackLayout>
       </TabViewItem>
       <TabViewItem title="Premier League" id="premier">
         <StackLayout>
-          <Label text="Liverpool"/>
-          <Label text="Man. City"/>
-          <Label text="Chelsea"/>
+          <Label text="Liverpool" />
+          <Label text="Man. City" />
+          <Label text="Chelsea" />
         </StackLayout>
       </TabViewItem>
     </TabView>
@@ -25,6 +25,7 @@ import TabViewItem from '../../../src/components/TabViewItem';
 import TabView from '../../../src/components/TabView';
 import TextField from '../../../src/components/TextField';
 import StackLayout from '../../../src/layouts/StackLayout';
+
 export default {
   name: 'TabViewDoc',
   components: { Label, TabViewItem, TabView, StackLayout, TextField },

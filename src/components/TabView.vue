@@ -1,22 +1,24 @@
 <template>
-  <div v-common-directive class="nvw-tab-view" :class="[`direction-${direction}`]">
-    <div class="nvw-tab-view__header">
+  <div v-common-directive class="vxp-tab-view" :class="[`direction-${direction}`]">
+    <div class="vxp-tab-view__header" :style="{ backgroundColor: tabBackgroundColor }">
       <button
-        class="nvw-tab-view__header__tab"
+        class="vxp-tab-view__header__tab"
         v-for="(tab, index) in children"
         :key="index"
-        :class="{ 'nvw-tab-view__header__tab-active': currentTabIndex === index }"
+        :class="{ 'vxp-tab-view__header__tab-active': currentTabIndex === index }"
         role="tab"
         :aria-controls="`tab-${index}`"
         @click="chooseTab(index)"
         @keyup.enter="chooseTab(index)"
         @keyup.space="chooseTab(index)"
       >
-        <span v-if="tab.icon" class="nvw-tab-view__header__tab__icon" :class="tab.icon"></span>
-        <span class="nvw-tab-view__header__tab__title">{{ tab.title }}</span>
+        <span v-if="tab.icon" class="vxp-tab-view__header__tab__icon" :class="tab.icon"></span>
+        <span class="vxp-tab-view__header__tab__title" :style="[currentTabIndex === index ? { color: selectedTabTextColor } : { color: tabTextColor }]">{{
+          tab.title
+        }}</span>
       </button>
     </div>
-    <div class="nvw-tab-view__content">
+    <div class="vxp-tab-view__content">
       <slot />
     </div>
   </div>
@@ -33,6 +35,9 @@ export default {
       type: Number,
       default: 0,
     },
+    tabTextColor: String,
+    tabBackgroundColor: String,
+    selectedTabTextColor: String,
   },
   data() {
     return {
@@ -116,7 +121,7 @@ export default {
 </script>
 
 <style lang="scss">
-.nvw-tab-view {
+.vxp-tab-view {
   display: flex;
   flex-direction: column;
   overflow: hidden;
