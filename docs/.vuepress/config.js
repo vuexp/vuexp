@@ -43,6 +43,7 @@ module.exports = {
             "components/slider.md",
             "components/webview.md",
             "components/textview.md",
+            "components/scrollview.md",
           ]
         },
       ]
