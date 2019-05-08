@@ -38,6 +38,7 @@ module.exports = {
               "components/button.md",
               "components/textfield.md",
               "components/slider.md",
+              "components/webview.md",
               "components/textview.md",
             ]
           },
