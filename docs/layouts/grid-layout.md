@@ -74,8 +74,8 @@ The following example creates a complex grid with responsive design, mixed width
 
 | Name    | Type   | Default | Web | Mobile | Description |
 | ------- | ------ | ------- | --- | ------ | ----------- |
-| columns | String |         | ✔   | ✔      | A string value representing column widths delimited with commas. <br/>Valid values: an absolute number, auto, or \*. <br/> A number indicates an absolute column width. auto makes the column as wide as its widest child. \* makes the column occupy all available horizontal space. The space is proportionally divided over all star-sized columns. You can set values such as 3\* and 5\* to indicate a ratio of 3:5 in sizes. |
-| rows    | String |         | ✔   | ✔      | A string value representing row heights delimited with commas.<br/> Valid values: an absolute number, auto, or \*.<br/> A number indicates an absolute row height. auto makes the row as tall as its tallest child. \* makes the row occupy all available vertical space. The space is proportionally divided over all star-sized rows. You can set values such as 3\* and 5\* to indicate a ratio of 3:5 in sizes. |
+| columns | String |    -    | ✔   | ✔      | A string value representing column widths delimited with commas. <br/>Valid values: an absolute number, auto, or \*. <br/> A number indicates an absolute column width. auto makes the column as wide as its widest child. \* makes the column occupy all available horizontal space. The space is proportionally divided over all star-sized columns. You can set values such as 3\* and 5\* to indicate a ratio of 3:5 in sizes. |
+| rows    | String |    -    | ✔   | ✔      | A string value representing row heights delimited with commas.<br/> Valid values: an absolute number, auto, or \*.<br/> A number indicates an absolute row height. auto makes the row as tall as its tallest child. \* makes the row occupy all available vertical space. The space is proportionally divided over all star-sized rows. You can set values such as 3\* and 5\* to indicate a ratio of 3:5 in sizes. |
 
 ## Additional Children Props
 
@@ -83,5 +83,5 @@ The following example creates a complex grid with responsive design, mixed width
 | ------- | ------ | ------- | --- | ------ | ----------- |
 | row     | Number | `0`     | ✔   | ✔      | Specifies the row for this element. Combined with a col property, specifies the cell coordinates of the element.<br/> The first row is indicated by 0. |
 | col     | Number | `0`     | ✔   | ✔      | Specifies the column for the element. Combined with a row property, specifies the cell coordinates of the element.<br/> The first column is indicated by 0. | 
-| rowSpan | Number |         | ✔   | ✔      | Specifies the number of rows which this element spans across. |
-| colSpan | Number |         | ✔   | ✔      | Specifies the number of columns which this element spans across. |
+| rowSpan | Number | `1`     | ✔   | ✔      | Specifies the number of rows which this element spans across. |
+| colSpan | Number | `1`     | ✔   | ✔      | Specifies the number of columns which this element spans across. |
