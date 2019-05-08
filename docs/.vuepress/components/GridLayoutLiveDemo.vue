@@ -39,6 +39,7 @@
                 class="editor-param-input"
                 :id="'gridlayout_columns_selectbox' + index"
                 v-model="columnChildrenList[index].columnSelectType"
+                aria-label="Select Column Type"
               >
                 <option disabled value>Select Column Type</option>
                 <option>px</option>
@@ -88,7 +89,8 @@
           <select
               class="editor-param-input"
               :id="'gridlayout_rows_selectbox' + index"
-              v-model="rowChildrenList[index].rowSelectType"  
+              v-model="rowChildrenList[index].rowSelectType"
+              aria-label="Select Row Type"
             >
               <option disabled value>Select Row Type</option>
               <option>px</option>
@@ -142,6 +144,7 @@
               :id="'gridlayout_cells_color_selectbox' + index"
               class="editor-param-input"
               v-model="gridItem.backgroundColor"
+              aria-label="Color"
             >
               <option disabled value>Color</option>
               <option>red</option>
