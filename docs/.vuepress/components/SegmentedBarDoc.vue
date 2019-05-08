@@ -6,15 +6,11 @@
 
 <script>
 import SegmentedBar from '../../../src/components/SegmentedBar';
-import SegmentedBarItem from '../../../src/components/SegmentedBarItem';
-import TextField from '../../../src/components/TextField';
-import Button from '../../../src/components/Button';
-import Label from '../../../src/components/Label';
 import StackLayout from '../../../src/layouts/StackLayout';
 
 export default {
   name: 'SegmentedBarDoc',
-  components: { SegmentedBar, SegmentedBarItem, StackLayout },
+  components: { SegmentedBar, StackLayout },
   data() {
     return {
       items: [{ title: 'Title 1' }, { title: 'Title 2' }, { title: 'Title 3' }],
