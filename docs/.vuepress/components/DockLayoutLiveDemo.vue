@@ -2,7 +2,7 @@
   <StackLayout>
     <StackLayout class="demo-panel">
       <Label text="Add new child" class="demo-panel__title"/>
-      <StackLayout orientation="horizontal" class="input-param-row">
+      <FlexboxLayout flexDirection="row" flexWrap="wrap" class="input-param-row">
         <StackLayout orientation="horizontal" class="editor-param">
           <Label text="Stretch Last child: "/>
           <input
@@ -35,9 +35,14 @@
             v-model="dockChildHeight"
           />
         </StackLayout>
-      </StackLayout>
+      </FlexboxLayout>
 
-      <StackLayout orientation="horizontal" class="input-param-row" style="margin-top:10px">
+      <FlexboxLayout
+        flexDirection="row"
+        flexWrap="wrap"
+        class="input-param-row"
+        style="margin-top:10px"
+      >
         <StackLayout orientation="horizontal" class="editor-param">
           <Label class="editor-param-title" text="Color: "/>
 
@@ -67,9 +72,14 @@
             <option>center</option>
           </select>
         </StackLayout>
-      </StackLayout>
+      </FlexboxLayout>
 
-      <StackLayout orientation="horizontal" class="input-param-row" style="margin-top:10px">
+      <FlexboxLayout
+        flexDirection="row"
+        flexWrap="wrap"
+        class="input-param-row"
+        style="margin-top:10px"
+      >
         <StackLayout class="editor-param">
           <Button id="docklayout_addchild_button" text="➕ Add Child" @tap="addChildNode"/>
         </StackLayout>
@@ -87,14 +97,15 @@
             text=" 🔷 Render Sample Set"
           />
         </StackLayout>
-      </StackLayout>
+      </FlexboxLayout>
     </StackLayout>
 
     <!-- Children list editor -->
     <StackLayout orientation="vertical" class="demo-panel">
       <Label :text="'Children list (' + dockChildrenList.length + ')'" class="demo-panel__title"/>
-      <StackLayout
-        orientation="horizontal"
+      <FlexboxLayout
+        flexDirection="row"
+        flexWrap="wrap"
         v-for="(dockChild, index) in dockChildrenList"
         style="margin-top:10px"
         class="input-param-row"
@@ -163,7 +174,7 @@
             style="font-size:9px"
           />
         </StackLayout>
-      </StackLayout>
+      </FlexboxLayout>
     </StackLayout>
     <!-- Children list editor -->
 
@@ -190,6 +201,7 @@ import Button from '../../../src/components/Button';
 import DockLayout from '../../../src/layouts/DockLayout';
 import TextField from '../../../src/components/TextField';
 import StackLayout from '../../../src/layouts/StackLayout';
+import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
 
 export default {
   name: 'DockLayoutLiveDemo',
@@ -239,6 +251,7 @@ export default {
     Label,
     DockLayout,
     StackLayout,
+    FlexboxLayout,
     Button,
     TextField,
   },
