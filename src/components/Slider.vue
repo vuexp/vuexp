@@ -1,6 +1,7 @@
 <template>
   <div class="vxp-slider" ref="slider" :class="{ 'vxp-slider--edge': isEdgeBrowser }">
     <input
+      aria-label="VXP Slider"
       class="vxp-slider__scroll"
       type="range"
       :style="{ '--thumb-color': thumbColor, '--background-color': backgroundColor }"
