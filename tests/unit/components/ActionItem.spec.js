@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
-import { ActionItem } from '../../../src/main';
+import ActionItem from '../../../src/components/ActionItem.vue';
 
 describe('ActionItem', () => {
   const text = 'Main Page';
