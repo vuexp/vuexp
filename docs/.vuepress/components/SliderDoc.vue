@@ -37,7 +37,7 @@ export default {
   },
   data() {
     return {
-      value: '70',
+      value: '0',
       minValue: '0',
       maxValue: '100',
     };
