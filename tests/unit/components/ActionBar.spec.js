@@ -1,7 +1,9 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
-import { ActionBar, ActionItem, NavigationButton } from '../../../src/main';
-import StackLayout from '../../../src/layouts/StackLayout';
+import ActionBar from '../../../src/components/ActionBar.vue';
+import ActionItem from '../../../src/components/ActionItem.vue';
+import NavigationButton from '../../../src/components/NavigationButton.vue';
+import StackLayout from '../../../src/layouts/StackLayout.vue';
 
 describe('ActionItem', () => {
   const title = 'Main Page';
