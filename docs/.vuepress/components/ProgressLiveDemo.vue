@@ -82,7 +82,7 @@ export default {
       this.eventLog = `${eventName} ${oldValue} to ${value}`;
     },
     incrementValue() {
-      const maxValErr = this.maxValueInputAsNumber <= this.incrementAsNumber + this.currentProgress;
+      const maxValErr = this.maxValueInputAsNumber < this.incrementAsNumber + this.currentProgress;
       if (maxValErr) {
         alert`Incremented value is greater than max value`;
         return;
