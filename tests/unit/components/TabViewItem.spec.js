@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
-import { TabViewItem } from '../../../src/main';
+import TabViewItem from '../../../src/components/TabViewItem';
 
 describe('TabViewItem', () => {
   const id = '#id';

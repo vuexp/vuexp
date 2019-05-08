@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
-import { TabView, TabViewItem } from '../../../src/main';
+import TabView from '../../../src/components/TabView';
+import TabViewItem from '../../../src/components/TabViewItem';
 
 describe('TabView', () => {
   const selectedIndex = 1;
