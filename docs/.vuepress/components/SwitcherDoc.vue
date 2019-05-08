@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       value: false,
-      labelText: 'Switcher On',
+      labelText: 'Switcher Off',
     };
   },
   methods: {
