@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       labelValue: 'Label',
-      textWrap: true
+      textWrap: false
     };
   },
   components: {
