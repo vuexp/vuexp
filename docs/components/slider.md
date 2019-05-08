@@ -26,7 +26,7 @@ This is an overview of the most common usage of `<Slider>`.
 `Slider` can be initialized with minimum, maximum and initial values.
 
 ```html
-<Slider :minValue="-100" :maxValue)="100" :value="70" />
+<Slider :minValue="-100" :maxValue="100" :value="70" />
 ```
 
 `Slider` emits `valueChange` event, which can be sent to a function
