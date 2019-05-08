@@ -42,7 +42,7 @@ module.exports = {
               "components/slider.md",
               "components/webview.md",
               "components/textview.md",
-                "components/page.md",
+              "components/page.md",
             ]
           },
         ]
