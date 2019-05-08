@@ -46,10 +46,10 @@
     </StackLayout>
 
     <StackLayout class="demo-panel">
-      <Label class="demo-panel__title hidden-sm" text="Add Children"></Label>
+      <Label class="demo-panel__title" text="Add Children"></Label>
       <StackLayout class="form-group">
         <StackLayout orientation="horizontal">
-          <Label text="Actions: " class="hidden-sm" width="110"/>
+          <Label text="Actions: " width="110"/>
           <Button
             class="m-g-3"
             @tap="addNewLabel()"
@@ -61,7 +61,7 @@
             id="wraplayout_removeAll__button"
           >Remove Children</Button>
           <Button
-            class="m-g-3 hidden-sm"
+            class="m-g-3"
             @tap="removeLast()"
             id="wraplayout_removeLast__button"
           >Remove Last Child</Button>
