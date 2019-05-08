@@ -16,13 +16,13 @@ sidebarDepth: 0
 ```html
 <TabView :selectedIndex="selectedIndex" @selectedIndexChanged="changed">
   <TabViewItem title="Tab 1" webIcon="fa fa-eye">
-    <label text="1" />
+    <Label text="1" />
   </TabViewItem>
   <TabViewItem title="Tab 2">
-    <label text="2" />
+    <Label text="2" />
   </TabViewItem>
   <TabViewItem title="Tab 3">
-    <label text="3" />
+    <Label text="3" />
   </TabViewItem>
 </TabView>
 ```
@@ -38,16 +38,16 @@ sidebarDepth: 0
 <TabView class="container" @selectedIndexChanged="changed">
   <TabViewItem title="La Liga" id="la-liga">
     <StackLayout>
-      <label text="Barcelona" />
-      <label text="Atletico Madrid" />
-      <label text="Real Madrid" />
+      <Label text="Barcelona" />
+      <Label text="Atletico Madrid" />
+      <Label text="Real Madrid" />
     </StackLayout>
   </TabViewItem>
   <TabViewItem title="Premier League" id="premier">
     <StackLayout>
-      <label text="Liverpool" />
-      <label text="Man. City" />
-      <label text="Chelsea" />
+      <Label text="Liverpool" />
+      <Label text="Man. City" />
+      <Label text="Chelsea" />
     </StackLayout>
   </TabViewItem>
 </TabView>

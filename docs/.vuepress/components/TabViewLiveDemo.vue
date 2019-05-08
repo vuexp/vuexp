@@ -25,15 +25,27 @@
         <Label text="Title:" />
         <TextField v-model="tabs[selectedIndex].title" :id="`tabView__title__input__${selectedIndex}`" hint="title of selected tab" />
         <Label text="Web icon" />
-        <select id="tabView__shareicon__select" v-model="tabs[selectedIndex].webIcon">
+        <select v-model="tabs[selectedIndex].webIcon">
           <option v-for="icon in icons" v-bind:value="icon">{{ icon }}</option>
         </select>
         <Label text="Tab Text Color" />
         <input type="color" id="tabView__tabTextColor__input" name="tabTextColor" :value="tabTextColor" @change="changeTabTextColor($event)" />
         <Label text="Tab Background Color" />
-        <input type="color" id="tabView__tabBackgroundColor__input" name="tabBackgroundColor" :value="tabBackgroundColor" @change="changeTabBackgroundColor($event)" />
+        <input
+          type="color"
+          id="tabView__tabBackgroundColor__input"
+          name="tabBackgroundColor"
+          :value="tabBackgroundColor"
+          @change="changeTabBackgroundColor($event)"
+        />
         <Label text="Selected Tab Text Color" />
-        <input type="color" id="tabView__selectedTabTextColor__input" name="selectedTabTextColor" :value="selectedTabTextColor" @change="changeSelectedTabTextColor($event)" />
+        <input
+          type="color"
+          id="tabView__selectedTabTextColor__input"
+          name="selectedTabTextColor"
+          :value="selectedTabTextColor"
+          @change="changeSelectedTabTextColor($event)"
+        />
         <Label text="Note: You should press ENTER, after select color" />
       </StackLayout>
     </StackLayout>
@@ -100,11 +112,16 @@ export default {
     changeSelectedTabTextColor(e) {
       this.selectedTabTextColor = e.target.value;
     },
+    changeTabWebIcon(e, i) {
+      console.log(e, i);
+    },
   },
 };
 </script>
 
 <style scoped lang="scss">
+@import url('/fonts/fontawesome.min.css');
+
 .container {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

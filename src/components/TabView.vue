@@ -12,7 +12,11 @@
         @keyup.enter="chooseTab(index)"
         @keyup.space="chooseTab(index)"
       >
-        <span v-if="tab.icon" class="vxp-tab-view__header__tab__icon" :class="tab.icon"></span>
+        <span
+          v-if="tab.webIcon !== null || typeof tab.webIcon !== 'undefined' || tab.webIcon !== ''"
+          class="vxp-tab-view__header__tab__icon"
+          :class="tab.webIcon"
+        ></span>
         <span class="vxp-tab-view__header__tab__title" :style="[currentTabIndex === index ? { color: selectedTabTextColor } : { color: tabTextColor }]">{{
           tab.title
         }}</span>
@@ -121,6 +125,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('/fonts/fontawesome.min.css');
+
 .vxp-tab-view {
   display: flex;
   flex-direction: column;
