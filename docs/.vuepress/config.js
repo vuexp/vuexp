@@ -38,7 +38,8 @@ module.exports = {
               "components/frame.md",
               "components/button.md",
               "components/textfield.md",
-              "components/slider.md"
+              "components/slider.md",
+              "components/textview.md",
             ]
           },
         ]
