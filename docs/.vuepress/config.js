@@ -42,8 +42,7 @@ module.exports = {
               "components/slider.md",
               "components/webview.md",
               "components/textview.md",
-                "components/textview.md",
-                "components/tabview.md",
+              "components/tabview.md",
             ]
           },
         ]
