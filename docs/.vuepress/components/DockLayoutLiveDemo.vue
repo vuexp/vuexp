@@ -110,7 +110,7 @@
         style="margin-top:10px"
         class="input-param-row"
       >
-        <StackLayout orientation="horizontal" class="editor-param">
+        <StackLayout orientation="horizontal" class="editor-param" :key="'child_text' + index">
           <Label class="editor-param-title" text="Text: "/>
           <TextField
             :id="'docklayout_childreneditor_name' + index"
@@ -118,7 +118,7 @@
             v-model="dockChildrenList[index].text"
           />
         </StackLayout>
-        <StackLayout orientation="horizontal" class="editor-param">
+        <StackLayout orientation="horizontal" class="editor-param" :key="'child_width' + index">
           <Label class="editor-param-title" text="Width:"/>
           <TextField
             :id="'docklayout_childreneditor_width' + index"
@@ -126,7 +126,7 @@
             v-model="dockChildrenList[index].width"
           />
         </StackLayout>
-        <StackLayout orientation="horizontal" class="editor-param">
+        <StackLayout orientation="horizontal" class="editor-param" :key="'child_height' + index">
           <Label class="editor-param-title" text="Height: "/>
           <TextField
             :id="'docklayout_childreneditor_height' + index"
@@ -134,7 +134,7 @@
             v-model="dockChildrenList[index].height"
           />
         </StackLayout>
-        <StackLayout orientation="horizontal" class="editor-param">
+        <StackLayout orientation="horizontal" class="editor-param" :key="'child_bgcolor' + index">
           <Label class="editor-param-title" text="BgColor: "/>
           <select
             :id="'docklayout_childreneditor_color' + index"
@@ -151,7 +151,7 @@
             <option>gray</option>
           </select>
         </StackLayout>
-        <StackLayout orientation="horizontal" class="editor-param">
+        <StackLayout orientation="horizontal" class="editor-param"  :key="'child_dock' + index">
           <Label class="editor-param-title" text="Dock: "/>
           <select
             :id="'docklayout_childreneditor_dock' + index"
@@ -166,7 +166,7 @@
             <option>center</option>
           </select>
         </StackLayout>
-        <StackLayout orientation="horizontal" class="editor-param">
+        <StackLayout orientation="horizontal" class="editor-param" :key="'child_removebutton' + index">
           <Button
             :id="'docklayout_childreneditor_removechild' + index"
             @tap="removeChildAtIndex(index)"
