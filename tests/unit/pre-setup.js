@@ -6,6 +6,6 @@ require('jsdom-global')(undefined, { pretendToBeVisual: true, url: 'http://local
 // a function" than pinning an old version of prettier.
 window.Date = Date;
 
-global.navigator = { userAgent: 'node.js', appVersion: '' };
+global.navigator = { userAgent: 'node.js', appVersion: '', onLine: true };
 global.RTCPeerConnection = {};
 global.RTCSessionDescription = {};
