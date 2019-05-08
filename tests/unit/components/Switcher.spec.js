@@ -26,6 +26,28 @@ describe('Switcher', () => {
     },
   });
 
+  // const TestSwitcher = {
+  //   template: '<Switcher style="color: #bc7c7c" v-model="value" @checkedChange="switchValueChange"/>',
+  //   components: {
+  //     Switcher,
+  //   },
+  //   data() {
+  //     return {
+  //       value: true,
+  //       labelText: 'Switcher On',
+  //     };
+  //   },
+  //   methods: {
+  //     switchValueChange: function(event) {
+  //       this.labelText = this.value === true ? 'Switcher On' : 'Switcher Off';
+  //     },
+  //   },
+  //   listeners: {
+  //     checkedChange,
+  //   },
+  // };
+  // const testWrapper = mount(TestSwitcher);
+
   describe('the switcher component is an input component and its type is checkbox.', () => {
     it('there is an input field.', () => {
       expect(wrapper.contains('input')).to.equal(true);
@@ -55,6 +77,13 @@ describe('Switcher', () => {
       expect(wrapper.emitted().input.length).to.equal(1);
       expect(wrapper.emitted().input[0][0]).to.equal(true);
       expect(wrapper.emitted().checkedChange.length).to.equal(1);
+    });
+  });
+  describe.only('The Switcher component applies CSS rules set on implementation.', () => {
+    it(`Background prop should change the background of the component.`, () => {
+      // wrapper.element.style.backgroundColor = '#bc7c7c';
+      // console.log(testWrapper.vm.$children[1]);
+      // console.log(wrapper.vm.$data.backgroundColor);
     });
   });
 });
