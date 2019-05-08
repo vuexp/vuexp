@@ -19,6 +19,7 @@ module.exports = {
               "layouts/flexbox-layout.md",
               "layouts/dock-layout.md",
               "layouts/wraplayout.md",
+              "layouts/grid-layout.md",
             ]
           },
           {
