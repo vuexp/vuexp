@@ -23,7 +23,7 @@ export default {
   name: 'PageDoc',
   data() {
     return {
-      actionBarHidden: false
+      actionBarHidden: false,
     };
   },
   components: {
