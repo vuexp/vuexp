@@ -65,16 +65,16 @@ export default {
 `Frames` can be multiple
 
 ```html
-<Frame />
+<Frame>
     <TextView v-model="textViewInput" :editable="true" />
+    <WebView src="<div><h1>Some static HTML</h1></div>" />
 <Frame />
-<WebView src="<div><h1>Some static HTML</h1></div>" />
 <!--A frame with a default page -->
 <Frame>
   <Page>
     <ActionBar title="Default Page Title" />
     <GridLayout columns="*, *" rows="*, *">
-      <label text="Default Page Content" />
+      <Label text="Default Page Content" />
     </GridLayout>
   </Page>
 </Frame>

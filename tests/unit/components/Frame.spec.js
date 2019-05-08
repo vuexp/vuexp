@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
-import { Frame, Label } from '../../../src/main';
+import Frame from '../../../src/components/Frame';
+import Label from '../../../src/components/Label';
 
 describe('Frame.vue', () => {
   const LabelWrapper = {
