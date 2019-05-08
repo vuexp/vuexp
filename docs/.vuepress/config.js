@@ -40,7 +40,7 @@ module.exports = {
             "components/textfield.md",
             "components/slider.md",
             "components/textview.md",
-              'components/page.md',
+            "components/page.md",
           ]
         },
       ]
