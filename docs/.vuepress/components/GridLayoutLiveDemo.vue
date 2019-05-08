@@ -200,7 +200,7 @@
       <Label text="Rendered Result" class="demo-panel__title"/>
       <GridLayout :columns="getColumnSelectType" :rows="getRowSelectType" backgroundColor="#3c495e">        
         <Label
-          v-for="(gridChild, index) in gridItemList"
+          v-for="(gridChild) in gridItemList"
           v-bind="gridChild"
           :key="'gridChild_' + getRandInt()"
         />
