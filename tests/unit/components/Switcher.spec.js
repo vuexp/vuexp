@@ -26,27 +26,29 @@ describe('Switcher', () => {
     },
   });
 
-  // const TestSwitcher = {
-  //   template: '<Switcher style="color: #bc7c7c" v-model="value" @checkedChange="switchValueChange"/>',
-  //   components: {
-  //     Switcher,
-  //   },
-  //   data() {
-  //     return {
-  //       value: true,
-  //       labelText: 'Switcher On',
-  //     };
-  //   },
-  //   methods: {
-  //     switchValueChange: function(event) {
-  //       this.labelText = this.value === true ? 'Switcher On' : 'Switcher Off';
-  //     },
-  //   },
-  //   listeners: {
-  //     checkedChange,
-  //   },
-  // };
-  // const testWrapper = mount(TestSwitcher);
+  const backgroundColor = 'rgb(188, 124, 124)';
+  const buttonColor = 'rgb(255, 0, 0)';
+  const TestSwitcher = {
+    template: `<Switcher style="color: ${buttonColor}; background: ${backgroundColor}" v-model="value" @checkedChange="switchValueChange"/>`,
+    components: {
+      Switcher,
+    },
+    data() {
+      return {
+        value: true,
+        labelText: 'Switcher On',
+      };
+    },
+    methods: {
+      switchValueChange: function() {
+        this.labelText = this.value === true ? 'Switcher On' : 'Switcher Off';
+      },
+    },
+    listeners: {
+      checkedChange,
+    },
+  };
+  const testWrapper = mount(TestSwitcher);
 
   describe('the switcher component is an input component and its type is checkbox.', () => {
     it('there is an input field.', () => {
@@ -79,11 +81,12 @@ describe('Switcher', () => {
       expect(wrapper.emitted().checkedChange.length).to.equal(1);
     });
   });
-  describe.only('The Switcher component applies CSS rules set on implementation.', () => {
-    it(`Background prop should change the background of the component.`, () => {
-      // wrapper.element.style.backgroundColor = '#bc7c7c';
-      // console.log(testWrapper.vm.$children[1]);
-      // console.log(wrapper.vm.$data.backgroundColor);
+  describe('The Switcher component applies CSS rules set on implementation.', () => {
+    it(`Background prop should change the background of the component to ${backgroundColor}`, () => {
+      expect(testWrapper.find(Switcher).vm.$data.backgroundColor).to.equal(backgroundColor);
+    });
+    it(`Button color prop should change the button color of the component to ${buttonColor}`, () => {
+      expect(testWrapper.find(Switcher).vm.$data.buttonColor).to.equal(buttonColor);
     });
   });
 });
