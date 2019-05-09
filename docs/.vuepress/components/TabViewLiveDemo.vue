@@ -69,7 +69,7 @@ export default {
   components: { Label, TabViewItem, TabView, StackLayout, TextField },
   data() {
     return {
-      selectedIndex: 2,
+      selectedIndex: 0,
       tabTextColor: '#000000',
       tabBackgroundColor: '#f9f9f9',
       selectedTabTextColor: '#000000',
