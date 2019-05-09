@@ -1,9 +1,9 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
-import Frame from '../../../src/components/Frame';
+import Page from '../../../src/components/Page';
 import Label from '../../../src/components/Label';
 
-describe('Frame.vue', () => {
+describe('Page.vue', () => {
   const LabelWrapper = {
     render(h) {
       return h(Label, {
@@ -17,8 +17,8 @@ describe('Frame.vue', () => {
       });
     },
   };
-  const wrapper = mount(Frame, {
-    name: 'Frame',
+  const wrapper = mount(Page, {
+    name: 'Page',
     slots: {
       default: [LabelWrapper],
     },
@@ -30,13 +30,13 @@ describe('Frame.vue', () => {
     });
   });
 
-  describe('frame component contains label component', () => {
-    it('there is one label component inside the frame.', () => {
+  describe('page component contains label component', () => {
+    it('there is one label component inside the page.', () => {
       const labelWrappers = wrapper.findAll(Label).wrappers;
       expect(labelWrappers.length).to.equal(1);
     });
 
-    it('label component displays the given text prop(`label`) correctly inside the frame.', () => {
+    it('label component displays the given text prop(`label`) correctly inside the page.', () => {
       const labelWrappers = wrapper.findAll(Label).wrappers;
       const label = labelWrappers[0].find(Label);
       expect(label.element.textContent.trim()).to.equal('label');

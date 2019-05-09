@@ -154,7 +154,7 @@
     <!-- Children list editor -->
     <StackLayout orientation="vertical" class="demo-panel">
       <Label :text="'Children list (' + childrenList.length + ')'" class="demo-panel__title"/>
-      <StackLayout orientation="horizontal" v-for="(child, index) in childrenList">
+      <StackLayout orientation="horizontal" v-for="(child, index) in childrenList" :key="'children_list_row_' + index">
         <FlexboxLayout flexWrap="wrap" class="option-row">
           <Label class="editor-param-title" text="Text: "/>
           <TextField :id="'docklayout_childreneditor_name' + index" style="width:50px" v-model="childrenList[index].text" />
@@ -212,7 +212,7 @@
         :alignContent="alignContent"
       >
         <Label
-          v-for="(child, index) in childrenList"
+          v-for="child in childrenList"
           v-bind="child"
           :key="'flexboxLayoutChild_' + getRandInt()"
         />
