@@ -4,7 +4,7 @@
       <Label text="Add New Child" class="demo-panel__title" />
       <FlexboxLayout alignSelf="center" flex-wrap="wrap" style="margin-bottom:5px">
         <StackLayout orientation="horizontal" class="editor-param">
-          <Label text="Orientation: " />
+          <Label for="stacklayout_orientation_content" text="Orientation: " />
           <select id="stacklayout_orientation_content" style="margin-left: 5px" v-model="orientationType">
             <option disabled value>Orientation</option>
             <option>vertical</option>
@@ -24,8 +24,7 @@
           <TextField id="stacklayout_childheight_input" class="editor-param-input" v-model="stackChildHeight"></TextField>
         </StackLayout>
         <StackLayout orientation="horizontal" class="editor-param">
-          <Label class="editor-param-title" text="Color: " />
-
+          <Label for="stacklayout_childcolor_selectbox" class="editor-param-title" text="Color: " />
           <select id="stacklayout_childcolor_selectbox" style="margin-left: 5px" v-model="stackChildColor">
             <option disabled value>Color</option>
             <option>red</option>
@@ -41,7 +40,7 @@
 
       <FlexboxLayout flex-wrap="wrap" alignSelf="center">
         <StackLayout orientation="horizontal" class="editor-param">
-          <Label class="editor-param-title" text="Child Alignment Type: " />
+          <Label for="stacklayout_childalignmenttype_selectbox" class="editor-param-title" text="Child Alignment Type: " />
           <select id="stacklayout_childalignmenttype_selectbox" style="margin-left: 5px" v-model="stackChildAlignmentType">
             <option disabled value>Alignment Type</option>
             <option>verticalAlignment</option>
@@ -49,7 +48,7 @@
           </select>
         </StackLayout>
         <StackLayout orientation="horizontal" class="editor-param">
-          <Label class="editor-param-title" text="Child Alignment Value: " />
+          <Label for="stacklayout_childalignmentvalue_selectbox" class="editor-param-title" text="Child Alignment Value: " />
           <select id="stacklayout_childalignmentvalue_selectbox" style="margin-left: 5px" v-model="stackChildAlignmentValue">
             <option disabled value>Alignment Value</option>
             <option>top</option>
@@ -89,11 +88,11 @@
             <TextField :id="'stacklayout_childreneditor_width' + index" class="editor-param-input" v-model="stackChildrenList[index].width"></TextField>
           </StackLayout>
           <StackLayout orientation="horizontal" class="editor-param">
-            <Label class="editor-param-title" text="Height: " />
+            <Label for="stacklayout_childreneditor_height" class="editor-param-title" text="Height: " />
             <TextField :id="'stacklayout_childreneditor_height' + index" class="editor-param-input" v-model="stackChildrenList[index].height"></TextField>
           </StackLayout>
           <StackLayout orientation="horizontal" class="editor-param">
-            <Label class="editor-param-title" text="Color: " />
+            <Label for="stacklayout_childreneditor_color" class="editor-param-title" text="Color: " />
             <select :id="'stacklayout_childreneditor_color' + index" style="margin-left: 5px" v-model="stackChildrenList[index].backgroundColor">
               <option disabled value>Color</option>
               <option>red</option>
@@ -108,7 +107,7 @@
         </FlexboxLayout>
         <FlexboxLayout flex-wrap="wrap" alignSelf="center">
           <StackLayout orientation="horizontal" class="editor-param">
-            <Label class="editor-param-title" text="Alignment Type: " />
+            <Label for="stacklayout_childreneditor_alignment_type" class="editor-param-title" text="Alignment Type: " />
             <select :id="'stacklayout_childreneditor_alignment_type' + index" style="margin-left: 5px" v-model="stackChildrenList[index].alignmentType">
               <option disabled value>Alignment Type</option>
               <option>verticalAlignment</option>
@@ -116,7 +115,7 @@
             </select>
           </StackLayout>
           <StackLayout orientation="horizontal" class="editor-param">
-            <Label class="editor-param-title" text="Alignment Value: " />
+            <Label for="stacklayout_childreneditor_alignment_value" class="editor-param-title" text="Alignment Value: " />
             <select :id="'stacklayout_childreneditor_alignment_value' + index" class="editor-param-select" v-model="stackChildrenList[index].alignmentValue">
               <option disabled value>Alignment Value</option>
               <option>top</option>
