@@ -213,7 +213,7 @@ export default {
       dockChildWidth: '20',
       dockChildHeight: '20',
       dockChildColor: 'gray',
-      dockChildDockMode: 'left',
+      dockChildDockMode: 'center',
       dockChildrenList: [],
     };
   },
