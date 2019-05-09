@@ -13,7 +13,7 @@
         @keyup.space="chooseTab(index)"
       >
         <i
-          v-if="typeof tab.webIcon !== 'undefined' || tab.webIcon !== null || tab.webIcon !== ''"
+          v-if="typeof tab.webIcon !== 'undefined' && tab.webIcon !== null && tab.webIcon !== ''"
           class="vxp-tab-view__header__tab__icon"
           :class="tab.webIcon"
         ></i>
