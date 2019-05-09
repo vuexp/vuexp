@@ -14,7 +14,7 @@
     <StackLayout class="demo-panel">
       <Label text="Manage Segmented Bar Items" class="demo-panel__title"/>
       <StackLayout orientation="horizontal">
-        <Label text="Selected Tab Background Color:"></Label>
+        <Label text="Selected Tab Background Color:" for="segmentedBar__selectedBackgroundColor__label"></Label>
         <input
           type="color"
           v-model="selectedTabColor"
