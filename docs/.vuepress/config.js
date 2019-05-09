@@ -48,6 +48,13 @@ module.exports = {
             "components/tabview.md",
           ]
         },
+        {
+          title: "Dialogs",
+          collapsable: true,
+          children: [
+            "components/dialogs/confirm-dialog.md",
+          ]
+        },
       ]
     }
   },
