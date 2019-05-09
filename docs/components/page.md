@@ -21,7 +21,7 @@ sidebarDepth: 0
     </StackLayout>
     <StackLayout orientation="horizontal">
       <Label text="actionBarHidden:" />
-      <input type="checkbox" v-model="actionBarHidden" id="Page_actionBarHidden_input" />
+      <input aria-label="actionBarHidden" type="checkbox" v-model="actionBarHidden" id="Page_actionBarHidden_input" />
     </StackLayout>
   </StackLayout>
 </Page>
