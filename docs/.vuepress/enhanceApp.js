@@ -5,16 +5,23 @@ export default ({
   router // the router instance for the app
 }) => {
   if (typeof document !== "undefined" && typeof window !== "undefined") {
-    Object.keys(Plugins).forEach(function(key) {
-      if (Plugins[key].name) {
-        // Component registration
-        Vue.component(key, Plugins[key]);
-      } else if (Plugins[key].install) {
-        // Plugin registration
-        Vue.use(Plugins[key]);
-      }
-    });
+    addVxpPlugins(Vue);
   }
-
   router.push("/docs/");
 };
+function addVxpPlugins(Vue) {
+  Object.keys(Plugins).forEach(addPlugin(Vue));
+}
+
+function addPlugin(Vue) {
+  return function (key) {
+    if (Plugins[key].name) {
+      // Component registration
+      Vue.component(key, Plugins[key]);
+    }
+    else if (Plugins[key].install) {
+      // Plugin registration
+      Vue.use(Plugins[key]);
+    }
+  };
+}
