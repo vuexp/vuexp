@@ -27,6 +27,7 @@
       <FlexboxLayout flexWrap="wrap">
         <Label text="Flex Direction" class="option-label"/>
         <select id="flexboxlayout_flexdirection_selectbox" v-model="containerFlexDirection" class="option-input">
+          <option value=""></option>
           <option value="row">row</option>
           <option value="row-reverse">row-reverse</option>
           <option value="column">column</option>
@@ -37,6 +38,7 @@
       <FlexboxLayout flexWrap="wrap">
         <Label text="Flex Wrap" class="option-label"/>
         <select id="flexboxlayout_flexwrap_selectbox" v-model="flexWrap" class="option-input">
+          <option value=""></option>
           <option value="nowrap">nowrap</option>
           <option value="wrap">wrap</option>
           <option value="wrap-reverse">wrap-reverse</option>
@@ -46,6 +48,7 @@
       <FlexboxLayout flexWrap="wrap">
         <Label text="Justify Content" class="option-label"/>
         <select id="flexboxlayout_justifycontent_selectbox" v-model="justifyContent" class="option-input">
+          <option value=""></option>
           <option value="flex-start">flex-start</option>
           <option value="flex-end">flex-end</option>
           <option value="center">center</option>
@@ -57,6 +60,7 @@
       <FlexboxLayout flexWrap="wrap">
         <Label text="Align Items" class="option-label"/>
         <select id="flexboxlayout_alignitems_selectbox" v-model="alignItems" class="option-input">
+          <option value=""></option>
           <option value="flex-start">flex-start</option>
           <option value="flex-end">flex-end</option>
           <option value="center">center</option>
@@ -68,6 +72,7 @@
       <FlexboxLayout flexWrap="wrap">
         <Label text="Align Content" class="option-label"/>
         <select id="flexboxlayout_aligncontent_selectbox" v-model="alignContent" class="option-input">
+          <option value=""></option>
           <option value="flex-start">flex-start</option>
           <option value="flex-end">flex-end</option>
           <option value="center">center</option>
@@ -125,6 +130,7 @@
       <FlexboxLayout flexWrap="wrap">
         <Label text="Align Self" class="option-label"/>
         <select id="flexboxlayout_childalignself_selectbox" v-model="childAlignSelf" class="option-input">
+          <option value=""></option>
           <option value="flex-start">flex-start</option>
           <option value="flex-end">flex-end</option>
           <option value="center">center</option>
@@ -150,24 +156,24 @@
       <Label :text="'Children list (' + childrenList.length + ')'" class="demo-panel__title"/>
       <StackLayout orientation="horizontal" v-for="(child, index) in childrenList">
         <FlexboxLayout flexWrap="wrap" class="option-row">
-          <Label class="editor-param-title" text="T: "/>
+          <Label class="editor-param-title" text="Text: "/>
           <TextField :id="'docklayout_childreneditor_name' + index" style="width:50px" v-model="childrenList[index].text" />
 
-          <Label class="editor-param-title" text="W:"/>
+          <Label class="editor-param-title" text="Width:"/>
           <TextField
             :id="'docklayout_childreneditor_width' + index"
             class="editor-param-input"
             v-model="childrenList[index].width"
           />
 
-          <Label class="editor-param-title" text="H: "/>
+          <Label class="editor-param-title" text="Height: "/>
           <TextField
             :id="'docklayout_childreneditor_height' + index"
             class="editor-param-input"
             v-model="childrenList[index].height"
           />
 
-          <Label class="editor-param-title" text="C: "/>
+          <Label class="editor-param-title" text="Color: "/>
           <select
             :id="'docklayout_childreneditor_color' + index"
             style="margin-left: 5px"
