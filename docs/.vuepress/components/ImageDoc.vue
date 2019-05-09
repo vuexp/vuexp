@@ -1,6 +1,6 @@
 <template>
-  <StackLayout style="width: 300px; margin:auto;">
-    <StackLayout class="stack-cell">
+  <StackLayout style="width: 400px; margin:auto;">
+    <StackLayout style="width: 400px; height: 200px;" class="stack-cell">
       <Img :src="src" :stretch="stretch" />
     </StackLayout>
 
