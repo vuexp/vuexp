@@ -43,6 +43,7 @@ module.exports = {
               "components/webview.md",
               "components/textview.md",
               "components/progress.md",
+              "components/frame.md",
             ]
           },
         ]
