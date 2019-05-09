@@ -1,45 +1,46 @@
 <template>
   <StackLayout>
     <StackLayout class="demo-panel">
-      <Label text="Label Properties" class="demo-panel__title"/>
+      <Label text="Label Properties" class="demo-panel__title" />
 
       <FlexboxLayout flexWrap="wrap">
-        <Label text="Text" class="option-label"/>
-        <TextField id="label_text_input" v-model="labelValue" class="option-input"/>
+        <Label text="Text" class="option-label" />
+        <TextField id="label_text_input" v-model="labelValue" class="option-input" />
       </FlexboxLayout>
 
       <FlexboxLayout flexWrap="wrap">
-        <Label text="Text Wrap" class="option-label"/>
-        <input id="label_textwrap_cb" type="checkbox" v-model="textWrap">
+        <Label text="Text Wrap" class="option-label" />
+        <input id="label_textwrap_cb" type="checkbox" v-model="textWrap" />
       </FlexboxLayout>
-      
     </StackLayout>
 
     <StackLayout class="demo-panel">
-      <Label text="Component" class="demo-panel__title"/>
+      <Label text="Component" class="demo-panel__title" />
       <Label id="label_component" :text="labelValue" :textWrap="textWrap" />
     </StackLayout>
   </StackLayout>
 </template>
 
 <script>
-import Label from '../../../src/components/Label'
-import StackLayout from '../../../src/layouts/StackLayout'
+import Label from '../../../src/components/Label';
+import StackLayout from '../../../src/layouts/StackLayout';
 import TextField from '../../../src/components/TextField';
+import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
 
 export default {
   name: 'LabelLiveDemo',
   data() {
     return {
       labelValue: 'Label',
-      textWrap: false
+      textWrap: false,
     };
   },
   components: {
+    FlexboxLayout,
     Label,
     StackLayout,
-    TextField
-  }
+    TextField,
+  },
 };
 </script>
 
@@ -56,9 +57,9 @@ export default {
   border: 1px solid #f1f1f1;
 
   &__title {
-    font-size:20px; 
-    font-weight:bold; 
-    margin-bottom:10px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
   }
 }
 

@@ -109,6 +109,7 @@
         v-for="(dockChild, index) in dockChildrenList"
         style="margin-top:10px"
         class="input-param-row"
+        :key="'children_list_row_' + index"
       >
         <StackLayout orientation="horizontal" class="editor-param">
           <Label class="editor-param-title" text="Text: "/>
@@ -212,7 +213,7 @@ export default {
       dockChildWidth: '20',
       dockChildHeight: '20',
       dockChildColor: 'gray',
-      dockChildDockMode: 'left',
+      dockChildDockMode: 'center',
       dockChildrenList: [],
     };
   },
