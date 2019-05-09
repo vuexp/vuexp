@@ -297,7 +297,6 @@ export default {
           }
           if (this.currentRowNo < rowItem.rowNo) {
             this.currentRowNo = rowItem.rowNo;
-            
           }
 
           const item = {
@@ -382,6 +381,9 @@ export default {
       if (this.currentColumnNo > -1 ) {
         this.currentColumnNo--;
       }
+      if (this.columnChildrenList.length === 0){
+        this.currentColumnNo = -1;
+      } 
       this.updateGridItems();
     },
     removeRowAtIndex(index) {
@@ -389,6 +391,9 @@ export default {
       if (this.currentRowNo > -1 ) {
         this.currentRowNo--;
       }
+      if (this.rowChildrenList.length === 0){
+        this.currentRowNo = -1;
+      } 
       this.updateGridItems();
     },
     getRandInt() {
