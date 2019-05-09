@@ -208,7 +208,7 @@ export default {
   name: 'DockLayoutLiveDemo',
   data() {
     return {
-      stretchLastChildSelected: true,
+      stretchLastChildSelected: false,
       dockChildText: 'Test',
       dockChildWidth: '20',
       dockChildHeight: '20',
