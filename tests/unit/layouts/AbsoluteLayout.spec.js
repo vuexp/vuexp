@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
-import { Label } from '../../../src/main';
+import Label from '../../../src/components/Label';
 import AbsoluteLayout from '../../../src/layouts/AbsoluteLayout.vue';
 
 describe('Absolute Layout', () => {
