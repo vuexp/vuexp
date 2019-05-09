@@ -22,9 +22,9 @@ export default {
   },
   methods: {
     showConfirmDialog() {
-      confirm("Your title", "Your message", "OK", "Cancel").then((result) => {
-        this.result = result ? "Pressed OK" : "Pressed Cancel";
-      });
+     confirm({ title: "Your title", message: "Your message",okButtonText: "OK", cancelButtonText: "Cancel"}).then((result) => {
+      this.result = result ? "Pressed OK" : "Pressed Cancel";
+});
     }
   },
   components: {
