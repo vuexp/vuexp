@@ -78,7 +78,7 @@
     <!-- Children list editor -->
     <StackLayout orientation="vertical" class="demo-panel">
       <Label :text="'Children List (' + stackChildrenList.length + ')'" class="demo-panel__title" />
-      <StackLayout v-for="(stackChild, index) in stackChildrenList" class="child-panel" alignSelf="center">
+      <StackLayout v-for="(stackChild, index) in stackChildrenList" :key="'stackChild_' + getRandInt()" class="child-panel" alignSelf="center">
         <FlexboxLayout flex-wrap="wrap" alignSelf="center">
           <StackLayout orientation="horizontal" class="editor-param">
             <Label class="editor-param-title" text="Top: " />
@@ -139,7 +139,7 @@
     <StackLayout style="margin-top:20px" class="demo-panel">
       <Label text="Rendered Result" class="demo-panel__title" />
       <StackLayout id="stacklayout_thestacklayout" :orientation="orientationType" class="stack">
-        <Label v-for="(stackChild, index) in labelList" v-bind="stackChild" :key="'stackChild_' + getRandInt()" />
+        <Label v-for="stackChild in labelList" v-bind="stackChild" :key="'stackChild_' + getRandInt()" />
       </StackLayout>
     </StackLayout>
   </StackLayout>
