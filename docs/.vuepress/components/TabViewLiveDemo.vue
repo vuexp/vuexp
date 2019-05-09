@@ -28,25 +28,30 @@
         <select v-model="tabs[selectedIndex].webIcon">
           <option v-for="icon in icons" v-bind:value="icon">{{ icon }}</option>
         </select>
-        <Label text="Tab Text Color" />
-        <input type="color" id="tabView__tabTextColor__input" name="tabTextColor" :value="tabTextColor" @change="changeTabTextColor($event)" />
-        <Label text="Tab Background Color" />
-        <input
-          type="color"
-          id="tabView__tabBackgroundColor__input"
-          name="tabBackgroundColor"
-          :value="tabBackgroundColor"
-          @change="changeTabBackgroundColor($event)"
-        />
-        <Label text="Selected Tab Text Color" />
-        <input
-          type="color"
-          id="tabView__selectedTabTextColor__input"
-          name="selectedTabTextColor"
-          :value="selectedTabTextColor"
-          @change="changeSelectedTabTextColor($event)"
-        />
-        <Label text="Note: You should press ENTER, after select color" />
+        <StackLayout>
+          <Label id="tabView__tabTextColor__label" :text="tabTextColorComputed" />
+          <input type="color" id="tabView__tabTextColor__input" name="tabTextColor" :value="tabTextColor" @change="changeTabTextColor($event)" />
+        </StackLayout>
+        <StackLayout>
+          <Label id="tabView__tabBackgroundColor__label" :text="tabBackgroundColorComputed" />
+          <input
+            type="color"
+            id="tabView__tabBackgroundColor__input"
+            name="tabBackgroundColor"
+            :value="tabBackgroundColor"
+            @change="changeTabBackgroundColor($event)"
+          />
+        </StackLayout>
+        <StackLayout>
+          <Label id="tabView__selectedTabTextColor__label" :text="selectedTabTextColorComputed" />
+          <input
+            type="color"
+            id="tabView__selectedTabTextColor__input"
+            name="selectedTabTextColor"
+            :value="selectedTabTextColor"
+            @change="changeSelectedTabTextColor($event)"
+          />
+        </StackLayout>
       </StackLayout>
     </StackLayout>
   </StackLayout>
@@ -72,28 +77,37 @@ export default {
         {
           id: '1',
           title: 'Tab 1',
-          webIcon: 'fa fa-laugh',
+          webIcon: 'fa fa-smile-o',
           innerText: 'Content for Tab 1',
         },
         {
           id: '2',
           title: 'Tab 2',
-          webIcon: 'fa fa-laugh-wink',
+          webIcon: 'fa fa-user-circle-o',
           innerText: 'Content for Tab 2',
         },
         {
           id: '3',
           title: 'Tab 3',
-          webIcon: 'fa fa-smile',
+          webIcon: 'fa fa-exclamation-triangle',
           innerText: 'Content for Tab 3',
         },
       ],
-      icons: ['fa fa-laugh', 'fa fa-laugh-wink', 'fa fa-smile'],
+      icons: ['', 'fa fa-smile-o', 'fa fa-user-circle-o', 'fa fa-exclamation-triangle'],
     };
   },
   computed: {
     selectedIndexComputed() {
       return `Selected Index: ${this.selectedIndex}`;
+    },
+    tabTextColorComputed() {
+      return `Tab Text Color: ${this.tabTextColor}`;
+    },
+    tabBackgroundColorComputed() {
+      return `Tab Background Color: ${this.tabBackgroundColor}`;
+    },
+    selectedTabTextColorComputed() {
+      return `Selected Tab Text Color: ${this.selectedTabTextColor}`;
     },
   },
   methods: {

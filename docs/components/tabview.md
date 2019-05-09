@@ -33,6 +33,8 @@ sidebarDepth: 0
 ## Example Usages
 
 <DocExampleBox  :liveDemoMode="true">
+<TabViewDoc />
+</DocExampleBox>
 
 ```html
 <TabView class="container" @selectedIndexChanged="changed">
@@ -52,9 +54,6 @@ sidebarDepth: 0
   </TabViewItem>
 </TabView>
 ```
-
-<TabViewDoc />
-</DocExampleBox>
 
 ## Props
 
