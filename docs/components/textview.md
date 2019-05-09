@@ -31,7 +31,7 @@ This is an overview of the most common usage of `<TextView>`.
 | text | String | | ✔ | ✔ | Gets or sets the value of the component. |
 | hint | String | | ✔ | ✔ | Gets or sets the placeholder text when the component is editable. |
 | editable | Boolean | | ✔ | ✔ | When true, indicates that the user can edit the contents of the container. |
-| maxLength | Number | | ✔ | ✔ | Sets the maximum number of characters that can be entered in the container. |
+| maxLength | Number | unlimited | ✔ | ✔ | Sets the maximum number of characters that can be entered in the container. |
 | keyboardType | `datetime` , `phone` , `number` , `url` , `email` | | ✔ | ✔ | Shows a custom keyboard for easier text input. |
 | returnKeyType | `done` , `next` , `go` , `search` , `send` | | ✘ | ✔ | Gets or sets the label of the return key. |
 | autocorrect | Boolean | | ✔ | ✔ | Enables or disables autocorrect. |
