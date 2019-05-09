@@ -7,7 +7,6 @@
         :hint="hint"
         :editable="editable"
         :maxLength="maxLengthNumeric"
-        :keyboardType="keyboardType"
         :returnKeyType="returnKeyType"
         :autocorrect="autocorrect"
         @textChange="eventOutput = 'textChange'"
@@ -30,16 +29,6 @@
 		<StackLayout orientation="horizontal">
 			<Label text="maxLength:" />
 			<TextField v-model="maxLength" keyboardType="number" id="TextView_maxLength_textfield" />
-		</StackLayout>
-		<StackLayout orientation="horizontal">
-			<Label text="keyboardType:" />
-			<select v-model="keyboardType" id="TextView_keyboardType_select">
-				<option value="datetime" id="TextView_keyboardType_dateTime_option">datetime</option>
-				<option value="phone" id="TextView_keyboardType_phone_option">phone</option>
-				<option value="number" id="TextView_keyboardType_number_option">number</option>
-				<option value="url" id="TextView_keyboardType_url_option">url</option>
-				<option value="email" id="TextView_keyboardType_email_option">email</option>
-			</select>
 		</StackLayout>
 		<StackLayout orientation="horizontal">
 			<Label text="returnKeyType:" />
@@ -82,7 +71,6 @@
 				hint: '',
 				editable: true,
 				maxLength: "15",
-				keyboardType: 'email',
 				returnKeyType: 'done',
 				autocorrect: false,
 				eventOutput: ''
