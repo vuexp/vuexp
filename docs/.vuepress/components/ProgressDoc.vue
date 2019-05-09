@@ -1,6 +1,6 @@
 <template>
   <StackLayout class="progress">
-    <Progress :value="currentProgress" :maxValue="maxValueProgress"/>
+    <Progress :value="25" :maxValue="maxValueProgress"/>
   </StackLayout>
 </template>
 
@@ -13,20 +13,11 @@ export default {
   components: { StackLayout, Progress},
   data() {
     return {
-      currentProgress: 0,
+      currentProgress: 25,
       incrementValue: 25,
       maxValueProgress: 100,
     };
   },
-  created() {
-    setInterval(() => {
-      this.currentProgress += this.incrementValue;
-      if (this.currentProgress > this.maxValueProgress) {
-        this.currentProgress = 0;
-      }
-    }, 1000);
-  },
-
 };
 </script>
 

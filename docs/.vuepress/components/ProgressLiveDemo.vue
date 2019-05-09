@@ -55,7 +55,7 @@ export default {
   components: { Label, StackLayout, Progress, TextField, Button },
   data() {
     return {
-      currentProgress: 10,
+      currentProgress: 0,
       maxValueProgress: 70,
       maxValueInput: '70',
       increment: '10',

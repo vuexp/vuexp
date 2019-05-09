@@ -44,6 +44,11 @@ decrementValue() {
 
 
 ## Example Usages
+
+```html
+  <Progress :value="currentProgress" :maxValue="maxValueProgress"/>
+```
+
 <DocExampleBox codeBox="">
 <ProgressDoc />
 </DocExampleBox>
