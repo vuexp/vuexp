@@ -52,6 +52,6 @@ The `<DockLayout>` is a layout container that lets you dock child elements to th
 
 When an element is a direct child of `<DockLayout>`, you can work with the following additional properties.
 
-| Name | Type                                        | Default | Web | Mobile | Description |
-| ---- | ------------------------------------------- | ------- | --- | ------ | ----------- |
-| dock | `top`, `right`, `bottom`, `left` , `center` |         | ✔   | ✔      | Specifies which side to dock the element to. |
+| Name | Type   | Default  | Web | Mobile | Description |
+| ---- | ------ | -------- | --- | ------ | ----------- |
+| dock | String | `center` | ✔   | ✔      | Specifies which side to dock the element to. Valid values are `top`, `right`, `bottom`, `left` , `center` |
