@@ -44,6 +44,7 @@ module.exports = {
               "components/textview.md",
               "components/frame.md",
               "components/tabview.md",
+              "components/page.md",
             ]
           },
         ]
