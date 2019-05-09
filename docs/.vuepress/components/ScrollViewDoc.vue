@@ -18,7 +18,6 @@
      </StackLayout> 
       <StackLayout orientation="horizontal">
           <Label :text="scrollText" id="scrollview_scroll_label" class="scroll-view__margin_left"></Label>          
-         
       </StackLayout>       
     </StackLayout>
   </StackLayout>
@@ -34,7 +33,7 @@ export default {
   name: "ScrollViewDoc",
   data(){
     return {
-      scrollBarIndicatorVisible:false,
+      scrollBarIndicatorVisible:true,
       horizontal:false,
       scrollText: ''
     };
