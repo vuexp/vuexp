@@ -19,8 +19,8 @@ export default {
   },
   data() {
     return {
-      value: true,
-      labelText: 'Switcher On',
+      value: false,
+      labelText: 'Switcher Off',
     };
   },
   methods: {
