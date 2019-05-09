@@ -18,7 +18,7 @@
             <Label class="editor-param-title" :text="index"/>
           </StackLayout>
           <StackLayout v-if="(columnChildrenList[index].columnSelectType !== 'auto')" orientation="horizontal" class="editor-param">
-            <Label v-if="(columnChildrenList[index].columnSelectType !== 'auto')" class="editor-param-title" text="Input:"/>
+            <Label class="editor-param-title" text="Input:"/>
             <TextField
               :id="'gridlayout_columns_selectbox_px_input' + index"
               class="editor-param-input"

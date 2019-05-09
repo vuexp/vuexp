@@ -4,8 +4,18 @@ sidebarDepth: 0
 
 # GridLayout
 
-This is an overview of the most common usage of GridLayout.
-`GridLayout` is a layout container that lets you arrange its child in a table-like manner.
+`GridLayout` is a layout container that lets you arrange its child elements in a table-like manner.
+
+The grid consists of rows, columns, and cells. A cell can span one or more rows and one or more columns. It can contain multiple child elements which can span over multiple rows and columns, and even overlap each other.
+
+By default, `GridLayout` has one column and one row. You can add columns and rows by configuring the columns and the rows properties. In these properties, you need to set the number of columns and rows and their width and height. You set the number of columns by listing their widths, separated by a comma. You set the number of rows by listing their heights, separated by a comma.
+
+You can set a fixed size for column width and row height or you can create them in a responsive manner:
+
+An absolute number: Indicates a fixed size.
+auto: Makes the column as wide as its widest child or makes the row as tall as its tallest child.
+*: Takes as much space as available after filling all auto and fixed size columns or rows.
+
 
 ## Live Demo
 
