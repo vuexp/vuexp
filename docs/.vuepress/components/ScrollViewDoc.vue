@@ -29,7 +29,6 @@
 import ScrollView from '../../../src/components/ScrollView'
 import StackLayout from '../../../src/layouts/StackLayout'
 import Label from "../../../src/components/Label";
-import Button from "../../../src/components/Button";
 
 export default {
   name: "ScrollViewDoc",
@@ -59,8 +58,7 @@ export default {
   components :{
     StackLayout,
     ScrollView,
-    Label,
-    Button
+    Label
   }
 };
 
