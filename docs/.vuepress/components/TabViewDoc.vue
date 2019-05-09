@@ -23,12 +23,11 @@
 import Label from '../../../src/components/Label';
 import TabViewItem from '../../../src/components/TabViewItem';
 import TabView from '../../../src/components/TabView';
-import TextField from '../../../src/components/TextField';
 import StackLayout from '../../../src/layouts/StackLayout';
 
 export default {
   name: 'TabViewDoc',
-  components: { Label, TabViewItem, TabView, StackLayout, TextField },
+  components: { Label, TabViewItem, TabView, StackLayout },
   methods: {
     changed({ index }) {
       this.selectedIndex = index;
