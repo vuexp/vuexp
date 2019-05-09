@@ -88,7 +88,7 @@ Horizontal stack layout with vertically aligned children
 
 ## Props
 
-| Name        | Type                     | Default    | Web | Mobile |
-| ----------- | ------------------------ | ---------- | --- | ------ |
-| orientation | `vertical`, `horizontal` | `vertical` | ✔   | ✔      |
+| Name        | Type                     | Default    | Web | Mobile | Description |
+| ----------- | ------------------------ | ---------- | --- | ------ | ------------|
+| orientation | `vertical`, `horizontal` | `vertical` | ✔   | ✔      | Specifies the stacking direction. <br/> Valid values: vertical and horizontal.<br/> Default value: vertical.|
 
