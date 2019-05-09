@@ -9,6 +9,10 @@
         <Label text="actionBarHidden:" />
         <input type="checkbox" v-model="actionBarHidden" id="Page_actionBarHidden_input" />
       </StackLayout>
+      <StackLayout orientation="horizontal">
+        <Label text="Action Bar Hidden Status:" />
+        <Label id="Page_actionBarHidden_label" :text="actionBarHidden" />
+      </StackLayout>
     </StackLayout>
   </Page>
 </template>
