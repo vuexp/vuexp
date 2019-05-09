@@ -26,30 +26,6 @@ describe('Switcher', () => {
     },
   });
 
-  const backgroundColor = 'rgb(188, 124, 124)';
-  const buttonColor = 'rgb(255, 0, 0)';
-  const TestSwitcher = {
-    template: `<Switcher style="color: ${buttonColor}; background: ${backgroundColor}" v-model="value" @checkedChange="switchValueChange"/>`,
-    components: {
-      Switcher,
-    },
-    data() {
-      return {
-        value: true,
-        labelText: 'Switcher On',
-      };
-    },
-    methods: {
-      switchValueChange: function() {
-        this.labelText = this.value === true ? 'Switcher On' : 'Switcher Off';
-      },
-    },
-    listeners: {
-      checkedChange,
-    },
-  };
-  const testWrapper = mount(TestSwitcher);
-
   describe('the switcher component is an input component and its type is checkbox.', () => {
     it('there is an input field.', () => {
       expect(wrapper.contains('input')).to.equal(true);
@@ -82,6 +58,34 @@ describe('Switcher', () => {
     });
   });
   describe('The Switcher component applies CSS rules set on implementation.', () => {
+    const backgroundColor = 'rgb(188, 124, 124)';
+    const buttonColor = 'rgb(255, 0, 0)';
+    let testWrapper = null;
+
+    before(() => {
+      const TestSwitcher = {
+        template: `<Switcher style="color: ${buttonColor}; background: ${backgroundColor}" v-model="value" @checkedChange="switchValueChange"/>`,
+        components: {
+          Switcher,
+        },
+        data() {
+          return {
+            value: true,
+            labelText: 'Switcher On',
+          };
+        },
+        methods: {
+          switchValueChange: function() {
+            this.labelText = this.value === true ? 'Switcher On' : 'Switcher Off';
+          },
+        },
+        listeners: {
+          checkedChange,
+        },
+      };
+      testWrapper = mount(TestSwitcher);
+    });
+
     it(`Background prop should change the background of the component to ${backgroundColor}`, () => {
       expect(testWrapper.find(Switcher).vm.$data.backgroundColor).to.equal(backgroundColor);
     });
