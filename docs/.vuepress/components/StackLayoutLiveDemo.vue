@@ -1,16 +1,18 @@
 <template>
   <StackLayout>
     <StackLayout class="demo-panel">
-      <Label text="Add New Child" class="demo-panel__title" />
       <FlexboxLayout alignSelf="center" flex-wrap="wrap" style="margin-bottom:5px">
         <StackLayout orientation="horizontal" class="editor-param">
-          <Label for="stacklayout_orientation_content" text="Orientation: " />
+          <Label for="stacklayout_orientation_content" text="StackLayout Orientation: " />
           <select id="stacklayout_orientation_content" style="margin-left: 5px" v-model="orientationType">
             <option disabled value>Orientation</option>
             <option>vertical</option>
             <option>horizontal</option>
           </select>
         </StackLayout>
+      </FlexboxLayout>
+      <Label text="Add New Child" class="demo-panel__title" />
+      <FlexboxLayout alignSelf="center" flex-wrap="wrap" style="margin-bottom:5px">
         <StackLayout orientation="horizontal" class="editor-param">
           <Label class="editor-param-title" text="Text: " />
           <TextField id="stacklayout_childname_input" class="editor-param-input" v-model="stackChildText"></TextField>
@@ -40,7 +42,7 @@
 
       <FlexboxLayout flex-wrap="wrap" alignSelf="center">
         <StackLayout orientation="horizontal" class="editor-param">
-          <Label for="stacklayout_childalignmenttype_selectbox" class="editor-param-title" text="Child Alignment Type: " />
+          <Label for="stacklayout_childalignmenttype_selectbox" class="editor-param-title" text="Alignment Type: " />
           <select id="stacklayout_childalignmenttype_selectbox" style="margin-left: 5px" v-model="stackChildAlignmentType">
             <option disabled value>Alignment Type</option>
             <option>verticalAlignment</option>
@@ -48,7 +50,7 @@
           </select>
         </StackLayout>
         <StackLayout orientation="horizontal" class="editor-param">
-          <Label for="stacklayout_childalignmentvalue_selectbox" class="editor-param-title" text="Child Alignment Value: " />
+          <Label for="stacklayout_childalignmentvalue_selectbox" class="editor-param-title" text="Alignment Value: " />
           <select id="stacklayout_childalignmentvalue_selectbox" style="margin-left: 5px" v-model="stackChildAlignmentValue">
             <option disabled value>Alignment Value</option>
             <option>top</option>
