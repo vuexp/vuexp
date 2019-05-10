@@ -12,21 +12,7 @@ const VxpPlugin = {
         const alertDialogDom = alertDialog.$mount().$el;
         document.body.appendChild(alertDialogDom);
 
-        return new Promise(resolve => {
-          if (typeof messageText === 'string') {
-            alertDialog.message = messageText;
-          } else {
-            const { title, message, okButtonText } = messageText;
-            alertDialog.title = title;
-            alertDialog.message = message;
-            alertDialog.okButtonText = okButtonText;
-          }
-          alertDialog.isModalVisible = true;
-          alertDialog.$once('submit', $event => {
-            alertDialog.isModalVisible = false;
-            resolve($event);
-          });
-        });
+        return alertWrapper(messageText, alertDialog);
       };
 
       // Confirm Dialog
@@ -59,6 +45,24 @@ function confirmWrapper(messageText, confirmDialog) {
     confirmDialog.$once('submit', val => {
       confirmDialog.isModalVisible = false;
       resolve(val);
+    });
+  });
+}
+
+function alertWrapper(messageText, alertDialog) {
+  return new Promise(resolve => {
+    if (typeof messageText === 'string') {
+      alertDialog.message = messageText;
+    } else {
+      const { title, message, okButtonText } = messageText;
+      alertDialog.title = title;
+      alertDialog.message = message;
+      alertDialog.okButtonText = okButtonText;
+    }
+    alertDialog.isModalVisible = true;
+    alertDialog.$once('submit', $event => {
+      alertDialog.isModalVisible = false;
+      resolve($event);
     });
   });
 }
