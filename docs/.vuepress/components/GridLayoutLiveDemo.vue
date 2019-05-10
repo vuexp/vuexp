@@ -12,7 +12,7 @@
       <Label text="Grid Columns" class="demo-panel__title"/>
         <!-- add new grid column-->
         <Button id="gridlayout_columns_add_button" horizontalAlignment="center" class="grid-add-btn" text="➕ Add New Column" @tap="addNewGridColumn"/>
-        <FlexboxLayout horizontalAlignment="center" flexWrap="wrap" v-for="(columnChild, index) in columnChildrenList" :key="'gridCols_' + getRandInt()">
+        <FlexboxLayout horizontalAlignment="center" flexWrap="wrap" v-for="(columnChild, index) in columnChildrenList" :key="'gridCols_' + index">
           <StackLayout orientation="horizontal" class="editor-param">
             <Label class="" text="Col :"/>
             <Label class="editor-param-title" :text="index"/>
@@ -63,7 +63,7 @@
       <Label text="Grid Rows" class="demo-panel__title"/>
       <!-- add new grid column-->
       <Button  horizontalAlignment="center" id="gridlayout_rows_add_button" class="grid-add-btn" text="➕ Add New Row" @tap="addNewGridRow"/>
-      <FlexboxLayout horizontalAlignment="center" flexWrap="wrap" v-for="(rowChild, index) in rowChildrenList" :key="'gridRows_' + getRandInt()" >
+      <FlexboxLayout horizontalAlignment="center" flexWrap="wrap" v-for="(rowChild, index) in rowChildrenList" :key="'gridRows_' + index" >
         <StackLayout orientation="horizontal" class="editor-param">
           <Label class="" text="Row :"/>
           <Label class="editor-param-title" :text="index"/>
@@ -112,7 +112,7 @@
     <StackLayout class="demo-panel">
       <Label text="Grid Cells" class="demo-panel__title"/>
     <!--Grid cell list--->
-      <StackLayout orientation="vertical" class="demo-panel-child" v-for="(gridItem, index) in gridItemList" :key="'gridCells_' + getRandInt()">
+      <StackLayout orientation="vertical" class="demo-panel-child" v-for="(gridItem, index) in gridItemList" :key="'gridCells_' + index">
         <FlexboxLayout flexWrap="wrap" :class="{error: (maxRowNo < gridItem.row )}">
           <StackLayout orientation="horizontal" class="editor-param">
             <Label class="editor-param-title" text="Row No: "/>
@@ -203,9 +203,9 @@
       <Label text="Rendered Result" class="demo-panel__title"/>
       <GridLayout :columns="getColumnSelectType" :rows="getRowSelectType" backgroundColor="#3c495e">        
         <Label
-          v-for="(gridChild) in gridItemList"
+          v-for="(gridChild, index) in gridItemList"
           v-bind="gridChild"
-          :key="'gridChild_' + getRandInt()"
+          :key="'gridChild_' + index"
         />
       </GridLayout>
     </StackLayout>
@@ -272,6 +272,8 @@ export default {
     clearGrid() {
       this.rowChildrenList = [];
       this.columnChildrenList = [];
+      this.currentColumnNo = -1;
+      this.currentRowNo = -1;
       this.updateGridItems();
     },
     getRandomColor(){
@@ -396,9 +398,6 @@ export default {
       } 
       this.updateGridItems();
     },
-    getRandInt() {
-      return Math.floor(Math.random() * 100000);
-    },
   },
   components: {
     Label,
@@ -446,7 +445,7 @@ button {
 
 .grid-add-btn{
   padding: 10px 15px;
-  width: 150px;
+  width: 200px;
   margin: 0 5px 15px 5px;
 }
 
