@@ -47,6 +47,8 @@ module.exports = {
             "components/frame.md",
             "components/page.md",
             "components/tabview.md",
+            "components/segmented-bar.md",
+            "components/progress.md",
           ]
         },
         {
