@@ -46,7 +46,7 @@ module.exports = {
             "components/frame.md",
             "components/page.md",
             "components/tabview.md",
-            "components/segmentedBar.md",
+            "components/segmented-bar.md",
           ]
         },
         {
