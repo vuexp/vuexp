@@ -46,6 +46,9 @@ module.exports = {
             "components/frame.md",
             "components/page.md",
             "components/tabview.md",
+            "components/image.md",
+            "components/segmented-bar.md",
+            "components/progress.md",
           ]
         },
         {
@@ -53,6 +56,7 @@ module.exports = {
           collapsable: true,
           children: [
             "components/dialogs/confirm-dialog.md",
+            "components/dialogs/alert-dialog.md",
           ]
         },
       ]
