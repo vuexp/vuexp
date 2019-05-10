@@ -56,6 +56,7 @@ module.exports = {
           collapsable: true,
           children: [
             "components/dialogs/confirm-dialog.md",
+            "components/dialogs/alert-dialog.md",
           ]
         },
       ]
