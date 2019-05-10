@@ -1,7 +1,7 @@
 import ConfirmDialog from '../components/dialogs/ConfirmDialog';
 import AlertDialog from '../components/dialogs/AlertDialog';
 
-const NvwPlugin = {
+const VxpPlugin = {
   install: Vue => {
     if (typeof window !== 'undefined') {
       // Alert Dialog
@@ -43,7 +43,7 @@ const NvwPlugin = {
   },
 };
 
-export default NvwPlugin;
+export default VxpPlugin;
 function confirmWrapper(messageText, confirmDialog) {
   return new Promise(resolve => {
     if (typeof messageText === 'string') {

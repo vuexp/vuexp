@@ -1,10 +1,10 @@
 import { expect } from 'chai';
 import { shallowMount, createLocalVue } from '@vue/test-utils';
-import Nvw from '../../../../src/plugins';
+import VxpPlugin from '../../../../src/plugins';
 
 describe('Alert Dialog Plugin Testing', () => {
   const localVue = createLocalVue();
-  localVue.use(Nvw);
+  localVue.use(VxpPlugin);
 
   const title = 'Some title.';
   const message = 'Some message';

@@ -17,7 +17,7 @@ The `alert()` method shows a message and an OK button. Use it to show informatio
 
 ```js
    showAlertDialog: function() {
-      alert("Your title", "Your message", "OK").then(() => {
+      alert({title: "Your title", message: "Your message", okButtonText: "Your OK button text"}).then(() => {
         console.log("Alert dialog closed.");
       });
     }
