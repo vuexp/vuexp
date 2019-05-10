@@ -121,4 +121,21 @@ describe('Slider', () => {
       expect(testWrapper.find(Slider).vm.$data.thumbColor).to.equal(thumbColor);
     });
   });
+  describe('The Slider component should detect if browser is Edge.', () => {
+    let browserTestWrapper = null;
+    const mode = document.documentMode;
+    const wStyle = window.StyleMedia;
+    before(() => {
+      document.documentMode = 0;
+      window.StyleMedia = 1;
+      browserTestWrapper = mount(Slider);
+    });
+    it('The isEdgeBrowser prop should be true.', () => {
+      expect(browserTestWrapper.vm.$data.isEdgeBrowser).to.equal(true);
+    });
+    after(() => {
+      document.documentMode = mode;
+      window.StyleMedia = wStyle;
+    });
+  });
 });
