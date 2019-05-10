@@ -61,7 +61,7 @@ export default {
     justify-content: space-between;
     &__cancel-button,
     &__ok-button {
-      @include nvw-dialog-button;
+      @include vxp-dialog-button;
     }
     &__ok-button {
       margin-left: 20px;
