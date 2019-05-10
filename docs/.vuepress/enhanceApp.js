@@ -7,7 +7,6 @@ export default ({
   if (typeof document !== "undefined" && typeof window !== "undefined") {
     addVxpPlugins(Vue);
   }
-  router.push("/docs/");
 };
 function addVxpPlugins(Vue) {
   Object.keys(Plugins).forEach(addPlugin(Vue));
