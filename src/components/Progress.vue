@@ -1,6 +1,6 @@
 <template>
-  <div class="nvw-progress">
-    <div class="nvw-progress__bar" :style="{ width: this.progressValuePercentage }"></div>
+  <div class="vxp-progress">
+    <div class="vxp-progress__bar" :style="{ width: this.progressValuePercentage }"></div>
   </div>
 </template>
 
@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style lang="scss">
-.nvw-progress {
+.vxp-progress {
   width: 100%;
   background-color: #ddd;
 
