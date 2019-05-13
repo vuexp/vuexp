@@ -59,17 +59,13 @@
           <Label class="control-label p-l-2" text="Change Delete Icon"></Label>
           <i class="bar"></i>
         </StackLayout>
-        <Label
-          v-if="shareClickedVisible"
-          id="actionbar__shareicon__label"
-          text="Share Icon Clicked"
-        ></Label>
-        <Label
-          v-if="deleteClickedVisible"
-          id="actionbar__deleteicon__label"
-          text="Delete Icon Clicked"
-        ></Label>
       </StackLayout>
+      <Label v-if="shareClickedVisible" id="actionbar__shareicon__label" text="Share Icon Clicked"></Label>
+      <Label
+        v-if="deleteClickedVisible"
+        id="actionbar__deleteicon__label"
+        text="Delete Icon Clicked"
+      ></Label>
     </StackLayout>
     <StackLayout class="prop-container">
       <Label text="Children"></Label>
