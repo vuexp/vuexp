@@ -19,7 +19,6 @@ module.exports = {
         this.expect.element('@textOutputField').to.be.visible;
         return this;
       },
-
       setTextToLabel: function(text) {
         return this.waitForElementVisible('@textInputField', 10000)
           .clearValue('@textInputField')

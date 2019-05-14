@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'C13843481 Check Label Text'() {
+  'C13843481 Add Text to Label'() {
     this.currentPage.setTextToLabel('nightwatch').assert.containsText('@textOutputField', 'nightwatch');
   },
 

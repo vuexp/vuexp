@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'C13843482 Unselect textWrap checkbox and test'() {
+  'C13843482 Props/Name:textWrap, Value:false (default)'() {
     this.currentPage
       .setTextToLabel(
         'There was a fisherman named Fisher ' +
@@ -19,6 +19,19 @@ module.exports = {
           'Now they are fishing the fissure for Fisher.',
       )
       //.uncheckTextWrapCheckbox()
+      .checkScreenshot('@textOutputField');
+  },
+
+  'C13843483 Props/Name:textWrap, Value: True'() {
+    this.currentPage
+      .setTextToLabel(
+        'There was a fisherman named Fisher ' +
+          'who fished for some fish in a fissure. ' +
+          'Till a fish with a grin, ' +
+          'pulled the fisherman in. ' +
+          'Now they are fishing the fissure for Fisher.',
+      )
+      .checkTextWrapCheckbox()
       .checkScreenshot('@textOutputField');
   },
 
