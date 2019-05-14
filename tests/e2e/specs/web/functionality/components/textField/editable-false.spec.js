@@ -9,12 +9,13 @@ module.exports = {
         done();
       });
   },
-  'Check textfield editable false'() {
+  '	C13840810 Check textfield editable false'() {
     this.currentPage
       .click('@editableCheckButton')
-      .assert.attributeContains('@textFieldInputField', 'style', 'disabled:disabled')
-      .setTextToTextField('textfield-editable-test')
-      .assert.containsText('@textFieldInputField', '');
+      .waitForElementPresent('@textFieldInputField', 3000)
+      .assert.attributeEquals('@textFieldInputField', 'disabled', 'true')
+      .setTextToTextField('editablefa')
+      .assert.attributeContains('@textFieldInputField', 'value', '');
   },
 
   after: function(client, done) {

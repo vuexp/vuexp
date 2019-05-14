@@ -10,17 +10,11 @@ module.exports = {
       });
   },
   'Check textfield not secure'() {
-    this.currentPage
-      .setTextToTextField('There was a fisherman named Fisher')
-      .uncheckSecure()
-      .checkScreenshot('@textFieldInputField');
+    this.currentPage.setTextToTextField('Not secure ss').checkScreenshot('@textFieldInputField');
   },
 
   'Check textfield secure'() {
-    this.currentPage
-      .setTextToTextField('There was a fisherman named Fisher')
-      .checkSecure()
-      .checkScreenshot('@textFieldInputField');
+    this.currentPage.setTextToTextField('secure ss').checkScreenshot('@textFieldInputField');
   },
 
   after: function(client, done) {

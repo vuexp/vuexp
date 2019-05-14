@@ -9,8 +9,11 @@ module.exports = {
         done();
       });
   },
-  'Check textfield secure'() {
-    this.currentPage.setTextToTextField('textfield-text-test').assert.containsText('@textFieldInputField', 'textfield-text-test');
+  '	C13840778 Check textfield not secure'() {
+    this.currentPage.setTextToTextField('Not secure').uncheckSecure();
+  },
+  '	C13840778 Check textfield secure'() {
+    this.currentPage.setTextToTextField('Secure').checkSecure();
   },
 
   after: function(client, done) {

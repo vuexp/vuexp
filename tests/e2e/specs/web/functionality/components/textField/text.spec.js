@@ -9,8 +9,8 @@ module.exports = {
         done();
       });
   },
-  'Check textfield text'() {
-    this.currentPage.setTextToText('textfield-text-test').assert.containsText('@textFieldInputField', 'textfield-text-test');
+  'C13840774 Check textfield text'() {
+    this.currentPage.setTextToText('textfield-').assert.attributeContains('@textFieldInputField', 'value', 'textfield-');
   },
 
   after: function(client, done) {

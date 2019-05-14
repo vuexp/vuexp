@@ -9,24 +9,23 @@ module.exports = {
         done();
       });
   },
-  'Check textfield MaxLenght over'() {
+  '	C13840777 Check textfield MaxLenght over'() {
     this.currentPage
-      .setNumberToMaxLenght(10)
-      .pause(10)
+      .setNumberToMaxLenght(25)
       .setTextToTextField('textfield-maxLenght-test')
-      .assert.containsText('@textFieldInputField', 'textfield-');
+      .assert.attributeContains('@textFieldInputField', 'value', 'textfield-maxLenght-test');
   },
-  'Check textfield MaxLenght lover'() {
+  'C13840777 Check textfield MaxLenght lover'() {
     this.currentPage
       .setNumberToMaxLenght(10)
       .setTextToTextField('maxLenght')
-      .assert.containsText('@textFieldInputField', 'maxLenght');
+      .assert.attributeContains('@textFieldInputField', 'value', 'maxLenght');
   },
-  'Check textfield MaxLenght same'() {
+  '	C13840777 Check textfield MaxLenght same'() {
     this.currentPage
-      .setNumberToMaxLenght(10)
+      .setNumberToMaxLenght(3)
       .setTextToTextField('textfield-')
-      .assert.containsText('@textFieldInputField', 'tex');
+      .assert.attributeContains('@textFieldInputField', 'value', 'tex');
   },
 
   after: function(client, done) {

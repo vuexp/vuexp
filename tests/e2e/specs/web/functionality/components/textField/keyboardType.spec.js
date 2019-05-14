@@ -17,32 +17,32 @@ module.exports = {
       .assert.attributeContains('@textFieldInputField', 'type', 'datetime-local');
   },
   */
-  'Check keyboardType phone'() {
+  '	C13840779 Check keyboardType phone'() {
     this.currentPage
       .selectKeyBoardType('phone')
-      .setTextToTextField('5068669636')
-      .assert.containsText('@textFieldInputField', '5068669636')
+      .setTextToTextField(5068669636)
+      .assert.attributeContains('@textFieldInputField', 'value', 5068669636)
       .assert.attributeContains('@textFieldInputField', 'type', 'tel');
   },
-  'Check keyboardType number'() {
+  '	C13840779 Check keyboardType number'() {
     this.currentPage
       .selectKeyBoardType('number')
-      .setTextToTextField('885')
-      .assert.containsText('@textFieldInputField', '885')
+      .setTextToTextField(885)
+      .assert.attributeContains('@textFieldInputField', 'value', 885)
       .assert.attributeContains('@textFieldInputField', 'type', 'number');
   },
-  'Check keyboardType url'() {
+  '	C13840779 Check keyboardType url'() {
     this.currentPage
       .selectKeyBoardType('url')
       .setTextToTextField('https://www.youtube.com/watch?v=fh5ci6eVlu0')
-      .assert.containsText('@textFieldInputField', 'https://www.youtube.com/watch?v=fh5ci6eVlu0')
+      .assert.attributeContains('@textFieldInputField', 'value', 'https://www.youtube.com/watch?v=fh5ci6eVlu0')
       .assert.attributeContains('@textFieldInputField', 'type', 'url');
   },
-  'Check keyboardType email'() {
+  '	C13840779 Check keyboardType email'() {
     this.currentPage
       .selectKeyBoardType('email')
       .setTextToTextField('irem.test@nurd.com')
-      .assert.containsText('@textFieldInputField', 'irem.test@nurd.com')
+      .assert.attributeContains('@textFieldInputField', 'value', 'irem.test@nurd.com')
       .assert.attributeContains('@textFieldInputField', 'type', 'email');
   },
 

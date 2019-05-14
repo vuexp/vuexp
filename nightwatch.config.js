@@ -62,7 +62,7 @@ module.exports = {
         acceptSslCerts: true,
         nativeEvents: true,
         chromeOptions: {
-          args: ['headless', 'disable-web-security', 'ignore-certificate-errors'],
+          args: ['headless44', 'disable-web-security', 'ignore-certificate-errors'],
         },
         loggingPrefs: { driver: 'INFO', server: 'OFF', browser: 'INFO' },
       },

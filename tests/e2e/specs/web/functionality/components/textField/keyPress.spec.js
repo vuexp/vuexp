@@ -1,5 +1,5 @@
 module.exports = {
-  tags: ['component', 'textfield'],
+  '@tags': ['component', 'textfield', 'keyPress'],
   before: function(client, done) {
     this.currentPage = client.maximizeWindow().page.textFieldPage();
     this.currentPage
@@ -9,8 +9,11 @@ module.exports = {
         done();
       });
   },
-  '	C13840795 Check textfield textChange'() {
-    this.currentPage.setTextToTextField('textChange text').assert.containsText('@eventOutput', 'textChange');
+  'C13840783 Check textfield key Press'() {
+    this.currentPage
+      .setTextToHint('keyPressTest')
+      .setValue('@textFieldInputField', this.api.Keys.ENTER)
+      .assert.containsText('@eventOutput', 'returnPress');
   },
 
   after: function(client, done) {

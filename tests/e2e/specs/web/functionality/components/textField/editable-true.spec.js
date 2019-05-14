@@ -9,11 +9,11 @@ module.exports = {
         done();
       });
   },
-  'Check textfield editable true as a default'() {
+  'C13840776 Check textfield editable true as a default'() {
     this.currentPage
-      .setTextToTextField('editable-test')
+      .setTextToTextField('editabletu')
       .assert.attributeContains('@textFieldInputField', 'style', '')
-      .assert.containsText('@textFieldInputField', 'editable-test');
+      .assert.attributeContains('@textFieldInputField', 'value', 'editabletu');
   },
 
   after: function(client, done) {

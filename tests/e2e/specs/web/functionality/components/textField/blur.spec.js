@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'Check textfield blur'() {
+  'C13840785 Check textfield blur'() {
     this.currentPage
       .setTextToTextField('textfield blur')
       .click('@textInputField')

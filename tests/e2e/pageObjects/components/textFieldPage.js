@@ -88,12 +88,12 @@ module.exports = {
       },
       checkSecure: function() {
         this.waitForElementVisible('@textFieldInputField', 10000);
-        if (this.verify.attributeContains('@textFieldInputField', 'type', 'email;')) {
-          return this.click('@secureCheckButton');
+        if (this.verify.attributeContains('@textFieldInputField', 'type', 'password')) {
+          return true;
         }
       },
       uncheckSecure: function() {
-        if (this.verify.attributeContains('@textFieldInputField', 'type', 'password;')) {
+        if (this.verify.attributeContains('@textFieldInputField', 'type', 'email')) {
           return this.click('@secureCheckButton');
         }
       },

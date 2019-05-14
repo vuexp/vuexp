@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'Check textfield hint'() {
+  'C13840775 Check textfield hint'() {
     this.currentPage.setTextToHint('textfield-hint-test').assert.attributeContains('@textFieldInputField', 'placeholder', 'textfield-hint-test');
   },
 
