@@ -82,7 +82,7 @@
         <StackLayout orientation="horizontal">
           <Label class="child-label" :text="'∗ ' + child.type + ' ' + (index + 1)"></Label>
           <StackLayout class="form-group">
-            <select id="actionbar__deleteicon__select" v-model="child.icon">
+            <select :id="'actionbar__deleteicon__select__' + index" v-model="child.icon">
               <option
                 v-if="child.type === 'ActionItem'"
                 v-for="(icon, index) in deleteIcons"
