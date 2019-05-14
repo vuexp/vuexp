@@ -28,9 +28,9 @@ module.exports = {
     addNavigationButton: 'button[class="vxp-button ➕ Add Navigation Button"]',
     navigationButtonIcon: '.vxp-action-item__icon.fa-angle-left',
     navigationButtonselectbox: '#actionbar__deleteicon__select__4',
-    navigationButtonselectboxOption: 'option[value="fa-angle-left"]',
+    navigationButtonselectboxOption: '#actionbar__deleteicon__select__4 > option:nth-child(2)',
     deleteIconLabel: '#actionbar__deleteicon__label',
-    actionBarTwo: '.result-container > div:nth-child(3)',
+    actionBarTwo: '.result-container.vxp-stack-layout.vxp-stack-layout--vertical > div:nth-child(3)',
   },
 
   commands: [

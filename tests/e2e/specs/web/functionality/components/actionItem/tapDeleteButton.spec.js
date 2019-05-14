@@ -3,7 +3,7 @@ module.exports = {
   before: function(client, done) {
     this.currentPage = client.maximizeWindow().page.actionItemPage();
     this.currentPage
-      .navigate('http://localhost:8080/components/action-item.html')
+      .navigate(client.globals.devUrl + 'components/action-item.html')
       .waitForElementVisible('body', 60000)
       .customPerform(function() {
         done();
@@ -12,6 +12,7 @@ module.exports = {
   '	C13843431 Click Delete Button on Action Item'() {
     this.currentPage
       .selectDeleteIconOption()
+      .waitForElementVisible('@actionBarDeleteButton', 60000)
       .clickDeleteButton()
       .assert.containsText('@deleteButtonLabel', 'Delete Icon Clicked');
   },

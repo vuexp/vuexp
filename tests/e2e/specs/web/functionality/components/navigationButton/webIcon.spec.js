@@ -9,11 +9,8 @@ module.exports = {
         done();
       });
   },
-  'C13843450 Event / Name : tap'() {
-    this.currentPage
-      .selectWebIconOption()
-      .clickBackButton()
-      .assert.containsText('@backIconLabel', 'Back Icon Clicked');
+  'C13843448 Props:/Name: webIcon, Type:string'() {
+    this.currentPage.selectWebIconOption().checkScreenshot('@actionBar');
   },
 
   after: function(client, done) {
