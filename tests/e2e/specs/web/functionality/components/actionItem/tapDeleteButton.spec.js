@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'Check ActionItem Delete Button Text'() {
+  '	C13843431 Click Delete Button on Action Item'() {
     this.currentPage
       .selectDeleteIconOption()
       .clickDeleteButton()

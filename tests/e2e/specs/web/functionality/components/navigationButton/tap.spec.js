@@ -9,10 +9,11 @@ module.exports = {
         done();
       });
   },
-  'C13843450 Check Navigation Button Back Button Label'() {
+  'Check Navigation Button Back Button Label'() {
     this.currentPage
       .selectWebIconOption()
       .clickBackButton()
+      .checkScreenshot('@actionBar')
       .assert.containsText('@backIconLabel', 'Back Icon Clicked');
   },
 

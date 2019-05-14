@@ -1,5 +1,5 @@
 module.exports = {
-  tags: ['component', 'actionBar'],
+  tags: ['component', 'actionItem'],
   before: function(client, done) {
     this.currentPage = client.maximizeWindow().page.actionBarPage();
     this.currentPage
@@ -9,8 +9,12 @@ module.exports = {
         done();
       });
   },
-  'C13843440 Props:/Name:title, Type:string'() {
-    this.currentPage.setTitletoInput('actionBar').assert.containsText('@titleLabelField', 'actionBar');
+  'Add ActionItems and Check ActionItem Label'() {
+    this.currentPage
+      .selectActionItemIcons()
+      .addNavigationButton()
+      .checkScreenshot('@actionBarTwo')
+      .assert.containsText('@deleteIconLabel', 'Delete Icon Clicked');
   },
 
   after: function(client, done) {

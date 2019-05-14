@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'Check ActionItem Share Button Text'() {
+  'C13843430 Click Share Button on Action Bar'() {
     this.currentPage
       .selectShareIconOption()
       .clickShareButton()

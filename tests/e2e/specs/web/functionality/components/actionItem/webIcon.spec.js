@@ -1,18 +1,18 @@
 module.exports = {
-  tags: ['component', 'navigationBar'],
+  tags: ['component', 'actionItem'],
   before: function(client, done) {
-    this.currentPage = client.maximizeWindow().page.navigationButtonPage();
+    this.currentPage = client.maximizeWindow().page.actionItemPage();
     this.currentPage
-      .navigate('http://localhost:8080/components/navigation-button.html')
+      .navigate('http://localhost:8080/components/action-item.html')
       .waitForElementVisible('body', 60000)
       .customPerform(function() {
         done();
       });
   },
-  'Check NavigationButton Image'() {
+  'C13843424 Props:/Name: webIcon, Type:string'() {
     this.currentPage
-      .selectWebIconOption()
-      .clickBackButton()
+      .selectDeleteIconOption()
+      .selectShareIconOption()
       .checkScreenshot('@actionBar');
   },
 
