@@ -13,7 +13,7 @@ module.exports = {
     actionBarShareIcon: 'span[class="vxp-action-item__icon fa fa-share"]',
     actionBarDeleteIcon: 'span[class="vxp-action-item__icon fa fa-close"]',
     actionBarShareButton: 'span[class="vxp-action-item__icon fa fa-share-alt"]',
-    actionBarDeleteButton: 'span[class="vxp-action-item__icon fa fa-window-close"]',
+    actionBarDeleteButton: '.vxp-stack-layout.vxp-stack-layout--vertical > div.vxp-action-bar > div:nth-child(3) > span',
     shareButtonLabel: '#actionitem__shareicon__label',
     deleteButtonLabel: '#actionitem__deleteicon__label',
   },
@@ -30,13 +30,15 @@ module.exports = {
       },
 
       selectShareIconOption: function() {
-        return this.click('@shareIconSelectBox')
-          .waitForElementVisible('@shareIconSelectBoxOption', 10000)
+        return this.waitForElementVisible('@shareIconSelectBox', 30000)
+          .click('@shareIconSelectBox')
+          .waitForElementVisible('@shareIconSelectBoxOption', 30000)
           .click('@shareIconSelectBoxOption');
       },
       selectDeleteIconOption: function() {
-        return this.click('@deleteIconSelectBox')
-          .waitForElementVisible('@deleteIconSelectBoxOption', 10000)
+        return this.waitForElementVisible('@deleteIconSelectBox', 30000)
+          .click('@deleteIconSelectBox')
+          .waitForElementVisible('@deleteIconSelectBoxOption', 30000)
           .click('@deleteIconSelectBoxOption');
       },
       clickShareButton: function() {

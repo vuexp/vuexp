@@ -4,7 +4,7 @@ module.exports = {
     this.currentPage = client.maximizeWindow().page.actionBarPage();
     this.currentPage
       .navigate(client.globals.devUrl + 'components/action-bar.html')
-      .waitForElementVisible('body', 60000)
+      .waitForElementVisible('body', 100000)
       .customPerform(function() {
         done();
       });

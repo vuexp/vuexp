@@ -23,7 +23,7 @@ module.exports = {
       },
       selectWebIconOption: function() {
         return this.click('@webIconSelectbox')
-          .waitForElementVisible('@webIconSelectBoxOption', 10000)
+          .waitForElementVisible('@webIconSelectBoxOption', 30000)
           .click('@webIconSelectBoxOption');
       },
       clickBackButton: function() {

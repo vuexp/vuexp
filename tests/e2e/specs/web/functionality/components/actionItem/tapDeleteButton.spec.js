@@ -4,12 +4,12 @@ module.exports = {
     this.currentPage = client.maximizeWindow().page.actionItemPage();
     this.currentPage
       .navigate(client.globals.devUrl + 'components/action-item.html')
-      .waitForElementVisible('body', 60000)
+      .waitForElementVisible('body', 100000)
       .customPerform(function() {
         done();
       });
   },
-  '	C13843431 Click Delete Button on Action Item'() {
+  'C13843431 Click Delete Button on Action Item'() {
     this.currentPage
       .selectDeleteIconOption()
       .waitForElementVisible('@actionBarDeleteButton', 60000)

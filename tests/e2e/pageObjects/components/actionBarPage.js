@@ -22,7 +22,7 @@ module.exports = {
     deleteIconSelectBoxOption1: '#actionbar__deleteicon__select__0 > option:nth-child(2)',
     deleteIconSelectBoxOption2: '#actionbar__deleteicon__select__1 > option:nth-child(3)',
     deleteIconSelectBoxOption3: '#actionbar__deleteicon__select__2 > option:nth-child(2)',
-    deleteIconSelectBoxOption4: '#actionbar__deleteicon__select__3 > option:nth-child(3)',
+    deleteIconSelectBoxOption4: '#actionbar__deleteicon__select__3 > option:nth-child(1)',
     //deleteActionItemIcon: '.vxp-action-item__icon.fa-window-close-o',
     deleteActionItemIcon: '.result-container.vxp-stack-layout.vxp-stack-layout--vertical > div:nth-child(3) > div:nth-child(2) > span',
     addNavigationButton: 'button[class="vxp-button ➕ Add Navigation Button"]',
@@ -41,18 +41,18 @@ module.exports = {
         return this;
       },
       setTitletoInput: function(text) {
-        return this.waitForElementVisible('@titleInputField', 10000)
+        return this.waitForElementVisible('@titleInputField', 30000)
           .clearValue('@titleInputField')
           .setValue('@titleInputField', text);
       },
       changeShareIconOption: function() {
         return this.click('@shareIconSelectBox')
-          .waitForElementVisible('@shareIconSelectBoxOption', 10000)
+          .waitForElementVisible('@shareIconSelectBoxOption', 30000)
           .click('@shareIconSelectBoxOption');
       },
       changeDeleteIconOption: function() {
         return this.click('@deleteIconSelectBox')
-          .waitForElementVisible('@deleteIconSelectBoxOption', 10000)
+          .waitForElementVisible('@deleteIconSelectBoxOption', 30000)
           .click('@deleteIconSelectBoxOption');
       },
       clickShareButton: function() {
@@ -69,8 +69,6 @@ module.exports = {
           .click('@deleteIconSelectBoxOption2')
           .click('@actionItem3')
           .click('@deleteIconSelectBoxOption3')
-          .click('@actionItem4')
-          .click('@deleteIconSelectBoxOption4')
           .click('@deleteActionItemIcon');
       },
       addNavigationButton: function() {
