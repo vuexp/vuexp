@@ -65,9 +65,10 @@ function onGridChange(callBack) {
   updateGridColumn(callBack);
 
   if (typeof window !== 'undefined') {
+    const debounceCb = updateGridColumn.bind(this, callBack);
     window.addEventListener('resize', () => {
       // Triggered on orientation change
-      debounce(updateGridColumn.bind(this, callBack), 500);
+      debounce(debounceCb, 500);
     });
   }
 }
