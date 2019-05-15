@@ -3,7 +3,7 @@ const allureWriter = require('./integrations/allure');
 const testRailReporter = require('./integrations/testrail').reporter;
 const nightwatchVrtSettings = require('./nightwatch-vrt-settings');
 
-const defaultRunId = 412;
+const defaultRunId = 108802;
 const defaultDevUrl = 'http://localhost';
 
 const devUrl = process.env.VUE_DEV_SERVER_URL ? process.env.VUE_DEV_SERVER_URL : defaultDevUrl;

@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'Check switch is false as a default'() {
+  'C13843478 Check switch is false as a default'() {
     this.currentPage.assert.containsText('@switch_label', 'Switcher Off');
   },
   after: function(client, done) {

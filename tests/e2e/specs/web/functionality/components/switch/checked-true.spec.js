@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'Check Switcher On '() {
+  'C13843479 Check Switcher On '() {
     this.currentPage.click('@switch').assert.containsText('@switch_label', 'Switcher On');
   },
   after: function(client, done) {

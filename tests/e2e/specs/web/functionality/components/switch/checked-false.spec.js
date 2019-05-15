@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'Check Switcher Off '() {
+  'C13843480 Check Switcher Off '() {
     this.currentPage
       .click('@switch')
       .click('@switch')
