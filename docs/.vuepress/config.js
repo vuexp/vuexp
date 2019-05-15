@@ -50,6 +50,7 @@ module.exports = {
             "components/image.md",
             "components/segmented-bar.md",
             "components/progress.md",
+            "components/checkbox.md",
           ]
         },
         {
