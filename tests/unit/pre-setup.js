@@ -5,7 +5,8 @@ require('jsdom-global')(undefined, { pretendToBeVisual: true, url: 'http://local
 // better fix for "TypeError: Super expression must either be null or
 // a function" than pinning an old version of prettier.
 window.Date = Date;
+global.document = window.document;
 
-global.navigator = { userAgent: 'node.js', appVersion: '' };
+global.navigator = { userAgent: 'node.js', appVersion: '', onLine: true };
 global.RTCPeerConnection = {};
 global.RTCSessionDescription = {};

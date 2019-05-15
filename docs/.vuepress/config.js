@@ -19,6 +19,7 @@ module.exports = {
             "layouts/flexbox-layout.md",
             "layouts/dock-layout.md",
             "layouts/wraplayout.md",
+            "layouts/grid-layout.md",
           ]
         },
         {
@@ -35,11 +36,28 @@ module.exports = {
           collapsable: true,
           children: [
             "components/label.md",
+            "components/switcher.md",
             "components/search-bar.md",
             "components/button.md",
             "components/textfield.md",
+            "components/scrollview.md",
             "components/slider.md",
+            "components/webview.md",
             "components/textview.md",
+            "components/frame.md",
+            "components/page.md",
+            "components/tabview.md",
+            "components/image.md",
+            "components/segmented-bar.md",
+            "components/progress.md",
+          ]
+        },
+        {
+          title: "Dialogs",
+          collapsable: true,
+          children: [
+            "components/dialogs/confirm-dialog.md",
+            "components/dialogs/alert-dialog.md",
           ]
         },
       ]

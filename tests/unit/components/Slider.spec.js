@@ -83,4 +83,59 @@ describe('Slider', () => {
       expect(wrapper.emitted().valueChange.length).to.equal(1);
     });
   });
+  describe('The Slider component applies CSS rules set on implementation.', () => {
+    const backgroundColor = 'rgb(188, 124, 124)';
+    const thumbColor = 'rgb(255, 0, 0)';
+    let testWrapper = null;
+
+    before(() => {
+      const TestSlider = {
+        template: `<Slider style="color: ${thumbColor}; background: ${backgroundColor}" 
+                      :value="value" :min-value="minValue" :max-value="maxValue" @valueChange="onValueChanged($event)"/>`,
+        components: {
+          Slider,
+        },
+        data() {
+          return {
+            value: '0',
+            minValue: '0',
+            maxValue: '100',
+          };
+        },
+        methods: {
+          onValueChanged(event) {
+            this.value = event.target.value;
+          },
+        },
+        listeners: {
+          valueChange,
+        },
+      };
+      testWrapper = mount(TestSlider);
+    });
+
+    it(`Background prop should change the background of the component to ${backgroundColor}`, () => {
+      expect(testWrapper.find(Slider).vm.$data.backgroundColor).to.equal(backgroundColor);
+    });
+    it(`Button color prop should change the button color of the component to ${thumbColor}`, () => {
+      expect(testWrapper.find(Slider).vm.$data.thumbColor).to.equal(thumbColor);
+    });
+  });
+  describe('The Slider component should detect if browser is Edge.', () => {
+    let browserTestWrapper = null;
+    const mode = document.documentMode;
+    const wStyle = window.StyleMedia;
+    before(() => {
+      document.documentMode = 0;
+      window.StyleMedia = 1;
+      browserTestWrapper = mount(Slider);
+    });
+    it('The isEdgeBrowser prop should be true.', () => {
+      expect(browserTestWrapper.vm.$data.isEdgeBrowser).to.equal(true);
+    });
+    after(() => {
+      document.documentMode = mode;
+      window.StyleMedia = wStyle;
+    });
+  });
 });

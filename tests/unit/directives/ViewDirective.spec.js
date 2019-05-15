@@ -5,7 +5,6 @@ import StackLayout from '../../../src/layouts/StackLayout';
 
 describe('Action Dialog Plugin Testing', () => {
   const localVue = createLocalVue();
-  //localVue.use(Nvw);
 
   const SideDrawer = {
     name: 'SideDrawer',
