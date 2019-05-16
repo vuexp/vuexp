@@ -13,7 +13,7 @@
           left="0"
           v-if="checkedLocal1"
           class="vxp-checkbox__background vxp-checkbox__checked"
-          :class="{ 'vxp-checkbox__checked--disabled': checkboxDisabled }"
+          :class="{ 'vxp-checkbox__checked__disabled': checkboxDisabled }"
         >
           <Label class="vxp-checkbox__checked__icon" text=" "/>
         </StackLayout>
@@ -24,7 +24,7 @@
           left="0"
           v-if="!checkedLocal1"
           class="vxp-checkbox__background vxp-checkbox__unchecked"
-          :class="{ 'vxp-checkbox__unchecked--disabled': checkboxDisabled }"
+          :class="{ 'vxp-checkbox__unchecked__disabled': checkboxDisabled }"
         ></StackLayout>
       </FadeTransition>
     </AbsoluteLayout>
@@ -195,7 +195,11 @@ export default {
   }
 
   &__checked {
-    background-color: #cfd8dc;
+    background-color: #4286f4;
+    &__disabled {
+      cursor: not-allowed;
+      background-color: #cfd8dc !important;
+    }
     &__icon {
       width: 40%;
       height: 20%;
@@ -212,10 +216,10 @@ export default {
     border-width: unit(2);
     border-style: solid;
     border-color: #cfd8dc;
-  }
-
-  &__disabled {
+    &__disabled {
       cursor: not-allowed;
+      background-color: transparent !important;
+    }
   }
 
   @include themed($themes) {

@@ -1,12 +1,12 @@
 <template>
-  <AbsoluteLayout class="vxp-checkbox" :class="{ 'vxp-checkbox--checked': checkedLocal, 'vxp-checkbox--disabled': disabled }" @tap="onTap">
+  <AbsoluteLayout class="vxp-checkbox" :class="{ 'vxp-checkbox--checked': checkedLocal, 'vxp-checkbox__disabled': disabled }" @tap="onTap">
     <FadeTransition :duration="200">
       <StackLayout
         top="0"
         left="0"
         v-if="checkedLocal"
         class="vxp-checkbox__background vxp-checkbox__checked"
-        :class="{ 'vxp-checkbox__checked--disabled': disabled }"
+        :class="{ 'vxp-checkbox__checked__disabled': disabled }"
       >
         <Label class="vxp-checkbox__checked__icon" text=" " />
       </StackLayout>
@@ -17,7 +17,7 @@
         left="0"
         v-if="!checkedLocal"
         class="vxp-checkbox__background vxp-checkbox__unchecked"
-        :class="{ 'vxp-checkbox__unchecked--disabled': disabled }"
+        :class="{ 'vxp-checkbox__unchecked__disabled': disabled }"
       ></StackLayout>
     </FadeTransition>
   </AbsoluteLayout>
@@ -68,8 +68,13 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../themes/themes';
-@import '../assets/styles/helpers';
+@import '../../../src/themes/themes';
+@import '../../../src/assets/styles/helpers';
+.checkbox_label {
+  &__margin_top {
+    margin-top: 10px;
+  }
+}
 
 .vxp-checkbox {
   width: unit(18);
@@ -95,7 +100,11 @@ export default {
   }
 
   &__checked {
-    background-color: #cfd8dc;
+    background-color: #4286f4;
+    &__disabled {
+      cursor: not-allowed;
+      background-color: #cfd8dc !important;
+    }
     &__icon {
       width: 40%;
       height: 20%;
@@ -112,6 +121,10 @@ export default {
     border-width: unit(2);
     border-style: solid;
     border-color: #cfd8dc;
+    &__disabled {
+      cursor: not-allowed;
+      background-color: transparent !important;
+    }
   }
 
   @include themed($themes) {
