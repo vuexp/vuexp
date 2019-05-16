@@ -9,8 +9,8 @@ module.exports = {
         done();
       });
   },
-  'C13843456 TabViewItem Props:/Name: id, Type: String'() {
-    this.currentPage.setItemId('444555').assert.attributeContains('@idLabel', 'id', '444555');
+  'C13843457 TabViewItem Props:/Name: title, Type: String'() {
+    this.currentPage.selectWebIcon().checkScreenshot('@tabView');
   },
 
   after: function(client, done) {

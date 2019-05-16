@@ -10,8 +10,10 @@ module.exports = {
       });
   },
   'C13843454  Props:/Name: selectedTabTextColor, Type: Color'() {
-    this.browser.execute("document.getElementById('tabView__tabTextColor__input').setAttribute('value', '#ff80c0')");
-    this.currentPage.assert.containsText('@tabTextColorLabel', '#ff80c0');
+    this.client.execute("document.getElementById('tabView__tabTextColor__input').setAttribute('value', '#ff80c0')");
+    this.client.execute("document.getElementById('tabView__tabTextColor__input').dispatchEvent(new Event('input'))").pause(200000);
+    this.currentPage.click('@selectedIndexLabel');
+    this.currentPage.assert.attributeContains(".vxp-tab-view__header button[role='tab']:nth-child(2) span", 'style', 'color: rgb(255, 128, 192);');
   },
 
   after: function(client, done) {
