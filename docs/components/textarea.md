@@ -2,26 +2,26 @@
 sidebarDepth: 0
 ---
 
-# TextView
+# TextArea
 
-This is an overview of the most common usage of `<TextView>`.
+This is an overview of the most common usage of `<TextArea>`.
 
-`TextView` provides two-way data binding using v-model.
+`TextArea` provides two-way data binding using v-model.
 
 
 ## Live Demo
 
 <DocExampleBox codeBox="https://codesandbox.io/s/w61lryop88?module=%2Fsrc%2FApp.vue">
 ```html
-<TextView text="Multi\nLine\nText" />
+<TextArea text="Multi\nLine\nText" />
 ```
-<TextViewDoc />
+<TextAreaDoc />
 </DocExampleBox>
 
 ## Example Usages
 
 ```html
-  <TextView v-model="textViewInput" :editable=true />
+  <TextArea v-model="textViewInput" :editable=true />
 ```
 
 ## Props

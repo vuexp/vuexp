@@ -1,10 +1,10 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
 import sinon from 'sinon';
-import TextView from '../../../src/components/TextView';
+import TextArea from '../../../src/components/TextArea';
 import Label from '../../../src/components/Label';
 
-describe('TextView', () => {
+describe('TextArea', () => {
   // Mock up values.
   const text = 'initial string';
   const editable = true;
@@ -16,7 +16,7 @@ describe('TextView', () => {
   const visibility = true;
 
   // Spy events.
-  const updateValueSpy = sinon.spy(TextView.methods, 'updateValue');
+  const updateValueSpy = sinon.spy(TextArea.methods, 'updateValue');
   const blur = sinon.spy();
   const focus = sinon.spy();
   const returnPress = sinon.spy();
@@ -39,12 +39,12 @@ describe('TextView', () => {
     },
   };
 
-  const wrapper = mount(TextView, {
+  const wrapper = mount(TextArea, {
     model: {
       event: 'input',
       prop: 'text',
     },
-    name: 'TextView',
+    name: 'TextArea',
     // This will converted to props.
     props: {
       preventNextLine: Boolean,
@@ -138,13 +138,13 @@ describe('TextView', () => {
     });
   });
 
-  describe('TextView component contains label component', () => {
-    it('there is one label component inside the textview.', () => {
+  describe('TextArea component contains label component', () => {
+    it('there is one label component inside the TextArea.', () => {
       const labelWrappers = wrapper.findAll(Label).wrappers;
       expect(labelWrappers.length).to.equal(1);
     });
 
-    it('label component displays the given text prop{`label`} correctly inside the textview.', () => {
+    it('label component displays the given text prop{`label`} correctly inside the TextArea.', () => {
       const labelWrappers = wrapper.findAll(Label).wrappers;
       const label = labelWrappers[0].find(Label);
       expect(label.element.textContent.trim()).to.equal('label');
@@ -199,15 +199,15 @@ describe('TextView', () => {
     });
   });
 
-  describe('the textView detects changes in the textarea and also throw appropriate events.', () => {
-    it('the textView component gets focused and the focus event handler gets thrown', () => {
+  describe('the TextArea detects changes in the textarea and also throw appropriate events.', () => {
+    it('the TextArea component gets focused and the focus event handler gets thrown', () => {
       // Focus to the textarea field.
       wrapper.find('textarea').trigger('focus');
       expect(wrapper.emitted().focus.length).to.equal(1);
       expect(focus.called).to.equal(true);
     });
 
-    it('the value of the textview component change to new value, textview throws input and also textChange.', () => {
+    it('the value of the TextArea component change to new value, TextArea throws input and also textChange.', () => {
       // Change the value of the input field.
       wrapper.find('textarea').setValue('new value');
       expect(wrapper.find('textarea').element.value).to.equal('new value');
@@ -218,7 +218,7 @@ describe('TextView', () => {
       expect(updateValueSpy.called).to.equal(true);
     });
 
-    it('the textView loses its focus and throws blur event so, the blur event handler gets thrown', () => {
+    it('the TextArea loses its focus and throws blur event so, the blur event handler gets thrown', () => {
       wrapper.find('textarea').trigger('blur');
       expect(wrapper.emitted().blur.length).to.equal(1);
       expect(blur.called).to.equal(true);
