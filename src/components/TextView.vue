@@ -1,5 +1,5 @@
 <template>
-  <div class="vxp-textview-container">
+  <StackLayout v-if="!visibility" class="vxp-textview-container">
     <textarea
       v-common-directive
       class="vxp-textview-container__textview"
@@ -17,7 +17,7 @@
       @paste="onPaste"
     />
     <slot />
-  </div>
+  </StackLayout>
 </template>
 
 <script>
@@ -44,6 +44,10 @@ export default {
     maxLength: Number,
     keyboardType: String,
     autocorrect: Boolean,
+    visibility: {
+      type: Boolean,
+      default: true,
+    },
   },
   directives: {
     'common-directive': CommonDirective,
