@@ -3,7 +3,7 @@ module.exports = {
   before: function(client, done) {
     this.currentPage = client.maximizeWindow().page.framePage();
     this.currentPage
-      .navigate('http://localhost:8080/components/frame.html')
+      .navigate(client.globals.devUrl + 'components/frame.html')
       .waitForElementVisible('body', 60000)
       .customPerform(function() {
         done();
