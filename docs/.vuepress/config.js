@@ -58,6 +58,7 @@ module.exports = {
           children: [
             "components/dialogs/confirm-dialog.md",
             "components/dialogs/alert-dialog.md",
+            "components/dialogs/action-dialog.md",
           ]
         },
       ]

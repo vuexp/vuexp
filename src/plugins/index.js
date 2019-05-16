@@ -1,9 +1,30 @@
 import ConfirmDialog from '../components/dialogs/ConfirmDialog';
 import AlertDialog from '../components/dialogs/AlertDialog';
+import ActionDialog from '../components/dialogs/ActionDialog';
 
 const VxpPlugin = {
   install: Vue => {
     if (typeof window !== 'undefined') {
+      // Action Dialog
+      const ActionDialogComponent = Vue.extend(ActionDialog);
+      // Register action dialog to the window.
+      window.action = async function(title, cancelButtonText, options) {
+        const actionDialog = new ActionDialogComponent();
+        const actionDialogDom = actionDialog.$mount().$el;
+        document.body.appendChild(actionDialogDom);
+
+        return new Promise(resolve => {
+          actionDialog.title = title;
+          actionDialog.cancelButtonText = cancelButtonText;
+          actionDialog.options = options;
+          actionDialog.isModalVisible = true;
+          actionDialog.$once('submit', value => {
+            actionDialog.isModalVisible = false;
+            resolve(value);
+          });
+        });
+      };
+
       // Alert Dialog
       const AlertDialogComponent = Vue.extend(AlertDialog);
       // Register alert dialog to the window.
