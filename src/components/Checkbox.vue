@@ -68,8 +68,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../../src/themes/themes';
-@import '../../../src/assets/styles/helpers';
+@import '../themes/themes';
+@import '../assets/styles/helpers';
 .checkbox_label {
   &__margin_top {
     margin-top: 10px;
