@@ -1,0 +1,13 @@
+$PLATFORM: 'web' !default; // changes with webpack
+
+@function unit($webValue, $nativeValue: $webValue) {
+  @if $PLATFORM == 'android' or $PLATFORM == 'ios' {
+    @return $nativeValue;
+  } @else {
+    @if (str-index(inspect($webValue), '%')) {
+      @return $webValue;
+    } @else {
+      @return $webValue + unquote('px');
+    }
+  }
+}
