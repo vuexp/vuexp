@@ -74,7 +74,7 @@ describe('ActionDialog', () => {
         .trigger('click');
       expect(wrapper.emitted().submit.length).to.equal(emittedCount + 1);
       const result = wrapper.emitted().submit.pop();
-      expect(result[0]).to.equal(options[1]);
+      expect(result[0]).to.equal(options[0]);
     });
   });
 });
