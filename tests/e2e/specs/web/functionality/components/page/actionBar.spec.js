@@ -3,7 +3,7 @@ module.exports = {
   before: function(client, done) {
     this.currentPage = client.maximizeWindow().page.pagecompPage();
     this.currentPage
-      .navigate('http://localhost:8082/components/page.html')
+      .navigate(client.globals.devUrl + 'components/page.html')
       .waitForElementVisible('body', 60000)
       .customPerform(function() {
         done();
@@ -16,6 +16,10 @@ module.exports = {
       .click('@actionBar')
       .assert.containsText('@actionBar_label', 'false');
   },
+  'C13843470 Check that Action Bar Hiden is true'() {
+    this.currentPage.click('@actionBar').assert.containsText('@actionBar_label', 'true');
+  },
+
   after: function(client, done) {
     client.end().customPerform(done);
   },
