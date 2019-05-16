@@ -1,9 +1,9 @@
 module.exports = {
-  tags: ['component', 'textfield'],
+  tags: ['component', 'alertDialog'],
   before: function(client, done) {
     this.currentPage = client.maximizeWindow().page.AlertDialogPage();
     this.currentPage
-      .navigate('http://localhost:8080/components/dialogs/alert-dialog.html')
+      .navigate(client.globals.devUrl + 'components/dialogs/alert-dialog.html')
       .waitForElementVisible('body', 60000)
       .customPerform(function() {
         done();
