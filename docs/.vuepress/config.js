@@ -11,6 +11,11 @@ module.exports = {
         "",
         "getting-started",
         {
+          title: "Utilities",
+          collapsable: false,
+          children: ["utilities/v-template"]
+        },
+        {
           title: "Layouts",
           collapsable: true,
           children: [
