@@ -25,6 +25,8 @@ module.exports = {
       .click('@decreament_button')
       .assert.containsText('@prog_value', 'Current Progress: 35')
       .click('@decreament_button')
+      .assert.containsText('@prog_value', 'Current Progress: 0')
+      .click('@decreament_button')
       .assert.containsText('@prog_value', 'Current Progress: 0');
   },
   after: function(client, done) {

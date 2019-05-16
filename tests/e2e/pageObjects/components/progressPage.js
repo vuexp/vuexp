@@ -11,6 +11,8 @@ module.exports = {
     maxvalue_input: '#progress__maxValue__input',
     prog_value: '#progress__value__label',
     event_label: '#progress__eventChange__label',
+    alert_label: '.vxp-alert-dialog__body',
+    alert_ok: '.vxp-button.vxp-alert-dialog__footer__ok-button.Ok',
   },
 
   commands: [
@@ -18,10 +20,6 @@ module.exports = {
     {
       checkInitialElements: function() {
         this.expect.element('@increament_button').to.be.visible;
-        this.expect.element('@decreament_button').to.be.visible;
-        this.expect.element('@increament_input').to.be.visible;
-        this.expect.element('@maxvalue_input').to.be.visible;
-        this.expect.element('@prog_value').to.be.visible;
         return this;
       },
 

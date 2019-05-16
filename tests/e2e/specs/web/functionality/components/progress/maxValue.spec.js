@@ -15,7 +15,10 @@ module.exports = {
       .setTextToIncreamentInput(15)
       .click('@increament_button')
       .assert.containsText('@prog_value', 'Current Progress: 15')
-      .click('@increament_button');
+      .click('@increament_button')
+      .assert.containsText('@alert_label', 'Incremented value is greater than max value')
+      .click('@alert_ok')
+      .assert.containsText('@prog_value', 'Current Progress: 15');
   },
   after: function(client, done) {
     client.end().customPerform(done);
