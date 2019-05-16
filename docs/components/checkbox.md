@@ -1,7 +1,13 @@
+---
+sidebarDepth: 0
+---
+
 # Checkbox
 
-Checkbox Button.
+This is an overview of the most common usage of `<Checkbox>`.
 
+## Live Demo
+ 
 <DocExampleBox>
 ```html
   <FlexboxLayout class="checkbox-doc-container" flexDirection="column">
@@ -66,6 +72,19 @@ Checkbox Button.
 
 <CheckboxDoc />
 </DocExampleBox>
+
+## Props
+
+| Name     | Type    | Default | Web | Mobile | Desctiption |
+| -------- | ------- | ------- | --- | ------ |------|
+| visible  | Boolean | `true`  | ✔   | ✔      |Sets the visibility of the checkbox.|
+| disable  | Boolean | `false` | ✔   | ✔      |Sets the disability of the checkbox.|
+
+## Events
+
+| Name | Web | Mobile | Description |
+| ---- | --- | ------ |------|
+| onTap| ✔   | ✔      |Emitted when the checkbox is tapped.|
 
 ### Dependencies
 
