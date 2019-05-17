@@ -15,11 +15,11 @@ module.exports = {
           collapsable: true,
           children: [
             "layouts/absolute-layout.md",
-            "layouts/stacklayout.md",
-            "layouts/flexbox-layout.md",
             "layouts/dock-layout.md",
-            "layouts/wraplayout.md",
+            "layouts/flexbox-layout.md",
             "layouts/grid-layout.md",
+            "layouts/stacklayout.md",
+            "layouts/wraplayout.md",
           ]
         },
         {
@@ -35,29 +35,30 @@ module.exports = {
           title: "Components",
           collapsable: true,
           children: [
-            "components/label.md",
-            "components/switcher.md",
-            "components/search-bar.md",
             "components/button.md",
-            "components/textfield.md",
-            "components/scrollview.md",
-            "components/slider.md",
-            "components/webview.md",
-            "components/textview.md",
             "components/frame.md",
-            "components/page.md",
-            "components/tabview.md",
+            "components/label.md",
             "components/image.md",
-            "components/segmented-bar.md",
+            "components/page.md",
             "components/progress.md",
+            "components/scrollview.md",
+            "components/search-bar.md",
+            "components/segmented-bar.md",
+            "components/side-drawer.md",
+            "components/slider.md",
+            "components/switcher.md",
+            "components/tabview.md",
+            "components/textfield.md",
+            "components/textview.md",
+            "components/webview.md",
           ]
         },
         {
           title: "Dialogs",
           collapsable: true,
           children: [
-            "components/dialogs/confirm-dialog.md",
             "components/dialogs/alert-dialog.md",
+            "components/dialogs/confirm-dialog.md",
           ]
         },
       ]

@@ -2,15 +2,17 @@ import { expect } from 'chai';
 import { mount, createLocalVue } from '@vue/test-utils';
 import Label from '../../../src/components/Label';
 import StackLayout from '../../../src/layouts/StackLayout';
+import ViewDirective from '../../../src/directives/ViewDirective';
 
-describe('Action Dialog Plugin Testing', () => {
+describe('View Directive Testing', () => {
   const localVue = createLocalVue();
+  localVue.use('view', ViewDirective);
 
   const SideDrawer = {
     name: 'SideDrawer',
     template:
       '<StackLayout class="sidedrawer"><StackLayout ref="drawerContent" class="drawer-content"></StackLayout>' +
-      '<StackLayout ref="mainContent" class="main-content"></StackLayout><slot /></StackLayout>',
+      '<StackLayout ref="mainContent" class="main-content"></StackLayout></StackLayout>',
     components: {
       StackLayout,
     },

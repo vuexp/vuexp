@@ -1,5 +1,6 @@
 import ConfirmDialog from '../components/dialogs/ConfirmDialog';
 import AlertDialog from '../components/dialogs/AlertDialog';
+import ViewDirective from '../directives/ViewDirective';
 
 const VxpPlugin = {
   install: Vue => {
@@ -26,6 +27,7 @@ const VxpPlugin = {
         return confirmWrapper(messageText, confirmDialog);
       };
     }
+    Vue.directive('view', ViewDirective);
   },
 };
 
