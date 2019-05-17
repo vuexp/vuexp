@@ -1,63 +1,100 @@
 <template>
-  <StackLayout>
-    <Button id="button" :text="buttonText" @tap="onButtonTap" :style="{'width': width + 'px' ,'height': height + 'px' }" :textWrap="textWrap" horizontalAlignment="left" />
-    <StackLayout orientation="horizontal">
-      <Label text="Text:" width="100" class="scroll-view__margin_top"></Label>
-      <input type="text" id="button_text_input" v-model="buttonText" class="scroll-view__margin_top" />
-    </StackLayout>  
-    <StackLayout orientation="horizontal">
-      <Label text="Label:" width="100" class="scroll-view__margin_top"></Label>
-      <Label :text="labelText" id="button_label" class="scroll-view__margin_top" ></Label>
+  <StackLayout orientation="vertical" class="vxpbutton-wrapper">
+    <StackLayout>
+      <VxpButton
+        id="button"
+        :text="buttonText"
+        :size="buttonSize"
+        :disabled="isDisabled"
+        :secondary="isSecondary"
+        :primary="isPrimary"
+        @tap="onButtonTap"
+        :textWrap="textWrap"
+        :visible="isVisible"
+        horizontalAlignment="left"
+      />
     </StackLayout>
     <StackLayout orientation="horizontal">
-      <Label text="Text Wrap :" width="100" class="scroll-view__margin_top"></Label>
-      <input type="checkbox" v-model="textWrap" id="button_textWrap_selectbox" class="scroll-view__margin_top" />
-    </StackLayout>
-     <StackLayout orientation="horizontal">
-      <Label text="Width :" width="100" class="scroll-view__margin_top"></Label>
-      <TextField type="number" v-model="width" id="button_width_input" class="scroll-view__margin_top" />
+      <Label text="Text:" width="100"></Label>
+      <TextField type="text" id="button_text_input" v-model="buttonText" />
     </StackLayout>
     <StackLayout orientation="horizontal">
-      <Label text="Height :" width="100" class="scroll-view__margin_top"></Label>
-      <TextField type="number" v-model="height" id="button_height_input" class="scroll-view__margin_top" />
+      <Label text="Label:" width="100"></Label>
+      <Label :text="labelText" id="button_label"></Label>
+    </StackLayout>
+    <StackLayout orientation="horizontal">
+      <Label text="Text Wrap :" width="100"></Label>
+      <input type="checkbox" v-model="textWrap" id="button_textWrap_selectbox" />
+    </StackLayout>
+    <StackLayout orientation="horizontal">
+      <Label id="button_visible_label" text="Visible :" width="100"></Label>
+      <input type="checkbox" v-model="isVisible" id="button_visible_checkbox" />
+      <Label id="button_visible_status_label" :text="isVisible ? 'active' : ''" width="100"></Label>
+    </StackLayout>
+    <StackLayout orientation="horizontal">
+      <Label id="button_primary_label" text="Primary :" width="100"></Label>
+      <input type="checkbox" v-model="isPrimary" id="button_primary_checkbox" />
+      <Label id="button_primary_status_label" :text="isPrimary ? 'active' : ''" width="100"></Label>
+    </StackLayout>
+    <StackLayout orientation="horizontal">
+      <Label id="button_secondary_label" text="Secondary :" width="100"></Label>
+      <input type="checkbox" v-model="isSecondary" id="button_secondary_checkbox" />
+      <Label id="button_secondary_status_label" :text="isSecondary ? 'active' : ''" width="100"></Label>
+    </StackLayout>
+    <StackLayout orientation="horizontal">
+      <Label id="button_disabled_label" text="Disabled :" width="100"></Label>
+      <input type="checkbox" v-model="isDisabled" id="button_disabled_checkbox" />
+      <Label id="button_disabled_status_label" :text="isDisabled ? 'active' : ''" width="100"></Label>
+    </StackLayout>
+    <StackLayout orientation="horizontal">
+      <Label id="button_size_label" text="Size:" width="100"></Label>
+      <select v-model="buttonSize" id="button_size_select">
+        <option value="small" id="button_size_small_option">small</option>
+        <option value="medium" id="button_size_medium_option">medium</option>
+      </select>
     </StackLayout>
   </StackLayout>
 </template>
 
 <script>
-import Button from "../../../src/components/Button";
-import Label from "../../../src/components/Label";
-import StackLayout from "../../../src/layouts/StackLayout";
-import TextField from "../../../src/components/TextField";
+import Label from '../../../src/components/Label';
+import StackLayout from '../../../src/layouts/StackLayout';
+import TextField from '../../../src/components/TextField';
+import VxpButton from '../../../src/components/VxpButton';
 
 export default {
-  name: "ButtonDoc",
-  data(){
-      return {
-          labelText : '',
-          textWrap : false,
-          buttonText: 'Button',
-          width :100,
-          height :40
-      };
+  name: 'ButtonDoc',
+  data() {
+    return {
+      labelText: '-',
+      textWrap: false,
+      buttonText: 'Button',
+      width: 100,
+      height: 40,
+      isVisible: true,
+      isDisabled: false,
+      buttonSize: 'medium',
+      isPrimary: false,
+      isSecondary: false,
+    };
   },
   methods: {
     onButtonTap() {
-        this.labelText="Button Pressed";
-    }
+      this.labelText = 'Button Pressed';
+    },
   },
-  components:{
-     Button,
-     Label,
-     StackLayout,
-     TextField
-  }
+  components: {
+    VxpButton,
+    Label,
+    StackLayout,
+    TextField,
+  },
 };
 </script>
 <style lang="scss" scoped>
-.scroll-view {
-   &__margin_top {
-   margin-top: 10px;
-  }
+@import url('/fonts/fontawesome.min.css');
+
+.vxpbutton-wrapper * {
+  margin: 2px;
 }
 </style>
