@@ -18,9 +18,8 @@ This is an overview of the most common usage of `<VxpLabel>`.
 
 ## Props
 
-| Name     | Type    | Default | Web | Mobile | Description | 
-| -------- | ------- | ------- | --- | ------ | ----------- |
-| text     | String  |         | ✔   | ✔      | Gets or sets the text of the label. |
-| textWrap | Boolean | `false` | ✔   | ✔      | Gets or sets whether the label wraps text. |
-| visible  | Boolean | `true`  | ✔   | ✔      | Gets or sets whether the label is visible or not |
-
+| Name       | Type    | Default | Web | Mobile | Description |
+| ---------- | ------- | ------- | --- | ------ | ----------- |
+| text       | String  |         | ✔   | ✔      | Gets or sets the text of the label. |
+| textWrap   | Boolean | `false` | ✔   | ✔      | Gets or sets whether the label wraps text. |
+| visibility | Boolean | `true`  | ✔   | ✔      | Gets or sets whether the label is visible or not |

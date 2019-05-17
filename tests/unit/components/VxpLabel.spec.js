@@ -7,10 +7,10 @@ describe('VxpLabel.vue', () => {
   const visibleVxpLabel = mount(VxpLabel);
   const inVisibleVxpLabel = mount(VxpLabel, {
     props: {
-      visible: Boolean,
+      visibility: Boolean,
     },
     propsData: {
-      visible: false,
+      visibility: false,
     },
   });
   it('display:none css rule is NOT applied when visible prop is not provided', () => {

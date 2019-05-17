@@ -22,7 +22,7 @@
 
     <StackLayout class="demo-panel">
       <VxpLabel text="Rendered Result" class="demo-panel__title" />
-      <VxpLabel id="label_component" :text="labelValue" :textWrap="textWrap" :visible="labelVisibility" />
+      <VxpLabel id="label_component" :text="labelValue" :textWrap="textWrap" :visibility="labelVisibility" />
     </StackLayout>
   </StackLayout>
 </template>

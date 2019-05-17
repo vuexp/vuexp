@@ -1,5 +1,5 @@
 <template>
-  <Label :text="text" :textWrap="textWrap" :class="{ 'vpx-label-invisible': !visible }" />
+  <Label :text="text" :textWrap="textWrap" :class="{ 'vpx-label-invisible': !visibility }" />
 </template>
 
 <script>
@@ -16,7 +16,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    visible: {
+    visibility: {
       type: Boolean,
       default: true,
     },
