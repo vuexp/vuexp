@@ -1,5 +1,10 @@
 <template>
-  <AbsoluteLayout class="vxp-checkbox" :class="{ 'vxp-checkbox--checked': checkedLocal, 'vxp-checkbox__disabled': disabled }" @tap="onTap">
+  <AbsoluteLayout
+    class="vxp-checkbox"
+    :class="{ 'vxp-checkbox--checked': checkedLocal, 'vxp-checkbox__disabled': disabled }"
+    :style="{ display: visible ? '' : 'none' }"
+    @tap="onTap"
+  >
     <FadeTransition :duration="200">
       <StackLayout
         top="0"
@@ -25,11 +30,15 @@
 
 <script>
 import FadeTransition from '../transitions/FadeTransition';
+import AbsoluteLayout from '../layouts/AbsoluteLayout';
+import StackLayout from '../layouts/StackLayout';
 
 export default {
-  name: 'Checkbox',
+  name: 'VxpCheckbox',
   components: {
     FadeTransition,
+    AbsoluteLayout,
+    StackLayout,
   },
   model: {
     prop: 'checked',
@@ -43,6 +52,10 @@ export default {
     disabled: {
       type: Boolean,
       default: false,
+    },
+    visible: {
+      type: Boolean,
+      default: true,
     },
   },
   data() {

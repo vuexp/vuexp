@@ -2,9 +2,9 @@
 sidebarDepth: 0
 ---
 
-# Checkbox
+# VxpCheckbox
 
-This is an overview of the most common usage of `<Checkbox>`.
+This is an overview of the most common usage of `<VxpCheckbox>`.
 
 ## Live Demo
  
@@ -78,7 +78,8 @@ This is an overview of the most common usage of `<Checkbox>`.
 | Name     | Type    | Default | Web | Mobile | Desctiption |
 | -------- | ------- | ------- | --- | ------ |------|
 | visible  | Boolean | `true`  | ✔   | ✔      |Sets the visibility of the checkbox.|
-| disable  | Boolean | `false` | ✔   | ✔      |Sets the disability of the checkbox.|
+| disabled | Boolean | `false` | ✔   | ✔      |Sets the disability of the checkbox.|
+| checked  | Boolean | `false` | ✔   | ✔      |Sets the check status of the checkbox.|
 
 ## Events
 
