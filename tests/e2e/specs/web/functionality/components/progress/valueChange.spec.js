@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'Check progress valueChange'() {
+  'C13843423 Event / Name : valueChange'() {
     this.currentPage
       .click('@increament_button')
       .assert.containsText('@event_label', 'Event: valueChange 0 to 10')

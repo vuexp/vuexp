@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'Check Current progress value'() {
+  '	C13843421 Props:/Name: value , Type: Number'() {
     this.currentPage.assert
       .containsText('@prog_value', 'Current Progress: 0')
       .setTextToIncreamentInput(15)

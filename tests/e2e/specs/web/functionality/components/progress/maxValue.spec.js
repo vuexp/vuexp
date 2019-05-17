@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'Check progress maxValue'() {
+  'C13843422 Props:/Name: maxValue, Type: Number'() {
     this.currentPage
       .setTextToMaxValueInput(15)
       .setTextToIncreamentInput(15)
