@@ -5,8 +5,8 @@ const applyCss = function(el, binding, vnode) {
     let cssString = '';
 
     cssString += $attrs.backgroundColor ? `background-color : ${$attrs.backgroundColor};` : '';
-    cssString += typeof $attrs.width !== 'undefined' ? `width: ${$attrs.width}px;` : '';
-    cssString += typeof $attrs.height !== 'undefined' ? `height: ${$attrs.height}px;` : '';
+    cssString += typeof $attrs.width !== 'undefined' ? ($attrs.width !== 'auto' ? `width: ${$attrs.width}px;` : `width: auto;`) : '';
+    cssString += typeof $attrs.height !== 'undefined' ? ($attrs.height !== 'auto' ? `height: ${$attrs.height}px;` : `height: auto;`) : '';
     cssString += typeof $attrs.flexShrink !== 'undefined' ? `flex-shrink: ${$attrs.flexShrink};` : '';
     cssString += typeof $attrs.flexGrow !== 'undefined' ? `flex-grow: ${$attrs.flexGrow};` : '';
     cssString += typeof $attrs.order !== 'undefined' ? `order: ${$attrs.order};` : '';
