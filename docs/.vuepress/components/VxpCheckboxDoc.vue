@@ -49,7 +49,6 @@
 </template>
 
 <script>
-import FadeTransition from '../../../src/transitions/FadeTransition';
 import Label from '../../../src/components/Label';
 import VxpCheckbox from '../../../src/components/VxpCheckbox';
 import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
@@ -58,7 +57,6 @@ export default {
   name: "CheckboxDoc",
   components: {
     FlexboxLayout,
-    FadeTransition,
     Label,
     VxpCheckbox,
     StackLayout,
