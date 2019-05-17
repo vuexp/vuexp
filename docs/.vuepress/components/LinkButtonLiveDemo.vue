@@ -37,11 +37,10 @@ import Label from '../../../src/components/Label';
 import StackLayout from '../../../src/layouts/StackLayout';
 import LinkButton from '../../../src/components/LinkButton';
 import Switcher from '../../../src/components/Switcher';
-import style from '../public/style.scss';
 
 export default {
   name: 'LinkButtonLiveDemo',
-  components: { StackLayout, TextField, Label, Button, LinkButton, Switcher },
+  components: { StackLayout, TextField, Label, LinkButton, Switcher },
   data() {
     return {
       text: 'Link to another site',
@@ -63,6 +62,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+@import '../public/style.scss';
 select {
   border: 1px solid #eaeaea;
   border-radius: 3px;
