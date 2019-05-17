@@ -13,15 +13,18 @@ module.exports = {
     tabBackgroundColor: '#tabView__tabBackgroundColor__input',
     tabBackgroundColorOption: '#tabView__tabBackgroundColor__input > option:nth-child(3)',
     selectedTabTextColor: '#tabView__selectedTabTextColor__input',
-    seledtedTabTextColorOption: '#tabView__tabBackgroundColor__input > option:nth-child(4)',
+    seledtedTabTextColorOption: '#tabView__selectedTabTextColor__input > option:nth-child(4)',
+    selectedTab: '.vxp-tab-view__header > button.vxp-tab-view__header__tab.vxp-tab-view__header__tab-active > span',
     idInput: 'input[placeholder="ID of selected tab"]',
     idLabel: 'div[role="tabpanel"]',
     titleLabel: 'span[class="vxp-tab-view__header__tab__title"]',
     titleInput: 'input[placeholder="title of selected tab"]',
     webIconInput: '.demo-panel.tabView-wrapper.vxp-stack-layout.vxp-stack-layout--vertical > div > select',
     webIconOption: 'option[value="fa fa-user-circle-o"]',
-    tabView: '.nudoc-example__content > div.vxp-stack-layout.vxp-stack-layout--vertical > div:nth-child(1) > div > div.vxp-tab-view__header',
-    tabTwoText: '.vxp-tab-view__header > button:nth-child(2) > span',
+    tabView: `.content > div:nth-child(5) > 
+    div.nudoc-example__content > div.vxp-stack-layout.vxp-stack-layout--vertical > div:nth-child(1) > div > div.vxp-tab-view__header`,
+    tabTwoText: `.nudoc-example__content > 
+        div.vxp-stack-layout.vxp-stack-layout--vertical > div:nth-child(1) > div > div.vxp-tab-view__header > button:nth-child(2) > span`,
   },
 
   commands: [
