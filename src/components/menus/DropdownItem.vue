@@ -2,7 +2,7 @@
   <StackLayout class="vxp-dropdown-item" orientation="horizontal" @tap="itemClicked($event)">
     <Label v-if="(icon && iconClass) || (item.icon && item.iconClass)" :text="(icon || item.icon) | fonticon" :class="iconClass || item.iconClass"></Label>
     <Label v-if="item.title" :text="item.title" class="vxp-dropdown-item__title"></Label>
-    <Label v-else :text="item" class="vxp-dropdown-item__title"></Label>
+    <Label v-else :text="title" class="vxp-dropdown-item__title"></Label>
   </StackLayout>
 </template>
 
@@ -12,11 +12,6 @@ import StackLayout from '../../layouts/StackLayout';
 
 export default {
   name: 'DropdownItem',
-  data() {
-    return {
-      isModalVisible: false,
-    };
-  },
   props: {
     item: {
       type: Object,
@@ -25,10 +20,11 @@ export default {
     title: String,
     icon: String,
     iconClass: String,
+    elementIndex: Number,
   },
   methods: {
     itemClicked() {
-      this.$emit('submit', this.cancelButtonText);
+      this.$emit('selected', this.item || this.elementIndex);
     },
   },
   components: {

@@ -1,19 +1,26 @@
 <template>
-  <StackLayout class="vxp-dropdown">
-    <StackLayout :disabled="disabled" v-if="items">
-      <DropdownItem class="vxp-dropdown__item" v-for="(item, key) in items" :item="item" :key="key" />
+  <StackLayout v-if="visibility" class="vxp-dropdown">
+    <StackLayout class="vxp-dropdown__menu" orientation="horizontal" @tap="toggleMenu()">
+      <Label class="vxp-dropdown__menu__title" :text="title"></Label>
+      <Label class="vxp-dropdown__menu_icon" :text="icon | fonticon" :disabled="disabled" :class="iconClass" />
     </StackLayout>
-    <slot></slot>
+    <StackLayout class="vxp-dropdown__itemContainer" :class="{ 'is-visible': isMenuOpen }" v-if="items">
+      <DropdownItem class="vxp-dropdown__itemContainer__item" v-for="(item, key) in items" :item="item" :key="key" :elementIndex="key" />
+    </StackLayout>
   </StackLayout>
 </template>
 
 <script>
 import DropdownItem from './DropdownItem';
+import Label from '../Label';
 import StackLayout from '../../layouts/StackLayout';
 
 export default {
   name: 'DropdownMenu',
   props: {
+    title: String,
+    icon: String,
+    iconClass: String,
     items: {
       type: Array,
       default: () => [],
@@ -22,15 +29,25 @@ export default {
       type: Boolean,
       default: false,
     },
+    visibility: {
+      type: Boolean,
+      default: true,
+    },
+  },
+  data() {
+    return {
+      isMenuOpen: false,
+    };
   },
   methods: {
-    itemClicked() {
-      this.$emit('submit', this.cancelButtonText);
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
     },
   },
   components: {
     StackLayout,
     DropdownItem,
+    Label,
   },
 };
 </script>
@@ -38,30 +55,21 @@ export default {
 <style lang="scss">
 @import '../../assets/styles/components/dialogs';
 
-.vxp-action-dialog {
-  &__body {
-    &__item {
-      padding: 0;
-      margin: 0;
-      .vxp-button {
-        width: 100%;
-        text-align: left;
-        background-color: #fff;
-        border: none;
-        outline: none;
-        padding: 8px 6px;
-        margin: 2px 0;
-
-        &:hover {
-          cursor: pointer;
-          background-color: #ebebeb;
-        }
-      }
+.vxp-dropdown {
+  &__menu {
+    &:hover {
+      cursor: pointer;
     }
   }
-  &__footer {
-    &__cancel-button {
-      @include vxp-dialog-button;
+  &__itemContainer {
+    padding: 0.5rem;
+    display: none;
+    border: 1px solid;
+    &__item {
+      padding: 0.5rem;
+    }
+    &.is-visible {
+      display: block;
     }
   }
 }

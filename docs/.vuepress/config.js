@@ -61,6 +61,13 @@ module.exports = {
             "components/dialogs/action-dialog.md",
           ]
         },
+        {
+          title: "Menus",
+          collapsable: true,
+          children: [
+            "components/menus/dropdown-menu.md",
+          ]
+        },
       ]
     }
   },
