@@ -21,7 +21,7 @@
     </StackLayout>
 
     <StackLayout class="demo-panel">
-      <VxpLabel text="Component" class="demo-panel__title" />
+      <VxpLabel text="Rendered Result" class="demo-panel__title" />
       <VxpLabel id="label_component" :text="labelValue" :textWrap="textWrap" :visible="labelVisibility" />
     </StackLayout>
   </StackLayout>
