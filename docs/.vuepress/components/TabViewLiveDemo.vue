@@ -20,37 +20,40 @@
       <Label text="Manage props" class="demo-panel__title" />
       <Label :text="selectedIndexComputed" />
       <StackLayout>
-        <Label text="ID:" />
-        <TextField v-model="tabs[selectedIndex].id" :id="`tabView__id__input__${selectedIndex}`" hint="ID of selected tab" />
-        <Label text="Title:" />
-        <TextField v-model="tabs[selectedIndex].title" :id="`tabView__title__input__${selectedIndex}`" hint="title of selected tab" />
-        <Label text="Web icon" />
-        <select v-model="tabs[selectedIndex].webIcon">
-          <option v-for="icon in icons" v-bind:value="icon">{{ icon }}</option>
-        </select>
-        <StackLayout>
-          <Label id="tabView__tabTextColor__label" :text="tabTextColorComputed" />
-          <input type="color" id="tabView__tabTextColor__input" name="tabTextColor" :value="tabTextColor" @change="changeTabTextColor($event)" />
+        <StackLayout orientation="horizontal" class="flex m-t-10">
+          <Label id="tabView__id__label" :for="`tabView__id__input__${selectedIndex}`" text="ID:" />
+          <TextField v-model="tabs[selectedIndex].id" :id="`tabView__id__input__${selectedIndex}`" hint="ID of selected tab" />
         </StackLayout>
-        <StackLayout>
-          <Label id="tabView__tabBackgroundColor__label" :text="tabBackgroundColorComputed" />
-          <input
-            type="color"
-            id="tabView__tabBackgroundColor__input"
-            name="tabBackgroundColor"
-            :value="tabBackgroundColor"
-            @change="changeTabBackgroundColor($event)"
-          />
+        <StackLayout orientation="horizontal" class="flex m-t-10">
+          <Label id="tabView__title__label" :for="`tabView__title__input__${selectedIndex}`" text="Title:" />
+          <TextField v-model="tabs[selectedIndex].title" :id="`tabView__title__input__${selectedIndex}`" hint="title of selected tab" />
         </StackLayout>
-        <StackLayout>
-          <Label id="tabView__selectedTabTextColor__label" :text="selectedTabTextColorComputed" />
-          <input
-            type="color"
-            id="tabView__selectedTabTextColor__input"
-            name="selectedTabTextColor"
-            :value="selectedTabTextColor"
-            @change="changeSelectedTabTextColor($event)"
-          />
+        <StackLayout orientation="horizontal" class="flex m-t-10">
+          <Label id="tabView__webIcon__label" for="tabView__webIcon__input" text="Web icon" />
+          <select id="tabView__webIcon__input" v-model="tabs[selectedIndex].webIcon">
+            <option v-for="icon in icons" v-bind:value="icon">{{ icon }}</option>
+          </select>
+        </StackLayout>
+        <StackLayout orientation="horizontal" class="flex m-t-10">
+          <Label text="Tab Text Color:" for="tabView__tabTextColor__input" id="tabView__tabTextColor__label" />
+          <select id="tabView__tabTextColor__input" style="margin-left: 5px" class="form-input" v-model="tabTextColor">
+            <option disabled value>Color</option>
+            <option v-for="color in colors" :key="color.value" :value="color.value">{{ color.label }}</option>
+          </select>
+        </StackLayout>
+        <StackLayout orientation="horizontal" class="flex m-t-10">
+          <Label text="Tab Background Color:" id="tabView__tabBackgroundColor__label" for="tabView__tabBackgroundColor__input" />
+          <select id="tabView__tabBackgroundColor__input" style="margin-left: 5px" class="form-input" v-model="tabBackgroundColor">
+            <option disabled value>Color</option>
+            <option v-for="color in colors" :key="color.value" :value="color.value">{{ color.label }}</option>
+          </select>
+        </StackLayout>
+        <StackLayout orientation="horizontal" class="flex m-t-10">
+          <Label text="Selected Tab Text Color:" id="tabView__selectedTabTextColor__label" for="tabView__selectedTabTextColor__input" />
+          <select id="tabView__selectedTabTextColor__input" style="margin-left: 5px" class="form-input" v-model="selectedTabTextColor">
+            <option disabled value>Color</option>
+            <option v-for="color in colors" :key="color.value" :value="color.value">{{ color.label }}</option>
+          </select>
         </StackLayout>
       </StackLayout>
     </StackLayout>
@@ -63,6 +66,7 @@ import TabViewItem from '../../../src/components/TabViewItem';
 import TabView from '../../../src/components/TabView';
 import TextField from '../../../src/components/TextField';
 import StackLayout from '../../../src/layouts/StackLayout';
+import PredefinedColors from '../../shared/colors';
 
 export default {
   name: 'TabViewLiveDemo',
@@ -70,9 +74,9 @@ export default {
   data() {
     return {
       selectedIndex: 0,
-      tabTextColor: '#000000',
-      tabBackgroundColor: '#f9f9f9',
-      selectedTabTextColor: '#000000',
+      tabTextColor: '',
+      tabBackgroundColor: '',
+      selectedTabTextColor: '',
       tabs: [
         {
           id: '1',
@@ -94,20 +98,12 @@ export default {
         },
       ],
       icons: ['', 'fa fa-smile-o', 'fa fa-user-circle-o', 'fa fa-exclamation-triangle'],
+      colors: PredefinedColors,
     };
   },
   computed: {
     selectedIndexComputed() {
       return `Selected Index: ${this.selectedIndex}`;
-    },
-    tabTextColorComputed() {
-      return `Tab Text Color: ${this.tabTextColor}`;
-    },
-    tabBackgroundColorComputed() {
-      return `Tab Background Color: ${this.tabBackgroundColor}`;
-    },
-    selectedTabTextColorComputed() {
-      return `Selected Tab Text Color: ${this.selectedTabTextColor}`;
     },
   },
   methods: {
@@ -116,18 +112,6 @@ export default {
     },
     titleChanged(evt, i) {
       this.tabs[i].title = evt;
-    },
-    changeTabTextColor(e) {
-      this.tabTextColor = e.target.value;
-    },
-    changeTabBackgroundColor(e) {
-      this.tabBackgroundColor = e.target.value;
-    },
-    changeSelectedTabTextColor(e) {
-      this.selectedTabTextColor = e.target.value;
-    },
-    changeTabWebIcon(e, i) {
-      console.log(e, i);
     },
   },
 };
