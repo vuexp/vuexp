@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'C13843452 Props:/Name: tabTextColor, Type: Color'() {
+  'C13843454 Props:/Name: selectedTabTextColor, Type: Color'() {
     this.currentPage.selectSelectedTabTextColor().assert.attributeContains('@selectedTab', 'style', 'color: blue;');
   },
 

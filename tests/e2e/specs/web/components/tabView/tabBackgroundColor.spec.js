@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'C13843452 Props:/Name: tabTextColor, Type: Color'() {
+  'C13843453 Props:/Name: tabBackgroundColor, Type: Color'() {
     this.currentPage.selectBackgroundColor().assert.attributeContains('@tabView', 'style', 'background-color: green;');
   },
 
