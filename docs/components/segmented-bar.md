@@ -1,4 +1,6 @@
-
+---
+sidebarDepth: 0
+---
 # SegmentedBar
 
 `<SegmentedBar>` is a UI bar component that displays a set of buttons for discrete selection. Can show text or images.

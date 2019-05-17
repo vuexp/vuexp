@@ -84,7 +84,7 @@ export default {
     incrementValue() {
       const maxValErr = this.maxValueInputAsNumber < this.incrementAsNumber + this.currentProgress;
       if (maxValErr) {
-        alert`Incremented value is greater than max value`;
+        alert('Incremented value is greater than max value');
         return;
       }
       if (this.currentProgress >= this.maxValueInputAsNumber) {
