@@ -9,8 +9,8 @@ module.exports = {
         done();
       });
   },
-  'C13843458 Web - TabViewItem Props:/Name: webIcon, Type: String'() {
-    this.currentPage.selectWebIcon('@webIconOption').checkScreenshot('@tabView');
+  'C13843459 Events / Name : selectedIndexChanged'() {
+    this.currentPage.selectTab().assert.containsText('@selectedIndexLabel', 'Selected Index: 1');
   },
 
   after: function(client, done) {

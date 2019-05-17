@@ -17,6 +17,7 @@ module.exports = {
     titleInput: 'input[placeholder="title of selected tab"]',
     webIconInput: '.demo-panel.tabView-wrapper.vxp-stack-layout.vxp-stack-layout--vertical > div > select',
     webIconOption: 'option[value="fa fa-user-circle-o"]',
+    tabView: '.nudoc-example__content > div.vxp-stack-layout.vxp-stack-layout--vertical > div:nth-child(1) > div > div.vxp-tab-view__header',
   },
 
   commands: [
