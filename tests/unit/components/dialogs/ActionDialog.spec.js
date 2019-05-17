@@ -5,7 +5,7 @@ import ActionDialog from '../../../../src/components/dialogs/ActionDialog';
 import Button from '../../../../src/components/Button';
 import StackLayout from '../../../../src/layouts/StackLayout';
 
-describe.only('ActionDialog', () => {
+describe('ActionDialog', () => {
   // ActionDialog mock up values.
   const title = 'initial string';
   const cancelButtonText = 'cancelButtonText';
