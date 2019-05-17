@@ -109,7 +109,6 @@
             <select
               :id="'absolutelayout__childbackground__select' + index"
               style="height: 1.9rem; min-width: 10%;"
-              id="actionitem__deleteicon__select"
               v-model="layoutChild.backgroundColor"
             >
               <option

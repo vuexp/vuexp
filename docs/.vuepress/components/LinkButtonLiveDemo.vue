@@ -32,7 +32,6 @@
 
 <script>
 import TextField from '../../../src/components/TextField';
-import Button from '../../../src/components/Button';
 import Label from '../../../src/components/Label';
 import StackLayout from '../../../src/layouts/StackLayout';
 import LinkButton from '../../../src/components/LinkButton';

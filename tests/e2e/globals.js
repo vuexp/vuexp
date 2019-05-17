@@ -13,7 +13,7 @@ module.exports = {
   devUrl: defaultDevUrl,
   runId: runId,
   preDefinedData: {},
-  visual_regression_settings: nightwatchVrtSettings(this),
+  visual_regression_settings: nightwatchVrtSettings.apply(this),
   before: function(done) {
     nightwatchVrtConfigBugFix(this);
     done();

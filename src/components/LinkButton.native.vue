@@ -7,7 +7,7 @@
 import { openUrl } from 'tns-core-modules/utils/utils'; // eslint-disable-line
 
 export default {
-  name: 'LinkButton.native',
+  name: 'LinkButton',
   props: {
     text: {
       type: String,
