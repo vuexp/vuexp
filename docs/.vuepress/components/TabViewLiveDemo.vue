@@ -18,7 +18,7 @@
 
     <StackLayout style="margin-top:20px" class="demo-panel tabView-wrapper">
       <Label text="Manage props" class="demo-panel__title" />
-      <Label :text="selectedIndexComputed" />
+      <Label id="tabview__selectedIndex__label" :text="selectedIndexComputed" />
       <StackLayout>
         <StackLayout orientation="horizontal" class="flex m-t-10">
           <Label id="tabView__id__label" :for="`tabView__id__input__${selectedIndex}`" text="ID:" />
