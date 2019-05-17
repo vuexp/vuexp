@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
-import Checkbox from '../../../src/components/Checkbox';
+import Checkbox from '../../../src/components/VxpCheckbox';
 import localVue from '../local-vue';
 
 describe('Checkbox Component Tests', () => {
@@ -11,7 +11,7 @@ describe('Checkbox Component Tests', () => {
 
   beforeEach(() => {
     wrapper = mount(Checkbox, {
-      name: 'Checkbox',
+      name: 'VxpCheckbox',
       model: {
         prop: 'checked',
         event: 'change',

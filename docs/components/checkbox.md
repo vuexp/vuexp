@@ -70,7 +70,7 @@ This is an overview of the most common usage of `<Checkbox>`.
 }
 ```
 
-<CheckboxDoc />
+<VxpCheckboxDoc />
 </DocExampleBox>
 
 ## Props
