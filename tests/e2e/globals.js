@@ -39,6 +39,6 @@ module.exports = {
 
 function nightwatchVrtConfigBugFix(context) {
   if (context.test_settings) {
-    context.test_settings.visual_regression_settings = nightwatchVrtSettings(context);
+    context.test_settings.visual_regression_settings = nightwatchVrtSettings.apply(context);
   }
 }
