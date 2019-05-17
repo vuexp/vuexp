@@ -1,15 +1,16 @@
 <template>
   <Button
     @tap="$emit('tap', $event)"
-    :style="{ width: unit(size), height: unit(size), fontFamily: this.font, fontSize: unit(iconSize) }"
+    :style="{ width: unit(size), height: unit(size), fontSize: unit(iconSize) }"
     :text="this.icon | fonticon"
-    :class="nuIconButtonClass"
+    :class="`${nuIconButtonClass} ${iconName}`"
     :isEnabled="isEnabled"
   />
 </template>
 
 <script>
 import platform from '../platform';
+import Button from './Button';
 
 export default {
   name: 'IconButton',
@@ -21,7 +22,7 @@ export default {
   props: {
     icon: String,
     size: { type: [Number, String], default: 40 },
-    font: String,
+    iconName: String,
     isEnabled: { type: Boolean, default: true },
   },
   computed: {
@@ -39,6 +40,14 @@ export default {
       } else {
         return value.toString();
       }
+    },
+  },
+  components: {
+    Button,
+  },
+  filters: {
+    fonticon: function(value) {
+      return value + ' | fonticon';
     },
   },
 };

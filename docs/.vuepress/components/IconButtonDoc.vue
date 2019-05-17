@@ -1,9 +1,9 @@
 <template>
   <FlexboxLayout class="nubutton-doc-container" flexDirection="column">
     <FlexboxLayout width="250" class="nubutton-doc-container__flexboxLayout" flexDirection="row" justifyContent="space-around">
-      <IconButton :isEnabled="isEnabled" @tap="increment" font="nuicon" icon="nuicon-basket" size="25" primary />
-      <IconButton :isEnabled="isEnabled" @tap="increment" font="nuicon" icon="nuicon-basket" secondary />
-      <IconButton :isEnabled="isEnabled" @tap="increment" font="nuicon" icon="nuicon-basket" size="50" alert />
+      <IconButton :isEnabled="isEnabled" @tap="increment" iconName="fa" :icon="buttonIcon" size="25" primary />
+      <IconButton :isEnabled="isEnabled" @tap="increment" iconName="fa" :icon="buttonIcon" secondary />
+      <IconButton :isEnabled="isEnabled" @tap="increment" iconName="fa" :icon="buttonIcon" size="50" alert />
     </FlexboxLayout>
 
     <FlexboxLayout class="nubutton-doc-container__label">
@@ -18,7 +18,13 @@
 
     <FlexboxLayout class="nubutton-doc-container__config" justifyContent="start">
       <Label text="Disable State: " width="100" />
-      <Checkbox class="nubutton-doc-container__config__checkbox" primary @change="isEnabled = !isEnabled" />
+      <Switcher class="nubutton-doc-container__config__checkbox" primary @checkedChange="isEnabled = !isEnabled" />
+      <Label text="Font: " />
+      <Label text="Icon: " />
+      <select v-model="buttonIcon">
+        <option v-for="icon in icons" :value="icon">{{ icon }}</option>
+      </select>
+      <Label text="Size: " />
     </FlexboxLayout>
   </FlexboxLayout>
 </template>
@@ -27,6 +33,7 @@
 import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
 import IconButton from '../../../src/components/IconButton';
 import Label from '../../../src/components/Label';
+import Switcher from '../../../src/components/Switcher';
 
 export default {
   name: 'IconButtonDoc',
@@ -34,6 +41,8 @@ export default {
     return {
       counter: 0,
       isEnabled: true,
+      buttonIcon: 'fa fa-exclamation-triangle',
+      icons: ['', 'fa fa-smile-o', 'fa fa-user-circle-o', 'fa fa-exclamation-triangle'],
     };
   },
   methods: {
@@ -42,6 +51,7 @@ export default {
     },
   },
   components: {
+    Switcher,
     FlexboxLayout,
     IconButton,
     Label,
@@ -50,6 +60,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('/fonts/fontawesome.min.css');
+
 .nubutton-doc-container {
   margin-top: 25px;
   margin-bottom: 25px;
