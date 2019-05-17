@@ -1,33 +1,65 @@
 <template>
   <StackLayout>
-    <AbsoluteLayout
-      v-if="checkedLocal2"
-      id="checkbox_component"
-      class="vxp-checkbox"
-      :class="{ 'vxp-checkbox--checked': checkedLocal1, 'vxp-checkbox__disabled': checkboxDisabled }"
-      @tap="onTapCheckbox1"                             
-    >
-      <FadeTransition :duration="200">
-        <StackLayout
-          top="0"
-          left="0"
-          v-if="checkedLocal1"
-          class="vxp-checkbox__background vxp-checkbox__checked"
-          :class="{ 'vxp-checkbox__checked__disabled': checkboxDisabled }"
+    <StackLayout orientation="horizontal">
+        <AbsoluteLayout
+        v-if="checkedLocal2"
+        id="checkbox_component"
+        class="vxp-checkbox"
+        :class="{ 'vxp-checkbox--checked': checkedLocal1, 'vxp-checkbox__disabled': checkboxDisabled }"
+        @tap="onTapCheckbox1"                             
         >
-          <Label class="vxp-checkbox__checked__icon" text=" "/>
-        </StackLayout>
-      </FadeTransition>
-      <FadeTransition :duration="200">
-        <StackLayout
-          top="0"
-          left="0"
-          v-if="!checkedLocal1"
-          class="vxp-checkbox__background vxp-checkbox__unchecked"
-          :class="{ 'vxp-checkbox__unchecked__disabled': checkboxDisabled }"
-        ></StackLayout>
-      </FadeTransition>
-    </AbsoluteLayout>
+        <FadeTransition :duration="200">
+            <StackLayout
+            top="0"
+            left="0"
+            v-if="checkedLocal1"
+            class="vxp-checkbox__background vxp-checkbox__checked"
+            :class="{ 'vxp-checkbox__checked__disabled': checkboxDisabled }"
+            >
+            <Label class="vxp-checkbox__checked__icon" text=" "/>
+            </StackLayout>
+        </FadeTransition>
+        <FadeTransition :duration="200">
+            <StackLayout
+            top="0"
+            left="0"
+            v-if="!checkedLocal1"
+            class="vxp-checkbox__background vxp-checkbox__unchecked"
+            :class="{ 'vxp-checkbox__unchecked__disabled': checkboxDisabled }"
+            ></StackLayout>
+        </FadeTransition>
+        </AbsoluteLayout>
+        <Label text="Primary"  width="100" class="checkbox_platform__margin_top" ></Label>
+        <AbsoluteLayout
+        v-if="checkedLocal2"
+        id="checkbox_component"
+        class="vxp-checkbox"
+        :class="{ 'vxp-checkbox--checked': checkedLocal4, 'vxp-checkbox__disabled': checkboxDisabled }"
+                                 
+        >
+        <FadeTransition :duration="200">
+            <StackLayout
+            top="0"
+            left="0"
+            v-if="checkedLocal4"
+            class="vxp-checkbox__background vxp-checkbox__checked"
+            :class="{ 'vxp-checkbox__checked__disabled': checkboxDisabled }"
+            >
+            <Label class="vxp-checkbox__checked__icon" text=" "/>
+            </StackLayout>
+        </FadeTransition>
+        <FadeTransition :duration="200">
+            <StackLayout
+            top="0"
+            left="0"
+            v-if="!checkedLocal4"
+            class="vxp-checkbox__background vxp-checkbox__unchecked"
+            :class="{ 'vxp-checkbox__unchecked__disabled': checkboxDisabled }"
+            ></StackLayout>
+        </FadeTransition>
+        </AbsoluteLayout>
+        <Label text="Secondary"  width="100" class="checkbox_platform__margin_top"></Label>
+    </StackLayout>
     <StackLayout orientation="horizontal">
       <Label
         id="checkbox_status_label"
@@ -72,7 +104,7 @@
       </AbsoluteLayout>
     </StackLayout>
     <StackLayout orientation="horizontal">
-      <Label text="Enable :" id="checkbox_enabled_label" width="100" class="checkbox_label__margin_top"></Label>
+      <Label text="Disable :" id="checkbox_enabled_label" width="100" class="checkbox_label__margin_top"></Label>
       <AbsoluteLayout
         style="margin-top: 10px;"
         id="checkbox_enabled_selectbox"
@@ -133,9 +165,10 @@ export default {
   },
   data() {
     return {
-      checkedLocal1: this.checked,
+      checkedLocal1: true,
       checkedLocal2: true,
       checkedLocal3: true,
+       checkedLocal3: false,
       checkboxDisabled: false,
     };
   },
@@ -158,6 +191,13 @@ export default {
       this.$emit('change', this.checkedLocal3);
       this.checkboxDisabled = !this.checkboxDisabled;
     },
+    onTapCheckbox4(event, cancelBubbling) {
+      if (cancelBubbling) cancelBubbling();
+      if (!this.checkboxDisabled) {
+        this.checkedLocal4 = !this.checkedLocal4;
+        this.$emit('change', this.checkedLocal4);
+      }
+    },
   },
 };
 </script>
@@ -168,6 +208,13 @@ export default {
 .checkbox_label {
   &__margin_top {
     margin-top: 10px;
+  }
+}
+
+.checkbox_platform {
+  &__margin_top {
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
 

@@ -85,13 +85,3 @@ This is an overview of the most common usage of `<Checkbox>`.
 | Name | Web | Mobile | Description |
 | ---- | --- | ------ |------|
 | onTap| ✔   | ✔      |Emitted when the checkbox is tapped.|
-
-### Dependencies
-
-#### Note: The following components to be used from 'nativescript-vue-web'
-
-| Name           |
-| -------------- |
-| StackLayout    |
-| AbsoluteLayout |
-| Label          |
