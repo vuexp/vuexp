@@ -3,8 +3,6 @@
 </template>
 
 <script>
-import CommonDirective from '../directives/CommonDirective';
-import Gestures from '../mixins/GestureMixin';
 import Label from './Label';
 
 export default {
@@ -23,11 +21,6 @@ export default {
       default: true,
     },
   },
-  directives: {
-    'common-directive': CommonDirective,
-  },
-  computed: {},
-  mixins: [Gestures],
   components: {
     Label,
   },
