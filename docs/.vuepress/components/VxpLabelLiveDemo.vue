@@ -1,43 +1,50 @@
 <template>
   <StackLayout>
     <StackLayout class="demo-panel">
-      <Label text="Label Properties" class="demo-panel__title" />
+      <VxpLabel text="Label Properties" class="demo-panel__title" />
 
       <FlexboxLayout flexWrap="wrap">
-        <Label text="Text" class="option-label" />
+        <VxpLabel text="Text" class="option-label" />
         <TextField id="label_text_input" v-model="labelValue" class="option-input" />
       </FlexboxLayout>
 
       <FlexboxLayout flexWrap="wrap">
-        <Label text="Text Wrap" class="option-label" />
+        <VxpLabel text="Text Wrap" class="option-label" />
         <input id="label_textwrap_cb" type="checkbox" v-model="textWrap" />
+      </FlexboxLayout>
+
+      <FlexboxLayout flexWrap="wrap">
+        <VxpLabel text="Visibility" class="option-label" />
+        <input id="label_visibility_cb" type="checkbox" v-model="labelVisibility" />
+        <VxpLabel id="label_visibility_text" :text="labelVisibility ? 'Visible' : 'Invisible'" class="option-label" />
       </FlexboxLayout>
     </StackLayout>
 
     <StackLayout class="demo-panel">
-      <Label text="Component" class="demo-panel__title" />
-      <Label id="label_component" :text="labelValue" :textWrap="textWrap" />
+      <VxpLabel text="Component" class="demo-panel__title" />
+      <VxpLabel id="label_component" :text="labelValue" :textWrap="textWrap" :visible="labelVisibility" />
     </StackLayout>
   </StackLayout>
 </template>
 
 <script>
-import Label from '../../../src/components/Label';
+import VxpLabel from '../../../src/components/VxpLabel';
 import StackLayout from '../../../src/layouts/StackLayout';
 import TextField from '../../../src/components/TextField';
 import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
 
 export default {
-  name: 'LabelLiveDemo',
+  name: 'VxpLabelLiveDemo',
   data() {
     return {
-      labelValue: 'Label',
+      labelValue: 'Hello world!',
       textWrap: false,
+      labelVisibility: true,
     };
   },
   components: {
     FlexboxLayout,
-    Label,
+    VxpLabel,
     StackLayout,
     TextField,
   },

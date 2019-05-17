@@ -2,19 +2,19 @@
 sidebarDepth: 0
 ---
 
-# Label
+# VxpLabel
 ## Live Demo
 
 <DocExampleBox :liveDemoMode="true">
 ```html
-<Label text="Label" />
+<VxpLabel text="Label" />
 ```
-<LabelLiveDemo />
+<VxpLabelLiveDemo />
 </DocExampleBox>
 
-This is an overview of the most common usage of `<Label>`.
+This is an overview of the most common usage of `<VxpLabel>`.
 
-`Label` is a UI component that displays read-only text.
+`VxpLabel` is a UI component that displays read-only text.
 
 ## Props
 
@@ -22,4 +22,5 @@ This is an overview of the most common usage of `<Label>`.
 | -------- | ------- | ------- | --- | ------ |
 | text     | String  |         | ✔   | ✔      |
 | textWrap | Boolean | `false` | ✔   | ✔      |
+| visibile | Boolean | `true`  | ✔   | ✔      |
 
