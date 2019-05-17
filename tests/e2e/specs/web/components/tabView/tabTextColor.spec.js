@@ -10,8 +10,7 @@ module.exports = {
       });
   },
   'C13843452 Props:/Name: tabTextColor, Type: Color'() {
-    this.browser.execute("document.getElementById('tabView__tabTextColor__input').setAttribute('value', '#ff80c0')");
-    this.currentPage.assert.containsText('@tabTextColorLabel', '#ff80c0');
+    this.currentPage.selectTabTextColor().assert.attributeContains('@tabTwoText', 'style', 'color: orange;');
   },
 
   after: function(client, done) {

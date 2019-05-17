@@ -6,11 +6,14 @@ module.exports = {
   },
   elements: {
     tabTwo: '.vxp-stack-layout--vertical > div:nth-child(1) > div > div.vxp-tab-view__header > button:nth-child(2)',
-    selectedIndexLabel: '.demo-panel.tabView-wrapper.vxp-stack-layout.vxp-stack-layout--vertical > span:nth-child(2)',
+    selectedIndexLabel: '#tabview__selectedIndex__label',
     tabTextColorLabel: '#tabView__tabTextColor__label',
     tabTextColorInput: '#tabView__tabTextColor__input',
+    tabTextColorOption: '#tabView__tabTextColor__input > option:nth-child(3)',
     tabBackgroundColor: '#tabView__tabBackgroundColor__input',
+    tabBackgroundColorOption: '#tabView__tabBackgroundColor__input > option:nth-child(3)',
     selectedTabTextColor: '#tabView__selectedTabTextColor__input',
+    seledtedTabTextColorOption: '#tabView__tabBackgroundColor__input > option:nth-child(4)',
     idInput: 'input[placeholder="ID of selected tab"]',
     idLabel: 'div[role="tabpanel"]',
     titleLabel: 'span[class="vxp-tab-view__header__tab__title"]',
@@ -18,6 +21,7 @@ module.exports = {
     webIconInput: '.demo-panel.tabView-wrapper.vxp-stack-layout.vxp-stack-layout--vertical > div > select',
     webIconOption: 'option[value="fa fa-user-circle-o"]',
     tabView: '.nudoc-example__content > div.vxp-stack-layout.vxp-stack-layout--vertical > div:nth-child(1) > div > div.vxp-tab-view__header',
+    tabTwoText: '.vxp-tab-view__header > button:nth-child(2) > span',
   },
 
   commands: [
@@ -34,14 +38,14 @@ module.exports = {
       selectTab: function() {
         return this.waitForElementVisible('@tabTwo', 10000).click('@tabTwo');
       },
-      selectTabTextColor: function(tabColor) {
-        return this.waitForElementVisible('@tabTextColorInput', 10000).setValue('@tabTextColorInput', tabColor);
+      selectTabTextColor: function() {
+        return this.waitForElementVisible('@tabTextColorInput', 10000).click('@tabTextColorOption');
       },
-      selectBackgroundColor: function(backgroundcolor) {
-        return this.waitForElementVisible('@tabBackgroundColor', 10000).setValue('@tabBackgroundColor', backgroundcolor);
+      selectBackgroundColor: function() {
+        return this.waitForElementVisible('@tabBackgroundColor', 10000).click('@tabBackgroundColorOption');
       },
-      selectSelectedTabTextColor: function(selectedcolor) {
-        return this.waitForElementVisible('@selectedTabTextColor', 10000).setValue('@selectedTabTextColor', selectedcolor);
+      selectSelectedTabTextColor: function() {
+        return this.waitForElementVisible('@selectedTabTextColor', 10000).click('@seledtedTabTextColorOption');
       },
       setItemId: function(text) {
         return this.waitForElementVisible('@idInput', 10000).setValue('@idInput', text);
