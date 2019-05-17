@@ -1,10 +1,5 @@
 <template>
-  <AbsoluteLayout
-    class="vxp-checkbox"
-    :class="{ 'vxp-checkbox--checked': checkedLocal, 'vxp-checkbox__disabled': disabled }"
-    :style="{ display: visible ? '' : 'none' }"
-    @tap="onTap"
-  >
+  <AbsoluteLayout v-if="visible" class="vxp-checkbox" :class="{ 'vxp-checkbox--checked': checkedLocal, 'vxp-checkbox__disabled': disabled }" @tap="onTap">
     <FadeTransition :duration="200">
       <StackLayout
         top="0"
