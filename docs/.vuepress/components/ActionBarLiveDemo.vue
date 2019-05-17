@@ -82,20 +82,25 @@
         <StackLayout orientation="horizontal">
           <Label class="child-label" :text="'∗ ' + child.type + ' ' + (index + 1)"></Label>
           <StackLayout class="form-group">
-            <select :id="'actionbar__deleteicon__select__' + index" v-model="child.icon">
+            <select
+              :id="'actionbar__deleteicon__select__' + index"
+              v-model="child.icon"
+              v-if="child.type === 'ActionItem'"
+            >
               <option
-                v-if="child.type === 'ActionItem'"
                 v-for="(icon, index) in deleteIcons"
                 v-bind:value="icon"
                 :key="index"
               >{{ icon }}</option>
-              <option
-                v-if="child.type === 'NavigationButton'"
-                v-for="(icon, index) in backIcons"
-                v-bind:value="icon"
-                :key="index"
-              >{{ icon }}</option>
             </select>
+            <select
+              :id="'actionbar__deleteicon__select__' + index"
+              v-model="child.icon"
+              v-if="child.type === 'NavigationButton'"
+            >
+              <option v-for="(icon, index) in backIcons" v-bind:value="icon" :key="index">{{ icon }}</option>
+            </select>
+
             <Label class="control-label" text="Icon"></Label>
             <i class="bar"></i>
           </StackLayout>
