@@ -31,7 +31,7 @@ describe('VxpButton.vue', () => {
       secondary,
       type,
       disabled,
-      size: String,
+      size,
     },
     listeners: {
       tap,
@@ -45,7 +45,7 @@ describe('VxpButton.vue', () => {
       expect(wrapper.props().disabled).to.equal(disabled);
     });
     it(`initial value taken from size is equal to: ${size}.`, () => {
-      expect(wrapper.props().size).to.equal('medium');
+      expect(wrapper.props().size).to.equal(size);
     });
     it(`button text changing with : ${newText}.`, () => {
       wrapper.setProps({ text: newText });

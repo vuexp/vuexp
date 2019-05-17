@@ -20,7 +20,7 @@ This is an overview of the most common usage of `<VxpButton>`.
     }
 ```
 
-<ButtonDoc />
+<VxpButtonDoc />
 </DocExampleBox>
 
 `VxpButton` is a UI component that displays a button which reacts to a user gesture.
