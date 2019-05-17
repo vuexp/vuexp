@@ -34,8 +34,7 @@
         v-if="checkedLocal2"
         id="checkbox_component"
         class="vxp-checkbox"
-        :class="{ 'vxp-checkbox--checked': checkedLocal4, 'vxp-checkbox__disabled': checkboxDisabled }"
-                                 
+        :class="{ 'vxp-checkbox--checked': checkedLocal4, 'vxp-checkbox__disabled': checkboxDisabled }"                    
         >
         <FadeTransition :duration="200">
             <StackLayout
@@ -168,7 +167,7 @@ export default {
       checkedLocal1: true,
       checkedLocal2: true,
       checkedLocal3: true,
-       checkedLocal3: false,
+      checkedLocal4: false,
       checkboxDisabled: false,
     };
   },
@@ -191,13 +190,7 @@ export default {
       this.$emit('change', this.checkedLocal3);
       this.checkboxDisabled = !this.checkboxDisabled;
     },
-    onTapCheckbox4(event, cancelBubbling) {
-      if (cancelBubbling) cancelBubbling();
-      if (!this.checkboxDisabled) {
-        this.checkedLocal4 = !this.checkedLocal4;
-        this.$emit('change', this.checkedLocal4);
-      }
-    },
+ 
   },
 };
 </script>
