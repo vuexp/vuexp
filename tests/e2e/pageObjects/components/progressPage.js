@@ -13,6 +13,7 @@ module.exports = {
     event_label: '#progress__eventChange__label',
     alert_label: '.vxp-alert-dialog__body',
     alert_ok: '.vxp-button.vxp-alert-dialog__footer__ok-button.Ok',
+    progress_bar: '.vxp-progress__bar',
   },
 
   commands: [
