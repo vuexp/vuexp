@@ -20,7 +20,7 @@
       <VxpCheckbox
         class="checkbox-doc-container__config__checkbox"
         primary
-        @change="visible = !visible"
+        @change="visibility = !visibility"
         id="checkbox_visible_selectbox"
         :checked="true"
       />
@@ -39,7 +39,7 @@
           @tap="onMainCheck"
           v-model="checked"
           :disabled="disabled"
-          :visible="visible"
+          :visibility="visibility"
           primary
         />
       </FlexboxLayout>
@@ -65,7 +65,7 @@ export default {
     return {
       disabled: false,
       checked : false,
-      visible: true,
+      visibility: true,
     };
   },
    methods: {

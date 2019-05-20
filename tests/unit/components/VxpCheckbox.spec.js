@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
-import Checkbox from '../../../src/components/VxpCheckbox';
+import VxpCheckbox from '../../../src/components/VxpCheckbox';
 import localVue from '../local-vue';
 
 describe('Checkbox Component Tests', () => {
@@ -8,9 +8,19 @@ describe('Checkbox Component Tests', () => {
 
   const checked = true;
   const disabled = false;
+  const visible = true;
+
+  const inVisibleVxpCheckbox = mount(VxpCheckbox, {
+    props: {
+      visible: Boolean,
+    },
+    propsData: {
+      visible: false,
+    },
+  });
 
   beforeEach(() => {
-    wrapper = mount(Checkbox, {
+    wrapper = mount(VxpCheckbox, {
       name: 'VxpCheckbox',
       model: {
         prop: 'checked',
@@ -19,10 +29,12 @@ describe('Checkbox Component Tests', () => {
       props: {
         checked,
         disabled,
+        visible,
       },
       propsData: {
         checked,
         disabled,
+        visible,
       },
       localVue,
     });
@@ -62,5 +74,9 @@ describe('Checkbox Component Tests', () => {
     });
     wrapper.trigger('click');
     expect(wrapper.emitted('change').length).to.equal(1);
+  });
+  it('display:none css rule is NOT applied when visible prop is not provided', () => {
+    const hasInvisibleClass = inVisibleVxpCheckbox.find(VxpCheckbox).element.className.indexOf('vpx-label-invisible') != -1;
+    expect(hasInvisibleClass).to.equal(false);
   });
 });
