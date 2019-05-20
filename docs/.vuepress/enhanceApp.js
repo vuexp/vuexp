@@ -1,4 +1,10 @@
 import * as Plugins from '../../src/plugins'
+
+import FlexboxLayout from '../../src/layouts/FlexboxLayout'
+import StackLayout from '../../src/layouts/StackLayout'
+import ScrollView from '../../src/components/ScrollView'
+import VTemplate from '../../src/components/VTemplate'
+
 export default ({
   Vue, // the version of Vue being used in the VuePress app
   options, // the options for the root Vue instance
@@ -7,6 +13,12 @@ export default ({
   if (typeof document !== "undefined" && typeof window !== "undefined") {
     addVxpPlugins(Vue);
   }
+
+  Vue.component('FlexboxLayout', FlexboxLayout);
+  Vue.component('StackLayout', StackLayout);
+  Vue.component('ScrollView', ScrollView);
+  Vue.component('v-template', VTemplate);
+
 };
 function addVxpPlugins(Vue) {
   Object.keys(Plugins).forEach(addPlugin(Vue));
