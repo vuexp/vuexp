@@ -7,6 +7,7 @@
     :class="stretchClass"
     :width="width"
     :height="height"
+    :alt="placeholder"
   />
 </template>
 
@@ -25,6 +26,7 @@ export default {
     },
     width: [String, Number],
     height: [String, Number],
+    placeholder: String,
   },
   computed: {
     imageSrc: function() {
