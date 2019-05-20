@@ -1,5 +1,5 @@
 <template>
-  <div class="nvw-formattedstring">
+  <div class="vxp-formatted-string">
     <slot></slot>
   </div>
 </template>

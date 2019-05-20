@@ -1,5 +1,5 @@
 <template>
-  <span v-common-directive class="nvw-span">
+  <span v-common-directive class="vxp-span">
     {{ text }}
     <slot />
   </span>
