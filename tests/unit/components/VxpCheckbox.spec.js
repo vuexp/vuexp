@@ -8,14 +8,14 @@ describe('Checkbox Component Tests', () => {
 
   const checked = true;
   const disabled = false;
-  const visible = true;
+  const visibility = true;
 
   const inVisibleVxpCheckbox = mount(VxpCheckbox, {
     props: {
       visible: Boolean,
     },
     propsData: {
-      visible: false,
+      visibility: false,
     },
   });
 
@@ -29,12 +29,12 @@ describe('Checkbox Component Tests', () => {
       props: {
         checked,
         disabled,
-        visible,
+        visibility,
       },
       propsData: {
         checked,
         disabled,
-        visible,
+        visibility,
       },
       localVue,
     });

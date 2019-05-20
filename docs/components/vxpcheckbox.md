@@ -77,7 +77,7 @@ This is an overview of the most common usage of `<VxpCheckbox>`.
 
 | Name     | Type    | Default | Web | Mobile | Desctiption |
 | -------- | ------- | ------- | --- | ------ |------|
-| visible  | Boolean | `true`  | ✔   | ✔      |Sets the visibility of the checkbox.|
+| visibility  | Boolean | `true`  | ✔   | ✔      |Sets the visibility of the checkbox.|
 | disabled | Boolean | `false` | ✔   | ✔      |Sets the disability of the checkbox.|
 | checked  | Boolean | `false` | ✔   | ✔      |Sets the check status of the checkbox.|
 
