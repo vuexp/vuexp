@@ -1,7 +1,7 @@
 <template>
   <StackLayout style="width: 400px; margin:auto;">
     <StackLayout style="width: 400px; height: 200px;" class="stack-cell">
-      <Img :src="src" :stretch="stretch" />
+      <Img id="image" :src="src" :stretch="stretch" :placeholder="placeholder" :width="width" :height="height" />
     </StackLayout>
 
     <Label text="Source URL: ">
@@ -14,6 +14,15 @@
         <option value="aspectFit">aspectFit</option>
         <option value="fill">fill</option>
       </select>
+    </Label>
+    <Label text="Placeholder: ">
+      <TextField v-model="placeholder" id="image__placeholder__input"></TextField>
+    </Label>
+    <Label text="Width: ">
+      <TextField v-model="width" keyboard-type="number" id="image__width__input"></TextField>
+    </Label>
+    <Label text="Height: ">
+      <TextField v-model="height" keyboard-type="number" id="image__height__input"></TextField>
     </Label>
   </StackLayout>
 </template>
@@ -60,7 +69,10 @@ export default {
   data() {
     return {
       src: "~/images/logo.png",
-      stretch: "none"
+      stretch: "none",
+      placeholder: "",
+      height: "1000",
+      width: "1000",
     }
   },
   components: {
