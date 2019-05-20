@@ -2,11 +2,11 @@
 sidebarDepth: 0
 ---
 
-# ActionBar
+# Dropdown Menu
 
-The `<ActionBar>` component is a NativeScript abstraction for the Android ActionBar, iOS NavigationBar and Web Toolbar.
+The `<DropdownMenu>` component can be used to generate Dropdown Menus inside any component. .
 
-This component is a UI component that provides a toolbar at the top of the activity window.
+This component is a UI component that provides an interface for a single-select menu. The component is displayed as ActionDialog in Native environment.
 
 ## Live Demo
 

@@ -1,5 +1,5 @@
 <template>
-  <StackLayout class="vxp-dropdown-item" orientation="horizontal" @tap="itemClicked($event)">
+  <StackLayout class="vxp-dropdown-item" :class="{ 'is-active': isActive }" orientation="horizontal">
     <Label v-if="(icon && iconClass) || (item.icon && item.iconClass)" :text="(icon || item.icon) | fonticon" :class="iconClass || item.iconClass"></Label>
     <Label v-if="item.title" :text="item.title" class="vxp-dropdown-item__title"></Label>
     <Label v-else :text="title" class="vxp-dropdown-item__title"></Label>
@@ -21,10 +21,9 @@ export default {
     icon: String,
     iconClass: String,
     elementIndex: Number,
-  },
-  methods: {
-    itemClicked() {
-      this.$emit('selected', this.item || this.elementIndex);
+    isActive: {
+      type: Boolean,
+      default: false,
     },
   },
   components: {

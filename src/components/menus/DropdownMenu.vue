@@ -5,7 +5,17 @@
       <Label class="vxp-dropdown__menu_icon" :text="icon | fonticon" :disabled="disabled" :class="iconClass" />
     </StackLayout>
     <StackLayout class="vxp-dropdown__itemContainer" :class="{ 'is-visible': isMenuOpen }" v-if="items">
-      <DropdownItem class="vxp-dropdown__itemContainer__item" v-for="(item, key) in items" :item="item" :key="key" :elementIndex="key" />
+      <DropdownItem
+        class="vxp-dropdown__itemContainer__item"
+        v-for="(item, index) in items"
+        :item="item"
+        :key="index"
+        :elementIndex="index"
+        :isActive="selectedIndex === index"
+        @click="selectItem(index, item)"
+        @keyup.enter="selectItem(index, item)"
+        @keyup.space="selectItem(index, item)"
+      />
     </StackLayout>
   </StackLayout>
 </template>
@@ -33,6 +43,10 @@ export default {
       type: Boolean,
       default: true,
     },
+    selectedIndex: {
+      type: Number,
+      default: null,
+    },
   },
   data() {
     return {
@@ -42,6 +56,10 @@ export default {
   methods: {
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
+    },
+    selectIndex(index, item) {
+      this.selectIndex = index;
+      this.$emit('selectedIndexChanged', { index, item });
     },
   },
   components: {
