@@ -15,16 +15,6 @@
       />
        <Label :text="disabled ? 'Disabled' : 'Enabled'" class="label__margin_left" id="checkbox_enabled_label_result" width="100"/>
     </FlexboxLayout>
-     <FlexboxLayout class="checkbox-doc-container__config" justifyContent="start">
-      <Label id="checkbox_visible_label" text="Visible : " width="100"/>
-      <VxpCheckbox
-        class="checkbox-doc-container__config__checkbox"
-        primary
-        @change="visibility = !visibility"
-        id="checkbox_visible_selectbox"
-        :checked="true"
-      />
-    </FlexboxLayout>
      <StackLayout style="margin-top:20px" orientation="horizontal" >
       <Label text="Rendered Result: " class="demo-panel__title" style="margin-right:20px;" />
        <FlexboxLayout
@@ -39,7 +29,6 @@
           @tap="onMainCheck"
           v-model="checked"
           :disabled="disabled"
-          :visibility="visibility"
           primary
         />
       </FlexboxLayout>
@@ -65,7 +54,6 @@ export default {
     return {
       disabled: false,
       checked : false,
-      visibility: true,
     };
   },
    methods: {

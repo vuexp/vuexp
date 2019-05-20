@@ -1,5 +1,5 @@
 <template>
-  <AbsoluteLayout v-show="visibility" class="vxp-checkbox" :class="{ 'vxp-checkbox--checked': checkedLocal, 'vxp-checkbox__disabled': disabled }" @tap="onTap">
+  <AbsoluteLayout class="vxp-checkbox" :class="{ 'vxp-checkbox--checked': checkedLocal, 'vxp-checkbox__disabled': disabled }" @tap="onTap">
     <FadeTransition :duration="200">
       <StackLayout
         top="0"
@@ -47,10 +47,6 @@ export default {
     disabled: {
       type: Boolean,
       default: false,
-    },
-    visibility: {
-      type: Boolean,
-      default: true,
     },
   },
   data() {
