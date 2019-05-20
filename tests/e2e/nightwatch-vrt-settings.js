@@ -9,7 +9,7 @@ module.exports = () => {
     baseline_suffix: '',
     diff_screenshots_path: 'tests/e2e/reports/vrt',
     diff_suffix: '--diff',
-    threshold: 0.35,
+    threshold: 0.3,
     prompt: false,
     always_save_diff_screenshot: false,
   };
