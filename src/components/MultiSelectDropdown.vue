@@ -1,7 +1,7 @@
 <template>
   <StackLayout orientation="vertical" class="vxp-multiselectdropdown">
     <WrapLayout>
-      <StackLayout orientation="horizontal">
+      <WrapLayout orientation="horizontal">
         <StackLayout
           class="vxp-multiselectdropdown__pill"
           orientation="horizontal"
@@ -12,31 +12,63 @@
           <Label class="vxp-multiselectdropdown__pill-label" :text="items[selectedItemIndex][labelProp]"></Label>
           <Label class="vxp-multiselectdropdown__pill-remove-text" v-html="'&times;'"></Label>
         </StackLayout>
-      </StackLayout>
+      </WrapLayout>
+
       <StackLayout flexGrow="1">
         <TextField
+          @focus="activateSuggestions()"
+          @blur="clearSearchText()"
           ref="searchInput"
           class="vxp-multiselectdropdown__search-input"
           v-model="searchText"
-          :placeholder="placeholder"
+          :hint="hint"
           @tap="activateSuggestions()"
         ></TextField>
       </StackLayout>
     </WrapLayout>
-    <StackLayout class="vxp-multiselectdropdown__suggestions-box" ref="suggestionsBox" v-if="suggestionsOpened && !isNative" v-click-outside>
+    <StackLayout class="vxp-multiselectdropdown__suggestions-box" ref="suggestionsBox" v-if="suggestionsOpened && !isNative">
       <StackLayout v-if="displayItems.length">
-        <Label
+        <StackLayout
           class="vxp-multiselectdropdown__suggestions-box__selectable-item"
           v-for="item in displayItems"
-          @tap="selectItem(item)"
           :key="item[keyProp]"
-          :text="item[labelProp]"
-        ></Label>
+          @tap="selectItem(item)"
+        >
+          <Label :text="item[labelProp]"></Label>
+        </StackLayout>
       </StackLayout>
       <StackLayout v-else>
         <Label @tap="deactivateSuggestions()" class="vxp-multiselectdropdown__suggestions-box__empty" :text="emptySuggestionsLabel"></Label>
       </StackLayout>
     </StackLayout>
+    <ModalDialog width="screenWidth" height="screenHeight" class="vxp-multiselectdropdown__suggestions-box-modal" v-if="isNative && suggestionsOpened">
+      <DockLayout :stretchLastChild="false" class="vxp-multiselectdropdown__suggestions-box-modal__header" slot="header">
+        <Label dock="right" @tap="deactivateSuggestions" class="vxp-multiselectdropdown__suggestions-box-modal__header" text="Ok"></Label>
+      </DockLayout>
+      <StackLayout class="vxp-multiselectdropdown__suggestions-box-modal__body" slot="body">
+        <WrapLayout orientation="horizontal">
+          <StackLayout
+            class="vxp-multiselectdropdown__pill"
+            orientation="horizontal"
+            v-for="selectedItemIndex in selected"
+            @tap="removeSelection(items[selectedItemIndex])"
+            :key="items[selectedItemIndex][keyProp]"
+          >
+            <Label class="vxp-multiselectdropdown__pill-label" :text="items[selectedItemIndex][labelProp]"></Label>
+            <Label class="vxp-multiselectdropdown__pill-remove-text" v-html="'&times;'"></Label>
+          </StackLayout>
+        </WrapLayout>
+        <TextField class="vxp-multiselectdropdown__suggestions-box-modal__body__search-input" v-model="searchText" :hint="hint"></TextField>
+        <StackLayout
+          class="vxp-multiselectdropdown__suggestions-box-modal__body__selectable-item"
+          v-for="item in displayItems"
+          :key="item[keyProp]"
+          @tap="selectItem(item)"
+        >
+          <Label :text="item[labelProp]"></Label>
+        </StackLayout>
+      </StackLayout>
+    </ModalDialog>
   </StackLayout>
 </template>
 
@@ -44,7 +76,9 @@
 import Gestures from '../mixins/GestureMixin';
 import StackLayout from '../layouts/StackLayout';
 import WrapLayout from '../layouts/WrapLayout';
+import DockLayout from '../layouts/DockLayout';
 import TextField from './TextField';
+import ModalDialog from './ModalDialog';
 import Label from './Label';
 import Platform from '../platform.js';
 
@@ -76,26 +110,23 @@ export default {
       type: String,
       default: 'label',
     },
-    placeholder: {
+    hint: {
       type: String,
       default: '',
     },
     emptySuggestionsLabel: {
       type: String,
-      default: 'Nothing to select right now',
+      default: '',
     },
   },
   mounted() {
     if (!this.isNative) {
       document.body.addEventListener('mousedown', this.clickOutsideListener);
-      this.$refs.searchInput.$el.addEventListener('focus', this.activateSuggestions);
     }
   },
   destroyed() {
-    if (this.isNative) {
+    if (!this.isNative) {
       document.body.removeEventListener('mousedown', this.clickOutsideListener);
-      this.$refs.searchInput.$el.removeEventListener('focus', this.activateSuggestions);
-      this.$refs.searchInput.$el.removeEventListener('blur', this.deactivateSuggestions);
     }
   },
   methods: {
@@ -111,7 +142,7 @@ export default {
     },
     selectItem(item) {
       this.toggleSelect(item);
-      if (!this.isNative) {
+      if (!this.isNative && this.selected.length !== this.items.length) {
         this.$refs.searchInput.$el.focus();
       }
     },
@@ -143,7 +174,7 @@ export default {
       this.toggleSelect(item);
       this.activateSuggestions();
     },
-    unSelectedItems() {
+    notSelectedItems() {
       return this.items.filter((item, index) => this.selected.indexOf(index) === -1);
     },
     clickOutsideListener(event) {
@@ -164,13 +195,14 @@ export default {
 
       this.deactivateSuggestions();
     },
+    clearSearchText() {},
   },
   computed: {
     displayItems() {
       if (!this.searchText) {
-        return this.unSelectedItems();
+        return this.notSelectedItems();
       }
-      return this.unSelectedItems().filter(item => item[this.labelProp].toLowerCase().indexOf(this.searchText.toLowerCase()) > -1);
+      return this.notSelectedItems().filter(item => item[this.labelProp].toLocaleLowerCase().indexOf(this.searchText.toLocaleLowerCase()) > -1);
     },
     isNative() {
       return Platform.platform !== 'web';
@@ -182,6 +214,8 @@ export default {
     WrapLayout,
     TextField,
     Label,
+    ModalDialog,
+    DockLayout,
   },
 };
 </script>
@@ -195,11 +229,12 @@ export default {
 
   &__pill {
     font-family: 'Times New Roman', Times, serif;
-    padding: 2px 5px 2px 5px;
-    background: #ccc;
+    padding: 4px 7px 4px 7px;
+    background: #e8e8e8;
     border-radius: 15%;
-    border: 1px solid #aaa;
+    border: 1px solid #cacacb;
     margin-right: 3px;
+    margin-top: 2px;
     height: 15px;
     position: relative;
 
@@ -234,12 +269,12 @@ export default {
   }
 
   &__suggestions-box {
-    max-height: 350px;
+    max-height: 250px;
     overflow: auto;
     border: 1px solid #ccc;
     border-top: none;
     position: absolute;
-    top: 27px;
+    top: 96%;
     width: 100%;
     background: #fff;
     margin-left: -4px;
@@ -251,6 +286,23 @@ export default {
       &:hover {
         background: #ccc;
         cursor: pointer;
+      }
+    }
+  }
+
+  &__suggestions-box-modal {
+    &__body {
+      height: 200px;
+      overflow: auto;
+
+      &__selectable-item,
+      &__empty {
+        padding: 8px;
+        border-top: 1px solid #ccc;
+        &:hover {
+          background: #ccc;
+          cursor: pointer;
+        }
       }
     }
   }

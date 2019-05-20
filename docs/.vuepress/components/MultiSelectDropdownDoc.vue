@@ -1,5 +1,12 @@
 <template>
-  <MultiSelectDropdown :items="items" v-model="selectedIndexes"></MultiSelectDropdown>
+  <div>
+    <MultiSelectDropdown
+      :items="items"
+      hint="Search leads"
+      v-model="selectedIndexes"
+    ></MultiSelectDropdown>
+    {{selectedIndexes}}
+  </div>
 </template>
 
 <script>
@@ -26,7 +33,7 @@ export default {
           label: 'volkan',
           value: '3',
         },
-      ].concat([4,5,6,7,8,9,10,11,12,13,14,15,16,17].map(c => ({ value: c, label : 'item' + c }))),
+      ].concat([4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17].map(c => ({ value: c, label: 'item' + c }))),
     };
   },
   methods: {},
