@@ -1,6 +1,11 @@
 <template>
   <StackLayout class="vxp-dropdown-item" :class="{ 'is-active': isActive }" orientation="horizontal">
-    <Label v-if="(icon && iconClass) || (item.icon && item.iconClass)" :text="(icon || item.icon) | fonticon" :class="iconClass || item.iconClass"></Label>
+    <Label
+      class="vxp-dropdown-item__icon"
+      v-if="(icon && iconClass) || (item.icon && item.iconClass)"
+      :text="(icon || item.icon) | fonticon"
+      :class="iconClass || item.iconClass"
+    ></Label>
     <Label v-if="item.title" :text="item.title" class="vxp-dropdown-item__title"></Label>
     <Label v-else :text="title" class="vxp-dropdown-item__title"></Label>
   </StackLayout>
@@ -38,31 +43,15 @@ export default {
 <style lang="scss">
 @import '../../assets/styles/components/dialogs';
 
-.vxp-action-dialog {
-  &__body {
-    &__item {
-      padding: 0;
-      margin: 0;
-      .vxp-button {
-        width: 100%;
-        text-align: left;
-        background-color: #fff;
-        border: none;
-        outline: none;
-        padding: 8px 6px;
-        margin: 2px 0;
-
-        &:hover {
-          cursor: pointer;
-          background-color: #ebebeb;
-        }
-      }
-    }
+.vxp-dropdown-item {
+  border-radius: 5px;
+  padding: 0.7rem;
+  &__icon {
+    padding-right: 10px;
   }
-  &__footer {
-    &__cancel-button {
-      @include vxp-dialog-button;
-    }
+  &:hover {
+    cursor: pointer;
+    background: rgb(235, 235, 235);
   }
 }
 </style>

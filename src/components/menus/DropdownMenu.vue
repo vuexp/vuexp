@@ -1,6 +1,6 @@
 <template>
   <StackLayout v-if="visibility" class="vxp-dropdown">
-    <StackLayout class="vxp-dropdown__menu" orientation="horizontal" @tap="toggleMenu()">
+    <StackLayout class="vxp-dropdown__menu" :class="{ 'vxp-dropdown__is-open': isMenuOpen }" orientation="horizontal" @tap="toggleMenu()">
       <Label class="vxp-dropdown__menu__title" :text="title"></Label>
       <Label class="vxp-dropdown__menu_icon" :text="icon | fonticon" :disabled="disabled" :class="iconClass" />
     </StackLayout>
@@ -98,7 +98,7 @@ export default {
   }
   &__itemContainer {
     position: relative;
-    top: 0.5rem;
+    top: 0.2rem;
     background: white;
     // box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -111,6 +111,9 @@ export default {
     &.is-visible {
       display: block;
     }
+  }
+  &__is-open {
+    background: rgb(240, 240, 252);
   }
 }
 </style>
