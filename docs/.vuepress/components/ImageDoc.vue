@@ -71,8 +71,8 @@ export default {
       src: "~/images/logo.png",
       stretch: "none",
       placeholder: "",
-      height: "1000",
-      width: "1000",
+      height: "100",
+      width: "100",
     }
   },
   components: {
