@@ -1,24 +1,14 @@
 <template>
-  <Button
-    v-show="visible"
-    :text="text"
-    @tap="onTap"
-    :textWrap="textWrap"
-    :class="vxpButtonClass"
-    class="vxpInnerButton"
-    :type="type"
-    :isEnabled="!disabled"
-  ></Button>
+  <Button v-show="visible" :text="text" @tap="onTap" :textWrap="textWrap" :class="vxpButtonClass" :type="type" :isEnabled="!disabled"></Button>
 </template>
 
 <script>
 import CommonDirective from '../directives/CommonDirective';
 import Gestures from '../mixins/GestureMixin';
-import Button from './Button';
 
 export default {
   name: 'VxpButton',
-  components: { Button },
+  components: {},
   data: function() {
     return {};
   },
@@ -94,29 +84,6 @@ export default {
 @import '../assets/styles/helpers';
 
 .vxp-button {
-  background-color: #d6d7d7;
-  padding: 10px;
-  min-width: 60px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  border: none;
-  border-radius: 2px;
-  font-weight: bolder;
-  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.2), 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
-  transition-delay: 0.3s;
-  transition: box-shadow 0.2s, background-color 0.2s, transform 1s;
-  &:hover {
-    box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.2), 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-  }
-  &:active {
-    box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.2), 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
-    background-color: #c0c1c1;
-  }
-  &:focus {
-    outline: 0 !important;
-  }
-
   &--small {
     border-radius: unit(32);
     padding: unit(6) unit(16) unit(6) unit(16);
