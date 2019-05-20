@@ -5,10 +5,11 @@
 <script>
 import CommonDirective from '../directives/CommonDirective';
 import Gestures from '../mixins/GestureMixin';
+import Button from './Button';
 
 export default {
   name: 'VxpButton',
-  components: {},
+  components: { Button },
   data: function() {
     return {};
   },
