@@ -9,9 +9,15 @@ module.exports = {
         done();
       });
   },
-  'C13839666 Props /Name:orientation, Value: Default (vertical)'() {
+  'C13839669 Props /Name:scrollBarIndicatorVisible, Value: Default (true)'() {
     this.currentPage.assert
       .attributeContains('@scrollViewComponent', 'class', 'scroll-view__vertical vxp-scrollview vxp-scrollview--vertical')
+      .checkScreenshot('@scrollViewComponent');
+  },
+  'C13839670 Props /Name:scrollBarIndicatorVisible, Value: false'() {
+    this.currentPage
+      .uncheckScrollBarSelectBox()
+      .assert.attributeContains('@scrollViewComponent', 'class', 'scroll-view__vertical vxp-scrollview vxp-scrollview--vertical--hide')
       .checkScreenshot('@scrollViewComponent');
   },
 
