@@ -11,7 +11,7 @@ This is an overview of the most common usage of `<VxpButton>`.
 <DocExampleBox codeBox="https://codesandbox.io/s/n5y3lym66p?module=%2Fsrc%2FApp.vue">
 
 ```html
-<VxpButton text="Button" size="medium" primary="true" @tap="onButtonTap" />
+<VxpButton text="Button" size="medium" primary @tap="onButtonTap" />
 ```
 
 ```js
