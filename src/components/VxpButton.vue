@@ -1,5 +1,14 @@
 <template>
-  <Button :text="text" @tap="onTap" :textWrap="textWrap" :class="vxpButtonClass" class="vxpInnerButton" :type="type" :isEnabled="!disabled"></Button>
+  <Button
+    v-show="visible"
+    :text="text"
+    @tap="onTap"
+    :textWrap="textWrap"
+    :class="vxpButtonClass"
+    class="vxpInnerButton"
+    :type="type"
+    :isEnabled="!disabled"
+  ></Button>
 </template>
 
 <script>
