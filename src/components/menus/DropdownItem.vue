@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import Gestures from '../../mixins/GestureMixin';
 import Label from '../Label';
 import StackLayout from '../../layouts/StackLayout';
 
@@ -30,6 +31,7 @@ export default {
     StackLayout,
     Label,
   },
+  mixins: [Gestures],
 };
 </script>
 

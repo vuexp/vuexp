@@ -4,7 +4,7 @@
       <Label class="vxp-dropdown__menu__title" :text="title"></Label>
       <Label class="vxp-dropdown__menu_icon" :text="icon | fonticon" :disabled="disabled" :class="iconClass" />
     </StackLayout>
-    <StackLayout class="vxp-dropdown__itemContainer" :class="{ 'is-visible': isMenuOpen }" v-if="items">
+    <StackLayout class="vxp-dropdown__itemContainer" :class="{ 'is-visible': isMenuOpen }" v-if="items && !isNative">
       <DropdownItem
         class="vxp-dropdown__itemContainer__item"
         v-for="(item, index) in items"
@@ -12,7 +12,7 @@
         :key="index"
         :elementIndex="index"
         :isActive="selectedIndex === index"
-        @click="selectItem(index, item)"
+        @tap="selectItem(index, item)"
         @keyup.enter="selectItem(index, item)"
         @keyup.space="selectItem(index, item)"
       />
@@ -21,9 +21,11 @@
 </template>
 
 <script>
+import Gestures from '../../mixins/GestureMixin';
 import DropdownItem from './DropdownItem';
 import Label from '../Label';
 import StackLayout from '../../layouts/StackLayout';
+import platform from '../../platform';
 
 export default {
   name: 'DropdownMenu',
@@ -53,11 +55,20 @@ export default {
       isMenuOpen: false,
     };
   },
+  computed: {
+    isNative() {
+      return platform.platform !== 'web';
+    },
+  },
   methods: {
     toggleMenu() {
-      this.isMenuOpen = !this.isMenuOpen;
+      if (!this.isNative) {
+        this.isMenuOpen = !this.isMenuOpen;
+      } else {
+        // action('Pick your destiny', []);
+      }
     },
-    selectIndex(index, item) {
+    selectItem(index, item) {
       this.selectIndex = index;
       this.$emit('selectedIndexChanged', { index, item });
     },
@@ -67,6 +78,7 @@ export default {
     DropdownItem,
     Label,
   },
+  mixins: [Gestures],
 };
 </script>
 

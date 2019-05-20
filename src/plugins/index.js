@@ -47,10 +47,13 @@ const VxpPlugin = {
         return confirmWrapper(messageText, confirmDialog);
       };
     }
+
+    Vue.filter('fonticon', function(value) {
+      return value + ' | fonticon';
+    });
   },
 };
 
-export default VxpPlugin;
 function confirmWrapper(messageText, confirmDialog) {
   return new Promise(resolve => {
     if (typeof messageText === 'string') {
@@ -87,3 +90,5 @@ function alertWrapper(messageText, alertDialog) {
     });
   });
 }
+
+export default VxpPlugin;
