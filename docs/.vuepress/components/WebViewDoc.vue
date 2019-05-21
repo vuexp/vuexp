@@ -17,9 +17,9 @@
 </template>
 
 <script>
-	import WebView from '../../../src/components/WebView';
-	import TextField from '../../../src/components/TextField';
-	import Label from '../../../src/components/Label';
+	import WebView from '../../../src/core/components/WebView/WebView';
+	import TextField from '../../../src/core/components/TextField/TextField';
+	import Label from '../../../src/core/components/Label/Label';
 	import StackLayout from '../../../src/layouts/StackLayout';
 
 	export default {

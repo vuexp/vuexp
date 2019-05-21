@@ -16,7 +16,7 @@
 
     <StackLayout class="demo-panel">
       <VxpLabel text="Rendered Result" class="demo-panel__title" />
-      <VxpLabel id="label_component" :text="labelValue" :textWrap="textWrap" :visibility="labelVisibility" />
+      <VxpLabel id="label_component" :text="labelValue" :textWrap="textWrap" />
     </StackLayout>
   </StackLayout>
 </template>
@@ -24,7 +24,7 @@
 <script>
 import VxpLabel from '../../../src/components/VxpLabel';
 import StackLayout from '../../../src/layouts/StackLayout';
-import TextField from '../../../src/components/TextField';
+import TextField from '../../../src/core/components/TextField/TextField';
 import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
 
 export default {
