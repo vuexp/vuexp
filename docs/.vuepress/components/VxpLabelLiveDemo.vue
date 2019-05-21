@@ -12,12 +12,6 @@
         <VxpLabel text="Text Wrap" class="option-label" />
         <input id="label_textwrap_cb" type="checkbox" v-model="textWrap" />
       </FlexboxLayout>
-
-      <FlexboxLayout flexWrap="wrap">
-        <VxpLabel text="Visibility" class="option-label" />
-        <input id="label_visibility_cb" type="checkbox" v-model="labelVisibility" />
-        <VxpLabel id="label_visibility_text" :text="labelVisibility ? 'Visible' : 'Invisible'" class="option-label" />
-      </FlexboxLayout>
     </StackLayout>
 
     <StackLayout class="demo-panel">
@@ -39,7 +33,6 @@ export default {
     return {
       labelValue: 'Hello world!',
       textWrap: false,
-      labelVisibility: true,
     };
   },
   components: {
