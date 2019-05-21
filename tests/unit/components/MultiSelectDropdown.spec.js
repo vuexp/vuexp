@@ -7,7 +7,7 @@ import TextField from '../../../src/components/TextField';
 import Label from '../../../src/components/Label';
 import platform from '../../../src/platform';
 
-describe.only('MultiSelectDropdown', () => {
+describe('MultiSelectDropdown', () => {
   const wrapperClass = 'vxp-multiselectdropdown';
   const testHint = 'This is a test hint';
   const keyPropName = 'test1Key';
