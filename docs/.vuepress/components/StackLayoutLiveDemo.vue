@@ -147,11 +147,11 @@
 </template>
 
 <script>
-import Label from '../../../src/components/Label';
+import Label from '../../../src/core/components/Label/Label';
 import StackLayout from '../../../src/layouts/StackLayout';
 import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
-import Button from '../../../src/components/Button';
-import TextField from '../../../src/components/TextField';
+import Button from '../../../src/core/components/Button/Button';
+import TextField from '../../../src/core/components/TextField/TextField';
 
 export default {
   name: 'StackLayoutLiveDemo',
