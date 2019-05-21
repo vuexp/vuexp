@@ -10,7 +10,7 @@
       ></VxpLink>
     </StackLayout>
     <StackLayout class="demo-panel">
-      <Label text="Manage Link Button Properties" class="demo-panel__title"/>
+      <Label text="Manage VxpLink Properties" class="demo-panel__title"/>
       <StackLayout orientation="horizontal" class="m-b-10">
         <Label text="Text:"></Label>
         <TextField id="linkButton__text__textfield" v-model="text" :editable="true"/>
