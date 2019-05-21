@@ -8,6 +8,7 @@ describe('Image', () => {
   const height = 300;
   const stretch = 'aspectFit';
   const src = 'https://raw.githubusercontent.com/nativescript-vue/nativescript-vue-ui-tests/master/screenshots/android23/Image.png';
+  const placeholder = 'Default Placeholder Text';
 
   const wrapper = mount(Img, {
     props: {
@@ -18,12 +19,14 @@ describe('Image', () => {
       },
       width: [String, Number],
       height: [String, Number],
+      placeholder: String,
     },
     propsData: {
       stretch,
       src,
       width,
       height,
+      placeholder,
     },
   });
 
@@ -40,9 +43,12 @@ describe('Image', () => {
     it(`Given src property is equal to ${src}.`, () => {
       expect(wrapper.props().src).to.equal(src);
     });
+    it(`Given placeholder property is equal to ${placeholder}.`, () => {
+      expect(wrapper.props().placeholder).to.equal(placeholder);
+    });
   });
   describe('the component rendered the attributes and style values correctly.', () => {
-    it(`given width value(${height}) is correct in the style.`, () => {
+    it(`given height value(${height}) is correct in the style.`, () => {
       expect(wrapper.attributes().height).to.equal(height.toString());
     });
     it(`given width value(${width}) is correct in the style.`, () => {
@@ -53,6 +59,9 @@ describe('Image', () => {
     });
     it(`class name for given stretch(${stretch}) property is equal to vxp-img--aspect-fit`, () => {
       expect(wrapper.classes()).to.include('vxp-img--aspect-fit');
+    });
+    it(`given placeholder value(${placeholder}) is correct in the style.`, () => {
+      expect(wrapper.attributes().alt).to.equal(placeholder);
     });
   });
   describe('stretch none default test', () => {
