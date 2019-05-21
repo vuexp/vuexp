@@ -1,5 +1,5 @@
 <template>
-  <StackLayout v-if="visibility" class="vxp-dropdown">
+  <StackLayout class="vxp-dropdown">
     <StackLayout class="vxp-dropdown__menu" :class="{ 'vxp-dropdown__is-open': isMenuOpen }" orientation="horizontal" @tap="toggleMenu()">
       <Label class="vxp-dropdown__menu__title" :text="title"></Label>
       <Label class="vxp-dropdown__menu_icon" :text="icon | fonticon" :disabled="disabled" :class="iconClass" />
@@ -41,13 +41,13 @@ export default {
       type: Boolean,
       default: false,
     },
-    visibility: {
-      type: Boolean,
-      default: true,
-    },
     selectedIndex: {
       type: Number,
       default: null,
+    },
+    nativeCancelBtnText: {
+      type: String,
+      default: 'Cancel',
     },
   },
   data() {
@@ -65,7 +65,9 @@ export default {
       if (!this.isNative) {
         this.isMenuOpen = !this.isMenuOpen;
       } else {
-        // action('Pick your destiny', []);
+        // action(this.title, this.nativeCancelBtnText, this.items.map(i => i.title)).then(result => {
+        //   this.$emit('selectedIndexChanged', result);
+        // });
       }
     },
     selectItem(index, item) {
