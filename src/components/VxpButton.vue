@@ -1,15 +1,26 @@
 <template>
-  <Button v-show="visible" :text="text" @tap="onTap" :textWrap="textWrap" :class="vxpButtonClass" :type="type" :isEnabled="!disabled"></Button>
+  <Button :text="text" @tap="onTap" :textWrap="textWrap" :class="vxpButtonClass" :type="type" :isEnabled="!disabled">
+    <FormattedString v-if="(icon || iconClass) && iconPosition === 'left'">
+      <Span :text="icon | fonticon" :class="iconClass" />
+      <Span :text="text" />
+    </FormattedString>
+    <FormattedString v-else-if="(icon || iconClass) && iconPosition !== 'left'">
+      <Span :text="text" />
+      <Span :text="icon | fonticon" :class="iconClass" />
+    </FormattedString>
+  </Button>
 </template>
 
 <script>
 import CommonDirective from '../directives/CommonDirective';
 import Gestures from '../mixins/GestureMixin';
 import Button from './Button';
+import FormattedString from './FormattedString';
+import Span from './Span';
 
 export default {
   name: 'VxpButton',
-  components: { Button },
+  components: { Button, FormattedString, Span },
   data: function() {
     return {};
   },
@@ -41,9 +52,16 @@ export default {
       type: Boolean,
       default: false,
     },
-    visible: {
-      type: Boolean,
-      default: true,
+    icon: String,
+    iconClass: String,
+    iconPosition: {
+      type: String,
+      default: 'left',
+    },
+  },
+  filters: {
+    fonticon(value) {
+      return value + ' | fonticon';
     },
   },
   computed: {

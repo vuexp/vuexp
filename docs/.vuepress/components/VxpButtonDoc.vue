@@ -10,8 +10,10 @@
         :primary="isPrimary"
         @tap="onButtonTap"
         :textWrap="textWrap"
-        :visible="isVisible"
         horizontalAlignment="left"
+        :icon="buttonIcon"
+        :iconClass="buttonIconClass"
+        :iconPosition="buttonIconPosition"
       />
     </StackLayout>
     <StackLayout orientation="horizontal">
@@ -25,11 +27,6 @@
     <StackLayout orientation="horizontal">
       <Label text="Text Wrap :" width="100"></Label>
       <input type="checkbox" v-model="textWrap" id="button_textWrap_selectbox" />
-    </StackLayout>
-    <StackLayout orientation="horizontal">
-      <Label id="button_visible_label" text="Visible :" width="100"></Label>
-      <input type="checkbox" v-model="isVisible" id="button_visible_checkbox" />
-      <Label id="button_visible_status_label" :text="isVisible ? 'active' : ''" width="100"></Label>
     </StackLayout>
     <StackLayout orientation="horizontal">
       <Label id="button_primary_label" text="Primary :" width="100"></Label>
@@ -53,6 +50,27 @@
         <option value="medium" id="button_size_medium_option">medium</option>
       </select>
     </StackLayout>
+    <StackLayout orientation="horizontal">
+      <Label id="button_iconClass_label" text="Icon Class:" width="100"></Label>
+      <select v-model="buttonIconClass" id="button_iconClass_select">
+        <option value="fa" id="button_iconClass_fa_option">fa</option>
+      </select>
+    </StackLayout>
+    <StackLayout orientation="horizontal">
+      <Label id="button_icon_label" text="Icon:" width="100"></Label>
+      <select v-model="buttonIcon" id="button_icon_select">
+        <option value="fa-smile-o" id="button_icon_smile_option">fa-smile-o</option>
+        <option value="fa-user-circle-o" id="button_icon_circle_option">fa-user-circle-o</option>
+        <option value="fa-exclamation-triangle" id="button_icon_triangle_option">fa-exclamation-triangle</option>
+      </select>
+    </StackLayout>
+    <StackLayout orientation="horizontal">
+      <Label id="button_icon_pos_label" text="Icon Position:" width="100"></Label>
+      <select v-model="buttonIconPosition" id="button_icon_pos_select">
+        <option value="left" id="button_icon_pos_left_option">left</option>
+        <option value="right" id="button_icon_pos_right_option">right</option>
+      </select>
+    </StackLayout>
   </StackLayout>
 </template>
 
@@ -71,11 +89,13 @@ export default {
       buttonText: 'Button',
       width: 100,
       height: 40,
-      isVisible: true,
       isDisabled: false,
       buttonSize: 'medium',
       isPrimary: false,
       isSecondary: false,
+      buttonIcon: '',
+      buttonIconClass: 'fa',
+      buttonIconPosition: 'left',
     };
   },
   methods: {
