@@ -1,9 +1,9 @@
 <template>
   <StackLayout>
-    <Button text="Show Modal Dialog" width="200" @tap="showAlertDialog" id="alertDialog_docs" />
+    <Button text="Show Modal Dialog" width="200" @tap="showModalDialog" id="modalDialog_docs" />
     <FlexboxLayout flexDirection="row" flexWrap="wrap">
       <Label text="Clicked Action:" class="label"></Label>
-      <Label :text="eventText" class="form-input" id="alertDialog_event_label"></Label>
+      <Label :text="eventText" class="form-input" id="modalDialog_event_label"></Label>
     </FlexboxLayout>
   </StackLayout>
 </template>
@@ -13,6 +13,7 @@ import Label from '../../../src/components/Label';
 import StackLayout from '../../../src/layouts/StackLayout';
 import Button from '../../../src/components/Button';
 import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
+import ModalDialog from '../../../src/components/ModalDialog';
 
 export default {
   name: 'ModalDialogDoc',
@@ -22,8 +23,8 @@ export default {
     };
   },
   methods: {
-    showAlertDialog: function() {
-      modal({ title: 'Your title', message: 'Your message', okButtonText: 'OK' }).then(() => {
+    showModalDialog: function() {
+      alert({ title: 'Your title', message: 'Your message', okButtonText: 'OK' }).then(() => {
         this.eventText = 'OK';
       });
     },
@@ -33,6 +34,7 @@ export default {
     StackLayout,
     Label,
     Button,
+    ModalDialog,
   },
 };
 </script>
