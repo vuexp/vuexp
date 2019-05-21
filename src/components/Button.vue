@@ -7,7 +7,10 @@
     :style="{ 'white-space': textWrap ? 'normal' : 'nowrap' }"
     :disabled="!isEnabled"
   >
-    {{ textValue }}
+    <template v-if="textValue">
+      {{ textValue }}
+    </template>
+    <slot v-else />
   </button>
 </template>
 
