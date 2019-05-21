@@ -61,11 +61,11 @@ select {
 <script>
 import StackLayout from "../../../src/layouts/StackLayout";
 import Label from "../../../src/components/Label";
-import Img from "../../../src/components/Img";
+import VxpImage from "../../../src/components/VxpImage";
 import TextField from "../../../src/components/TextField";
 
 export default {
-  name: "ImageDoc",
+  name: "VxpImageDoc",
   data() {
     return {
       src: "~/images/logo.png",
@@ -79,7 +79,7 @@ export default {
     TextField,
     StackLayout,
     Label,
-    Img
+    VxpImage
   }
 };
 </script>
