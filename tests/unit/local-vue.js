@@ -1,6 +1,6 @@
 import { createLocalVue } from '@vue/test-utils';
 import Button from '../../src/components/Button';
-import Img from '../../src/components/Img';
+import VxpImage from '../../src/components/VxpImage';
 import Label from '../../src/components/Label';
 import Page from '../../src/components/Page';
 import Progress from '../../src/components/Progress';
@@ -30,7 +30,7 @@ import WrapLayout from '../../src/layouts/WrapLayout';
 const localVue = createLocalVue();
 localVue.component('Button', Button);
 
-localVue.component('Img', Img);
+localVue.component('VxpImage', VxpImage);
 localVue.component('Label', Label);
 localVue.component('Page', Page);
 localVue.component('Progress', Progress);
