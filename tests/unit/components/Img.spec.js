@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
-import Img from '../../../src/components/Img';
+import VxpImage from '../../../src/components/VxpImage';
 
-describe('Image', () => {
+describe('VxpImage', () => {
   // Mock up values.
   const width = 200;
   const height = 300;
@@ -10,7 +10,7 @@ describe('Image', () => {
   const src = 'https://raw.githubusercontent.com/nativescript-vue/nativescript-vue-ui-tests/master/screenshots/android23/Image.png';
   const placeholder = 'Default Placeholder Text';
 
-  const wrapper = mount(Img, {
+  const wrapper = mount(VxpImage, {
     props: {
       src: String,
       stretch: {
