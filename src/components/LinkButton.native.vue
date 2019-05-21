@@ -1,6 +1,6 @@
 <template>
-  <Label v-if="externalUrl && visibility" class="vxp-link-button typ-body" :text="text" @tap="onTap" />
-  <Label v-else-if="!externalUrl && visibility" :text="text" class="vxp-link-button typ-body" @tap="$emit('tap', $event)" />
+  <Label v-if="externalUrl" class="vxp-link-button typ-body" :text="text" @tap="onTap" />
+  <Label v-else :text="text" class="vxp-link-button typ-body" @tap="$emit('tap', $event)" />
 </template>
 
 <script>
@@ -16,10 +16,6 @@ export default {
     externalUrl: {
       type: String,
       default: '',
-    },
-    visibility: {
-      type: Boolean,
-      default: true,
     },
   },
   methods: {

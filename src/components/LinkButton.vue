@@ -1,6 +1,6 @@
 <template>
-  <a v-if="externalUrl && visibility" class="vxp-link-button typ-body" :href="externalUrl" :target="externalUrl ? '_blank' : ''">{{ text }}</a>
-  <a v-else-if="!externalUrl && visibility" class="vxp-link-button typ-body" @click="$emit('tap', $event)">{{ text }}</a>
+  <a v-if="externalUrl" class="vxp-link-button typ-body" :href="externalUrl" :target="externalUrl ? '_blank' : ''">{{ text }}</a>
+  <a v-else class="vxp-link-button typ-body" @click="$emit('tap', $event)">{{ text }}</a>
 </template>
 
 <script>
