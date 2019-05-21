@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Label from './Label';
+import Label from '../core/components/Label/Label';
 
 export default {
   name: 'VxpLabel',
