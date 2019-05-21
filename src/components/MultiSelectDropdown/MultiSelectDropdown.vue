@@ -1,0 +1,233 @@
+<template>
+  <StackLayout orientation="vertical" class="vxp-multiselectdropdown">
+    <WrapLayout>
+      <WrapLayout orientation="horizontal">
+        <StackLayout
+          class="vxp-multiselectdropdown__pill"
+          orientation="horizontal"
+          v-for="selectedItemIndex in selected"
+          @tap="selectedItemTapped(items[selectedItemIndex])"
+          :key="items[selectedItemIndex][keyProp]"
+        >
+          <Label class="vxp-multiselectdropdown__pill-label" :text="items[selectedItemIndex][labelProp]"></Label>
+          <Label v-if="!isNative" class="vxp-multiselectdropdown__pill-remove-text" v-html="'&times;'"></Label>
+        </StackLayout>
+      </WrapLayout>
+      <StackLayout flexGrow="1">
+        <TextField
+          @focus="activateSuggestions()"
+          @blur="clearSearchText()"
+          ref="searchInput"
+          class="vxp-multiselectdropdown__search-input"
+          v-model="searchText"
+          :editable="!isNative"
+          :hint="hint"
+          width="100%"
+          @tap="activateSuggestions()"
+        ></TextField>
+      </StackLayout>
+    </WrapLayout>
+    <StackLayout class="vxp-multiselectdropdown__suggestions-box" ref="suggestionsBox" v-if="suggestionsOpened && !isNative">
+      <StackLayout v-if="displayItems.length">
+        <StackLayout
+          class="vxp-multiselectdropdown__suggestions-box__selectable-item"
+          v-for="item in displayItems"
+          :key="item[keyProp]"
+          @tap="selectableItemTapped(item)"
+        >
+          <Label :text="item[labelProp]"></Label>
+        </StackLayout>
+      </StackLayout>
+      <StackLayout v-else-if="emptySuggestionsLabel">
+        <Label @tap="deactivateSuggestions()" class="vxp-multiselectdropdown__suggestions-box__empty" :text="emptySuggestionsLabel"></Label>
+      </StackLayout>
+    </StackLayout>
+  </StackLayout>
+</template>
+
+<script>
+import Platform from '../../platform';
+import Gestures from '../../mixins/GestureMixin';
+import NativeSelectionModal from './NativeSelectionModal';
+import MultiSelectDropdownMixins from './multiSelectDropdownMixins';
+
+export default {
+  name: 'MultiSelectDropdown',
+  model: {
+    prop: 'selected',
+    event: 'selectedChange',
+  },
+  data() {
+    return {
+      suggestionsOpened: false,
+    };
+  },
+  mounted() {
+    if (!this.isNative) {
+      document.body.addEventListener('mousedown', this.clickOutsideListener);
+    }
+  },
+  destroyed() {
+    if (!this.isNative) {
+      document.body.removeEventListener('mousedown', this.clickOutsideListener);
+    }
+  },
+  computed: {
+    isNative() {
+      return Platform.platform !== 'web';
+    },
+  },
+  methods: {
+    activateSuggestions() {
+      if (this.isNative) {
+        this.showNativeModal();
+      } else {
+        this.suggestionsOpened = true;
+      }
+    },
+    deactivateSuggestions() {
+      this.suggestionsOpened = false;
+    },
+    selectableItemTapped(item) {
+      this.selectItem(item);
+      this.focusSearchInput();
+      if (this.selected.length === this.items.length) {
+        this.deactivateSuggestions();
+      }
+    },
+    selectedItemTapped(item) {
+      if (this.isNative) {
+        this.showNativeModal();
+      } else {
+        this.removeSelection(item);
+        this.focusSearchInput();
+
+        if (!this.isNative) {
+          this.suggestionsOpened = true;
+        }
+        if (this.selected.length === 0) {
+          this.deactivateSuggestions();
+        }
+      }
+    },
+    showNativeModal() {
+      this.$showModal(NativeSelectionModal, {
+        props: this.$props,
+        fullscreen: true,
+      }).then(() => {
+        this.selectedChange();
+      });
+    },
+    focusSearchInput() {
+      if (!this.isNative && this.$refs.searchInput) {
+        this.$refs.searchInput.$el.focus();
+      }
+    },
+    clickOutsideListener(event) {
+      if (!this.suggestionsOpened) {
+        return;
+      }
+      const wrapperElement = this.$el;
+      let targetElement = event.target; // clicked element
+
+      do {
+        if (targetElement === wrapperElement) {
+          // This is a click inside. Do nothing, just return.
+          return;
+        }
+        // Go up the DOM
+        targetElement = targetElement.parentNode;
+      } while (targetElement);
+
+      this.deactivateSuggestions();
+    },
+  },
+  mixins: [Gestures, MultiSelectDropdownMixins],
+};
+</script>
+
+<style lang="scss">
+@import '../../assets/styles/helpers.scss';
+
+.vxp-multiselectdropdown {
+  padding: unit(3);
+  position: relative;
+
+  &__pill {
+    padding: unit(4) unit(7) unit(4) unit(7);
+    background: #e8e8e8;
+    border-radius: 15%;
+    border-style: solid;
+    border-width: unit(1);
+    border-color: #cacacb;
+    margin-right: unit(3);
+    margin-top: unit(2);
+    position: relative;
+
+    &:hover {
+      background: #999999;
+      cursor: pointer;
+      border-color: #aaa;
+    }
+
+    &-label,
+    &-remove-text {
+      color: #666666;
+      position: relative;
+    }
+
+    &-label {
+      font-size: unit(14);
+    }
+
+    &-remove-text {
+      font-size: unit(16);
+      font-weight: 800;
+      margin-left: unit(4);
+      cursor: pointer;
+      &:hover {
+        color: #333;
+      }
+    }
+  }
+
+  &__suggestions-box {
+    max-height: unit(250);
+    overflow: auto;
+    border: unit(1) solid #ccc;
+    border-top: none;
+    position: absolute;
+    top: 96%;
+    width: 100%;
+    background: #fff;
+    margin-left: unit(-4);
+
+    &__selectable-item,
+    &__empty {
+      padding: unit(8);
+      border-top: unit(1) solid #ccc;
+      &:hover {
+        background: #ccc;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__suggestions-box-modal {
+    &__body {
+      height: unit(200);
+      overflow: auto;
+
+      &__selectable-item,
+      &__empty {
+        padding: unit(8);
+        border-top: unit(1) solid #ccc;
+        &:hover {
+          background: #ccc;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+</style>

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import MultiSelectDropdown from '../../../src/components/MultiSelectDropdown';
+import MultiSelectDropdown from '../../../src/components/MultiSelectDropdown/MultiSelectDropdown';
 
 export default {
   name: 'MultiSelectDropdownDoc',

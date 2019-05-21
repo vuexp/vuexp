@@ -1,4 +1,11 @@
 import * as Plugins from '../../src/plugins'
+import StackLayout from '../../src/layouts/StackLayout';
+import WrapLayout from '../../src/layouts/WrapLayout';
+import DockLayout from '../../src/layouts/DockLayout';
+import TextField from '../../src/components/TextField';
+import ModalDialog from '../../src/components/ModalDialog';
+import Label from '../../src/components/Label';
+
 export default ({
   Vue, // the version of Vue being used in the VuePress app
   options, // the options for the root Vue instance
@@ -6,6 +13,12 @@ export default ({
 }) => {
   if (typeof document !== "undefined" && typeof window !== "undefined") {
     addVxpPlugins(Vue);
+    Vue.component('StackLayout',StackLayout);
+    Vue.component('WrapLayout',WrapLayout);
+    Vue.component('DockLayout',DockLayout);
+    Vue.component('TextField',TextField);
+    Vue.component('ModalDialog',ModalDialog);
+    Vue.component('Label',Label);
   }
 };
 function addVxpPlugins(Vue) {

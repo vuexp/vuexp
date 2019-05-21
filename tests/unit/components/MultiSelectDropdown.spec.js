@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { shallowMount } from '@vue/test-utils';
-import MultiSelectDropdown from '../../../src/components/MultiSelectDropdown';
+import MultiSelectDropdown from '../../../src/components/MultiSelectDropdown/MultiSelectDropdown';
 
 describe('MultiSelectDropdown', () => {
   const wrapperClass = 'vxp-multiselectdropdown';
