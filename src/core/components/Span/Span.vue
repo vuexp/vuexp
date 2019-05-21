@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import CommonDirective from '../directives/CommonDirective';
-import Gestures from '../mixins/GestureMixin';
+import CommonDirective from '../../directives/CommonDirective';
+import Gestures from '../../mixins/GestureMixin';
 
 export default {
   name: 'Span',

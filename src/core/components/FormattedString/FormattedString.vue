@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Gestures from '../mixins/GestureMixin';
+import Gestures from '../../mixins/GestureMixin';
 
 export default {
   name: 'FormattedString',
