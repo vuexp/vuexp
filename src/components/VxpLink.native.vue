@@ -1,11 +1,13 @@
 <template>
-  <a v-if="externalUrl" class="vxp-link-button typ-body" :href="externalUrl" :target="externalUrl ? '_blank' : ''">{{ text }}</a>
-  <a v-else class="vxp-link-button typ-body" @click="$emit('tap', $event)">{{ text }}</a>
+  <Label v-if="externalUrl" class="vxp-link-button typ-body" :text="text" @tap="onTap" />
+  <Label v-else :text="text" class="vxp-link-button typ-body" @tap="$emit('tap', $event)" />
 </template>
 
 <script>
+import { openUrl } from 'tns-core-modules/utils/utils'; // eslint-disable-line
+
 export default {
-  name: 'LinkButton',
+  name: 'VxpLink',
   props: {
     text: {
       type: String,
@@ -13,10 +15,12 @@ export default {
     },
     externalUrl: {
       type: String,
+      default: '',
     },
-    visibility: {
-      type: Boolean,
-      default: true,
+  },
+  methods: {
+    onTap() {
+      openUrl(this.externalUrl);
     },
   },
 };
@@ -28,6 +32,7 @@ export default {
 
 .vxp-link-button {
   background-color: transparent;
+  padding: 0;
   text-decoration: none;
 
   &:active {

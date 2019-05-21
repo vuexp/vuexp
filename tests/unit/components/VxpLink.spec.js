@@ -1,17 +1,17 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
 import sinon from 'sinon';
-import LinkButton from '../../../src/components/LinkButton.vue';
+import VxpLink from '../../../src/components/VxpLink.vue';
 import localVue from '../local-vue';
 
-describe('LinkButton.vue', () => {
-  const text = 'LinkButton Text';
-  const newText = 'LinkButton New Text';
+describe('VxpLink.vue', () => {
+  const text = 'VxpLink Text';
+  const newText = 'VxpLink New Text';
   const externalUrl = 'https://www.google.com';
   const tap = sinon.spy();
 
-  const wrapper = mount(LinkButton, {
-    name: 'LinkButton',
+  const wrapper = mount(VxpLink, {
+    name: 'VxpLink',
     propsData: {
       text,
     },
@@ -21,8 +21,8 @@ describe('LinkButton.vue', () => {
     localVue,
   });
 
-  const externalWrapper = mount(LinkButton, {
-    name: 'LinkButton',
+  const externalWrapper = mount(VxpLink, {
+    name: 'VxpLink',
     propsData: {
       text,
       externalUrl,

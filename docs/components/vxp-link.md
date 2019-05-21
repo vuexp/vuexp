@@ -2,9 +2,9 @@
 sidebarDepth: 0
 ---
 
-# LinkButton
+# VxpLink
 
-`<LinkButton>` component is used for jumping to another internal or external link.
+`<VxpLink>` component is used for jumping to another internal or external link.
 
 ## Live Demo
 
@@ -13,7 +13,7 @@ sidebarDepth: 0
 ```html
   <StackLayout style="margin-top:20px" class="demo-panel">
       <Label text="Live example" class="demo-panel__title"/>
-      <LinkButton :text="text" :externalUrl="externalUrl" :visibility="visibility"></LinkButton>
+      <VxpLink :text="text" :externalUrl="externalUrl" :visibility="visibility"></VxpLink>
     </StackLayout>
     <StackLayout class="demo-panel">
       <Label text="Manage Link Button Properties" class="demo-panel__title"/>
@@ -32,7 +32,7 @@ sidebarDepth: 0
     </StackLayout>
 ```
 
-<LinkButtonLiveDemo />
+<VxpLinkLiveDemo />
 </DocExampleBox>
 
 
@@ -40,7 +40,7 @@ sidebarDepth: 0
 ## Example Usages
 
 ```html
-<LinkButton :text="text" :externalUrl="externalUrl" :visibility="visibility"></LinkButton>
+<VxpLink :text="text" :externalUrl="externalUrl" :visibility="visibility"></VxpLink>
 ```
     
 
