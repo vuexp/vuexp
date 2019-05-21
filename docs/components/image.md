@@ -2,11 +2,11 @@
 sidebarDepth: 0
 ---
 
-# Image
+# VxpImage
 
-This is an overview of the most common usage of `<Image>`.
+This is an overview of the most common usage of `<VxpImage>`.
 
-`Image` is a UI component that displays an image resource .
+`VxpImage` is a UI component that displays an image resource .
 
 ---
 
@@ -21,25 +21,25 @@ This is an overview of the most common usage of `<Image>`.
 Displaying an image relative to the app directory
 
 ```html
-<Img src="~/images/logo.png"/>
+<VxpImage src="~/images/logo.png"/>
 ```
 
 Displaying an image from a URL
 
 ```html
-<Img src="https://art.nativescript-vue.org/NativeScript-Vue-White-Green.png"/>
+<VxpImage src="https://art.nativescript-vue.org/NativeScript-Vue-White-Green.png"/>
 ```
 
 Displaying an image stretched to fill its container and with alternate text to be displayed when image can not be displayed.
 
 ```html
-<Img src="~/images/logo.png" stretch="fill" placeholder="VueXP Logo"/>
+<VxpImage src="~/images/logo.png" stretch="fill" placeholder="VueXP Logo"/>
 ```
 
 Displaying an image with width an height value.
 
 ```html
-<Img src="~/images/logo.png" width="640" height="480"/>
+<VxpImage src="~/images/logo.png" width="640" height="480"/>
 ```
 
 ## Props
