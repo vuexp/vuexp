@@ -23,7 +23,7 @@ import FadeTransition from '../transitions/FadeTransition';
 import SlideTransition from '../transitions/SlideTransition';
 
 export default {
-  name: 'VxpSideDrawer',
+  name: 'RadSideDrawer',
   components: {
     AbsoluteLayout,
     FlexboxLayout,
@@ -89,11 +89,12 @@ export default {
     z-index: 11;
 
     &--opened {
-      box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.2), 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12);
+      box-shadow: unit(0) unit(8) unit(10) unit(-5) rgba(0, 0, 0, 0.2), unit(0) unit(16) unit(24) unit(2) rgba(0, 0, 0, 0.14),
+        unit(0) unit(6) unit(30) unit(5) rgba(0, 0, 0, 0.12);
     }
 
-    &--closed {
-    }
+    /*&--closed {
+    }*/
   }
 }
 </style>

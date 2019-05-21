@@ -1,6 +1,6 @@
 <template>
 	<StackLayout>
-		<VxpSideDrawer
+		<RadSideDrawer
 			id="SideDrawer"
 			ref="drawer"
 			class="sidedrawer-doc-container">
@@ -53,7 +53,7 @@
 					primary
 					text="SHOW DRAWER"></Button>
 			</StackLayout>
-		</VxpSideDrawer>
+		</RadSideDrawer>
 		<StackLayout orientation="horizontal" class="control-panel-wrapper">
 			<Label text="Open/Closed Label:"></Label>
 			<Label
@@ -65,7 +65,7 @@
 
 <script>
 
-	import VxpSideDrawer from '../../../src/components/SideDrawer';
+	import RadSideDrawer from '../../../src/components/SideDrawer';
 	import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
 	import Label from '../../../src/components/Label';
 	import StackLayout from '../../../src/layouts/StackLayout';
@@ -75,7 +75,7 @@
 	export default {
 		name: "SideDrawerDoc",
 		components: {
-				VxpSideDrawer,
+				RadSideDrawer,
 				FlexboxLayout,
 				Label,
 				StackLayout,

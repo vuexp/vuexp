@@ -7,7 +7,7 @@ Side Drawer Component
 
 <DocExampleBox>
 ```html
-  <VxpSideDrawer ref="drawer" class="sidedrawer-doc-container">
+  <RadSideDrawer ref="drawer" class="sidedrawer-doc-container">
     <StackLayout v-view:drawerContent class="sidedrawer-doc-container__drawer">
       <StackLayout class="sidedrawer-doc-container__drawer__title">
         <Label text="Navigation Menu"></Label>
@@ -25,7 +25,7 @@ Side Drawer Component
       <Label :textWrap="true" class="sidedrawer-doc-container__text" text="Main Content Area" />
       <Button @tap="openDrawer" primary text="OPEN DRAWER"></Button>
     </StackLayout>
-  </VxpSideDrawer>
+  </RadSideDrawer>
 ```
 
 ```scss
@@ -63,7 +63,7 @@ Side Drawer Component
 ## Example Usages
 
 ```html
-  <VxpSideDrawer ref="drawer" class="sidedrawer-doc-container">
+  <RadSideDrawer ref="drawer" class="sidedrawer-doc-container">
     <StackLayout v-view:drawerContent class="sidedrawer-doc-container__drawer">
       <StackLayout class="sidedrawer-doc-container__drawer__title">
         <Label text="Navigation Menu"></Label>
@@ -81,7 +81,7 @@ Side Drawer Component
       <Label :textWrap="true" class="sidedrawer-doc-container__text" text="Main Content Area" />
       <Button @tap="openDrawer" primary text="OPEN DRAWER"></Button>
     </StackLayout>
-  </VxpSideDrawer>
+  </RadSideDrawer>
 ```
 
 Side Drawer does not take explicit props nor emits custom events. It takes advantage of `v-view` directive in order to work as intended. The key point is to use `v-view` with `mainContent` and `drawerContent` templates.
