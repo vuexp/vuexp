@@ -22,9 +22,9 @@
 </template>
 
 <script>
-import Slider from '../../../src/components/Slider';
-import Label from '../../../src/components/Label';
-import TextField from '../../../src/components/TextField';
+import Slider from '../../../src/core/components/Slider/Slider';
+import Label from '../../../src/core/components/Label/Label';
+import TextField from '../../../src/core/components/TextField/TextField';
 import StackLayout from '../../../src/layouts/StackLayout';
 
 export default {
