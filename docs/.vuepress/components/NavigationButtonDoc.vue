@@ -32,11 +32,11 @@
 </template>
 
 <script>
-import ActionBar from '../../../src/components/ActionBar';
-import NavigationButton from '../../../src/components/NavigationButton';
-import TextField from '../../../src/components/TextField';
+import ActionBar from '../../../src/core/components/ActionBar/ActionBar';
+import NavigationButton from '../../../src/core/components/NavigationButton/NavigationButton';
+import TextField from '../../../src/core/components/TextField/TextField';
 import StackLayout from '../../../src/layouts/StackLayout';
-import Label from '../../../src/components/Label';
+import Label from '../../../src/core/components/Label/Label';
 
 export default {
   name: 'NavigationButtonDoc',

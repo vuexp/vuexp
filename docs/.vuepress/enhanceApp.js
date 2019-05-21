@@ -1,10 +1,10 @@
-import * as Plugins from '../../src/plugins'
 
 import FlexboxLayout from '../../src/layouts/FlexboxLayout'
 import StackLayout from '../../src/layouts/StackLayout'
 import ScrollView from '../../src/components/ScrollView'
 import VTemplate from '../../src/components/VTemplate'
 
+import * as Plugins from '../../src/core/plugins'
 export default ({
   Vue, // the version of Vue being used in the VuePress app
   options, // the options for the root Vue instance
