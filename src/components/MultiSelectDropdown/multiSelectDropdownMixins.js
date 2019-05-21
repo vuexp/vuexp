@@ -11,7 +11,12 @@ export default {
         return [];
       },
     },
-    selected: Array,
+    selected: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
     keyProp: {
       type: String,
       default: 'value',
@@ -52,9 +57,7 @@ export default {
     removeSelection(item) {
       const itemIndex = this.items.indexOf(item);
       const selectedItemIndex = this.selected.indexOf(itemIndex);
-      if (selectedItemIndex > -1) {
-        this.selected.splice(selectedItemIndex, 1);
-      }
+      this.selected.splice(selectedItemIndex, 1);
       this.selectedChange();
     },
   },

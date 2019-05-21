@@ -16,7 +16,6 @@
       <StackLayout flexGrow="1">
         <TextField
           @focus="activateSuggestions()"
-          @blur="clearSearchText()"
           ref="searchInput"
           class="vxp-multiselectdropdown__search-input"
           v-model="searchText"
@@ -27,7 +26,7 @@
         ></TextField>
       </StackLayout>
     </WrapLayout>
-    <StackLayout class="vxp-multiselectdropdown__suggestions-box" ref="suggestionsBox" v-if="suggestionsOpened && !isNative">
+    <StackLayout class="vxp-multiselectdropdown__suggestions-box" v-if="suggestionsOpened && !isNative">
       <StackLayout v-if="displayItems.length">
         <StackLayout
           class="vxp-multiselectdropdown__suggestions-box__selectable-item"
@@ -91,6 +90,7 @@ export default {
     selectableItemTapped(item) {
       this.selectItem(item);
       this.focusSearchInput();
+
       if (this.selected.length === this.items.length) {
         this.deactivateSuggestions();
       }
@@ -101,13 +101,7 @@ export default {
       } else {
         this.removeSelection(item);
         this.focusSearchInput();
-
-        if (!this.isNative) {
-          this.suggestionsOpened = true;
-        }
-        if (this.selected.length === 0) {
-          this.deactivateSuggestions();
-        }
+        this.activateSuggestions();
       }
     },
     showNativeModal() {
@@ -119,9 +113,7 @@ export default {
       });
     },
     focusSearchInput() {
-      if (!this.isNative && this.$refs.searchInput) {
-        this.$refs.searchInput.$el.focus();
-      }
+      this.$refs.searchInput && this.$refs.searchInput.$el.focus();
     },
     clickOutsideListener(event) {
       if (!this.suggestionsOpened) {
