@@ -15,6 +15,38 @@
       />
        <Label :text="disabled ? 'Disabled' : 'Enabled'" class="label__margin_left" id="checkbox_enabled_label_result" width="100"/>
     </FlexboxLayout>
+    <StackLayout style="margin-top:20px" orientation="horizontal" >
+      <Label text="Themes " class="demo-panel__title" style="margin-right:20px;" />
+       <FlexboxLayout
+      class="checkbox-doc-container__flexboxLayout"
+      flexDirection="row"
+      justifyContent="space-around"
+    >
+      <FlexboxLayout>
+       
+        <StackLayout orientation="horizontal" class="theme--nuweb">
+         <Label text="Primary "  id="checkbox_primary_label"  style="margin-right:20px;" />
+        <VxpCheckbox
+          class="checkbox-doc-container__flexboxLayout__checkbox"
+          id="checkbox_primary_checkbox"
+          v-model="checked_theme1"
+          :disabled="false"
+          primary
+        />
+        </StackLayout>
+        <StackLayout orientation="horizontal" class="theme--nuweb">
+         <Label text="Secondary " id="checkbox_secondary_label"  style="margin-right:20px; margin-left:20px;" />
+        <VxpCheckbox
+          class="checkbox-doc-container__flexboxLayout__checkbox"
+          id="checkbox_secondary_checkbox"
+          v-model="checked_theme2"
+          :disabled="false"
+          secondary
+        />
+        </StackLayout>
+      </FlexboxLayout>
+    </FlexboxLayout>
+    </StackLayout>
      <StackLayout style="margin-top:20px" orientation="horizontal" >
       <Label text="Rendered Result: " class="demo-panel__title" style="margin-right:20px;" />
        <FlexboxLayout
@@ -54,6 +86,8 @@ export default {
     return {
       disabled: false,
       checked : false,
+      checked_theme1 : true,
+      checked_theme2 : true,
     };
   },
    methods: {

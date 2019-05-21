@@ -8,16 +8,6 @@ describe('Checkbox Component Tests', () => {
 
   const checked = true;
   const disabled = false;
-  const visibility = true;
-
-  const inVisibleVxpCheckbox = mount(VxpCheckbox, {
-    props: {
-      visible: Boolean,
-    },
-    propsData: {
-      visibility: false,
-    },
-  });
 
   beforeEach(() => {
     wrapper = mount(VxpCheckbox, {
@@ -29,12 +19,10 @@ describe('Checkbox Component Tests', () => {
       props: {
         checked,
         disabled,
-        visibility,
       },
       propsData: {
         checked,
         disabled,
-        visibility,
       },
       localVue,
     });
@@ -74,9 +62,5 @@ describe('Checkbox Component Tests', () => {
     });
     wrapper.trigger('click');
     expect(wrapper.emitted('change').length).to.equal(1);
-  });
-  it('display:none css rule is NOT applied when visible prop is not provided', () => {
-    const hasInvisibleClass = inVisibleVxpCheckbox.find(VxpCheckbox).element.className.indexOf('vpx-label-invisible') != -1;
-    expect(hasInvisibleClass).to.equal(false);
   });
 });
