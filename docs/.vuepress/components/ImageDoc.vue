@@ -1,7 +1,7 @@
 <template>
   <StackLayout style="width: 400px; margin:auto;">
     <StackLayout style="width: 400px; height: 200px;" class="stack-cell">
-      <Img id="image" :src="src" :stretch="stretch" :placeholder="placeholder" :width="width" :height="height" />
+      <VxpImage id="image" :src="src" :stretch="stretch" :placeholder="placeholder" :width="width" :height="height" />
     </StackLayout>
 
     <Label text="Source URL: ">
