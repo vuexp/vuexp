@@ -66,7 +66,7 @@ describe('VxpImage', () => {
   });
   describe('stretch none default test', () => {
     it(`class name for given stretch none, class is equal to default class`, () => {
-      const wrapper = mount(Img, {
+      const wrapper = mount(VxpImage, {
         propsData: {
           src,
         },
