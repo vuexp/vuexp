@@ -129,12 +129,12 @@
 </template>
 
 <script>
-import Label from '../../../src/components/Label';
+import Label from '../../../src/core/components/Label/Label';
 import StackLayout from '../../../src/layouts/StackLayout';
-import TextField from '../../../src/components/TextField';
+import TextField from '../../../src/core/components/TextField/TextField';
 import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
 import VxpListView from '../../../src/components/VxpListView';
-import Button from '../../../src/components/Button';
+import Button from '../../../src/core/components/Button/Button';
 
 export default {
   name: 'VxpListViewDoc',

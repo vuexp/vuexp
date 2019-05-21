@@ -1,7 +1,7 @@
 
 import FlexboxLayout from '../../src/layouts/FlexboxLayout'
 import StackLayout from '../../src/layouts/StackLayout'
-import ScrollView from '../../src/components/ScrollView'
+import ScrollView from '../../src/core/components/ScrollView/ScrollView'
 import VTemplate from '../../src/components/VTemplate'
 
 import * as Plugins from '../../src/core/plugins'
