@@ -67,11 +67,6 @@ describe('IconButton.vue', () => {
         expect(wrapper.find('button').element.style.height).to.equal(newSize + 'px');
       }
     });
-    it(`the font attribute which changes font family equal to: ${font}.`, () => {
-      if (font) {
-        expect(wrapper.find('button').element.style.fontFamily).to.equal(font);
-      }
-    });
   });
   describe('Events testing', () => {
     it('click event property is passed to the component successfully.', () => {

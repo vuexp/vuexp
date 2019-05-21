@@ -2,7 +2,7 @@
 
 Circular icon button.
 
-<DocExampleBox>
+<DocExampleBox :liveDemoMode="true">
 
 ```html
   <FlexboxLayout class="nubutton-doc-container" flexDirection="column">
@@ -111,7 +111,6 @@ increment() {
 
 | Name      | Type           | Default | Web | Mobile |
 | --------- | -------------- | ------- | --- | ------ |
-| font      | String         |         | ✔   | ✔      |
 | icon      | String         |         | ✔   | ✔      |
 | size      | String, Number | 37      | ✔   | ✔      |
 | isEnabled | Boolean        |         | ✔   | ✔      |
