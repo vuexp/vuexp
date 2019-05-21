@@ -161,14 +161,14 @@ export default {
         this.scrollTo(0, animated);
       }
     },
-    scrollToIndex(index) {
+    scrollToIndex(index, animated = true) {
       const { listView } = this;
       if (!listView) {
         return;
       }
       try {
         const itemElement = listView.querySelector(`[index="${index}"]`);
-        itemElement.scrollIntoView(this.reversed);
+        itemElement.scrollIntoView({ behavior: animated ? 'smooth' : 'auto', block: 'nearest', inline: 'start' });
       } catch (e) {
         console.error('Cannot scroll to item with given index:', e.message); // eslint-disable-line
       }

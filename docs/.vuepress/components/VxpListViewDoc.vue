@@ -36,12 +36,18 @@
       </FlexboxLayout>
 
       <FlexboxLayout flexWrap="wrap">
+        <Label text="Scroll Index" class="option-label"/>
+        <TextField id="vxplistview_scrolltoindex_textfield" v-model="scrollToIndex" class="option-input"/>
+      </FlexboxLayout>
+      <FlexboxLayout flexWrap="wrap">
         <Label text="Scroll to index" class="option-label"/>
         <Button
           id="vxplistview_scrolltoindex_button"
           text="scrollToIndex"
-          @tap="$refs.listView.scrollToIndex(5)"
+          @tap="$refs.listView.scrollToIndex(scrollToIndex, scrollToIndexAnimated)"
         />
+        <Label text="Animated?" style="margin-left: 10px"/>
+        <input id="vxplistview_scrolltoindexanimated_cb" v-model="scrollToIndexAnimated" type="checkbox">
       </FlexboxLayout>
 
 
@@ -138,6 +144,8 @@ export default {
       isListReversed: false,
       scrollToStartAnimated: true,
       scrollToEndAnimated: true,
+      scrollToIndexAnimated: true,
+      scrollToIndex: "5",
       itemList: [],
       itemConditions: {
         showIfStateTrue: 'item.state === true',
