@@ -100,7 +100,6 @@ export default {
     position: relative;
     top: 0.2rem;
     background: white;
-    // box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     border-radius: 7px;
     padding: 0.5rem;
