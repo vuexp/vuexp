@@ -71,7 +71,7 @@ export default {
       }
     },
     selectItem(index, item) {
-      this.selectIndex = index;
+      this.selectedIndex = index;
       this.$emit('selectedIndexChanged', { index, item });
     },
   },

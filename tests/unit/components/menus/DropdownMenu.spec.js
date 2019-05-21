@@ -1,12 +1,14 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
 import DropdownMenu from '../../../../src/components/menus/DropdownMenu';
+import localVue from '../../local-vue';
 
 describe('Dropdown Menu', () => {
   const selectedIndex = 1;
   const title = 'Test Title';
   const items = [{ title: 'Title 1', icon: 'fa-share', iconClass: 'fa' }, { title: 'Title 2', icon: 'fa-times', iconClass: 'fa' }];
   let wrapper;
+  let defaultWrapper;
   before(() => {
     wrapper = mount(DropdownMenu, {
       name: 'DropdownMenu',
@@ -22,10 +24,6 @@ describe('Dropdown Menu', () => {
           type: Boolean,
           default: false,
         },
-        visibility: {
-          type: Boolean,
-          default: true,
-        },
         selectedIndex: {
           type: Number,
           default: null,
@@ -36,15 +34,56 @@ describe('Dropdown Menu', () => {
         title,
         items,
       },
+      localVue,
+    });
+    defaultWrapper = mount(DropdownMenu, {
+      name: 'DropdownMenu',
+      props: {
+        title: String,
+        icon: String,
+        iconClass: String,
+        items: {
+          type: Array,
+          default: () => [],
+        },
+        disabled: {
+          type: Boolean,
+          default: false,
+        },
+        selectedIndex: {
+          type: Number,
+          default: null,
+        },
+      },
+      propsData: {
+        selectedIndex,
+        title,
+      },
+      localVue,
     });
   });
-  it(`selectedIndex property is equal to: ${selectedIndex}.`, () => {
+
+  it(`should selectedIndex be equal to: ${selectedIndex}.`, () => {
     expect(wrapper.props().selectedIndex).to.equal(selectedIndex);
   });
-  it(`currentTabIndex is equal to: ${selectedIndex}.`, () => {
-    expect(wrapper.vm.currentTabIndex).to.equal(selectedIndex);
+  it(`should items length be equal to: ${items.length}.`, () => {
+    expect(wrapper.props().items.length).to.equal(items.length);
   });
-  it(`direction is equal to: to-right.`, () => {
-    expect(wrapper.vm.direction).to.equal('to-right');
+  it(`should set isMenuOpen to false when toggleMenu is fired on web`, () => {
+    wrapper.vm.toggleMenu();
+    expect(wrapper.vm.isMenuOpen).to.be.true;
+  });
+  it(`should set selectedIndex to 1 when selectItem is fired`, () => {
+    const selectedIndex = 0;
+    wrapper.vm.selectItem(selectedIndex, wrapper.props().items[selectedIndex]);
+    expect(wrapper.props().selectedIndex).to.equal(selectedIndex);
+  });
+  it(`should items be an empty array`, () => {
+    expect(
+      defaultWrapper
+        .props()
+        .items.values()
+        .next().value,
+    ).to.eql(undefined);
   });
 });

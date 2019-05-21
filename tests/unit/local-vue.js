@@ -27,10 +27,14 @@ import DockLayout from '../../src/layouts/DockLayout';
 import FlexboxLayout from '../../src/layouts/FlexboxLayout';
 import GridLayout from '../../src/layouts/GridLayout';
 import WrapLayout from '../../src/layouts/WrapLayout';
+import DropdownMenu from '../../src/components/menus/DropdownMenu';
 
 const localVue = createLocalVue();
+localVue.filter('fonticon', function(value) {
+  return value + ' | fonticon';
+});
 localVue.component('Button', Button);
-
+localVue.component('DropdownMenu', DropdownMenu);
 localVue.component('Img', Img);
 localVue.component('Label', Label);
 localVue.component('Page', Page);
