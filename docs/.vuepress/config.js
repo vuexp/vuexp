@@ -35,6 +35,7 @@ module.exports = {
           title: "Components",
           collapsable: true,
           children: [
+            "components/dropDown.md",
             "components/label.md",
             "components/switcher.md",
             "components/search-bar.md",

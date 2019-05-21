@@ -4,9 +4,8 @@ import { mount } from '@vue/test-utils';
 import DropDown from '../../../src/components/DropDown';
 import localVue from '../local-vue';
 
-describe('DropDown.vue', () => {
+describe('DropDown', () => {
   const placeholder = 'Select One';
-  const visibility = true;
   const disabled = false;
   const items = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const index = 3;
@@ -16,7 +15,6 @@ describe('DropDown.vue', () => {
     wrapper = mount(DropDown, {
       propsData: {
         placeholder,
-        visibility,
         disabled,
         items,
         index,
@@ -29,10 +27,6 @@ describe('DropDown.vue', () => {
   describe('The component received given props correctly.', () => {
     it(`should placeholder property is equal to ${placeholder}.`, () => {
       expect(wrapper.props().placeholder).to.equal(placeholder);
-    });
-
-    it(`should visibility property is equal to ${visibility}.`, () => {
-      expect(wrapper.props().visibility).to.equal(visibility);
     });
 
     it(`should placeholder disabled is equal to ${disabled}.`, () => {
@@ -55,7 +49,6 @@ describe('DropDown.vue', () => {
       wrapper = mount(DropDown, {
         propsData: {
           placeholder,
-          visibility,
           disabled,
           items,
           index,

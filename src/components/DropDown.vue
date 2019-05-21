@@ -6,7 +6,6 @@
         type="text"
         readonly
         :placeholder="placeholder"
-        v-show="visibility"
         :disabled="disabled"
         :value="selectedItem"
         @click="onInputClick"
@@ -41,16 +40,13 @@
 
 <script>
 import debounce from '../helpers/debounce';
+import Label from './Label';
 
 export default {
   name: 'DropDown',
   props: {
     placeholder: {
       type: String,
-    },
-    visibility: {
-      type: Boolean,
-      default: true,
     },
     disabled: {
       type: Boolean,
@@ -232,6 +228,9 @@ export default {
   created() {
     this.selectedIndex = this.index;
   },
+  components: {
+    Label,
+  },
 };
 </script>
 
@@ -297,7 +296,7 @@ $placeholder-color: #898d90;
       @include themed($themes) {
         &__error-messages {
           color: getvar(alert);
-          margin-top: unit(8);
+          margin-top: 8px;
         }
       }
     }
