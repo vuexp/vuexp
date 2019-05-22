@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
 import GridLayout from '../../../src/layouts/GridLayout';
-import Label from '../../../src/components/Label';
+import Label from '../../../src/core/components/Label/Label';
 
 describe('GridLayout', () => {
   // StackLayout Mock up values.
