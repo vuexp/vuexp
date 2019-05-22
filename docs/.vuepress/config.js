@@ -51,6 +51,7 @@ module.exports = {
             "components/segmented-bar.md",
             "components/progress.md",
             "components/vxp-list-view.md",
+            "components/vxpiconbutton.md",
             "components/vxpcheckbox.md",
           ]
         },
