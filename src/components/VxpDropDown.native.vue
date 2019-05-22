@@ -1,14 +1,15 @@
 <template>
   <StackLayout class="vxp-drop-down-picker typ-body">
     <FlexboxLayout class="vxp-drop-down-picker__list" @tap="onClicked" justifyContent="space-between">
-      <Label :text="labelText" class="vxp-drop-down-picker__list__label" :class="{ 'vxp-drop-down-picker__list__label--placeholder': placeholderActive }" />
-      <Label :text="'pz-arrow-fill-down' | fonticon" class="pz" />
+      <VxpLabel :text="labelText" class="vxp-drop-down-picker__list__label" :class="{ 'vxp-drop-down-picker__list__label--placeholder': placeholderActive }" />
+      <VxpLabel :text="'pz-arrow-fill-down' | fonticon" class="pz" />
     </FlexboxLayout>
   </StackLayout>
 </template>
 
 <script>
 import ListPickerModal from './ListPickerModal';
+import VxpLabel from './VxpLabel';
 
 export default {
   name: 'VxpDropDown',
@@ -57,6 +58,9 @@ export default {
   },
   created() {
     this.$emit('changeIndex', this.index, this.items[this.index]);
+  },
+  components: {
+    VxpLabel,
   },
 };
 </script>

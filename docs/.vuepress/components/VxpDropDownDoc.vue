@@ -9,27 +9,27 @@
       :errors="errors"
     />
     <StackLayout orientation="horizontal" class="dropDown__margin_top">
-      <Label id="dropDown_item_label" class="dropDown" text="Selected Index: " />
-      <Label id="dropDown_selectItem_label" :text="selectedIndex" />
+      <VxpLabel id="dropDown_item_label" class="dropDown" text="Selected Index: " />
+      <VxpLabel id="dropDown_selectItem_label" :text="selectedIndex" />
     </StackLayout>
     <StackLayout orientation="horizontal">
-      <Label id="dropDown_placeholder_label" class="dropDown__margin_top" text="Placeholder:" width="100"></Label>
+      <VxpLabel id="dropDown_placeholder_label" class="dropDown__margin_top" text="Placeholder:" width="100"></VxpLabel>
       <input type="text" id="dropDown_placeholder_input" class="dropDown__margin_top" v-model="dropDownPlaceholder" />
     </StackLayout>
     <StackLayout orientation="horizontal">
-      <Label id="dropDown_disabled_label" class="dropDown__margin_top" text="Disabled :" width="100"></Label>
+      <VxpLabel id="dropDown_disabled_label" class="dropDown__margin_top" text="Disabled :" width="100"></VxpLabel>
       <input type="checkbox" id="dropDown_disabled_checkbox" class="dropDown__margin_top" v-model="dropDownDisabled" />
-      <Label id="dropDown_checkbox_text_label" class="dropDown__margin_top dropDown__m-l-10" text="Is Disabled :" width="100"></Label>
-      <Label id="dropDown_checkbox_value_label" class="dropDown__margin_top" width="100">{{dropDownDisabled}}</Label>
+      <VxpLabel id="dropDown_checkbox_text_label" class="dropDown__margin_top dropDown__m-l-10" text="Is Disabled :" width="100"></VxpLabel>
+      <VxpLabel id="dropDown_checkbox_value_label" class="dropDown__margin_top" :text = "dropDownDisabled.toString()" width="100"></VxpLabel>
     </StackLayout>
-    <Label id="dropDown_items_label" class="dropDown__margin_top" text="Items :" width="100"></Label>
+    <VxpLabel id="dropDown_items_label" class="dropDown__margin_top" text="Items :" width="100"></VxpLabel>
     <StackLayout class="dropDown_m-b-10" v-for="(country, index) in countries" :key="index" orientation="horizontal">
       <TextField :id="`dropDown_items_textField_${index}`" v-model="countries[index]" hint="This is placeholder" :editable="true" />
       <Button id="dropDown_items_plus_button" class="dropDown__m-l-10" text="+" @tap="addItem" style="background=dodgerblue"></Button>
       <Button id="dropDown_items_minus_button" class="dropDown__m-l-10" text="-" @tap="removeItem(index)" v-show="countries.length > 1"></Button>
     </StackLayout>
-    <Label id="dropDown_errors_label" class="dropDown__margin_top" text="Errors :" width="100"></Label>
-    <StackLayout class="dropDown_m-b-10" v-for="(error, index) in errors"  orientation="horizontal">
+    <VxpLabel id="dropDown_errors_label" class="dropDown__margin_top" text="Errors :" width="100"></VxpLabel>
+    <StackLayout class="dropDown_m-b-10" v-for="(error, index) in errors" orientation="horizontal">
       <TextField :id="`dropDown_errors_textField_${index}`" v-model="errors[index]" hint="This is placeholder" :editable="true" />
       <Button id="dropDown_errors_plus_button" class="dropDown__m-l-10" text="+" @tap="addErrorItem" style="background=dodgerblue"></Button>
       <Button id="dropDown_errors_minus_button" class="dropDown__m-l-10" text="-" @tap="removeErrorItem(index)" v-show="errors.length > 1"></Button>
@@ -39,10 +39,10 @@
 
 <script>
 import VxpDropDown from '../../../src/components/VxpDropDown';
-import Label from '../../../src/components/Label';
+import VxpLabel from '../../../src/components/VxpLabel';
 import StackLayout from '../../../src/layouts/StackLayout';
-import TextField from '../../../src/components/TextField';
-import Button from '../../../src/components/Button';
+import TextField from '../../../src/core/components/TextField/TextField';
+import Button from '../../../src/core/components/Button/Button';
 
 export default {
   name: 'VxpDropDownDoc',
@@ -74,7 +74,7 @@ export default {
   },
   components: {
     VxpDropDown,
-    Label,
+    VxpLabel,
     StackLayout,
     TextField,
     Button,

@@ -33,14 +33,14 @@
       </ul>
     </transition>
     <FlexboxLayout flexDirection="column" v-if="errors.length" class="vxp-drop-down__container__toggle__error-messages typ-body">
-      <Label :text="error" v-for="(error, index) in errors" :key="index" :textWrap="true" />
+      <VxpLabel :text="error" v-for="(error, index) in errors" :key="index" :textWrap="true" />
     </FlexboxLayout>
   </div>
 </template>
 
 <script>
 import debounce from '../helpers/debounce';
-import Label from './Label';
+import VxpLabel from './VxpLabel';
 import FlexboxLayout from '../layouts/FlexboxLayout';
 
 export default {
@@ -230,7 +230,7 @@ export default {
     this.selectedIndex = this.index;
   },
   components: {
-    Label,
+    VxpLabel,
     FlexboxLayout,
   },
 };

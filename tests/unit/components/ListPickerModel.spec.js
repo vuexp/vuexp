@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
 import * as sinon from 'sinon';
 import localVue from '../local-vue';
-import { ListPickerModal } from '../../../src/main';
+import ListPickerModal from '../../../src/components/ListPickerModal';
 
 describe('ListPickerModal.', () => {
   const listOfItems = ['nativescript', 'vue', 'nurd', 'nuweb'];
