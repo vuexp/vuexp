@@ -59,11 +59,6 @@ export default {
       default: 'left',
     },
   },
-  filters: {
-    fonticon(value) {
-      return value + ' | fonticon';
-    },
-  },
   computed: {
     //Base Button Class
     vxpButtonClass: function() {
