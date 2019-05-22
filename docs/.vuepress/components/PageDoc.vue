@@ -19,9 +19,9 @@
 
 <script>
 import StackLayout from '../../../src/layouts/StackLayout';
-import Page from '../../../src/components/Page';
-import ActionBar from '../../../src/components/ActionBar';
-import Label from '../../../src/components/Label';
+import Page from '../../../src/core/components/Page/Page';
+import ActionBar from '../../../src/core/components/ActionBar/ActionBar';
+import Label from '../../../src/core/components/Label/Label';
 
 export default {
   name: 'PageDoc',

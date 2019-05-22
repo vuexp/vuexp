@@ -51,9 +51,9 @@ select {
 </style>
 <script>
 import StackLayout from "../../../src/layouts/StackLayout";
-import Label from "../../../src/components/Label";
-import Img from "../../../src/components/Img";
-import TextField from "../../../src/components/TextField";
+import Label from "../../../src/core/components/Label/Label";
+import Img from "../../../src/core/components/Img/Img";
+import TextField from "../../../src/core/components/TextField/TextField";
 
 export default {
   name: "ImageDoc",

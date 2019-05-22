@@ -62,7 +62,7 @@ module.exports = {
         acceptSslCerts: true,
         nativeEvents: true,
         chromeOptions: {
-          args: ['headless', 'disable-web-security', 'ignore-certificate-errors'],
+          args: ['disable-web-security', 'ignore-certificate-errors'],
         },
         loggingPrefs: { driver: 'INFO', server: 'OFF', browser: 'INFO' },
       },
@@ -75,7 +75,7 @@ module.exports = {
         marionette: true,
         nativeEvents: true,
         'moz:firefoxOptions': {
-          args: ['--headless', 'no-sandbox'],
+          args: ['no-sandbox'],
         },
       },
     },

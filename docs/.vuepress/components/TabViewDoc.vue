@@ -20,9 +20,9 @@
 </template>
 
 <script>
-import Label from '../../../src/components/Label';
-import TabViewItem from '../../../src/components/TabViewItem';
-import TabView from '../../../src/components/TabView';
+import Label from '../../../src/core/components/Label/Label';
+import TabViewItem from '../../../src/core/components/TabViewItem/TabViewItem';
+import TabView from '../../../src/core/components/TabView/TabView';
 import StackLayout from '../../../src/layouts/StackLayout';
 
 export default {
