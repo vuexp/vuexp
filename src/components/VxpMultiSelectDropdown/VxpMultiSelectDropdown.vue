@@ -47,7 +47,7 @@
 
 <script>
 import Platform from '../../platform';
-import Gestures from '../../mixins/GestureMixin';
+import Gestures from '../../core/mixins/GestureMixin';
 import NativeSelectionModal from './NativeSelectionModal';
 import VxpMultiSelectDropdownMixins from './vxpMultiSelectDropdownMixins';
 

@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
-import Label from '../../../src/components/Label.vue';
+import Label from '../../../src/core/components/Label/Label.vue';
 import DockLayout from '../../../src/layouts/DockLayout.vue';
 
 describe('Docklayout Test', () => {

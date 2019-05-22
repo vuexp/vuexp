@@ -3,8 +3,8 @@ import { mount } from '@vue/test-utils';
 import sinon from 'sinon';
 import localVue from '../local-vue';
 import VxpMultiSelectDropdown from '../../../src/components/VxpMultiSelectDropdown/VxpMultiSelectDropdown';
-import TextField from '../../../src/components/TextField';
-import Label from '../../../src/components/Label';
+import TextField from '../../../src/core/components/TextField/TextField';
+import Label from '../../../src/core/components/Label/Label';
 import platform from '../../../src/platform';
 
 describe('VxpMultiSelectDropdown', () => {

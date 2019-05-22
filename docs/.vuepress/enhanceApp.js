@@ -1,10 +1,10 @@
-import * as Plugins from '../../src/plugins'
+import * as Plugins from '../../src/core/plugins'
 import StackLayout from '../../src/layouts/StackLayout';
 import WrapLayout from '../../src/layouts/WrapLayout';
 import DockLayout from '../../src/layouts/DockLayout';
-import TextField from '../../src/components/TextField';
-import ModalDialog from '../../src/components/ModalDialog';
-import Label from '../../src/components/Label';
+import TextField from '../../src/core/components/TextField/TextField';
+import ModalDialog from '../../src/core/components/ModalDialog/ModalDialog';
+import Label from '../../src/core/components/Label/Label';
 
 export default ({
   Vue, // the version of Vue being used in the VuePress app
