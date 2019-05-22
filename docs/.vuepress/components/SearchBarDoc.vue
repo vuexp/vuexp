@@ -51,9 +51,9 @@
 </template>
 
 <script>
-import Label from '../../../src/components/Label';
-import SearchBar from '../../../src/components/SearchBar';
-import TextField from '../../../src/components/TextField';
+import Label from '../../../src/core/components/Label/Label';
+import SearchBar from '../../../src/core/components/SearchBar/SearchBar';
+import TextField from '../../../src/core/components/TextField/TextField';
 import StackLayout from '../../../src/layouts/StackLayout';
 import PredefinedColors from '../../shared/colors';
 
