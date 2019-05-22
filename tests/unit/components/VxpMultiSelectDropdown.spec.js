@@ -14,21 +14,17 @@ describe('VxpMultiSelectDropdown', () => {
 
   const wrapperClass = 'vxp-multiselectdropdown';
   const testHint = 'This is a test hint';
-  const keyPropName = 'test1Key';
   const labelPropName = 'test2Label';
   const emptySuggestionsLabel = 'this is a suggestion';
   const testItems = [
     {
       test2Label: 'item1',
-      test1Key: 1,
     },
     {
       test2Label: 'item2',
-      test1Key: 2,
     },
     {
       test2Label: 'item3',
-      test1Key: 3,
     },
   ];
   const testSelectedIndexes = [1];
@@ -56,7 +52,6 @@ describe('VxpMultiSelectDropdown', () => {
         items: testItems,
         selected: testSelectedIndexes,
         hint: testHint,
-        keyProp: keyPropName,
         labelProp: labelPropName,
         emptySuggestionsLabel,
         ...propsToOverride,
@@ -91,8 +86,6 @@ describe('VxpMultiSelectDropdown', () => {
     expect(wrapper.props().selected instanceof Array).to.eq(true);
     expect(wrapper.props().selected.length).to.eq(0);
 
-    expect(wrapper.props().keyProp).to.eq('value');
-
     expect(wrapper.props().labelProp).to.eq('label');
 
     expect(wrapper.props().hint).to.eq('');
@@ -115,8 +108,6 @@ describe('VxpMultiSelectDropdown', () => {
     expect(wrapper.props().selected instanceof Array).to.eq(true);
     expect(wrapper.props().selected.length).to.eq(1);
     expect(wrapper.props().selected[0]).to.eq(1);
-
-    expect(wrapper.props().keyProp).to.eq(keyPropName);
 
     expect(wrapper.props().labelProp).to.eq(labelPropName);
 
@@ -193,7 +184,6 @@ describe('VxpMultiSelectDropdown', () => {
             value: 3,
           },
         ],
-        keyProp: 'value',
         labelProp: 'label',
         selected: [],
       });
@@ -223,10 +213,8 @@ describe('VxpMultiSelectDropdown', () => {
           items: [
             {
               label: 'item1',
-              value: 1,
             },
           ],
-          keyProp: 'value',
           labelProp: 'label',
           selected: [],
         },
@@ -265,7 +253,6 @@ describe('VxpMultiSelectDropdown', () => {
           items: [
             {
               [labelPropName]: 'item1',
-              [keyPropName]: 1,
             },
           ],
           selected: [0],
@@ -294,12 +281,10 @@ describe('VxpMultiSelectDropdown', () => {
     it('when tap selectable items suggestion box is closed if all items are selected', () => {
       const selectableItem = {
         [labelPropName]: 'label1',
-        [keyPropName]: 'key',
       };
 
       const selectableItem2 = {
         [labelPropName]: 'label2',
-        [keyPropName]: 'key2',
       };
       wrapper = createMockedComponent({
         items: [selectableItem, selectableItem2],
@@ -365,18 +350,15 @@ describe('VxpMultiSelectDropdown', () => {
     it('will show filtered items according to searchText', () => {
       const toBeShownAfterFilterObject = {
         [labelPropName]: 'filtered_1',
-        [keyPropName]: 1,
       };
       wrapper = createMockedComponent({
         items: [
           {
             [labelPropName]: 'test_filter_1',
-            [keyPropName]: 1,
           },
           toBeShownAfterFilterObject,
           {
             [labelPropName]: 'not_filter_1',
-            [keyPropName]: 1,
           },
         ],
         selected: [0],
@@ -389,7 +371,6 @@ describe('VxpMultiSelectDropdown', () => {
       expect(wrapper.vm.displayItems).eql([
         {
           [labelPropName]: 'filtered_1',
-          [keyPropName]: 1,
         },
       ]);
     });

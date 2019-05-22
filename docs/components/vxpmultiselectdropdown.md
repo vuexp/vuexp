@@ -8,9 +8,11 @@ VxpMultiSelectDropdown is a UI component that allows users to make multiple sele
 
 ## Live Demo
 
+<DocExampleBox :liveDemoMode="true">
+<VxpMultiSelectDropdownLiveDemoDoc />
+</DocExampleBox>
+
 ## Example Usage
-
-
 
 <DocExampleBox>
 ```html
@@ -57,32 +59,28 @@ VxpMultiSelectDropdown is a UI component that allows users to make multiple sele
  }
 ```
 
-```scss 
-    .margin-top-10 {
-        margin-top:10px;
-    }
+```scss
+.margin-top-10 {
+  margin-top: 10px;
+}
 ```
 
 <VxpMultiSelectDropdownDoc />
 </DocExampleBox>
 
-
 This is an overview of the most common usage of `<VxpMultiSelectDropdown>`.
 
 ## Props
 
-| Name     | Type    | Default | Web | Mobile |  Description  |
-| -------- | ------- | ------- | --- | ------ | ------------- |
-| items    | Array[Object]   | []      | ✔   | ✔      |  Sets selectable item list for the component.   |
-| selected (v-model)  | Array[number]   | []      | ✔     | ✔        |  Sets selected item indexes for the component. Can be used with v-model  |
-| hint     | string  |  ""     | ✔   | ✔      |  Sets the placeholder text for the search input.        |
-| keyProp     | string  | `value`      | ✔   | ✔      | Sets key selector property for `v-for` performance improvement |
-| labelProp     | string  | `label`      | ✔   | ✔      |  Sets label selector property for display text.  |
-| emptySuggestionsLabel     | string  | ""      | ✔   | ✔      | Text is shown at when there is nothing to select with current search criteria  |
+| Name                  | Type          | Default | Web | Mobile | Description                                                                   |
+| --------------------- | ------------- | ------- | --- | ------ | ----------------------------------------------------------------------------- |
+| items                 | Array[{ label: String }] | []      | ✔   | ✔      | Sets selectable item list for the component.                            |
+| selected (v-model)    | Array[number] | []      | ✔   | ✔      | Sets selected item indexes for the component. Can be used with v-model        |
+| hint                  | string        | ""      | ✔   | ✔      | Sets the placeholder text for the search input.                               |
+| emptySuggestionsLabel | string        | ""      | ✔   | ✔      | Text is shown at when there is nothing to select with current search criteria |
 
 ## Events
 
-| Name       | Web | Mobile |  Description |
-| ---------- | --- | ------ | ------ |
-| searchTextChange | ✔   | ✔      | Event occurs whenever a search text value changes by user interaction. Emits searched text. |
-| selectedChange     | ✔   | ✔      | Event occurs when user selects or deselects an item from the items list. Emits selected items index array. |
+| Name             | Web | Mobile | Description                                                                                                |
+| ---------------- | --- | ------ | ---------------------------------------------------------------------------------------------------------- |
+| selectedChange   | ✔   | ✔      | Event occurs when user selects or deselects an item from the items list. Emits selected items index array. |

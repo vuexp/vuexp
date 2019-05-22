@@ -17,10 +17,6 @@ export default {
         return [];
       },
     },
-    keyProp: {
-      type: String,
-      default: 'value',
-    },
     labelProp: {
       type: String,
       default: 'label',
@@ -62,6 +58,9 @@ export default {
     },
     searchTextChanged(newText) {
       this.$emit('searchTextChange', newText);
+    },
+    clearSearchText() {
+      this.searchText = '';
     },
   },
 };

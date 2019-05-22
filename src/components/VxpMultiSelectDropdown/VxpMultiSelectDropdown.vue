@@ -5,16 +5,26 @@
         <StackLayout
           class="vxp-multiselectdropdown__pill"
           orientation="horizontal"
-          v-for="selectedItemIndex in selected"
+          v-for="(selectedItemIndex, index) in selected"
           @tap="selectedItemTapped(items[selectedItemIndex])"
-          :key="items[selectedItemIndex][keyProp]"
+          :key="index"
         >
           <Label class="vxp-multiselectdropdown__pill-label" :text="items[selectedItemIndex][labelProp]"></Label>
-          <Label v-if="!isNative" class="vxp-multiselectdropdown__pill-remove-text" v-html="'&times;'"></Label>
+          <Label v-if="!isNative" class="vxp-multiselectdropdown__pill-remove-text" text="×"></Label>
         </StackLayout>
       </WrapLayout>
-      <StackLayout flexGrow="1">
+      <GridLayout
+        class="vxp-multiselectdropdown__search-input__wrapper"
+        columns="*, auto"
+        rows="auto, *, auto"
+        width="100%"
+        flexGrow="1"
+        orientation="horizontal"
+      >
         <TextField
+          col="0"
+          row="0"
+          colSpan="2"
           @focus="activateSuggestions()"
           ref="searchInput"
           class="vxp-multiselectdropdown__search-input"
@@ -22,17 +32,19 @@
           @input="searchTextChanged($event)"
           :editable="!isNative"
           :hint="hint"
-          width="100%"
+          flexGrow="1"
           @tap="activateSuggestions()"
         ></TextField>
-      </StackLayout>
+        <Label col="1" row="0" v-if="!isNative && searchText" @tap="clearSearchText" class="vxp-multiselectdropdown__pill-remove-search" text="×"></Label>
+        <Label col="1" row="0" v-if="!isNative && !searchText" class="vxp-multiselectdropdown__pill-caret-down" text="▼"></Label>
+      </GridLayout>
     </WrapLayout>
     <StackLayout class="vxp-multiselectdropdown__suggestions-box" v-if="suggestionsOpened && !isNative">
       <StackLayout v-if="displayItems.length">
         <StackLayout
           class="vxp-multiselectdropdown__suggestions-box__selectable-item"
-          v-for="item in displayItems"
-          :key="item[keyProp]"
+          v-for="(item, index) in displayItems"
+          :key="index"
           @tap="selectableItemTapped(item)"
         >
           <Label :text="item[labelProp]"></Label>
@@ -181,6 +193,24 @@ export default {
       &:hover {
         color: #333;
       }
+    }
+
+    &-remove-search {
+      position: absolute;
+      right: unit(10);
+      bottom: unit(10);
+      z-index: 1;
+      font-weight: 800;
+      font-size: unit(16);
+      cursor: pointer;
+      &:hover {
+        color: #000000;
+      }
+    }
+
+    &-caret-down {
+      font-size: unit(12);
+      margin-right: unit(12);
     }
   }
 

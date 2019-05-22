@@ -10,27 +10,25 @@
             <StackLayout
               class="vxp-multiselectdropdown-native-modal__selected-items"
               orientation="horizontal"
-              v-for="selectedItemIndex in selected"
+              v-for="(selectedItemIndex, index) in selected"
               @tap="removeSelection(items[selectedItemIndex])"
-              :key="items[selectedItemIndex][keyProp]"
+              :key="index"
             >
-              <Label class="vxp-multiselectdropdown-native-modal__selected-item" :text="items[selectedItemIndex][labelProp]"></Label>
+              <Label class="vxp-multiselectdropdown-native-modal__selected-item" :text="items[selectedItemIndex][labelProp] + '  ×'"></Label>
             </StackLayout>
           </WrapLayout>
-          <StackLayout flexGrow="1">
-            <TextField
-              class="vxp-multiselectdropdown-native-modal__search-input"
-              ref="searchInput"
-              v-model="searchText"
-              @input="searchTextChanged($event)"
-              :hint="hint"
-              width="100%"
-            ></TextField>
-          </StackLayout>
+          <SearchBar
+            class="vxp-multiselectdropdown-native-modal__search-input"
+            width="100%"
+            :hint="hint"
+            v-model="searchText"
+            @textChange="searchTextChanged(searchText)"
+            ref="searchInput"
+          ></SearchBar>
         </WrapLayout>
         <StackLayout>
           <StackLayout v-if="displayItems.length">
-            <ListView for="item in displayItems">
+            <ListView for="item in displayItems" height="100%">
               <v-template>
                 <Label class="vxp-multiselectdropdown-native-modal__selectable-item" @tap="selectItem(item)" :text="item[labelProp]"></Label>
               </v-template>
@@ -78,6 +76,15 @@ export default {
 
   &__selectable-item {
     padding: unit(10);
+  }
+
+  &__pill {
+    &-remove-search {
+      right: unit(30);
+      top: unit(15);
+      font-size: unit(16);
+      font-weight: 800;
+    }
   }
 }
 </style>
