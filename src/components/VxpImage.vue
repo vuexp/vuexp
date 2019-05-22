@@ -1,18 +1,8 @@
 <template>
-  <Img
-    v-common-directive
-    @onLoadError="$emit('onLoadError', $event)"
-    @onLoad="$emit('onLoad', $event)"
-    :src="src"
-    :width="width"
-    :height="height"
-    :alt="placeholder"
-  />
+  <Img @onLoadError="$emit('onLoadError', $event)" @onLoad="$emit('onLoad', $event)" :src="src" :width="width" :height="height" :alt="placeholder" />
 </template>
 
 <script>
-import CommonDirective from '../core/directives/CommonDirective';
-import Gestures from '../core/mixins/GestureMixin';
 import Img from '../core/components/Img/Img';
 
 export default {
@@ -30,9 +20,5 @@ export default {
   components: {
     Img,
   },
-  directives: {
-    'common-directive': CommonDirective,
-  },
-  mixins: [Gestures],
 };
 </script>

@@ -1,9 +1,9 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
 import VxpImage from '../../../src/components/VxpImage';
+import Img from '../../../src/core/components/Img/Img';
 
-describe('VxpImage', () => {
-  // Mock up values.
+describe('VxpImage Unit Tests', () => {
   const width = 200;
   const height = 300;
   const stretch = 'aspectFit';
@@ -30,7 +30,13 @@ describe('VxpImage', () => {
     },
   });
 
-  describe('the component received given props correctly.', () => {
+  describe('VxpImage uses Img component correctly.', () => {
+    it('Img component is present underneath VxpImage.', () => {
+      expect(wrapper.find(Img).exists()).to.equal(true);
+    });
+  });
+
+  describe('VxpImage passes props to Img component correctly.', () => {
     it(`Given width property is equal to ${width}.`, () => {
       expect(wrapper.props().width).to.equal(width);
     });
@@ -43,36 +49,11 @@ describe('VxpImage', () => {
     it(`Given src property is equal to ${src}.`, () => {
       expect(wrapper.props().src).to.equal(src);
     });
-    it(`Given placeholder property is equal to ${placeholder}.`, () => {
-      expect(wrapper.props().placeholder).to.equal(placeholder);
-    });
   });
+
   describe('the component rendered the attributes and style values correctly.', () => {
-    it(`given height value(${height}) is correct in the style.`, () => {
-      expect(wrapper.attributes().height).to.equal(height.toString());
-    });
-    it(`given width value(${width}) is correct in the style.`, () => {
-      expect(wrapper.attributes().width).to.equal(width.toString());
-    });
-    it(`given src url${src} is correct.`, () => {
-      expect(wrapper.attributes().src).to.equal(src);
-    });
-    it(`class name for given stretch(${stretch}) property is equal to vxp-img--aspect-fit`, () => {
-      expect(wrapper.classes()).to.include('vxp-img--aspect-fit');
-    });
     it(`given placeholder value(${placeholder}) is correct in the style.`, () => {
       expect(wrapper.attributes().alt).to.equal(placeholder);
-    });
-  });
-  describe('stretch none default test', () => {
-    it(`class name for given stretch none, class is equal to default class`, () => {
-      const wrapper = mount(VxpImage, {
-        propsData: {
-          src,
-        },
-      });
-      wrapper.setProps({ stretch: 'none' });
-      expect(wrapper.classes().length).to.equal(1);
     });
   });
 });
