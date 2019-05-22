@@ -13,7 +13,12 @@ This is an overview of the most common usage of `<VxpImage>`.
 ## Live Demo
 
 <DocExampleBox :liveDemoMode="true">
-<ImageDoc />
+
+```html
+<VxpImage src="~/images/logo.png" stretch="fill" placeholder="VueXP Logo"/>
+```
+
+<VxpImageLiveDemo />
 </DocExampleBox>
 
 ## Example Usages
