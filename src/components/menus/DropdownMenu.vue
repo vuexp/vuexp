@@ -21,9 +21,9 @@
 </template>
 
 <script>
-import Gestures from '../../mixins/GestureMixin';
+import Gestures from '../../core/mixins/GestureMixin';
 import DropdownItem from './DropdownItem';
-import Label from '../Label';
+import Label from '../../core/components/Label/Label';
 import StackLayout from '../../layouts/StackLayout';
 import platform from '../../platform';
 

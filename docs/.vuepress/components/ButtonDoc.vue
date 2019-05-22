@@ -25,10 +25,10 @@
 </template>
 
 <script>
-import Button from "../../../src/components/Button";
-import Label from "../../../src/components/Label";
+import Button from "../../../src/core/components/Button/Button";
+import Label from "../../../src/core/components/Label/Label";
 import StackLayout from "../../../src/layouts/StackLayout";
-import TextField from "../../../src/components/TextField";
+import TextField from "../../../src/core/components/TextField/TextField";
 
 export default {
   name: "ButtonDoc",

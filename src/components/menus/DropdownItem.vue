@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import Gestures from '../../mixins/GestureMixin';
-import Label from '../Label';
+import Gestures from '../../core/mixins/GestureMixin';
+import Label from '../../core/components/Label/Label';
 import StackLayout from '../../layouts/StackLayout';
 
 export default {

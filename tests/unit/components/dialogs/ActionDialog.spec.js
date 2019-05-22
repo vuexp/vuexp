@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
 import sinon from 'sinon';
-import ActionDialog from '../../../../src/components/dialogs/ActionDialog';
-import Button from '../../../../src/components/Button';
+import ActionDialog from '../../../../src/core/dialogs/ActionDialog';
+import Button from '../../../../src/core/components/Button/Button';
 import StackLayout from '../../../../src/layouts/StackLayout';
 
 describe('ActionDialog', () => {
