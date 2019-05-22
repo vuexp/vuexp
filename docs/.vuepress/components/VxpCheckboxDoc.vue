@@ -25,10 +25,10 @@
       <FlexboxLayout>
        
         <StackLayout orientation="horizontal" class="theme--nuweb">
-         <Label :text="'Secondary'"  id="checkbox_primary_label"  style="margin-right:20px;" />
+         <Label :text="'Secondary'"  id="checkbox_theme_label"  style="margin-right:20px;" />
         <VxpCheckbox
           class="checkbox-doc-container__flexboxLayout__checkbox"
-          id="checkbox_primary_checkbox"
+          id="checkbox_theme_checkbox"
           v-model="checked_theme1"
           :disabled="false"
           primary
