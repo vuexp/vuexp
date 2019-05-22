@@ -13,7 +13,7 @@ sidebarDepth: 0
 ```html
   <StackLayout style="margin-top:20px" class="demo-panel">
       <Label text="Live example" class="demo-panel__title"/>
-      <VxpLink :text="text" :externalUrl="externalUrl" :visibility="visibility"></VxpLink>
+      <VxpLink :text="text" :externalUrl="externalUrl"></VxpLink>
     </StackLayout>
     <StackLayout class="demo-panel">
       <Label text="Manage Link Button Properties" class="demo-panel__title"/>
@@ -24,10 +24,6 @@ sidebarDepth: 0
       <StackLayout orientation="horizontal" class="m-b-10">
         <Label text="External Url:"></Label>
         <TextField id="linkButton__externalUrl__textfield" v-model="externalUrl" :editable="true"/>
-      </StackLayout>
-      <StackLayout orientation="horizontal">
-        <Label text="Visibility:"></Label>
-        <Switcher v-model="visibility"/>
       </StackLayout>
     </StackLayout>
 ```
@@ -40,7 +36,7 @@ sidebarDepth: 0
 ## Example Usages
 
 ```html
-<VxpLink :text="text" :externalUrl="externalUrl" :visibility="visibility"></VxpLink>
+<VxpLink :text="text" :externalUrl="externalUrl"></VxpLink>
 ```
     
 
@@ -50,7 +46,6 @@ sidebarDepth: 0
 |-------------|-----------|---------|-----|--------|----------------------------------------------|
 | text        | `String`  |         | ✔   | ✔      | Link text is visible part of the link button |
 | externalUrl | `String`  |         | ✔   | ✔      | Destination address                          |
-| visibility  | `Boolean` | True    | ✔   | ✔      | A boolean property for Show/Hide             |
 
 ## Events
 

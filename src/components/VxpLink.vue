@@ -14,10 +14,6 @@ export default {
     externalUrl: {
       type: String,
     },
-    visibility: {
-      type: Boolean,
-      default: true,
-    },
   },
 };
 </script>

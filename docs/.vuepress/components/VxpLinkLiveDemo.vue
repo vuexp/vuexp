@@ -2,7 +2,7 @@
   <StackLayout>
     <StackLayout style="margin-top:20px" class="demo-panel">
       <Label text="Live example" class="demo-panel__title"/>
-      <VxpLink :text="text" :externalUrl="externalUrl" :visibility="visibility" id="linkButton"></VxpLink>
+      <VxpLink :text="text" :externalUrl="externalUrl" id="linkButton"></VxpLink>
       <VxpLink
         text="Another link without externalUrl to test click event"
         @tap="onClicked($event)"
@@ -39,7 +39,6 @@ export default {
     return {
       text: 'Link to another site',
       externalUrl: 'https://github.com/vuexp',
-      visibility: true,
       eventName: '',
     };
   },
