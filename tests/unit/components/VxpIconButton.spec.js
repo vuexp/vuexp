@@ -2,9 +2,9 @@ import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
 import sinon from 'sinon';
 import localVue from '../local-vue';
-import IconButton from '../../../src/components/IconButton';
+import VxpIconButton from '../../../src/components/VxpIconButton';
 
-describe('IconButton.vue', () => {
+describe('VxpIconButton.vue', () => {
   const icon = 'basket';
   const newIcon = 'blue';
   const isEnabled = false;
@@ -13,8 +13,8 @@ describe('IconButton.vue', () => {
   const newSize = 50;
   const font = 'nuicon';
   const tap = sinon.spy();
-  const wrapper = mount(IconButton, {
-    name: 'IconButton',
+  const wrapper = mount(VxpIconButton, {
+    name: 'VxpIconButton',
     props: {
       icon: String,
       size: [Number, String],

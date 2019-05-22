@@ -3,15 +3,42 @@
     <StackLayout orientation="horizontal">
       <StackLayout style="padding: 15px">
         <Label text="Primary" style="padding-bottom: 10px; text-align: center;"></Label>
-        <IconButton id="iconbutton__click__primarybutton" :isEnabled="isEnabled" @tap="increment($event)" iconName="fa" :icon="buttonIcon" :size="iconSize1" primary style="margin: 0 auto" />
+        <VxpIconButton
+          id="iconbutton__click__primarybutton"
+          :isEnabled="isEnabled"
+          @tap="increment($event)"
+          iconName="fa"
+          :icon="buttonIcon"
+          :size="iconSize1"
+          primary
+          style="margin: 0 auto"
+        />
       </StackLayout>
       <StackLayout style="padding: 15px">
         <Label text="Secondary" style="text-align: center;"></Label>
-        <IconButton id="iconbutton__click__secondarybutton" :isEnabled="isEnabled" @tap="increment($event)" iconName="fa" :icon="buttonIcon" :size="iconSize2" secondary style="margin: 0 auto" />
+        <VxpIconButton
+          id="iconbutton__click__secondarybutton"
+          :isEnabled="isEnabled"
+          @tap="increment($event)"
+          iconName="fa"
+          :icon="buttonIcon"
+          :size="iconSize2"
+          secondary
+          style="margin: 0 auto"
+        />
       </StackLayout>
       <StackLayout style="padding: 15px">
         <Label text="Alert" style="text-align: center;"></Label>
-        <IconButton id="iconbutton__click__alertbutton" :isEnabled="isEnabled" @tap="increment($event)" iconName="fa" :icon="buttonIcon" :size="iconSize3" style="margin: 0 auto" alert />
+        <VxpIconButton
+          id="iconbutton__click__alertbutton"
+          :isEnabled="isEnabled"
+          @tap="increment($event)"
+          iconName="fa"
+          :icon="buttonIcon"
+          :size="iconSize3"
+          style="margin: 0 auto"
+          alert
+        />
       </StackLayout>
     </StackLayout>
 
@@ -66,27 +93,27 @@
       <Label text="Events"></Label>
       <StackLayout style="margin-top:15px">
         <StackLayout class="form-group">
-          <Label id="iconbutton__enabled__label" text="Icon Button Enabled Status:">{{isEnabled}}</Label>
+          <Label id="iconbutton__enabled__label" text="Icon Button Enabled Status:">{{ isEnabled }}</Label>
         </StackLayout>
         <StackLayout class="form-group">
-          <Label id="iconbutton__buttonicon__label" text="Icon Button Class Name:">{{buttonIcon}}</Label>
+          <Label id="iconbutton__buttonicon__label" text="Icon Button Class Name:">{{ buttonIcon }}</Label>
         </StackLayout>
         <StackLayout orientation="horizontal">
-          <StackLayout class="form-group" >
-            <Label id="iconbutton__primaryicon__label" text="Primary Icon Size:">{{iconSize1}}</Label>
+          <StackLayout class="form-group">
+            <Label id="iconbutton__primaryicon__label" text="Primary Icon Size:">{{ iconSize1 }}</Label>
           </StackLayout>
           <StackLayout class="form-group">
-            <Label id="iconbutton__secondaryicon__label" text="Secondary Icon Size:">{{iconSize2}}</Label>
+            <Label id="iconbutton__secondaryicon__label" text="Secondary Icon Size:">{{ iconSize2 }}</Label>
           </StackLayout>
           <StackLayout class="form-group">
-            <Label id="iconbutton__alerticon__label" text="Alert Icon Size:">{{iconSize3}}</Label>
+            <Label id="iconbutton__alerticon__label" text="Alert Icon Size:">{{ iconSize3 }}</Label>
           </StackLayout>
         </StackLayout>
         <StackLayout class="form-group">
-          <Label id="iconbutton__eventname__label" text="Clicked Icon Button ID:">{{eventName}}</Label>
+          <Label id="iconbutton__eventname__label" text="Clicked Icon Button ID:">{{ eventName }}</Label>
         </StackLayout>
         <StackLayout class="form-group" orientation="horizontal">
-          <Label  text="Click count:" width="100" />
+          <Label text="Click count:" width="100" />
           <Label id="iconbutton__clickcount__label" :text="counter.toString()" />
         </StackLayout>
       </StackLayout>
@@ -96,7 +123,7 @@
 
 <script>
 import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
-import IconButton from '../../../src/components/IconButton';
+import VxpIconButton from '../../../src/components/VxpIconButton';
 import Label from '../../../src/components/Label';
 import VxpCheckbox from '../../../src/components/VxpCheckbox';
 import StackLayout from '../../../src/layouts/StackLayout';
@@ -113,7 +140,7 @@ export default {
       iconSize2: 37,
       iconSize3: 45,
       icons: ['fa fa-smile-o', 'fa fa-user-circle-o', 'fa fa-exclamation-triangle'],
-      sizes: ['10', '15', '20', '25', '30', '35', '37', '40', '45', '50','55','60','65','70'],
+      sizes: ['10', '15', '20', '25', '30', '35', '37', '40', '45', '50', '55', '60', '65', '70'],
     };
   },
   methods: {
@@ -126,7 +153,7 @@ export default {
     StackLayout,
     VxpCheckbox,
     FlexboxLayout,
-    IconButton,
+    VxpIconButton,
     Label,
   },
 };

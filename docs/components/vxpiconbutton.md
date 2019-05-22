@@ -1,4 +1,4 @@
-# IconButton
+# VxpIconButton
 
 Circular icon button.
 

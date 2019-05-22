@@ -10,10 +10,10 @@
 
 <script>
 import platform from '../platform';
-import Button from './Button';
+import Button from '../core/components/Button/Button';
 
 export default {
-  name: 'IconButton',
+  name: 'VxpIconButton',
   data() {
     return {
       platform: platform.platform,
