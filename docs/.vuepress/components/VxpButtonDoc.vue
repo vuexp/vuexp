@@ -75,9 +75,9 @@
 </template>
 
 <script>
-import Label from '../../../src/components/Label';
+import Label from '../../../src/core/components/Label/Label';
 import StackLayout from '../../../src/layouts/StackLayout';
-import TextField from '../../../src/components/TextField';
+import TextField from '../../../src/core/components/TextField/TextField';
 import VxpButton from '../../../src/components/VxpButton';
 
 export default {
