@@ -1,6 +1,6 @@
 <template>
   <StackLayout>
-    <VxpMultiSelectDropdown :items="selectableItems" hint="Pick Some Lorem" v-model="selectedIndexes"></VxpMultiSelectDropdown>
+    <VxpMultiSelectDropdown :items="selectableItems" hint="Pick Some Lorem" emptySuggestionsLabel="Nothing to select here" v-model="selectedIndexes"></VxpMultiSelectDropdown>
     <StackLayout class="margin-top-10" orientation="horizontal">
       <Label text="Selected Indexes :"></Label>
       <Label :text="selectedIndexes.join(',')"></Label>
@@ -12,7 +12,7 @@
 import VxpMultiSelectDropdown from '../../../src/components/VxpMultiSelectDropdown/VxpMultiSelectDropdown';
 
 export default {
-  name: 'MultiSelectDropdownDoc',
+  name: 'VxpMultiSelectDropdownDoc',
   components: {
     VxpMultiSelectDropdown,
   },

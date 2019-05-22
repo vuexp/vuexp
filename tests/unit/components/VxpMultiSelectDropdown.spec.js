@@ -8,6 +8,10 @@ import Label from '../../../src/core/components/Label/Label';
 import platform from '../../../src/platform';
 
 describe('VxpMultiSelectDropdown', () => {
+  const selectedItemWrapperClassSelector = '.vxp-multiselectdropdown__pill';
+  const suggestionItemClassSelector = '.vxp-multiselectdropdown__suggestions-box__selectable-item';
+  const suggestionBoxWrapperClassSelector = '.vxp-multiselectdropdown__suggestions-box';
+
   const wrapperClass = 'vxp-multiselectdropdown';
   const testHint = 'This is a test hint';
   const keyPropName = 'test1Key';
@@ -166,10 +170,10 @@ describe('VxpMultiSelectDropdown', () => {
 
     it('tapping text field will open suggestions box', () => {
       wrapper = createMockedComponent();
-      let suggestionBox = wrapper.find('.vxp-multiselectdropdown__suggestions-box');
+      let suggestionBox = wrapper.find(suggestionBoxWrapperClassSelector);
       expect(suggestionBox.exists()).to.eq(false);
       wrapper.find(TextField).trigger('click');
-      suggestionBox = wrapper.find('.vxp-multiselectdropdown__suggestions-box');
+      suggestionBox = wrapper.find(suggestionBoxWrapperClassSelector);
       expect(suggestionBox.exists()).to.eq(true);
     });
 
@@ -198,8 +202,8 @@ describe('VxpMultiSelectDropdown', () => {
         suggestionsOpened: true,
       });
 
-      const suggestionBox = wrapper.find('.vxp-multiselectdropdown__suggestions-box');
-      const suggestedItems = suggestionBox.findAll('.vxp-multiselectdropdown__suggestions-box__selectable-item');
+      const suggestionBox = wrapper.find(suggestionBoxWrapperClassSelector);
+      const suggestedItems = suggestionBox.findAll(suggestionItemClassSelector);
       expect(suggestedItems.length).to.eq(3);
 
       const suggestionLabel1 = suggestedItems.wrappers[0].find(Label);
@@ -235,22 +239,22 @@ describe('VxpMultiSelectDropdown', () => {
         suggestionsOpened: true,
       });
 
-      let selectedItems = wrapper.findAll('.vxp-multiselectdropdown__pill');
-      let suggestedItems = wrapper.findAll('.vxp-multiselectdropdown__suggestions-box__selectable-item');
+      let selectedItems = wrapper.findAll(selectedItemWrapperClassSelector);
+      let suggestedItems = wrapper.findAll(suggestionItemClassSelector);
       expect(selectedItems.length).to.eq(0);
       expect(suggestedItems.length).to.eq(1);
       expect(selectedChangeListener.called).to.eq(false);
 
-      const firstSuggestedItem = wrapper.find('.vxp-multiselectdropdown__suggestions-box__selectable-item');
+      const firstSuggestedItem = wrapper.find(suggestionItemClassSelector);
       firstSuggestedItem.trigger('click');
 
-      suggestedItems = wrapper.findAll('.vxp-multiselectdropdown__suggestions-box__selectable-item');
+      suggestedItems = wrapper.findAll(suggestionItemClassSelector);
 
       expect(suggestedItems.length).to.eq(0);
       expect(selectedChangeListener.called).to.eq(true);
       expect(selectedChangeListener.getCall(0).args[0]).to.eql([0]);
 
-      selectedItems = wrapper.findAll('.vxp-multiselectdropdown__pill');
+      selectedItems = wrapper.findAll(selectedItemWrapperClassSelector);
       expect(selectedItems.length).to.eq(1);
     });
 
@@ -275,7 +279,7 @@ describe('VxpMultiSelectDropdown', () => {
         suggestionsOpened: true,
       });
 
-      let selectedItem = wrapper.find('.vxp-multiselectdropdown__pill');
+      let selectedItem = wrapper.find(selectedItemWrapperClassSelector);
       expect(selectedItem.exists()).to.eq(true);
       expect(selectedChangeListener.called).to.eq(false);
 
@@ -284,7 +288,7 @@ describe('VxpMultiSelectDropdown', () => {
       expect(selectedChangeListener.called).to.eq(true);
       expect(selectedChangeListener.getCall(0).args[0]).to.eql([]);
 
-      selectedItem = wrapper.find('.vxp-multiselectdropdown__pill');
+      selectedItem = wrapper.find(selectedItemWrapperClassSelector);
     });
 
     it('when tap selectable items suggestion box is closed if all items are selected', () => {
@@ -345,17 +349,17 @@ describe('VxpMultiSelectDropdown', () => {
   });
 
   describe('search behaviour', () => {
-    it('will emit searchTextChanged event when search input is typed', () => {
+    it('will emit searchTextChange event when search input is typed', () => {
       const searchText = 'searchingText';
-      const searchTextChanged = sinon.spy();
+      const searchTextChange = sinon.spy();
       wrapper = createMockedComponent(null, {
-        searchTextChanged,
+        searchTextChange,
       });
       wrapper.find(TextField).setValue(searchText);
       wrapper.find(TextField).trigger('input');
 
-      expect(searchTextChanged.called).to.eq(true);
-      expect(searchTextChanged.getCall(0).args[0]).to.eq(searchText);
+      expect(searchTextChange.called).to.eq(true);
+      expect(searchTextChange.getCall(0).args[0]).to.eq(searchText);
     });
 
     it('will show filtered items according to searchText', () => {

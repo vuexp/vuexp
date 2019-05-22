@@ -61,7 +61,7 @@ export default {
       this.selectedChange();
     },
     searchTextChanged(newText) {
-      this.$emit('searchTextChanged', newText);
+      this.$emit('searchTextChange', newText);
     },
   },
 };

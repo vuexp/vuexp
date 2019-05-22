@@ -15,7 +15,7 @@ VxpMultiSelectDropdown is a UI component that allows users to make multiple sele
 <DocExampleBox>
 ```html
   <StackLayout>
-    <VxpMultiSelectDropdown :items="selectableItems" hint="Pick Some Lorem" v-model="selectedIndexes"></VxpMultiSelectDropdown>
+    <VxpMultiSelectDropdown :items="selectableItems" hint="Pick Some Lorem" emptySuggestionsLabel="Nothing to select here" v-model="selectedIndexes"></VxpMultiSelectDropdown>
     <StackLayout class="margin-top-10" orientation="horizontal">
       <Label text="Selected Indexes :"></Label>
       <Label :text="selectedIndexes.join(',')"></Label>
@@ -71,11 +71,18 @@ This is an overview of the most common usage of `<VxpMultiSelectDropdown>`.
 
 ## Props
 
-| Name     | Type    | Default | Web | Mobile |
-| -------- | ------- | ------- | --- | ------ |
-| items    | Array   | []      | ✔   | ✔      |
-| hint     | string  | ``      | ✔   | ✔      |
-| selected (v-model)  | Array   | []      |      |        |
+| Name     | Type    | Default | Web | Mobile |  Description  |
+| -------- | ------- | ------- | --- | ------ | ------------- |
+| items    | Array[Object]   | []      | ✔   | ✔      |  Sets selectable item list for the component.   |
+| selected (v-model)  | Array[number]   | []      | ✔     | ✔        |  Sets selected item indexes for the component. Can be used with v-model  |
+| hint     | string  |  ""     | ✔   | ✔      |  Sets the placeholder text for the search input.        |
+| keyProp     | string  | `value`      | ✔   | ✔      | Sets key selector property for `v-for` performance improvement |
+| labelProp     | string  | `label`      | ✔   | ✔      |  Sets label selector property for display text.  |
+| emptySuggestionsLabel     | string  | ""      | ✔   | ✔      | Text is shown at when there is nothing to select with current search criteria  |
 
+## Events
 
-<MultiSelectDropdownDoc />
+| Name       | Web | Mobile |  Description |
+| ---------- | --- | ------ | ------ |
+| searchTextChange | ✔   | ✔      | Event occurs whenever a search text value changes by user interaction. Emits searched text. |
+| selectedChange     | ✔   | ✔      | Event occurs when user selects or deselects an item from the items list. Emits selected items index array. |
