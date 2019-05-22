@@ -1,63 +1,63 @@
 <template>
 	<StackLayout>
-		<RadSideDrawer
-			id="SideDrawer"
+		<VxpSideDrawer
+			id="VxpSideDrawer"
 			ref="drawer"
 			class="sidedrawer-doc-container">
 			<FlexboxLayout
 				flexDirection="column"
-				v-view:drawerContent
+				slot="drawerContent"
 				class="sidedrawer-doc-container__drawer">
 				<FlexboxLayout class="sidedrawer-doc-container__drawer__title">
 					<Label
-						id="SideDrawer_menu-title_label"
+						id="VxpSideDrawer_menu-title_label"
 						text="Navigation Menu"></Label>
 				</FlexboxLayout>
 				<StackLayout>
 					<Label
-						id="SideDrawer_menu-item-1_label"
+						id="VxpSideDrawer_menu-item-1_label"
 						text="Home"
 						class="sidedrawer-doc-container__drawer__label"></Label>
 					<Label
-						id="SideDrawer_menu-item-2_label"
+						id="VxpSideDrawer_menu-item-2_label"
 						text="Social"
 						class="sidedrawer-doc-container__drawer__label"></Label>
 					<Label
-						id="SideDrawer_menu-item-3_label"
+						id="VxpSideDrawer_menu-item-3_label"
 						text="Promotions"
 						class="sidedrawer-doc-container__drawer__label"></Label>
 					<Label
-						id="SideDrawer_menu-item-4_label"
+						id="VxpSideDrawer_menu-item-4_label"
 						text="Starred"
 						class="sidedrawer-doc-container__drawer__label"></Label>
 					<Label
-						id="SideDrawer_menu-item-5_label"
+						id="VxpSideDrawer_menu-item-5_label"
 						text="Drafts"
 						class="sidedrawer-doc-container__drawer__label"></Label>
 				</StackLayout>
 				<Button
-					id="SideDrawer_close-button_button"
+					id="VxpSideDrawer_close-button_button"
 					@tap="closeDrawer"
 					primary
 					text="CLOSE DRAWER"></Button>
 			</FlexboxLayout>
-			<StackLayout v-view:mainContent>
+			<StackLayout slot="mainContent">
 				<Label
-					id="SideDrawer_main-content_label"
+					id="VxpSideDrawer_main-content_label"
 					:textWrap="true"
 					class="sidedrawer-doc-container__text"
 					text="Main Content Area" />
 				<Button
-					id="SideDrawer_show-button_button"
+					id="VxpSideDrawer_show-button_button"
 					@tap="showDrawer"
 					primary
 					text="SHOW DRAWER"></Button>
 			</StackLayout>
-		</RadSideDrawer>
+		</VxpSideDrawer>
 		<StackLayout orientation="horizontal" class="control-panel-wrapper">
 			<Label text="Open/Closed Label:"></Label>
 			<Label
-				id="SideDrawer_open-closed-status_label"
+				id="VxpSideDrawer_open-closed-status_label"
 				:text="openClosedStatus"></Label>
 		</StackLayout>
 	</StackLayout>
@@ -65,7 +65,7 @@
 
 <script>
 
-	import RadSideDrawer from '../../../src/components/SideDrawer';
+	import VxpSideDrawer from '../../../src/components/VxpSideDrawer';
 	import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
 	import Label from '../../../src/components/Label';
 	import StackLayout from '../../../src/layouts/StackLayout';
@@ -75,7 +75,7 @@
 	export default {
 		name: "SideDrawerDoc",
 		components: {
-				RadSideDrawer,
+				VxpSideDrawer,
 				FlexboxLayout,
 				Label,
 				StackLayout,
@@ -88,17 +88,17 @@
 			}
 		},
 		mounted() {
-			this.openClosedStatus = this.$refs.drawer.opened;
+			this.openClosedStatus = this.$refs.drawer.$refs.drawer.opened.toString();
 		},
 		methods: {
 			showDrawer() {
-				this.$refs.drawer.nativeView.showDrawer();
-				this.openClosedStatus = this.$refs.drawer.opened;
+				this.$refs.drawer.showDrawer();
+				this.openClosedStatus = this.$refs.drawer.$refs.drawer.opened.toString();
 				
 			},
 			closeDrawer() {
-				this.$refs.drawer.nativeView.closeDrawer();
-				this.openClosedStatus = this.$refs.drawer.opened;
+				this.$refs.drawer.closeDrawer();
+				this.openClosedStatus = this.$refs.drawer.$refs.drawer.opened.toString();
 			}
 		}
 	};
@@ -113,6 +113,7 @@
 			color: #ffffff;
 			padding: 20px;
 			width: 200px;
+			height: 100%;
 
 			&__title {
 				text-align: center;

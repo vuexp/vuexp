@@ -26,7 +26,8 @@
     "vue-template-compiler": "^2.5.19",
     "register-service-worker": "1.6.2",
     "string-replace-loader": "2.1.1",
-    "nativescript-orientation": "2.2.1"
+    "nativescript-orientation": "2.2.1",
+    "nativescript-ui-sidedrawer": "^6.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.4.0",

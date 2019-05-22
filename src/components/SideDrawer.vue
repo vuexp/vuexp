@@ -23,7 +23,7 @@ import FadeTransition from '../transitions/FadeTransition';
 import SlideTransition from '../transitions/SlideTransition';
 
 export default {
-  name: 'RadSideDrawer',
+  name: 'SideDrawer',
   components: {
     AbsoluteLayout,
     FlexboxLayout,

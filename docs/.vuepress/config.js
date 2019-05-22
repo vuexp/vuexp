@@ -44,7 +44,7 @@ module.exports = {
             "components/scrollview.md",
             "components/search-bar.md",
             "components/segmented-bar.md",
-            "components/side-drawer.md",
+            "components/vxp-side-drawer.md",
             "components/slider.md",
             "components/switcher.md",
             "components/tabview.md",
