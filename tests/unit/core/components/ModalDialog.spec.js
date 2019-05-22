@@ -1,8 +1,7 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
 import sinon from 'sinon';
-// eslint-disable-next-line import/no-unresolved
-import ModalDialog from '../../../../src/core/components/BaseModal/BaseModal';
+import ModalDialog from '../../../../src/core/components/BaseModal/ModalBase';
 
 describe('ModalDialog', () => {
   const close = sinon.spy(ModalDialog.methods, 'close');
