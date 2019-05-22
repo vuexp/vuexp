@@ -27,6 +27,10 @@ const predefinedColors = [
     label: 'Gray',
     value: 'gray',
   },
+  {
+    label: 'Black',
+    value: 'black',
+  },
 ];
 
 export default predefinedColors;
