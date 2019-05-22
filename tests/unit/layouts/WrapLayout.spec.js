@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
-import Label from '../../../src/components/Label';
+import Label from '../../../src/core/components/Label/Label';
 import WrapLayout from '../../../src/layouts/WrapLayout';
 
 describe('WrapLayout', () => {

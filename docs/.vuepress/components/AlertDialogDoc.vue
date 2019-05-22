@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import Label from '../../../src/components/Label';
+import Label from '../../../src/core/components/Label/Label';
 import StackLayout from '../../../src/layouts/StackLayout';
-import Button from '../../../src/components/Button';
+import Button from '../../../src/core/components/Button/Button';
 import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
 
 export default {

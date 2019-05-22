@@ -65,12 +65,12 @@
 
 <script>
 
-	import VxpSideDrawer from '../../../src/components/VxpSideDrawer';
+	import VxpSideDrawer from '../../../src/components/VxpSideDrawer/VxpSideDrawer';
 	import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
-	import Label from '../../../src/components/Label';
+	import Label from '../../../src/core/components/Label/Label';
 	import StackLayout from '../../../src/layouts/StackLayout';
-	import Button from '../../../src/components/Button';
-	import TextField from '../../../src/components/TextField';
+	import Button from '../../../src/core/components/Button/Button';
+	import TextField from '../../../src/core/components/TextField/TextField';
 
 	export default {
 		name: "SideDrawerDoc",

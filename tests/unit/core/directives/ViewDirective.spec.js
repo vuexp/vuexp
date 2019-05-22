@@ -1,0 +1,63 @@
+import { expect } from 'chai';
+import { mount, createLocalVue } from '@vue/test-utils';
+import Label from '../../../../src/core/components/Label/Label';
+import StackLayout from '../../../../src/layouts/StackLayout';
+import VxpPlugin from '../../../../src/core/plugins';
+
+const localVue = createLocalVue();
+localVue.use(VxpPlugin);
+
+describe('Action Dialog Plugin Testing', () => {
+  const SideDrawer = {
+    name: 'SideDrawer',
+    template:
+      '<StackLayout class="sidedrawer"><StackLayout ref="drawerContent" class="drawer-content"></StackLayout>' +
+      '<StackLayout ref="mainContent" class="main-content"></StackLayout></StackLayout>',
+    components: {
+      StackLayout,
+    },
+  };
+
+  localVue.component('SideDrawer', SideDrawer);
+
+  const Wrapper = {
+    name: 'Wrapper',
+    template:
+      '<SideDrawer ref="drawer">\n' +
+      '    <StackLayout v-view:drawerContent class="sideStackLayout">\n' +
+      '        <Label text="left" />\n' +
+      '    </StackLayout>\n' +
+      '    <StackLayout v-view:mainContent>\n' +
+      '        <Label text="right" />\n' +
+      '    </StackLayout>\n' +
+      '    <StackLayout v-view:another>\n' +
+      '        <Label text="another" />\n' +
+      '    </StackLayout>\n' +
+      '</SideDrawer>',
+    components: {
+      SideDrawer,
+      StackLayout,
+      Label,
+    },
+  };
+
+  it(`The ViewComponent is shown on the document.`, () => {
+    const mountedWrapper = mount(Wrapper, {
+      localVue,
+    });
+
+    expect(mountedWrapper.contains('div')).to.equal(true);
+    /*expect(
+      mountedWrapper
+        .findAll('.drawer-content')
+        .at(0)
+        .text(),
+    ).to.not.equal('');*/
+    /*expect(
+      mountedWrapper
+        .findAll('.main-content')
+        .at(0)
+        .text(),
+    ).to.not.equal('');*/
+  });
+});

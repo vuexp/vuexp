@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
-import VxpSideDrawer from '../../../src/components/VxpSideDrawer';
+import VxpSideDrawer from '../../../src/components/VxpSideDrawer/VxpSideDrawer';
 import StackLayout from '../../../src/layouts/StackLayout';
-import Label from '../../../src/components/Label';
+import Label from '../../../src/core/components/Label/Label';
 import localVue from '../local-vue';
 
 describe('VxpSideDrawer Component Tests', () => {

@@ -1,47 +1,38 @@
 import { createLocalVue } from '@vue/test-utils';
-
-// Components
-import ActionBar from '../../src/components/ActionBar';
-import ActionItem from '../../src/components/ActionItem';
-import Button from '../../src/components/Button';
-import Frame from '../../src/components/Frame';
-import Img from '../../src/components/Img';
-import Label from '../../src/components/Label';
-import ModalDialog from '../../src/components/ModalDialog';
-import NavigationButton from '../../src/components/NavigationButton';
-import Page from '../../src/components/Page';
-import Progress from '../../src/components/Progress';
-import ScrollView from '../../src/components/ScrollView';
-import SearchBar from '../../src/components/SearchBar';
-import SegmentedBar from '../../src/components/SegmentedBar';
-import SegmentedBarItem from '../../src/components/SegmentedBarItem';
-import SideDrawer from '../../src/components/SideDrawer';
-import Slider from '../../src/components/Slider';
-import Switcher from '../../src/components/Switcher';
-import TabView from '../../src/components/TabView';
-import TabViewItem from '../../src/components/TabViewItem';
-import TextField from '../../src/components/TextField';
-import TextView from '../../src/components/TextView';
-import WebView from '../../src/components/WebView';
-
-// Dialogs
-import AlertDialog from '../../src/components/dialogs/AlertDialog';
-import ConfirmDialog from '../../src/components/dialogs/ConfirmDialog';
-
-// Layouts
+import Button from '../../src/core/components/Button/Button';
+import Img from '../../src/core/components/Img/Img';
+import Label from '../../src/core/components/Label/Label';
+import Page from '../../src/core/components/Page/Page';
+import SideDrawer from '../../src/core/components/SideDrawer/SideDrawer';
+import Progress from '../../src/core/components/Progress/Progress';
+import ScrollView from '../../src/core/components/ScrollView/ScrollView';
+import Frame from '../../src/core/components/Frame/Frame';
+import SearchBar from '../../src/core/components/SearchBar/SearchBar';
+import SegmentedBar from '../../src/core/components/SegmentedBar/SegmentedBar';
+import SegmentedBarItem from '../../src/core/components/SegmentedBarItem/SegmentedBarItem';
+import Slider from '../../src/core/components/Slider/Slider';
+import Switcher from '../../src/core/components/Switcher/Switcher';
+import TextField from '../../src/core/components/TextField/TextField';
+import TextView from '../../src/core/components/TextView/TextView';
+import ActionItem from '../../src/core/components/ActionItem/ActionItem';
+import NavigationButton from '../../src/core/components/NavigationButton/NavigationButton';
+import ActionBar from '../../src/core/components/ActionBar/ActionBar';
+import TabView from '../../src/core/components/TabView/TabView';
+import TabViewItem from '../../src/core/components/TabViewItem/TabViewItem';
+import AlertDialog from '../../src/core/dialogs/AlertDialog';
+import ConfirmDialog from '../../src/core/dialogs/ConfirmDialog';
 import AbsoluteLayout from '../../src/layouts/AbsoluteLayout';
 import DockLayout from '../../src/layouts/DockLayout';
 import FlexboxLayout from '../../src/layouts/FlexboxLayout';
 import GridLayout from '../../src/layouts/GridLayout';
 import StackLayout from '../../src/layouts/StackLayout';
 import WrapLayout from '../../src/layouts/WrapLayout';
-
-// Directives
-import ViewDirective from '../../src/directives/ViewDirective';
+import ViewDirective from '../../src/core/directives/ViewDirective';
+import ModalDialog from '../../src/core/components/ModalDialog/ModalDialog';
+import WebView from '../../src/core/components/WebView/WebView';
 
 const localVue = createLocalVue();
 
-// Components
 localVue.component('ActionBar', ActionBar);
 localVue.component('ActionItem', ActionItem);
 localVue.component('Button', Button);
@@ -64,20 +55,14 @@ localVue.component('TabViewItem', TabViewItem);
 localVue.component('TextField', TextField);
 localVue.component('TextView', TextView);
 localVue.component('WebView', WebView);
-
-// Dialogs
 localVue.component('AlertDialog', AlertDialog);
 localVue.component('ConfirmDialog', ConfirmDialog);
-
-// Layouts
 localVue.component('AbsoluteLayout', AbsoluteLayout);
 localVue.component('DockLayout', DockLayout);
 localVue.component('FlexboxLayout', FlexboxLayout);
 localVue.component('GridLayout', GridLayout);
 localVue.component('StackLayout', StackLayout);
 localVue.component('WrapLayout', WrapLayout);
-
-// Directives
 localVue.directive('view', ViewDirective);
 
 export default localVue;
