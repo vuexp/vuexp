@@ -109,17 +109,17 @@ increment() {
 
 ### Props
 
-| Name      | Type           | Default | Web | Mobile |
-| --------- | -------------- | ------- | --- | ------ |
-| icon      | String         |         | ✔   | ✔      |
-| size      | String, Number | 37      | ✔   | ✔      |
-| isEnabled | Boolean        |         | ✔   | ✔      |
+| Name      | Type           | Default | Web | Mobile | Description                               |
+| --------- | -------------- | ------- | --- | ------ | ----------------------------------------- |
+| icon      | String         |         | ✔   | ✔      | Sets the icon class name.                 |
+| size      | String, Number | 37      | ✔   | ✔      | Sets Icon size.                           |
+| isEnabled | Boolean        |         | ✔   | ✔      | Sets the VxpIconButton enable or disable. |
 
 ### Events
 
-| Name | Web | Mobile |
-| ---- | --- | ------ |
-| tap  | ✔   | ✔      |
+| Name | Web | Mobile | Description                               |
+| ---- | --- | ------ | ----------------------------------------- |
+| tap  | ✔   | ✔      | Emitted when the VxpIconButton is tapped. |
 
 #### Note: The following components to be used from 'nativescript-vue-web'
 
