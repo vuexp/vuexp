@@ -4,7 +4,7 @@ import sinon from 'sinon';
 import VxpListView from '../../../src/components/VxpListView';
 import StackLayout from '../../../src/layouts/StackLayout';
 import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
-import ScrollView from '../../../src/components/ScrollView';
+import ScrollView from '../../../src/core/components/ScrollView/ScrollView';
 
 describe('VxpListView', () => {
   const localVue = createLocalVue();

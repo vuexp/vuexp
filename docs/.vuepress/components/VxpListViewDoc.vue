@@ -135,6 +135,7 @@ import TextField from '../../../src/core/components/TextField/TextField';
 import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
 import VxpListView from '../../../src/components/VxpListView';
 import Button from '../../../src/core/components/Button/Button';
+import VTemplate from '../../../src/core/components/VTemplate/VTemplate';
 
 export default {
   name: 'VxpListViewDoc',
@@ -169,6 +170,7 @@ export default {
     TextField,
     VxpListView,
     Button,
+    VTemplate,
   },
   methods: {
     onListViewTap(item, index) {

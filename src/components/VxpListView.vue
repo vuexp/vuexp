@@ -1,5 +1,9 @@
 <script>
 import { debounce } from '../helpers/helpers';
+import FlexboxLayout from '../layouts/FlexboxLayout';
+import StackLayout from '../layouts/StackLayout';
+import ScrollView from '../core/components/ScrollView/ScrollView';
+import VTemplate from '../core/components/VTemplate/VTemplate';
 
 export default {
   name: 'VxpListView',
@@ -14,6 +18,12 @@ export default {
     },
     pullToRefresh: Boolean, // just placeholder
     itemSelect: Object,
+  },
+  components: {
+    FlexboxLayout,
+    StackLayout,
+    ScrollView,
+    VTemplate,
   },
   data() {
     return {
