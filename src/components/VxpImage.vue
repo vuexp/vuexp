@@ -1,10 +1,9 @@
 <template>
-  <img
-    @error="$emit('onLoadError', $event)"
-    @load="$emit('onLoad', $event)"
+  <Img
     v-common-directive
-    :src="imageSrc"
-    :class="stretchClass"
+    @onLoadError="$emit('onLoadError', $event)"
+    @onLoad="$emit('onLoad', $event)"
+    :src="src"
     :width="width"
     :height="height"
     :alt="placeholder"
@@ -12,9 +11,9 @@
 </template>
 
 <script>
-import { camelCaseToDash } from '../helpers/helpers';
-import CommonDirective from '../directives/CommonDirective';
-import Gestures from '../mixins/GestureMixin';
+import CommonDirective from '../core/directives/CommonDirective';
+import Gestures from '../core/mixins/GestureMixin';
+import Img from '../core/components/Img/Img';
 
 export default {
   name: 'VxpImage',
@@ -28,13 +27,8 @@ export default {
     height: [String, Number],
     placeholder: String,
   },
-  computed: {
-    imageSrc: function() {
-      return this.src.replace('~', '');
-    },
-    stretchClass: function() {
-      return `vxp-img ${this.stretch !== 'none' ? 'vxp-img--' + camelCaseToDash(this.stretch) : ''}`.trim();
-    },
+  components: {
+    Img,
   },
   directives: {
     'common-directive': CommonDirective,
@@ -42,29 +36,3 @@ export default {
   mixins: [Gestures],
 };
 </script>
-
-<style lang="scss">
-.vxp-img {
-  align-self: flex-start;
-
-  &--fill {
-    width: 100%;
-    height: 100%;
-    align-self: stretch;
-  }
-
-  &--aspect-fill {
-    object-fit: cover;
-    align-self: stretch;
-    width: 100%;
-    height: 100%;
-  }
-
-  &--aspect-fit {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: top;
-  }
-}
-</style>
