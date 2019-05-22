@@ -2,9 +2,9 @@
 sidebarDepth: 0
 ---
 
-# ModalDialog
+# ModalBase
 
-This is an overview of the most common usage of ModalDialog.
+This is an overview of the most common usage of ModalBase.
 
 The `alert()` method shows a message and an OK button. Use it to show information and notifications that do not require an action from the user.
 
@@ -12,23 +12,23 @@ The `alert()` method shows a message and an OK button. Use it to show informatio
 <DocExampleBox :liveDemoMode="true">
 
 ```html
-  <Button text="Show Modal Dialog" width="200" @tap="showModalDialog" />
+  <Button text="Show Modal Base" width="200" @tap="showModalBase" />
 ```
 
 ```js
-   showAlertDialog: function() {
+   showAlertBase: function() {
       alert({title: "Your title", message: "Your message", okButtonText: "Your OK button text"}).then(() => {
-        console.log("Modal dialog closed.");
+        console.log("Modal Base closed.");
       });
     }
 ```
 
-<ModalDialogDoc />
+<ModalBaseDoc />
 </DocExampleBox>
 
 ```js
 alert("Your message").then(() => {
-  console.log("Modal dialog closed.");
+  console.log("Modal Base closed.");
 });
 ```
 
