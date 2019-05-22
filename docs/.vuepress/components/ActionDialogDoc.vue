@@ -6,7 +6,7 @@
 
 <script>
 import StackLayout from '../../../src/layouts/StackLayout';
-import Button from "../../../src/components/Button";
+import Button from "../../../src/core/components/Button/Button";
 
 export default {
   name: "ActionDialogDoc",
