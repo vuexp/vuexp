@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
-import SideDrawer from '../../../src/components/SideDrawer';
+import SideDrawer from '../../../src/core/components/SideDrawer/SideDrawer';
 import StackLayout from '../../../src/layouts/StackLayout';
-import Label from '../../../src/components/Label';
+import Label from '../../../src/core/components/Label/Label';
 import localVue from '../local-vue';
 
 describe('SideDrawer Component Tests', () => {
