@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
-import Label from '../../../src/components/Label.vue';
-import TextField from '../../../src/components/TextField';
+import Label from '../../../src/core/components/Label/Label.vue';
+import TextField from '../../../src/core/components/TextField/TextField';
 import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
 
 describe('FlexboxLayout', () => {
