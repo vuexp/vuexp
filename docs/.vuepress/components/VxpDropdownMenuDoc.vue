@@ -1,18 +1,18 @@
 <template>
   <StackLayout>
-    <DropdownMenu :items="items" :title="title"></DropdownMenu>
+    <VxpDropdownMenu :items="items" :title="title"></VxpDropdownMenu>
   </StackLayout>
 </template>
 
 <script>
-import DropdownMenu from '../../../src/components/menus/DropdownMenu';
+import VxpDropdownMenu from '../../../src/components/menus/VxpDropdownMenu';
 import StackLayout from '../../../src/layouts/StackLayout';
 
 export default {
-  name: 'DropdownMenuDoc',
+  name: 'VxpDropdownMenuDoc',
   components: {
     StackLayout,
-    DropdownMenu,
+    VxpDropdownMenu,
   },
   data() {
     return {

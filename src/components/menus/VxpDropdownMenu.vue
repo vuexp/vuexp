@@ -5,7 +5,7 @@
       <Label class="vxp-dropdown__menu_icon" :text="icon | fonticon" :disabled="disabled" :class="iconClass" />
     </StackLayout>
     <StackLayout class="vxp-dropdown__itemContainer" :class="{ 'is-visible': isMenuOpen }" v-if="items && !isNative">
-      <DropdownItem
+      <VxpDropdownItem
         class="vxp-dropdown__itemContainer__item"
         v-for="(item, index) in items"
         :item="item"
@@ -22,13 +22,13 @@
 
 <script>
 import Gestures from '../../core/mixins/GestureMixin';
-import DropdownItem from './DropdownItem';
 import Label from '../../core/components/Label/Label';
 import StackLayout from '../../layouts/StackLayout';
 import platform from '../../platform';
+import VxpDropdownItem from './VxpDropdownItem';
 
 export default {
-  name: 'DropdownMenu',
+  name: 'VxpDropdownMenu',
   props: {
     title: String,
     icon: String,
@@ -76,8 +76,8 @@ export default {
     },
   },
   components: {
+    VxpDropdownItem,
     StackLayout,
-    DropdownItem,
     Label,
   },
   mixins: [Gestures],

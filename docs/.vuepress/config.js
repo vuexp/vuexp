@@ -67,7 +67,7 @@ module.exports = {
           title: "Menus",
           collapsable: true,
           children: [
-            "components/menus/dropdown-menu.md",
+            "components/menus/vxpdropdown-menu.md",
           ]
         },
       ]

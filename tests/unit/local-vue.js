@@ -26,7 +26,8 @@ import DockLayout from '../../src/layouts/DockLayout';
 import FlexboxLayout from '../../src/layouts/FlexboxLayout';
 import GridLayout from '../../src/layouts/GridLayout';
 import WrapLayout from '../../src/layouts/WrapLayout';
-import DropdownMenu from '../../src/components/menus/DropdownMenu';
+import VxpDropdownMenu from '../../src/components/menus/VxpDropdownMenu';
+import VxpDropdownItem from '../../src/components/menus/VxpDropdownItem';
 import ActionDialog from '../../src/core/dialogs/ActionDialog';
 
 const localVue = createLocalVue();
@@ -34,7 +35,8 @@ localVue.filter('fonticon', function(value) {
   return value + ' | fonticon';
 });
 localVue.component('Button', Button);
-localVue.component('DropdownMenu', DropdownMenu);
+localVue.component('VxpDropdownMenu', VxpDropdownMenu);
+localVue.component('VxpDropdownItem', VxpDropdownItem);
 localVue.component('Img', Img);
 localVue.component('Label', Label);
 localVue.component('Page', Page);

@@ -17,7 +17,7 @@ import Label from '../../core/components/Label/Label';
 import StackLayout from '../../layouts/StackLayout';
 
 export default {
-  name: 'DropdownItem',
+  name: 'VxpDropdownItem',
   props: {
     item: {
       type: Object,

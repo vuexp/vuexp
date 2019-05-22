@@ -1,17 +1,17 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
-import DropdownMenu from '../../../../src/components/menus/DropdownMenu';
 import localVue from '../../local-vue';
+import VxpDropdownMenu from '../../../../src/components/menus/VxpDropdownMenu';
 
-describe('Dropdown Menu', () => {
+describe('Vxp Dropdown Menu', () => {
   const selectedIndex = 1;
   const title = 'Test Title';
   const items = [{ title: 'Title 1', icon: 'fa-share', iconClass: 'fa' }, { title: 'Title 2', icon: 'fa-times', iconClass: 'fa' }];
   let wrapper;
   let defaultWrapper;
   before(() => {
-    wrapper = mount(DropdownMenu, {
-      name: 'DropdownMenu',
+    wrapper = mount(VxpDropdownMenu, {
+      name: 'VxpDropdownMenu',
       props: {
         title: String,
         icon: String,
@@ -36,8 +36,8 @@ describe('Dropdown Menu', () => {
       },
       localVue,
     });
-    defaultWrapper = mount(DropdownMenu, {
-      name: 'DropdownMenu',
+    defaultWrapper = mount(VxpDropdownMenu, {
+      name: 'VxpDropdownMenu',
       props: {
         title: String,
         icon: String,
