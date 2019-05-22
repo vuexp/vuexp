@@ -6,20 +6,9 @@ sidebarDepth: 0
 
 This is an overview of the most common usage of `<TextField>`.
 
-```html
-<TextField :text="textFieldValue" hint="Enter text..." />
-```
-
 `TextField` provides two-way data binding using v-model.
 
-```html
-<TextField
-v-model="textFieldInput"
-hint="This is placeholder"
-:editable="true"
-@returnPress="textFieldreturnPress"
-@textChange="textFieldtextChange" />
-```
+## Live Demo
 
 <DocExampleBox codeBox="https://codesandbox.io/s/l764j9p8pl?module=%2Fsrc%2FApp.vue">
 
@@ -49,6 +38,23 @@ textFieldOnReturnPress: event => console.log("Return Press event :", event)
 
 <TextFieldDoc />
 </DocExampleBox>
+
+## Example Usages
+
+```html
+<TextField :text="textFieldValue" hint="Enter text..." />
+```
+
+`TextField` provides two-way data binding using v-model.
+
+```html
+<TextField
+v-model="textFieldInput"
+hint="This is placeholder"
+:editable="true"
+@returnPress="textFieldreturnPress"
+@textChange="textFieldtextChange" />
+```
 
 ## Props
 

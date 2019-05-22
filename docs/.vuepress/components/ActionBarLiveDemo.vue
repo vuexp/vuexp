@@ -59,17 +59,13 @@
           <Label class="control-label p-l-2" text="Change Delete Icon"></Label>
           <i class="bar"></i>
         </StackLayout>
-        <Label
-          v-if="shareClickedVisible"
-          id="actionbar__shareicon__label"
-          text="Share Icon Clicked"
-        ></Label>
-        <Label
-          v-if="deleteClickedVisible"
-          id="actionbar__deleteicon__label"
-          text="Delete Icon Clicked"
-        ></Label>
       </StackLayout>
+      <Label v-if="shareClickedVisible" id="actionbar__shareicon__label" text="Share Icon Clicked"></Label>
+      <Label
+        v-if="deleteClickedVisible"
+        id="actionbar__deleteicon__label"
+        text="Delete Icon Clicked"
+      ></Label>
     </StackLayout>
     <StackLayout class="prop-container">
       <Label text="Children"></Label>
@@ -86,7 +82,7 @@
         <StackLayout orientation="horizontal">
           <Label class="child-label" :text="'∗ ' + child.type + ' ' + (index + 1)"></Label>
           <StackLayout class="form-group">
-            <select id="actionbar__deleteicon__select" v-model="child.icon">
+            <select :id="'actionbar__deleteicon__select__' + index" v-model="child.icon">
               <option
                 v-if="child.type === 'ActionItem'"
                 v-for="(icon, index) in deleteIcons"
@@ -116,12 +112,12 @@
 </template>
 
 <script>
-import Label from '../../../src/components/Label';
-import ActionBar from '../../../src/components/ActionBar';
-import TextField from '../../../src/components/TextField';
-import Button from '../../../src/components/Button';
-import NavigationButton from '../../../src/components/NavigationButton';
-import ActionItem from '../../../src/components/ActionItem';
+import Label from '../../../src/core/components/Label/Label';
+import ActionBar from '../../../src/core/components/ActionBar/ActionBar';
+import TextField from '../../../src/core/components/TextField/TextField';
+import Button from '../../../src/core/components/Button/Button';
+import NavigationButton from '../../../src/core/components/NavigationButton/NavigationButton';
+import ActionItem from '../../../src/core/components/ActionItem/ActionItem';
 import StackLayout from '../../../src/layouts/StackLayout';
 
 export default {

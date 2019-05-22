@@ -44,11 +44,11 @@
 </template>
 
 <script>
-import Label from '../../../src/components/Label';
-import Progress from '../../../src/components/Progress';
-import TextField from '../../../src/components/TextField';
+import Label from '../../../src/core/components/Label/Label';
+import Progress from '../../../src/core/components/Progress/Progress';
+import TextField from '../../../src/core/components/TextField/TextField';
 import StackLayout from '../../../src/layouts/StackLayout';
-import Button from '../../../src/components/Button';
+import Button from '../../../src/core/components/Button/Button';
 
 export default {
   name: 'ProgressLiveDemo',

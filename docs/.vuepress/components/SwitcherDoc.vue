@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Switcher from '../../../src/components/Switcher';
-import Label from '../../../src/components/Label';
+import Switcher from '../../../src/core/components/Switcher/Switcher';
+import Label from '../../../src/core/components/Label/Label';
 import StackLayout from '../../../src/layouts/StackLayout';
 
 export default {
