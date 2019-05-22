@@ -35,8 +35,16 @@
           flexGrow="1"
           @tap="activateSuggestions()"
         ></TextField>
-        <Label col="1" row="0" v-if="!isNative && searchText" @tap="clearSearchText" class="vxp-multiselectdropdown__pill-remove-search" text="×"></Label>
-        <Label col="1" row="0" v-if="!isNative && !searchText" class="vxp-multiselectdropdown__pill-caret-down" text="▼"></Label>
+        <Label col="1" row="0" @tap="activateSuggestions()" v-if="!isNative && !searchText" class="vxp-multiselectdropdown__pill-caret-down" text="▼"></Label>
+        <Label
+          @tap="clearSearchText()"
+          col="1"
+          row="0"
+          v-if="!isNative"
+          v-show="searchText"
+          class="vxp-multiselectdropdown__pill-remove-search"
+          text="×"
+        ></Label>
       </GridLayout>
     </WrapLayout>
     <StackLayout class="vxp-multiselectdropdown__suggestions-box" v-if="suggestionsOpened && !isNative">
@@ -198,7 +206,7 @@ export default {
     &-remove-search {
       position: absolute;
       right: unit(10);
-      bottom: unit(10);
+      top: unit(0);
       z-index: 1;
       font-weight: 800;
       font-size: unit(16);

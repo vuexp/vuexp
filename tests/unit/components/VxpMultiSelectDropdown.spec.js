@@ -347,6 +347,28 @@ describe('VxpMultiSelectDropdown', () => {
       expect(searchTextChange.getCall(0).args[0]).to.eq(searchText);
     });
 
+    it('will show a clear icon when a text is entered', () => {
+      wrapper = createMockedComponent();
+      const searchText = 'searchingText';
+      const removeSearchIcon = wrapper.find('.vxp-multiselectdropdown__pill-remove-search');
+      expect(removeSearchIcon.isVisible()).to.eq(false);
+      wrapper.setData({
+        searchText,
+      });
+      expect(removeSearchIcon.isVisible()).to.eq(true);
+    });
+
+    it('will clear searchText when clear icon clicked', () => {
+      wrapper = createMockedComponent();
+      const searchText = 'searchingText';
+      const removeSearchIcon = wrapper.find('.vxp-multiselectdropdown__pill-remove-search');
+      wrapper.setData({
+        searchText,
+      });
+      removeSearchIcon.trigger('click');
+      expect(wrapper.vm._data.searchText).to.eq('');
+    });
+
     it('will show filtered items according to searchText', () => {
       const toBeShownAfterFilterObject = {
         [labelPropName]: 'filtered_1',
