@@ -27,8 +27,8 @@
 </template>
 
 <script>
-import TextField from '../../../src/components/TextField';
-import Label from '../../../src/components/Label';
+import TextField from '../../../src/core/components/TextField/TextField';
+import Label from '../../../src/core/components/Label/Label';
 import StackLayout from '../../../src/layouts/StackLayout';
 import VxpLink from '../../../src/components/VxpLink';
 
