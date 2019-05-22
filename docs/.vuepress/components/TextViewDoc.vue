@@ -52,9 +52,9 @@
 </template>
 
 <script>
-  import TextView from '../../../src/components/TextView'
-  import TextField from '../../../src/components/TextField'
-	import Label from '../../../src/components/Label'
+  import TextView from '../../../src/core/components/TextView/TextView'
+  import TextField from '../../../src/core/components/TextField/TextField'
+	import Label from '../../../src/core/components/Label/Label'
 	import StackLayout from '../../../src/layouts/StackLayout'
 
 	export default {
