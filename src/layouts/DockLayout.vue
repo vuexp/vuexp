@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import Gestures from '../mixins/GestureMixin';
-import CommonDirective from '../directives/CommonDirective';
+import Gestures from '../core/mixins/GestureMixin';
+import CommonDirective from '../core/directives/CommonDirective';
 
 export default {
   name: 'DockLayout',
