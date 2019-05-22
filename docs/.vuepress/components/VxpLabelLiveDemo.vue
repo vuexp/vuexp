@@ -1,43 +1,43 @@
 <template>
   <StackLayout>
     <StackLayout class="demo-panel">
-      <Label text="Label Properties" class="demo-panel__title" />
+      <VxpLabel text="Label Properties" class="demo-panel__title" />
 
       <FlexboxLayout flexWrap="wrap">
-        <Label text="Text" class="option-label" />
+        <VxpLabel text="Text" class="option-label" />
         <TextField id="label_text_input" v-model="labelValue" class="option-input" />
       </FlexboxLayout>
 
       <FlexboxLayout flexWrap="wrap">
-        <Label text="Text Wrap" class="option-label" />
+        <VxpLabel text="Text Wrap" class="option-label" />
         <input id="label_textwrap_cb" type="checkbox" v-model="textWrap" />
       </FlexboxLayout>
     </StackLayout>
 
     <StackLayout class="demo-panel">
-      <Label text="Component" class="demo-panel__title" />
-      <Label id="label_component" :text="labelValue" :textWrap="textWrap" />
+      <VxpLabel text="Rendered Result" class="demo-panel__title" />
+      <VxpLabel id="label_component" :text="labelValue" :textWrap="textWrap" />
     </StackLayout>
   </StackLayout>
 </template>
 
 <script>
-import Label from '../../../src/core/components/Label/Label';
+import VxpLabel from '../../../src/components/VxpLabel';
 import StackLayout from '../../../src/layouts/StackLayout';
 import TextField from '../../../src/core/components/TextField/TextField';
 import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
 
 export default {
-  name: 'LabelLiveDemo',
+  name: 'VxpLabelLiveDemo',
   data() {
     return {
-      labelValue: 'Label',
+      labelValue: 'Hello world!',
       textWrap: false,
     };
   },
   components: {
     FlexboxLayout,
-    Label,
+    VxpLabel,
     StackLayout,
     TextField,
   },
