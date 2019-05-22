@@ -1,6 +1,6 @@
 <template>
-  <Label v-if="externalUrl" class="vxp-link-button typ-body" :text="text" @tap="onTap" />
-  <Label v-else :text="text" class="vxp-link-button typ-body" @tap="$emit('tap', $event)" />
+  <Label v-if="externalUrl" class="vxp-link typ-body" :text="text" @tap="onTap" />
+  <Label v-else :text="text" class="vxp-link typ-body" @tap="$emit('tap', $event)" />
 </template>
 
 <script>
@@ -30,7 +30,7 @@ export default {
 @import '../themes/themes';
 @import '../assets/styles/helpers';
 
-.vxp-link-button {
+.vxp-link {
   background-color: transparent;
   padding: 0;
   text-decoration: none;

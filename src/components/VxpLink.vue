@@ -1,6 +1,6 @@
 <template>
-  <a v-if="externalUrl" class="vxp-link-button typ-body" :href="externalUrl" :target="externalUrl ? '_blank' : ''">{{ text }}</a>
-  <a v-else class="vxp-link-button typ-body" @click="$emit('tap', $event)">{{ text }}</a>
+  <a v-if="externalUrl" class="vxp-link typ-body" :href="externalUrl" :target="externalUrl ? '_blank' : ''">{{ text }}</a>
+  <a v-else class="vxp-link typ-body" @click="$emit('tap', $event)">{{ text }}</a>
 </template>
 
 <script>
@@ -26,7 +26,7 @@ export default {
 @import '../themes/themes';
 @import '../assets/styles/helpers';
 
-.vxp-link-button {
+.vxp-link {
   background-color: transparent;
   text-decoration: none;
 
