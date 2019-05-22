@@ -1,5 +1,13 @@
 <template>
-  <Img @onLoadError="$emit('onLoadError', $event)" @onLoad="$emit('onLoad', $event)" :src="src" :width="width" :height="height" :alt="placeholder" />
+  <Img
+    @onLoadError="$emit('onLoadError', $event)"
+    @onLoad="$emit('onLoad', $event)"
+    :src="src"
+    :stretch="stretch"
+    :width="width"
+    :height="height"
+    :alt="placeholder"
+  />
 </template>
 
 <script>
