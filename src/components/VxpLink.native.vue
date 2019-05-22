@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import { openUrl } from 'tns-core-modules/utils/utils'; // eslint-disable-line
+import { openUrl } from '../platform.native'; // eslint-disable-line
 
 export default {
   name: 'VxpLink',
