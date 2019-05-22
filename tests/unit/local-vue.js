@@ -26,10 +26,15 @@ import DockLayout from '../../src/layouts/DockLayout';
 import FlexboxLayout from '../../src/layouts/FlexboxLayout';
 import GridLayout from '../../src/layouts/GridLayout';
 import WrapLayout from '../../src/layouts/WrapLayout';
+import DropdownMenu from '../../src/components/menus/DropdownMenu';
+import ActionDialog from '../../src/core/dialogs/ActionDialog';
 
 const localVue = createLocalVue();
+localVue.filter('fonticon', function(value) {
+  return value + ' | fonticon';
+});
 localVue.component('Button', Button);
-
+localVue.component('DropdownMenu', DropdownMenu);
 localVue.component('Img', Img);
 localVue.component('Label', Label);
 localVue.component('Page', Page);
@@ -50,6 +55,7 @@ localVue.component('TabView', TabView);
 localVue.component('TabViewItem', TabViewItem);
 localVue.component('AlertDialog', AlertDialog);
 localVue.component('ConfirmDialog', ConfirmDialog);
+localVue.component('ActionDialog', ActionDialog);
 localVue.component('AbsoluteLayout', AbsoluteLayout);
 localVue.component('StackLayout', StackLayout);
 localVue.component('DockLayout', DockLayout);

@@ -1,3 +1,4 @@
+import ActionDialog from '../dialogs/ActionDialog';
 import ConfirmDialog from '../dialogs/ConfirmDialog';
 import AlertDialog from '../dialogs/AlertDialog';
 import ViewDirective from '../directives/ViewDirective';
@@ -5,6 +6,26 @@ import ViewDirective from '../directives/ViewDirective';
 const VxpPlugin = {
   install: Vue => {
     if (typeof window !== 'undefined') {
+      // Action Dialog
+      const ActionDialogComponent = Vue.extend(ActionDialog);
+      // Register action dialog to the window.
+      window.action = async function(title, cancelButtonText, options) {
+        const actionDialog = new ActionDialogComponent();
+        const actionDialogDom = actionDialog.$mount().$el;
+        document.body.appendChild(actionDialogDom);
+
+        return new Promise(resolve => {
+          actionDialog.title = title;
+          actionDialog.cancelButtonText = cancelButtonText;
+          actionDialog.options = options;
+          actionDialog.isModalVisible = true;
+          actionDialog.$once('submit', value => {
+            actionDialog.isModalVisible = false;
+            resolve(value);
+          });
+        });
+      };
+
       // Alert Dialog
       const AlertDialogComponent = Vue.extend(AlertDialog);
       // Register alert dialog to the window.
@@ -36,7 +57,6 @@ const VxpPlugin = {
   },
 };
 
-export default VxpPlugin;
 function confirmWrapper(messageText, confirmDialog) {
   return new Promise(resolve => {
     if (typeof messageText === 'string') {
@@ -73,3 +93,5 @@ function alertWrapper(messageText, alertDialog) {
     });
   });
 }
+
+export default VxpPlugin;

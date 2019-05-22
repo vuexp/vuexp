@@ -60,6 +60,14 @@ module.exports = {
           children: [
             "components/dialogs/confirm-dialog.md",
             "components/dialogs/alert-dialog.md",
+            "components/dialogs/action-dialog.md",
+          ]
+        },
+        {
+          title: "Menus",
+          collapsable: true,
+          children: [
+            "components/menus/dropdown-menu.md",
           ]
         },
       ]
