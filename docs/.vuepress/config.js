@@ -47,7 +47,7 @@ module.exports = {
             "components/frame.md",
             "components/page.md",
             "components/tabview.md",
-            "components/image.md",
+            "components/vxp-image.md",
             "components/segmented-bar.md",
             "components/progress.md",
             "components/vxp-link.md",
