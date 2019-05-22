@@ -12,11 +12,11 @@
 </template>
 
 <script>
-import CommonDirective from '../directives/CommonDirective';
-import Gestures from '../mixins/GestureMixin';
-import Button from './Button';
-import FormattedString from './FormattedString';
-import Span from './Span';
+import CommonDirective from '../core/directives/CommonDirective';
+import Gestures from '../core/mixins/GestureMixin';
+import Button from '../core/components/Button/Button';
+import FormattedString from '../core/components/FormattedString/FormattedString';
+import Span from '../core/components/Span/Span';
 
 export default {
   name: 'VxpButton',

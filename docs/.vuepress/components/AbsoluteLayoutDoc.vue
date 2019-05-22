@@ -135,9 +135,9 @@
 </template>
 
 <script>
-import Label from '../../../src/components/Label';
-import TextField from '../../../src/components/TextField';
-import Button from '../../../src/components/Button';
+import Label from '../../../src/core/components/Label/Label';
+import TextField from '../../../src/core/components/TextField/TextField';
+import Button from '../../../src/core/components/Button/Button';
 import StackLayout from '../../../src/layouts/StackLayout';
 import AbsoluteLayout from '../../../src/layouts/AbsoluteLayout';
 
