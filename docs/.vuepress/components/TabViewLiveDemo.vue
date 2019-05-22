@@ -61,10 +61,10 @@
 </template>
 
 <script>
-import Label from '../../../src/components/Label';
-import TabViewItem from '../../../src/components/TabViewItem';
-import TabView from '../../../src/components/TabView';
-import TextField from '../../../src/components/TextField';
+import Label from '../../../src/core/components/Label/Label';
+import TabViewItem from '../../../src/core/components/TabViewItem/TabViewItem';
+import TabView from '../../../src/core/components/TabView/TabView';
+import TextField from '../../../src/core/components/TextField/TextField';
 import StackLayout from '../../../src/layouts/StackLayout';
 import PredefinedColors from '../../shared/colors';
 

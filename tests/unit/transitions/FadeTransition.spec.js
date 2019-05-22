@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { expect } from 'chai';
 import FadeTransition from '../../../src/transitions/FadeTransition';
-import TextField from '../../../src/components/TextField';
+import TextField from '../../../src/core/components/TextField/TextField';
 import localVue from '../local-vue';
 
 describe('FadeTransition Unit Test.', () => {
