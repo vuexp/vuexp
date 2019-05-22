@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import Label from '../../../src/components/Label';
+import Label from '../../../src/core/components/Label/Label';
 import VxpCheckbox from '../../../src/components/VxpCheckbox';
 import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
 import StackLayout from '../../../src/layouts/StackLayout';
