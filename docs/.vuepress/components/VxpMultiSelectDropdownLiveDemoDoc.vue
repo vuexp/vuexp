@@ -58,18 +58,27 @@ export default {
   components: {
     VxpMultiSelectDropdown,
   },
+  mounted(){
+    this.addNewItem('item1');
+    this.addNewItem('item2');
+    this.addNewItem('item3');
+    this.addNewItem('item4');
+    this.addNewItem('item5');
+    this.addNewItem('item6');
+    this.addNewItem('item7');
+  },
   data() {
     return {
       selectedIndexes: [],
       selectableItems: [],
-      hint: '',
-      emptySuggestionsLabel: '',
+      hint: 'Select items',
+      emptySuggestionsLabel: 'There is no items to select',
     };
   },
   methods: {
-    addNewItem() {
+    addNewItem(label) {
       this.selectableItems.push({
-        label: '',
+        label: label || '',
         value: {},
       });
     },
