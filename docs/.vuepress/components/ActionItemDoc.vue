@@ -31,10 +31,10 @@
 </template>
 
 <script>
-import ActionBar from '../../../src/components/ActionBar';
-import ActionItem from '../../../src/components/ActionItem';
+import ActionBar from '../../../src/core/components/ActionBar/ActionBar';
+import ActionItem from '../../../src/core/components/ActionItem/ActionItem';
 import StackLayout from '../../../src/layouts/StackLayout';
-import Label from '../../../src/components/Label';
+import Label from '../../../src/core/components/Label/Label';
 
 export default {
   name: 'ActionItemDoc',
