@@ -1,10 +1,10 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
 import { mount } from '@vue/test-utils';
-import DropDown from '../../../src/components/DropDown';
+import VxpDropDown from '../../../src/components/VxpDropDown';
 import localVue from '../local-vue';
 
-describe('DropDown', () => {
+describe('VxpDropDown', () => {
   const placeholder = 'Select One';
   const disabled = false;
   const items = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -12,7 +12,7 @@ describe('DropDown', () => {
   const errors = ['error line 1', 'error line 2', 'error line 3'];
   let wrapper;
   beforeEach(() => {
-    wrapper = mount(DropDown, {
+    wrapper = mount(VxpDropDown, {
       propsData: {
         placeholder,
         disabled,
@@ -46,7 +46,7 @@ describe('DropDown', () => {
     });
 
     it(`should run errors  default line.`, () => {
-      wrapper = mount(DropDown, {
+      wrapper = mount(VxpDropDown, {
         propsData: {
           placeholder,
           disabled,
@@ -125,7 +125,7 @@ describe('DropDown', () => {
     });
 
     it(`should jump (april) item and key down (move one bottom) for dropdownMenu is null .`, () => {
-      wrapper.vm.$refs.dropdownMenu = null;
+      wrapper.vm.$refs.vxpDropdownMenu = null;
       wrapper.find('input').trigger('keypress');
       wrapper.find('input').trigger('keydown.down');
       expect(wrapper.vm.selectedItem).to.equal(items[4]);

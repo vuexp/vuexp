@@ -1,5 +1,5 @@
 <template>
-  <div class="vxp-drop-down" ref="dropdown">
+  <div class="vxp-drop-down" ref="vxpDropDown">
     <div class="vxp-drop-down__container">
       <input
         class="vxp-drop-down__container__toggle typ-body"
@@ -20,7 +20,7 @@
       <div class="typ-body-5 vxp-drop-down__container__icon pz pz-arrow-fill-down"></div>
     </div>
     <transition name="slide-fade">
-      <ul v-show="showMenu" class="vxp-drop-down__menu" ref="dropdownMenu">
+      <ul v-show="showMenu" class="vxp-drop-down__menu" ref="vxpDropdownMenu">
         <li
           @click="itemClick(index)"
           @mouseover="hoverIndex = index"
@@ -41,9 +41,10 @@
 <script>
 import debounce from '../helpers/debounce';
 import Label from './Label';
+import FlexboxLayout from '../layouts/FlexboxLayout';
 
 export default {
-  name: 'DropDown',
+  name: 'VxpDropDown',
   props: {
     placeholder: {
       type: String,
@@ -105,7 +106,7 @@ export default {
         return;
       }
       let path = event.path || (event.composedPath && event.composedPath()) || this.composedPath(event.target);
-      if (path.indexOf(this.$refs.dropdown) === -1) {
+      if (path.indexOf(this.$refs.vxpDropDown) === -1) {
         this.toggleMenu();
       }
     },
@@ -168,7 +169,7 @@ export default {
             this.searchFilter(key);
           }
         }
-        const element = this.$refs.dropdownMenu ? this.$refs.dropdownMenu.children[this.hoverIndex] : false;
+        const element = this.$refs.vxpDropdownMenu ? this.$refs.vxpDropdownMenu.children[this.hoverIndex] : false;
         const scrollTo = element ? element.offsetHeight * this.hoverIndex : 0;
         this.scrollTo(scrollTo);
       }
@@ -201,9 +202,9 @@ export default {
     },
     pixelsToPointerTop() {
       let pixelsToPointerTop = 0;
-      if (this.$refs.dropdownMenu) {
+      if (this.$refs.vxpDropdownMenu) {
         for (let i = 0; i < this.hoverIndex; i++) {
-          pixelsToPointerTop += this.$refs.dropdownMenu.children[i].offsetHeight;
+          pixelsToPointerTop += this.$refs.vxpDropdownMenu.children[i].offsetHeight;
         }
       }
       return pixelsToPointerTop;
@@ -212,17 +213,17 @@ export default {
       return this.pixelsToPointerTop() + this.pointerHeight();
     },
     pointerHeight() {
-      let element = this.$refs.dropdownMenu ? this.$refs.dropdownMenu.children[this.hoverIndex] : false;
+      let element = this.$refs.vxpDropdownMenu ? this.$refs.vxpDropdownMenu.children[this.hoverIndex] : false;
       return element ? element.offsetHeight : 0;
     },
     viewport() {
       return {
-        top: this.$refs.dropdownMenu ? this.$refs.dropdownMenu.scrollTop : 0,
-        bottom: this.$refs.dropdownMenu ? this.$refs.dropdownMenu.offsetHeight + this.$refs.dropdownMenu.scrollTop : 0,
+        top: this.$refs.vxpDropdownMenu ? this.$refs.vxpDropdownMenu.scrollTop : 0,
+        bottom: this.$refs.vxpDropdownMenu ? this.$refs.vxpDropdownMenu.offsetHeight + this.$refs.vxpDropdownMenu.scrollTop : 0,
       };
     },
     scrollTo(position) {
-      return this.$refs.dropdownMenu ? (this.$refs.dropdownMenu.scrollTop = position) : null;
+      return this.$refs.vxpDropdownMenu ? (this.$refs.vxpDropdownMenu.scrollTop = position) : null;
     },
   },
   created() {
@@ -230,6 +231,7 @@ export default {
   },
   components: {
     Label,
+    FlexboxLayout,
   },
 };
 </script>

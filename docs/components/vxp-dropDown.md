@@ -2,19 +2,19 @@
 sidebarDepth: 0
 ---
 
-# DropDown
+# VxpDropDown
 
-This is an overview of the most common usage of `<DropDown>`.
+This is an overview of the most common usage of `<VxpDropDown>`.
 
 ## Live Demo
 
 <DocExampleBox>
 
 ```html
-<DropDown :items="countries" @changeIndex="onChangeIndex" />
+<VxpDropDown :items="countries" @changeIndex="onChangeIndex" />
 ```
 
-<DropDownDoc />
+<VxpDropDownDoc />
 
 </DocExampleBox>
 

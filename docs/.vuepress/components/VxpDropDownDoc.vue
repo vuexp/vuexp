@@ -1,6 +1,6 @@
 <template>
   <StackLayout class="theme--nuweb">
-    <DropDown
+    <VxpDropDown
       id="dropDown_docs"
       :items="countries"
       :placeholder="dropDownPlaceholder"
@@ -20,7 +20,7 @@
       <Label id="dropDown_disabled_label" class="dropDown__margin_top" text="Disabled :" width="100"></Label>
       <input type="checkbox" id="dropDown_disabled_checkbox" class="dropDown__margin_top" v-model="dropDownDisabled" />
       <Label id="dropDown_checkbox_text_label" class="dropDown__margin_top dropDown__m-l-10" text="Is Disabled :" width="100"></Label>
-      <Label id="dropDown_checkbox_value_label" class="dropDown__margin_top" :text="dropDownDisabled" width="100"></Label>
+      <Label id="dropDown_checkbox_value_label" class="dropDown__margin_top" width="100">{{dropDownDisabled}}</Label>
     </StackLayout>
     <Label id="dropDown_items_label" class="dropDown__margin_top" text="Items :" width="100"></Label>
     <StackLayout class="dropDown_m-b-10" v-for="(country, index) in countries" :key="index" orientation="horizontal">
@@ -29,7 +29,7 @@
       <Button id="dropDown_items_minus_button" class="dropDown__m-l-10" text="-" @tap="removeItem(index)" v-show="countries.length > 1"></Button>
     </StackLayout>
     <Label id="dropDown_errors_label" class="dropDown__margin_top" text="Errors :" width="100"></Label>
-    <StackLayout class="dropDown_m-b-10" v-for="(error, index) in errors" :key="index" orientation="horizontal">
+    <StackLayout class="dropDown_m-b-10" v-for="(error, index) in errors"  orientation="horizontal">
       <TextField :id="`dropDown_errors_textField_${index}`" v-model="errors[index]" hint="This is placeholder" :editable="true" />
       <Button id="dropDown_errors_plus_button" class="dropDown__m-l-10" text="+" @tap="addErrorItem" style="background=dodgerblue"></Button>
       <Button id="dropDown_errors_minus_button" class="dropDown__m-l-10" text="-" @tap="removeErrorItem(index)" v-show="errors.length > 1"></Button>
@@ -38,17 +38,17 @@
 </template>
 
 <script>
-import DropDown from '../../../src/components/DropDown';
+import VxpDropDown from '../../../src/components/VxpDropDown';
 import Label from '../../../src/components/Label';
 import StackLayout from '../../../src/layouts/StackLayout';
 import TextField from '../../../src/components/TextField';
 import Button from '../../../src/components/Button';
 
 export default {
-  name: 'DropDownDoc',
+  name: 'VxpDropDownDoc',
   data() {
     return {
-      errors: ['error_1', 'error_2'],
+      errors: ['error_1'],
       countries: ['Albania', 'Algeria', 'American Samoa', 'Andorra', 'Angola', 'Anguilla', 'United States', 'Germany', 'Turkey'],
       selectedIndex: null,
       dropDownPlaceholder: 'Select Item',
@@ -73,7 +73,7 @@ export default {
     },
   },
   components: {
-    DropDown,
+    VxpDropDown,
     Label,
     StackLayout,
     TextField,

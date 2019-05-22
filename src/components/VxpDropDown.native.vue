@@ -11,7 +11,7 @@
 import ListPickerModal from './ListPickerModal';
 
 export default {
-  name: 'DropDown',
+  name: 'VxpDropDown',
   props: {
     placeholder: {
       type: String,

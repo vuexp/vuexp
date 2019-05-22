@@ -20,7 +20,6 @@ import TabView from '../../src/components/TabView';
 import TabViewItem from '../../src/components/TabViewItem';
 import AlertDialog from '../../src/components/dialogs/AlertDialog';
 import ConfirmDialog from '../../src/components/dialogs/ConfirmDialog';
-import DropDown from '../../src/components/DropDown';
 import AbsoluteLayout from '../../src/layouts/AbsoluteLayout';
 import StackLayout from '../../src/layouts/StackLayout';
 import DockLayout from '../../src/layouts/DockLayout';
@@ -57,6 +56,5 @@ localVue.component('DockLayout', DockLayout);
 localVue.component('FlexboxLayout', FlexboxLayout);
 localVue.component('GridLayout', GridLayout);
 localVue.component('WrapLayout', WrapLayout);
-localVue.component('DropDown', DropDown);
 
 export default localVue;
