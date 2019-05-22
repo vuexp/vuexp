@@ -10,7 +10,7 @@
 
       <FlexboxLayout flexWrap="wrap">
         <Label text="Is list reversed?" class="option-label"/>
-        <input id="vxplistview_reversed_cb" v-model="isListReversed" type="checkbox">
+        <VxpCheckbox id="vxplistview_reversed_cb" v-model="isListReversed" />
       </FlexboxLayout>
       
       <FlexboxLayout flexWrap="wrap">
@@ -21,7 +21,7 @@
           @tap="$refs.listView.scrollToStart(scrollToStartAnimated)"
         />
         <Label text="Animated?" style="margin-left: 10px"/>
-        <input id="vxplistview_scrolltostartanimated_cb" v-model="scrollToStartAnimated" type="checkbox">
+        <VxpCheckbox id="vxplistview_scrolltostartanimated_cb" v-model="scrollToStartAnimated" />
       </FlexboxLayout>
 
       <FlexboxLayout flexWrap="wrap">
@@ -32,7 +32,7 @@
           @tap="$refs.listView.scrollToEnd(scrollToEndAnimated)"
         />
         <Label text="Animated?" style="margin-left: 10px"/>
-        <input id="vxplistview_scrolltoendanimated_cb" v-model="scrollToEndAnimated" type="checkbox">
+        <VxpCheckbox id="vxplistview_scrolltoendanimated_cb" v-model="scrollToEndAnimated" />
       </FlexboxLayout>
 
       <FlexboxLayout flexWrap="wrap">
@@ -47,7 +47,7 @@
           @tap="$refs.listView.scrollToIndex(scrollToIndex, scrollToIndexAnimated)"
         />
         <Label text="Animated?" style="margin-left: 10px"/>
-        <input id="vxplistview_scrolltoindexanimated_cb" v-model="scrollToIndexAnimated" type="checkbox">
+        <VxpCheckbox id="vxplistview_scrolltoindexanimated_cb" v-model="scrollToIndexAnimated" />
       </FlexboxLayout>
 
 
@@ -60,7 +60,7 @@
 
       <FlexboxLayout flexWrap="wrap">
         <Label text="Indicator State" class="option-label"/>
-        <input id="vxplistview_indicatorstate_cb" v-model="statusIndicator.state" type="checkbox">
+        <VxpCheckbox id="vxplistview_indicatorstate_cb" v-model="statusIndicator.state" />
       </FlexboxLayout>
 
       <FlexboxLayout flexWrap="wrap">
@@ -80,7 +80,7 @@
       </FlexboxLayout>
       <FlexboxLayout flexWrap="wrap">
         <Label text="Black v-template?" class="option-label"/>
-        <input id="vxplistview_currentitem_cb" v-model="currentItem.state" type="checkbox">
+        <VxpCheckbox id="vxplistview_currentitem_cb" v-model="currentItem.state" />
       </FlexboxLayout>
       <FlexboxLayout flexWrap="wrap">
         <Label text="Actions" class="option-label"/>
@@ -136,6 +136,7 @@ import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
 import VxpListView from '../../../src/components/VxpListView';
 import Button from '../../../src/core/components/Button/Button';
 import VTemplate from '../../../src/core/components/VTemplate/VTemplate';
+import VxpCheckbox from '../../../src/components/VxpCheckbox';
 
 export default {
   name: 'VxpListViewDoc',
@@ -171,6 +172,7 @@ export default {
     VxpListView,
     Button,
     VTemplate,
+    VxpCheckbox,
   },
   methods: {
     onListViewTap(item, index) {
@@ -186,13 +188,13 @@ export default {
       this.listViewEvents.push("List view is scrolled.");
     },
     addCurrentItem() {
-        this.itemList.push({
-            text: this.currentItem.text,
-            state: this.currentItem.state,
-        });
+      this.itemList.push({
+        text: this.currentItem.text,
+        state: this.currentItem.state,
+      });
     },
     removeAllItems() {
-        this.itemList = [];
+      this.itemList = [];
     }
   },
 };

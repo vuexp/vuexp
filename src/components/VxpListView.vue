@@ -221,6 +221,9 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../themes/themes';
+@import '../assets/styles/helpers';
+
 .vxp-scrollable {
   .list-item {
     display: list-item; /* for web */
@@ -230,7 +233,7 @@ export default {
     &__status-indicator {
       margin: auto;
       align-items: center;
-      height: 100%;
+      height: unit(100%);
       display: flex;
       justify-content: center;
     }
@@ -243,13 +246,13 @@ export default {
 
   &::-webkit-scrollbar-thumb:vertical,
   &::-webkit-scrollbar-thumb:horizontal {
-    height: 30px;
+    height: unit(30);
     background-color: #ccc;
   }
 
   &::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: unit(8);
+    height: unit(8);
   }
 
   // moz scrollbar styles
