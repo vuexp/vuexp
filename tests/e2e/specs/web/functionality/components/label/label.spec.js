@@ -7,7 +7,5 @@ module.exports = {
       .setValue('#label_text_input', 'nightwatch')
       .assert.containsText('#label_component', 'nightwatch')
       .end();
-
-    browser.end();
   },
 };
