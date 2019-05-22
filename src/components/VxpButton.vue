@@ -23,9 +23,6 @@ import Span from '../core/components/Span/Span';
 export default {
   name: 'VxpButton',
   components: { Button, FormattedString, Span },
-  data: function() {
-    return {};
-  },
   props: {
     text: String,
     textWrap: {

@@ -26,21 +26,21 @@
     </StackLayout>
     <StackLayout orientation="horizontal">
       <Label text="Text Wrap :" width="100"></Label>
-      <input type="checkbox" v-model="textWrap" id="button_textWrap_selectbox" />
+      <VxpCheckbox v-model="textWrap" id="button_textWrap_selectbox" />
     </StackLayout>
     <StackLayout orientation="horizontal">
       <Label id="button_primary_label" text="Primary :" width="100"></Label>
-      <input type="checkbox" v-model="isPrimary" id="button_primary_checkbox" />
+      <VxpCheckbox v-model="isPrimary" id="button_primary_checkbox" />
       <Label id="button_primary_status_label" :text="isPrimary ? 'active' : ''" width="100"></Label>
     </StackLayout>
     <StackLayout orientation="horizontal">
       <Label id="button_secondary_label" text="Secondary :" width="100"></Label>
-      <input type="checkbox" v-model="isSecondary" id="button_secondary_checkbox" />
+      <VxpCheckbox v-model="isSecondary" id="button_secondary_checkbox" />
       <Label id="button_secondary_status_label" :text="isSecondary ? 'active' : ''" width="100"></Label>
     </StackLayout>
     <StackLayout orientation="horizontal">
       <Label id="button_disabled_label" text="Disabled :" width="100"></Label>
-      <input type="checkbox" v-model="isDisabled" id="button_disabled_checkbox" />
+      <VxpCheckbox v-model="isDisabled" id="button_disabled_checkbox" />
       <Label id="button_disabled_status_label" :text="isDisabled ? 'active' : ''" width="100"></Label>
     </StackLayout>
     <StackLayout orientation="horizontal">
@@ -79,6 +79,7 @@ import Label from '../../../src/core/components/Label/Label';
 import StackLayout from '../../../src/layouts/StackLayout';
 import TextField from '../../../src/core/components/TextField/TextField';
 import VxpButton from '../../../src/components/VxpButton';
+import VxpCheckbox from '../../../src/components/VxpCheckbox';
 
 export default {
   name: 'ButtonDoc',
@@ -108,6 +109,7 @@ export default {
     Label,
     StackLayout,
     TextField,
+    VxpCheckbox,
   },
 };
 </script>
