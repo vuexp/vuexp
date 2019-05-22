@@ -38,7 +38,7 @@ module.exports = {
             "components/vxp-label.md",
             "components/switcher.md",
             "components/search-bar.md",
-            "components/button.md",
+            "components/vxp-button.md",
             "components/textfield.md",
             "components/scrollview.md",
             "components/slider.md",
@@ -51,6 +51,7 @@ module.exports = {
             "components/segmented-bar.md",
             "components/progress.md",
             "components/vxp-link.md",
+            "components/vxp-list-view.md",
             "components/vxpiconbutton.md",
             "components/vxpcheckbox.md",
           ]
