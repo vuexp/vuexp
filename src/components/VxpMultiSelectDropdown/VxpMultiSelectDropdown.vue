@@ -19,6 +19,7 @@
           ref="searchInput"
           class="vxp-multiselectdropdown__search-input"
           v-model="searchText"
+          @input="searchTextChanged($event)"
           :editable="!isNative"
           :hint="hint"
           width="100%"
@@ -48,7 +49,7 @@
 import Platform from '../../platform';
 import Gestures from '../../mixins/GestureMixin';
 import NativeSelectionModal from './NativeSelectionModal';
-import MultiSelectDropdownMixins from './multiSelectDropdownMixins';
+import VxpMultiSelectDropdownMixins from './vxpMultiSelectDropdownMixins';
 
 export default {
   name: 'MultiSelectDropdown',
@@ -134,7 +135,7 @@ export default {
       this.deactivateSuggestions();
     },
   },
-  mixins: [Gestures, MultiSelectDropdownMixins],
+  mixins: [Gestures, VxpMultiSelectDropdownMixins],
 };
 </script>
 

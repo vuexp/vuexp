@@ -2,12 +2,12 @@ import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
 import sinon from 'sinon';
 import localVue from '../local-vue';
-import MultiSelectDropdown from '../../../src/components/MultiSelectDropdown/MultiSelectDropdown';
+import VxpMultiSelectDropdown from '../../../src/components/VxpMultiSelectDropdown/VxpMultiSelectDropdown';
 import TextField from '../../../src/components/TextField';
 import Label from '../../../src/components/Label';
 import platform from '../../../src/platform';
 
-describe('MultiSelectDropdown', () => {
+describe('VxpMultiSelectDropdown', () => {
   const wrapperClass = 'vxp-multiselectdropdown';
   const testHint = 'This is a test hint';
   const keyPropName = 'test1Key';
@@ -34,13 +34,13 @@ describe('MultiSelectDropdown', () => {
       return new Promise(resolve => {
         setTimeout(() => {
           resolve();
-        }, 100);
+        }, 10);
       }).then(cb);
     });
   };
 
   const createComponent = data => {
-    return mount(MultiSelectDropdown, {
+    return mount(VxpMultiSelectDropdown, {
       ...data,
       localVue,
     });
@@ -345,6 +345,19 @@ describe('MultiSelectDropdown', () => {
   });
 
   describe('search behaviour', () => {
+    it('will emit searchTextChanged event when search input is typed', () => {
+      const searchText = 'searchingText';
+      const searchTextChanged = sinon.spy();
+      wrapper = createMockedComponent(null, {
+        searchTextChanged,
+      });
+      wrapper.find(TextField).setValue(searchText);
+      wrapper.find(TextField).trigger('input');
+
+      expect(searchTextChanged.called).to.eq(true);
+      expect(searchTextChanged.getCall(0).args[0]).to.eq(searchText);
+    });
+
     it('will show filtered items according to searchText', () => {
       const toBeShownAfterFilterObject = {
         [labelPropName]: 'filtered_1',

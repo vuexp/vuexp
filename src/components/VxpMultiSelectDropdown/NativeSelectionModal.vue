@@ -18,7 +18,14 @@
             </StackLayout>
           </WrapLayout>
           <StackLayout flexGrow="1">
-            <TextField class="vxp-multiselectdropdown-native-modal__search-input" ref="searchInput" v-model="searchText" :hint="hint" width="100%"></TextField>
+            <TextField
+              class="vxp-multiselectdropdown-native-modal__search-input"
+              ref="searchInput"
+              v-model="searchText"
+              @input="searchTextChanged($event)"
+              :hint="hint"
+              width="100%"
+            ></TextField>
           </StackLayout>
         </WrapLayout>
         <StackLayout>
@@ -39,10 +46,10 @@
 </template>
 
 <script>
-import MultiSelectDropdownMixins from './multiSelectDropdownMixins';
+import VxpMultiSelectDropdownMixins from './vxpMultiSelectDropdownMixins';
 
 export default {
-  mixins: [MultiSelectDropdownMixins],
+  mixins: [VxpMultiSelectDropdownMixins],
 };
 </script>
 

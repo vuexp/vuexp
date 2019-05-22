@@ -60,5 +60,8 @@ export default {
       this.selected.splice(selectedItemIndex, 1);
       this.selectedChange();
     },
+    searchTextChanged(newText) {
+      this.$emit('searchTextChanged', newText);
+    },
   },
 };
