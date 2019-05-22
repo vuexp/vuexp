@@ -2,10 +2,12 @@
   <Button :text="text" @tap="onTap" :textWrap="textWrap" :class="vxpButtonClass" :type="type" :isEnabled="!disabled">
     <FormattedString v-if="(icon || iconClass) && iconPosition === 'left'">
       <Span :text="icon | fonticon" :class="iconClass" />
+      <Span text=" " />
       <Span :text="text" />
     </FormattedString>
     <FormattedString v-else-if="(icon || iconClass) && iconPosition !== 'left'">
       <Span :text="text" />
+      <Span text=" " />
       <Span :text="icon | fonticon" :class="iconClass" />
     </FormattedString>
   </Button>
