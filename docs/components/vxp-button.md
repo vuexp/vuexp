@@ -34,10 +34,10 @@ This is an overview of the most common usage of `<VxpButton>`.
 | disabled  | Boolean | `false`  | ✔   | ✔      | Sets the disability of the Button                                                                              |
 | primary   | Boolean | `false`  | ✔   | ✔      | Set this button as Primary                                                                                     |
 | secondary | Boolean | `false`  | ✔   | ✔      | Set this button as Secondary                                                                                   |
-| size      | String  | `medium` | ✔   | ✔      | Sets button size                                                                                               |
-| icon      | String  |          | ✔   | ✔      | Accepts name of the icon to show                                                                          |
+| size      | String  | `medium` | ✔   | ✔      | Sets button size. Valid values: `small` or `medium`.                                                           |
+| icon      | String  |          | ✔   | ✔      | Accepts name of the icon to show                                                                               |
 | iconClass | String  |          | ✔   | ✔      | Accepts css class of the icon to show                                                                          |
-| iconPosition| String | `left`   | ✔    | ✔       | Icon's position relative to text                                                                            |
+| iconPosition| String | `left`   | ✔    | ✔       | Icon's position relative to text. Valid values: `left` or `right`.                                          |
 ## Events
 
 | Name | Web | Mobile | Description                        |
