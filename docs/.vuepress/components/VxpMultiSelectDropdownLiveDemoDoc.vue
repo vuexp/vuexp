@@ -39,7 +39,7 @@
         </StackLayout>
         <StackLayout class="m-r-10" orientation="horizontal">
           <Label class="m-r-10" text="Selected: "></Label>
-          <input :id="'vxpmultiselectdropdown_items__selected_' + index + '_checkbox'" type="checkbox" @input="changeStatus($event.target.checked,item)" :checked="isItemSelected(item)">
+          <input :id="'vxpmultiselectdropdown_items__selected_' + index + '_checkbox'" type="checkbox" @change="changeStatus($event.target.checked,item)" :checked="isItemSelected(item)">
         </StackLayout>
       </StackLayout>
     </StackLayout>
