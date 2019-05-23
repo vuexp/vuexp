@@ -5,6 +5,7 @@
       :hint="hint"
       :emptySuggestionsLabel="emptySuggestionsLabel"
       v-model="selectedIndexes"
+      id="vxpmultiselectdropdown"
     ></VxpMultiSelectDropdown>
     <StackLayout class="demo-panel">
       <Label class="demo-panel__title" text="Behaviour Configuration"></Label>
@@ -45,7 +46,7 @@
 
     <StackLayout class="margin-top-10" orientation="horizontal">
       <Label text="Selected Indexes :"></Label>
-      <Label :text="selectedIndexes.join(',')"></Label>
+      <Label id="vxpmultiselectdropdown_selected_indexes" :text="selectedIndexes.join(',')"></Label>
     </StackLayout>
   </StackLayout>
 </template>
@@ -59,13 +60,13 @@ export default {
     VxpMultiSelectDropdown,
   },
   mounted(){
-    this.addNewItem('item1');
-    this.addNewItem('item2');
-    this.addNewItem('item3');
-    this.addNewItem('item4');
-    this.addNewItem('item5');
-    this.addNewItem('item6');
-    this.addNewItem('item7');
+    this.addNewItem('Lorem');
+    this.addNewItem('ipsum dolor');
+    this.addNewItem('quis nostrud');
+    this.addNewItem('voluptate velit');
+    this.addNewItem('esse');
+    this.addNewItem('occaecat');
+    this.addNewItem('mollit anim');
   },
   data() {
     return {
