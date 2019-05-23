@@ -9,6 +9,8 @@ const VxpPlugin = {
     Vue.prototype.$showModal = function(component, options = { context: null, fullscreen: false }) {
       return new Promise(resolve => {
         // eslint-disable-line
+        // eslint-disable-next-line no-console
+        console.log(options.context);
         const ContentComponent = Vue.extend(component);
         const ModalComponent = Vue.extend(Modal);
         const ModalInstance = new ModalComponent();

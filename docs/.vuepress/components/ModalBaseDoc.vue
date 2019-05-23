@@ -24,8 +24,10 @@ export default {
   },
   methods: {
     showModalBase: function() {
+
      // this.$showModal(Button, { props: { text: "hello", textWrap : true , isEnabled : true } }).then();
-      this.$showModal(Label, { props: { text: "hello", textWrap : true , isEnabled : true } }).then();
+     // this.$showModal(Label, { props: { text: "'hello'", textWrap : true , isEnabled : true } }).then();
+      this.$showModal(Label, { context: { props: { text: "'hello'", textWrap : true , isEnabled : true } }, fullscreen: false });
     },
   },
   components: {
