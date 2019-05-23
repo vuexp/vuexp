@@ -187,7 +187,7 @@
         class="dock input-param-row"
       >
         <Label
-          v-for="(dockChild, index) in dockChildrenList"
+          v-for="dockChild in dockChildrenList"
           v-bind="dockChild"
           :key="'dockChild_' + getRandInt()"
         />

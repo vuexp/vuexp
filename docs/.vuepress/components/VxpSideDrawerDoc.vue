@@ -1,64 +1,27 @@
 <template>
 	<StackLayout>
-		<VxpSideDrawer
-			id="VxpSideDrawer"
-			ref="drawer"
-			class="sidedrawer-doc-container">
-			<FlexboxLayout
-				flexDirection="column"
-				slot="drawerContent"
-				class="sidedrawer-doc-container__drawer">
+		<VxpSideDrawer id="VxpSideDrawer" ref="drawer" class="sidedrawer-doc-container">
+			<FlexboxLayout flexDirection="column" slot="drawerContent" class="sidedrawer-doc-container__drawer">
 				<FlexboxLayout class="sidedrawer-doc-container__drawer__title">
-					<Label
-						id="VxpSideDrawer_menu-title_label"
-						text="Navigation Menu"></Label>
+					<Label id="VxpSideDrawer_menu-title_label" text="Navigation Menu"></Label>
 				</FlexboxLayout>
 				<StackLayout>
-					<Label
-						id="VxpSideDrawer_menu-item-1_label"
-						text="Home"
-						class="sidedrawer-doc-container__drawer__label"></Label>
-					<Label
-						id="VxpSideDrawer_menu-item-2_label"
-						text="Social"
-						class="sidedrawer-doc-container__drawer__label"></Label>
-					<Label
-						id="VxpSideDrawer_menu-item-3_label"
-						text="Promotions"
-						class="sidedrawer-doc-container__drawer__label"></Label>
-					<Label
-						id="VxpSideDrawer_menu-item-4_label"
-						text="Starred"
-						class="sidedrawer-doc-container__drawer__label"></Label>
-					<Label
-						id="VxpSideDrawer_menu-item-5_label"
-						text="Drafts"
-						class="sidedrawer-doc-container__drawer__label"></Label>
+					<Label id="VxpSideDrawer_menu-item-1_label" text="Home" class="sidedrawer-doc-container__drawer__label"></Label>
+					<Label id="VxpSideDrawer_menu-item-2_label" text="Social" class="sidedrawer-doc-container__drawer__label"></Label>
+					<Label id="VxpSideDrawer_menu-item-3_label" text="Promotions" class="sidedrawer-doc-container__drawer__label"></Label>
+					<Label id="VxpSideDrawer_menu-item-4_label" text="Starred" class="sidedrawer-doc-container__drawer__label"></Label>
+					<Label id="VxpSideDrawer_menu-item-5_label" text="Drafts" class="sidedrawer-doc-container__drawer__label"></Label>
 				</StackLayout>
-				<Button
-					id="VxpSideDrawer_close-button_button"
-					@tap="closeDrawer"
-					primary
-					text="CLOSE DRAWER"></Button>
+				<Button id="VxpSideDrawer_close-button_button" @tap="closeDrawer" primary text="CLOSE DRAWER"></Button>
 			</FlexboxLayout>
 			<StackLayout slot="mainContent">
-				<Label
-					id="VxpSideDrawer_main-content_label"
-					:textWrap="true"
-					class="sidedrawer-doc-container__text"
-					text="Main Content Area" />
-				<Button
-					id="VxpSideDrawer_show-button_button"
-					@tap="showDrawer"
-					primary
-					text="SHOW DRAWER"></Button>
+				<Label id="VxpSideDrawer_main-content_label" :textWrap="true" class="sidedrawer-doc-container__text" text="Main Content Area" />
+				<Button id="VxpSideDrawer_show-button_button" @tap="showDrawer" primary text="SHOW DRAWER"></Button>
 			</StackLayout>
 		</VxpSideDrawer>
 		<StackLayout orientation="horizontal" class="control-panel-wrapper">
 			<Label text="Open/Closed Label:"></Label>
-			<Label
-				id="VxpSideDrawer_open-closed-status_label"
-				:text="openClosedStatus"></Label>
+			<Label id="VxpSideDrawer_open-closed-status_label" :text="openClosedStatus"></Label>
 		</StackLayout>
 	</StackLayout>
 </template>
@@ -75,12 +38,12 @@
 	export default {
 		name: "SideDrawerDoc",
 		components: {
-				VxpSideDrawer,
-				FlexboxLayout,
-				Label,
-				StackLayout,
-				Button,
-				TextField
+			VxpSideDrawer,
+			FlexboxLayout,
+			Label,
+			StackLayout,
+			Button,
+			TextField
 		},
 		data() {
 			return {
@@ -94,7 +57,7 @@
 			showDrawer() {
 				this.$refs.drawer.showDrawer();
 				this.openClosedStatus = this.$refs.drawer.$refs.drawer.opened.toString();
-				
+
 			},
 			closeDrawer() {
 				this.$refs.drawer.closeDrawer();
@@ -134,7 +97,7 @@
 	}
 
 	.control-panel-wrapper {
-		* { 
+		* {
 			margin: 3px;
 		}
 

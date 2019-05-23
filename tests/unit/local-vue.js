@@ -30,6 +30,7 @@ import WrapLayout from '../../src/layouts/WrapLayout';
 import ViewDirective from '../../src/core/directives/ViewDirective';
 import ModalDialog from '../../src/core/components/ModalDialog/ModalDialog';
 import WebView from '../../src/core/components/WebView/WebView';
+import VxpLink from '../../src/components/VxpLink';
 
 const localVue = createLocalVue();
 
@@ -50,10 +51,11 @@ localVue.component('SegmentedBarItem', SegmentedBarItem);
 localVue.component('SideDrawer', SideDrawer);
 localVue.component('Slider', Slider);
 localVue.component('Switcher', Switcher);
-localVue.component('TabView', TabView);
-localVue.component('TabViewItem', TabViewItem);
 localVue.component('TextField', TextField);
 localVue.component('TextView', TextView);
+localVue.component('VxpLink', VxpLink);
+localVue.component('TabView', TabView);
+localVue.component('TabViewItem', TabViewItem);
 localVue.component('WebView', WebView);
 localVue.component('AlertDialog', AlertDialog);
 localVue.component('ConfirmDialog', ConfirmDialog);
