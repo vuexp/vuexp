@@ -35,6 +35,7 @@ module.exports = {
           title: "Components",
           collapsable: true,
           children: [
+            "components/vxp-dropDown.md",
             "components/vxp-label.md",
             "components/switcher.md",
             "components/search-bar.md",
