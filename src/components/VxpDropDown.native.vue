@@ -4,6 +4,9 @@
       <VxpLabel :text="labelText" class="vxp-drop-down-picker__list__label" :class="{ 'vxp-drop-down-picker__list__label--placeholder': placeholderActive }" />
       <VxpLabel :text="'pz-arrow-fill-down' | fonticon" class="pz" />
     </FlexboxLayout>
+    <FlexboxLayout flexDirection="column" v-if="errors.length" class="theme--nuweb">
+      <VxpLabel :text="error" v-for="(error, index) in errors" :key="index" :textWrap="true" class="vxp-drop-down-picker__error-messages" />
+    </FlexboxLayout>
   </StackLayout>
 </template>
 
@@ -28,6 +31,10 @@ export default {
     disabled: {
       type: Boolean,
       default: false,
+    },
+    errors: {
+      type: Array,
+      default: () => [],
     },
   },
   data() {
@@ -89,6 +96,13 @@ $placeholder-color: #898d90;
       &--placeholder {
         color: $placeholder-color;
       }
+    }
+  }
+
+  @include themed($themes) {
+    &__error-messages {
+      color: getvar(alert);
+      margin-top: unit(8);
     }
   }
 }
