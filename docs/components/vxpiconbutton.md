@@ -104,7 +104,7 @@ increment() {
 }
 ```
 
-<IconButtonDoc />
+<VxpIconButtonDoc />
 </DocExampleBox>
 
 ### Props
