@@ -1,8 +1,13 @@
 <template>
   <StackLayout class="vxp-dropdown">
-    <StackLayout class="vxp-dropdown__menu" :class="{ 'vxp-dropdown__is-open': isMenuOpen }" orientation="horizontal" @tap="toggleMenu()">
-      <Label class="vxp-dropdown__menu__title" :text="title"></Label>
-      <Label class="vxp-dropdown__menu_icon" :text="icon | fonticon" :disabled="disabled" :class="iconClass" />
+    <StackLayout
+      class="vxp-dropdown__menu"
+      :class="{ 'vxp-dropdown__is-open': isMenuOpen, 'vxp-dropdown__menu__disabled': disabled }"
+      orientation="horizontal"
+      @tap="toggleMenu()"
+    >
+      <VxpLabel class="vxp-dropdown__menu__title" :text="title"></VxpLabel>
+      <VxpLabel class="vxp-dropdown__menu__icon" :text="icon | fonticon" :class="iconClass" />
     </StackLayout>
     <StackLayout class="vxp-dropdown__itemContainer" :class="{ 'is-visible': isMenuOpen }" v-if="items && !isNative">
       <VxpDropdownItem
@@ -12,6 +17,7 @@
         :key="index"
         :elementIndex="index"
         :isActive="selectedIndex === index"
+        :id="'dropdownmenu__item(' + index + ')__label'"
         @tap="selectItem(index, item)"
         @keyup.enter="selectItem(index, item)"
         @keyup.space="selectItem(index, item)"
@@ -22,10 +28,10 @@
 
 <script>
 import Gestures from '../../core/mixins/GestureMixin';
-import Label from '../../core/components/Label/Label';
 import StackLayout from '../../layouts/StackLayout';
 import platform from '../../platform';
 import VxpDropdownItem from './VxpDropdownItem';
+import VxpLabel from '../VxpLabel';
 
 export default {
   name: 'VxpDropdownMenu',
@@ -62,12 +68,14 @@ export default {
   },
   methods: {
     toggleMenu() {
-      if (!this.isNative) {
-        this.isMenuOpen = !this.isMenuOpen;
-      } else {
-        // action(this.title, this.nativeCancelBtnText, this.items.map(i => i.title)).then(result => {
-        //   this.$emit('selectedIndexChanged', result);
-        // });
+      if (!this.disabled) {
+        if (!this.isNative) {
+          this.isMenuOpen = !this.isMenuOpen;
+        } else {
+          // action(this.title, this.nativeCancelBtnText, this.items.map(i => i.title)).then(result => {
+          //   this.$emit('selectedIndexChanged', result);
+          // });
+        }
       }
     },
     selectItem(index, item) {
@@ -76,9 +84,9 @@ export default {
     },
   },
   components: {
+    VxpLabel,
     VxpDropdownItem,
     StackLayout,
-    Label,
   },
   mixins: [Gestures],
 };
@@ -96,6 +104,9 @@ export default {
     width: auto;
     &:hover {
       cursor: pointer;
+    }
+    &__icon {
+      margin-left: 0.6rem;
     }
   }
   &__itemContainer {
@@ -116,5 +127,10 @@ export default {
   &__is-open {
     background: rgb(240, 240, 252);
   }
+}
+.vxp-dropdown__menu__disabled {
+  border-color: #585858;
+  color: #585858;
+  cursor: not-allowed !important;
 }
 </style>

@@ -1,20 +1,20 @@
 <template>
   <StackLayout class="vxp-dropdown-item" :class="{ 'is-active': isActive }" orientation="horizontal">
-    <Label
+    <VxpLabel
       class="vxp-dropdown-item__icon"
       v-if="(icon && iconClass) || (item.icon && item.iconClass)"
       :text="(icon || item.icon) | fonticon"
       :class="iconClass || item.iconClass"
-    ></Label>
-    <Label v-if="item.title" :text="item.title" class="vxp-dropdown-item__title"></Label>
-    <Label v-else :text="title" class="vxp-dropdown-item__title"></Label>
+    ></VxpLabel>
+    <VxpLabel v-if="item.title" :text="item.title" class="vxp-dropdown-item__title"></VxpLabel>
+    <VxpLabel v-else :text="title" class="vxp-dropdown-item__title"></VxpLabel>
   </StackLayout>
 </template>
 
 <script>
 import Gestures from '../../core/mixins/GestureMixin';
-import Label from '../../core/components/Label/Label';
 import StackLayout from '../../layouts/StackLayout';
+import VxpLabel from '../VxpLabel';
 
 export default {
   name: 'VxpDropdownItem',
@@ -33,8 +33,8 @@ export default {
     },
   },
   components: {
+    VxpLabel,
     StackLayout,
-    Label,
   },
   mixins: [Gestures],
 };
