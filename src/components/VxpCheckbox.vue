@@ -108,6 +108,9 @@ export default {
     &__disabled {
       cursor: not-allowed;
       background-color: #cfd8dc !important;
+      label {
+        cursor: not-allowed !important;
+      }
     }
     &__icon {
       width: 40%;
