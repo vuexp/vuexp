@@ -12,7 +12,7 @@ describe('Action Dialog Plugin Testing', () => {
     name: 'SideDrawer',
     template:
       '<StackLayout class="sidedrawer"><StackLayout ref="drawerContent" class="drawer-content"></StackLayout>' +
-      '<StackLayout ref="mainContent" class="main-content"></StackLayout></StackLayout>',
+      '<StackLayout ref="mainContent" class="main-content"></StackLayout><slot /></StackLayout>',
     components: {
       StackLayout,
     },
