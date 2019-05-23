@@ -93,7 +93,7 @@
       <Label text="Events"></Label>
       <StackLayout style="margin-top:15px">
         <StackLayout class="form-group">
-          <Label id="iconbutton__enabled__label" text="Icon Button Enabled Status:">{{ isEnabled }}</Label>
+          <Label id="iconbutton__enabled__label" text="Icon Button isEnabled Status:">{{ isEnabled }}</Label>
         </StackLayout>
         <StackLayout class="form-group">
           <Label id="iconbutton__buttonicon__label" text="Icon Button Class Name:">{{ buttonIcon }}</Label>
