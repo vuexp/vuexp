@@ -25,14 +25,14 @@
     <VxpLabel id="dropDown_items_label" class="dropDown__margin_top" text="Items :" width="100"></VxpLabel>
     <StackLayout class="dropDown_m-b-10" v-for="(country, index) in countries" :key="index" orientation="horizontal">
       <TextField :id="`dropDown_items_textField_${index}`" v-model="countries[index]" hint="This is placeholder" :editable="true" />
-      <Button id="dropDown_items_plus_button" class="dropDown__m-l-10" text="+" @tap="addItem" style="background=dodgerblue"></Button>
-      <Button id="dropDown_items_minus_button" class="dropDown__m-l-10" text="-" @tap="removeItem(index)" v-show="countries.length > 1"></Button>
+      <VxpButton id="dropDown_items_plus_button" class="dropDown__m-l-10" text="+" @tap="addItem" style="background=dodgerblue"></VxpButton>
+      <VxpButton id="dropDown_items_minus_button" class="dropDown__m-l-10" text="-" @tap="removeItem(index)" v-show="countries.length > 1"></VxpButton>
     </StackLayout>
     <VxpLabel id="dropDown_errors_label" class="dropDown__margin_top" text="Errors :" width="100"></VxpLabel>
     <StackLayout class="dropDown_m-b-10" v-for="(error, index) in errors" :key="'error' + index" orientation="horizontal">
       <TextField :id="`dropDown_errors_textField_${index}`" v-model="errors[index]" hint="This is placeholder" :editable="true" />
-      <Button id="dropDown_errors_plus_button" class="dropDown__m-l-10" text="+" @tap="addErrorItem" style="background=dodgerblue"></Button>
-      <Button id="dropDown_errors_minus_button" class="dropDown__m-l-10" text="-" @tap="removeErrorItem(index)" v-show="errors.length > 1"></Button>
+      <VxpButton id="dropDown_errors_plus_button" class="dropDown__m-l-10" text="+" @tap="addErrorItem" style="background=dodgerblue"></VxpButton>
+      <VxpButton id="dropDown_errors_minus_button" class="dropDown__m-l-10" text="-" @tap="removeErrorItem(index)" v-show="errors.length > 1"></VxpButton>
     </StackLayout>
   </StackLayout>
 </template>
@@ -42,7 +42,7 @@ import VxpDropDown from '../../../src/components/VxpDropDown';
 import VxpLabel from '../../../src/components/VxpLabel';
 import StackLayout from '../../../src/layouts/StackLayout';
 import TextField from '../../../src/core/components/TextField/TextField';
-import Button from '../../../src/core/components/Button/Button';
+import VxpButton from '../../../src/components/VxpButton';
 
 export default {
   name: 'VxpDropDownDoc',
@@ -77,7 +77,7 @@ export default {
     VxpLabel,
     StackLayout,
     TextField,
-    Button,
+    VxpButton,
   },
 };
 </script>
