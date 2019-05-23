@@ -26,6 +26,7 @@ import DockLayout from '../../src/layouts/DockLayout';
 import FlexboxLayout from '../../src/layouts/FlexboxLayout';
 import GridLayout from '../../src/layouts/GridLayout';
 import WrapLayout from '../../src/layouts/WrapLayout';
+import VxpLink from '../../src/components/VxpLink';
 
 const localVue = createLocalVue();
 localVue.component('Button', Button);
@@ -46,6 +47,7 @@ localVue.component('TextView', TextView);
 localVue.component('ActionItem', ActionItem);
 localVue.component('NavigationButton', NavigationButton);
 localVue.component('ActionBar', ActionBar);
+localVue.component('VxpLink', VxpLink);
 localVue.component('TabView', TabView);
 localVue.component('TabViewItem', TabViewItem);
 localVue.component('AlertDialog', AlertDialog);

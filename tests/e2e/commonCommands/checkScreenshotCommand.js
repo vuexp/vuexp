@@ -59,11 +59,11 @@ function checkPageScreenshot(vrtSettings, message) {
 }
 
 function diffScreenshotPath(context, fileName) {
-  const nightwatchSettings = nightwatchSettingsFn(context);
+  const nightwatchSettings = nightwatchSettingsFn.apply(context);
   return nightwatchSettings.generate_screenshot_path(context.api, nightwatchSettings.diff_screenshots_path, `${fileName}${nightwatchSettings.diff_suffix}`);
 }
 function latestScreenshotPath(context, fileName) {
-  const nightwatchSettings = nightwatchSettingsFn(context);
+  const nightwatchSettings = nightwatchSettingsFn.apply(context);
   return nightwatchSettings.generate_screenshot_path(context.api, nightwatchSettings.latest_screenshots_path, `${fileName}${nightwatchSettings.latest_suffix}`);
 }
 
