@@ -32,7 +32,7 @@
         <Button @tap="removeAll()" id="vxpmultiselectdropdown_removeAll__button">Clear Items</Button>
       </StackLayout>
 
-      <StackLayout class="margin-top-10" v-for="(item,index) in selectableItems" orientation="horizontal">
+      <StackLayout class="margin-top-10" v-for="(item,index) in selectableItems" :key="index" orientation="horizontal">
         <StackLayout class="m-r-10" orientation="horizontal">
           <Label class="m-r-10" text="Label: "></Label>
           <TextField :id="'vxpmultiselectdropdown_items__label_' + index + '_input'" v-model="item.label"></TextField>
