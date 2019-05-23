@@ -33,7 +33,6 @@
 	import Label from '../../../src/core/components/Label/Label';
 	import StackLayout from '../../../src/layouts/StackLayout';
 	import Button from '../../../src/core/components/Button/Button';
-	import TextField from '../../../src/core/components/TextField/TextField';
 
 	export default {
 		name: "SideDrawerDoc",
@@ -42,8 +41,7 @@
 			FlexboxLayout,
 			Label,
 			StackLayout,
-			Button,
-			TextField
+			Button
 		},
 		data() {
 			return {
