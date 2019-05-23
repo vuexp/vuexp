@@ -13,7 +13,7 @@ module.exports = {
   devUrl: defaultDevUrl,
   runId: runId,
   preDefinedData: {},
-  visual_regression_settings: nightwatchVrtSettings(this),
+  visual_regression_settings: nightwatchVrtSettings.apply(this),
   before: function(done) {
     nightwatchVrtConfigBugFix(this);
     done();
@@ -39,6 +39,6 @@ module.exports = {
 
 function nightwatchVrtConfigBugFix(context) {
   if (context.test_settings) {
-    context.test_settings.visual_regression_settings = nightwatchVrtSettings(context);
+    context.test_settings.visual_regression_settings = nightwatchVrtSettings.apply(context);
   }
 }

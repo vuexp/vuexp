@@ -26,6 +26,7 @@ export default ({
     Vue.component('Button',Button);
     Vue.component('SearchBar',SearchBar);
   }
+
 };
 function addVxpPlugins(Vue) {
   Object.keys(Plugins).forEach(addPlugin(Vue));
