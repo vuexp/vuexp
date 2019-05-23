@@ -7,25 +7,25 @@ Vxp Side Drawer Component
 
 <DocExampleBox>
 ```html
-  <VxpSideDrawer ref="drawer" class="sidedrawer-doc-container">
-    <FlexboxLayout flexDirection="column" slot="drawerContent" class="sidedrawer-doc-container__drawer">
-		  <FlexboxLayout class="sidedrawer-doc-container__drawer__title">
-			  <Label text="Navigation Menu"></Label>
-			</FlexboxLayout>
-			<StackLayout>
-				<Label text="Home" class="sidedrawer-doc-container__drawer__label"></Label>
-				<Label text="Social" class="sidedrawer-doc-container__drawer__label"></Label>
-				<Label text="Promotions" class="sidedrawer-doc-container__drawer__label"></Label>
-				<Label text="Starred" class="sidedrawer-doc-container__drawer__label"></Label>
-				<Label text="Drafts" class="sidedrawer-doc-container__drawer__label"></Label>
-			</StackLayout>
-			<Button @tap="closeDrawer" primary text="CLOSE DRAWER"></Button>
+<VxpSideDrawer ref="drawer" class="sidedrawer-doc-container">
+  <FlexboxLayout flexDirection="column" slot="drawerContent" class="sidedrawer-doc-container__drawer">
+    <FlexboxLayout class="sidedrawer-doc-container__drawer__title">
+      <Label text="Navigation Menu"></Label>
     </FlexboxLayout>
-    <StackLayout slot="mainContent">
-      <Label :textWrap="true" class="sidedrawer-doc-container__text" text="Main Content Area" />
-			<Button @tap="showDrawer" primary text="SHOW DRAWER"></Button>
+    <StackLayout>
+      <Label text="Home" class="sidedrawer-doc-container__drawer__label"></Label>
+      <Label text="Social" class="sidedrawer-doc-container__drawer__label"></Label>
+      <Label text="Promotions" class="sidedrawer-doc-container__drawer__label"></Label>
+      <Label text="Starred" class="sidedrawer-doc-container__drawer__label"></Label>
+      <Label text="Drafts" class="sidedrawer-doc-container__drawer__label"></Label>
     </StackLayout>
-  </VxpSideDrawer>
+    <Button @tap="closeDrawer" primary text="CLOSE DRAWER"></Button>
+  </FlexboxLayout>
+  <StackLayout slot="mainContent">
+    <Label :textWrap="true" class="sidedrawer-doc-container__text" text="Main Content Area" />
+    <Button @tap="showDrawer" primary text="SHOW DRAWER"></Button>
+  </StackLayout>
+</VxpSideDrawer>
 ```
 
 ```scss
@@ -33,28 +33,28 @@ Vxp Side Drawer Component
   height: 340px;
 
   &__drawer {
-  	background-color: #282b30;
-		color: #ffffff;
-		padding: 20px;
-		width: 200px;
-		height: 100%;
+    background-color: #282b30;
+    color: #ffffff;
+    padding: 20px;
+    width: 200px;
+    height: 100%;
 
-  	&__title {
-	  	text-align: center;
-	  	font-weight: bold;
-	  	color: #ebebeb;
-	  }
+    &__title {
+      text-align: center;
+      font-weight: bold;
+      color: #ebebeb;
+    }
 
-	  &__label {
-		  line-height: 36px;
-		  border-bottom: solid 1px #393c41;
-	  }
+    &__label {
+      line-height: 36px;
+      border-bottom: solid 1px #393c41;
+    }
   }
 
-	&__text {
-	  text-align: center;
-	  margin-bottom: 20px;
-	}
+  &__text {
+    text-align: center;
+    margin-bottom: 20px;
+  }
 }
 ```
 
@@ -66,21 +66,21 @@ Vxp Side Drawer Component
 ```html
   <VxpSideDrawer ref="drawer" class="sidedrawer-doc-container">
     <FlexboxLayout flexDirection="column" slot="drawerContent" class="sidedrawer-doc-container__drawer">
-		  <FlexboxLayout class="sidedrawer-doc-container__drawer__title">
-			  <Label text="Navigation Menu"></Label>
-			</FlexboxLayout>
-			<StackLayout>
-				<Label text="Home" class="sidedrawer-doc-container__drawer__label"></Label>
-				<Label text="Social" class="sidedrawer-doc-container__drawer__label"></Label>
-				<Label text="Promotions" class="sidedrawer-doc-container__drawer__label"></Label>
-				<Label text="Starred" class="sidedrawer-doc-container__drawer__label"></Label>
-				<Label text="Drafts" class="sidedrawer-doc-container__drawer__label"></Label>
-			</StackLayout>
-			<Button @tap="closeDrawer" primary text="CLOSE DRAWER"></Button>
+      <FlexboxLayout class="sidedrawer-doc-container__drawer__title">
+        <Label text="Navigation Menu"></Label>
+      </FlexboxLayout>
+      <StackLayout>
+        <Label text="Home" class="sidedrawer-doc-container__drawer__label"></Label>
+        <Label text="Social" class="sidedrawer-doc-container__drawer__label"></Label>
+        <Label text="Promotions" class="sidedrawer-doc-container__drawer__label"></Label>
+        <Label text="Starred" class="sidedrawer-doc-container__drawer__label"></Label>
+        <Label text="Drafts" class="sidedrawer-doc-container__drawer__label"></Label>
+      </StackLayout>
+      <Button @tap="closeDrawer" primary text="CLOSE DRAWER"></Button>
     </FlexboxLayout>
     <StackLayout slot="mainContent">
       <Label :textWrap="true" class="sidedrawer-doc-container__text" text="Main Content Area" />
-			<Button @tap="showDrawer" primary text="SHOW DRAWER"></Button>
+      <Button @tap="showDrawer" primary text="SHOW DRAWER"></Button>
     </StackLayout>
   </VxpSideDrawer>
 ```
