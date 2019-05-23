@@ -48,8 +48,8 @@
     </FlexboxLayout>
 
     <FlexboxLayout class="nubutton-doc-container__config" flexDirection="row" justifyContent="start" style="margin: 10px">
-      <Label text="Disable State: " width="100" />
-      <VxpCheckbox id="iconbutton__check__checkbox" class="nubutton-doc-container__config__checkbox" primary @change="isEnabled = !isEnabled" />
+      <Label text="isEnabled State: " width="125" />
+      <VxpCheckbox id="iconbutton__check__checkbox" class="nubutton-doc-container__config__checkbox" :checked="isEnabled" primary @change="isEnabled = !isEnabled" />
     </FlexboxLayout>
     <StackLayout class="prop-container">
       <Label text="Icon Class"></Label>
@@ -137,9 +137,9 @@ export default {
       isEnabled: true,
       eventName: '',
       buttonIcon: 'fa fa-exclamation-triangle',
-      iconSize1: 15,
+      iconSize1: 37,
       iconSize2: 37,
-      iconSize3: 45,
+      iconSize3: 37,
       icons: ['fa fa-smile-o', 'fa fa-user-circle-o', 'fa fa-exclamation-triangle'],
       sizes: ['10', '15', '20', '25', '30', '35', '37', '40', '45', '50', '55', '60', '65', '70'],
     };
