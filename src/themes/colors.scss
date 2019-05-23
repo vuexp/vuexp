@@ -1,0 +1,121 @@
+// Black
+$black:                            #000000;
+$white:                            #ffffff;
+
+// Gray
+$gray-20:                          #f1f1f4;
+$gray-40:                          #888d8f;
+$gray-60:                          #757575;
+$gray-90:                          #212121;
+
+// Violet-Red
+$violet-red:                       #f8473b;
+$violet-red-20:                    mix($black, $violet-red, 20);
+$violet-red-80:                    mix($white, $violet-red, 80);
+
+// Venetian-Red
+$venetian-red:                     #d80020;
+$venetian-red-20:                  mix($black, $venetian-red, 20);
+$venetian-red-80:                  mix($white, $venetian-red, 80);
+$alert-red:                        #f44337;
+
+// water-blue
+$water-blue:                       #1686e0;
+$water-blue-light:                 #63cef8;
+$water-blue-50:                    mix($white, $water-blue, 50);
+
+// gray
+$secondary-gray:                   #d5d9dd;
+
+// Indigo
+$indigo:                           #364ec7;
+$indigo-20:                        mix($black, $indigo, 20);
+$indigo-80:                        mix($white, $indigo, 80);
+
+// Green
+$green:                            #00924b;
+$green-20:                         mix($black, $green, 20);
+$green-80:                         mix($white, $green, 80);
+$green-status:                     #05aa5a;
+
+// Kelly Green
+$kelly-green:                      #46b430;
+$kelly-green-80:                   mix($white, $kelly-green, 80);
+
+// Lawn Green
+$lawn-green:                       #8cd800;
+$lawn-green-80:                    mix($white, $lawn-green, 80);
+
+// Green Haze
+$green-haze:                       #04aa5a;
+
+// Malachite
+$malachite:                        #00d84c;
+$malachite-20:                     mix($black, $malachite, 20);
+$malachite-80:                     mix($white, $malachite, 80);
+
+// Old Gold
+$old-gold:                         #c7af36;
+$old-gold-80:                      mix($white, $old-gold, 80);
+
+// Orange
+$orange:                           #ffa225;
+
+$orange-10:                        #ffecb6;
+$orange-70:                        $orange;
+$orange-90:                        #fc7420;
+
+// Pumpkin
+$pumpkin:                          #f96216;
+$pumpkin-80:                       mix($white, $pumpkin, 80);
+
+// Blue
+$blue:                             #2583ff;
+$blue-10:                          #bbddff;
+$blue-60:                          $blue;
+$blue-90:                          #2c3db8;
+
+// Dodger-Blue
+$dodger-blue:                      #009bef;
+$dodger-blue-20:                   mix($black, $dodger-blue, 20);
+$dodger-blue-80:                   mix($white, $dodger-blue, 80);
+
+// Pink
+$pink:                             #ff0267;
+$pink-20:                          #ff90b5;
+$pink-50:                          $pink;
+$pink-90:                          #9e0057;
+
+// Purple
+$purple:                           #7900f2;
+$purple-20:                        #c197f9;
+$purple-50:                        $purple;
+$purple-90:                        #4800de;
+
+// Bismark
+$bismark:                          #546e7a;
+$bismark-20:                       mix($white, $bismark, 20);
+$bismark-60:                       mix($white, $bismark, 60);
+$bismark-80:                       mix($white, $bismark, 80);
+$bismark-90:                       mix($white, $bismark, 90);
+
+// Blue Gray
+$blue-gray:                        #607d8b;
+
+$blue-gray-00:                     #eceff1;
+$blue-gray-20:                     #b0bec5;
+$blue-gray-40:                     #78909c;
+$blue-gray-60:                     #546e7a;
+
+// Denim
+$denim:                            #1978c7;
+
+// Silver Sand
+$silver-sand:                      #c5c7ca;
+
+// Oslo Gray
+$oslo-gray:                        #898d90;
+$oslo-gray-30:                     rgba(137, 141, 144, 0.3);
+
+//  Silver
+$silver:                           #cccccc;

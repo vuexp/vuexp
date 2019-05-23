@@ -25,9 +25,9 @@
 
 
 <script>
-import ScrollView from '../../../src/components/ScrollView'
+import ScrollView from '../../../src/core/components/ScrollView/ScrollView'
 import StackLayout from '../../../src/layouts/StackLayout'
-import Label from "../../../src/components/Label";
+import Label from "../../../src/core/components/Label/Label";
 
 export default {
   name: "ScrollViewDoc",
