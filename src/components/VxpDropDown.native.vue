@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import ListPickerModal from './ListPickerModal';
+import ListPickerModal from '../core/components/ListPickerModal/ListPickerModal';
 import VxpLabel from './VxpLabel';
 
 export default {

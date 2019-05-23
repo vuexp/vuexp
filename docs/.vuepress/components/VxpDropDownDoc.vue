@@ -14,11 +14,11 @@
     </StackLayout>
     <StackLayout orientation="horizontal">
       <VxpLabel id="dropDown_placeholder_label" class="dropDown__margin_top" text="Placeholder:" width="100"></VxpLabel>
-      <input type="text" id="dropDown_placeholder_input" class="dropDown__margin_top" v-model="dropDownPlaceholder" />
+      <TextField type="text" id="dropDown_placeholder_textField" class="dropDown__margin_top" v-model="dropDownPlaceholder" />
     </StackLayout>
     <StackLayout orientation="horizontal">
       <VxpLabel id="dropDown_disabled_label" class="dropDown__margin_top" text="Disabled :" width="100"></VxpLabel>
-      <input type="checkbox" id="dropDown_disabled_checkbox" class="dropDown__margin_top" v-model="dropDownDisabled" />
+      <VxpCheckBox id="dropDown_disabled_checkbox" class="dropDown__margin_top" v-model="dropDownDisabled" />
       <VxpLabel id="dropDown_checkbox_text_label" class="dropDown__margin_top dropDown__m-l-10" text="Is Disabled :" width="100"></VxpLabel>
       <VxpLabel id="dropDown_checkbox_value_label" class="dropDown__margin_top" :text = "dropDownDisabled.toString()" width="100"></VxpLabel>
     </StackLayout>
@@ -43,6 +43,7 @@ import VxpLabel from '../../../src/components/VxpLabel';
 import StackLayout from '../../../src/layouts/StackLayout';
 import TextField from '../../../src/core/components/TextField/TextField';
 import VxpButton from '../../../src/components/VxpButton';
+import VxpCheckBox from '../../../src/components/VxpCheckbox';
 
 export default {
   name: 'VxpDropDownDoc',
@@ -78,6 +79,7 @@ export default {
     StackLayout,
     TextField,
     VxpButton,
+    VxpCheckBox
   },
 };
 </script>

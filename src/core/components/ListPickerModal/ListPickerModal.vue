@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import platform from '../platform';
+import platform from '../../../platform';
 
 export default {
   name: 'ListPickerModal',

@@ -252,7 +252,7 @@ $placeholder-color: #898d90;
 
 .slide-fade-enter,
 .slide-fade-leave-to {
-  transform: translateY(-10px);
+  transform: translateY(unit(-10));
   opacity: 0;
 }
 
@@ -271,12 +271,12 @@ $placeholder-color: #898d90;
     cursor: pointer;
 
     &__toggle {
-      min-height: 20px;
-      padding: 9px 15px 9px 0;
+      min-height: unit(20);
+      padding: unit(9) unit(15) unit(9) unit(0);
       border-top: none;
       border-left: none;
       border-right: none;
-      border-bottom: solid 1px $border-color;
+      border-bottom: solid unit(1) $border-color;
       box-sizing: border-box;
       width: 100%;
       cursor: pointer;
@@ -298,17 +298,17 @@ $placeholder-color: #898d90;
       @include themed($themes) {
         &__error-messages {
           color: getvar(alert);
-          margin-top: 8px;
+          margin-top: unit(8);
         }
       }
     }
 
     &__icon {
-      padding: 15px 10px 10px 10px;
+      padding: unit(15) unit(10) unit(10) unit(10);
       position: absolute;
       z-index: 2;
       color: #898d90;
-      font-size: 10px;
+      font-size: unit(10);
       pointer-events: none;
     }
   }
@@ -320,18 +320,19 @@ $placeholder-color: #898d90;
     list-style: none;
     padding: 0;
     margin: 0;
-    border-right: solid 1px $border-color;
-    border-left: solid 1px $border-color;
-    border-bottom: solid 1px $border-color;
+    border-right: solid unit(1) $border-color;
+    border-left: solid unit(1) $border-color;
+    border-bottom: solid unit(1) $border-color;
     background-color: #ffffff;
-    height: 255px;
+    height: unit(255);
     overflow-y: scroll;
 
-    box-shadow: 0 12px 13px -11px rgba(0, 0, 0, 0.1), -10px -3px 13px -11px rgba(0, 0, 0, 0.1), 10px -3px 13px -11px rgba(0, 0, 0, 0.1);
+    box-shadow: unit(0) unit(12) unit(13) unit(-11) rgba(0, 0, 0, 0.1), unit(-10) unit(-3) unit(13) unit(11) rgba(0, 0, 0, 0.1),
+      unit(10) unit(-3) unit(13) unit(-11) rgba(0, 0, 0, 0.1);
 
     li {
-      min-height: 20px;
-      padding: 6px 5px;
+      min-height: unit(20);
+      padding: unit(6) unit(5);
       background-color: #ffffff;
 
       &.hover {

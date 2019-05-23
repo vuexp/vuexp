@@ -30,12 +30,6 @@ This is an overview of the most common usage of `<VxpDropDown>`.
 
 ### Events
 
-| Name        | Web | Mobile |
-| ----------- | --- | ------ |
-| changeIndex | ✔   | ✔      |
-
-### Dependencies
-
-#### Note: The following components to be used from 'nativescript-vue-web'
-
-| StackLayout, FlexboxLayout, FormattedString |
+| Name        | Web | Mobile | Description
+| ----------- | --- | ------ | -----------
+| changeIndex | ✔   | ✔      | Event occurs whenever dropDown item changes by user interaction
