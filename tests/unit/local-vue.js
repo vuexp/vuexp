@@ -28,7 +28,7 @@ import GridLayout from '../../src/layouts/GridLayout';
 import StackLayout from '../../src/layouts/StackLayout';
 import WrapLayout from '../../src/layouts/WrapLayout';
 import ViewDirective from '../../src/core/directives/ViewDirective';
-import ModalDialog from '../../src/core/components/ModalDialog/ModalDialog';
+import ModalDialog from '../../src/core/components/BaseModal/ModalBase';
 import WebView from '../../src/core/components/WebView/WebView';
 import VxpLink from '../../src/components/VxpLink';
 
