@@ -68,8 +68,8 @@
 <script>
 import Platform from '../platform';
 import Gestures from '../core/mixins/GestureMixin';
-import NativeSelectionModal from '../core/components/VxpMultiSelectDropdown/NativeSelectionModal';
-import VxpMultiSelectDropdownMixins from '../core/components/VxpMultiSelectDropdown/vxpMultiSelectDropdownMixins';
+import NativeSelectionModal from '../core/components/MultiSelectDropdown/NativeSelectionModal';
+import MultiSelectDropdownMixins from '../core/components/MultiSelectDropdown/MultiSelectDropdownMixins';
 import StackLayout from '../layouts/StackLayout';
 import WrapLayout from '../layouts/WrapLayout';
 import GridLayout from '../layouts/GridLayout';
@@ -167,7 +167,7 @@ export default {
       this.deactivateSuggestions();
     },
   },
-  mixins: [Gestures, VxpMultiSelectDropdownMixins],
+  mixins: [Gestures, MultiSelectDropdownMixins],
 };
 </script>
 

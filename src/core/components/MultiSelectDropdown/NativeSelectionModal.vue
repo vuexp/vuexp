@@ -44,10 +44,10 @@
 </template>
 
 <script>
-import VxpMultiSelectDropdownMixins from './vxpMultiSelectDropdownMixins';
+import MultiSelectDropdownMixins from './MultiSelectDropdownMixins';
 
 export default {
-  mixins: [VxpMultiSelectDropdownMixins],
+  mixins: [MultiSelectDropdownMixins],
 };
 </script>
 
