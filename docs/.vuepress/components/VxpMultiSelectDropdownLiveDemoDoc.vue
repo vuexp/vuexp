@@ -28,18 +28,38 @@
       <VxpLabel class="demo-panel__title" text="Items Configuration"></VxpLabel>
 
       <StackLayout orientation="horizontal">
-        <VxpButton @tap="addNewItem()" id="vxpmultiselectdropdown_addNewItem__button" text="Add New Item"></VxpButton>
-        <VxpButton @tap="removeAll()" id="vxpmultiselectdropdown_removeAll__button" text="Clear Items"></VxpButton>
+        <VxpButton
+          @tap="addNewItem()"
+          id="vxpmultiselectdropdown_addNewItem__button"
+          text="Add New Item"
+        ></VxpButton>
+        <VxpButton
+          @tap="removeAll()"
+          id="vxpmultiselectdropdown_removeAll__button"
+          text="Clear Items"
+        ></VxpButton>
       </StackLayout>
 
-      <StackLayout class="margin-top-10" v-for="(item,index) in selectableItems" :key="index" orientation="horizontal">
+      <StackLayout
+        class="margin-top-10"
+        v-for="(item,index) in selectableItems"
+        :key="index"
+        orientation="horizontal"
+      >
         <StackLayout class="m-r-10" orientation="horizontal">
           <VxpLabel class="m-r-10" text="Label: "></VxpLabel>
-          <TextField :id="'vxpmultiselectdropdown_items__label_' + index + '_input'" v-model="item.label"></TextField>
+          <TextField
+            :id="'vxpmultiselectdropdown_items__label_' + index + '_input'"
+            v-model="item.label"
+          ></TextField>
         </StackLayout>
         <StackLayout class="m-r-10" orientation="horizontal">
           <VxpLabel class="m-r-10" text="Selected: "></VxpLabel>
-          <VxpCheckbox :id="'vxpmultiselectdropdown_items__selected_' + index + '_checkbox'" @change="changeStatus($event,item)" :checked="isItemSelected(item)" />
+          <VxpCheckbox
+            :id="'vxpmultiselectdropdown_items__selected_' + index + '_checkbox'"
+            @change="changeStatus($event,item)"
+            :checked="isItemSelected(item)"
+          />
         </StackLayout>
       </StackLayout>
     </StackLayout>
@@ -55,25 +75,22 @@
 import VxpMultiSelectDropdown from '../../../src/components/VxpMultiSelectDropdown';
 
 import StackLayout from '../../../src/layouts/StackLayout';
-import WrapLayout from '../../../src/layouts/WrapLayout';
-import VxpLabel  from '../../../src/components/VxpLabel';
-import VxpCheckbox  from '../../../src/components/VxpCheckbox';
-import VxpButton  from '../../../src/components/VxpButton';
+import VxpLabel from '../../../src/components/VxpLabel';
+import VxpCheckbox from '../../../src/components/VxpCheckbox';
+import VxpButton from '../../../src/components/VxpButton';
 import TextField from '../../../src/core/components/TextField/TextField';
-
 
 export default {
   name: 'VxpMultiSelectDropdownLiveDemoDoc',
   components: {
     VxpMultiSelectDropdown,
     StackLayout,
-    WrapLayout,
     VxpLabel,
     VxpButton,
     TextField,
-    VxpCheckbox
+    VxpCheckbox,
   },
-  mounted(){
+  mounted() {
     this.addNewItem('Lorem');
     this.addNewItem('ipsum dolor');
     this.addNewItem('quis nostrud');
@@ -101,7 +118,7 @@ export default {
       this.selectableItems = [];
       this.selectedIndexes = [];
     },
-    changeStatus(checked,item) {
+    changeStatus(checked, item) {
       const itemIndex = this.selectableItems.indexOf(item);
       const selectedArrayIndex = this.selectedIndexes.indexOf(itemIndex);
       if (selectedArrayIndex > -1) {
