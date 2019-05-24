@@ -6,7 +6,7 @@ sidebarDepth: 0
 
 This is an overview of the most common usage of ModalBase.
 
-The `alert()` method shows a message and an OK button. Use it to show information and notifications that do not require an action from the user.
+The `$showModal` method shows template contains components. Use it to show information that do not require an action from the user.
 
 ## Live Demo
 <DocExampleBox :liveDemoMode="true">
@@ -17,7 +17,7 @@ The `alert()` method shows a message and an OK button. Use it to show informatio
 
 ```js
    showAlertBase: function() {
-      alert({title: "Your title", message: "Your message", okButtonText: "Your OK button text"}).then(() => {
+      $showModal({title: "Your title", message: "Your message", okButtonText: "Your OK button text"}).then(() => {
         console.log("Modal Base closed.");
       });
     }
@@ -26,9 +26,9 @@ The `alert()` method shows a message and an OK button. Use it to show informatio
 <ModalBaseDoc />
 </DocExampleBox>
 
-```js
-alert("Your message").then(() => {
-  console.log("Modal Base closed.");
-});
-```
+## Props
+
+| Name     | Type    | Default | Web | Mobile | Desctiption |
+| -------- | ------- | ------- | --- | ------ |------|
+| fullscreen | Boolean | `false` | ✔   | ✔      |Sets the size of dialog component|
 

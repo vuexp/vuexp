@@ -1,43 +1,71 @@
 <template>
-  <StackLayout>
-    <Button text="Show Modal Base" width="200" @tap="showModalBase" id="modalBase_docs" />
-    <FlexboxLayout flexDirection="row" flexWrap="wrap">
-      <Label text="Clicked Action:" class="label"></Label>
-      <Label :text="eventText" class="form-input" id="modalBase_event_label"></Label>
-    </FlexboxLayout>
+  <StackLayout orientation="vertical" class="theme--nuweb">
+     <StackLayout orientation="horizontal" >
+    <VxpButton
+      text="Show Modal Base"
+      width="500px !important"
+      @tap="showModalButton"
+      id="modalbase_component"
+      primary
+    />
+    </StackLayout>
+    <StackLayout orientation="horizontal">
+      <VxpLabel class="modalBase__label" id="label_fullscreen" text="Fullscreen:"></VxpLabel>
+      <FlexboxLayout>
+        <VxpCheckbox
+          class="checkbox-doc-container__flexboxLayout__checkbox"
+          id="checkbox_fullscreen"
+          v-model="checkforbutton"
+          style="margin-top:10px;"
+        />
+      </FlexboxLayout>
+    </StackLayout>
   </StackLayout>
 </template>
 
 <script>
-import Label from '../../../src/core/components/Label/Label';
+import VxpLabel from '../../../src/components/VxpLabel';
 import StackLayout from '../../../src/layouts/StackLayout';
-import Button from '../../../src/core/components/Button/Button';
+import VxpButton from '../../../src/components/VxpButton';
 import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
 import ModalBase from '../../../src/core/components/BaseModal/ModalBase';
+import ModalBaseButton from './ModalBaseButton';
+import VxpCheckbox from '../../../src/components/VxpCheckbox';
 
 export default {
   name: 'ModalBaseDoc',
   data() {
     return {
       eventText: '-',
+      checkforlabel: false,
+      checkforbutton: false,
     };
   },
   methods: {
-    showModalBase: function() {
-
-     // this.$showModal(Button, { props: { text: "hello", textWrap : true , isEnabled : true } }).then();
-     // this.$showModal(Label, { props: { text: "'hello'", textWrap : true , isEnabled : true } }).then();
-      this.$showModal(Label, { context: { props: { text: "'hello'", textWrap : true , isEnabled : true } }, fullscreen: false });
+    showModalButton() {
+      this.$showModal(ModalBaseButton, { fullscreen: this.checkforbutton }).then(textWrap => {});
+    },
+    showModalLabel() {
+      this.$showModal(ModalBaseLabel, { fullscreen: this.checkforlabel }).then(textWrap => {});
     },
   },
   components: {
     FlexboxLayout,
     StackLayout,
-    Label,
-    Button,
+    VxpLabel,
+    VxpButton,
     ModalBase,
+    VxpCheckbox,
   },
 };
 </script>
-
-<style lang="scss" scoped></style>
+<style lang="scss">
+@import '../../../src/themes/themes';
+@import '../../../src/assets/styles/helpers';
+.modalBase {
+  &__label {
+    margin: 10px;
+    font-weight: bold;
+  }
+}
+</style>
