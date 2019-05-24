@@ -28,7 +28,6 @@ import VxpLabel from '../../../src/components/VxpLabel';
 import StackLayout from '../../../src/layouts/StackLayout';
 import VxpButton from '../../../src/components/VxpButton';
 import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
-import ModalBase from '../../../src/core/components/BaseModal/ModalBase';
 import ModalBaseButton from './ModalBaseButton';
 import VxpCheckbox from '../../../src/components/VxpCheckbox';
 
