@@ -8,8 +8,8 @@
 
 <script>
 import StackLayout from '../../../src/layouts/StackLayout';
-import Label from '../../../src/components/Label';
-import Frame from '../../../src/components/Frame';
+import Label from '../../../src/core/components/Label/Label';
+import Frame from '../../../src/core/components/Frame/Frame';
 
 export default {
   name: 'FrameDoc',
