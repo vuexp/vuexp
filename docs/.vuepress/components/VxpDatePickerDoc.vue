@@ -1,5 +1,5 @@
 <template>
-  <StackLayout class="theme--nuweb">
+  <StackLayout class="theme--vuexp">
     <VxpDatePicker
       class="vxp-date-picker-doc"
       :label="label"
@@ -54,7 +54,7 @@
       <VxpLabel id="datePicker_min_year_label" class="vxp-datePicker-doc__label_width" text="Select Min Year: " />
       <TextField type="number" id="datePicker_min_year_textField" min="0" v-model="minYear" />
     </StackLayout>
-    <StackLayout orientation="horizontal" class="vxp-datePicker-doc_margin_top">
+    <StackLayout orientation="horizontal" class="vxp-datePicker-doc__margin_top">
       <VxpLabel id="datePicker_max_year_label" class="vxp-datePicker-doc__label_width" text="Select Max Year: " />
       <TextField type="number" id="datePicker_max_year_textField" min="0" class="vxp-datePicker-doc__margin_top" v-model="maxYear" />
     </StackLayout>
