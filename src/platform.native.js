@@ -1,7 +1,7 @@
 import { getGridColumn } from './ui/grid';
 
 const { device, isIOS, isAndroid, screen } = require('tns-core-modules/platform'); // eslint-disable-line
-const nativescriptOrientation = require('nativescript-orientation');
+const nativescriptOrientation = require('nativescript-orientation');  // eslint-disable-line
 
 function getScreenScale() {
   return screen.mainScreen.scale;
