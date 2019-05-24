@@ -1,5 +1,5 @@
 <template>
-  <StackLayout orientation="vertical" class="theme--nuweb">
+  <StackLayout orientation="vertical" class="theme--vuexp">
      <StackLayout orientation="horizontal" >
     <VxpButton
       text="Show Modal Base"

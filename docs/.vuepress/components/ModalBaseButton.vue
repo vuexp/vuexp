@@ -1,6 +1,6 @@
 <template>
   <Page>
-    <StackLayout class="theme--nuweb" orientation="vertical">
+    <StackLayout class="theme--vuexp" orientation="vertical">
       <StackLayout orientation="vertical">
         <VxpLabel text="Label" id="label_modaldialog" class="modalBase__label"/>
          <i class="bar"></i>
