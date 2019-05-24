@@ -1,4 +1,5 @@
 module.exports = {
+  '@disabled': true,
   '@tags': ['component', 'textfield', 'keyPress'],
   before: function(client, done) {
     this.currentPage = client.maximizeWindow().page.textFieldPage();
