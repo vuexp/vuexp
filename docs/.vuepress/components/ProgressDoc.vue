@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Progress from '../../../src/components/Progress';
+import Progress from '../../../src/core/components/Progress/Progress';
 import StackLayout from '../../../src/layouts/StackLayout';
 
 export default {

@@ -1,4 +1,5 @@
-import * as Plugins from '../../src/plugins'
+import * as Plugins from '../../src/core/plugins'
+
 export default ({
   Vue, // the version of Vue being used in the VuePress app
   options, // the options for the root Vue instance
@@ -7,6 +8,7 @@ export default ({
   if (typeof document !== "undefined" && typeof window !== "undefined") {
     addVxpPlugins(Vue);
   }
+
 };
 function addVxpPlugins(Vue) {
   Object.keys(Plugins).forEach(addPlugin(Vue));

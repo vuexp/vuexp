@@ -4,16 +4,16 @@ const testRailReporter = require('./integrations/testrail').reporter;
 const nightwatchVrtSettings = require('./nightwatch-vrt-settings');
 
 const defaultRunId = 108802;
-const defaultDevUrl = 'http://localhost';
+const defaultDevUrl = 'http://localhost:8080/';
 
-const devUrl = process.env.VUE_DEV_SERVER_URL ? process.env.VUE_DEV_SERVER_URL : defaultDevUrl;
+//const devUrl = process.env.VUE_DEV_SERVER_URL ? process.env.VUE_DEV_SERVER_URL : defaultDevUrl;
 const runId = process.env.TESTRAIL_RUN_ID ? process.env.TESTRAIL_RUN_ID : defaultRunId;
 module.exports = {
   asyncHookTimeout: 30000,
-  devUrl: devUrl,
+  devUrl: defaultDevUrl,
   runId: runId,
   preDefinedData: {},
-  visual_regression_settings: nightwatchVrtSettings(this),
+  visual_regression_settings: nightwatchVrtSettings.apply(this),
   before: function(done) {
     nightwatchVrtConfigBugFix(this);
     done();
@@ -39,6 +39,6 @@ module.exports = {
 
 function nightwatchVrtConfigBugFix(context) {
   if (context.test_settings) {
-    context.test_settings.visual_regression_settings = nightwatchVrtSettings(context);
+    context.test_settings.visual_regression_settings = nightwatchVrtSettings.apply(context);
   }
 }
