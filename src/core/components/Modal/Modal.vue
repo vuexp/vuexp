@@ -1,8 +1,8 @@
 <template>
   <transition v-if="isModalVisible" @close="closeModal" name="modal-fade">
-    <div @click="closeModal" class="nvw-modal" :class="modalClass">
-      <div @click.stop class="nvw-modal__backdrop" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
-        <section class="nvw-modal__body">
+    <div @click="closeModal" class="vxp-modal" :class="modalClass">
+      <div @click.stop class="vxp-modal__backdrop" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
+        <section class="vxp-modal__body">
           <component :is="contentComponent" />
         </section>
       </div>
@@ -36,7 +36,7 @@ export default {
   },
   computed: {
     modalClass: function() {
-      return `${this.fullscreen ? 'nvw-modal--fullscreen' : ''}`;
+      return `${this.fullscreen ? 'vxp-modal--fullscreen' : ''}`;
     },
   },
   mixins: [Gestures],
@@ -44,36 +44,37 @@ export default {
 </script>
 
 <style lang="scss">
-.nvw-modal {
+@import '../../../assets/styles/helpers';
+.vxp-modal {
   position: fixed;
-  top: 0;
-  border-radius: 6px;
+  top: unit(0);
+  border-radius: unit(6);
   background-color: rgba(0, 0, 0, 0.5);
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  bottom: 0;
-  left: 0;
-  right: 0;
+  box-shadow: unit(0) unit(8) unit(16) unit(0) rgba(0, 0, 0, 0.2);
+  bottom: unit(0);
+  left: unit(0);
+  right: unit(0);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   &__backdrop {
     background: #ffffff;
-    box-shadow: 1px 1px 10px 0px;
+    box-shadow: unit(1) unit(1) unit(10) unit(0);
     overflow-x: auto;
     display: flex;
     flex-direction: column;
-    border-radius: 5px;
+    border-radius: unit(5);
   }
   &--fullscreen {
-    .nvw-modal__backdrop {
+    .vxp-modal__backdrop {
       width: 90%;
       height: 90%;
     }
   }
   &__body {
     position: relative;
-    padding: 20px 15px;
+    padding: unit(20) unit(15);
   }
 }
 
