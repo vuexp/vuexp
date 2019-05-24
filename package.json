@@ -11,6 +11,7 @@
     "test:e2e-safari": "vue-cli-service test:e2e --config nightwatch.config.js --env safari",
     "test:e2e-edge": "vue-cli-service test:e2e --config nightwatch.config.js --env edge",
     "test:unit": "vue-cli-service test:unit --require tests/unit/pre-setup.js",
+    "test:unitDebug": "vue-cli-service test:unit --inspect-brk --watch --require tests/unit/pre-setup.js",
     "coverage": "nyc npm run test:unit",
     "report": "nyc npm test && nyc report --reporter=text-lcov > coverage.lcov"
   },
