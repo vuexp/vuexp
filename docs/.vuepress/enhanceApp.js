@@ -1,13 +1,4 @@
 import * as Plugins from '../../src/core/plugins'
-import StackLayout from '../../src/layouts/StackLayout';
-import WrapLayout from '../../src/layouts/WrapLayout';
-import DockLayout from '../../src/layouts/DockLayout';
-import GridLayout from '../../src/layouts/GridLayout';
-import TextField from '../../src/core/components/TextField/TextField';
-import ModalDialog from '../../src/core/components/ModalDialog/ModalDialog';
-import Label from '../../src/core/components/Label/Label';
-import Button from '../../src/core/components/Button/Button';
-import SearchBar from '../../src/core/components/SearchBar/SearchBar';
 
 export default ({
   Vue, // the version of Vue being used in the VuePress app
@@ -16,15 +7,6 @@ export default ({
 }) => {
   if (typeof document !== "undefined" && typeof window !== "undefined") {
     addVxpPlugins(Vue);
-    Vue.component('StackLayout',StackLayout);
-    Vue.component('WrapLayout',WrapLayout);
-    Vue.component('GridLayout',GridLayout);
-    Vue.component('DockLayout',DockLayout);
-    Vue.component('TextField',TextField);
-    Vue.component('ModalDialog',ModalDialog);
-    Vue.component('Label',Label);
-    Vue.component('Button',Button);
-    Vue.component('SearchBar',SearchBar);
   }
 
 };

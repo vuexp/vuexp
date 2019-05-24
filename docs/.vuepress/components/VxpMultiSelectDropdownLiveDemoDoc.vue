@@ -8,15 +8,15 @@
       id="vxpmultiselectdropdown"
     ></VxpMultiSelectDropdown>
     <StackLayout class="demo-panel">
-      <Label class="demo-panel__title" text="Behaviour Configuration"></Label>
+      <VxpLabel class="demo-panel__title" text="Behaviour Configuration"></VxpLabel>
 
       <StackLayout class="margin-top-10">
-        <Label text="Hint: "/>
+        <VxpLabel text="Hint: "/>
         <TextField id="vxpmultiselectdropdown__hint__input" v-model="hint"/>
       </StackLayout>
 
       <StackLayout class="margin-top-10">
-        <Label text="Empty Suggestions Label: "/>
+        <VxpLabel text="Empty Suggestions Label: "/>
         <TextField
           id="vxpmultiselectdropdown__emptySuggestionsLabel__input"
           v-model="emptySuggestionsLabel"
@@ -25,39 +25,53 @@
     </StackLayout>
 
     <StackLayout class="demo-panel">
-      <Label class="demo-panel__title" text="Items Configuration"></Label>
+      <VxpLabel class="demo-panel__title" text="Items Configuration"></VxpLabel>
 
       <StackLayout orientation="horizontal">
-        <Button @tap="addNewItem()" id="vxpmultiselectdropdown_addNewItem__button">Add New Item</Button>
-        <Button @tap="removeAll()" id="vxpmultiselectdropdown_removeAll__button">Clear Items</Button>
+        <VxpButton @tap="addNewItem()" id="vxpmultiselectdropdown_addNewItem__button" text="Add New Item"></VxpButton>
+        <VxpButton @tap="removeAll()" id="vxpmultiselectdropdown_removeAll__button" text="Clear Items"></VxpButton>
       </StackLayout>
 
       <StackLayout class="margin-top-10" v-for="(item,index) in selectableItems" :key="index" orientation="horizontal">
         <StackLayout class="m-r-10" orientation="horizontal">
-          <Label class="m-r-10" text="Label: "></Label>
+          <VxpLabel class="m-r-10" text="Label: "></VxpLabel>
           <TextField :id="'vxpmultiselectdropdown_items__label_' + index + '_input'" v-model="item.label"></TextField>
         </StackLayout>
         <StackLayout class="m-r-10" orientation="horizontal">
-          <Label class="m-r-10" text="Selected: "></Label>
-          <input :id="'vxpmultiselectdropdown_items__selected_' + index + '_checkbox'" type="checkbox" @change="changeStatus($event.target.checked,item)" :checked="isItemSelected(item)">
+          <VxpLabel class="m-r-10" text="Selected: "></VxpLabel>
+          <VxpCheckbox :id="'vxpmultiselectdropdown_items__selected_' + index + '_checkbox'" @change="changeStatus($event,item)" :checked="isItemSelected(item)" />
         </StackLayout>
       </StackLayout>
     </StackLayout>
 
     <StackLayout class="margin-top-10" orientation="horizontal">
-      <Label text="Selected Indexes :"></Label>
-      <Label id="vxpmultiselectdropdown_selected_indexes" :text="selectedIndexes.join(',')"></Label>
+      <VxpLabel text="Selected Indexes :"></VxpLabel>
+      <VxpLabel id="vxpmultiselectdropdown_selected_indexes" :text="selectedIndexes.join(',')"></VxpLabel>
     </StackLayout>
   </StackLayout>
 </template>
 
 <script>
-import VxpMultiSelectDropdown from '../../../src/components/VxpMultiSelectDropdown/VxpMultiSelectDropdown';
+import VxpMultiSelectDropdown from '../../../src/components/VxpMultiSelectDropdown';
+
+import StackLayout from '../../../src/layouts/StackLayout';
+import WrapLayout from '../../../src/layouts/WrapLayout';
+import VxpLabel  from '../../../src/components/VxpLabel';
+import VxpCheckbox  from '../../../src/components/VxpCheckbox';
+import VxpButton  from '../../../src/components/VxpButton';
+import TextField from '../../../src/core/components/TextField/TextField';
+
 
 export default {
   name: 'VxpMultiSelectDropdownLiveDemoDoc',
   components: {
     VxpMultiSelectDropdown,
+    StackLayout,
+    WrapLayout,
+    VxpLabel,
+    VxpButton,
+    TextField,
+    VxpCheckbox
   },
   mounted(){
     this.addNewItem('Lorem');

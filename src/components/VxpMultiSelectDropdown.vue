@@ -66,16 +66,28 @@
 </template>
 
 <script>
-import Platform from '../../platform';
-import Gestures from '../../core/mixins/GestureMixin';
-import NativeSelectionModal from './NativeSelectionModal';
-import VxpMultiSelectDropdownMixins from './vxpMultiSelectDropdownMixins';
+import Platform from '../platform';
+import Gestures from '../core/mixins/GestureMixin';
+import NativeSelectionModal from '../core/components/VxpMultiSelectDropdown/NativeSelectionModal';
+import VxpMultiSelectDropdownMixins from '../core/components/VxpMultiSelectDropdown/vxpMultiSelectDropdownMixins';
+import StackLayout from '../layouts/StackLayout';
+import WrapLayout from '../layouts/WrapLayout';
+import GridLayout from '../layouts/GridLayout';
+import Label from '../core/components/Label/Label';
+import TextField from '../core/components/TextField/TextField';
 
 export default {
   name: 'MultiSelectDropdown',
   model: {
     prop: 'selected',
     event: 'selectedChange',
+  },
+  components: {
+    StackLayout,
+    WrapLayout,
+    GridLayout,
+    Label,
+    TextField,
   },
   data() {
     return {
@@ -160,7 +172,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../assets/styles/helpers.scss';
+@import '../assets/styles/helpers.scss';
 
 .vxp-multiselectdropdown {
   padding: unit(3);

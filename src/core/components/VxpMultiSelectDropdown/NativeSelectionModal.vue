@@ -52,7 +52,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../assets/styles/helpers.scss';
+@import '../../../assets/styles/helpers.scss';
 
 .vxp-multiselectdropdown-native-modal {
   padding: unit(2);
