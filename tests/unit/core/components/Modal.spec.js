@@ -35,15 +35,15 @@ describe('Modal which is used as a wrapper of given component by showModal funct
   });
 
   describe('Style testing of the Modal.', () => {
-    it('Fullscreen is false so the top class must be "nvw-modal".', done => {
-      expect(wrapper.find('.nvw-modal').exists()).to.equal(true);
+    it('Fullscreen is false so the top class must be "vxp-modal".', done => {
+      expect(wrapper.find('.vxp-modal').exists()).to.equal(true);
       done();
     });
   });
 
   describe('click testing of the top div tag.', () => {
     it('the div at top gets clicked and close event is emitted.', done => {
-      wrapper.find('.nvw-modal').trigger('click');
+      wrapper.find('.vxp-modal').trigger('click');
       expect(closeModal.called).to.equal(true);
       expect(wrapper.vm.isModalVisible).to.equal(false);
       done();
@@ -51,11 +51,11 @@ describe('Modal which is used as a wrapper of given component by showModal funct
   });
 
   describe('Change the fullscreen prop and test the style.', () => {
-    it('Setting fullscreen to true and the class name should equal to "nvw-modal--fullscreen".', done => {
+    it('Setting fullscreen to true and the class name should equal to "vxp-modal--fullscreen".', done => {
       wrapper.setProps({ fullscreen: true });
       wrapper.setData({ isModalVisible: true });
-      expect(wrapper.find('.nvw-modal.nvw-modal--fullscreen').exists()).to.equal(true);
-      wrapper.find('.nvw-modal.nvw-modal--fullscreen').trigger('click');
+      expect(wrapper.find('.vxp-modal.vxp-modal--fullscreen').exists()).to.equal(true);
+      wrapper.find('.vxp-modal.vxp-modal--fullscreen').trigger('click');
       expect(closeModal.calledTwice).to.equal(true);
       expect(wrapper.vm.isModalVisible).to.equal(false);
       done();
