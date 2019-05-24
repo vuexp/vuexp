@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
 import sinon from 'sinon';
-import ModalDialog from '../../../../src/core/components/ModalDialog/ModalDialog';
+import ModalDialog from '../../../../src/core/components/BaseModal/ModalBase';
 
 describe('ModalDialog', () => {
   const close = sinon.spy(ModalDialog.methods, 'close');

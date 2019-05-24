@@ -1,5 +1,5 @@
 <template>
-  <StackLayout class="theme--nuweb">
+  <StackLayout class="theme--vuexp">
     <VxpDropDown
       id="dropDown_docs"
       :items="countries"
