@@ -9,8 +9,8 @@ module.exports = {
         done();
       });
   },
-  'C13843458 Web - TabViewItem Props:/Name: webIcon, Type: String'() {
-    this.currentPage.selectWebIcon('@webIconOption').checkScreenshot('@tabView');
+  'C13843454 Props:/Name: selectedTabTextColor, Type: Color'() {
+    this.currentPage.selectSelectedTabTextColor().assert.attributeContains('@selectedTab', 'style', 'color: blue;');
   },
 
   after: function(client, done) {

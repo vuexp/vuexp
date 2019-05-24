@@ -39,16 +39,16 @@ module.exports = {
           .clearValue('@buttonHeight')
           .setValue('@buttonHeight', text);
       },
-      checkTextWrapSelectBox: function(width, height) {
+      checkTextWrapSelectBox: function() {
         this.waitForElementVisible('@textWrapSelectBox', 10000);
-        if (this.verify.attributeContains('@buttonComponent', 'style', 'white-space: nowrap; width: ' + width + 'px; height: ' + height + 'px;')) {
+        if (this.verify.attributeContains('@buttonComponent', 'style', 'white-space: normal;')) {
           return this.click('@textWrapSelectBox');
         }
         return 'textWrap already selected';
       },
-      uncheckTextWrapSelectBox: function(width, height) {
+      uncheckTextWrapSelectBox: function() {
         this.waitForElementVisible('@textWrapSelectBox', 10000);
-        if (this.verify.attributeContains('@buttonComponent', 'style', 'white-space: normal; width: ' + width + 'px; height: ' + height + 'px;')) {
+        if (this.verify.attributeContains('@buttonComponent', 'style', 'white-space: nowrap;')) {
           return this.click('@textWrapSelectBox');
         }
         return 'textWrap already unselected';

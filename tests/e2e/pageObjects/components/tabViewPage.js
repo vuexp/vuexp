@@ -1,4 +1,4 @@
-const checkScreenshot = require('../commonCommands/checkScreenshotCommand');
+const checkScreenshot = require('../../commonCommands/checkScreenshotCommand');
 
 module.exports = {
   url: function() {
@@ -19,7 +19,7 @@ module.exports = {
     idLabel: 'div[role="tabpanel"]',
     titleLabel: 'span[class="vxp-tab-view__header__tab__title"]',
     titleInput: 'input[placeholder="title of selected tab"]',
-    webIconInput: '.demo-panel.tabView-wrapper.vxp-stack-layout.vxp-stack-layout--vertical > div > select',
+    webIconInput: '#tabView__webIcon__input',
     webIconOption: 'option[value="fa fa-user-circle-o"]',
     tabView: `.content > div:nth-child(5) > 
     div.nudoc-example__content > div.vxp-stack-layout.vxp-stack-layout--vertical > div:nth-child(1) > div > div.vxp-tab-view__header`,
@@ -56,8 +56,8 @@ module.exports = {
       setTitle: function(text) {
         return this.waitForElementVisible('@titleInput', 10000).setValue('@titleInput', text);
       },
-      selectWebIcon: function(webIconOption) {
-        return this.waitForElementVisible('@webIconInput', 10000).setValue('@webIconInput', webIconOption);
+      selectWebIcon: function() {
+        return this.waitForElementVisible('@webIconInput', 10000).click('@webIconOption');
       },
       perform: function(callback) {
         this.api.perform(callback);
