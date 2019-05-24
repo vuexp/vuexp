@@ -35,6 +35,7 @@ module.exports = {
           title: "Components",
           collapsable: true,
           children: [
+            "components/vxp-dropDown.md",
             "components/vxp-label.md",
             "components/switcher.md",
             "components/search-bar.md",
@@ -50,6 +51,7 @@ module.exports = {
             "components/vxp-image.md",
             "components/segmented-bar.md",
             "components/progress.md",
+            "components/vxpmultiselectdropdown.md",
             "components/vxp-link.md",
             "components/vxp-list-view.md",
             "components/vxpiconbutton.md",
@@ -62,6 +64,7 @@ module.exports = {
           children: [
             "components/dialogs/confirm-dialog.md",
             "components/dialogs/alert-dialog.md",
+            "components/dialogs/modal-base.md",
           ]
         },
       ]
