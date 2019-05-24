@@ -16,7 +16,7 @@
         :item="item"
         :key="index"
         :elementIndex="index"
-        :isActive="selectedIndex === index"
+        :isActive="currentIndex === index"
         :id="'dropdownmenu__item(' + index + ')__label'"
         @tap="selectItem(index, item)"
         @keyup.enter="selectItem(index, item)"
@@ -59,6 +59,7 @@ export default {
   data() {
     return {
       isMenuOpen: false,
+      currentIndex: this.selectedIndex,
     };
   },
   computed: {
@@ -79,8 +80,7 @@ export default {
       }
     },
     selectItem(index, item) {
-      this.selectedIndex = index;
-      this.$emit('selectedIndexChanged', { index, item });
+      this.currentIndex = index | this.$emit('selectedIndexChanged', { index, item });
     },
   },
   components: {
