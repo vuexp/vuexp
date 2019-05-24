@@ -54,7 +54,6 @@ export default {
     StackLayout,
     VxpLabel,
     VxpButton,
-    ModalBase,
     VxpCheckbox,
   },
 };
