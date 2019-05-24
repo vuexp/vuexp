@@ -120,7 +120,6 @@ export default {
       let date = 'Selected Date';
       if (this.selectedDate) {
         date = this.selectedDate.getDate() + '-' + (this.selectedDate.getMonth() + 1) + '-' + this.selectedDate.getFullYear();
-      } else {
       }
       return date;
     },
