@@ -1,16 +1,17 @@
 <template>
-  <StackLayout orientation="horizontal" class="vxp-table-view-header">
-    <VxpCheckbox v-if="rowSelection" :check="checkedAll" @onTap="checkedAllUpdate"></VxpCheckbox>
+  <StackLayout v-if="!disabled" orientation="horizontal" class="vxp-table-view-header">
+    <VxpCheckbox v-if="rowSelection" :check="checkedAll" @change="$emit('checkAllClicked', $event)" class="vxp-table-view-header-checkbox"></VxpCheckbox>
 
-    <VxpLabel v-if="!rowSelection" :text="headerLabel" textWrap="true"></VxpLabel>
+    <VxpLabel v-if="!rowSelection" :text="headerLabel" :textWrap="true" class="vxp-table-view-header-label"></VxpLabel>
     <StackLayout v-if="sortable" orientation="vertical" class="vxp-table-view-header-sorting-buttons">
-      <VxpIconButton icon="fa fa-exclamation-triangle" size="20" @tap="this.$emit('onAscendingClicked', $event)"></VxpIconButton>
-      <VxpIconButton icon="fa fa-exclamation-triangle" size="20" @tap="this.$emit('onDescendingClicked', $event)"></VxpIconButton>
+      <VxpIconButton icon="fa fa-exclamation-triangle" size="20" @tap="$emit('onAscendingClicked', $event)"></VxpIconButton>
+      <VxpIconButton icon="fa fa-exclamation-triangle" size="20" @tap="$emit('onDescendingClicked', $event)"></VxpIconButton>
     </StackLayout>
   </StackLayout>
 </template>
 <script>
 import VxpLabel from '../../../components/VxpLabel';
+import VxpIconButton from '../../../components/VxpIconButton';
 import VxpCheckbox from '../../../components/VxpCheckbox';
 import StackLayout from '../../../layouts/StackLayout';
 
@@ -38,6 +39,10 @@ export default {
     rowSelection: {
       type: Boolean,
       default: true,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
@@ -72,9 +77,18 @@ export default {
   },
   components: {
     VxpLabel,
+    VxpIconButton,
     VxpCheckbox,
     StackLayout,
   },
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import '../../../assets/styles/helpers.scss';
+
+.vxp-table-view-header {
+  padding: unit(5);
+  border: unit(1) solid darkgray;
+  background-color: gray;
+}
+</style>

@@ -31,15 +31,16 @@ export default {
   data() {
     return {
       cellEvents: {
-        onLoadError: 'onLoadError', // image
-        onLoad: 'onLoad',
-        tap: 'tap', // button, link, iconbutton
-        onTap: 'onTap', // checkbox
+        onLoadError: 'onImageLoadError', // image
+        onLoad: 'onImageLoaded', // image
+        tap: 'tapClickHandler', // button, link, iconbutton
+        change: 'onCheckboxClicked', // checkbox
       },
     };
   },
   directives: {
     DynamicEvents: {
+      //TODO move directive to another file
       bind: function(el, binding, vnode) {
         const allEvents = binding.value;
         Object.keys(allEvents).forEach(event => {
@@ -56,17 +57,24 @@ export default {
     },
   },
   methods: {
-    onLoadError(e) {
-      console.log('onLoadError', e); //eslint-disable-line
+    onImageLoadError(e) {
+      this.$emit('imageLoadError', e.currentTarget.id, e);
     },
-    onLoad(e) {
-      console.log('onLoad', e); //eslint-disable-line
+    onImageLoaded(e) {
+      this.$emit('imageLoaded', e.currentTarget.id, e);
     },
-    tap(e) {
-      console.log('tap', e); //eslint-disable-line
+    tapClickHandler(e) {
+      let sourceType = null;
+      if (e && e.target && e.target.type) {
+        sourceType = e.target.type;
+      }
+
+      if (sourceType === 'button') {
+        this.$emit('buttonClicked', e.currentTarget.id);
+      }
     },
-    onTap(e) {
-      console.log('onTap', e); //eslint-disable-line
+    onCheckboxClicked(e) {
+      this.$emit('checkboxClicked', e);
     },
   },
   computed: {
@@ -90,10 +98,14 @@ export default {
     },
     componentParams() {
       let params = {};
-      if (this.itemData === null || typeof this.itemData === 'undefined') {
+      if ((this.itemData && this.itemData.data === null) || typeof this.itemData.data === 'undefined') {
         return params;
       } else {
-        params = this.itemData;
+        params = this.itemData.data;
+      }
+
+      if (params && !params.id) {
+        params.id = this.itemData.rowNo + '-' + this.itemData.colNo;
       }
 
       // style params
