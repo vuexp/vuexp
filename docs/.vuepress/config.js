@@ -59,6 +59,7 @@ module.exports = {
             "components/vxp-list-view.md",
             "components/vxpiconbutton.md",
             "components/vxpcheckbox.md",
+            "components/vxp-textfield.md",
           ]
         },
         {
