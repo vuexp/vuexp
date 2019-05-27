@@ -66,6 +66,14 @@ module.exports = {
           children: [
             "components/dialogs/alert-dialog.md",
             "components/dialogs/modal-base.md",
+            "components/dialogs/action-dialog.md",
+          ]
+        },
+        {
+          title: "Menus",
+          collapsable: true,
+          children: [
+            "components/menus/vxpdropdown-menu.md",
           ]
         },
       ]
