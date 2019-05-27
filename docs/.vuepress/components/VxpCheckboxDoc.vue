@@ -24,7 +24,7 @@
     >
       <FlexboxLayout>
        
-        <StackLayout orientation="horizontal" class="theme--nuweb">
+        <StackLayout orientation="horizontal" class="theme--vuexp">
          <Label :text="'Secondary'"  id="checkbox_theme_label"  style="margin-right:20px;" />
         <VxpCheckbox
           class="checkbox-doc-container__flexboxLayout__checkbox"
@@ -37,7 +37,7 @@
       </FlexboxLayout>
     </FlexboxLayout>
     </StackLayout>
-     <StackLayout style="margin-top:20px" orientation="horizontal" class="theme--nuweb" >
+     <StackLayout style="margin-top:20px" orientation="horizontal" class="theme--vuexp" >
       <Label text="Rendered Result: " class="demo-panel__title" style="margin-right:20px;" />
        <FlexboxLayout
       class="checkbox-doc-container__flexboxLayout"
