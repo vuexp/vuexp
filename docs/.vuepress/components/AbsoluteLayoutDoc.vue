@@ -109,7 +109,6 @@
             <select
               :id="'absolutelayout__childbackground__select' + index"
               style="height: 1.9rem; min-width: 10%;"
-              id="actionitem__deleteicon__select"
               v-model="layoutChild.backgroundColor"
             >
               <option
@@ -135,9 +134,9 @@
 </template>
 
 <script>
-import Label from '../../../src/components/Label';
-import TextField from '../../../src/components/TextField';
-import Button from '../../../src/components/Button';
+import Label from '../../../src/core/components/Label/Label';
+import TextField from '../../../src/core/components/TextField/TextField';
+import Button from '../../../src/core/components/Button/Button';
 import StackLayout from '../../../src/layouts/StackLayout';
 import AbsoluteLayout from '../../../src/layouts/AbsoluteLayout';
 
