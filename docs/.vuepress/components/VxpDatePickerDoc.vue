@@ -88,17 +88,17 @@ import StackLayout from '../../../src/layouts/StackLayout';
 export default {
   data() {
     return {
-      label: null,
+      label: '',
       dayPlaceholder: 'Day',
-      monthPlaceholder: 'month',
+      monthPlaceholder: 'Month',
       yearPlaceholder: 'Year',
       datePickerDisabled: false,
-      months: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
+      months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
       day: null,
       month: null,
       minYear: '1900',
       maxYear: '2018',
-      year: '',
+      year: null,
       errors: [],
       selectedDate: null,
     };
