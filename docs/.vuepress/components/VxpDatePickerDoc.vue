@@ -69,8 +69,11 @@
     <VxpLabel id="datePicker_errors_label" class="vxp-datePicker-doc__margin_top" text="Errors :" width="100"></VxpLabel>
     <StackLayout v-for="(error, index) in errors" :key="'error' + index" orientation="horizontal">
       <TextField :id="`datePicker_errors_textField_${index}`" v-model="errors[index]" :editable="true" />
-      <VxpButton id="datePicker_errors_plus_button" text="+" @tap="addErrorItem" style="background=dodgerblue"></VxpButton>
-      <VxpButton id="datePicker_errors_minus_button" text="-" @tap="removeErrorItem(index)" v-show="errors.length > 1"></VxpButton>
+      <VxpButton id="datePicker_errors_minus_button" text="-" @tap="removeErrorItem(index)"></VxpButton>
+    </StackLayout>
+    <StackLayout key="error_add_new" orientation="horizontal" :set="newErrorText = ''">
+      <TextField id="datePicker_errors_textField_add_new" v-model="newErrorText" hint="Example Error" :editable="true" />
+      <VxpButton id="datePicker_errors_plus_button" text="+" @tap="addErrorItem(newErrorText)"></VxpButton>
     </StackLayout>
   </StackLayout>
 </template>
@@ -94,9 +97,9 @@ export default {
       day: null,
       month: null,
       minYear: '1900',
-      maxYear: '2990',
-      year: '1991',
-      errors: ['error_1'],
+      maxYear: '2018',
+      year: '',
+      errors: [],
       selectedDate: null,
     };
   },
@@ -128,8 +131,10 @@ export default {
     dateChange(date) {
       this.selectedDate = date;
     },
-    addErrorItem() {
-      this.errors.push('Example Error');
+    addErrorItem(errorText) {
+      if (typeof errorText != 'undefined' && errorText !== "") {
+        this.errors.push(errorText);
+      }
     },
     removeErrorItem(i) {
       this.errors.splice(i, 1);
