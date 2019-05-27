@@ -7,7 +7,7 @@
     "test": "vue-cli-service test:unit --require tests/unit/pre-setup.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "test:e2e": "vue-cli-service test:e2e --config nightwatch.config.js --env chrome,firefox",
+    "test:e2e": "vue-cli-service test:e2e --config nightwatch.config.js --env chrome",
     "test:e2e-safari": "vue-cli-service test:e2e --config nightwatch.config.js --env safari",
     "test:e2e-edge": "vue-cli-service test:e2e --config nightwatch.config.js --env edge",
     "test:unit": "vue-cli-service test:unit --require tests/unit/pre-setup.js",
@@ -26,7 +26,8 @@
     "vue-template-compiler": "^2.5.19",
     "register-service-worker": "1.6.2",
     "string-replace-loader": "2.1.1",
-    "nativescript-orientation": "2.2.1"
+    "nativescript-orientation": "2.2.1",
+    "nativescript-ui-sidedrawer": "6.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.4.0",

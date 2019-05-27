@@ -1,6 +1,6 @@
 <template>
   <StackLayout orientation="vertical" class="vxpbutton-wrapper">
-    <StackLayout class="theme--nuweb">
+    <StackLayout class="theme--vuexp">
       <VxpButton
         id="button"
         :text="buttonText"
