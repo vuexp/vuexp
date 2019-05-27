@@ -89,7 +89,6 @@
 import VxpDropdownMenu from '../../../src/components/menus/VxpDropdownMenu';
 import StackLayout from '../../../src/layouts/StackLayout';
 import TextField from '../../../src/core/components/TextField/TextField';
-import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
 import VxpCheckbox from '../../../src/components/VxpCheckbox';
 import VxpLabel from '../../../src/components/VxpLabel';
 import VxpButton from '../../../src/components/VxpButton';
@@ -102,7 +101,6 @@ export default {
     VxpButton,
     VxpLabel,
     StackLayout,
-    FlexboxLayout,
     VxpDropdownMenu,
     TextField,
     VxpCheckbox,
