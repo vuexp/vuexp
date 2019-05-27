@@ -16,8 +16,8 @@
 
 <script>
 import Button from '../components/Button/Button';
-import ModalDialog from '../components/ModalDialog/ModalDialog';
 import StackLayout from '../../layouts/StackLayout';
+import ModalDialog from '../components/BaseModal/ModalBase';
 
 export default {
   name: 'ActionDialog',
