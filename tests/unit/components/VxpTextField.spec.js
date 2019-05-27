@@ -170,7 +170,7 @@ describe('VxpTextField', () => {
 
     it('the textfield loses its focus and throws blur event so, the blur event handler gets thrown', () => {
       wrapper.find('input').trigger('blur');
-      expect(wrapper.emitted().blur.length).to.equal(1);
+      expect(wrapper.emitted().blur.length).to.equal(2);
       expect(blur.called).to.equal(true);
     });
 
