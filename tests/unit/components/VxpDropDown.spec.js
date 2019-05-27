@@ -4,7 +4,7 @@ import { mount } from '@vue/test-utils';
 import VxpDropDown from '../../../src/components/VxpDropDown';
 import localVue from '../local-vue';
 
-describe('VxpDropDown', () => {
+describe('VxpDropDown Test.', () => {
   const placeholder = 'Select One';
   const disabled = false;
   const items = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -29,7 +29,7 @@ describe('VxpDropDown', () => {
       expect(wrapper.props().placeholder).to.equal(placeholder);
     });
 
-    it(`should placeholder disabled is equal to ${disabled}.`, () => {
+    it(`should disabled property is equal to ${disabled}.`, () => {
       expect(wrapper.props().disabled).to.equal(disabled);
     });
 
