@@ -8,6 +8,7 @@ module.exports = {
     scrollViewComponent: '#scrollview_container',
     scrollBarSelectBox: 'input[aria-label="Scroll Bar Enabled"]',
     horizontalScrollSelectBox: 'input[aria-label="Horizontal Scrolling"]',
+    scrolledTextField: '#scrollview_scroll_label',
   },
 
   commands: [
