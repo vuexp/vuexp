@@ -18,7 +18,7 @@ module.exports = {
       .clickSubmitButton()
       .assert.containsText('@showLastEventFields', 'submit');
   },
-  'C13843241	Event / Name :clear'() {
+  'C13843241 Event / Name :clear'() {
     this.currentPage
       .setSearchTextToSearchBar('nightwatch')
       .clickClearButton()

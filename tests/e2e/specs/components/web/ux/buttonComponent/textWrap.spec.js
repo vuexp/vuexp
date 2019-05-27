@@ -3,7 +3,7 @@ module.exports = {
   before: function(client, done) {
     this.currentPage = client.maximizeWindow().page.buttonPage();
     this.currentPage
-      .navigate(client.globals.devUrl + 'components/button.html')
+      .navigate(client.globals.devUrl + 'components/vxp-button.html')
       .waitForElementVisible('body', 60000)
       .customPerform(function() {
         done();
@@ -19,9 +19,9 @@ module.exports = {
           'But I want a cup of coffee' +
           'From a proper coffee pot.',
       )
-      .setButtonWidth(300)
-      .setButtonHeight(120)
-      //.uncheckTextWrapSelectBox(300,120)
+      //.setButtonWidth(300)
+      //.setButtonHeight(120)
+      .uncheckTextWrapSelectBox()
       .checkScreenshot('@buttonComponent')
       .click('@buttonComponent')
       .assert.containsText('@buttonActionLabel', 'Button Pressed');
@@ -36,9 +36,9 @@ module.exports = {
           'But I want a cup of coffee' +
           'From a proper coffee pot.',
       )
-      .setButtonWidth(300)
-      .setButtonHeight(120)
-      .checkTextWrapSelectBox(300, 120)
+      //.setButtonWidth(300)
+      //.setButtonHeight(120)
+      .checkTextWrapSelectBox()
       .checkScreenshot('@buttonComponent')
       .click('@buttonComponent')
       .assert.containsText('@buttonActionLabel', 'Button Pressed');
