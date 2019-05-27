@@ -20,10 +20,17 @@ module.exports = {
         return this;
       },
 
-      addSrc: function() {
-        return this.waitForElementVisible('@srcInput', 10000)
-          .setValue('@srcInput', 'http://nativescript-vue.org/')
-          .checkScreenshot('@image');
+      addSrc: function(text) {
+        return this.waitForElementVisible('@srcInput', 10000).setValue('@srcInput', text);
+      },
+      addHtml: function(text2) {
+        return this.waitForElementVisible('@htmlInput', 10000).setValue('@htmlInput', text2);
+      },
+      loadStartedPage: function(text3) {
+        return this.waitForElementVisible('@srcInput', 10000).setValue('@srcInput', text3);
+      },
+      loadFinishedPage: function(text4) {
+        return this.waitForElementVisible('@srcInput', 10000).setValue('@srcInput', text4);
       },
       perform: function(callback) {
         this.api.perform(callback);
