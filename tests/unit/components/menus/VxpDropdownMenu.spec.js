@@ -73,11 +73,6 @@ describe('Vxp Dropdown Menu', () => {
     wrapper.vm.toggleMenu();
     expect(wrapper.vm.isMenuOpen).to.be.true;
   });
-  it(`should set selectedIndex to 1 when selectItem is fired`, () => {
-    const selectedIndex = 0;
-    wrapper.vm.selectItem(selectedIndex, wrapper.props().items[selectedIndex]);
-    expect(wrapper.props().selectedIndex).to.equal(selectedIndex);
-  });
   it(`should items be an empty array`, () => {
     expect(
       defaultWrapper
