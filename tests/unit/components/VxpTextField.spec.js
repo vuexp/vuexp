@@ -276,7 +276,7 @@ describe('VxpTextField', () => {
       let wrapper2 = createWrapper({
         disabled: true,
       });
-      const disabledLabelClass = 'nu-text-input__label--disable';
+      const disabledLabelClass = 'vxp-text-input__label--disable';
       const textField = wrapper2.find(TextField);
       const label = wrapper2.find(VxpLabel);
 
