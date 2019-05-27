@@ -3,7 +3,7 @@ module.exports = {
   before: function(client, done) {
     this.currentPage = client.maximizeWindow().page.buttonPage();
     this.currentPage
-      .navigate(client.globals.devUrl + 'components/button.html')
+      .navigate(client.globals.devUrl + 'components/vxp-button.html')
       .waitForElementVisible('body', 60000)
       .customPerform(function() {
         done();

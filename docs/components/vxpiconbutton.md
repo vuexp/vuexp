@@ -12,7 +12,7 @@ Circular icon button.
       flexDirection="row"
       justifyContent="space-around"
     >
-      <IconButton
+      <VxpIconButton
         :isEnabled="isEnabled"
         @tap="increment"
         font="nuicon"
@@ -20,14 +20,14 @@ Circular icon button.
         size="25"
         primary
       />
-      <IconButton
+      <VxpIconButton
         :isEnabled="isEnabled"
         @tap="increment"
         font="nuicon"
         icon="nuicon-basket"
         secondary
       />
-      <IconButton
+      <VxpIconButton
         :isEnabled="isEnabled"
         @tap="increment"
         font="nuicon"
