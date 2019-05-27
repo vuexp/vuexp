@@ -8,31 +8,37 @@
       @changeIndex="onChangeIndex"
       :errors="errors"
     />
-    <StackLayout orientation="horizontal" class="dropDown__margin_top">
-      <VxpLabel id="dropDown_item_label" class="dropDown" text="Selected Index: " />
+    <StackLayout orientation="horizontal" class="vxp-dropDown-doc__margin_top">
+      <VxpLabel id="dropDown_item_label" class="vxp-dropDown-doc__label_width" text="Selected Index: " />
       <VxpLabel id="dropDown_selectItem_label" :text="selectedIndex" />
     </StackLayout>
-    <StackLayout orientation="horizontal">
-      <VxpLabel id="dropDown_placeholder_label" class="dropDown__margin_top" text="Placeholder:" width="100"></VxpLabel>
-      <TextField type="text" id="dropDown_placeholder_textField" class="dropDown__margin_top" v-model="dropDownPlaceholder" />
+    <StackLayout orientation="horizontal" class="vxp-dropDown-doc__margin_top">
+      <VxpLabel id="dropDown_placeholder_label" class="vxp-dropDown-doc__label_width" text="Placeholder:"></VxpLabel>
+      <TextField type="text" id="dropDown_placeholder_textField" v-model="dropDownPlaceholder" />
     </StackLayout>
-    <StackLayout orientation="horizontal">
-      <VxpLabel id="dropDown_disabled_label" class="dropDown__margin_top" text="Disabled :" width="100"></VxpLabel>
-      <VxpCheckBox id="dropDown_disabled_checkbox" class="dropDown__margin_top" v-model="dropDownDisabled" />
-      <VxpLabel id="dropDown_checkbox_text_label" class="dropDown__margin_top dropDown__m-l-10" text="Is Disabled :" width="100"></VxpLabel>
-      <VxpLabel id="dropDown_checkbox_value_label" class="dropDown__margin_top" :text = "dropDownDisabled.toString()" width="100"></VxpLabel>
+    <StackLayout orientation="horizontal" class="vxp-dropDown-doc__margin_top">
+      <VxpLabel id="dropDown_disabled_label" class="vxp-dropDown-doc__label_width"  text="Disabled :"></VxpLabel>
+      <VxpCheckBox id="dropDown_disabled_checkbox" v-model="dropDownDisabled" />
+      <VxpLabel id="dropDown_checkbox_text_label" text="Is Disabled :" style="padding-left: 20px; width: 100px"></VxpLabel>
+      <VxpLabel id="dropDown_checkbox_value_label" :text="dropDownDisabled.toString()" width="100"></VxpLabel>
     </StackLayout>
-    <VxpLabel id="dropDown_items_label" class="dropDown__margin_top" text="Items :" width="100"></VxpLabel>
-    <StackLayout class="dropDown_m-b-10" v-for="(country, index) in countries" :key="index" orientation="horizontal">
+    <VxpLabel id="dropDown_items_label" class="vxp-dropDown-doc__margin_top" text="Items :" width="100"></VxpLabel>
+    <StackLayout class="vxp-dropDown-doc_m-b-10" v-for="(country, index) in countries" :key="index" orientation="horizontal">
       <TextField :id="`dropDown_items_textField_${index}`" v-model="countries[index]" hint="This is placeholder" :editable="true" />
-      <VxpButton id="dropDown_items_plus_button" class="dropDown__m-l-10" text="+" @tap="addItem" style="background=dodgerblue"></VxpButton>
-      <VxpButton id="dropDown_items_minus_button" class="dropDown__m-l-10" text="-" @tap="removeItem(index)" v-show="countries.length > 1"></VxpButton>
+      <VxpButton id="dropDown_items_plus_button" text="+" @tap="addItem" style="background=dodgerblue"></VxpButton>
+      <VxpButton id="dropDown_items_minus_button" text="-" @tap="removeItem(index)" v-show="countries.length > 1"></VxpButton>
     </StackLayout>
-    <VxpLabel id="dropDown_errors_label" class="dropDown__margin_top" text="Errors :" width="100"></VxpLabel>
-    <StackLayout class="dropDown_m-b-10" v-for="(error, index) in errors" :key="'error' + index" orientation="horizontal">
+    <VxpLabel id="dropDown_errors_label" class="vxp-dropDown-doc__margin_top" text="Errors :" width="100"></VxpLabel>
+    <StackLayout class="vxp-dropDown-doc_m-b-10" v-for="(error, index) in errors" :key="'error' + index" orientation="horizontal">
       <TextField :id="`dropDown_errors_textField_${index}`" v-model="errors[index]" hint="This is placeholder" :editable="true" />
-      <VxpButton id="dropDown_errors_plus_button" class="dropDown__m-l-10" text="+" @tap="addErrorItem" style="background=dodgerblue"></VxpButton>
-      <VxpButton id="dropDown_errors_minus_button" class="dropDown__m-l-10" text="-" @tap="removeErrorItem(index)" v-show="errors.length > 1"></VxpButton>
+      <VxpButton id="dropDown_errors_plus_button" class="vxp-dropDown-doc__m-l-10" text="+" @tap="addErrorItem" style="background=dodgerblue"></VxpButton>
+      <VxpButton
+        id="dropDown_errors_minus_button"
+        class="vxp-dropDown-doc__m-l-10"
+        text="-"
+        @tap="removeErrorItem(index)"
+        v-show="errors.length > 1"
+      ></VxpButton>
     </StackLayout>
   </StackLayout>
 </template>
@@ -79,7 +85,7 @@ export default {
     StackLayout,
     TextField,
     VxpButton,
-    VxpCheckBox
+    VxpCheckBox,
   },
 };
 </script>
@@ -87,7 +93,7 @@ export default {
 <style lang="scss" scoped>
 @import '../../../src/assets/styles/helpers';
 
-.dropDown {
+.vxp-dropDown-doc {
   &__margin_top {
     margin-top: unit(10);
   }
@@ -96,6 +102,9 @@ export default {
   }
   &__m-b-10 {
     margin-bottom: unit(10);
+  }
+  &__label_width {
+    width: unit(200);
   }
 }
 </style>
