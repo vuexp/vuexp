@@ -76,7 +76,6 @@
     data() {
       return {
         text: '',
-        editable: true,
         disabled: false,
         autoFocus: true,
         keyboardType: 'email',

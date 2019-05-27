@@ -1,11 +1,12 @@
 import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
 import sinon from 'sinon';
-import StackLayout from '../../../src/layouts/StackLayout';
-import TextField from '../../../src/core/components/TextField/TextField';
-import Label from '../../../src/core/components/Label/Label';
+import VxpLabel from '../../../src/components/VxpLabel';
 import VxpTextField from '../../../src/components/VxpTextField';
+import TextField from '../../../src/core/components/TextField/TextField';
 import localVue from '../local-vue';
+import utils from '../../../src/utils';
+import platform from '../../../src/platform';
 
 describe('VxpTextField', () => {
   // TextField mock up values.
@@ -22,64 +23,37 @@ describe('VxpTextField', () => {
   const focus = sinon.spy();
   const returnPress = sinon.spy();
   const textChange = sinon.spy();
+  const textFieldLoaded = sinon.spy();
 
   // Label mock up values.
   const label = 'VxpTextField Label';
 
-  // Initializing the component.
-  const wrapper = mount(VxpTextField, {
-    name: 'VxpTextField',
-    model: {
-      event: 'input',
-      prop: 'text',
-    },
-    props: {
-      maxLength: Number,
-      disabled: Boolean,
-      label: String,
-      text: String,
-      hint: String,
-      autocorrect: Boolean,
-      returnKeyType: String,
-      autoFocus: Boolean,
-      errors: {
-        type: Array,
-        default: () => [],
+  const createWrapper = (propsData = {}, listeners = {}) => {
+    return mount(VxpTextField, {
+      propsData: {
+        maxLength,
+        disabled,
+        label,
+        hint,
+        text,
+        autocorrect,
+        returnKeyType,
+        autoFocus,
+        ...propsData,
       },
-    },
-    propsData: {
-      maxLength,
-      disabled,
-      label,
-      hint,
-      text,
-      autocorrect,
-      returnKeyType,
-      autoFocus,
-    },
-    listeners: {
-      blur,
-      focus,
-      returnPress,
-      textChange,
-    },
-    localVue,
-  });
-
-  describe('the component contains exactly one label, one textfield and one stacklayout.', () => {
-    it('there is one StackLayout.', () => {
-      expect(wrapper.contains(StackLayout)).to.equal(true);
-      expect(wrapper.findAll(StackLayout).length).to.equal(1);
+      listeners: {
+        blur,
+        focus,
+        returnPress,
+        textChange,
+        textFieldLoaded,
+        ...listeners,
+      },
+      localVue,
     });
-    it('there is one Label.', () => {
-      expect(wrapper.contains(Label)).to.equal(true);
-      expect(wrapper.findAll(Label).length).to.equal(1);
-    });
-    it('there is one TextField.', () => {
-      expect(wrapper.contains(TextField)).to.equal(true);
-      expect(wrapper.findAll(TextField).length).to.equal(1);
-    });
-  });
+  };
+  // Initializing the component.
+  const wrapper = createWrapper();
 
   describe('the component receives given props correctly.', () => {
     it(`maxLength property is equal to: ${maxLength}.`, () => {
@@ -129,7 +103,7 @@ describe('VxpTextField', () => {
 
   describe(`the label inside the component has displayed the correct label`, () => {
     it(`Label displays ${label}.`, () => {
-      expect(wrapper.find(Label).element.textContent.trim()).to.equal(label);
+      expect(wrapper.find(VxpLabel).element.textContent.trim()).to.equal(label);
     });
   });
 
@@ -200,16 +174,143 @@ describe('VxpTextField', () => {
       expect(blur.called).to.equal(true);
     });
 
-    it('the textfield emits change event so, event handler named textChange gets thrown', () => {
-      wrapper.find('input').trigger('change');
-      expect(wrapper.emitted().textChange.length).to.equal(1);
-      expect(textChange.called).to.equal(true);
-    });
-
     it('the user pushes the enter button to return a value so, event handler named returnPress gets thrown', () => {
       wrapper.find('input').trigger('keyup.enter');
       expect(wrapper.emitted().returnPress.length).to.equal(1);
       expect(returnPress.called).to.equal(true);
     });
+
+    it('the textfield emits change event so, event handler named textChange gets thrown', done => {
+      wrapper.find('input').trigger('change');
+      expect(wrapper.emitted().textChange.length).to.equal(1);
+      expect(textChange.called).to.equal(true);
+
+      androidScope(() => {
+        wrapper.find('input').trigger('input');
+      })
+        .then(() => {
+          expect(wrapper.emitted().textChange.length).to.equal(2);
+          done();
+        })
+        .catch(done);
+    });
+
+    it('calls for android loading events', done => {
+      const androidMock = {
+        object: {
+          focus: sinon.spy(),
+          android: {
+            requestFocus: sinon.spy(),
+          },
+        },
+      };
+      androidScope(() => {
+        wrapper.vm.textFieldLoaded(androidMock);
+      }).then(() => {
+        expect(androidMock.object.android.requestFocus.called).to.eq(true);
+        expect(wrapper.emitted().textFieldLoaded.length).to.equal(1);
+        expect(textFieldLoaded.called).to.equal(true);
+        done();
+      });
+    });
+
+    it('calls for ios loading events', () => {
+      const iosMock = {
+        object: {
+          ios: true,
+          focus: sinon.spy(),
+        },
+      };
+      iosScope(() => {
+        wrapper.vm.textFieldLoaded(iosMock);
+        expect(wrapper.emitted().textFieldLoaded.length).to.equal(2);
+        expect(textFieldLoaded.called).to.equal(true);
+        expect(iosMock.object.focus.called).to.eq(true);
+      });
+    });
+  });
+
+  describe('textfield default values are effective.', () => {
+    it('should not auto focus when platform is ios, and autoFocus is false', () => {
+      iosScope(() => {
+        const iosMock = {
+          object: {
+            ios: true,
+            focus: sinon.spy(),
+          },
+        };
+        let wrapper2 = createWrapper({
+          autoFocus: false,
+        });
+        wrapper2.vm.textFieldLoaded(iosMock);
+        expect(wrapper2.emitted().textFieldLoaded.length).to.equal(1);
+        expect(textFieldLoaded.called).to.equal(true);
+        expect(iosMock.object.focus.called).to.eq(false);
+      });
+    });
+
+    it('should not auto focus when platform is android, and autoFocus is false', done => {
+      androidScope(() => {
+        const androidMock = {
+          object: {
+            focus: sinon.spy(),
+            android: {
+              requestFocus: sinon.spy(),
+            },
+          },
+        };
+        let wrapper2 = createWrapper();
+        androidScope(() => {
+          wrapper2.vm.textFieldLoaded(androidMock);
+        })
+          .then(() => {
+            expect(androidMock.object.android.requestFocus.called).to.eq(false);
+            expect(textFieldLoaded.called).to.equal(false);
+            done();
+          })
+          .catch(done());
+      });
+    });
+
+    it('input should be disabled when disabled prop is fed as true', () => {
+      let wrapper2 = createWrapper({
+        disabled: true,
+      });
+      const disabledLabelClass = 'nu-text-input__label--disable';
+      const textField = wrapper2.find(TextField);
+      const label = wrapper2.find(VxpLabel);
+
+      expect(textField.props().editable).to.eq(false);
+      expect(wrapper2.vm.labelClass).to.eq(disabledLabelClass);
+      expect(label.classes()).to.contain(disabledLabelClass);
+    });
   });
 });
+
+function iosScope(testFn) {
+  const originalPlatform = platform.platform;
+  platform.platform = 'ios';
+  testFn();
+  platform.platform = originalPlatform;
+}
+
+function androidScope(testFn) {
+  const originalPlatform = platform.platform;
+  platform.platform = 'android';
+  utils.ad = {
+    dismissSoftInput: sinon.spy(),
+    getInputMethodManager: () => {
+      return {
+        showSoftInput: sinon.spy(),
+      };
+    },
+  };
+  testFn();
+  return new Promise(resolve => {
+    setTimeout(() => {
+      utils.ad = undefined;
+      platform.platform = originalPlatform;
+      resolve();
+    }, 250);
+  });
+}

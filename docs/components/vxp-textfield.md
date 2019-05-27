@@ -19,7 +19,6 @@ This is an overview of the most common usage of `<VxpTextField>`.
     @focus="textFieldOnFocus"
     @blur="textFieldOnBlur"
     @returnPress="textFieldOnReturnPress"
-    :editable="true"
     keyboardType="email"
   />
   <VxpLabel style="margin-top: 15px; font-weight: bold" text="Textfield value: " /><Label :text="textFieldInput" />
@@ -41,7 +40,6 @@ This is an overview of the most common usage of `<VxpTextField>`.
 <VxpTextField
 v-model="textFieldInput"
 hint="This is placeholder"
-:disable="false"
 @returnPress="textFieldreturnPress"
 @textChange="textFieldtextChange" />
 ```
@@ -51,7 +49,7 @@ hint="This is placeholder"
 | Name | Type | Default | Web | Mobile | Description |
 | --- | --- | --- | --- | --- | --- |
 | text | String | | ✔ | ✔ | Gets or sets the value of the component. |
-| hint | String | | ✔ | ✔ | Gets or sets the placeholder text when the component is editable. |
+| hint | String | | ✔ | ✔ | Gets or sets the placeholder text when the component is not disabled. |
 | disabled | Boolean | `true` | ✔ | ✔ | When true, VxptextField component is disabled and user is not able to chance it's text. |
 | maxLength | Number | unlimited | ✔ | ✔ | Sets the maximum number of characters that can be entered in the container. |
 | secure | Boolean | `false` | ✔ | ✔ | Hides the entered text when true. Use this property to create password input fields. |

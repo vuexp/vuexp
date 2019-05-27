@@ -62,10 +62,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    editable: {
-      type: Boolean,
-      default: true,
-    },
     disabled: {
       type: Boolean,
       default: false,
@@ -92,10 +88,10 @@ export default {
       return this.secure || this.type === 'password';
     },
     labelClass: function() {
-      return !this.editable ? 'nu-text-input__label--disable' : '';
+      return this.disabled ? 'nu-text-input__label--disable' : '';
     },
     textFieldClass: function() {
-      return `nu-text-input__textfield ${!this.editable ? 'nu-text-input__textfield--disabled' : ''}`;
+      return `nu-text-input__textfield ${this.disabled ? 'nu-text-input__textfield--disabled' : ''}`;
     },
   },
   methods: {
