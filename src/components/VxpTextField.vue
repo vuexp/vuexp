@@ -1,6 +1,6 @@
 <template>
-  <StackLayout class="nu-text-input typ-body">
-    <VxpLabel class="nu-text-input__label" :class="labelClass" :text="label" v-if="label" />
+  <StackLayout class="vxp-text-input typ-body">
+    <VxpLabel class="vxp-text-input__label" :class="labelClass" :text="label" v-if="label" />
     <TextField
       class="typ-body"
       ref="textField"
@@ -19,7 +19,7 @@
       @focus="$emit('focus', $event)"
       @returnPress="$emit('returnPress', $event)"
     />
-    <StackLayout v-if="errors.length" class="nu-text-input__error-messages typ-body">
+    <StackLayout v-if="errors.length" class="vxp-text-input__error-messages typ-body">
       <VxpLabel :text="error" v-for="(error, index) in errors" :key="index" :textWrap="true" />
     </StackLayout>
     <slot name="password-strength" />
@@ -88,10 +88,10 @@ export default {
       return this.secure || this.type === 'password';
     },
     labelClass: function() {
-      return this.disabled ? 'nu-text-input__label--disable' : '';
+      return this.disabled ? 'vxp-text-input__label--disable' : '';
     },
     textFieldClass: function() {
-      return `nu-text-input__textfield ${this.disabled ? 'nu-text-input__textfield--disabled' : ''}`;
+      return `vxp-text-input__textfield ${this.disabled ? 'vxp-text-input__textfield--disabled' : ''}`;
     },
   },
   methods: {
@@ -127,7 +127,7 @@ export default {
 @import '../assets/styles/helpers';
 @import '../themes/themes';
 
-.nu-text-input {
+.vxp-text-input {
   width: unit(352);
 
   @include themed($themes) {
@@ -144,7 +144,7 @@ export default {
       }
     }
 
-    .nu-text-input__textfield {
+    .vxp-text-input__textfield {
       background-color: getvar(default-background);
       border: none;
       border-bottom-style: solid;
@@ -171,7 +171,7 @@ export default {
     }
 
     &[primary] {
-      .nu-text-input__textfield {
+      .vxp-text-input__textfield {
         &:focus,
         &--focused {
           border-bottom-color: getvar(primary);
@@ -179,7 +179,7 @@ export default {
       }
     }
     &[secondary] {
-      .nu-text-input__textfield {
+      .vxp-text-input__textfield {
         &:focus,
         &--focused {
           border-bottom-color: getvar(secondary);
@@ -187,7 +187,7 @@ export default {
       }
     }
     &[alert] {
-      .nu-text-input__textfield {
+      .vxp-text-input__textfield {
         &:focus,
         &--focused {
           border-bottom-color: getvar(alert);
@@ -197,12 +197,12 @@ export default {
   }
 }
 
-.nu-validate {
+.vxp-validate {
   &--invalid#{&}--dirty {
     @include themed($themes) {
-      .nu-text-input__textfield,
-      .nu-text-input__textfield:focus,
-      .nu-text-input__textfield--focused {
+      .vxp-text-input__textfield,
+      .vxp-text-input__textfield:focus,
+      .vxp-text-input__textfield--focused {
         border-bottom-style: solid;
         border-bottom-width: unit(1);
         border-bottom-color: getvar(alert);
@@ -212,9 +212,9 @@ export default {
 
   &--valid#{&}--dirty {
     @include themed($themes) {
-      .nu-text-input__textfield,
-      .nu-text-input__textfield:focus,
-      .nu-text-input__textfield--focused {
+      .vxp-text-input__textfield,
+      .vxp-text-input__textfield:focus,
+      .vxp-text-input__textfield--focused {
         border-bottom-style: solid;
         border-bottom-width: unit(1);
         border-bottom-color: getvar(success);
