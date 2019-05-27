@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'Props:/Name: minValue, Type: Number'() {
+  'C13843437 Props:/Name: minValue, Type: Number'() {
     this.currentPage.assert
       .attributeContains('@minValue', 'value', 0)
       .setNumberToMinValueInput(30)

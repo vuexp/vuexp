@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'Props:/Name: maxValue, Type: Number'() {
+  'C13843438 Props:/Name: maxValue, Type: Number'() {
     this.currentPage.assert
       .attributeContains('@maxValue', 'value', 100)
       .setNumberToMaxValueInput(15)

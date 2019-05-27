@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'Events / Name : valueChange'() {
+  'C13843439 Events / Name : valueChange'() {
     this.currentPage
       .setNumberToValueInput(10)
       .checkScreenshot('@slider_scroll')
