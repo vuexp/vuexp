@@ -27,5 +27,6 @@ This is an overview of `<VxpImageUploader>` component.
 | Name              | Web | Mobile | Description |
 | ----------------- | --- | ------ | ----------- |
 | maxFileError      |  ✔  | ✔      | This event is emitted if user selects a bigger file than the specified max-file size. |
-| onUploadError     |  ✔  | ✔      | This event is emiited if something goes wrong during upload operation. `error` will be provided as the first parameter. |
-| onUploadCompleted |  ✔  | ✔      | This event is emiited if upload is completed successfully. String of server `response` will be provided as the first parameter |
+| onUploadError     |  ✔  | ✔      | This event is emitted if something goes wrong during upload operation. `error` will be provided as the first parameter. |
+| onUploadProgress |  ✔  | ✔      | This event is emitted on upload progress. Percent will be provided as the first parameter |
+| onUploadCompleted |  ✔  | ✔      | This event is emitted if upload is completed successfully. String of server `response` will be provided as the first parameter |

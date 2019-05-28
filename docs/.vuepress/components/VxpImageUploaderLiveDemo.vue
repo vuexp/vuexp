@@ -50,6 +50,7 @@
         :maxSize="parseInt(uploaderMaxSize)"
         @onMaxFileError="onMaxFileError"
         @onUploadError="onUploadError"
+        @onUploadProgress="onUploadProgress"
         @onUploadCompleted="onUploadCompleted"
       />
     </StackLayout>
@@ -105,6 +106,9 @@ export default {
     },
     onUploadError(error) {
       this.uploaderEvents.push("Upload error.");
+    },
+    onUploadProgress(percent) {
+      this.uploaderEvents.push("Upload progress - %" + percent);
     },
     onUploadCompleted(data) {
       this.uploaderEvents.push("Upload completed! Response: " + data);

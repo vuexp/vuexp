@@ -86,6 +86,7 @@ export default {
     },
     onProgress(percent) {
       console.log('file upload progress - %' + percent); //eslint-disable-line
+      this.$emit('onUploadProgress', percent);
     },
     onFileSelected(file) {
       const { target } = this;

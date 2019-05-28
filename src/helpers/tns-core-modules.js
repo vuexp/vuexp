@@ -1,6 +1,3 @@
-export const FormattedString = null;
-export const Span = null;
-export const utilsModule = null;
 export const frameModule = null;
 export const imageSourceModule = null;
 export const fileSystemModule = null;
