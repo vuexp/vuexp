@@ -83,10 +83,8 @@ class FilePicker {
 
         // try to get file size
         try {
-          if (fileSystemModule) {
-            const documentFile = fileSystemModule.File.fromPath(filePath);
-            fileSize = documentFile.size;
-          }
+          const documentFile = fileSystemModule.File.fromPath(filePath); // deepscan-disable-line
+          fileSize = documentFile.size;
         } catch (ex) {
           console.error('can not get file size!', ex); // eslint-disable-line
         }
@@ -101,12 +99,7 @@ class FilePicker {
           opt.version = PHImageRequestOptionsVersion.Current; // eslint-disable-line
           PHImageManager.defaultManager().requestImageDataForAssetOptionsResultHandler(ios, opt, (imageData, dataUTI, orientation, info) => { // eslint-disable-line
             const filePath = info.objectForKey('PHImageFileURLKey').toString();
-
-            if (!imageSourceModule) {
-              reject();
-            }
-
-            const imgSource = imageSourceModule.fromData(imageData);
+            const imgSource = imageSourceModule.fromData(imageData); // deepscan-disable-line
             const localPath = filePath.toString().split('/');
             const fileName = localPath[localPath.length - 1].split('.')[0] + '.jpeg';
             const folderPath = fileSystemModule.knownFolders.documents().path;
@@ -115,10 +108,8 @@ class FilePicker {
             if (saved) {
               let fileSize = 0;
               try {
-                if (fileSystemModule) {
-                  const jpegFile = fileSystemModule.File.fromPath(jpegFilePath);
-                  fileSize = jpegFile.size;
-                }
+                const jpegFile = fileSystemModule.File.fromPath(jpegFilePath); // deepscan-disable-line
+                fileSize = jpegFile.size;
               } catch (ex) {
                 console.error('can not get file size!', ex); // eslint-disable-line
               }
