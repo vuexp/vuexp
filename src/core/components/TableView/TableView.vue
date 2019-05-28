@@ -227,7 +227,7 @@ export default {
           });
 
           this.addRowsString(); // update rows rendering style
-          this.increaseRowIndex(); // increase row index
+          rowIndex++; // increase row index
         });
 
         // save total row, column number
@@ -242,12 +242,6 @@ export default {
      */
     setRowNumber(number) {
       this.rowNumber = number;
-    },
-    /**
-     * Increase row index
-     */
-    increaseRowIndex() {
-      this.rowIndex++;
     },
     /**
      * Updates rows rendering style

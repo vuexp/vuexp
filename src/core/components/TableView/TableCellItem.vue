@@ -70,11 +70,11 @@ export default {
       }
 
       if (sourceType === 'button') {
-        this.$emit('buttonClicked', e.currentTarget.id);
+        this.$emit('buttonClicked', e.currentTarget.id, e);
       }
     },
     onCheckboxClicked(e) {
-      this.$emit('checkboxClicked', e);
+      this.$emit('checkboxClicked', e.currentTarget.id, e);
     },
   },
   computed: {
