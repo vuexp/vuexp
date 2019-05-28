@@ -5,7 +5,7 @@ module.exports = {
     return this.api.launchUrl;
   },
   elements: {
-    textview: '#TextView',
+    textview: '#TextView textarea',
     textInputField: '#TextView_text_textfield',
     hintInputField: '#TextView_hint_textfield',
     editableCheckButton: '#TextView_editable_input',
