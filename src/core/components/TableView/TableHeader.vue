@@ -4,8 +4,8 @@
 
     <VxpLabel v-if="!rowSelection" :text="headerLabel" :textWrap="true" class="vxp-table-view-header-label"></VxpLabel>
     <StackLayout v-if="sortable" orientation="vertical" class="vxp-table-view-header-sorting-buttons">
-      <VxpIconButton icon="fa fa-exclamation-triangle" size="20" @tap="$emit('onAscendingClicked', $event)"></VxpIconButton>
-      <VxpIconButton icon="fa fa-exclamation-triangle" size="20" @tap="$emit('onDescendingClicked', $event)"></VxpIconButton>
+      <VxpIconButton icon="fa fa-exclamation-triangle" size="20" @tap="$emit('onAscendingClicked', headerName)"></VxpIconButton>
+      <VxpIconButton icon="fa fa-exclamation-triangle" size="20" @tap="$emit('onDescendingClicked', headerName)"></VxpIconButton>
     </StackLayout>
   </StackLayout>
 </template>

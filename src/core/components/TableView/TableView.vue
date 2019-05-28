@@ -17,6 +17,8 @@
         row="0"
         :col="headerIndex"
         @checkAllClicked="$event === true ? selectAllRows() : deselectAllRows()"
+        @onAscendingClicked="$emit('onAscendingClicked', $event)"
+        @onDescendingClicked="$emit('onDescendingClicked', $event)"
       >
       </TableHeader>
 
