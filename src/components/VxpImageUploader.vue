@@ -44,7 +44,7 @@ export default {
     VxpImage,
     StackLayout,
   },
-  created() {
+  mounted() {
     this.filePicker = new FilePicker();
 
     this.filePicker.options = {
