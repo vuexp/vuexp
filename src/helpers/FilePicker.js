@@ -43,7 +43,7 @@ class FilePicker {
     return this._options;
   }
   set options(options) {
-    return Object.assign(this._options, options);
+    Object.assign(this._options, options);
   }
 
   extractFilePath(file, path) {
