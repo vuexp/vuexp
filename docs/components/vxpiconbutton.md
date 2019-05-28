@@ -12,7 +12,7 @@ Circular icon button.
       flexDirection="row"
       justifyContent="space-around"
     >
-      <IconButton
+      <VxpIconButton
         :isEnabled="isEnabled"
         @tap="increment"
         font="nuicon"
@@ -20,14 +20,14 @@ Circular icon button.
         size="25"
         primary
       />
-      <IconButton
+      <VxpIconButton
         :isEnabled="isEnabled"
         @tap="increment"
         font="nuicon"
         icon="nuicon-basket"
         secondary
       />
-      <IconButton
+      <VxpIconButton
         :isEnabled="isEnabled"
         @tap="increment"
         font="nuicon"
@@ -111,9 +111,9 @@ increment() {
 
 | Name      | Type           | Default | Web | Mobile | Description                               |
 | --------- | -------------- | ------- | --- | ------ | ----------------------------------------- |
-| icon      | String         |         | ✔   | ✔      | Sets the icon class name.                 |
-| size      | String, Number | 37      | ✔   | ✔      | Sets Icon size.                           |
-| isEnabled | Boolean        |         | ✔   | ✔      | Sets the VxpIconButton enable or disable. |
+| icon      | String         | ` `      | ✔   | ✔      | Sets the icon class name.                 |
+| size      | String, Number | `37`      | ✔   | ✔      | Sets Icon size.                           |
+| isEnabled | Boolean        | `true`  | ✔   | ✔      | Sets the VxpIconButton enable or disable. |
 
 ### Events
 

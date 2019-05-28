@@ -3,7 +3,7 @@ module.exports = {
   before: function(client, done) {
     this.currentPage = client.maximizeWindow().page.labelPage();
     this.currentPage
-      .navigate(client.globals.devUrl + 'components/label.html')
+      .navigate(client.globals.devUrl + 'components/vxp-label.html')
       .waitForElementVisible('body', 60000)
       .customPerform(function() {
         done();

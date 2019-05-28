@@ -15,7 +15,7 @@ module.exports = {
 
     backgroundColorDropdown: '#searchbar__textFieldBackgroundColor__input',
     backgroundColor_red: '#searchbar__textFieldBackgroundColor__input option[value="red"]',
-    showLastEventFields: '.vxp-label.form-input',
+    showLastEventFields: '#searchbar_event_label',
     submitButton: '.vxp-label.vxp-searchbar__search-icon',
     clearButton: '.vxp-label.vxp-searchbar__clear-icon',
   },

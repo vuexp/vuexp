@@ -44,9 +44,13 @@ export default {
           if (slot.componentOptions && slot.componentOptions.tag && slot.componentOptions.tag === 'NavigationButton') {
             if (!this.navigationButtonCreated) {
               this.navigationButtonCreated = true;
-              slot.elm.style.display = 'inherit';
+              if (slot.elm.style) {
+                slot.elm.style.display = 'inherit';
+              }
             } else {
-              slot.elm.style.display = 'none';
+              if (slot.elm.style) {
+                slot.elm.style.display = 'none';
+              }
             }
           }
         }

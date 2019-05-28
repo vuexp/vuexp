@@ -1,10 +1,54 @@
+import ActionDialog from '../dialogs/ActionDialog';
 import ConfirmDialog from '../dialogs/ConfirmDialog';
 import AlertDialog from '../dialogs/AlertDialog';
 import ViewDirective from '../directives/ViewDirective';
+import Modal from '../components/Modal/Modal';
 
 const VxpPlugin = {
   install: Vue => {
+    // Show Modal
+    Vue.prototype.$showModal = function(component, options = { context: null, fullscreen: false }) {
+      return new Promise(resolve => {
+        // eslint-disable-line
+        const ContentComponent = Vue.extend(component);
+        const ModalComponent = Vue.extend(Modal);
+        const ModalInstance = new ModalComponent();
+        ContentComponent.prototype.$modal = {
+          close(data) {
+            ModalInstance.closeModal();
+            resolve(data);
+          },
+        };
+        const modalDom = ModalInstance.$mount();
+        document.body.appendChild(modalDom.$el);
+        ModalInstance.isModalVisible = true;
+        ModalInstance.contentComponent = ContentComponent;
+        if (options && options.fullscreen) {
+          ModalInstance.fullscreen = options.fullscreen;
+        }
+      });
+    };
     if (typeof window !== 'undefined') {
+      // Action Dialog
+      const ActionDialogComponent = Vue.extend(ActionDialog);
+      // Register action dialog to the window.
+      window.action = async function(title, cancelButtonText, options) {
+        const actionDialog = new ActionDialogComponent();
+        const actionDialogDom = actionDialog.$mount().$el;
+        document.body.appendChild(actionDialogDom);
+
+        return new Promise(resolve => {
+          actionDialog.title = title;
+          actionDialog.cancelButtonText = cancelButtonText;
+          actionDialog.options = options;
+          actionDialog.isModalVisible = true;
+          actionDialog.$once('submit', value => {
+            actionDialog.isModalVisible = false;
+            resolve(value);
+          });
+        });
+      };
+
       // Alert Dialog
       const AlertDialogComponent = Vue.extend(AlertDialog);
       // Register alert dialog to the window.
@@ -36,7 +80,6 @@ const VxpPlugin = {
   },
 };
 
-export default VxpPlugin;
 function confirmWrapper(messageText, confirmDialog) {
   return new Promise(resolve => {
     if (typeof messageText === 'string') {
@@ -73,3 +116,5 @@ function alertWrapper(messageText, alertDialog) {
     });
   });
 }
+
+export default VxpPlugin;
