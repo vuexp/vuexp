@@ -1,5 +1,5 @@
 <template>
-  <GridLayout ref="tableViewRef" class="vxp-table-view" :columns="getColumnsString(columns)" :rows="getRowsString">
+  <GridLayout ref="tableViewRef" class="vxp-table-view" :columns="getColumnsString" :rows="getRowsString">
     <template v-if="isLoading || dataNotFound">
       <slot row="0" col="0" class="vxp-table-view-loading-indicator" v-if="hasSlots && isLoading" name="loadingIndicator" />
       <VxpLabel row="0" col="0" class="vxp-table-view-not-found-msg" v-if="!isLoading && dataNotFound" :text="notFoundMsg"></VxpLabel>
@@ -151,13 +151,14 @@ export default {
     /**
      * Produces 'columns' string for gridview
      */
-    getColumnsString(columns) {
+    getColumnsString() {
+      let cols = 'auto';
       for (var i = 0; i < this.selectedColumns.length; i++) {
         if (this.renderType === 'table' || (this.renderType === 'list' && this.selectedColumns[i].listAlignment === 'horizontal')) {
-          columns += ',*';
+          cols += ',*';
         }
       }
-      return columns;
+      return cols;
     },
     /**
      * Returns 'rows' string for gridview
