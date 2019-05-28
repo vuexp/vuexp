@@ -106,6 +106,9 @@ export default {
     color: rgb(52, 52, 187);
     border-radius: unit(48);
     width: auto;
+    //Web Only
+    position: relative;
+    display: inline-block;
     &:hover {
       cursor: pointer;
     }
@@ -116,7 +119,7 @@ export default {
   //Start Web Only
   &__itemContainer {
     position: relative;
-    top: 0.2rem;
+    top: 110%;
     background: white;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     border-radius: 7px;
