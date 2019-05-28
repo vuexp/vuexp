@@ -26,7 +26,7 @@
 
       <FlexboxLayout flexWrap="wrap">
         <VxpLabel text="Disabled" class="option-label"/>
-        <input id="vxpimageuploader_disabled_cb" type="checkbox" v-model="uploaderDisabled">
+        <VxpCheckbox id="vxpimageuploader_disabled_cb" v-model="uploaderDisabled" />
       </FlexboxLayout>
 
       <FlexboxLayout flexWrap="wrap">
@@ -72,6 +72,7 @@
 <script>
 import VxpLabel from '../../../src/components/VxpLabel';
 import VxpButton from '../../../src/components/VxpButton';
+import VxpCheckbox from '../../../src/components/VxpCheckbox';
 import VxpImageUploader from '../../../src/components/VxpImageUploader';
 import StackLayout from '../../../src/layouts/StackLayout';
 import TextField from '../../../src/core/components/TextField/TextField';
@@ -96,6 +97,7 @@ export default {
     StackLayout,
     TextField,
     VxpImageUploader,
+    VxpCheckbox,
   },
   methods: {
     onMaxFileError() {
