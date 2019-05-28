@@ -238,6 +238,7 @@ export default {
 
 <style lang="scss">
 @import '../themes/themes';
+@import '../assets/styles/helpers';
 
 $border-color: #e2e4e8;
 $placeholder-color: #898d90;
@@ -327,7 +328,7 @@ $placeholder-color: #898d90;
     height: unit(255);
     overflow-y: scroll;
 
-    box-shadow: unit(0) unit(12) unit(13) unit(-11) rgba(0, 0, 0, 0.1), unit(-10) unit(-3) unit(13) unit(11) rgba(0, 0, 0, 0.1),
+    box-shadow: unit(0) unit(12) unit(13) unit(-11) rgba(0, 0, 0, 0.1), unit(-10) unit(-3) unit(13) unit(-11) rgba(0, 0, 0, 0.1),
       unit(10) unit(-3) unit(13) unit(-11) rgba(0, 0, 0, 0.1);
 
     li {

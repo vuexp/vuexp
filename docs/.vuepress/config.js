@@ -35,6 +35,7 @@ module.exports = {
           title: "Components",
           collapsable: true,
           children: [
+            "components/vxp-datePicker.md",
             "components/vxp-dropDown.md",
             "components/vxp-label.md",
             "components/switcher.md",
@@ -58,6 +59,7 @@ module.exports = {
             "components/vxp-list-view.md",
             "components/vxpiconbutton.md",
             "components/vxpcheckbox.md",
+            "components/vxp-textfield.md",
           ]
         },
         {
@@ -66,6 +68,14 @@ module.exports = {
           children: [
             "components/dialogs/alert-dialog.md",
             "components/dialogs/modal-base.md",
+            "components/dialogs/action-dialog.md",
+          ]
+        },
+        {
+          title: "Menus",
+          collapsable: true,
+          children: [
+            "components/menus/vxpdropdown-menu.md",
           ]
         },
       ]
