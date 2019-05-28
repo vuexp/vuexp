@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import { openUrl } from '../platform.native'; // eslint-disable-line
+import { openUrl } from '../utils'; // eslint-disable-line
 
 export default {
   name: 'VxpLink',
