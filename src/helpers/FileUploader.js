@@ -38,7 +38,7 @@ export default class FileUploader {
                 try {
                   resolve(responseText);
                 } catch (e) {
-                  resolve(responseText);
+                  reject(e);
                 }
               } else {
                 reject(`${status} - ${statusText}`);
