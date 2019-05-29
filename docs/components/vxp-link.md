@@ -46,6 +46,7 @@ sidebarDepth: 0
 |-------------|-----------|---------|-----|--------|----------------------------------------------|
 | text        | `String`  |         | ✔   | ✔      | Link text is visible part of the link button |
 | externalUrl | `String`  |         | ✔   | ✔      | Destination address                          |
+| disabled    | `boolean` | `false` | ✔   | ✔      | Disables clicking the link, it will only show text as label |
 
 ## Events
 

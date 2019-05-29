@@ -6,12 +6,26 @@
     :data="userData"
     :rowSelection="true"
     notFoundMsg="Data cannot be found!"
-    />
+    >
+    <!-- Pagination component as a slot, but could be drag out from Database element -->
+      <Pagination
+        slot="pagination"
+        :totalItems="50"
+        :page="1"
+      />
+      <ItemsPerPageDropDown
+        slot="ItemsPerPage"
+        label="Items per page"
+        :listItemsPerPage="[5, 10, 20, 50, 100]"
+      />
+    </TableView>
   </StackLayout>
 </template>
 
 <script>
 import TableView from '../../../src/core/components/TableView/TableView';
+import Pagination from '../../../src/core/components/Pagination/Pagination';
+import ItemsPerPageDropDown from '../../../src/core/components/Pagination/ItemsPerPageDropDown';
 import Label from '../../../src/core/components/Label/Label';
 import StackLayout from '../../../src/layouts/StackLayout';
 
@@ -21,6 +35,8 @@ export default {
     StackLayout,
     TableView,
     Label,
+    ItemsPerPageDropDown,
+    Pagination,
   },
   data() {
     return {

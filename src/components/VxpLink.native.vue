@@ -1,5 +1,6 @@
 <template>
-  <Label v-if="externalUrl" class="vxp-link typ-body" :text="text" @tap="onTap" />
+  <Label v-if="disabled" class="typ-body" :text="text" />
+  <Label v-else-if="externalUrl" class="vxp-link typ-body" :text="text" @tap="onTap" />
   <Label v-else :text="text" class="vxp-link typ-body" @tap="$emit('tap', $event)" />
 </template>
 
@@ -16,6 +17,10 @@ export default {
     externalUrl: {
       type: String,
       default: '',
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
   methods: {

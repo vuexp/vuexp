@@ -1,46 +1,54 @@
 <template>
-  <GridLayout ref="tableViewRef" class="vxp-table-view" :columns="getColumnsString" :rows="getRowsString">
-    <template v-if="isLoading || dataNotFound">
-      <slot row="0" col="0" class="vxp-table-view-loading-indicator" v-if="hasSlots && isLoading" name="loadingIndicator" />
-      <VxpLabel row="0" col="0" class="vxp-table-view-not-found-msg" v-if="!isLoading && dataNotFound" :text="notFoundMsg"></VxpLabel>
-    </template>
-    <template v-else-if="tableData.length">
-      <TableHeader
-        v-for="(headerItem, headerIndex) in tableHeaderData"
-        :key="headerIndex"
-        :headerType="headerItem.type"
-        :headerName="headerItem.name"
-        :headerLabel="headerItem.label"
-        :sortable="headerItem.sortable"
-        :rowSelection="rowSelectionEnabled && headerIndex === 0"
-        :disabled="isHeaderDisabled(headerItem)"
-        row="0"
-        :col="headerIndex"
-        @checkAllClicked="$event === true ? selectAllRows() : deselectAllRows()"
-        @onAscendingClicked="$emit('onAscendingClicked', $event)"
-        @onDescendingClicked="$emit('onDescendingClicked', $event)"
-      >
-      </TableHeader>
+  <StackLayout>
+    <GridLayout ref="tableViewRef" class="vxp-table-view" :columns="getColumnsString" :rows="getRowsString">
+      <template v-if="isLoading || dataNotFound">
+        <slot row="0" col="0" class="vxp-table-view-loading-indicator" v-if="hasSlots && isLoading" name="loadingIndicator" />
+        <VxpLabel row="0" col="0" class="vxp-table-view-not-found-msg" v-if="!isLoading && dataNotFound" :text="notFoundMsg"></VxpLabel>
+      </template>
+      <template v-else-if="tableData.length">
+        <TableHeader
+          v-for="(headerItem, headerIndex) in tableHeaderData"
+          :key="headerIndex"
+          :headerType="headerItem.type"
+          :headerName="headerItem.name"
+          :headerLabel="headerItem.label"
+          :sortable="headerItem.sortable"
+          :rowSelection="rowSelectionEnabled && headerIndex === 0"
+          :disabled="isHeaderDisabled(headerItem)"
+          row="0"
+          :col="headerIndex"
+          @checkAllClicked="$event === true ? selectAllRows() : deselectAllRows()"
+          @onAscendingClicked="$emit('onAscendingClicked', $event)"
+          @onDescendingClicked="$emit('onDescendingClicked', $event)"
+        >
+        </TableHeader>
 
-      <TableCell
-        v-for="(dataItem, dataIndex) in tableData"
-        :key="getCellKey(dataItem, dataIndex)"
-        :cellData="getCellData(dataItem)"
-        :cellHorizontalAlignment="cellHorizontalAlignment()"
-        :cellVerticalAlignment="cellVerticalAlignment()"
-        :customCSS="dataItem.customCSS"
-        :row="getDataRow(dataItem)"
-        :col="getDataCol(dataItem)"
-        @checkboxClicked="onTableRowSelected($event, dataItem.rowNo)"
-        @buttonClicked="$emit('buttonClicked', $event)"
-        @imageLoaded="$emit('imageLoaded', $event)"
-        @imageLoadError="$emit('imageLoadError', $event)"
-      ></TableCell>
-    </template>
-  </GridLayout>
+        <TableCell
+          v-for="(dataItem, dataIndex) in tableData"
+          :key="getCellKey(dataItem, dataIndex)"
+          :cellData="getCellData(dataItem)"
+          :cellHorizontalAlignment="cellHorizontalAlignment()"
+          :cellVerticalAlignment="cellVerticalAlignment()"
+          :customCSS="dataItem.customCSS"
+          :row="getDataRow(dataItem)"
+          :col="getDataCol(dataItem)"
+          @checkboxClicked="onTableRowSelected($event, dataItem.rowNo)"
+          @buttonClicked="$emit('buttonClicked', $event)"
+          @imageLoaded="$emit('imageLoaded', $event)"
+          @imageLoadError="$emit('imageLoadError', $event)"
+        ></TableCell>
+      </template>
+    </GridLayout>
+    <FlexboxLayout v-if="hasSlots" flexWrap="wrap">
+      <slot name="ItemsPerPage" />
+      <slot name="pagination" />
+    </FlexboxLayout>
+  </StackLayout>
 </template>
 <script>
 import GridLayout from '../../../layouts/GridLayout';
+import StackLayout from '../../../layouts/StackLayout';
+import FlexboxLayout from '../../../layouts/FlexboxLayout';
 import TableCell from './TableCell';
 import TableHeader from './TableHeader';
 import VxpLabel from '../../../components/VxpLabel';
@@ -404,6 +412,8 @@ export default {
     TableCell,
     TableHeader,
     VxpLabel,
+    StackLayout,
+    FlexboxLayout,
   },
 };
 </script>
