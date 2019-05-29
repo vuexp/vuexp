@@ -1,5 +1,5 @@
 <template>
-  <div class="vxp-navigation-button" :class="{ 'vxp-navigation-button--has-icon': webIcon }" @click="onTap($event)">
+  <div v-if="visibility !== 'hidden'" class="vxp-navigation-button" :class="{ 'vxp-navigation-button--has-icon': webIcon }" @click="onTap($event)">
     <span v-if="webIcon" class="vxp-action-item__icon" :class="webIcon"></span>
     <span v-else class="vxp-action-item__text">{{ text }}</span>
   </div>
@@ -11,6 +11,7 @@ import Gestures from '../../mixins/GestureMixin';
 export default {
   name: 'NavigationButton',
   props: {
+    visibility: String,
     text: String,
     webIcon: {
       type: String,

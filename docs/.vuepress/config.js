@@ -59,6 +59,7 @@ module.exports = {
             "components/vxp-list-view.md",
             "components/vxpiconbutton.md",
             "components/vxpcheckbox.md",
+            "components/vxp-textfield.md",
           ]
         },
         {
@@ -68,6 +69,7 @@ module.exports = {
             "components/dialogs/alert-dialog.md",
             "components/dialogs/modal-base.md",
             "components/dialogs/action-dialog.md",
+            "components/dialogs/confirm-dialog.md",
           ]
         },
         {
