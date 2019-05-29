@@ -11,7 +11,7 @@
 
 <script>
 import Vue from 'nativescript-vue'; // eslint-disable-line
-import SideDrawerPlugin from 'nativescript-ui-sidedrawer/vue';
+import SideDrawerPlugin from 'nativescript-ui-sidedrawer/vue'; // eslint-disable-line
 
 Vue.use(SideDrawerPlugin);
 
