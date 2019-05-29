@@ -45,11 +45,6 @@ export default {
   components: {
     Button,
   },
-  filters: {
-    fonticon: function(value) {
-      return value + ' | fonticon';
-    },
-  },
 };
 </script>
 
