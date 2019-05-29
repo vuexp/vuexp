@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'C13843248	 Props/Name: editable, type : Boolean , value : false'() {
+  'C13843248 Props/Name: editable, type : Boolean , value : false'() {
     this.currentPage
       .click('@editableCheckButton')
       .waitForElementPresent('@textview', 3000)
