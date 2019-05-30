@@ -11,7 +11,7 @@
       <Pagination
         slot="pagination"
         :totalItems="50"
-        :page="0"
+        :page="5"
       />
       <ItemsPerPageDropDown
         slot="ItemsPerPage"
@@ -140,106 +140,6 @@ export default {
               "createdDate": "1/8/2019",
               "updatedDate": "3/21/2019",
               "lead": "kcarslaw4"
-          },
-          {
-              "userId": 6,
-              "type": "Person",
-              "username": "Sibley",
-              "alias": "lgiabucci5",
-              "userAccountEmail": "lgiabucci5@intel.com",
-              "password": "wPlZvAjPKIS",
-              "firstName": "Lisha",
-              "lastName": "Giabucci",
-              "photo": "http://dummyimage.com/233x211.jpg/5fa2dd/ffffff",
-              "phoneNumber": "295-864-4684",
-              "addressText": "8 Erie Trail",
-              "streetAddress": "0 Grayhawk Parkway",
-              "mobileNumber": "485-822-6793",
-              "jobTitle": "Environmental Specialist",
-              "description": "Focused didactic archive",
-              "createdDate": "12/29/2018",
-              "updatedDate": "4/12/2019",
-              "lead": "lgiabucci5"
-          },
-          {
-              "userId": 7,
-              "type": "Person",
-              "username": "Tine",
-              "alias": "aswaton6",
-              "userAccountEmail": "aswaton6@exblog.jp",
-              "password": "Jrclgp5N",
-              "firstName": "Agata",
-              "lastName": "Swaton",
-              "photo": "http://dummyimage.com/214x158.bmp/ff4444/ffffff",
-              "phoneNumber": "870-124-1814",
-              "addressText": "1049 Ruskin Junction",
-              "streetAddress": "0025 Dahle Road",
-              "mobileNumber": "506-696-5281",
-              "jobTitle": "Administrative Officer",
-              "description": "Re-contextualized heuristic alliance",
-              "createdDate": "1/9/2019",
-              "updatedDate": "2/19/2019",
-              "lead": "aswaton6"
-          },
-          {
-              "userId": 8,
-              "type": "Person",
-              "username": "Eve",
-              "alias": "jsember7",
-              "userAccountEmail": "jsember7@si.edu",
-              "password": "CTO6P6hy",
-              "firstName": "Johnath",
-              "lastName": "Sember",
-              "photo": "http://dummyimage.com/176x122.jpg/ff4444/ffffff",
-              "phoneNumber": "763-651-4182",
-              "addressText": "98 Jenifer Alley",
-              "streetAddress": "2 Hauk Place",
-              "mobileNumber": "669-585-5282",
-              "jobTitle": "Cost Accountant",
-              "description": "Optional high-level instruction set",
-              "createdDate": "7/18/2018",
-              "updatedDate": "10/23/2018",
-              "lead": "jsember7"
-          },
-          {
-              "userId": 9,
-              "type": "Person",
-              "username": "Karlee",
-              "alias": "mstirman8",
-              "userAccountEmail": "mstirman8@ycombinator.com",
-              "password": "Pqst9k5Aw",
-              "firstName": "Minne",
-              "lastName": "Stirman",
-              "photo": "http://dummyimage.com/103x183.jpg/dddddd/000000",
-              "phoneNumber": "199-231-9030",
-              "addressText": "962 Scofield Park",
-              "streetAddress": "64836 Eastlawn Point",
-              "mobileNumber": "395-531-6919",
-              "jobTitle": "Internal Auditor",
-              "description": "Stand-alone next generation attitude",
-              "createdDate": "8/1/2018",
-              "updatedDate": "4/16/2019",
-              "lead": "mstirman8"
-          },
-          {
-              "userId": 10,
-              "type": "Person",
-              "username": "Andromache",
-              "alias": "sduguid9",
-              "userAccountEmail": "sduguid9@dmoz.org",
-              "password": "vCEWM2Ss",
-              "firstName": "Syd",
-              "lastName": "Duguid",
-              "photo": "http://dummyimage.com/103x161.jpg/dddddd/000000",
-              "phoneNumber": "984-230-1613",
-              "addressText": "51329 Granby Road",
-              "streetAddress": "7 Arizona Way",
-              "mobileNumber": "563-438-1034",
-              "jobTitle": "Statistician IV",
-              "description": "Cross-platform stable implementation",
-              "createdDate": "9/9/2018",
-              "updatedDate": "3/2/2019",
-              "lead": "sduguid9"
           }
       ],
       headerFields: [

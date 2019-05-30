@@ -50,16 +50,16 @@
   </StackLayout>
 </template>
 <script>
-import GridLayout from '../../../layouts/GridLayout';
-import StackLayout from '../../../layouts/StackLayout';
-import FlexboxLayout from '../../../layouts/FlexboxLayout';
-import TableCell from './TableCell';
-import TableHeader from './TableHeader';
-import VxpLabel from '../../../components/VxpLabel';
-import platform from '../../../platform';
+import GridLayout from '../layouts/GridLayout';
+import StackLayout from '../layouts/StackLayout';
+import FlexboxLayout from '../layouts/FlexboxLayout';
+import TableCell from '../core/components/TableView/TableCell';
+import TableHeader from '../core/components/TableView/TableHeader';
+import VxpLabel from './VxpLabel';
+import platform from '../platform';
 
 export default {
-  name: 'TableView',
+  name: 'VxpTableView',
   props: {
     headerFields: {
       type: Array,
