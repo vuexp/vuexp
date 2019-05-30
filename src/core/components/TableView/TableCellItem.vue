@@ -113,8 +113,9 @@ export default {
 
       // style params
       if (this.customCSS !== null || typeof this.customCSS !== 'undefined') {
+        params.style = {};
         Object.keys(this.customCSS).forEach(cssKey => {
-          params[cssKey] = this.customCSS[cssKey];
+          params.style[cssKey] = this.customCSS[cssKey];
         });
       }
       return params;

@@ -1,48 +1,23 @@
 <template>
   <StackLayout>
-    <GridLayout ref="tableViewRef" class="vxp-table-view" :columns="getColumnsString" :rows="getRowsString">
-      <template v-if="isLoading || dataNotFound">
-        <slot row="0" col="0" class="vxp-table-view-loading-indicator" v-if="hasSlots && isLoading" name="loadingIndicator" />
-        <VxpLabel row="0" col="0" class="vxp-table-view-not-found-msg" v-if="!isLoading && dataNotFound" :text="notFoundMsg"></VxpLabel>
-      </template>
-      <template v-else-if="tableData.length">
-        <TableHeader
-          v-for="(headerItem, headerIndex) in tableHeaderData"
-          :key="headerIndex"
-          :type="headerItem.type"
-          :name="headerItem.name"
-          :label="headerItem.label"
-          :sortable="headerItem.sortable"
-          :rowSelection="rowSelectionEnabled && headerIndex === 0"
-          :disabled="isHeaderDisabled(headerItem)"
-          row="0"
-          :col="headerIndex"
-          @checkAllClicked="$event === true ? selectAllRows() : deselectAllRows()"
-          @onAscendingClicked="$emit('onAscendingClicked', $event)"
-          @onDescendingClicked="$emit('onDescendingClicked', $event)"
-        >
-        </TableHeader>
-
-        <TableCell
-          v-for="(dataItem, dataIndex) in tableData"
-          :key="getCellKey(dataItem, dataIndex)"
-          :cellData="getCellData(dataItem)"
-          :cellHorizontalAlignment="cellHorizontalAlignment()"
-          :cellVerticalAlignment="cellVerticalAlignment()"
-          :customCSS="dataItem.customCSS"
-          :row="getDataRow(dataItem)"
-          :col="getDataCol(dataItem)"
-          :totalColCount="columnNumber"
-          :renderType="renderType"
-          :currentRowNo="getDataRow(dataItem)"
-          :currentColNo="getDataCol(dataItem)"
-          @checkboxClicked="onTableRowSelected($event, dataItem.rowNo)"
-          @buttonClicked="$emit('onButtonClicked', $event)"
-          @imageLoaded="$emit('onImageLoaded', $event)"
-          @imageLoadError="$emit('onImageLoadError', $event)"
-        ></TableCell>
-      </template>
-    </GridLayout>
+    <VxpListView
+      ref="listView"
+      :items="itemList"
+      :itemSelect="itemConditions"
+      :reversed="isListReversed"
+      :height="listViewHeight"
+      @tap="onListViewTap"
+      @loadMoreItems="onLoadMoreItems"
+      @listViewLoaded="onListViewLoaded"
+      @scrolled="onListViewScrolled"
+    >
+      <v-template slot-scope="{ item }" slot="showIfStateTrue">
+        <Label :text="item.text" color="black" />
+      </v-template>
+      <v-template slot-scope="{ item }" slot="showIfStateFalse">
+        <Label :text="item.text" color="red" />
+      </v-template>
+    </VxpListView>
     <FlexboxLayout v-if="hasSlots" flexWrap="wrap">
       <slot name="ItemsPerPage" />
       <slot name="pagination" />
@@ -50,12 +25,7 @@
   </StackLayout>
 </template>
 <script>
-import GridLayout from '../layouts/GridLayout';
-import StackLayout from '../layouts/StackLayout';
-import FlexboxLayout from '../layouts/FlexboxLayout';
-import TableCell from '../core/components/TableView/TableCell';
-import TableHeader from '../core/components/TableView/TableHeader';
-import VxpLabel from './VxpLabel';
+import VxpListView from './VxpListView';
 import platform from '../platform';
 
 export default {
@@ -346,13 +316,6 @@ export default {
 
       if (headerItem.type === 'image') {
         cellData.data.src = dataRow[headerItem.name];
-        cellData.data.stretch = 'aspectFill';
-        cellData.customCSS = {};
-        cellData.customCSS['border-radius'] = '100%';
-        cellData.customCSS['width'] = '100%';
-        cellData.customCSS['height'] = '100%';
-        cellData.customCSS['max-width'] = '100px';
-        cellData.customCSS['max-height'] = '100px';
       } else if (headerItem.type === 'text') {
         cellData.data.text = dataRow[headerItem.name];
         cellData.data.textWrap = true;
@@ -425,12 +388,7 @@ export default {
     },
   },
   components: {
-    GridLayout,
-    TableCell,
-    TableHeader,
-    VxpLabel,
-    StackLayout,
-    FlexboxLayout,
+    VxpListView,
   },
 };
 </script>
