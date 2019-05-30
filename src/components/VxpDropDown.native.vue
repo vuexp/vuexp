@@ -1,12 +1,11 @@
 <template>
-  <StackLayout class="vxp-drop-down-picker typ-body">
-    <FlexboxLayout class="vxp-drop-down-picker__list" @tap="onClicked" justifyContent="space-between">
-      <VxpLabel :text="labelText" class="vxp-drop-down-picker__list__label" :class="{ 'vxp-drop-down-picker__list__label--placeholder': placeholderActive }" />
-      <!-- <VxpLabel :text="'pz-arrow-fill-down' | fonticon" class="pz" /> -->
+  <StackLayout class="vxp-drop-down typ-body">
+    <FlexboxLayout verticalAlignment="center" class="vxp-drop-down__container" @tap="onClicked" justifyContent="space-between">
+      <VxpLabel :text="labelText" class="vxp-drop-down__container__label" :class="{ 'vxp-drop-down__container__label--placeholder': placeholderActive }" />
       <VxpLabel class="vxp-drop-down__container__icon" text="▼"></VxpLabel>
     </FlexboxLayout>
-    <FlexboxLayout flexDirection="column" v-if="errors.length" class="theme--vuexp">
-      <VxpLabel :text="error" v-for="(error, index) in errors" :key="index" :textWrap="true" class="vxp-drop-down-picker__error-messages" />
+    <FlexboxLayout flexDirection="column" v-if="errors.length">
+      <VxpLabel :text="error" v-for="(error, index) in errors" :key="index" :textWrap="true" class="vxp-drop-down__error-messages" />
     </FlexboxLayout>
   </StackLayout>
 </template>
@@ -27,7 +26,7 @@ export default {
     },
     index: {
       type: Number,
-      default: 0,
+      default: null,
     },
     disabled: {
       type: Boolean,
@@ -80,24 +79,28 @@ export default {
 $border-color: #e2e4e8;
 $placeholder-color: #898d90;
 
-.vxp-drop-down-picker {
+.vxp-drop-down {
+  /*padding: unit(9) unit(15) unit(9) unit(0);*/
+  color: #000000;
+
   @include themed($themes) {
     color: getvar(default-text);
   }
 
-  &__list {
+  &__container {
     width: 100%;
-    border-bottom-style: solid;
-    border-bottom-width: unit(1);
-    border-bottom-color: $border-color;
-    min-height: unit(20);
-    padding: unit(5) unit(5) unit(5) 0;
+    padding: unit(9) unit(5) unit(9) 0;
+    background-color: #ffffff;
 
     &__label {
       &--placeholder {
         color: $placeholder-color;
       }
     }
+  }
+
+  &__error-messages {
+    color: red;
   }
 
   @include themed($themes) {
