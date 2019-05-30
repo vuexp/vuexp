@@ -2,10 +2,10 @@
   <StackLayout v-if="!disabled" orientation="horizontal" class="vxp-table-view-header">
     <VxpCheckbox v-if="rowSelection" :check="checkedAll" @change="$emit('checkAllClicked', $event)" class="vxp-table-view-header-checkbox"></VxpCheckbox>
 
-    <VxpLabel v-if="!rowSelection" :text="headerLabel" :textWrap="true" class="vxp-table-view-header-label"></VxpLabel>
+    <VxpLabel v-if="!rowSelection" :text="label" :textWrap="true" class="vxp-table-view-header-label"></VxpLabel>
     <StackLayout v-if="sortable" orientation="vertical" class="vxp-table-view-header-sorting-buttons">
-      <VxpIconButton icon="fa fa-exclamation-triangle" size="20" @tap="$emit('onAscendingClicked', headerName)"></VxpIconButton>
-      <VxpIconButton icon="fa fa-exclamation-triangle" size="20" @tap="$emit('onDescendingClicked', headerName)"></VxpIconButton>
+      <VxpIconButton icon="fa fa-exclamation-triangle" size="20" @tap="$emit('onAscendingClicked', name)"></VxpIconButton>
+      <VxpIconButton icon="fa fa-exclamation-triangle" size="20" @tap="$emit('onDescendingClicked', name)"></VxpIconButton>
     </StackLayout>
   </StackLayout>
 </template>
@@ -18,17 +18,17 @@ import StackLayout from '../../../layouts/StackLayout';
 export default {
   name: 'TableHeader',
   props: {
-    headerType: {
+    type: {
       type: String,
       default: null,
       required: true,
     },
-    headerName: {
+    name: {
       type: String,
       default: null,
       required: true,
     },
-    headerLabel: {
+    label: {
       type: String,
       default: null,
     },

@@ -74,7 +74,10 @@ export default {
       }
     },
     onCheckboxClicked(value, eventData) {
-      this.$emit('checkboxClicked', eventData.currentTarget.id, value);
+      if (eventData.currentTarget.id) {
+        const id = eventData.currentTarget.id.split('-');
+        this.$emit('checkboxClicked', value, id[0]);
+      }
     },
   },
   computed: {

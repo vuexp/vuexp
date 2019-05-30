@@ -9,9 +9,9 @@
         <TableHeader
           v-for="(headerItem, headerIndex) in tableHeaderData"
           :key="headerIndex"
-          :headerType="headerItem.type"
-          :headerName="headerItem.name"
-          :headerLabel="headerItem.label"
+          :type="headerItem.type"
+          :name="headerItem.name"
+          :label="headerItem.label"
           :sortable="headerItem.sortable"
           :rowSelection="rowSelectionEnabled && headerIndex === 0"
           :disabled="isHeaderDisabled(headerItem)"
@@ -32,10 +32,14 @@
           :customCSS="dataItem.customCSS"
           :row="getDataRow(dataItem)"
           :col="getDataCol(dataItem)"
+          :totalColCount="columnNumber"
+          :renderType="renderType"
+          :currentRowNo="getDataRow(dataItem)"
+          :currentColNo="getDataCol(dataItem)"
           @checkboxClicked="onTableRowSelected($event, dataItem.rowNo)"
-          @buttonClicked="$emit('buttonClicked', $event)"
-          @imageLoaded="$emit('imageLoaded', $event)"
-          @imageLoadError="$emit('imageLoadError', $event)"
+          @buttonClicked="$emit('onButtonClicked', $event)"
+          @imageLoaded="$emit('onImageLoaded', $event)"
+          @imageLoadError="$emit('onImageLoadError', $event)"
         ></TableCell>
       </template>
     </GridLayout>
@@ -235,12 +239,12 @@ export default {
               // no need to increase column index
             }
           });
-
           this.addRowsString(); // update rows rendering style
           rowIndex++; // increase row index
         });
 
         // save total row, column number
+        this.setColumnNumber(colIndex);
         this.setRowNumber(rowIndex);
       }
       return tableData;
@@ -252,6 +256,12 @@ export default {
      */
     setRowNumber(number) {
       this.rowNumber = number;
+    },
+    /**
+     * Sets column number
+     */
+    setColumnNumber(number) {
+      this.columnNumber = number;
     },
     /**
      * Updates rows rendering style
@@ -308,7 +318,7 @@ export default {
      */
     getDataCol(dataItem) {
       if (Array.isArray(dataItem)) {
-        return dataItem[0].colNo;
+        return dataItem[dataItem.length - 1].colNo;
       } else {
         return dataItem.colNo;
       }
@@ -369,7 +379,7 @@ export default {
       if (dataItem && dataItem.verticalAlignment) {
         return dataItem.verticalAlignment;
       }
-      return 'top';
+      return 'center';
     },
     /**
      * Adds given row no to selected rows array

@@ -1,5 +1,5 @@
 <template>
-  <StackLayout orientation="vertical" :class="['vxp-table-view-cell', { 'vxp-table-view-cell-double': this.currentRowNo && this.currentRowNo % 2 === 0 }]">
+  <StackLayout orientation="vertical" :class="getCellClass()">
     <TableCellItem
       v-for="(cellItem, index) in cellData"
       :key="getCellNo(cellItem, index)"
@@ -35,7 +35,20 @@ export default {
     },
     cellVerticalAlignment: {
       type: String,
-      default: 'top',
+      default: 'center',
+    },
+    renderType: {
+      type: String,
+      default: 'table',
+    },
+    totalColCount: {
+      type: Number,
+    },
+    currentRowNo: {
+      type: Number,
+    },
+    currentColNo: {
+      type: Number,
     },
     customCSS: {
       type: Object,
@@ -46,18 +59,30 @@ export default {
     TableCellItem,
     StackLayout,
   },
-  data() {
-    return {
-      currentRowNo: null,
-    };
-  },
   methods: {
     getCellNo(cellItem, index) {
       if (cellItem !== null && typeof cellItem !== 'undefined') {
-        this.currentRowNo = cellItem.rowNo;
-        return '' + cellItem.rowNo + cellItem.colNo + index;
+        return '' + cellItem.rowNo + '-' + cellItem.colNo + '-' + index;
       }
       return '00';
+    },
+    getCellClass() {
+      let classes = [];
+      if (this.renderType === 'table') {
+        classes.push('vxp-table-view-cell');
+        if (this.currentRowNo && this.currentRowNo % 2 === 0) {
+          classes.push('vxp-table-view-cell-double');
+        }
+      } else {
+        if (this.currentColNo === 0) {
+          classes.push('table-view-cell-first');
+        } else if (this.currentColNo === this.totalColCount) {
+          classes.push('table-view-cell-last');
+        } else {
+          classes.push('table-view-cell-center');
+        }
+      }
+      return classes;
     },
   },
 };
@@ -74,5 +99,34 @@ export default {
 
 .vxp-table-view-cell-double {
   background-color: #eee;
+}
+
+.table-view-cell-center {
+  margin: unit(8) unit(0);
+  border-width: unit(1) 0 unit(1) unit(0);
+  border-style: solid;
+  border-color: gray;
+  padding: unit(5);
+  background-color: #eaeaea;
+}
+.table-view-cell-first {
+  border-width: unit(1) 0 unit(1) unit(1);
+  margin: unit(8) unit(0);
+  border-top-left-radius: 5%;
+  border-bottom-left-radius: 5%;
+  border-style: solid;
+  border-color: gray;
+  padding: unit(5);
+  background-color: #eaeaea;
+}
+.table-view-cell-last {
+  background-color: #eaeaea;
+  margin: unit(8) unit(0);
+  border-width: unit(1) unit(1) unit(1) 0;
+  border-top-right-radius: 5%;
+  border-bottom-right-radius: 5%;
+  border-style: solid;
+  border-color: gray;
+  padding: unit(5);
 }
 </style>
