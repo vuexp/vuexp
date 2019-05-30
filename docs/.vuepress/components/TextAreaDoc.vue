@@ -2,7 +2,7 @@
 	<StackLayout class="textView-wrapper">
 		<StackLayout orientation="horizontal">
 			<Label text="TextArea:" />
-			<TextArea id="TextView" 
+			<TextArea id="TextView"
         v-model="text"
         :hint="hint"
         :editable="editable"
@@ -52,9 +52,9 @@
 </template>
 
 <script>
-  import TextArea from '../../../src/components/TextArea'
-  import TextField from '../../../src/components/TextField'
-	import Label from '../../../src/components/Label'
+  import TextArea from '../../../src/core/components/TextArea/TextArea'
+  import TextField from '../../../src/core/components/TextField/TextField'
+	import Label from '../../../src/core/components/Label/Label'
 	import StackLayout from '../../../src/layouts/StackLayout'
 
 	export default {

@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Label from '../../../src/components/Label'
+import Label from '../../../src/core/components/Label/Label'
 import FlexboxLayout from '../../../src/layouts/FlexboxLayout'
 
 export default {

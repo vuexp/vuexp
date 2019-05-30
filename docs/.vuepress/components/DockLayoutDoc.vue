@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import Label from '../../../src/components/Label';
+import Label from '../../../src/core/components/Label/Label';
 import DockLayout from '../../../src/layouts/DockLayout';
 import StackLayout from '../../../src/layouts/StackLayout';
 

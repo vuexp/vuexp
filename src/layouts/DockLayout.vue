@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import Gestures from '../mixins/GestureMixin';
-import CommonDirective from '../directives/CommonDirective';
+import Gestures from '../core/mixins/GestureMixin';
+import CommonDirective from '../core/directives/CommonDirective';
 
 export default {
   name: 'DockLayout',
@@ -87,7 +87,9 @@ export default {
               parent.nextSibling.classList.add('vxp-dock-layout__nonFlexible');
             }
             slot.elm.parentElement.classList.add('vxp-dock-layout__stretchLastChild');
-            slot.elm.classList.add('vxp-dock-layout__stretchLastChild');
+            if (slot.elm.classList) {
+              slot.elm.classList.add('vxp-dock-layout__stretchLastChild');
+            }
           } else {
             // when dockLayout slots are updated on runtime, following classes may sometimes remain on classList although they must not.
             // we need to be sure that they are removed from class list

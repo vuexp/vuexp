@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import SegmentedBar from '../../../src/components/SegmentedBar';
+import SegmentedBar from '../../../src/core/components/SegmentedBar/SegmentedBar';
 import StackLayout from '../../../src/layouts/StackLayout';
 
 export default {

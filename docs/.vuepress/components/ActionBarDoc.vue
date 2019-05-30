@@ -17,10 +17,10 @@
 </template>
 
 <script>
-import Label from '../../../src/components/Label';
-import ActionBar from '../../../src/components/ActionBar';
-import NavigationButton from '../../../src/components/NavigationButton';
-import ActionItem from '../../../src/components/ActionItem';
+import Label from '../../../src/core/components/Label/Label';
+import ActionBar from '../../../src/core/components/ActionBar/ActionBar';
+import NavigationButton from '../../../src/core/components/NavigationButton/NavigationButton';
+import ActionItem from '../../../src/core/components/ActionItem/ActionItem';
 import StackLayout from '../../../src/layouts/StackLayout';
 
 export default {
