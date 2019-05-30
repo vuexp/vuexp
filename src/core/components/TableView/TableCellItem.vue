@@ -45,9 +45,9 @@ export default {
         const allEvents = binding.value;
         Object.keys(allEvents).forEach(event => {
           // register handler in the dynamic component
-          vnode.componentInstance.$on(event, eventData => {
+          vnode.componentInstance.$on(event, (data, eventData) => {
             const targetEvent = allEvents[event];
-            vnode.context[targetEvent](eventData);
+            vnode.context[targetEvent](data, eventData);
           });
         });
       },
@@ -73,8 +73,8 @@ export default {
         this.$emit('buttonClicked', e.currentTarget.id, e);
       }
     },
-    onCheckboxClicked(e) {
-      this.$emit('checkboxClicked', e.currentTarget.id, e);
+    onCheckboxClicked(value, eventData) {
+      this.$emit('checkboxClicked', eventData.currentTarget.id, value);
     },
   },
   computed: {
