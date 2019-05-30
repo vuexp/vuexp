@@ -17,7 +17,7 @@
         @keyup="onKeyUp"
         @keypress="onKeyPress"
       />
-      <div class="typ-body-5 vxp-drop-down__container__icon pz pz-arrow-fill-down"></div>
+      <div class="vxp-drop-down__container__icon">▼</div>
     </div>
     <transition name="slide-fade">
       <ul v-show="showMenu" class="vxp-drop-down__menu" ref="vxpDropdownMenu">
@@ -305,10 +305,12 @@ $placeholder-color: #898d90;
     }
 
     &__icon {
-      padding: unit(15) unit(10) unit(10) unit(10);
+      padding: 8px 12px;
+      font-size: 12px;
+      color: black;
+      position: absolute;
       position: absolute;
       z-index: 2;
-      color: #898d90;
       font-size: unit(10);
       pointer-events: none;
     }
