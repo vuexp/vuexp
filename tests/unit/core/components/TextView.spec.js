@@ -13,7 +13,6 @@ describe('TextView', () => {
   const hint = 'some placeholder';
   const autocorrect = false;
   const preventNextLine = true;
-  const visibility = true;
 
   // Spy events.
   const updateValueSpy = sinon.spy(TextView.methods, 'updateValue');
@@ -54,7 +53,6 @@ describe('TextView', () => {
       hint: String,
       text: String,
       autocorrect: Boolean,
-      visibility: Boolean,
     },
     propsData: {
       maxLength,
@@ -64,7 +62,6 @@ describe('TextView', () => {
       text,
       autocorrect,
       preventNextLine,
-      visibility,
     },
     listeners: {
       blur,

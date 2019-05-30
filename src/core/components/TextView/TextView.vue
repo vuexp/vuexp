@@ -1,5 +1,5 @@
 <template>
-  <StackLayout v-if="visibility" class="vxp-textview-container">
+  <StackLayout class="vxp-textview-container">
     <textarea
       v-common-directive
       class="vxp-textview-container__textview"
@@ -48,10 +48,6 @@ export default {
     maxLength: Number,
     keyboardType: String,
     autocorrect: Boolean,
-    visibility: {
-      type: Boolean,
-      default: true,
-    },
   },
   directives: {
     'common-directive': CommonDirective,
