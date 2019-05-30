@@ -1,9 +1,9 @@
 <template>
   <StackLayout class="textView-wrapper">
     <StackLayout orientation="horizontal">
-      <VxpLabel text="TextArea:" />
-      <TextArea
-        id="TextArea"
+      <VxpLabel text="TextView:" />
+      <TextView
+        id="textview"
         v-model="text"
         :hint="hint"
         :editable="editable"
@@ -18,23 +18,23 @@
     </StackLayout>
     <StackLayout orientation="horizontal">
       <VxpLabel text="text:" horizontalAlignment="50%" />
-      <TextField v-model="text" id="textArea__text__input" horizontalAlignment="50%" />
+      <TextField v-model="text" id="textview__text__input" horizontalAlignment="50%" />
     </StackLayout>
     <StackLayout orientation="horizontal">
       <VxpLabel text="hint (placeholder):" />
-      <TextField v-model="hint" id="textArea__hint__input" />
+      <TextField v-model="hint" id="textview__hint__input" />
     </StackLayout>
     <StackLayout orientation="horizontal">
       <VxpLabel text="editable (disabled):" />
-      <VxpCheckbox id="textArea__editable__input" :checked="editable" @change="editable = !editable"/>
+      <VxpCheckbox id="textview__editable__input" :checked="editable" @change="editable = !editable"/>
     </StackLayout>
     <StackLayout orientation="horizontal">
       <VxpLabel text="maxLength:" />
-      <TextField v-model="maxLength" keyboardType="number" id="textArea___maxlength__input" />
+      <TextField v-model="maxLength" keyboardType="number" id="textview___maxlength__input" />
     </StackLayout>
     <StackLayout orientation="horizontal">
       <VxpLabel text="returnKeyType:" />
-      <select v-model="returnKeyType" id="textArea__returnKeyType__select">
+      <select v-model="returnKeyType" id="textview__returnKeyType__select">
         <option value="done" id="TextView_returnKeyType_done_option">done</option>
         <option value="next" id="TextView_returnKeyType_next_option">next</option>
         <option value="go" id="TextView_returnKeyType_go_option">go</option>
@@ -44,28 +44,28 @@
     </StackLayout>
     <StackLayout orientation="horizontal">
       <VxpLabel text="autocorrect:" />
-      <VxpCheckbox v-model="autocorrect" id="textArea__autocorrect__input" />
+      <VxpCheckbox v-model="autocorrect" id="textview__autocorrect__input" />
     </StackLayout>
     <StackLayout orientation="horizontal">
       <VxpLabel text="Event output:" />
-      <VxpLabel :text="eventOutput" id="textArea__eventOutput__label" />
+      <VxpLabel :text="eventOutput" id="textview__eventOutput__label" />
     </StackLayout>
   </StackLayout>
 </template>
 
 <script>
-import TextArea from '../../../src/core/components/TextArea/TextArea';
+import TextView from '../../../src/core/components/TextView/TextView';
 import TextField from '../../../src/core/components/TextField/TextField';
 import StackLayout from '../../../src/layouts/StackLayout';
 import VxpCheckbox from '../../../src/components/VxpCheckbox';
 import VxpLabel from '../../../src/components/VxpLabel';
 
 export default {
-  name: 'TextAreaDoc',
+  name: 'TextViewDoc',
   components: {
     VxpLabel,
     VxpCheckbox,
-    TextArea,
+    TextView,
     TextField,
     StackLayout,
   },

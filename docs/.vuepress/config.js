@@ -44,7 +44,7 @@ module.exports = {
             "components/scrollview.md",
             "components/slider.md",
             "components/webview.md",
-            "components/textarea.md",
+            "components/textview.md",
             "components/frame.md",
             "components/page.md",
             "components/progress.md",

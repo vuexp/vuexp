@@ -26,7 +26,7 @@ import Gestures from '../../mixins/GestureMixin';
 import StackLayout from '../../../layouts/StackLayout';
 
 export default {
-  name: 'TextArea',
+  name: 'TextView',
   components: {
     StackLayout,
   },

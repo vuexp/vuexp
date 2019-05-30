@@ -33,7 +33,7 @@ import VxpLink from '../../src/components/VxpLink';
 import VxpDropdownMenu from '../../src/components/menus/VxpDropdownMenu';
 import VxpDropdownItem from '../../src/components/menus/VxpDropdownItem';
 import ActionDialog from '../../src/core/dialogs/ActionDialog';
-import TextArea from '../../src/core/components/TextArea/TextArea';
+import TextView from '../../src/core/components/TextView/TextView';
 
 const localVue = createLocalVue();
 localVue.filter('fonticon', function(value) {
@@ -57,7 +57,7 @@ localVue.component('SideDrawer', SideDrawer);
 localVue.component('Slider', Slider);
 localVue.component('Switcher', Switcher);
 localVue.component('TextField', TextField);
-localVue.component('TextArea', TextArea);
+localVue.component('TextView', TextView);
 localVue.component('ActionItem', ActionItem);
 localVue.component('NavigationButton', NavigationButton);
 localVue.component('ActionBar', ActionBar);
