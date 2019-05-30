@@ -20,7 +20,7 @@ This is an overview of the most common usage of `<TextArea>`.
 ## Example Usages
 
 ```html
-<textarea v-model="textViewInput" :editable="true" />
+<TextArea v-model="textViewInput" :editable="true" />
 ```
 
 ## Props
