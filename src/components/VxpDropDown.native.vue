@@ -2,7 +2,8 @@
   <StackLayout class="vxp-drop-down-picker typ-body">
     <FlexboxLayout class="vxp-drop-down-picker__list" @tap="onClicked" justifyContent="space-between">
       <VxpLabel :text="labelText" class="vxp-drop-down-picker__list__label" :class="{ 'vxp-drop-down-picker__list__label--placeholder': placeholderActive }" />
-      <VxpLabel :text="'pz-arrow-fill-down' | fonticon" class="pz" />
+      <!-- <VxpLabel :text="'pz-arrow-fill-down' | fonticon" class="pz" /> -->
+      <VxpLabel class="vxp-drop-down__container__icon" text="▼"></VxpLabel>
     </FlexboxLayout>
     <FlexboxLayout flexDirection="column" v-if="errors.length" class="theme--vuexp">
       <VxpLabel :text="error" v-for="(error, index) in errors" :key="index" :textWrap="true" class="vxp-drop-down-picker__error-messages" />
