@@ -59,7 +59,6 @@ import TextField from '../../../src/core/components/TextField/TextField';
 import StackLayout from '../../../src/layouts/StackLayout';
 import VxpCheckbox from '../../../src/components/VxpCheckbox';
 import VxpLabel from '../../../src/components/VxpLabel';
-import VxpTextField from '../../../src/components/VxpTextField';
 
 export default {
   name: 'TextAreaDoc',
@@ -69,7 +68,6 @@ export default {
     TextArea,
     TextField,
     StackLayout,
-    VxpTextField,
   },
   data() {
     return {
