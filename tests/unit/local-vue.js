@@ -13,7 +13,6 @@ import SegmentedBarItem from '../../src/core/components/SegmentedBarItem/Segment
 import Slider from '../../src/core/components/Slider/Slider';
 import Switcher from '../../src/core/components/Switcher/Switcher';
 import TextField from '../../src/core/components/TextField/TextField';
-import TextView from '../../src/core/components/TextView/TextView';
 import ActionItem from '../../src/core/components/ActionItem/ActionItem';
 import NavigationButton from '../../src/core/components/NavigationButton/NavigationButton';
 import ActionBar from '../../src/core/components/ActionBar/ActionBar';
@@ -34,6 +33,7 @@ import VxpLink from '../../src/components/VxpLink';
 import VxpDropdownMenu from '../../src/components/menus/VxpDropdownMenu';
 import VxpDropdownItem from '../../src/components/menus/VxpDropdownItem';
 import ActionDialog from '../../src/core/dialogs/ActionDialog';
+import TextView from '../../src/core/components/TextView/TextView';
 
 const localVue = createLocalVue();
 localVue.filter('fonticon', function(value) {

@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { mount } from '@vue/test-utils';
 import sinon from 'sinon';
 import TextView from '../../../../src/core/components/TextView/TextView';
-import Label from '../../../../src/core/components/Label/Label';
+import VxpLabel from '../../../../src/components/VxpLabel';
 
 describe('TextView', () => {
   // Mock up values.
@@ -26,7 +26,7 @@ describe('TextView', () => {
 
   const LabelWrapper = {
     render(h) {
-      return h(Label, {
+      return h(VxpLabel, {
         props: {
           text: 'label',
         },
@@ -137,18 +137,18 @@ describe('TextView', () => {
 
   describe('TextView component contains label component', () => {
     it('there is one label component inside the textview.', () => {
-      const labelWrappers = wrapper.findAll(Label).wrappers;
+      const labelWrappers = wrapper.findAll(VxpLabel).wrappers;
       expect(labelWrappers.length).to.equal(1);
     });
 
     it('label component displays the given text prop{`label`} correctly inside the textview.', () => {
-      const labelWrappers = wrapper.findAll(Label).wrappers;
-      const label = labelWrappers[0].find(Label);
+      const labelWrappers = wrapper.findAll(VxpLabel).wrappers;
+      const label = labelWrappers[0].find(VxpLabel);
       expect(label.element.textContent.trim()).to.equal('label');
     });
   });
 
-  describe('the textarea inside the component has attributes with correct values.', () => {
+  describe('the textview inside the component has attributes with correct values.', () => {
     it(`the maxlength attribute is equal to${maxLength}.`, () => {
       // The component returns the attribute as string so, the maxLength property is converted to string type.
       expect(wrapper.find('textarea').attributes().maxlength).to.equal(maxLength.toString());
