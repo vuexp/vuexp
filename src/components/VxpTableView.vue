@@ -36,8 +36,8 @@
           :renderType="renderType"
           :currentRowNo="getDataRow(dataItem)"
           :currentColNo="getDataCol(dataItem)"
-          @checkboxClicked="onTableRowSelected($event, dataItem.rowNo)"
-          @buttonClicked="$emit('onButtonClicked', $event)"
+          @checkboxClicked="onTableRowSelected(...arguments)"
+          @buttonClicked="onTableButtonClicked($event)"
           @imageLoaded="$emit('onImageLoaded', $event)"
           @imageLoadError="$emit('onImageLoadError', $event)"
         ></TableCell>
@@ -251,6 +251,12 @@ export default {
     },
   },
   methods: {
+    onTableButtonClicked(buttonId) {
+      const rowNo = buttonId ? buttonId.split('-')[0] : null;
+      if (rowNo) {
+        this.$emit('onButtonClicked', this.data[rowNo - 1]);
+      }
+    },
     /**
      * Sets row number
      */
@@ -394,7 +400,7 @@ export default {
      */
     addSelectedRow(rowNo) {
       this.selectedRows.push(rowNo);
-      this.$emit('onRowSelected', rowNo);
+      this.$emit('onRowSelected', this.data[rowNo - 1]);
     },
     /**
      * Removes given row no from selected rows array
@@ -402,7 +408,7 @@ export default {
      */
     removeSelectedRow(rowNo) {
       this.selectedRows = this.selectedRows.filter(row => row !== rowNo);
-      this.$emit('onRowDeselected', rowNo);
+      this.$emit('onRowDeselected', this.data[rowNo - 1]);
     },
     /**
      * Selects all rows in table view

@@ -8,7 +8,7 @@
       :itemType="cellItem.type"
       :itemData="cellItem"
       :customCSS="cellItem.customCSS"
-      @checkboxClicked="$emit('checkboxClicked', $event)"
+      @checkboxClicked="checkboxClicked(...arguments)"
       @buttonClicked="$emit('buttonClicked', $event)"
       @imageLoaded="$emit('imageLoaded', $event)"
       @imageLoadError="$emit('imageLoadError', $event)"
@@ -60,6 +60,9 @@ export default {
     StackLayout,
   },
   methods: {
+    checkboxClicked(checked, rowNo) {
+      this.$emit('checkboxClicked', checked, rowNo);
+    },
     getCellNo(cellItem, index) {
       if (cellItem !== null && typeof cellItem !== 'undefined') {
         return '' + cellItem.rowNo + '-' + cellItem.colNo + '-' + index;

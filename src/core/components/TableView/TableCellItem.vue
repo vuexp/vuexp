@@ -70,7 +70,7 @@ export default {
       }
 
       if (sourceType === 'button') {
-        this.$emit('buttonClicked', e.currentTarget.id, e);
+        this.$emit('buttonClicked', e.currentTarget.id);
       }
     },
     onCheckboxClicked(value, eventData) {
