@@ -73,9 +73,10 @@ export default {
         if (!this.isNative) {
           this.isMenuOpen = !this.isMenuOpen;
         } else {
-          // action(this.title, this.nativeCancelBtnText, this.items.map(i => i.title)).then(result => {
-          //   this.$emit('selectedIndexChanged', result);
-          // });
+          //eslint-disable-next-line
+          action(this.title, this.nativeCancelBtnText, this.items.map(i => i.title)).then(result => {
+            this.$emit('selectedIndexChanged', result);
+          });
         }
       }
     },
@@ -94,14 +95,20 @@ export default {
 
 <style lang="scss">
 @import '../../assets/styles/components/dialogs';
+@import '../../assets/styles/helpers';
 
 .vxp-dropdown {
   &__menu {
-    padding: 1rem;
-    border: 1px solid rgb(52, 52, 187);
+    padding: unit(16, 10);
+    border-color: rgb(52, 52, 187);
+    border-style: solid;
+    border-width: unit(1);
     color: rgb(52, 52, 187);
-    border-radius: 3rem;
+    border-radius: unit(48);
     width: auto;
+    //Web Only
+    position: relative;
+    display: inline-block;
     &:hover {
       cursor: pointer;
     }
@@ -109,9 +116,10 @@ export default {
       margin-left: 0.6rem;
     }
   }
+  //Start Web Only
   &__itemContainer {
     position: relative;
-    top: 0.2rem;
+    top: 110%;
     background: white;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     border-radius: 7px;
@@ -127,6 +135,7 @@ export default {
   &__is-open {
     background: rgb(240, 240, 252);
   }
+  //End Web Only
 }
 .vxp-dropdown__menu__disabled {
   border-color: #585858;

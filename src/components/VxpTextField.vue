@@ -128,8 +128,6 @@ export default {
 @import '../themes/themes';
 
 .vxp-text-input {
-  width: unit(352);
-
   @include themed($themes) {
     &__error-messages {
       color: getvar(alert);

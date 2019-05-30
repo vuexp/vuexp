@@ -51,8 +51,8 @@ module.exports = {
             "components/progress.md",
             "components/segmented-bar.md",
             "components/tabview.md",
-            "components/vxp-label.md",
             "components/vxp-image.md",
+            "components/vxp-image-uploader.md",
             "components/vxp-side-drawer.md",
             "components/vxp-button.md",
             "components/vxpmultiselectdropdown.md",
@@ -70,6 +70,7 @@ module.exports = {
             "components/dialogs/alert-dialog.md",
             "components/dialogs/modal-base.md",
             "components/dialogs/action-dialog.md",
+            "components/dialogs/confirm-dialog.md",
           ]
         },
         {
