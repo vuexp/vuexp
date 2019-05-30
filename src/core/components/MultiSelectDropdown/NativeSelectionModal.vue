@@ -2,7 +2,7 @@
   <Frame>
     <Page>
       <ActionBar :title="''">
-        <ActionItem @tap="$modal.close" android.systemIcon="ic_menu_save" ios.systemIcon="15" ios.position="right" />
+        <ActionItem @tap="$modal.close" text="Done" ios.position="right" />
       </ActionBar>
       <StackLayout class="vxp-multiselectdropdown-native-modal">
         <WrapLayout>
