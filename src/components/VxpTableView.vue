@@ -254,6 +254,7 @@ export default {
           });
 
           if (this.renderType === 'list') {
+            colIndex++;
             const actionCell = {};
             actionCell.type = 'icon';
             actionCell.customCSS = {}; // TODO take css as table prop
@@ -264,7 +265,6 @@ export default {
             actionCell.data.icon = 'fa fa-exclamation-triangle'; //TODO update icon
 
             tableData.push(actionCell);
-            colIndex++;
           }
 
           this.addRowsString(); // update rows rendering style
