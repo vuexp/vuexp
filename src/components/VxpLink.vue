@@ -1,9 +1,12 @@
 <template>
-  <a v-if="externalUrl" class="vxp-link typ-body" :href="externalUrl" :target="externalUrl ? '_blank' : ''">{{ text }}</a>
+  <VxpLabel v-if="disabled" class="typ-body" :text="text" />
+  <a v-else-if="externalUrl" class="vxp-link typ-body" :href="externalUrl" :target="externalUrl ? '_blank' : ''">{{ text }}</a>
   <a v-else class="vxp-link typ-body" @click="$emit('tap', $event)">{{ text }}</a>
 </template>
 
 <script>
+import VxpLabel from './VxpLabel';
+
 export default {
   name: 'VxpLink',
   props: {
@@ -14,6 +17,13 @@ export default {
     externalUrl: {
       type: String,
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  components: {
+    VxpLabel,
   },
 };
 </script>

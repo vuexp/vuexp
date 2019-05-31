@@ -7,6 +7,7 @@
         v-if="checkedLocal"
         class="vxp-checkbox__background vxp-checkbox__checked"
         :class="{ 'vxp-checkbox__checked__disabled': disabled }"
+        v-bind="$attrs"
       >
         <Label class="vxp-checkbox__checked__icon" text=" " />
       </StackLayout>
@@ -18,6 +19,7 @@
         v-if="!checkedLocal"
         class="vxp-checkbox__background vxp-checkbox__unchecked"
         :class="{ 'vxp-checkbox__unchecked__disabled': disabled }"
+        v-bind="$attrs"
       ></StackLayout>
     </FadeTransition>
   </AbsoluteLayout>
@@ -59,7 +61,7 @@ export default {
       if (cancelBubbling) cancelBubbling();
       if (!this.disabled) {
         this.checkedLocal = !this.checkedLocal;
-        this.$emit('change', this.checkedLocal);
+        this.$emit('change', this.checkedLocal, event);
       }
     },
   },
