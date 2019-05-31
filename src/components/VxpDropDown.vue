@@ -317,6 +317,7 @@ $placeholder-color: #898d90;
   }
 
   &__menu {
+    height: auto;
     position: absolute;
     z-index: 3;
     width: 100%;
@@ -327,7 +328,6 @@ $placeholder-color: #898d90;
     border-left: solid unit(1) $border-color;
     border-bottom: solid unit(1) $border-color;
     background-color: #ffffff;
-    height: unit(255);
     overflow-y: scroll;
 
     box-shadow: unit(0) unit(12) unit(13) unit(-11) rgba(0, 0, 0, 0.1), unit(-10) unit(-3) unit(13) unit(-11) rgba(0, 0, 0, 0.1),
