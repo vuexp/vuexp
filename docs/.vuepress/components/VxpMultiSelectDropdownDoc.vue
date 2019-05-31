@@ -4,11 +4,11 @@
       :items="selectableItems"
       hint="Pick Some Lorem"
       emptySuggestionsLabel="Nothing to select here"
-      v-model="selectedIndexes"
+      v-model="selectedItems"
     ></VxpMultiSelectDropdown>
     <StackLayout class="margin-top-10" orientation="horizontal">
-      <VxpLabel text="Selected Indexes :"></VxpLabel>
-      <VxpLabel :text="selectedIndexes.join(',')"></VxpLabel>
+      <VxpLabel text="Selected Items :"></VxpLabel>
+      <VxpLabel :text="selectedItems.map(item => item.label).join(',')"></VxpLabel>
     </StackLayout>
   </StackLayout>
 </template>
@@ -27,39 +27,31 @@ export default {
   },
   data() {
     return {
-      selectedIndexes: [],
+      selectedItems: [],
       selectableItems: [
         {
-          label: 'Lorem',
-          value: 1,
+          label: 'Lorem', 
         },
         {
-          label: 'ipsum dolor',
-          value: 2,
+          label: 'ipsum dolor', 
         },
         {
-          label: 'sit amet',
-          value: 3,
+          label: 'sit amet', 
         },
         {
-          label: 'consectetur',
-          value: 4,
+          label: 'consectetur', 
         },
         {
-          label: 'adipiscing',
-          value: 5,
+          label: 'adipiscing', 
         },
         {
-          label: 'eiusmod',
-          value: 6,
+          label: 'eiusmod', 
         },
         {
-          label: 'Risus pretium',
-          value: 7,
+          label: 'Risus pretium', 
         },
         {
-          label: 'Ornare arcu',
-          value: 7,
+          label: 'Ornare arcu', 
         },
       ],
     };

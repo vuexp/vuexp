@@ -27,7 +27,8 @@ describe('VxpMultiSelectDropdown', () => {
       test2Label: 'item3',
     },
   ];
-  const testSelectedIndexes = [1];
+
+  const testSelectedItem = [testItems[0]];
 
   const createNativeModalMock = cb => {
     return sinon.stub(() => {
@@ -50,7 +51,7 @@ describe('VxpMultiSelectDropdown', () => {
     return createComponent({
       propsData: {
         items: testItems,
-        selected: testSelectedIndexes,
+        selected: testSelectedItem,
         hint: testHint,
         labelProp: labelPropName,
         emptySuggestionsLabel,
@@ -107,7 +108,7 @@ describe('VxpMultiSelectDropdown', () => {
 
     expect(wrapper.props().selected instanceof Array).to.eq(true);
     expect(wrapper.props().selected.length).to.eq(1);
-    expect(wrapper.props().selected[0]).to.eq(1);
+    expect(wrapper.props().selected[0]).to.eq(testItems[0]);
 
     expect(wrapper.props().labelProp).to.eq(labelPropName);
 
@@ -123,7 +124,7 @@ describe('VxpMultiSelectDropdown', () => {
 
   it('will have correct computed props', () => {
     wrapper = createMockedComponent();
-    expect(wrapper.vm.displayItems.length).to.eq(testItems.length - testSelectedIndexes.length);
+    expect(wrapper.vm.displayItems.length).to.eq(testItems.length - testSelectedItem.length);
   });
 
   describe('user interaction behaviour item selection', () => {
@@ -240,7 +241,11 @@ describe('VxpMultiSelectDropdown', () => {
 
       expect(suggestedItems.length).to.eq(0);
       expect(selectedChangeListener.called).to.eq(true);
-      expect(selectedChangeListener.getCall(0).args[0]).to.eql([0]);
+      expect(selectedChangeListener.getCall(0).args[0]).to.eql([
+        {
+          label: 'item1',
+        },
+      ]);
 
       selectedItems = wrapper.findAll(selectedItemWrapperClassSelector);
       expect(selectedItems.length).to.eq(1);
@@ -314,7 +319,7 @@ describe('VxpMultiSelectDropdown', () => {
             }),
           },
         });
-        wrapper.vm.selectedItemTapped(testItems[testSelectedIndexes[0]]);
+        wrapper.vm.selectedItemTapped(testItems[testSelectedItem[0]]);
       });
     });
 
