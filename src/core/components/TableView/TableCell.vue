@@ -1,9 +1,24 @@
 <template>
-  <StackLayout orientation="vertical" :class="getCellClass()">
+  <StackLayout v-if="cellData.length > 1" orientation="vertical" :class="getCellClass()">
     <TableCellItem
       v-for="(cellItem, index) in cellData"
       :key="getCellNo(cellItem, index)"
       :horizontalAlignment="cellHorizontalAlignment"
+      :itemType="cellItem.type"
+      :itemData="cellItem"
+      :customCSS="cellItem.customCSS"
+      @checkboxClicked="checkboxClicked(...arguments)"
+      @buttonClicked="$emit('buttonClicked', $event)"
+      @linkClicked="$emit('linkClicked', $event)"
+      @imageLoaded="$emit('imageLoaded', $event)"
+      @imageLoadError="$emit('imageLoadError', $event)"
+      @actionItemClicked="actionItemClicked(...arguments)"
+    ></TableCellItem>
+  </StackLayout>
+  <StackLayout v-else orientation="horizontal" :class="getCellClass()">
+    <TableCellItem
+      v-for="(cellItem, index) in cellData"
+      :key="getCellNo(cellItem, index)"
       :verticalAlignment="cellVerticalAlignment"
       :itemType="cellItem.type"
       :itemData="cellItem"
@@ -13,6 +28,7 @@
       @linkClicked="$emit('linkClicked', $event)"
       @imageLoaded="$emit('imageLoaded', $event)"
       @imageLoadError="$emit('imageLoadError', $event)"
+      @actionItemClicked="actionItemClicked(...arguments)"
     ></TableCellItem>
   </StackLayout>
 </template>
@@ -61,6 +77,9 @@ export default {
     StackLayout,
   },
   methods: {
+    actionItemClicked(itemId, actionName) {
+      this.$emit('actionItemClicked', itemId, actionName);
+    },
     checkboxClicked(checked, rowNo) {
       this.$emit('checkboxClicked', checked, rowNo);
     },

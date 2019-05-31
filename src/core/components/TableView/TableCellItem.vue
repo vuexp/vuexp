@@ -66,7 +66,9 @@ export default {
     tapClickHandler(e) {
       let sourceType = null;
       if (e && e.target && e.target.tagName) {
-        if (e.target.tagName === 'BUTTON') {
+        if (e.target.attributes && typeof e.target.attributes['actionname'] !== 'undefined') {
+          sourceType = 'action';
+        } else if (e.target.tagName === 'BUTTON') {
           sourceType = 'button';
         } else if (e.target.tagName === 'A') {
           sourceType = 'link';
@@ -77,6 +79,8 @@ export default {
         this.$emit('buttonClicked', e.currentTarget.id);
       } else if (sourceType === 'link') {
         this.$emit('linkClicked', e.currentTarget.id);
+      } else if (sourceType === 'action') {
+        this.$emit('actionItemClicked', e.currentTarget.id, e.target.attributes['actionname']);
       }
     },
     onCheckboxClicked(value, eventData) {

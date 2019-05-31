@@ -149,6 +149,8 @@ export default {
           label: "Photo",
           sortable: false,
           listAlignment: 'horizontal',
+          isAction: false,
+          columnWidth: '100',
         },
         {
           type: "text",
@@ -156,6 +158,8 @@ export default {
           label: "user name",
           sortable: true,
           listAlignment: 'horizontal',
+          isAction: false,
+          columnWidth: '*',
         },
         {
           type: "text",
@@ -163,6 +167,8 @@ export default {
           label: "first name",
           sortable: false,
           listAlignment: 'vertical',
+          isAction: false,
+          columnWidth: 'auto',
         },
         {
           type: "text",
@@ -170,6 +176,8 @@ export default {
           label: "Last name",
           sortable: true,
           listAlignment: 'vertical',
+          isAction: false,
+          columnWidth: 'auto',
         },
         {
           type: "text",
@@ -177,6 +185,8 @@ export default {
           label: "mobile number",
           sortable: true,
           listAlignment: 'vertical',
+          isAction: false,
+          columnWidth: 'auto',
         },
         {
           type: "text",
@@ -184,7 +194,9 @@ export default {
           label: "create date",
           sortable: true,
           listAlignment: 'vertical',
-        }
+          isAction: false,
+          columnWidth: 'auto',
+        },
       ],
     };
   },

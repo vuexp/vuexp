@@ -1,21 +1,49 @@
 <template>
   <StackLayout>
-    <VxpListView
-      ref="listView"
-      :items="itemList"
-      :itemSelect="itemConditions"
-      :reversed="isListReversed"
-      :height="listViewHeight"
-      @tap="onListViewTap"
-      @loadMoreItems="onLoadMoreItems"
-      @listViewLoaded="onListViewLoaded"
-      @scrolled="onListViewScrolled"
-    >
+    <StackLayout v-if="itemList.length > 0" orientation="horizontal">
+      <VxpCheckbox />
+      <VxpLabel text="Select All" />
+    </StackLayout>
+    <VxpListView ref="listView" :items="itemList" :height="listViewHeight" @tap="onListViewTap" :itemSelect="itemConditions">
       <v-template slot-scope="{ item }" slot="showIfStateTrue">
-        <Label :text="item.text" color="black" />
-      </v-template>
-      <v-template slot-scope="{ item }" slot="showIfStateFalse">
-        <Label :text="item.text" color="red" />
+        <StackLayout orientation="horizontal">
+          <TableCellItem
+            v-if="item.contains === 'object'"
+            :verticalAlignment="cellVerticalAlignment"
+            :itemType="item.params.type"
+            :itemData="item.params.data"
+            :customCSS="item.params.customCSS"
+            @checkboxClicked="$emit('checkboxClicked', $event)"
+            @buttonClicked="$emit('buttonClicked', $event)"
+            @imageLoaded="$emit('imageLoaded', $event)"
+            @imageLoadError="$emit('imageLoadError', $event)"
+          />
+          <StackLayout v-else-if="item.contains === 'array'" :verticalAlignment="cellVerticalAlignment">
+            <TableCellItem
+              v-for="(cellItem, index) in item.array"
+              :key="getCellNo(cellItem, index)"
+              :horizontalAlignment="cellHorizontalAlignment"
+              :itemType="cellItem.params.type"
+              :itemData="cellItem.params.data"
+              :customCSS="cellItem.params.customCSS"
+              @checkboxClicked="$emit('checkboxClicked', $event)"
+              @buttonClicked="$emit('buttonClicked', $event)"
+              @imageLoaded="$emit('imageLoaded', $event)"
+              @imageLoadError="$emit('imageLoadError', $event)"
+            ></TableCellItem>
+          </StackLayout>
+          <TableCellItem
+            v-if="item.contains === 'action'"
+            :verticalAlignment="cellVerticalAlignment"
+            :itemType="item.params.type"
+            :itemData="item.params.data"
+            :customCSS="item.params.customCSS"
+            @checkboxClicked="$emit('checkboxClicked', $event)"
+            @buttonClicked="$emit('buttonClicked', $event)"
+            @imageLoaded="$emit('imageLoaded', $event)"
+            @imageLoadError="$emit('imageLoadError', $event)"
+          />
+        </StackLayout>
       </v-template>
     </VxpListView>
     <FlexboxLayout v-if="hasSlots" flexWrap="wrap">
@@ -26,6 +54,12 @@
 </template>
 <script>
 import VxpListView from './VxpListView';
+import VTemplate from '../core/components/VTemplate/VTemplate';
+import StackLayout from '../layouts/StackLayout';
+import FlexboxLayout from '../layouts/FlexboxLayout';
+import VxpCheckbox from './VxpCheckbox';
+import VxpLabel from './VxpLabel';
+import TableCellItem from '../core/components/TableView/TableCellItem';
 import platform from '../platform';
 
 export default {
@@ -66,11 +100,16 @@ export default {
   },
   data() {
     return {
+      listViewHeight: '300',
+      itemConditions: {
+        showIfStateTrue: 'true',
+      },
+
       selectedRows: [], // selected rows
       selectedColumns: this.headerFields, // visible columns
-      columns: 'auto', // gridview columns string
-      rows: 'auto', // gridview rows string
-      columnNumber: 0, // total column number
+      // columns: 'auto', // gridview columns string
+      // rows: 'auto', // gridview rows string
+      // columnNumber: 0, // total column number
       rowNumber: 0, // total row number
       renderType: 'table',
     };
@@ -103,65 +142,65 @@ export default {
     /**
      * Extracts necessary header data from given header fields
      */
-    tableHeaderData() {
-      let headers = [];
-      if (this.rowSelectionEnabled) {
-        // Select All checkbox
-        const selectionCell = {
-          name: '',
-          label: '',
-          type: 'checkbox',
-          sortable: false,
-          rowSelection: true,
-          listAlignment: 'horizontal',
-        };
-        headers.push(selectionCell);
-      }
+    // tableHeaderData() {
+    //   let headers = [];
+    //   if (this.rowSelectionEnabled) {
+    //     // Select All checkbox
+    //     const selectionCell = {
+    //       name: '',
+    //       label: '',
+    //       type: 'checkbox',
+    //       sortable: false,
+    //       rowSelection: true,
+    //       listAlignment: 'horizontal',
+    //     };
+    //     headers.push(selectionCell);
+    //   }
 
-      this.headerFields.forEach(headerItem => {
-        const item = {
-          name: headerItem.name,
-          label: headerItem.label,
-          type: headerItem.type,
-          sortable: headerItem.sortable,
-          rowSelection: false,
-          listAlignment: headerItem.listAlignment,
-        };
-        headers.push(item);
-      });
+    //   this.headerFields.forEach(headerItem => {
+    //     const item = {
+    //       name: headerItem.name,
+    //       label: headerItem.label,
+    //       type: headerItem.type,
+    //       sortable: headerItem.sortable,
+    //       rowSelection: false,
+    //       listAlignment: headerItem.listAlignment,
+    //     };
+    //     headers.push(item);
+    //   });
 
-      return headers;
-    },
+    //   return headers;
+    // },
     /**
      * Produces 'columns' string for gridview
      */
-    getColumnsString() {
-      let cols = 'auto';
-      for (var i = 0; i < this.selectedColumns.length; i++) {
-        if (this.renderType === 'table' || (this.renderType === 'list' && this.selectedColumns[i].listAlignment === 'horizontal')) {
-          cols += ',*';
-        }
-      }
-      return cols;
-    },
+    // getColumnsString() {
+    //   let cols = 'auto';
+    //   for (var i = 0; i < this.selectedColumns.length; i++) {
+    //     if (this.renderType === 'table' || (this.renderType === 'list' && this.selectedColumns[i].listAlignment === 'horizontal')) {
+    //       cols += ',*';
+    //     }
+    //   }
+    //   return cols;
+    // },
     /**
      * Returns 'rows' string for gridview
      */
-    getRowsString() {
-      return this.rows;
-    },
+    // getRowsString() {
+    //   return this.rows;
+    // },
     /**
      * Generates all table cells and their data types, props
      * and also helps to switching of rendering types
      */
-    tableData() {
+    itemList() {
       const tableData = []; // will store all table cells and their props
       if (this.data !== null && this.headerFields !== null && typeof this.data !== 'undefined') {
         let rowIndex = 1; // indicates current row number, row 0 is header field in grid
         let colIndex = 0; // indicates current column number
 
         // initialize grid row,column rendering styles
-        this.setInitialRowAndColString();
+        // this.setInitialRowAndColString();
 
         this.data.forEach(dataRow => {
           colIndex = 0; // set zero at the beginning of new row
@@ -169,12 +208,14 @@ export default {
           //insert checkbox at the beginning of every row
           if (this.rowSelectionEnabled) {
             const selectionCell = {};
-            selectionCell.type = 'checkbox';
-            selectionCell.customCSS = {}; // TODO take css as table prop
-            selectionCell.data = {};
-            selectionCell.rowNo = rowIndex;
-            selectionCell.colNo = colIndex;
-            selectionCell.data.checked = this.selectedRows.includes(rowIndex);
+            selectionCell.contains = 'object';
+            selectionCell.params = {};
+            selectionCell.params.type = 'checkbox';
+            selectionCell.params.customCSS = {}; // TODO take css as table prop
+            selectionCell.params.data = {};
+            selectionCell.params.rowNo = rowIndex;
+            selectionCell.params.colNo = colIndex;
+            selectionCell.params.data.checked = this.selectedRows.includes(rowIndex);
 
             tableData.push(selectionCell);
             colIndex++;
@@ -183,11 +224,11 @@ export default {
           // Loop only selected columns
           this.headerFields.forEach(headerItem => {
             const cellData = this.extractCellData(headerItem, dataRow, rowIndex, colIndex);
-            if (this.renderType === 'table' || (this.renderType === 'list' && headerItem.listAlignment === 'horizontal')) {
+            if (headerItem.listAlignment === 'horizontal') {
               // every object/array will be on new column in the table
               tableData.push(cellData);
               colIndex++; // increase column index
-            } else if (this.renderType === 'list' && headerItem.listAlignment === 'vertical') {
+            } else if (headerItem.listAlignment === 'vertical') {
               // For the items that will be rendered as vertical list,
               // will be stored as array in tableData.
 
@@ -209,18 +250,21 @@ export default {
               // no need to increase column index
             }
           });
-          this.addRowsString(); // update rows rendering style
+          // this.addRowsString(); // update rows rendering style
           rowIndex++; // increase row index
         });
 
         // save total row, column number
-        this.setColumnNumber(colIndex);
+        // this.setColumnNumber(colIndex);
         this.setRowNumber(rowIndex);
       }
       return tableData;
     },
   },
   methods: {
+    // onListViewTap(e) {
+    //   //console.log('onListViewTap ', e);
+    // },
     /**
      * Sets row number
      */
@@ -230,69 +274,69 @@ export default {
     /**
      * Sets column number
      */
-    setColumnNumber(number) {
-      this.columnNumber = number;
-    },
+    // setColumnNumber(number) {
+    //   this.columnNumber = number;
+    // },
     /**
      * Updates rows rendering style
      */
-    addRowsString() {
-      this.rows += ',auto';
-    },
+    // addRowsString() {
+    //   this.rows += ',auto';
+    // },
     /**
      * Initialize grid row,column rendering styles
      */
-    setInitialRowAndColString() {
-      this.rows = 'auto';
-      this.columns = 'auto';
-    },
+    // setInitialRowAndColString() {
+    //   this.rows = 'auto';
+    //   this.columns = 'auto';
+    // },
     /**
      * Hides headers which are combined in a single column
      */
-    isHeaderDisabled(headerItem) {
-      if (this.renderType === 'list' && headerItem.listAlignment === 'vertical') {
-        return true;
-      }
-      return false;
-    },
+    // isHeaderDisabled(headerItem) {
+    //   if (this.renderType === 'list' && headerItem.listAlignment === 'vertical') {
+    //     return true;
+    //   }
+    //   return false;
+    // },
     /**
      * Returns data of table cell
      */
-    getCellData(dataItem) {
-      if (Array.isArray(dataItem)) {
-        //single item: table view
-        return dataItem;
-      } else {
-        //multi items: list view
-        return [dataItem];
-      }
-    },
+    // getCellData(dataItem) {
+    //   if (Array.isArray(dataItem)) {
+    //     //single item: table view
+    //     return dataItem;
+    //   } else {
+    //     //multi items: list view
+    //     return [dataItem];
+    //   }
+    // },
     /**
      * Returns unique key of table cell
      */
-    getCellKey(dataItem, dataIndex) {
-      return '' + dataItem.rowNo + dataItem.colNo + dataIndex;
-    },
+    // getCellKey(dataItem, dataIndex) {
+    //   return '' + dataItem.rowNo + dataItem.colNo + dataIndex;
+    // },
     /**
      * Returns row number of table cell
      */
-    getDataRow(dataItem) {
-      if (Array.isArray(dataItem)) {
-        return dataItem[0].rowNo;
-      } else {
-        return dataItem.rowNo;
-      }
-    },
+    // getDataRow(dataItem) {
+    //   if (Array.isArray(dataItem)) {
+    //     return dataItem[0].rowNo;
+    //   } else {
+    //     return dataItem.rowNo;
+    //   }
+    // },
     /**
      * Returns col number of table cell
      */
-    getDataCol(dataItem) {
-      if (Array.isArray(dataItem)) {
-        return dataItem[dataItem.length - 1].colNo;
-      } else {
-        return dataItem.colNo;
-      }
-    },
+    // getDataCol(dataItem) {
+    //   if (Array.isArray(dataItem)) {
+    //     return dataItem[dataItem.length - 1].colNo;
+    //   } else {
+    //     return dataItem.colNo;
+    //   }
+    // },
     /**
      * Checkbox Action handler for table row selection
      */
@@ -308,27 +352,29 @@ export default {
      */
     extractCellData(headerItem, dataRow, rowIndex, colIndex) {
       const cellData = {};
-      cellData.type = headerItem.type;
-      cellData.customCSS = {}; // TODO take css as table prop
-      cellData.data = {};
-      cellData.rowNo = rowIndex;
-      cellData.colNo = colIndex;
+      cellData.contains = 'object';
+      cellData.params = {};
+      cellData.params.type = headerItem.type;
+      cellData.params.customCSS = {}; // TODO take css as table prop
+      cellData.params.data = {};
+      cellData.params.rowNo = rowIndex;
+      cellData.params.colNo = colIndex;
 
       if (headerItem.type === 'image') {
-        cellData.data.src = dataRow[headerItem.name];
+        cellData.params.data.src = dataRow[headerItem.name];
       } else if (headerItem.type === 'text') {
-        cellData.data.text = dataRow[headerItem.name];
-        cellData.data.textWrap = true;
+        cellData.params.data.text = dataRow[headerItem.name];
+        cellData.params.data.textWrap = true;
       } else if (headerItem.type === 'checkbox') {
-        cellData.data.checked = dataRow[headerItem.name];
+        cellData.params.data.checked = dataRow[headerItem.name];
       } else if (headerItem.type === 'button') {
-        cellData.data.text = dataRow[headerItem.name];
-        cellData.data.primary = true;
+        cellData.params.data.text = dataRow[headerItem.name];
+        cellData.params.data.primary = true;
       } else if (headerItem.type === 'link') {
-        cellData.data.text = dataRow[headerItem.name];
-        cellData.data.externalUrl = dataRow[headerItem.name];
+        cellData.params.data.text = dataRow[headerItem.name];
+        cellData.params.data.externalUrl = dataRow[headerItem.name];
       } else if (headerItem.type === 'icon') {
-        cellData.data.icon = dataRow[headerItem.name];
+        cellData.params.data.icon = dataRow[headerItem.name];
       }
 
       return cellData;
@@ -389,6 +435,12 @@ export default {
   },
   components: {
     VxpListView,
+    StackLayout,
+    FlexboxLayout,
+    VxpCheckbox,
+    VTemplate,
+    VxpLabel,
+    TableCellItem,
   },
 };
 </script>

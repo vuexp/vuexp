@@ -14,14 +14,24 @@
           :label="headerItem.label"
           :sortable="headerItem.sortable"
           :rowSelection="rowSelectionEnabled && headerIndex === 0"
-          :disabled="isHeaderDisabled(headerItem)"
+          :disabled="isHeaderDisabled()"
           row="0"
           :col="headerIndex"
           @checkAllClicked="$event === true ? selectAllRows() : deselectAllRows()"
           @onAscendingClicked="$emit('onAscendingClicked', $event)"
           @onDescendingClicked="$emit('onDescendingClicked', $event)"
+        />
+        <StackLayout
+          v-if="rowSelectionEnabled && renderType === 'list'"
+          orientation="horizontal"
+          row="0"
+          col="0"
+          :colSpan="columnNumber"
+          class="vxp-table-view-list-select-all-container"
         >
-        </TableHeader>
+          <VxpCheckbox class="vxp-table-view-list-select-all-checkbox" @change="$event === true ? selectAllRows() : deselectAllRows()" />
+          <VxpLabel text="Select All" class="vxp-table-view-list-select-all-label" />
+        </StackLayout>
 
         <TableCell
           v-for="(dataItem, dataIndex) in tableData"
@@ -41,6 +51,7 @@
           @linkClicked="onTableLinkClicked($event)"
           @imageLoaded="$emit('onImageLoaded', $event)"
           @imageLoadError="$emit('onImageLoadError', $event)"
+          @actionItemClicked="onTableActionItemClicked(...arguments)"
         ></TableCell>
       </template>
     </GridLayout>
@@ -57,6 +68,7 @@ import FlexboxLayout from '../layouts/FlexboxLayout';
 import TableCell from '../core/components/TableView/TableCell';
 import TableHeader from '../core/components/TableView/TableHeader';
 import VxpLabel from './VxpLabel';
+import VxpCheckbox from './VxpCheckbox';
 import platform from '../platform';
 
 export default {
@@ -79,10 +91,6 @@ export default {
       default: null,
     },
     tableWidth: {
-      type: Number,
-      default: null,
-    },
-    columnWidth: {
       type: Number,
       default: null,
     },
@@ -170,7 +178,11 @@ export default {
       let cols = 'auto';
       for (var i = 0; i < this.selectedColumns.length; i++) {
         if (this.renderType === 'table' || (this.renderType === 'list' && this.selectedColumns[i].listAlignment === 'horizontal')) {
-          cols += ',*';
+          if (this.selectedColumns[i].columnWidth) {
+            cols += ',' + this.selectedColumns[i].columnWidth;
+          } else {
+            cols += ',auto';
+          }
         }
       }
       return cols;
@@ -240,6 +252,21 @@ export default {
               // no need to increase column index
             }
           });
+
+          if (this.renderType === 'list') {
+            const actionCell = {};
+            actionCell.type = 'icon';
+            actionCell.customCSS = {}; // TODO take css as table prop
+            actionCell.data = {};
+            actionCell.rowNo = rowIndex;
+            actionCell.colNo = colIndex;
+            actionCell.data.actionName = 'choose';
+            actionCell.data.icon = 'fa fa-exclamation-triangle'; //TODO update icon
+
+            tableData.push(actionCell);
+            colIndex++;
+          }
+
           this.addRowsString(); // update rows rendering style
           rowIndex++; // increase row index
         });
@@ -252,6 +279,12 @@ export default {
     },
   },
   methods: {
+    onTableActionItemClicked(itemId, actionName) {
+      const rowNo = itemId ? itemId.split('-')[0] : null;
+      if (rowNo) {
+        this.$emit('onActionItemClicked', actionName, this.data[rowNo - 1]);
+      }
+    },
     onTableLinkClicked(linkId) {
       const rowNo = linkId ? linkId.split('-')[0] : null;
       if (rowNo) {
@@ -292,8 +325,8 @@ export default {
     /**
      * Hides headers which are combined in a single column
      */
-    isHeaderDisabled(headerItem) {
-      if (this.renderType === 'list' && headerItem.listAlignment === 'vertical') {
+    isHeaderDisabled() {
+      if (this.renderType === 'list') {
         return true;
       }
       return false;
@@ -362,10 +395,10 @@ export default {
         cellData.data.stretch = 'aspectFill';
         cellData.customCSS = {};
         cellData.customCSS['border-radius'] = '100%';
-        cellData.customCSS['width'] = '100%';
-        cellData.customCSS['height'] = '100%';
-        cellData.customCSS['max-width'] = '100px';
-        cellData.customCSS['max-height'] = '100px';
+        // cellData.customCSS['width'] = '100%';
+        // cellData.customCSS['height'] = '100%';
+        cellData.customCSS['width'] = '75px';
+        cellData.customCSS['height'] = '75px';
       } else if (headerItem.type === 'text') {
         cellData.data.text = dataRow[headerItem.name];
         cellData.data.textWrap = true;
@@ -377,9 +410,12 @@ export default {
       } else if (headerItem.type === 'link') {
         cellData.data.text = dataRow[headerItem.name];
       } else if (headerItem.type === 'icon') {
-        cellData.data.icon = dataRow[headerItem.name];
+        cellData.data.icon = headerItem.label;
       }
 
+      if (typeof headerItem.isAction !== 'undefined' && headerItem.isAction) {
+        cellData.data.actionName = headerItem.name;
+      }
       return cellData;
     },
     /**
@@ -443,8 +479,18 @@ export default {
     VxpLabel,
     StackLayout,
     FlexboxLayout,
+    VxpCheckbox,
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import '../assets/styles/helpers.scss';
+@import url('/fonts/fontawesome.min.css');
+.vxp-table-view-list-select-all-checkbox {
+  margin: unit(5);
+}
+.vxp-table-view-list-select-all-label {
+  margin: unit(5);
+}
+</style>
