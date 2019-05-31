@@ -270,14 +270,12 @@ $placeholder-color: #898d90;
     display: flex;
     flex-direction: row-reverse;
     cursor: pointer;
+    background-color: #ffffff;
 
     &__toggle {
       min-height: unit(20);
       padding: unit(9) unit(15) unit(9) unit(0);
-      border-top: none;
-      border-left: none;
-      border-right: none;
-      border-bottom: solid unit(1) $border-color;
+      border: none;
       box-sizing: border-box;
       width: 100%;
       cursor: pointer;
@@ -286,6 +284,7 @@ $placeholder-color: #898d90;
       color: #080808;
       user-select: none;
       caret-color: transparent;
+      background-color: transparent;
 
       &::placeholder {
         color: $placeholder-color;
@@ -294,6 +293,10 @@ $placeholder-color: #898d90;
       &:active,
       &:focus {
         outline: none;
+      }
+
+      &__error-messages {
+        color: red;
       }
 
       @include themed($themes) {
@@ -305,19 +308,18 @@ $placeholder-color: #898d90;
     }
 
     &__icon {
-      padding: 8px 12px;
-      font-size: 12px;
+      height: 100%;
+      padding: 12px;
       color: black;
-      position: absolute;
       position: absolute;
       z-index: 2;
       font-size: unit(10);
       pointer-events: none;
+      box-sizing: border-box;
     }
   }
 
   &__menu {
-    height: auto;
     position: absolute;
     z-index: 3;
     width: 100%;
@@ -328,7 +330,7 @@ $placeholder-color: #898d90;
     border-left: solid unit(1) $border-color;
     border-bottom: solid unit(1) $border-color;
     background-color: #ffffff;
-    overflow-y: scroll;
+    overflow-y: auto;
 
     box-shadow: unit(0) unit(12) unit(13) unit(-11) rgba(0, 0, 0, 0.1), unit(-10) unit(-3) unit(13) unit(-11) rgba(0, 0, 0, 0.1),
       unit(10) unit(-3) unit(13) unit(-11) rgba(0, 0, 0, 0.1);

@@ -3,20 +3,27 @@ import { mount } from '@vue/test-utils';
 import * as sinon from 'sinon';
 import localVue from '../../local-vue';
 import ListPickerModal from '../../../../src/core/components/ListPickerModal/ListPickerModal';
+import Button from '../../../../src/core/components/Button/Button';
+
+let wrapper;
 
 describe('ListPickerModal.', () => {
   const listOfItems = ['nativescript', 'vue', 'nurd', 'nuweb'];
   const selectedIndex = 3;
   const modalCloseSpy = sinon.spy();
-  const wrapper = mount(ListPickerModal, {
-    propsData: {
-      listOfItems,
-      selectedIndex,
-    },
-    mocks: {
-      $modal: { close: modalCloseSpy },
-    },
-    localVue,
+
+  beforeEach(() => {
+    modalCloseSpy.resetHistory();
+    wrapper = mount(ListPickerModal, {
+      propsData: {
+        listOfItems,
+        selectedIndex,
+      },
+      mocks: {
+        $modal: { close: modalCloseSpy },
+      },
+      localVue,
+    });
   });
 
   describe('The component received given props correctly.', () => {
@@ -28,16 +35,42 @@ describe('ListPickerModal.', () => {
     });
   });
 
-  describe('onClicked Method test.', () => {
+  describe('done & cancel Method test.', () => {
     it(`should close method is not call.`, () => {
-      let tempWrapper = mount(ListPickerModal);
-      tempWrapper.vm.onClicked();
       expect(modalCloseSpy.called).to.eq(false);
     });
 
-    it(`should close method is called once.`, () => {
-      wrapper.vm.onClicked();
+    it(`should cancel method is called once.`, () => {
+      wrapper
+        .findAll(Button)
+        .at(0)
+        .trigger('click');
+
       expect(modalCloseSpy.called).to.eq(true);
+    });
+
+    it(`should done method is called once.`, () => {
+      wrapper
+        .findAll(Button)
+        .at(1)
+        .trigger('click');
+
+      expect(modalCloseSpy.called).to.eq(true);
+    });
+
+    it(`should close method is not call when $modal is undefined.`, () => {
+      let tempWrapper = mount(ListPickerModal, { localVue });
+      tempWrapper
+        .findAll(Button)
+        .at(0)
+        .trigger('click');
+
+      tempWrapper
+        .findAll(Button)
+        .at(1)
+        .trigger('click');
+
+      expect(modalCloseSpy.called).to.eq(false);
     });
   });
 });
