@@ -66,26 +66,37 @@ export default {
     },
     tapClickHandler(e) {
       let sourceType = null;
-      if (e && e.target && e.target.tagName) {
-        if (e.target.attributes && typeof e.target.attributes['actionname'] !== 'undefined') {
+      let actionName = null;
+
+      if (platform.platform === 'web') {
+        if (e && e.target && e.target.tagName) {
+          if (e.target.attributes && typeof e.target.attributes['actionname'] !== 'undefined') {
+            sourceType = 'action';
+            actionName = e.target.attributes['actionname'];
+          } else if (e.target.tagName === 'BUTTON') {
+            sourceType = 'button';
+          } else if (e.target.tagName === 'A') {
+            sourceType = 'link';
+          }
+        }
+      } else {
+        if (e.object.actionName) {
+          actionName = 'actioname="' + e.object.actionName + '"';
           sourceType = 'action';
-        } else if (e.target.tagName === 'BUTTON') {
-          sourceType = 'button';
-        } else if (e.target.tagName === 'A') {
-          sourceType = 'link';
         }
       }
 
+      let id = platform.platform === 'web' ? e.currentTarget.id : e.object.id;
       if (sourceType === 'button') {
-        this.$emit('buttonClicked', e.currentTarget.id);
+        this.$emit('buttonClicked', id);
       } else if (sourceType === 'link') {
-        this.$emit('linkClicked', e.currentTarget.id);
+        this.$emit('linkClicked', id);
       } else if (sourceType === 'action') {
-        this.$emit('actionItemClicked', e.currentTarget.id, e.target.attributes['actionname']);
+        this.$emit('actionItemClicked', id, actionName);
       }
     },
     onCheckboxClicked(value, eventData) {
-      let id = platform === 'web' ? eventData.currentTarget.id : eventData.object.id;
+      let id = platform.platform === 'web' ? eventData.currentTarget.id : eventData.object.id;
       if (id) {
         id = id.split('-');
         this.$emit('checkboxClicked', value, id[0]);
