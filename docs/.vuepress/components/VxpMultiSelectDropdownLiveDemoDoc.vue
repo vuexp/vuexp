@@ -4,7 +4,7 @@
       :items="selectableItems"
       :hint="hint"
       :emptySuggestionsLabel="emptySuggestionsLabel"
-      v-model="selectedIndexes"
+      v-model="selectedItems"
       id="vxpmultiselectdropdown"
     ></VxpMultiSelectDropdown>
     <StackLayout class="demo-panel">
@@ -66,7 +66,7 @@
 
     <StackLayout class="margin-top-10" orientation="horizontal">
       <VxpLabel text="Selected Indexes :"></VxpLabel>
-      <VxpLabel id="vxpmultiselectdropdown_selected_indexes" :text="selectedIndexes.join(',')"></VxpLabel>
+      <VxpLabel id="vxpmultiselectdropdown_selected_indexes" :text="selectedItems.map(d=> d.label).join(',')"></VxpLabel>
     </StackLayout>
   </StackLayout>
 </template>
@@ -101,7 +101,7 @@ export default {
   },
   data() {
     return {
-      selectedIndexes: [],
+      selectedItems: [],
       selectableItems: [],
       hint: 'Select items',
       emptySuggestionsLabel: 'There is no items to select',
@@ -116,21 +116,20 @@ export default {
     },
     removeAll() {
       this.selectableItems = [];
-      this.selectedIndexes = [];
+      this.selectedItems = [];
     },
-    changeStatus(checked, item) {
-      const itemIndex = this.selectableItems.indexOf(item);
-      const selectedArrayIndex = this.selectedIndexes.indexOf(itemIndex);
+    changeStatus(checked, item) { 
+      const selectedArrayIndex = this.selectedItems.indexOf(item);
       if (selectedArrayIndex > -1) {
-        this.selectedIndexes.splice(selectedArrayIndex, 1);
+        this.selectedItems.splice(selectedArrayIndex, 1);
       } else {
-        this.selectedIndexes.push(itemIndex);
+        this.selectedItems.push(item);
       }
     },
     isItemSelected(item) {
       const itemIndex = this.selectableItems.indexOf(item);
       if (itemIndex > -1) {
-        return this.selectedIndexes.indexOf(itemIndex) > -1;
+        return this.selectedItems.indexOf(item) > -1;
       }
       return false;
     },

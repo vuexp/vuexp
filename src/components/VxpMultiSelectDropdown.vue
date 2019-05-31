@@ -5,11 +5,11 @@
         <StackLayout
           class="vxp-multiselectdropdown__pill"
           orientation="horizontal"
-          v-for="(selectedItemIndex, index) in selected"
-          @tap="selectedItemTapped(items[selectedItemIndex])"
+          v-for="(selectedItem, index) in selected"
+          @tap="selectedItemTapped(selectedItem)"
           :key="index"
         >
-          <Label class="vxp-multiselectdropdown__pill-label" :text="items[selectedItemIndex][labelProp]"></Label>
+          <Label class="vxp-multiselectdropdown__pill-label" :text="selectedItem[labelProp]"></Label>
           <Label v-if="!isNative" class="vxp-multiselectdropdown__pill-remove-text" text="×"></Label>
         </StackLayout>
       </WrapLayout>
