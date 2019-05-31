@@ -2,10 +2,12 @@
   <StackLayout v-if="!disabled" orientation="horizontal" class="vxp-table-view-header">
     <VxpCheckbox v-if="rowSelection" :check="checkedAll" @change="$emit('checkAllClicked', $event)" class="vxp-table-view-header-checkbox"></VxpCheckbox>
 
-    <VxpLabel v-if="!rowSelection" :text="label" :textWrap="true" class="vxp-table-view-header-label"></VxpLabel>
-    <StackLayout v-if="sortable" orientation="vertical" class="vxp-table-view-header-sorting-buttons">
-      <VxpIconButton icon="fa fa-exclamation-triangle" size="20" @tap="$emit('onAscendingClicked', name)"></VxpIconButton>
-      <VxpIconButton icon="fa fa-exclamation-triangle" size="20" @tap="$emit('onDescendingClicked', name)"></VxpIconButton>
+    <StackLayout v-if="!rowSelection" orientation="horizontal">
+      <VxpLabel :text="label" :textWrap="true" class="vxp-table-view-header-label"></VxpLabel>
+      <StackLayout v-if="sortable" orientation="vertical" class="vxp-table-view-header-sorting-buttons">
+        <VxpIconButton icon="fa-chevron-up" iconName="fa" size="20" @tap="$emit('onAscendingClicked', name)"></VxpIconButton>
+        <VxpIconButton icon="fa-chevron-down" iconName="fa" size="20" @tap="$emit('onDescendingClicked', name)"></VxpIconButton>
+      </StackLayout>
     </StackLayout>
   </StackLayout>
 </template>
