@@ -40,20 +40,18 @@ export default {
   },
   methods: {
     selectItem(item) {
-      const itemIndex = this.items.indexOf(item);
-      this.selected.push(itemIndex);
+      this.selected.push(item);
       this.selectedChange();
     },
     selectedChange() {
       this.$emit('selectedChange', this.selected);
     },
     notSelectedItems() {
-      return this.items.filter((item, index) => this.selected.indexOf(index) === -1);
+      return this.items.filter(item => this.selected.indexOf(item) === -1);
     },
     removeSelection(item) {
-      const itemIndex = this.items.indexOf(item);
-      const selectedItemIndex = this.selected.indexOf(itemIndex);
-      this.selected.splice(selectedItemIndex, 1);
+      const itemIndex = this.selected.indexOf(item);
+      this.selected.splice(itemIndex, 1);
       this.selectedChange();
     },
     searchTextChanged(newText) {

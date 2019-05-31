@@ -10,11 +10,11 @@
             <StackLayout
               class="vxp-multiselectdropdown-native-modal__selected-items"
               orientation="horizontal"
-              v-for="(selectedItemIndex, index) in selected"
-              @tap="removeSelection(items[selectedItemIndex])"
+              v-for="(selectedItem, index) in selected"
+              @tap="removeSelection(selectedItem)"
               :key="index"
             >
-              <Label class="vxp-multiselectdropdown-native-modal__selected-item" :text="items[selectedItemIndex][labelProp] + '  ×'"></Label>
+              <Label class="vxp-multiselectdropdown-native-modal__selected-item" :text="selectedItem[labelProp] + '  ×'"></Label>
             </StackLayout>
           </WrapLayout>
           <SearchBar
