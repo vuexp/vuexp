@@ -38,6 +38,7 @@
           :currentColNo="getDataCol(dataItem)"
           @checkboxClicked="onTableRowSelected(...arguments)"
           @buttonClicked="onTableButtonClicked($event)"
+          @linkClicked="onTableLinkClicked($event)"
           @imageLoaded="$emit('onImageLoaded', $event)"
           @imageLoadError="$emit('onImageLoadError', $event)"
         ></TableCell>
@@ -251,6 +252,12 @@ export default {
     },
   },
   methods: {
+    onTableLinkClicked(linkId) {
+      const rowNo = linkId ? linkId.split('-')[0] : null;
+      if (rowNo) {
+        this.$emit('onLinkClicked', this.data[rowNo - 1]);
+      }
+    },
     onTableButtonClicked(buttonId) {
       const rowNo = buttonId ? buttonId.split('-')[0] : null;
       if (rowNo) {
@@ -369,7 +376,6 @@ export default {
         cellData.data.primary = true;
       } else if (headerItem.type === 'link') {
         cellData.data.text = dataRow[headerItem.name];
-        cellData.data.externalUrl = dataRow[headerItem.name];
       } else if (headerItem.type === 'icon') {
         cellData.data.icon = dataRow[headerItem.name];
       }

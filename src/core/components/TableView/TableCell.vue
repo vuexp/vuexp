@@ -10,6 +10,7 @@
       :customCSS="cellItem.customCSS"
       @checkboxClicked="checkboxClicked(...arguments)"
       @buttonClicked="$emit('buttonClicked', $event)"
+      @linkClicked="$emit('linkClicked', $event)"
       @imageLoaded="$emit('imageLoaded', $event)"
       @imageLoadError="$emit('imageLoadError', $event)"
     ></TableCellItem>
