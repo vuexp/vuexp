@@ -8,6 +8,7 @@ import VxpLink from '../../../components/VxpLink';
 import VxpCheckbox from '../../../components/VxpCheckbox';
 import VxpButton from '../../../components/VxpButton';
 import VxpIconButton from '../../../components/VxpIconButton';
+import platform from '../../../platform';
 
 export default {
   name: 'TableCellItem',
@@ -84,8 +85,9 @@ export default {
       }
     },
     onCheckboxClicked(value, eventData) {
-      if (eventData.currentTarget.id) {
-        const id = eventData.currentTarget.id.split('-');
+      let id = platform === 'web' ? eventData.currentTarget.id : eventData.object.id;
+      if (id) {
+        id = id.split('-');
         this.$emit('checkboxClicked', value, id[0]);
       }
     },
