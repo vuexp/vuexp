@@ -75,7 +75,7 @@ This is an overview of the most common usage of `<VxpMultiSelectDropdown>`.
 | Name                  | Type          | Default | Web | Mobile | Description                                                                   |
 | --------------------- | ------------- | ------- | --- | ------ | ----------------------------------------------------------------------------- |
 | items                 | Array[{ label: String }] | []      | ✔   | ✔      | Sets selectable item list for the component.                            |
-| selected (v-model)    | Array[number] | []      | ✔   | ✔      | Sets selected item indexes for the component. Can be used with v-model        |
+| selected (v-model)    | Array[number] | []      | ✔   | ✔      | Sets selected items for the component. Can be used with v-model        |
 | hint                  | string        | ""      | ✔   | ✔      | Sets the placeholder text for the search input.                               |
 | emptySuggestionsLabel | string        | ""      | ✔   | ✔      | Text is shown at when there is nothing to select with current search criteria |
 
@@ -83,4 +83,4 @@ This is an overview of the most common usage of `<VxpMultiSelectDropdown>`.
 
 | Name             | Web | Mobile | Description                                                                                                |
 | ---------------- | --- | ------ | ---------------------------------------------------------------------------------------------------------- |
-| selectedChange   | ✔   | ✔      | Event occurs when user selects or deselects an item from the items list. Emits selected items index array. |
+| selectedChange   | ✔   | ✔      | Event occurs when user selects or deselects an item from the items list. Emits selected items array. |

@@ -65,7 +65,7 @@
     </StackLayout>
 
     <StackLayout class="margin-top-10" orientation="horizontal">
-      <VxpLabel text="Selected Indexes :"></VxpLabel>
+      <VxpLabel text="Selected Items :"></VxpLabel>
       <VxpLabel id="vxpmultiselectdropdown_selected_indexes" :text="selectedItems.map(d=> d.label).join(',')"></VxpLabel>
     </StackLayout>
   </StackLayout>
