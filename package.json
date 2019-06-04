@@ -1,11 +1,76 @@
 {
   "name": "vuexp",
   "description": "Vue Cross Platform",
-  "version": "0.1.0",
-  "scripts": {},
+  "version": "0.3.0",
+  "scripts": {
+    "lint": "vue-cli-service lint",
+    "test": "vue-cli-service test:unit --require tests/unit/pre-setup.js",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "test:e2e": "vue-cli-service test:e2e --config nightwatch.config.js --env chrome,firefox",
+    "test:e2e-safari": "vue-cli-service test:e2e --config nightwatch.config.js --env safari",
+    "test:e2e-edge": "vue-cli-service test:e2e --config nightwatch.config.js --env edge",
+    "test:unit": "vue-cli-service test:unit --require tests/unit/pre-setup.js",
+    "coverage": "nyc npm run test:unit",
+    "report": "nyc npm test && nyc report --reporter=text-lcov > coverage.lcov"
+  },
   "main": "src/main.js",
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "vue": "2.6.10",
+    "vue-i18n": "8.10.0",
+    "vue-observe-visibility": "0.4.3",
+    "vue-router": "3.0.2",
+    "vuelidate": "0.7.4",
+    "vuex": "3.1.0",
+    "vuex-persist": "2.0.0",
+    "vue-template-compiler": "^2.5.19",
+    "register-service-worker": "1.6.2",
+    "string-replace-loader": "2.1.1",
+    "nativescript-orientation": "2.2.1",
+    "nativescript-ui-sidedrawer": "6.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.4.0",
+    "@babel/preset-env": "7.4.2",
+    "@vue/cli-plugin-babel": "3.5.3",
+    "@vue/cli-plugin-e2e-nightwatch": "3.5.1",
+    "@vue/cli-plugin-eslint": "3.5.1",
+    "@vue/cli-plugin-pwa": "3.5.1",
+    "@vue/cli-plugin-unit-mocha": "3.5.1",
+    "@vue/cli-service": "3.5.3",
+    "@vue/eslint-config-airbnb": "4.0.0",
+    "@vue/eslint-config-prettier": "4.0.1",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "allure-js-commons": "1.3.2",
+    "appium": "1.12.1",
+    "appium-doctor": "1.9.0",
+    "babel-eslint": "10.0.1",
+    "babel-loader": "8.0.5",
+    "babel-plugin-istanbul": "5.1.1",
+    "babel-traverse": "6.26.0",
+    "chai": "4.2.0",
+    "chromedriver": "^74.0.0",
+    "clean-webpack-plugin": "^2.0.1",
+    "codecov": "3.1.0",
+    "copy-webpack-plugin": "5.0.2",
+    "cross-env": "5.2.0",
+    "cross-fetch": "3.0.2",
+    "eslint": "5.15.3",
+    "eslint-plugin-vue": "5.2.2",
+    "geckodriver": "1.16.0",
+    "jsdom": "15.0.0",
+    "jsdom-global": "3.0.2",
+    "lint-staged": "8.1.5",
+    "nightwatch-vrt": "0.2.10",
+    "nightwatch_testrail": "1.0.627",
+    "node-sass": "^4.9.4",
+    "nyc": "13.3.0",
+    "rimraf": "^2.6.2",
+    "sass-loader": "^7.1.0",
+    "sinon": "7.3.1",
+    "vue-template-compiler": "2.6.10",
+    "vuepress": "^0.14.11"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -21,5 +86,101 @@
   "bugs": {
     "url": "https://github.com/vuexp/vuexp/issues"
   },
-  "homepage": "https://github.com/vuexp/vuexp#readme"
+  "homepage": "https://github.com/vuexp/vuexp#readme",
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/airbnb",
+      "@vue/prettier"
+    ],
+    "rules": {
+      "import/no-extraneous-dependencies": 0,
+      "import/extensions": 0,
+      "global-require": 0,
+      "eol-last": 0,
+      "no-param-reassign": 0,
+      "object-curly-newline": 0,
+      "no-plusplus": 0,
+      "max-len": [
+        2,
+        {
+          "code": 160
+        }
+      ],
+      "prefer-destructuring": [
+        2,
+        {
+          "object": true,
+          "array": false
+        }
+      ]
+    },
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "eslintIgnore": [
+    "webpack.config.js"
+  ],
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "gitHooks": {
+    "pre-commit": "lint-staged",
+    "pre-push": "npm audit fix --only=prod && npm run coverage"
+  },
+  "lint-staged": {
+    "*.js": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 160,
+    "trailingComma": "all"
+  },
+  "nyc": {
+    "check-coverage": false,
+    "lines": 80,
+    "statements": 80,
+    "functions": 80,
+    "branches": 80,
+    "include": [
+      "src/**/*.js",
+      "src/**/*.vue"
+    ],
+    "exclude": [
+      "src/**/*.native.js",
+      "src/**/*.native.vue",
+      "src/**/*.android.js",
+      "src/**/*.android.vue",
+      "src/**/*.ios.js",
+      "src/**/*.ios.vue"
+    ],
+    "instrument": false,
+    "sourceMap": false,
+    "all": true,
+    "reporter": [
+      "lcov",
+      "html",
+      "text",
+      "text-summary"
+    ]
+  }
 }
