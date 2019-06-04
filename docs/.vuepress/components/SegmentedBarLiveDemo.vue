@@ -56,11 +56,11 @@
 </template>
 
 <script>
-import SegmentedBar from '../../../src/components/SegmentedBar';
-import SegmentedBarItem from '../../../src/components/SegmentedBarItem';
-import TextField from '../../../src/components/TextField';
-import Button from '../../../src/components/Button';
-import Label from '../../../src/components/Label';
+import SegmentedBar from '../../../src/core/components/SegmentedBar/SegmentedBar';
+import SegmentedBarItem from '../../../src/core/components/SegmentedBarItem/SegmentedBarItem';
+import TextField from '../../../src/core/components/TextField/TextField';
+import Button from '../../../src/core/components/Button/Button';
+import Label from '../../../src/core/components/Label/Label';
 import StackLayout from '../../../src/layouts/StackLayout';
 
 export default {

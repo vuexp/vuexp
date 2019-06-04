@@ -111,7 +111,7 @@
     <!--Grid Cells header-->
     <StackLayout class="demo-panel">
       <Label text="Grid Cells" class="demo-panel__title"/>
-    <!--Grid cell list--->
+    <!--Grid cell list -->
       <StackLayout orientation="vertical" class="demo-panel-child" v-for="(gridItem, index) in gridItemList" :key="'gridCells_' + index">
         <FlexboxLayout flexWrap="wrap" :class="{error: (maxRowNo < gridItem.row )}">
           <StackLayout orientation="horizontal" class="editor-param">
@@ -213,10 +213,10 @@
 </template>
 
 <script>
-import Label from '../../../src/components/Label';
-import Button from '../../../src/components/Button';
+import Label from '../../../src/core/components/Label/Label';
+import Button from '../../../src/core/components/Button/Button';
 import GridLayout from '../../../src/layouts/GridLayout';
-import TextField from '../../../src/components/TextField';
+import TextField from '../../../src/core/components/TextField/TextField';
 import StackLayout from '../../../src/layouts/StackLayout';
 import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
 

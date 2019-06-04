@@ -187,7 +187,7 @@
         class="dock input-param-row"
       >
         <Label
-          v-for="(dockChild, index) in dockChildrenList"
+          v-for="dockChild in dockChildrenList"
           v-bind="dockChild"
           :key="'dockChild_' + getRandInt()"
         />
@@ -197,10 +197,10 @@
 </template>
 
 <script>
-import Label from '../../../src/components/Label';
-import Button from '../../../src/components/Button';
+import Label from '../../../src/core/components/Label/Label';
+import Button from '../../../src/core/components/Button/Button';
 import DockLayout from '../../../src/layouts/DockLayout';
-import TextField from '../../../src/components/TextField';
+import TextField from '../../../src/core/components/TextField/TextField';
 import StackLayout from '../../../src/layouts/StackLayout';
 import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
 
