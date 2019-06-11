@@ -13,7 +13,7 @@ git config user.email "yigit@erol.co"
 git config user.name "Yigit Erol"
 
 git add -A
-git commit -m 'deploy'
+git commit -m 'Generated Docs Deploy [ci skip]'
 
 cd -
 
