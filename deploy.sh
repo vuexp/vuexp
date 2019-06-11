@@ -15,6 +15,6 @@ git config user.name "Yigit Erol"
 git add -A
 git commit -m 'deploy'
 
-git push -f git@github.com:vuexp/vuexp.git master
+git push --no-verify
 
 cd -
