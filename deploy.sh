@@ -9,13 +9,12 @@ npm run docs:build
 # navigate into the build output directory
 cd docs/.vuepress/dist
 
-# if you are deploying to a custom domain
-echo 'vuexp.com' > CNAME
+git config user.email "yigit@erol.co"
+git config user.name "Yigit Erol"
 
-git init
 git add -A
-git commit -m 'deploy'
-
-git push -f git@github.com:vuexp/vuexp.git master
+git commit -m 'Generated Docs Deploy [ci skip]'
 
 cd -
+
+git push --no-verify --set-upstream origin ${CIRCLE_BRANCH}
