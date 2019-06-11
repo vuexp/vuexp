@@ -35,5 +35,9 @@ jobs:
       - run: ./node_modules/.bin/codecov
       # run vuepress
       - run: npm run docs:build
+      # run deploy.sh
+      - run:
+          name: Deploy Docs
+          command: sh ./deploy.sh
 
 
