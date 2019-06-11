@@ -106,8 +106,7 @@ export default {
   computed: {
     days() {
       let days = [];
-      let x = this.daysInMonth(this.selectedMonth, this.selectedYear);
-      for (let i = 1; i <= x; i++) {
+      for (let i = 1; i <= this.daysInMonth(this.selectedMonth, this.selectedYear); i++) {
         days.push(i);
       }
       return days;
