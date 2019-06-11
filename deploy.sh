@@ -15,6 +15,6 @@ git config user.name "Yigit Erol"
 git add -A
 git commit -m 'deploy'
 
-git push --no-verify --set-upstream origin
-
 cd -
+
+git push --no-verify --set-upstream origin
