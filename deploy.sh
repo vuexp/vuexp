@@ -9,13 +9,12 @@ npm run docs:build
 # navigate into the build output directory
 cd docs/.vuepress/dist
 
-git config user.email "yigit@erol.co"
-git config user.name "Yigit Erol"
-
 # if you are deploying to a custom domain
 echo 'vuexp.com' > CNAME
 
 git init
+git config user.email "yigit@erol.co"
+git config user.name "Yigit Erol"
 git add -A
 git commit -m 'Generated Docs Deploy [ci skip]'
 
