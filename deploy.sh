@@ -17,4 +17,4 @@ git commit -m 'deploy'
 
 cd -
 
-git push --no-verify --set-upstream origin
+git push --no-verify
