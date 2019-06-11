@@ -84,5 +84,6 @@ module.exports = {
     }
   },
   dest: "./docs/.vuepress/dist",
+  base: "/vuexp/",
   serviceWorker: true
 };
