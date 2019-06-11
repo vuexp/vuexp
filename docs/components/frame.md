@@ -66,7 +66,7 @@ export default {
 
 ```html
 <Frame>
-    <TextView v-model="textViewInput" :editable="true" />
+    <TextArea v-model="textViewInput" :editable="true" />
     <WebView src="<div><h1>Some static HTML</h1></div>" />
 <Frame />
 <!--A frame with a default page -->

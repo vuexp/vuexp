@@ -111,7 +111,7 @@
     <!--Grid Cells header-->
     <StackLayout class="demo-panel">
       <Label text="Grid Cells" class="demo-panel__title"/>
-    <!--Grid cell list--->
+    <!--Grid cell list -->
       <StackLayout orientation="vertical" class="demo-panel-child" v-for="(gridItem, index) in gridItemList" :key="'gridCells_' + index">
         <FlexboxLayout flexWrap="wrap" :class="{error: (maxRowNo < gridItem.row )}">
           <StackLayout orientation="horizontal" class="editor-param">

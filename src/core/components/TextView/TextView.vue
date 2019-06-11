@@ -1,5 +1,5 @@
 <template>
-  <div class="vxp-textview-container">
+  <StackLayout class="vxp-textview-container">
     <textarea
       v-common-directive
       class="vxp-textview-container__textview"
@@ -17,15 +17,19 @@
       @paste="onPaste"
     />
     <slot />
-  </div>
+  </StackLayout>
 </template>
 
 <script>
 import CommonDirective from '../../directives/CommonDirective';
 import Gestures from '../../mixins/GestureMixin';
+import StackLayout from '../../../layouts/StackLayout';
 
 export default {
   name: 'TextView',
+  components: {
+    StackLayout,
+  },
   model: {
     event: 'input',
     prop: 'text',

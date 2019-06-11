@@ -28,7 +28,7 @@
           v-for="(item, index) in items"
           v-bind:key="index"
         >
-          {{ item }}
+          {{ item[textDataPropName] }}
         </li>
       </ul>
     </transition>
@@ -44,7 +44,7 @@ import VxpLabel from './VxpLabel';
 import FlexboxLayout from '../layouts/FlexboxLayout';
 
 export default {
-  name: 'VxpDropDown',
+  name: 'VxpDropDown2',
   props: {
     placeholder: {
       type: String,
@@ -52,6 +52,9 @@ export default {
     disabled: {
       type: Boolean,
       default: false,
+    },
+    textDataPropName: {
+      type: String,
     },
     items: {
       type: Array,
@@ -80,7 +83,7 @@ export default {
   },
   computed: {
     selectedItem() {
-      return this.items[this.selectedIndex];
+      return this.items[this.selectedIndex] ? this.items[this.selectedIndex][this.textDataPropName] : '';
     },
   },
   watch: {
@@ -133,7 +136,7 @@ export default {
     },
     searchFilter(key) {
       const result = this.items.filter(item =>
-        item
+        item[this.textDataPropName]
           .toString()
           .toLowerCase()
           .startsWith(this.searchedWord),
@@ -147,6 +150,7 @@ export default {
         this.pressedKey.count++;
       }
       const selectedItem = result[this.pressedKey.count % result.length];
+
       if (this.items.indexOf(selectedItem) !== -1 && result.length !== 0) {
         this.selectedIndex = this.items.indexOf(selectedItem);
         this.hoverIndex = this.selectedIndex;

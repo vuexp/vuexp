@@ -15,7 +15,7 @@ import ListPickerModal from '../core/components/ListPickerModal/ListPickerModal'
 import VxpLabel from './VxpLabel';
 
 export default {
-  name: 'VxpDropDown',
+  name: 'VxpDropDown2',
   props: {
     placeholder: {
       type: String,
@@ -23,6 +23,9 @@ export default {
     items: {
       type: Array,
       required: true,
+    },
+    textDataPropName: {
+      type: String,
     },
     index: {
       type: Number,
@@ -40,7 +43,7 @@ export default {
   data() {
     return {
       selectedIndex: this.index,
-      labelText: this.placeholder || this.items[this.index],
+      labelText: this.placeholder || this.items[this.index][this.textDataPropName],
       placeholderActive: true,
     };
   },
@@ -49,18 +52,28 @@ export default {
       if (!this.disabled) {
         this.$showModal(ListPickerModal, {
           props: {
-            listOfItems: this.items,
+            listOfItems: this.visibleTextsOfItems,
             selectedIndex: this.selectedIndex,
           },
         }).then(selectedIndex => {
           if (typeof selectedIndex !== 'undefined') {
             this.selectedIndex = selectedIndex;
-            this.labelText = this.items[selectedIndex];
+            this.labelText = this.items[selectedIndex][this.textDataPropName];
             this.placeholderActive = false;
           }
           this.$emit('changeIndex', selectedIndex, this.items[selectedIndex]);
         });
       }
+    },
+  },
+  computed: {
+    visibleTextsOfItems() {
+      let resultList = [];
+
+      this.items.forEach(currentItem => {
+        resultList.push(currentItem[this.textDataPropName]);
+      });
+      return resultList;
     },
   },
   created() {

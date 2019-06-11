@@ -1,21 +1,28 @@
 <template>
-  <StackLayout class="vxp-list-picker-modal">
+  <GridLayout class="vxp-list-picker-modal" rows="*, auto" columns="*, *">
     <ListPicker
+      row="0"
+      col="0"
+      colSpan="2"
       class="vxp-list-picker-modal__list-picker"
       :class="{ 'vxp-list-picker-modal__ios': platform === 'ios' }"
       :items="listOfItems"
       v-model="index"
       @selectedIndexChange="$emit('selectedIndexChange', index)"
-      @tap="onClicked"
     />
-  </StackLayout>
+    <Button row="1" col="0" text="Cancel" @tap="cancel" />
+    <Button row="1" col="1" text="Done" @tap="done" />
+  </GridLayout>
 </template>
 
 <script>
 import platform from '../../../platform';
+import GridLayout from '../../../layouts/GridLayout';
+import Button from '../Button/Button';
 
 export default {
   name: 'ListPickerModal',
+  components: { Button, GridLayout },
   props: ['listOfItems', 'selectedIndex'],
   data() {
     return {
@@ -24,8 +31,11 @@ export default {
     };
   },
   methods: {
-    onClicked() {
+    done() {
       if (this.$modal) this.$modal.close(this.index);
+    },
+    cancel() {
+      if (this.$modal) this.$modal.close();
     },
   },
   created() {
@@ -39,9 +49,6 @@ export default {
   width: 100%;
   &__list-picker {
     width: 100%;
-  }
-  &__ios {
-    height: 100%;
   }
 }
 </style>
