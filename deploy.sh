@@ -12,9 +12,13 @@ cd docs/.vuepress/dist
 git config user.email "yigit@erol.co"
 git config user.name "Yigit Erol"
 
+# if you are deploying to a custom domain
+echo 'vuexp.com' > CNAME
+
+git init
 git add -A
 git commit -m 'Generated Docs Deploy [ci skip]'
 
-cd -
+git push -f git@github.com:vuexp/vuexp.git master:gh-pages
 
-git push --no-verify --set-upstream origin ${CIRCLE_BRANCH}
+cd -
