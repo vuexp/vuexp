@@ -9,6 +9,8 @@ module.exports = {
     checkbox: '#checkbox_component',
     disable_checkbox: '#checkbox_enabled_selectbox',
     disable_label: '#checkbox_enabled_label_result',
+    theme_label: '#checkbox_theme_label',
+    theme_checkbox: '#checkbox_theme_checkbox label',
   },
 
   commands: [

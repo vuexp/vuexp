@@ -1,7 +1,7 @@
 module.exports = {
   tags: ['component', 'vxpCheckbox'],
   before: function(client, done) {
-    this.currentPage = client.maximizeWindow().page.switchPage();
+    this.currentPage = client.maximizeWindow().page.vxpCheckboxPage();
     this.currentPage
       .navigate(client.globals.devUrl + 'components/vxpcheckbox.html')
       .waitForElementVisible('body', 60000)
@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'Props:/Name: disabled, Type: Boolean, Value : false (default)'() {
+  'C13890277 Props:/Name: disabled, Type: Boolean, Value : false (default)'() {
     this.currentPage.assert
       .containsText('@disable_label', 'Enabled')
       .click('@disable_checkbox')
