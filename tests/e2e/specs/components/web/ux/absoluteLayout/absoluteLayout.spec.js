@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'C13842825 Test case will be updated'() {
+  'C13842825 Props /Name: top/left, type : Number'() {
     this.currentPage
       .setAbsoluteLayout(380)
       .checkInitialElements()
