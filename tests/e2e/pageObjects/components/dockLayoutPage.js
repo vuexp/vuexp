@@ -37,6 +37,26 @@ module.exports = {
         return this.click('@stretchLastChildCheckbox');
       },
 
+      setText: function(text) {
+        return this.clearValue('@textInputField').setValue('@textInputField', text);
+      },
+
+      setWidth: function(text) {
+        return this.clearValue('@widthInputField').setValue('@widthInputField', text);
+      },
+
+      setHeight: function(text) {
+        return this.clearValue('@heightInputField').setValue('@heightInputField', text);
+      },
+
+      setColor: function(text) {
+        return this.setValue('@colorSelectbox', text);
+      },
+
+      setDock: function(text) {
+        return this.setValue('@dockSelectbox', text);
+      },
+
       clickAddChildButton: function() {
         return this.click('@addChildButton');
       },
