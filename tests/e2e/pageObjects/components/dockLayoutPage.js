@@ -13,6 +13,10 @@ module.exports = {
     dockSelectbox: '#docklayout_childdock_selectbox',
     addChildButton: '#docklayout_addchild_button',
     removeAllChildrenButton: '#docklayout_removeallchildren_button',
+    renderedFirstChildren: '#docklayout_thedocklayout div.vxp-dock-layout__right__bottom__right > span',
+    renderedSecondChildren: '#docklayout_thedocklayout div.vxp-dock-layout__right__bottom__left__bottom > span',
+    renderedThirdChildren: '#docklayout_thedocklayout > div.vxp-dock-layout__left > span',
+    renderedFourthChildren: '#docklayout_thedocklayout > div.vxp-dock-layout__right > div.vxp-dock-layout__right__top > span',
     renderedResultArea: 'div.nudoc-example__content > div > div:nth-child(3)',
   },
 
@@ -26,8 +30,7 @@ module.exports = {
           .waitForElementVisible('@heightInputField', 3000)
           .waitForElementVisible('@colorSelectbox', 3000)
           .waitForElementVisible('@dockSelectbox', 3000)
-          .waitForElementVisible('@addChildButton', 3000)
-          .waitForElementVisible('@renderedResultArea', 3000);
+          .waitForElementVisible('@addChildButton', 3000);
       },
 
       clickStretchLastChildCheckbox: function() {
@@ -40,6 +43,17 @@ module.exports = {
 
       clickRemoveAllChildrenButton: function() {
         return this.click('@removeAllChildrenButton');
+      },
+
+      checkRenderedChildren: function() {
+        return this.waitForElementVisible('@renderedFirstChildren', 3000)
+          .waitForElementVisible('@renderedSecondChildren', 3000)
+          .waitForElementVisible('@renderedThirdChildren', 3000)
+          .waitForElementVisible('@renderedFourthChildren', 3000);
+      },
+
+      checkRenderedResult: function() {
+        return this.waitForElementVisible('@renderedResultArea', 3000);
       },
 
       perform: function(callback) {

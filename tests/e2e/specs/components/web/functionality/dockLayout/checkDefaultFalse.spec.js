@@ -54,7 +54,32 @@ module.exports = {
       .setValue('@colorSelectbox', 'cyan')
       .setValue('@dockSelectbox', 'top')
       .clickAddChildButton()
-      // Check rendered result
+      .checkRenderedResult()
+      // Check rendered first children's CSS value
+      .verify.attributeContains('@renderedFirstChildren', 'width', '20')
+      .verify.attributeContains('@renderedFirstChildren', 'height', '35')
+      .verify.attributeContains('@renderedFirstChildren', 'backgroundcolor', 'red')
+      .verify.attributeContains('@renderedFirstChildren', 'dock', 'right')
+      .assert.containsText('@renderedFirstChildren', 'firstChild')
+      // Check rendered second children's CSS value
+      .verify.attributeContains('@renderedSecondChildren', 'width', '45')
+      .verify.attributeContains('@renderedSecondChildren', 'height', '15')
+      .verify.attributeContains('@renderedSecondChildren', 'backgroundcolor', 'blue')
+      .verify.attributeContains('@renderedSecondChildren', 'dock', 'bottom')
+      .assert.containsText('@renderedSecondChildren', 'secondChild')
+      // Check rendered third children's CSS value
+      .verify.attributeContains('@renderedThirdChildren', 'width', '75')
+      .verify.attributeContains('@renderedThirdChildren', 'height', '115')
+      .verify.attributeContains('@renderedThirdChildren', 'backgroundcolor', 'yellow')
+      .verify.attributeContains('@renderedThirdChildren', 'dock', 'left')
+      .assert.containsText('@renderedThirdChildren', 'thirdChild')
+      // Check rendered fourth children's CSS value
+      .verify.attributeContains('@renderedFourthChildren', 'width', '10')
+      .verify.attributeContains('@renderedFourthChildren', 'height', '90')
+      .verify.attributeContains('@renderedFourthChildren', 'backgroundcolor', 'cyan')
+      .verify.attributeContains('@renderedFourthChildren', 'dock', 'top')
+      .assert.containsText('@renderedFourthChildren', 'fourthChild')
+      // Get rendered result's screenshots
       .checkScreenshot('@renderedResultArea');
   },
 
