@@ -24,7 +24,7 @@ describe('Helper:FileUploader', () => {
 
   it('should throw error when no constructor passed', () => {
     function badConstructor() {
-      new FileUploader();
+      new FileUploader(); // deepscan-disable-line
     }
     expect(badConstructor).to.throw();
   });
