@@ -38,6 +38,13 @@ describe('ActionDialog', () => {
     it(`options property is equal to: ${options.toString()}.`, () => {
       expect(wrapper.props().options.toString()).to.equal(options.toString());
     });
+    it(`should run options prop  default line.`, () => {
+      mount(ActionDialog, {
+        propsData: {
+          options: undefined,
+        },
+      });
+    });
   });
   describe('the component contains exactly two Button.', () => {
     it('there is two Button.', done => {
