@@ -7,7 +7,7 @@ import VxpDropdownItem from '../../../../src/components/menus/VxpDropdownItem';
 
 import platform from '../../../../src/platform';
 
-describe.only('Vxp Dropdown Menu', () => {
+describe('Vxp Dropdown Menu', () => {
   const selectedIndex = 1;
   const title = 'Test Title';
   const items = [{ title: 'Title 1', icon: 'fa-share', iconClass: 'fa' }, { title: 'Title 2', icon: 'fa-times', iconClass: 'fa' }];
