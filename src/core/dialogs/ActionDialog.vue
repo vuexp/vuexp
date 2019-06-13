@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import Label from '../components/Label/Label';
 import Button from '../components/Button/Button';
 import StackLayout from '../../layouts/StackLayout';
 import ModalDialog from '../components/BaseModal/ModalBase';
@@ -43,6 +44,7 @@ export default {
   components: {
     ModalDialog,
     Button,
+    Label,
     StackLayout,
   },
 };
