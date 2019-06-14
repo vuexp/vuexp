@@ -7,7 +7,7 @@
       :disabled="dropDownDisabled"
       @changeIndex="onChangeIndex"
       :errors="errors"
-      :index="index"
+      :index="getIndex"
     />
     <StackLayout orientation="horizontal" class="vxp-dropDown-doc__margin_top">
       <VxpLabel id="dropDown_item_label" class="vxp-dropDown-doc__label_width" text="Selected Index: " />
@@ -84,6 +84,11 @@ export default {
       dropDownPlaceholder: 'Select Item',
       dropDownDisabled: false,
     };
+  },
+  computed: {
+    getIndex() {
+      return this.index !== null ? Number(this.index) : null;
+    }
   },
   methods: {
     onChangeIndex(index, item) {

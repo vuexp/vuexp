@@ -53,7 +53,7 @@ export default {
   },
   computed: {
     selectableItems() {
-      return this.items.values ? this.items.values.map(value => this.getLabel(value)) : [];
+      return this.items.values instanceof Array ? this.items.values.map(value => this.getLabel(value)) : [];
     },
     labelText() {
       return this.selectableItems[this.selectedIndex] || this.placeholder;
@@ -95,7 +95,7 @@ export default {
     },
   },
   created() {
-    this.labelPathArray = this.items.label.split('.');
+    this.labelPathArray = this.items.label ? this.items.label.split('.') : [];
     this.selectedIndex = this.index;
     this.$emit('changeIndex', this.index, this.items[this.index]);
   },

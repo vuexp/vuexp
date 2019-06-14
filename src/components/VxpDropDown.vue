@@ -90,7 +90,7 @@ export default {
       return this.selectableItems[this.selectedIndex] || '';
     },
     selectableItems() {
-      return this.items.values ? this.items.values.map(value => this.getLabel(value)) : [];
+      return this.items.values instanceof Array ? this.items.values.map(value => this.getLabel(value)) : [];
     },
   },
   watch: {
@@ -249,7 +249,7 @@ export default {
     },
   },
   created() {
-    this.labelPathArray = this.items.label.split('.');
+    this.labelPathArray = this.items.label ? this.items.label.split('.') : [];
     this.selectedIndex = this.index;
   },
   components: {
