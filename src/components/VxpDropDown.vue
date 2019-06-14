@@ -25,7 +25,7 @@
           @click="itemClick(index)"
           @mouseover="hoverIndex = index"
           :class="{ active: index === selectedIndex, hover: index === hoverIndex }"
-          v-for="(item, index) in items"
+          v-for="(item, index) in selectableItems"
           v-bind:key="index"
         >
           {{ item }}
@@ -54,7 +54,13 @@ export default {
       default: false,
     },
     items: {
-      type: Array,
+      type: Object,
+      default() {
+        return {
+          label: '',
+          values: [],
+        };
+      },
     },
     index: {
       type: Number,
@@ -76,19 +82,26 @@ export default {
         count: 0,
       },
       searchedWord: '',
+      labelPathArray: [],
     };
   },
   computed: {
     selectedItem() {
-      return this.items[this.selectedIndex];
+      return this.selectableItems[this.selectedIndex] || '';
+    },
+    selectableItems() {
+      return this.items.values.map(value => this.getLabel(value));
     },
   },
   watch: {
     selectedItem() {
-      this.$emit('changeIndex', this.selectedIndex, this.items[this.selectedIndex]);
+      this.$emit('changeIndex', this.selectedIndex, this.items.values[this.selectedIndex]);
     },
     index() {
       this.selectedIndex = this.index;
+    },
+    'items.label'() {
+      this.labelPathArray = this.items.label.split('.');
     },
   },
   methods: {
@@ -132,7 +145,7 @@ export default {
       }
     },
     searchFilter(key) {
-      const result = this.items.filter(item =>
+      const result = this.selectableItems.filter(item =>
         item
           .toString()
           .toLowerCase()
@@ -147,8 +160,8 @@ export default {
         this.pressedKey.count++;
       }
       const selectedItem = result[this.pressedKey.count % result.length];
-      if (this.items.indexOf(selectedItem) !== -1 && result.length !== 0) {
-        this.selectedIndex = this.items.indexOf(selectedItem);
+      if (this.selectableItems.indexOf(selectedItem) !== -1 && result.length !== 0) {
+        this.selectedIndex = this.selectableItems.indexOf(selectedItem);
         this.hoverIndex = this.selectedIndex;
       }
       return result;
@@ -160,7 +173,6 @@ export default {
       const key = String.fromCharCode(e.which);
       if (key.length === 1) {
         this.searchedWord += key;
-
         const result = this.searchFilter(key);
         if (result.length === 0) {
           this.searchedWord = this.searchedWord.slice(0, -1);
@@ -183,7 +195,8 @@ export default {
       this.maybeAdjustScroll();
     },
     keyDown() {
-      this.hoverIndex = this.hoverIndex === null ? this.selectedIndex + 1 : this.hoverIndex + 1 < this.items.length ? this.hoverIndex + 1 : this.hoverIndex;
+      this.hoverIndex =
+        this.hoverIndex === null ? this.selectedIndex + 1 : this.hoverIndex + 1 < this.selectableItems.length ? this.hoverIndex + 1 : this.hoverIndex;
       this.selectedIndex = this.hoverIndex;
       this.maybeAdjustScroll();
     },
@@ -225,8 +238,18 @@ export default {
     scrollTo(position) {
       return this.$refs.vxpDropdownMenu ? (this.$refs.vxpDropdownMenu.scrollTop = position) : null;
     },
+    getLabel(value) {
+      let tempItemObject = { ...value };
+      this.labelPathArray.forEach(labelPath => {
+        if (tempItemObject) {
+          tempItemObject = tempItemObject[labelPath];
+        }
+      });
+      return tempItemObject;
+    },
   },
   created() {
+    this.labelPathArray = this.items.label.split('.');
     this.selectedIndex = this.index;
   },
   components: {
@@ -330,6 +353,7 @@ $placeholder-color: #898d90;
     border-left: solid unit(1) $border-color;
     border-bottom: solid unit(1) $border-color;
     background-color: #ffffff;
+    height: unit(255);
     overflow-y: auto;
 
     box-shadow: unit(0) unit(12) unit(13) unit(-11) rgba(0, 0, 0, 0.1), unit(-10) unit(-3) unit(13) unit(-11) rgba(0, 0, 0, 0.1),
