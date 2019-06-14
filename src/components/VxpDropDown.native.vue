@@ -47,7 +47,7 @@ export default {
   data() {
     return {
       selectedIndex: null,
-      placeholderActive: !(this.selectedIndex === 0 || this.selectedIndex),
+      placeholderActive: !(this.index === 0 || this.index),
       labelPathArray: [],
     };
   },
