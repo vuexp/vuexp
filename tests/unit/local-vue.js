@@ -34,11 +34,15 @@ import VxpDropdownMenu from '../../src/components/menus/VxpDropdownMenu';
 import VxpDropdownItem from '../../src/components/menus/VxpDropdownItem';
 import ActionDialog from '../../src/core/dialogs/ActionDialog';
 import TextView from '../../src/core/components/TextView/TextView';
+import VxpPlugin from '../../src/core/plugins/index';
 
 const localVue = createLocalVue();
+// Register Filters
 localVue.filter('fonticon', function(value) {
   return value + ' | fonticon';
 });
+
+// Register Components
 localVue.component('Button', Button);
 localVue.component('VxpDropdownMenu', VxpDropdownMenu);
 localVue.component('VxpDropdownItem', VxpDropdownItem);
@@ -74,6 +78,11 @@ localVue.component('FlexboxLayout', FlexboxLayout);
 localVue.component('GridLayout', GridLayout);
 localVue.component('StackLayout', StackLayout);
 localVue.component('WrapLayout', WrapLayout);
+
+// Register Directives
 localVue.directive('view', ViewDirective);
+
+// Register Plugins
+localVue.use(VxpPlugin);
 
 export default localVue;
