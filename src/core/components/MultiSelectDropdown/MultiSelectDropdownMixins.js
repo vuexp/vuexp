@@ -2,13 +2,20 @@ export default {
   data() {
     return {
       searchText: '',
+      labelPathArray: '',
     };
   },
   props: {
     items: {
-      type: Array,
+      type: Object,
+      validator(value) {
+        return 'label' in value && 'values' in value && value.values instanceof Array && typeof value.label === 'string';
+      },
       default() {
-        return [];
+        return {
+          label: '',
+          values: [],
+        };
       },
     },
     selected: {
@@ -16,10 +23,6 @@ export default {
       default() {
         return [];
       },
-    },
-    labelProp: {
-      type: String,
-      default: 'label',
     },
     hint: {
       type: String,
@@ -35,7 +38,21 @@ export default {
       if (!this.searchText) {
         return this.notSelectedItems();
       }
-      return this.notSelectedItems().filter(item => item[this.labelProp].toLocaleLowerCase().indexOf(this.searchText.toLocaleLowerCase()) > -1);
+      return this.notSelectedItems().filter(
+        item =>
+          this.getLabel(item)
+            .toLocaleLowerCase()
+            .indexOf(this.searchText.toLocaleLowerCase()) > -1,
+      );
+    },
+  },
+  watch: {
+    items: {
+      immediate: true,
+      deep: true,
+      handler() {
+        this.labelPathArray = this.items.label.split('.');
+      },
     },
   },
   methods: {
@@ -47,7 +64,7 @@ export default {
       this.$emit('selectedChange', this.selected);
     },
     notSelectedItems() {
-      return this.items.filter(item => this.selected.indexOf(item) === -1);
+      return this.items.values.filter(value => this.selected.indexOf(value) === -1);
     },
     removeSelection(item) {
       const itemIndex = this.selected.indexOf(item);
@@ -59,6 +76,15 @@ export default {
     },
     clearSearchText() {
       this.searchText = '';
+    },
+    getLabel(value) {
+      let tempValue = { ...value };
+      this.labelPathArray.forEach(labelPath => {
+        if (tempValue) {
+          tempValue = tempValue[labelPath];
+        }
+      });
+      return tempValue;
     },
   },
 };

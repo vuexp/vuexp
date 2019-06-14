@@ -1,11 +1,8 @@
 import { expect } from 'chai';
-import { shallowMount, createLocalVue } from '@vue/test-utils';
-import VxpPlugin from '../../../../../src/core/plugins';
+import { shallowMount } from '@vue/test-utils';
+import localVue from '../../../local-vue';
 
 describe('Alert Dialog Plugin Testing', () => {
-  const localVue = createLocalVue();
-  localVue.use(VxpPlugin);
-
   const title = 'Some title.';
   const message = 'Some message';
   const okButtonText = 'ok';
