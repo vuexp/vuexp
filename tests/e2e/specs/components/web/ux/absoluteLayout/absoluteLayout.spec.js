@@ -17,7 +17,10 @@ module.exports = {
       .addAndSetChildElement()
       .checkChildLayouts();
     this.client.execute('scrollTo(0,0)').pause(2000);
-    //this.client.execute("document.querySelector('h1#absolutelayout').scrollIntoView()").pause(2000);
+    /*
+      If you want to scroll to element until is visible, you can use following code
+      this.client.execute("document.querySelector('h1#absolutelayout').scrollIntoView()").pause(2000);
+      */
     this.currentPage.checkScreenshot('@absoluteLayout');
   },
 

@@ -107,6 +107,7 @@ module.exports = {
       },
 
       checkChildLayouts: function() {
+        this.expect.element('@childLayout1').to.be.visible;
         this.expect.element('@childLayout6').to.be.visible;
         this.expect.element('@childLayout5').to.be.visible;
         return this;
