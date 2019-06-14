@@ -11,9 +11,9 @@ module.exports = {
   },
   ' Props/Name:primary,secondary'() {
     this.currentPage
-      .checkPrimary()
+      .selectPrimary()
       .assert.containsText('@primary_label', 'active')
-      .checkSecondary()
+      .selectSecondary()
       .assert.containsText('@secondary_label', 'active');
   },
 

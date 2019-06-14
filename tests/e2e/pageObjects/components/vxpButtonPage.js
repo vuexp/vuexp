@@ -12,8 +12,8 @@ module.exports = {
     textWrapSelectBox: '#button_textWrap_selectbox',
     primary: '#button_primary_checkbox',
     secondary: '#button_secondary_checkbox',
-    primary_label: 'button_primary_status_label',
-    secondary_label: 'button_secondary_status_label',
+    primary_label: '#button_primary_status_label',
+    secondary_label: '#button_secondary_status_label',
     disabled_checkbox: '#button_disabled_checkbox',
     disabled_label: '#button_disabled_status_label',
     size: '#button_size_select',
@@ -76,19 +76,19 @@ module.exports = {
         }
         return 'already disabled';
       },
-      checkPrimary: function() {
+      selectPrimary: function() {
         this.waitForElementVisible('@primary', 10000);
-        if (this.verify.containsText('@disabled_label', 'active')) {
-          return this.click('@primary');
+        if (this.verify.attributeContains('@buttonComponent', 'class', 'primary')) {
+          return 'already primary selected';
         }
-        return 'already primary selected';
+        return this.click('@primary');
       },
-      checkSecondary: function() {
+      selectSecondary: function() {
         this.waitForElementVisible('@secondary', 10000);
-        if (this.assert.containsText('@secondary_label')) {
-          return this.click('@secondary');
+        if (this.verify.attributeContains('@buttonComponent', 'class', 'secondary')) {
+          return 'already secondary selected';
         }
-        return 'already secondary selected';
+        return this.click('@secondary');
       },
       selectSmall: function() {
         this.waitForElementVisible('@button', 10000);
