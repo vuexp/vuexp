@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import platformUtils from '../../src/platform-utils';
 import { os } from '../../src/ui/enums';
+import platform from '../../src/platform';
 
 describe('Platform utils unit tests', () => {
   describe('getBrowser unit tests', () => {
@@ -235,6 +236,28 @@ describe('Platform utils unit tests', () => {
 
     after(() => {
       navigator.appVersion = appVersion;
+    });
+  });
+
+  describe('onGridChange unit tests', () => {
+    it('on grid change with window undefined', () => {
+      platformUtils.onGridChange(undefined, 'web', 'browser', 100, gridColumn => {
+        expect(gridColumn).to.not.be.undefined;
+      });
+    });
+
+    it('web resize event testing', done => {
+      platform.onGridChange(gridCol => {
+        setTimeout(() => {
+          expect(gridCol).to.not.be.undefined;
+          done();
+        }, 501);
+      });
+
+      // Creating resize event for trigger
+      const resizeEvent = window.document.createEvent('UIEvents');
+      resizeEvent.initUIEvent('resize', true, false, window, 0);
+      window.dispatchEvent(resizeEvent);
     });
   });
 });
