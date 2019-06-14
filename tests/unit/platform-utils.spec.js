@@ -97,4 +97,67 @@ describe('Platform utils unit tests', () => {
       navigator.userAgent = userAgent;
     });
   });
+
+  describe('getOrientation unit tests', () => {
+    const { innerWidth, innerHeight } = window;
+
+    it('undefined window returns landscape', () => {
+      expect(platformUtils.getOrientation(undefined)).to.equal('landscape');
+    });
+
+    it('window innerWidth smaller than innerHeight returns portrait', () => {
+      window.innerWidth = 100;
+      window.innerHeight = 200;
+
+      expect(platformUtils.getOrientation(window)).to.equal('portrait');
+    });
+
+    it('window innerWidth bigger than innerHeight returns landscape', () => {
+      window.innerWidth = 200;
+      window.innerHeight = 100;
+
+      expect(platformUtils.getOrientation(window)).to.equal('landscape');
+    });
+
+    after(() => {
+      window.innerWidth = innerWidth;
+      window.innerHeight = innerHeight;
+    });
+  });
+
+  describe('getScreenWidth unit tests', () => {
+    const { innerWidth } = window;
+
+    it('undefined window returns screen width as 1024', () => {
+      expect(platformUtils.getScreenWidth(undefined)).to.equal(1024);
+    });
+
+    it('Window inner width of 1920 returns screen width as 1920', () => {
+      window.innerWidth = 1920;
+
+      expect(platformUtils.getScreenWidth(window)).to.equal(1920);
+    });
+
+    after(() => {
+      window.innerWidth = innerWidth;
+    });
+  });
+
+  describe('getScreenHeight unit tests', () => {
+    const { innerHeight } = window;
+
+    it('undefined window returns screen height as 768', () => {
+      expect(platformUtils.getScreenHeight(undefined)).to.equal(768);
+    });
+
+    it('Window inner height of 1080 returns screen height as 1080', () => {
+      window.innerHeight = 1080;
+
+      expect(platformUtils.getScreenHeight(window)).to.equal(1080);
+    });
+
+    after(() => {
+      window.innerHeight = innerHeight;
+    });
+  });
 });
