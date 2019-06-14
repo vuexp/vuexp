@@ -1,4 +1,6 @@
 import { os } from './ui/enums';
+import { getGridColumn } from './ui/grid';
+import debounce from './helpers/debounce';
 
 function getBrowser(navigator) {
   if (typeof navigator === 'undefined' || (navigator && navigator.userAgent === 'node.js')) {
@@ -49,6 +51,27 @@ function getScreenScale() {
   return 1;
 }
 
+/* istanbul ignore next */
+function updateGridColumn(window, platform, deviceType, screenWidth, callBack) {
+  const orientation = platformUtils.getOrientation(window);
+  const gridColumn = getGridColumn(orientation, platform, deviceType, screenWidth);
+  callBack(gridColumn);
+}
+
+function onGridChange(window, platform, deviceType, screenWidth, callBack) {
+  // Triggered once
+  updateGridColumn(window, platform, deviceType, screenWidth, callBack);
+
+  if (typeof window !== 'undefined') {
+    window.addEventListener('resize', () => {
+      // Triggered on orientation change
+      debounce(() => {
+        updateGridColumn(window, platform, deviceType, screenWidth, callBack);
+      }, 500)();
+    });
+  }
+}
+
 function getOsName(navigator) {
   if (typeof navigator !== 'undefined') {
     if (navigator.appVersion.indexOf('Win') !== -1) return os.Windows;
@@ -67,5 +90,6 @@ const platformUtils = {
   getScreenWidth,
   getScreenHeight,
   getScreenScale,
+  onGridChange,
 };
 export default platformUtils;
