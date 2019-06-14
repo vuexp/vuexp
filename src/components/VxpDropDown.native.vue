@@ -1,18 +1,18 @@
 <template>
   <StackLayout class="vxp-drop-down typ-body">
     <FlexboxLayout verticalAlignment="center" class="vxp-drop-down__container" @tap="onClicked" justifyContent="space-between">
-      <Label :text="labelText" class="vxp-drop-down__container__label" :class="{ 'vxp-drop-down__container__label--placeholder': placeholderActive }" />
-      <Label class="vxp-drop-down__container__icon" text="▼"></Label>
+      <VxpLabel :text="labelText" class="vxp-drop-down__container__label" :class="{ 'vxp-drop-down__container__label--placeholder': placeholderActive }" />
+      <VxpLabel class="vxp-drop-down__container__icon" text="▼"></VxpLabel>
     </FlexboxLayout>
     <FlexboxLayout flexDirection="column" v-if="errors.length">
-      <Label :text="error" v-for="(error, index) in errors" :key="index" :textWrap="true" class="vxp-drop-down__error-messages" />
+      <VxpLabel :text="error" v-for="(error, index) in errors" :key="index" :textWrap="true" class="vxp-drop-down__error-messages" />
     </FlexboxLayout>
   </StackLayout>
 </template>
 
 <script>
 import ListPickerModal from '../core/components/ListPickerModal/ListPickerModal';
-import Label from '../core/components/Label/Label';
+import VxpLabel from './VxpLabel';
 import StackLayout from '../layouts/StackLayout';
 import FlexboxLayout from '../layouts/FlexboxLayout';
 
@@ -100,9 +100,9 @@ export default {
     this.$emit('changeIndex', this.index, this.items[this.index]);
   },
   components: {
-    Label,
     FlexboxLayout,
     StackLayout,
+    VxpLabel,
   },
 };
 </script>
