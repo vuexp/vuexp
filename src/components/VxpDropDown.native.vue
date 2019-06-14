@@ -53,7 +53,7 @@ export default {
   },
   computed: {
     selectableItems() {
-      return this.items.values.map(value => this.getLabel(value));
+      return this.items.values ? this.items.values.map(value => this.getLabel(value)) : [];
     },
     labelText() {
       return this.selectableItems[this.selectedIndex] || this.placeholder;

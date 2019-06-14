@@ -90,7 +90,7 @@ export default {
       return this.selectableItems[this.selectedIndex] || '';
     },
     selectableItems() {
-      return this.items.values.map(value => this.getLabel(value));
+      return this.items.values ? this.items.values.map(value => this.getLabel(value)) : [];
     },
   },
   watch: {
