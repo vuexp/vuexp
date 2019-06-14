@@ -1,3 +1,5 @@
+import { os } from './ui/enums';
+
 function getBrowser(navigator) {
   if (typeof navigator === 'undefined' || (navigator && navigator.userAgent === 'node.js')) {
     return { name: 'NodeJS', version: process.version };
@@ -31,7 +33,39 @@ function getBrowser(navigator) {
   };
 }
 
+function getOrientation(window) {
+  return typeof window !== 'undefined' ? (window.innerWidth > window.innerHeight ? 'landscape' : 'portrait') : 'landscape';
+}
+
+function getScreenWidth(window) {
+  return typeof window !== 'undefined' ? window.innerWidth : 1024;
+}
+
+function getScreenHeight(window) {
+  return typeof window !== 'undefined' ? window.innerHeight : 768;
+}
+
+function getScreenScale() {
+  return 1;
+}
+
+function getOsName(navigator) {
+  if (typeof navigator !== 'undefined') {
+    if (navigator.appVersion.indexOf('Win') !== -1) return os.Windows;
+    if (navigator.appVersion.indexOf('Mac') !== -1) return os.MacOS;
+    if (navigator.appVersion.indexOf('X11') !== -1) return os.UNIX;
+    if (navigator.appVersion.indexOf('Linux') !== -1) return os.Linux;
+  }
+
+  return os.Unknown;
+}
+
 const platformUtils = {
   getBrowser,
+  getOsName,
+  getOrientation,
+  getScreenWidth,
+  getScreenHeight,
+  getScreenScale,
 };
 export default platformUtils;
