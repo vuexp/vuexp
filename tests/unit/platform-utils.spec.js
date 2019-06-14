@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import platformUtils from '../../src/platform-utils';
+import { os } from '../../src/ui/enums';
 
 describe('Platform utils unit tests', () => {
   describe('getBrowser unit tests', () => {
@@ -158,6 +159,82 @@ describe('Platform utils unit tests', () => {
 
     after(() => {
       window.innerHeight = innerHeight;
+    });
+  });
+
+  describe('getScreenScale unit tests', () => {
+    it('screenScale is 1', () => {
+      expect(platformUtils.getScreenScale()).to.equal(1);
+    });
+  });
+
+  describe('getOsName unit tests', () => {
+    const { appVersion } = navigator;
+    const appVersionList = [
+      {
+        appVersion: undefined,
+        osName: os.Unknown,
+      },
+      {
+        appVersion: 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko',
+        osName: os.Windows,
+      },
+      {
+        appVersion: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/600.7.12 (KHTML, like Gecko) Version/8.0.7 Safari/600.7.12',
+        osName: os.MacOS,
+      },
+      {
+        appVersion: 'Mozilla/5.0 (X11; CrOS x86_64 6783.1.0) AppleWebKit/537.36 (KHTML, like Gecko) Edge/12.0',
+        osName: os.UNIX,
+      },
+      {
+        appVersion:
+          'Mozilla/5.0 (Linux; Android 8.0.0; SM-G930F Build/R16NW; wv) AppleWebKit/537.36 ' +
+          '(KHTML, like Gecko) Version/4.0 Chrome/74.0.3729.157 Mobile Safari/537.36',
+        osName: os.Linux,
+      },
+      {
+        appVersion: 'dummy os',
+        osName: os.Unknown,
+      },
+    ];
+
+    it('undefined navigator return unknown os.', () => {
+      expect(platformUtils.getOsName(undefined)).to.equal(appVersionList[0].osName);
+    });
+
+    it('Windows appVersion example returns Windows.', () => {
+      navigator.appVersion = appVersionList[1].appVersion;
+
+      expect(platformUtils.getOsName(navigator)).to.equal(appVersionList[1].osName);
+    });
+
+    it('MacOS appVersion example returns MacOS.', () => {
+      navigator.appVersion = appVersionList[2].appVersion;
+
+      expect(platformUtils.getOsName(navigator)).to.equal(appVersionList[2].osName);
+    });
+
+    it('UNIX appVersion example returns UNIX.', () => {
+      navigator.appVersion = appVersionList[3].appVersion;
+
+      expect(platformUtils.getOsName(navigator)).to.equal(appVersionList[3].osName);
+    });
+
+    it('Linux appVersion example returns Linux.', () => {
+      navigator.appVersion = appVersionList[4].appVersion;
+
+      expect(platformUtils.getOsName(navigator)).to.equal(appVersionList[4].osName);
+    });
+
+    it('dummy appVersion returns unknown os.', () => {
+      navigator.appVersion = appVersionList[5].appVersion;
+
+      expect(platformUtils.getOsName(navigator)).to.equal(appVersionList[0].osName);
+    });
+
+    after(() => {
+      navigator.appVersion = appVersion;
     });
   });
 });
