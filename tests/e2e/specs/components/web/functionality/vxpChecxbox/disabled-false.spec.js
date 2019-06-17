@@ -12,7 +12,7 @@ module.exports = {
   'C13890277 Props:/Name: disabled, Type: Boolean, Value : false (default)'() {
     this.currentPage.assert
       .containsText('@disable_label', 'Enabled')
-      .click('@disable_checkbox')
+      .selectDisable()
       .assert.containsText('@disable_label', 'Disabled');
   },
   after: function(client, done) {

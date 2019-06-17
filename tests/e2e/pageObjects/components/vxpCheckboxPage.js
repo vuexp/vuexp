@@ -28,6 +28,18 @@ module.exports = {
         }
         return 'textWrap already selected';
       },
+      selectCheck: function() {
+        this.waitForElementVisible('@checkbox', 10000);
+        return this.click('@checkbox');
+      },
+      selectTheme: function() {
+        this.waitForElementVisible('@theme_checkbox', 10000);
+        return this.click('@theme_checkbox');
+      },
+      selectDisable: function() {
+        this.waitForElementVisible('@disable_checkbox', 10000);
+        return this.click('@disable_checkbox');
+      },
       perform: function(callback) {
         this.api.perform(callback);
         return this;

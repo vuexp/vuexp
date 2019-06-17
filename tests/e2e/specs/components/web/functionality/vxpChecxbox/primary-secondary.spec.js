@@ -11,9 +11,9 @@ module.exports = {
   },
   'C13890279 Props/Name:primary,secondary'() {
     this.currentPage
-      .click('@checkbox')
+      .selectCheck()
       .assert.attributeContains('@checkbox', 'secondary', 'true')
-      .click('@theme_checkbox')
+      .selectTheme()
       .expect.element('@checkbox')
       .to.not.have.attribute('secondary');
   },

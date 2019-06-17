@@ -12,7 +12,7 @@ module.exports = {
   'C13890283 Events/Name : checked, value :false (default)'() {
     this.currentPage.assert
       .containsText('@status_label', 'Unchecked')
-      .click('@checkbox')
+      .selectCheck()
       .assert.containsText('@status_label', 'Checked');
   },
   after: function(client, done) {
