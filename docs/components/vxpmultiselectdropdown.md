@@ -17,7 +17,7 @@ VxpMultiSelectDropdown is a UI component that allows users to make multiple sele
 <DocExampleBox>
 ```html
   <StackLayout>
-    <VxpMultiSelectDropdown :items="selectableItems" hint="Pick Some Lorem" emptySuggestionsLabel="Nothing to select here" v-model="selectedIndexes"></VxpMultiSelectDropdown>
+    <VxpMultiSelectDropdown :items="{label: 'label', values: selectableItems}" hint="Pick Some Lorem" emptySuggestionsLabel="Nothing to select here" v-model="selectedIndexes"></VxpMultiSelectDropdown>
     <StackLayout class="margin-top-10" orientation="horizontal">
       <Label text="Selected Indexes :"></Label>
       <Label :text="selectedIndexes.join(',')"></Label>
@@ -72,15 +72,15 @@ This is an overview of the most common usage of `<VxpMultiSelectDropdown>`.
 
 ## Props
 
-| Name                  | Type          | Default | Web | Mobile | Description                                                                   |
-| --------------------- | ------------- | ------- | --- | ------ | ----------------------------------------------------------------------------- |
-| items                 | Array[{ label: String }] | []      | ✔   | ✔      | Sets selectable item list for the component.                            |
-| selected (v-model)    | Array[number] | []      | ✔   | ✔      | Sets selected items for the component. Can be used with v-model        |
-| hint                  | string        | ""      | ✔   | ✔      | Sets the placeholder text for the search input.                               |
-| emptySuggestionsLabel | string        | ""      | ✔   | ✔      | Text is shown at when there is nothing to select with current search criteria |
+| Name | Type | Default | Web | Mobile | Description |
+| --- | --- | --- | --- | --- | --- |
+| items | { label: String, values: [any] } | { label: '', values: [] } | ✔ | ✔ | Sets selectable item list for the component. |
+| selected (v-model) | Array[number] | [] | ✔ | ✔ | Sets selected items for the component. Can be used with v-model |
+| hint | string | "" | ✔ | ✔ | Sets the placeholder text for the search input. |
+| emptySuggestionsLabel | string | "" | ✔ | ✔ | Text is shown at when there is nothing to select with current search criteria |
 
 ## Events
 
-| Name             | Web | Mobile | Description                                                                                                |
-| ---------------- | --- | ------ | ---------------------------------------------------------------------------------------------------------- |
-| selectedChange   | ✔   | ✔      | Event occurs when user selects or deselects an item from the items list. Emits selected items array. |
+| Name | Web | Mobile | Description |
+| --- | --- | --- | --- |
+| selectedChange | ✔ | ✔ | Event occurs when user selects or deselects an item from the items list. Emits selected items array. |
