@@ -104,11 +104,7 @@ export default {
     onFileSelected(file) {
       const { target } = this;
       const headers = {};
-      const onProgress = p => {
-        this.onProgress(p);
-      };
-
-      this.fileUploader = new FileUploader({ file, target, headers, onProgress });
+      this.fileUploader = new FileUploader({ file, target, headers, onProgress: this.onProgress.bind(this) });
       this.fileUploader.upload().then(
         data => {
           console.log('file uploaded!', data); //eslint-disable-line
