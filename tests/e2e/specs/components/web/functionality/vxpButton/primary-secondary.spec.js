@@ -9,8 +9,9 @@ module.exports = {
         done();
       });
   },
-  ' Props/Name:primary,secondary'() {
+  'C13890240 Props/Name:primary,secondary'() {
     this.currentPage
+      .checkInitialElements()
       .selectPrimary()
       .assert.containsText('@primary_label', 'active')
       .selectSecondary()

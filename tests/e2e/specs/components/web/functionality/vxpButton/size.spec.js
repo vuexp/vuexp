@@ -9,13 +9,11 @@ module.exports = {
         done();
       });
   },
-  ' Props/Name:size, Value : small/medium'() {
+  'C13890245 Props/Name:size, Value : small/medium'() {
     this.currentPage
-      // .selectSize('small')
       .selectSmall()
       .assert.attributeContains('@buttonComponent', 'class', 'small')
       .selectMedium()
-      // .selectSize('medium')
       .assert.attributeContains('@buttonComponent', 'class', 'medium');
   },
 

@@ -36,12 +36,13 @@ module.exports = {
     {
       checkInitialElements: function() {
         this.expect.element('@buttonComponent').to.be.visible;
+        this.expect.element('@primary_label').to.be.visible;
+        this.expect.element('@secondary_label').to.be.visible;
         return this;
       },
       setTextToButton: function(text) {
-        return this.waitForElementVisible('@buttonTextInput', 10000)
-          .clearValue('@buttonTextInput')
-          .setValue('@buttonTextInput', text);
+        this.waitForElementVisible('@buttonTextInput', 10000).clearValue('@buttonTextInput');
+        return this.setValue('@buttonTextInput', text);
       },
       clickButton: function() {
         return this.click('@buttonComponent');
@@ -77,14 +78,14 @@ module.exports = {
         return 'already disabled';
       },
       selectPrimary: function() {
-        this.waitForElementVisible('@primary', 10000);
+        this.waitForElementVisible('@buttonComponent', 10000);
         if (this.verify.attributeContains('@buttonComponent', 'class', 'primary')) {
           return 'already primary selected';
         }
         return this.click('@primary');
       },
       selectSecondary: function() {
-        this.waitForElementVisible('@secondary', 10000);
+        this.waitForElementVisible('@buttonComponent', 10000);
         if (this.verify.attributeContains('@buttonComponent', 'class', 'secondary')) {
           return 'already secondary selected';
         }

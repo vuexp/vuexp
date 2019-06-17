@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  ' Set Text to Button and Click'() {
+  'C13843418 Set Text to Button and Click'() {
     this.currentPage
       .setTextToButton('nightwatch')
       .assert.containsText('@buttonComponent', 'nightwatch')

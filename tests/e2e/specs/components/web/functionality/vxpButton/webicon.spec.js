@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'Props/Names:webicon,webicon position ,Web icon position Value : left/right'() {
+  'C13890238 Props/Names:webicon,webicon position ,Web icon position Value : left/right'() {
     this.currentPage
       .selectIcon('smile')
       .assert.attributeContains('@buttonComponent', 'class', 'smile')

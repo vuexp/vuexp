@@ -10,7 +10,7 @@ module.exports = {
       });
   },
 
-  ' Props/Name:textWrap, Value: Default (False), Events/tap'() {
+  'C13843419 Props/Name:textWrap, Value: Default (False), Events/tap'() {
     this.currentPage
       .setTextToButton(
         'All I want is a proper cup of coffee,' +
@@ -27,7 +27,7 @@ module.exports = {
       .assert.containsText('@buttonActionLabel', 'Button Pressed');
   },
 
-  ' Props/Name:textWrap, Value: True, Events/tap'() {
+  'C13843420 Props/Name:textWrap, Value: True, Events/tap'() {
     this.currentPage
       .setTextToButton(
         'All I want is a proper cup of coffee,' +

@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  ' Props/Name:disabled, Type : Boolean'() {
+  'C13890233 Props/Name:disabled, Type : Boolean'() {
     this.currentPage.assert
       .containsText('@buttonActionLabel', '-')
       .checkButtonEnable()
