@@ -24,7 +24,7 @@ This is an overview of the most common usage of `<VxpDatePicker>`.
 | disabled         | Boolean | `false`        | ✔   | ✔      | Set enable or disabled of the datePicker. |
 | day              | String  | null           | ✔   | ✔      | Set day of the datePicker.                |
 | month            | Number  | null           | ✔   | ✔      | Set month of the datePicker.              |
-| months           | Array   | English Months | ✔   | ✔      | Set months of the datePicker.             |
+| months           | Object   | English Months | ✔   | ✔      | Set months of the datePicker.             |
 | year             | Number  | null           | ✔   | ✔      | Set year of the datePicker.               |
 | minYear          | Number  | 1900           | ✔   | ✔      | Set minYear of the datePicker.            |
 | maxYear          | Number  | 2018           | ✔   | ✔      | Set maxYear of the datePicker.            |

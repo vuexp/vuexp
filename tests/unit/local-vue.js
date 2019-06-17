@@ -28,17 +28,21 @@ import StackLayout from '../../src/layouts/StackLayout';
 import WrapLayout from '../../src/layouts/WrapLayout';
 import ViewDirective from '../../src/core/directives/ViewDirective';
 import ModalDialog from '../../src/core/components/BaseModal/ModalBase';
-import WebView from '../../src/core/components/WebView/WebView';
+import VxpWebView from '../../src/components/VxpWebView';
 import VxpLink from '../../src/components/VxpLink';
 import VxpDropdownMenu from '../../src/components/menus/VxpDropdownMenu';
 import VxpDropdownItem from '../../src/components/menus/VxpDropdownItem';
 import ActionDialog from '../../src/core/dialogs/ActionDialog';
 import TextView from '../../src/core/components/TextView/TextView';
+import VxpPlugin from '../../src/core/plugins/index';
 
 const localVue = createLocalVue();
+// Register Filters
 localVue.filter('fonticon', function(value) {
   return value + ' | fonticon';
 });
+
+// Register Components
 localVue.component('Button', Button);
 localVue.component('VxpDropdownMenu', VxpDropdownMenu);
 localVue.component('VxpDropdownItem', VxpDropdownItem);
@@ -64,7 +68,7 @@ localVue.component('ActionBar', ActionBar);
 localVue.component('VxpLink', VxpLink);
 localVue.component('TabView', TabView);
 localVue.component('TabViewItem', TabViewItem);
-localVue.component('WebView', WebView);
+localVue.component('VxpWebView', VxpWebView);
 localVue.component('AlertDialog', AlertDialog);
 localVue.component('ConfirmDialog', ConfirmDialog);
 localVue.component('ActionDialog', ActionDialog);
@@ -74,6 +78,11 @@ localVue.component('FlexboxLayout', FlexboxLayout);
 localVue.component('GridLayout', GridLayout);
 localVue.component('StackLayout', StackLayout);
 localVue.component('WrapLayout', WrapLayout);
+
+// Register Directives
 localVue.directive('view', ViewDirective);
+
+// Register Plugins
+localVue.use(VxpPlugin);
 
 export default localVue;
