@@ -185,6 +185,11 @@ export default {
           }
         }
       }
+
+      if (this.renderType === 'list') {
+        cols += ',auto';
+      }
+
       return cols;
     },
     /**
@@ -243,6 +248,10 @@ export default {
               } else {
                 listData = [lastItem]; // convert is to array
               }
+
+              if (cellData.colNo > 0) {
+                cellData.colNo--;
+              }
               listData.push(cellData); // add new item
 
               // add vertical item list to table column
@@ -254,7 +263,6 @@ export default {
           });
 
           if (this.renderType === 'list') {
-            colIndex++;
             const actionCell = {};
             actionCell.type = 'icon';
             actionCell.customCSS = {}; // TODO take css as table prop
@@ -262,8 +270,10 @@ export default {
             actionCell.rowNo = rowIndex;
             actionCell.colNo = colIndex;
             actionCell.data.actionName = 'choose';
-            actionCell.data.icon = 'fa fa-exclamation-triangle'; //TODO update icon
+            actionCell.data.iconName = 'fa';
+            actionCell.data.icon = 'fa-chevron-right';
 
+            colIndex++;
             tableData.push(actionCell);
           }
 
@@ -411,6 +421,7 @@ export default {
         cellData.data.text = dataRow[headerItem.name];
       } else if (headerItem.type === 'icon') {
         cellData.data.icon = headerItem.label;
+        cellData.data.iconName = 'fa';
       }
 
       if (typeof headerItem.isAction !== 'undefined' && headerItem.isAction) {

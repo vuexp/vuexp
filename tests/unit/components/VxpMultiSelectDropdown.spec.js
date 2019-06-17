@@ -50,10 +50,12 @@ describe('VxpMultiSelectDropdown', () => {
   const createMockedComponent = (propsToOverride = {}, listeners = {}, mountingOptions = {}) => {
     return createComponent({
       propsData: {
-        items: testItems,
+        items: {
+          label: labelPropName,
+          values: testItems,
+        },
         selected: testSelectedItem,
         hint: testHint,
-        labelProp: labelPropName,
         emptySuggestionsLabel,
         ...propsToOverride,
       },
@@ -81,13 +83,13 @@ describe('VxpMultiSelectDropdown', () => {
 
   it('will have correct initial props', () => {
     wrapper = createComponent();
-    expect(wrapper.props().items instanceof Array).to.eq(true);
-    expect(wrapper.props().items.length).to.eq(0);
+    expect(wrapper.props().items instanceof Object).to.eq(true);
+    expect(wrapper.props().items.values.length).to.eq(0);
 
     expect(wrapper.props().selected instanceof Array).to.eq(true);
     expect(wrapper.props().selected.length).to.eq(0);
 
-    expect(wrapper.props().labelProp).to.eq('label');
+    expect(wrapper.props().items.label).to.eq('');
 
     expect(wrapper.props().hint).to.eq('');
 
@@ -103,14 +105,14 @@ describe('VxpMultiSelectDropdown', () => {
   it('will have correct props', () => {
     wrapper = createMockedComponent();
 
-    expect(wrapper.props().items instanceof Array).to.eq(true);
-    expect(wrapper.props().items.length).to.eq(testItems.length);
+    expect(wrapper.props().items instanceof Object).to.eq(true);
+    expect(wrapper.props().items.values.length).to.eq(testItems.length);
 
     expect(wrapper.props().selected instanceof Array).to.eq(true);
     expect(wrapper.props().selected.length).to.eq(1);
     expect(wrapper.props().selected[0]).to.eq(testItems[0]);
 
-    expect(wrapper.props().labelProp).to.eq(labelPropName);
+    expect(wrapper.props().items.label).to.eq(labelPropName);
 
     expect(wrapper.props().hint).to.eq(testHint);
 
@@ -171,21 +173,29 @@ describe('VxpMultiSelectDropdown', () => {
 
     it('suggestion labelProp should display correct values', () => {
       wrapper = createMockedComponent({
-        items: [
-          {
-            label: 'item1',
-            value: 1,
-          },
-          {
-            labelWrong: 'item2',
-            value: 2,
-          },
-          {
-            label: 'item3',
-            value: 3,
-          },
-        ],
-        labelProp: 'label',
+        items: {
+          label: 'labelContainer.label',
+          values: [
+            {
+              labelContainer: {
+                label: 'item1',
+              },
+              value: 1,
+            },
+            {
+              label2Container: {
+                label: 'item1Wrong',
+              },
+              value: 2,
+            },
+            {
+              labelContainer: {
+                labelWrong: 'item3',
+              },
+              value: 3,
+            },
+          ],
+        },
         selected: [],
       });
 
@@ -204,19 +214,21 @@ describe('VxpMultiSelectDropdown', () => {
       expect(suggestionLabel2.props().text).to.eq('');
 
       const suggestionLabel3 = suggestedItems.wrappers[2].find(Label);
-      expect(suggestionLabel3.props().text).to.eq('item3');
+      expect(suggestionLabel3.props().text).to.eq('');
     });
 
     it('tapping selectable item removes it from selectable list and adds to selected list', () => {
       const selectedChangeListener = sinon.spy();
       wrapper = createMockedComponent(
         {
-          items: [
-            {
-              label: 'item1',
-            },
-          ],
-          labelProp: 'label',
+          items: {
+            label: 'label',
+            values: [
+              {
+                label: 'item1',
+              },
+            ],
+          },
           selected: [],
         },
         {
@@ -230,37 +242,39 @@ describe('VxpMultiSelectDropdown', () => {
 
       let selectedItems = wrapper.findAll(selectedItemWrapperClassSelector);
       let suggestedItems = wrapper.findAll(suggestionItemClassSelector);
-      expect(selectedItems.length).to.eq(0);
-      expect(suggestedItems.length).to.eq(1);
-      expect(selectedChangeListener.called).to.eq(false);
+      expect(selectedItems.length, 'No item selected before anything clicked').to.eq(0);
+      expect(suggestedItems.length, 'Suggestions have an item showing').to.eq(1);
+      expect(selectedChangeListener.called, 'Selected change havent called yet').to.eq(false);
 
       const firstSuggestedItem = wrapper.find(suggestionItemClassSelector);
       firstSuggestedItem.trigger('click');
 
       suggestedItems = wrapper.findAll(suggestionItemClassSelector);
 
-      expect(suggestedItems.length).to.eq(0);
-      expect(selectedChangeListener.called).to.eq(true);
-      expect(selectedChangeListener.getCall(0).args[0]).to.eql([
+      expect(suggestedItems.length, 'Suggested item should be removed from list').to.eq(0);
+      expect(selectedChangeListener.called, 'Selected change should be called').to.eq(true);
+      expect(selectedChangeListener.getCall(0).args[0], 'Should select correct item').to.eql([
         {
           label: 'item1',
         },
       ]);
 
       selectedItems = wrapper.findAll(selectedItemWrapperClassSelector);
-      expect(selectedItems.length).to.eq(1);
+      expect(selectedItems.length, 'Selected item count should be one on the rendered page').to.eq(1);
     });
 
     it('tapping selected item removes it from selected list and adds it to selectables list', () => {
       const selectedChangeListener = sinon.spy();
+      const selected = {
+        [labelPropName]: 'item1',
+      };
       wrapper = createMockedComponent(
         {
-          items: [
-            {
-              [labelPropName]: 'item1',
-            },
-          ],
-          selected: [0],
+          items: {
+            label: labelPropName,
+            values: [selected],
+          },
+          selected: [selected],
         },
         {
           selectedChange: selectedChangeListener,
@@ -292,7 +306,7 @@ describe('VxpMultiSelectDropdown', () => {
         [labelPropName]: 'label2',
       };
       wrapper = createMockedComponent({
-        items: [selectableItem, selectableItem2],
+        items: { label: labelPropName, values: [selectableItem, selectableItem2] },
         selected: [],
       });
 
@@ -379,15 +393,18 @@ describe('VxpMultiSelectDropdown', () => {
         [labelPropName]: 'filtered_1',
       };
       wrapper = createMockedComponent({
-        items: [
-          {
-            [labelPropName]: 'test_filter_1',
-          },
-          toBeShownAfterFilterObject,
-          {
-            [labelPropName]: 'not_filter_1',
-          },
-        ],
+        items: {
+          label: labelPropName,
+          values: [
+            {
+              [labelPropName]: 'test_filter_1',
+            },
+            toBeShownAfterFilterObject,
+            {
+              [labelPropName]: 'not_filter_1',
+            },
+          ],
+        },
         selected: [0],
       });
 

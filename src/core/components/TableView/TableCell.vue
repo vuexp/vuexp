@@ -99,7 +99,7 @@ export default {
       } else {
         if (this.currentColNo === 0) {
           classes.push('table-view-cell-first');
-        } else if (this.currentColNo === this.totalColCount) {
+        } else if (this.currentColNo === this.totalColCount || (this.renderType === 'list' && this.currentColNo === this.totalColCount - 1)) {
           classes.push('table-view-cell-last');
         } else {
           classes.push('table-view-cell-center');

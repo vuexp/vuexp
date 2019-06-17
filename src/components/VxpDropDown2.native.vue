@@ -13,23 +13,19 @@
 <script>
 import ListPickerModal from '../core/components/ListPickerModal/ListPickerModal';
 import VxpLabel from './VxpLabel';
-import StackLayout from '../layouts/StackLayout';
-import FlexboxLayout from '../layouts/FlexboxLayout';
 
 export default {
-  name: 'VxpDropDown',
+  name: 'VxpDropDown2',
   props: {
     placeholder: {
       type: String,
     },
     items: {
-      type: Object,
-      default() {
-        return {
-          label: '',
-          values: [],
-        };
-      },
+      type: Array,
+      required: true,
+    },
+    textDataPropName: {
+      type: String,
     },
     index: {
       type: Number,
@@ -46,62 +42,44 @@ export default {
   },
   data() {
     return {
-      selectedIndex: null,
-      placeholderActive: !(this.index === 0 || this.index),
-      labelPathArray: [],
+      selectedIndex: this.index,
+      labelText: this.placeholder || this.items[this.index][this.textDataPropName],
+      placeholderActive: true,
     };
-  },
-  computed: {
-    selectableItems() {
-      return this.items.values instanceof Array ? this.items.values.map(value => this.getLabel(value)) : [];
-    },
-    labelText() {
-      return this.selectableItems[this.selectedIndex] || this.placeholder;
-    },
-  },
-  watch: {
-    index() {
-      this.selectedIndex = this.index;
-    },
-    'items.label'() {
-      this.labelPathArray = this.items.label.split('.');
-    },
   },
   methods: {
     onClicked() {
       if (!this.disabled) {
         this.$showModal(ListPickerModal, {
           props: {
-            listOfItems: this.selectableItems,
+            listOfItems: this.visibleTextsOfItems,
             selectedIndex: this.selectedIndex,
           },
         }).then(selectedIndex => {
           if (typeof selectedIndex !== 'undefined') {
             this.selectedIndex = selectedIndex;
+            this.labelText = this.items[selectedIndex][this.textDataPropName];
             this.placeholderActive = false;
           }
-          this.$emit('changeIndex', selectedIndex, this.items.values[selectedIndex]);
+          this.$emit('changeIndex', selectedIndex, this.items[selectedIndex]);
         });
       }
     },
-    getLabel(value) {
-      let tempItemObject = { ...value };
-      this.labelPathArray.forEach(labelPath => {
-        if (tempItemObject) {
-          tempItemObject = tempItemObject[labelPath];
-        }
+  },
+  computed: {
+    visibleTextsOfItems() {
+      let resultList = [];
+
+      this.items.forEach(currentItem => {
+        resultList.push(currentItem[this.textDataPropName]);
       });
-      return tempItemObject;
+      return resultList;
     },
   },
   created() {
-    this.labelPathArray = this.items.label ? this.items.label.split('.') : [];
-    this.selectedIndex = this.index;
     this.$emit('changeIndex', this.index, this.items[this.index]);
   },
   components: {
-    FlexboxLayout,
-    StackLayout,
     VxpLabel,
   },
 };
