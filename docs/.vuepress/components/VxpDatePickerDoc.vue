@@ -29,7 +29,7 @@
       <TextField type="text" id="datePicker_day_placeholder_textField" v-model="dayPlaceholder" />
     </StackLayout>
     <StackLayout orientation="horizontal" class="vxp-datePicker-doc__margin_top">
-      <VxpLabel id="datePicker_month_placeholder_label"  class="vxp-datePicker-doc__label_width" text="Set Month Placeholder: " />
+      <VxpLabel id="datePicker_month_placeholder_label" class="vxp-datePicker-doc__label_width" text="Set Month Placeholder: " />
       <TextField type="text" id="datePicker_month_placeholder_textField" v-model="monthPlaceholder" />
     </StackLayout>
     <StackLayout orientation="horizontal" class="vxp-datePicker-doc__margin_top">
@@ -63,17 +63,20 @@
       <TextField type="number" id="datePicker_year_textField" min="0" v-model="year" />
     </StackLayout>
     <VxpLabel id="datePicker_months_label" class="vxp-datePicker-doc__margin_top" text="Months :" width="100"></VxpLabel>
-    <StackLayout class="vxp-datePicker-doc" v-for="(month, index) in months" :key="index" orientation="horizontal">
-      <TextField :id="`dropDown_months_textField_${index}`" v-model="months[index]" :editable="true" />
+    <StackLayout class="vxp-datePicker-doc" v-for="(month, index) in months.values" :key="index" orientation="horizontal">
+      <TextField :id="`dropDown_months_textField_${index}`" v-model="month.value" :editable="true" />
     </StackLayout>
     <VxpLabel id="datePicker_errors_label" class="vxp-datePicker-doc__margin_top" text="Errors :" width="100"></VxpLabel>
     <StackLayout v-for="(error, index) in errors" :key="'error' + index" orientation="horizontal">
-      <TextField :id="`datePicker_errors_textField_${index}`" v-model="errors[index]" :editable="true" />
-      <VxpButton id="datePicker_errors_minus_button" text="-" @tap="removeErrorItem(index)"></VxpButton>
-    </StackLayout>
-    <StackLayout key="error_add_new" orientation="horizontal" :set="newErrorText = ''">
-      <TextField id="datePicker_errors_textField_add_new" v-model="newErrorText" hint="Example Error" :editable="true" />
-      <VxpButton id="datePicker_errors_plus_button" text="+" @tap="addErrorItem(newErrorText)"></VxpButton>
+      <TextField :id="`datePicker_errors_textField_${index}`" v-model="errors[index]" hint="This is placeholder" :editable="true" />
+      <VxpButton id="datePicker_errors_plus_button" text="+" @tap="addErrorItem" style="background:dodgerblue"></VxpButton>
+      <VxpButton
+        id="dropDown_errors_minus_button"
+        class="vxp-dropDown-doc__m-l-10"
+        text="-"
+        @tap="removeErrorItem(index)"
+        v-show="errors.length > 1"
+      ></VxpButton>
     </StackLayout>
   </StackLayout>
 </template>
@@ -93,13 +96,29 @@ export default {
       monthPlaceholder: 'Month',
       yearPlaceholder: 'Year',
       datePickerDisabled: false,
-      months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      months: {
+        label: 'value',
+        values: [
+          { id: 1, value: 'January' },
+          { id: 2, value: 'February' },
+          { id: 3, value: 'March' },
+          { id: 4, value: 'April' },
+          { id: 5, value: 'May' },
+          { id: 6, value: 'June' },
+          { id: 7, value: 'July' },
+          { id: 8, value: 'August' },
+          { id: 9, value: 'September' },
+          { id: 10, value: 'October' },
+          { id: 11, value: 'November' },
+          { id: 12, value: 'December' },
+        ],
+      },
       day: null,
       month: null,
       minYear: '1900',
       maxYear: '2018',
       year: null,
-      errors: [],
+      errors: ['error_1'],
       selectedDate: null,
     };
   },
@@ -131,10 +150,8 @@ export default {
     dateChange(date) {
       this.selectedDate = date;
     },
-    addErrorItem(errorText) {
-      if (typeof errorText != 'undefined' && errorText !== "") {
-        this.errors.push(errorText);
-      }
+    addErrorItem() {
+      this.errors.push('Example Error');
     },
     removeErrorItem(i) {
       this.errors.splice(i, 1);
