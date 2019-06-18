@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  '	C13843421 Props:/Name: value , Type: Number'() {
+  'C13843421 Props:/Name: value , Type: Number'() {
     this.currentPage
       .checkInitialElements()
       .assert.containsText('@prog_value', 'Current Progress: 0')
