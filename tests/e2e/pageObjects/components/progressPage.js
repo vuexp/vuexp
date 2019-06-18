@@ -41,7 +41,7 @@ module.exports = {
         return this.click('@decreament_button');
       },
       alert: function() {
-        this.waitForElementVisible('@alert_ok', 20000);
+        this.waitForElementVisible('@alert_ok', 10000);
         return this.click('@alert_ok');
       },
       perform: function(callback) {
