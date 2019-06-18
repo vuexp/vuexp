@@ -25,14 +25,24 @@ module.exports = {
       },
 
       setTextToIncreamentInput: function(number) {
-        return this.waitForElementVisible('@increament_input', 10000)
-          .clearValue('@increament_input')
-          .setValue('@increament_input', number);
+        this.waitForElementVisible('@increament_input', 10000).clearValue('@increament_input');
+        return this.setValue('@increament_input', number);
       },
       setTextToMaxValueInput: function(number) {
-        return this.waitForElementVisible('@maxvalue_input', 10000)
-          .clearValue('@maxvalue_input')
-          .setValue('@maxvalue_input', number);
+        this.waitForElementVisible('@maxvalue_input', 10000).clearValue('@maxvalue_input');
+        return this.setValue('@maxvalue_input', number);
+      },
+      icreament: function() {
+        this.waitForElementVisible('@increament_button', 10000);
+        return this.click('@increament_button');
+      },
+      decreament: function() {
+        this.waitForElementVisible('@decreament_button', 10000);
+        return this.click('@decreament_button');
+      },
+      alert: function() {
+        this.waitForElementVisible('@alert_ok', 10000);
+        return this.click('@alert_ok');
       },
       perform: function(callback) {
         this.api.perform(callback);

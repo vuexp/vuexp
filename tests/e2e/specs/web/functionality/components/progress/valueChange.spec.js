@@ -11,22 +11,22 @@ module.exports = {
   },
   'C13843423 Event / Name : valueChange'() {
     this.currentPage
-      .click('@increament_button')
+      .icreament()
       .assert.containsText('@event_label', 'Event: valueChange 0 to 10')
       .setTextToIncreamentInput(15)
-      .click('@increament_button')
+      .icreament()
       .assert.containsText('@event_label', 'Event: valueChange 10 to 25')
       .setTextToIncreamentInput(20)
-      .click('@increament_button')
+      .icreament()
       .assert.containsText('@event_label', 'Event: valueChange 25 to 45')
       .setTextToMaxValueInput(65)
-      .click('@increament_button')
+      .icreament()
       .assert.containsText('@event_label', 'Event: valueChange 45 to 65')
       .setTextToIncreamentInput(10)
-      .click('@decreament_button')
+      .decreament()
       .assert.containsText('@event_label', 'Event: valueChange 65 to 55')
       .setTextToIncreamentInput(55)
-      .click('@decreament_button')
+      .decreament()
       .assert.containsText('@event_label', 'Event: valueChange 55 to 0');
   },
   after: function(client, done) {

@@ -13,11 +13,11 @@ module.exports = {
     this.currentPage
       .setTextToMaxValueInput(15)
       .setTextToIncreamentInput(15)
-      .click('@increament_button')
+      .icreament()
       .assert.containsText('@prog_value', 'Current Progress: 15')
-      .click('@increament_button')
+      .icreament()
       .assert.containsText('@alert_label', 'Incremented value is greater than max value')
-      .click('@alert_ok')
+      .alert()
       .assert.containsText('@prog_value', 'Current Progress: 15');
   },
   after: function(client, done) {
