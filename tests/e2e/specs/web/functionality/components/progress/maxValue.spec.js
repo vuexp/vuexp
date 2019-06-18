@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'C13843422 Props:/Name: maxValue, Type: Number'() {
+  'C13843422 Props:/Name: maxValue,  Type: Number'() {
     this.currentPage
       .setTextToMaxValueInput(15)
       .setTextToIncreamentInput(15)
