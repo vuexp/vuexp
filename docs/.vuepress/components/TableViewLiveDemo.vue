@@ -11,7 +11,7 @@
       <Pagination
         slot="pagination"
         :totalItems="50"
-        :page="5"
+        :page="2"
       />
       <ItemsPerPageDropDown
         slot="ItemsPerPage"
