@@ -2,7 +2,7 @@
   <StackLayout class="demo-panel">
       <FlexboxLayout class="checkbox-doc-container__config" justifyContent="start">
       <Label text="Status:" id="checkbox_status_label" width="100"/>
-      <Label :text="checked ? 'Checked' : 'Unchecked'" id=" checkbox_status_label_result" width="100"/>
+      <Label :text="checked ? 'Checked' : 'Unchecked'" id="checkbox_status_label_result" width="100"/>
     </FlexboxLayout>
     <FlexboxLayout class="checkbox-doc-container__config" justifyContent="start">
       <Label text="Disable : " id="checkbox_enabled_label" width="100"/>
