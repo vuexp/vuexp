@@ -53,9 +53,7 @@ export default {
   data() {
     return {};
   },
-  mounted() {
-    console.log('******'); // eslint-disable-line
-  },
+  mounted() {},
   computed: {
     colCount() {
       return this.headerFields.length;
@@ -71,25 +69,24 @@ export default {
             objectToBeBound[currentProp] = this.data[rowIndex][this.headerFields[colIndex].bindings[currentProp]];
           }
 
-          // let asilIs = function(e, rawData) {
-          //   console.log('asıl iş', e, rawData);// eslint-disable-line
-          // };
+          let eventHandlersForCell = {};
+          for (let currentEventName in this.headerFields[colIndex].eventHandlers) {
+            let columnEventHandler = this.headerFields[colIndex].eventHandlers[currentEventName];
+
+            eventHandlersForCell[currentEventName] = e => {
+              columnEventHandler(e, this.data[rowIndex], rowIndex, colIndex);
+            };
+          }
 
           linearDataArray.push({
             row: rowIndex + 1, // +1 for header
             col: colIndex,
             data: objectToBeBound,
-            eventHandlers: {
-              tap: e => { // eslint-disable-line
-                // let currentRowData = getRowDataById(e.id);
-                // asilIs(e, currentRowData);
-              },
-            },
+            eventHandlers: eventHandlersForCell,
           });
         }
       }
 
-      console.log(linearDataArray); // eslint-disable-line
       return linearDataArray;
     },
     colConfigStr() {
@@ -105,11 +102,6 @@ export default {
         heightConfigArr.push('auto');
       });
       return heightConfigArr.join(','); // like *,*,auto,*,*
-    },
-  },
-  methods: {
-    onClick() {
-      console.log('click handler'); // eslint-disable-line
     },
   },
   components: {
