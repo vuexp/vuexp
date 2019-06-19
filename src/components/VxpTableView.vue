@@ -1,13 +1,17 @@
 <template>
   <StackLayout>
     <GridLayout class="vxp-table-view" :columns="colConfigStr" :rows="rowConfigStr" height="100%">
+      <StackLayout v-if="rowSelectionEnabled" class="vxp-table-view__cell vxp-table-view__selection_header" :row="0" :col="0">
+        <VxpCheckbox @change="onSelectAllCbChanged" :checked="areAllRowsChecked" />
+      </StackLayout>
+
       <VxpLabel
         class="vxp-table-view__cell"
         v-for="(currentHeader, index) in headerFields"
         :text="currentHeader.label"
         :key="'header_' + index"
         :row="0"
-        :col="index"
+        :col="index + (rowSelectionEnabled ? 1 : 0)"
       />
 
       <StackLayout
@@ -17,14 +21,21 @@
         :row="currentData.row"
         :col="currentData.col"
       >
-        <component :is="headerFields[currentData.col].type" v-bind="currentData.data" v-on="currentData.eventHandlers" />
+        <VxpCheckbox
+          v-if="currentData.isSelectionRow"
+          v-on="currentData.eventHandlers"
+          :checked="rowSelections[currentData.row - (rowSelectionEnabled ? 1 : 0)]"
+        />
+        <component v-if="!currentData.isSelectionRow" :is="currentData.componentName" v-bind="currentData.data" v-on="currentData.eventHandlers" />
       </StackLayout>
     </GridLayout>
   </StackLayout>
 </template>
 <script>
+import Vue from 'vue';
 import GridLayout from '../layouts/GridLayout';
 import VxpLabel from './VxpLabel';
+import VxpCheckbox from './VxpCheckbox';
 
 export default {
   name: 'VxpTableView',
@@ -51,10 +62,54 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      rowSelections: [],
+    };
   },
-  mounted() {},
+  mounted() {
+    this.data.forEach(() => {
+      this.rowSelections.push(false);
+    });
+  },
+  methods: {
+    onSelectAllCbChanged(checked /*,eventData*/) {
+      for (let i = 0; i < this.rowSelections.length; i++) {
+        Vue.set(this.rowSelections, i, checked);
+      }
+
+      if (checked) {
+        this.$emit('onSelectAllRows');
+      } else {
+        this.$emit('onDeselectAllRows');
+      }
+    },
+    addRowSelectionCellToLinearDataArray(linearDataArray, rowIndex) {
+      linearDataArray.push({
+        isSelectionRow: true,
+        row: rowIndex + 1, // +1 for header
+        col: 0,
+        eventHandlers: {
+          change: (checked, eventData) => {
+            Vue.set(this.rowSelections, rowIndex, checked);
+            if (checked) {
+              this.$emit('onRowSelected', eventData, this.data[rowIndex], rowIndex);
+            } else {
+              this.$emit('onRowDeselected', eventData, this.data[rowIndex], rowIndex);
+            }
+          },
+        },
+      });
+    },
+  },
   computed: {
+    areAllRowsChecked() {
+      for (let i = 0; i < this.rowSelections.length; i++) {
+        if (!this.rowSelections[i]) {
+          return false;
+        }
+      }
+      return true;
+    },
     colCount() {
       return this.headerFields.length;
     },
@@ -62,6 +117,10 @@ export default {
       let linearDataArray = [];
 
       for (let rowIndex = 0; rowIndex < this.data.length; rowIndex++) {
+        if (this.rowSelectionEnabled) {
+          this.addRowSelectionCellToLinearDataArray(linearDataArray, rowIndex);
+        }
+
         for (let colIndex = 0; colIndex < this.headerFields.length; colIndex++) {
           let objectToBeBound = {};
 
@@ -79,10 +138,12 @@ export default {
           }
 
           linearDataArray.push({
+            isSelectionRow: false,
             row: rowIndex + 1, // +1 for header
-            col: colIndex,
+            col: colIndex + (this.rowSelectionEnabled ? 1 : 0),
             data: objectToBeBound,
             eventHandlers: eventHandlersForCell,
+            componentName: this.headerFields[colIndex].type,
           });
         }
       }
@@ -107,6 +168,7 @@ export default {
   components: {
     GridLayout,
     VxpLabel,
+    VxpCheckbox,
   },
 };
 </script>
@@ -122,6 +184,8 @@ export default {
     border-style: solid;
     padding: unit(3);
     margin: unit(1);
+  }
+  &__selection_header {
   }
 }
 </style>
