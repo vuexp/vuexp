@@ -1,5 +1,5 @@
 <template>
-  <Button :text="text" @tap="onTap" :textWrap="textWrap" :class="vxpButtonClass" :type="type" :isEnabled="!disabled" v-on="listeners">
+  <Button :text="text" @tap="onTap" :textWrap="textWrap" :class="vxpButtonClass" :type="type" :isEnabled="!disabled" v-on="filteredListeners">
     <FormattedString v-if="(icon || iconClass) && iconPosition === 'left'">
       <Span :text="icon | fonticon" :class="iconClass" />
       <Span text=" " />
@@ -77,7 +77,7 @@ export default {
 
       return classList.join(' ');
     },
-    listeners() {
+    filteredListeners() {
       let { tap, ...listeners } = this.$listeners;
       return listeners;
     },

@@ -15,7 +15,7 @@
       :returnKeyType="returnKeyType"
       @loaded="textFieldLoaded"
       @textChange="onTextChange($event)"
-      v-on="listeners"
+      v-on="filteredListeners"
     />
     <StackLayout v-if="errors.length" class="vxp-text-input__error-messages typ-body">
       <VxpLabel :text="error" v-for="(error, index) in errors" :key="index" :textWrap="true" />
@@ -90,7 +90,7 @@ export default {
     textFieldClass: function() {
       return `vxp-text-input__textfield ${this.disabled ? 'vxp-text-input__textfield--disabled' : ''}`;
     },
-    listeners() {
+    filteredListeners() {
       let { loaded, textChange, ...listeners } = this.$listeners;
       return listeners;
     },
