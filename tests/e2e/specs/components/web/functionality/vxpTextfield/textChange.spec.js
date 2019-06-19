@@ -1,16 +1,16 @@
 module.exports = {
-  tags: ['component', 'Textfield'],
+  tags: ['component', 'vxpTextfield'],
   before: function(client, done) {
-    this.currentPage = client.maximizeWindow().page.textfieldPage();
+    this.currentPage = client.maximizeWindow().page.vxpTextfieldPage();
     this.currentPage
-      .navigate(client.globals.devUrl + 'components/textfield.html')
+      .navigate(client.globals.devUrl + 'components/vxp-textfield.html')
       .waitForElementVisible('body', 60000)
       .customPerform(function() {
         done();
       });
   },
   '	C13840795 Check textfield textChange'() {
-    this.currentPage.setTextToTextField('textChange text').assert.containsText('@eventOutput', 'textChange');
+    this.currentPage.setTextToTextfield('textChange text').assert.containsText('@eventOutput', 'textChange');
   },
 
   after: function(client, done) {

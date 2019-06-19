@@ -35,26 +35,6 @@ module.exports = {
     {
       checkInitialElements: function() {
         this.expect.element('@textFieldInputField').to.be.visible;
-        this.expect.element('@textInputField').to.be.visible;
-        this.expect.element('@hintInputField').to.be.visible;
-        this.expect.element('@editableCheckButton').to.be.visible;
-        this.expect.element('@maxLenghtInputField').to.be.visible;
-        this.expect.element('@secureCheckButton').to.be.visible;
-        this.expect.element('@keyboardTypeSelect').to.be.visible;
-        this.expect.element('@returnKeyTypeSelect').to.be.visible;
-        this.expect.element('@autoCorrectCheck').to.be.visible;
-        this.expect.element('@eventOutput').to.be.visible;
-        this.expect.element('@datetime_option').to.be.visible;
-        this.expect.element('@phone_option').to.be.visible;
-        this.expect.element('@number_option').to.be.visible;
-        this.expect.element('@url_option').to.be.visible;
-        this.expect.element('@email_option').to.be.visible;
-        this.expect.element('@retunKeyType').to.be.visible;
-        this.expect.element('@done_option').to.be.visible;
-        this.expect.element('@next_option').to.be.visible;
-        this.expect.element('@go_option').to.be.visible;
-        this.expect.element('@search_option').to.be.visible;
-        this.expect.element('@send_option').to.be.visible;
 
         return this;
       },
@@ -115,6 +95,10 @@ module.exports = {
             this.click('@email_option');
             break;
         }
+      },
+      blur: function() {
+        this.waitForElementVisible('@textFieldInputField', 10000).click('@textFieldInputField');
+        return this.click('@textInputField');
       },
       perform: function(callback) {
         this.api.perform(callback);

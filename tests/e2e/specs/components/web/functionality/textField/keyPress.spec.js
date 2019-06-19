@@ -1,10 +1,9 @@
 module.exports = {
-  '@disabled': true,
-  '@tags': ['component', 'textfield', 'keyPress'],
+  tags: ['component', 'Textfield'],
   before: function(client, done) {
-    this.currentPage = client.maximizeWindow().page.textFieldPage();
+    this.currentPage = client.maximizeWindow().page.textfieldPage();
     this.currentPage
-      .navigate('http://localhost:8080/components/textfield.html')
+      .navigate(client.globals.devUrl + 'components/textfield.html')
       .waitForElementVisible('body', 60000)
       .customPerform(function() {
         done();
