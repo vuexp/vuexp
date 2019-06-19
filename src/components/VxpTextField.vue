@@ -4,7 +4,6 @@
     <TextField
       class="typ-body"
       ref="textField"
-      @loaded="textFieldLoaded"
       :class="textFieldClass"
       :text="text"
       :hint="hint"
@@ -14,10 +13,9 @@
       :keyboardType="keyboardType"
       :secure="isSecure"
       :returnKeyType="returnKeyType"
+      @loaded="textFieldLoaded"
       @textChange="onTextChange($event)"
-      @blur="$emit('blur', $event)"
-      @focus="$emit('focus', $event)"
-      @returnPress="$emit('returnPress', $event)"
+      v-on="listeners"
     />
     <StackLayout v-if="errors.length" class="vxp-text-input__error-messages typ-body">
       <VxpLabel :text="error" v-for="(error, index) in errors" :key="index" :textWrap="true" />
@@ -29,7 +27,6 @@
 <script>
 import utils from '../utils';
 import platform from '../platform';
-import Gestures from '../core/mixins/GestureMixin';
 import StackLayout from '../layouts/StackLayout';
 import TextField from '../core/components/TextField/TextField';
 import VxpLabel from './VxpLabel';
@@ -93,6 +90,10 @@ export default {
     textFieldClass: function() {
       return `vxp-text-input__textfield ${this.disabled ? 'vxp-text-input__textfield--disabled' : ''}`;
     },
+    listeners() {
+      let { loaded, textChange, ...listeners } = this.$listeners;
+      return listeners;
+    },
   },
   methods: {
     onTextChange: function(event) {
@@ -119,7 +120,6 @@ export default {
       }
     },
   },
-  mixins: [Gestures],
 };
 </script>
 

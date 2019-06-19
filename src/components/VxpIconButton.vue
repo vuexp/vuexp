@@ -5,6 +5,7 @@
     :text="this.icon | fonticon"
     :class="`${nuIconButtonClass} ${iconName}`"
     :isEnabled="isEnabled"
+    v-on="$listeners"
   />
 </template>
 
