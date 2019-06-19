@@ -158,7 +158,7 @@ describe('VxpTextField', () => {
     it('the textfield component gets focused and the focus event handler gets thrown', () => {
       // Focus to the input field.
       wrapper.find('input').trigger('focus');
-      expect(wrapper.emitted().focus.length).to.equal(2);
+      expect(wrapper.find('input').emitted().focus.length).to.equal(2);
       expect(focus.called).to.equal(true);
     });
 
@@ -170,13 +170,13 @@ describe('VxpTextField', () => {
 
     it('the textfield loses its focus and throws blur event so, the blur event handler gets thrown', () => {
       wrapper.find('input').trigger('blur');
-      expect(wrapper.emitted().blur.length).to.equal(2);
+      expect(wrapper.find('input').emitted().blur.length).to.equal(2);
       expect(blur.called).to.equal(true);
     });
 
     it('the user pushes the enter button to return a value so, event handler named returnPress gets thrown', () => {
       wrapper.find('input').trigger('keyup.enter');
-      expect(wrapper.emitted().returnPress.length).to.equal(1);
+      expect(wrapper.find('input').emitted().returnPress.length).to.equal(1);
       expect(returnPress.called).to.equal(true);
     });
 
