@@ -1,18 +1,20 @@
 <template>
   <StackLayout>
     <GridLayout class="vxp-table-view" :columns="colConfigStr" :rows="rowConfigStr" height="100%">
-      <StackLayout v-if="rowSelectionEnabled" class="vxp-table-view__cell vxp-table-view__selection_header" :row="0" :col="0">
+      <StackLayout v-if="rowSelectionEnabled && showHeaders" class="vxp-table-view__cell vxp-table-view__selection_header" :row="0" :col="0">
         <VxpCheckbox @change="onSelectAllCbChanged" :checked="areAllRowsChecked" v-show="multirowSelection" />
       </StackLayout>
 
-      <VxpLabel
-        class="vxp-table-view__cell"
-        v-for="(currentHeader, index) in headerFields"
-        :text="currentHeader.label"
-        :key="'header_' + index"
-        :row="0"
-        :col="index + (rowSelectionEnabled ? 1 : 0)"
-      />
+      <template v-if="showHeaders">
+        <VxpLabel
+          class="vxp-table-view__cell"
+          v-for="(currentHeader, index) in headerFields"
+          :text="currentHeader.label"
+          :key="'header_' + index"
+          :row="0"
+          :col="index + (rowSelectionEnabled ? 1 : 0)"
+        />
+      </template>
 
       <StackLayout
         class="vxp-table-view__cell"
@@ -21,7 +23,7 @@
         :row="currentData.row"
         :col="currentData.col"
       >
-        <VxpCheckbox v-if="currentData.isSelectionRow" v-on="currentData.events" :checked="rowSelections[currentData.row - (rowSelectionEnabled ? 1 : 0)]" />
+        <VxpCheckbox v-if="currentData.isSelectionRow" v-on="currentData.events" :checked="rowSelections[currentData.row - (showHeaders ? 1 : 0)]" />
         <component v-if="!currentData.isSelectionRow" :is="currentData.componentName" v-bind="currentData.data" v-on="currentData.events" />
       </StackLayout>
     </GridLayout>
@@ -60,6 +62,10 @@ export default {
       type: Boolean,
       default: true,
     },
+    showHeaders: {
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     return {
@@ -94,7 +100,7 @@ export default {
     addRowSelectionCellToLinearDataArray(linearDataArray, rowIndex) {
       linearDataArray.push({
         isSelectionRow: true,
-        row: rowIndex + 1, // +1 for header
+        row: rowIndex + (this.showHeaders ? 1 : 0), // +1 for header
         col: 0,
         events: {
           change: (checked, eventData) => {
@@ -151,7 +157,7 @@ export default {
 
           linearDataArray.push({
             isSelectionRow: false,
-            row: rowIndex + 1, // +1 for header
+            row: rowIndex + (this.showHeaders ? 1 : 0),
             col: colIndex + (this.rowSelectionEnabled ? 1 : 0),
             data: objectToBeBound,
             events: eventsForCell,
@@ -174,7 +180,11 @@ export default {
       return widthConfigArr.join(','); // like *,*,auto,*,*
     },
     rowConfigStr() {
-      let heightConfigArr = ['auto']; // init with auto for header
+      let heightConfigArr = []; // init with auto for header
+      if (this.showHeaders) {
+        heightConfigArr.push('auto');
+      }
+
       this.data.forEach(() => {
         heightConfigArr.push('auto');
       });
