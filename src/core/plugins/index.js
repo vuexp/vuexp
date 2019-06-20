@@ -13,7 +13,12 @@ const VxpPlugin = {
         const ContentComponent = Vue.extend(component);
         const ModalComponent = Vue.extend(Modal);
         const globalContext = typeof pluginOptions === 'object' && typeof pluginOptions.context === 'object' ? pluginOptions.context : null;
-        const localContext = globalContext ? globalContext : options && options.context ? options.context : null;
+        let localContext;
+        if (options && options.context && typeof options.context === 'object') {
+          localContext = options.context;
+        } else {
+          localContext = globalContext;
+        }
         const ModalInstance = new ModalComponent(localContext);
         ContentComponent.prototype.$modal = {
           close(data) {
