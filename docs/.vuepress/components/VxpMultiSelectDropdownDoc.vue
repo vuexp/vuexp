@@ -1,7 +1,7 @@
 <template>
   <StackLayout>
     <VxpMultiSelectDropdown
-      :items="selectableItems"
+      :items="{label: 'label', values: selectableItems}"
       hint="Pick Some Lorem"
       emptySuggestionsLabel="Nothing to select here"
       v-model="selectedItems"
