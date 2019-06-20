@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'C13840774 Check textfield text'() {
+  'C13943411 Check textfield text'() {
     this.currentPage.setTextToText('textfield-').assert.attributeContains('@vxpTextfield', 'value', 'textfield-');
   },
 

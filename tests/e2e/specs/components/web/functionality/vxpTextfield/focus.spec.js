@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'C13840784 Check textfield focus'() {
+  'C13943416 Check textfield focus'() {
     this.currentPage.focus().assert.containsText('@eventOutput', 'focus');
   },
 

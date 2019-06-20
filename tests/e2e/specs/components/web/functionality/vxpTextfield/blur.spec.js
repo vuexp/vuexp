@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'C13840785 Check textfield blur'() {
+  'C13943417 Check textfield blur'() {
     this.currentPage.setBlur().assert.containsText('@eventOutput', 'blur');
   },
   after: function(client, done) {
