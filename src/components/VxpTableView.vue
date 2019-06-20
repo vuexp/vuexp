@@ -1,11 +1,11 @@
 <template>
   <StackLayout>
     <GridLayout class="vxp-table-view" :columns="colConfigStr" :rows="rowConfigStr" height="100%">
-      <StackLayout v-if="rowSelectionEnabled && showHeaders" class="vxp-table-view__cell vxp-table-view__selection_header" :row="0" :col="0">
+      <StackLayout v-if="rowSelectionEnabled && showHeaders && !isLoadingLocal" class="vxp-table-view__cell vxp-table-view__selection_header" :row="0" :col="0">
         <VxpCheckbox @change="onSelectAllCbChanged" :checked="areAllRowsChecked" v-show="multirowSelection" />
       </StackLayout>
 
-      <template v-if="showHeaders">
+      <template v-if="showHeaders && !isLoadingLocal">
         <VxpLabel
           class="vxp-table-view__cell"
           v-for="(currentHeader, index) in headerFields"
@@ -16,16 +16,20 @@
         />
       </template>
 
-      <StackLayout
-        class="vxp-table-view__cell"
-        v-for="currentData in linearDataArray"
-        :key="'cell_' + currentData.row + '_' + currentData.col"
-        :row="currentData.row"
-        :col="currentData.col"
-      >
-        <VxpCheckbox v-if="currentData.isSelectionRow" v-on="currentData.events" :checked="rowSelections[currentData.row - (showHeaders ? 1 : 0)]" />
-        <component v-if="!currentData.isSelectionRow" :is="currentData.componentName" v-bind="currentData.data" v-on="currentData.events" />
-      </StackLayout>
+      <template v-if="!isLoadingLocal">
+        <StackLayout
+          class="vxp-table-view__cell"
+          v-for="currentData in linearDataArray"
+          :key="'cell_' + currentData.row + '_' + currentData.col"
+          :row="currentData.row"
+          :col="currentData.col"
+        >
+          <VxpCheckbox v-if="currentData.isSelectionRow" v-on="currentData.events" :checked="rowSelections[currentData.row - (showHeaders ? 1 : 0)]" />
+          <component v-if="!currentData.isSelectionRow" :is="currentData.componentName" v-bind="currentData.data" v-on="currentData.events" />
+        </StackLayout>
+      </template>
+
+      <slot name="loadingIndicator" v-if="isLoadingLocal" :row="showHeaders ? 1 : 0" :col="0"></slot>
     </GridLayout>
   </StackLayout>
 </template>
@@ -70,12 +74,20 @@ export default {
   data() {
     return {
       rowSelections: [],
+      isLoadingLocal: false,
     };
   },
   mounted() {
+    this.isLoadingLocal = this.isLoading;
+
     this.data.forEach(() => {
       this.rowSelections.push(false);
     });
+  },
+  watch: {
+    isLoading() {
+      this.isLoadingLocal = this.isLoading;
+    },
   },
   methods: {
     onSelectAllCbChanged(checked /*,eventData*/) {
