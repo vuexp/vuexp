@@ -10,7 +10,7 @@ module.exports = {
       });
   },
   'C13840784 Check textfield focus'() {
-    this.currentPage.click('@textFieldInputField').assert.containsText('@eventOutput', 'focus');
+    this.currentPage.focus().assert.containsText('@eventOutput', 'focus');
   },
 
   after: function(client, done) {

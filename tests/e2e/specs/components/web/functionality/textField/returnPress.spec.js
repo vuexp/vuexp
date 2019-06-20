@@ -10,10 +10,8 @@ module.exports = {
       });
   },
   'C13840783 Check textfield key Press'() {
-    this.currentPage
-      .setTextToHint('keyPressTest')
-      .setValue('@textFieldInputField', this.api.Keys.ENTER)
-      .assert.containsText('@eventOutput', 'returnPress');
+    this.currentPage.setTextToHint('keyPressTest').setValue('@textFieldInputField', this.client.Keys.ENTER);
+    this.currentPage.assert.containsText('@eventOutput', 'returnPress');
   },
 
   after: function(client, done) {
