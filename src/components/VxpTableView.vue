@@ -21,12 +21,8 @@
         :row="currentData.row"
         :col="currentData.col"
       >
-        <VxpCheckbox
-          v-if="currentData.isSelectionRow"
-          v-on="currentData.eventHandlers"
-          :checked="rowSelections[currentData.row - (rowSelectionEnabled ? 1 : 0)]"
-        />
-        <component v-if="!currentData.isSelectionRow" :is="currentData.componentName" v-bind="currentData.data" v-on="currentData.eventHandlers" />
+        <VxpCheckbox v-if="currentData.isSelectionRow" v-on="currentData.events" :checked="rowSelections[currentData.row - (rowSelectionEnabled ? 1 : 0)]" />
+        <component v-if="!currentData.isSelectionRow" :is="currentData.componentName" v-bind="currentData.data" v-on="currentData.events" />
       </StackLayout>
     </GridLayout>
   </StackLayout>
@@ -88,7 +84,7 @@ export default {
         isSelectionRow: true,
         row: rowIndex + 1, // +1 for header
         col: 0,
-        eventHandlers: {
+        events: {
           change: (checked, eventData) => {
             Vue.set(this.rowSelections, rowIndex, checked);
             if (checked) {
@@ -124,15 +120,15 @@ export default {
         for (let colIndex = 0; colIndex < this.headerFields.length; colIndex++) {
           let objectToBeBound = {};
 
-          for (let currentProp in this.headerFields[colIndex].bindings) {
-            objectToBeBound[currentProp] = this.data[rowIndex][this.headerFields[colIndex].bindings[currentProp]];
+          for (let currentProp in this.headerFields[colIndex].props) {
+            objectToBeBound[currentProp] = this.data[rowIndex][this.headerFields[colIndex].props[currentProp]];
           }
 
-          let eventHandlersForCell = {};
-          for (let currentEventName in this.headerFields[colIndex].eventHandlers) {
-            let columnEventHandler = this.headerFields[colIndex].eventHandlers[currentEventName];
+          let eventsForCell = {};
+          for (let currentEventName in this.headerFields[colIndex].events) {
+            let columnEventHandler = this.headerFields[colIndex].events[currentEventName];
 
-            eventHandlersForCell[currentEventName] = e => {
+            eventsForCell[currentEventName] = e => {
               columnEventHandler(e, this.data[rowIndex], rowIndex, colIndex);
             };
           }
@@ -142,7 +138,7 @@ export default {
             row: rowIndex + 1, // +1 for header
             col: colIndex + (this.rowSelectionEnabled ? 1 : 0),
             data: objectToBeBound,
-            eventHandlers: eventHandlersForCell,
+            events: eventsForCell,
             componentName: this.headerFields[colIndex].type,
           });
         }
@@ -152,6 +148,10 @@ export default {
     },
     colConfigStr() {
       let widthConfigArr = [];
+      if (this.rowSelectionEnabled) {
+        widthConfigArr.push('auto');
+      }
+
       this.headerFields.forEach(currentHeader => {
         widthConfigArr.push(currentHeader.width);
       });
