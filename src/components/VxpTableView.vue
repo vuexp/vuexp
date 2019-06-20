@@ -2,7 +2,7 @@
   <StackLayout>
     <GridLayout class="vxp-table-view" :columns="colConfigStr" :rows="rowConfigStr" height="100%">
       <StackLayout v-if="rowSelectionEnabled" class="vxp-table-view__cell vxp-table-view__selection_header" :row="0" :col="0">
-        <VxpCheckbox @change="onSelectAllCbChanged" :checked="areAllRowsChecked" />
+        <VxpCheckbox @change="onSelectAllCbChanged" :checked="areAllRowsChecked" v-show="multirowSelection" />
       </StackLayout>
 
       <VxpLabel
@@ -56,6 +56,10 @@ export default {
       type: Boolean,
       default: true,
     },
+    multirowSelection: {
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     return {
@@ -79,6 +83,14 @@ export default {
         this.$emit('onDeselectAllRows');
       }
     },
+    deselectAllRows() {
+      for (let i = 0; i < this.rowSelections.length; i++) {
+        if (this.rowSelections[i]) {
+          this.$emit('onRowDeselected', {}, this.data[i], i);
+        }
+        Vue.set(this.rowSelections, i, false);
+      }
+    },
     addRowSelectionCellToLinearDataArray(linearDataArray, rowIndex) {
       linearDataArray.push({
         isSelectionRow: true,
@@ -86,12 +98,16 @@ export default {
         col: 0,
         events: {
           change: (checked, eventData) => {
-            Vue.set(this.rowSelections, rowIndex, checked);
             if (checked) {
+              if (!this.multirowSelection) {
+                this.deselectAllRows();
+              }
+
               this.$emit('onRowSelected', eventData, this.data[rowIndex], rowIndex);
             } else {
               this.$emit('onRowDeselected', eventData, this.data[rowIndex], rowIndex);
             }
+            Vue.set(this.rowSelections, rowIndex, checked);
           },
         },
       });
