@@ -33,23 +33,17 @@ module.exports = {
       .checkRenderedChildrenResult();
 
     // Verify Flex Wrap value is no-wrap
-    const flexWrapNowrapCSS =
-      // Style CSS output of the result
-      'flex-flow: row nowrap; place-content: stretch flex-start; align-items: stretch; background-color: red; width: auto; height: auto;';
+    const flexWrapNowrapCSS = 'flex-flow: row nowrap;';
     this.currentPage.verify.attributeContains('@renderedContainer', 'style', flexWrapNowrapCSS);
 
     // Verify flex direction value is wrap
-    const flexWrapWrapCSS =
-      // Style CSS output of the result
-      'flex-flow: row wrap; place-content: stretch flex-start; align-items: stretch; background-color: red; width: auto; height: auto;';
+    const flexWrapWrapCSS = 'flex-flow: row wrap;';
     this.currentPage
       .setContainerProperties('auto', 'auto', 'red', 'row', 'wrap', 'flex-start', 'stretch', 'stretch')
       .verify.attributeContains('@renderedContainer', 'style', flexWrapWrapCSS);
 
     // Verify flex direction value is wrap-reverse
-    const flexWrapWrapReverseCSS =
-      // Style CSS output of the result
-      'flex-flow: row wrap-reverse; place-content: stretch flex-start; align-items: stretch; background-color: red; width: auto; height: auto;';
+    const flexWrapWrapReverseCSS = 'flex-flow: row wrap-reverse;';
     this.currentPage
       .setContainerProperties('auto', 'auto', 'red', 'row', 'wrap-reverse', 'flex-start', 'stretch', 'stretch')
       .verify.attributeContains('@renderedContainer', 'style', flexWrapWrapReverseCSS);

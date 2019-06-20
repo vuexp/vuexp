@@ -33,39 +33,29 @@ module.exports = {
       .checkRenderedChildrenResult();
 
     // Verify Align Items value is flex-start
-    const alignItemsFlexStartCSS =
-      // Style CSS output of the result
-      'flex-flow: row nowrap; place-content: stretch flex-start; align-items: flex-start; background-color: red; width: auto; height: auto;';
+    const alignItemsFlexStartCSS = 'place-content: stretch flex-start;';
     this.currentPage.verify.attributeContains('@renderedContainer', 'style', alignItemsFlexStartCSS);
 
     // Verify Align Items value is flex-end
-    const alignItemsFlexEndCSS =
-      // Style CSS output of the result
-      'flex-flow: row nowrap; place-content: stretch flex-start; align-items: flex-end; background-color: red; width: auto; height: auto;';
+    const alignItemsFlexEndCSS = 'place-content: stretch flex-start;';
     this.currentPage
       .setContainerProperties('auto', 'auto', 'red', 'row', 'nowrap', 'flex-start', 'flex-end', 'stretch')
       .verify.attributeContains('@renderedContainer', 'style', alignItemsFlexEndCSS);
 
     // Verify Align Items value is center
-    const alignItemsCenterCSS =
-      // Style CSS output of the result
-      'flex-flow: row nowrap; place-content: stretch flex-start; align-items: center; background-color: red; width: auto; height: auto;';
+    const alignItemsCenterCSS = 'place-content: stretch flex-start;';
     this.currentPage
       .setContainerProperties('auto', 'auto', 'red', 'row', 'nowrap', 'flex-start', 'center', 'stretch')
       .verify.attributeContains('@renderedContainer', 'style', alignItemsCenterCSS);
 
     // Verify Align Items value is baseline
-    const alignItemsBaselineCSS =
-      // Style CSS output of the result
-      'flex-flow: row nowrap; place-content: stretch flex-start; align-items: baseline; background-color: red; width: auto; height: auto;';
+    const alignItemsBaselineCSS = 'place-content: stretch flex-start;';
     this.currentPage
       .setContainerProperties('auto', 'auto', 'red', 'row', 'nowrap', 'flex-start', 'baseline', 'stretch')
       .verify.attributeContains('@renderedContainer', 'style', alignItemsBaselineCSS);
 
     // Verify Align Items value is stretch
-    const alignItemsStretchCSS =
-      // Style CSS output of the result
-      'flex-flow: row nowrap; place-content: stretch flex-start; align-items: stretch; background-color: red; width: auto; height: auto;';
+    const alignItemsStretchCSS = 'place-content: stretch flex-start;';
     this.currentPage
       .setContainerProperties('auto', 'auto', 'red', 'row', 'nowrap', 'flex-start', 'stretch', 'stretch')
       .verify.attributeContains('@renderedContainer', 'style', alignItemsStretchCSS);

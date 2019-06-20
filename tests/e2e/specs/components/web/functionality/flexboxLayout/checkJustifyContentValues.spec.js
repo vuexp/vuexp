@@ -33,39 +33,29 @@ module.exports = {
       .checkRenderedChildrenResult();
 
     // Verify Justify Content value is flex-start
-    const justifyContentFlexStartCSS =
-      // Style CSS output of the result
-      'flex-flow: row nowrap; place-content: stretch flex-start; align-items: stretch; background-color: red; width: auto; height: auto;';
+    const justifyContentFlexStartCSS = 'place-content: stretch flex-start;';
     this.currentPage.verify.attributeContains('@renderedContainer', 'style', justifyContentFlexStartCSS);
 
     // Verify Justify Content value is flex-end
-    const justifyContentFlexEndCSS =
-      // Style CSS output of the result
-      'flex-flow: row nowrap; place-content: stretch flex-end; align-items: stretch; background-color: red; width: auto; height: auto;';
+    const justifyContentFlexEndCSS = 'place-content: stretch flex-end;';
     this.currentPage
       .setContainerProperties('auto', 'auto', 'red', 'row', 'nowrap', 'flex-end', 'stretch', 'stretch')
       .verify.attributeContains('@renderedContainer', 'style', justifyContentFlexEndCSS);
 
     // Verify Justify Content value is center
-    const justifyContentCenterCSS =
-      // Style CSS output of the result
-      'flex-flow: row nowrap; place-content: stretch center; align-items: stretch; background-color: red; width: auto; height: auto;';
+    const justifyContentCenterCSS = 'place-content: stretch center;';
     this.currentPage
       .setContainerProperties('auto', 'auto', 'red', 'row', 'nowrap', 'center', 'stretch', 'stretch')
       .verify.attributeContains('@renderedContainer', 'style', justifyContentCenterCSS);
 
     // Verify Justify Content value is space-between
-    const justifyContentSpaceBetweenCSS =
-      // Style CSS output of the result
-      'flex-flow: row nowrap; place-content: stretch space-between; align-items: stretch; background-color: red; width: auto; height: auto;';
+    const justifyContentSpaceBetweenCSS = 'place-content: stretch space-between;';
     this.currentPage
       .setContainerProperties('auto', 'auto', 'red', 'row', 'nowrap', 'space-between', 'stretch', 'stretch')
       .verify.attributeContains('@renderedContainer', 'style', justifyContentSpaceBetweenCSS);
 
     // Verify Justify Content value is space-around
-    const justifyContentSpaceAroundCSS =
-      // Style CSS output of the result
-      'flex-flow: row nowrap; place-content: stretch space-around; align-items: stretch; background-color: red; width: auto; height: auto;';
+    const justifyContentSpaceAroundCSS = 'place-content: stretch space-around;';
     this.currentPage
       .setContainerProperties('auto', 'auto', 'red', 'row', 'nowrap', 'space-around', 'stretch', 'stretch')
       .verify.attributeContains('@renderedContainer', 'style', justifyContentSpaceAroundCSS);

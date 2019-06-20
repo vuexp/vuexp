@@ -33,31 +33,23 @@ module.exports = {
       .checkRenderedChildrenResult();
 
     // Verify Flex Direction value is row
-    const flexDirectionRowCSS =
-      // Style CSS output of the result
-      'flex-flow: row nowrap; place-content: stretch flex-start; align-items: stretch; background-color: red; width: auto; height: auto;';
+    const flexDirectionRowCSS = 'flex-flow: row';
     this.currentPage.verify.attributeContains('@renderedContainer', 'style', flexDirectionRowCSS);
 
     // Verify flex direction value is row-reverse
-    const flexDirectionRowReverseCSS =
-      // Style CSS output of the result
-      'flex-flow: row-reverse nowrap; place-content: stretch flex-start; align-items: stretch; background-color: red; width: auto; height: auto;';
+    const flexDirectionRowReverseCSS = 'flex-flow: row-reverse';
     this.currentPage
       .setContainerProperties('auto', 'auto', 'red', 'row-reverse', 'nowrap', 'flex-start', 'stretch', 'stretch')
       .verify.attributeContains('@renderedContainer', 'style', flexDirectionRowReverseCSS);
 
     // Verify flex direction value is column
-    const flexDirectionColumnCSS =
-      // Style CSS output of the result
-      'flex-flow: column nowrap; place-content: stretch flex-start; align-items: stretch; background-color: red; width: auto; height: auto;';
+    const flexDirectionColumnCSS = 'flex-flow: column';
     this.currentPage
       .setContainerProperties('auto', 'auto', 'red', 'column', 'nowrap', 'flex-start', 'stretch', 'stretch')
       .verify.attributeContains('@renderedContainer', 'style', flexDirectionColumnCSS);
 
     // Verify flex direction value is column-reverse
-    const flexDirectionColumnReverseCSS =
-      // Style CSS output of the result
-      'flex-flow: column-reverse nowrap; place-content: stretch flex-start; align-items: stretch; background-color: red; width: auto; height: auto;';
+    const flexDirectionColumnReverseCSS = 'flex-flow: column-reverse';
     this.currentPage
       .setContainerProperties('auto', 'auto', 'red', 'column-reverse', 'nowrap', 'flex-start', 'stretch', 'stretch')
       .verify.attributeContains('@renderedContainer', 'style', flexDirectionColumnReverseCSS);
