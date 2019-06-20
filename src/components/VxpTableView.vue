@@ -2,7 +2,7 @@
   <StackLayout>
     <GridLayout class="vxp-table-view" :columns="colConfigStr" :rows="rowConfigStr" height="100%">
       <StackLayout v-if="rowSelectionEnabled && showHeaders && !isLoadingLocal" class="vxp-table-view__cell vxp-table-view__selection_header" :row="0" :col="0">
-        <VxpCheckbox @change="onSelectAllCbChanged" :checked="areAllRowsChecked" v-show="multirowSelection" />
+        <VxpCheckbox @change="onSelectAllCbChanged" :checked="areAllRowsChecked" v-show="multirowSelection" :disabled="data.length === 0" />
       </StackLayout>
 
       <template v-if="showHeaders && !isLoadingLocal">
@@ -27,9 +27,10 @@
           <VxpCheckbox v-if="currentData.isSelectionRow" v-on="currentData.events" :checked="rowSelections[currentData.row - (showHeaders ? 1 : 0)]" />
           <component v-if="!currentData.isSelectionRow" :is="currentData.componentName" v-bind="currentData.data" v-on="currentData.events" />
         </StackLayout>
+        <Label v-if="data.length === 0" class="vxp-table-view__no-data-msg" :text="notFoundMsg" :col="0" :row="1" :colSpan="actualColCount" />
       </template>
 
-      <slot name="loadingIndicator" v-if="isLoadingLocal" :row="showHeaders ? 1 : 0" :col="0"></slot>
+      <slot name="loadingIndicator" v-if="isLoadingLocal" :row="showHeaders ? 1 : 0" :col="0" :colSpan="actualColCount"></slot>
     </GridLayout>
   </StackLayout>
 </template>
@@ -52,7 +53,7 @@ export default {
     },
     notFoundMsg: {
       type: String,
-      default: null,
+      default: 'No data',
     },
     isLoading: {
       type: Boolean,
@@ -133,12 +134,19 @@ export default {
   },
   computed: {
     areAllRowsChecked() {
+      if (this.rowSelections.length == 0) {
+        return false;
+      }
+
       for (let i = 0; i < this.rowSelections.length; i++) {
         if (!this.rowSelections[i]) {
           return false;
         }
       }
       return true;
+    },
+    actualColCount() {
+      return this.headerFields.length + (this.rowSelectionEnabled ? 1 : 0);
     },
     colCount() {
       return this.headerFields.length;
@@ -197,6 +205,10 @@ export default {
         heightConfigArr.push('auto');
       }
 
+      if (this.data.length === 0) {
+        heightConfigArr.push('auto');
+      }
+
       this.data.forEach(() => {
         heightConfigArr.push('auto');
       });
@@ -224,6 +236,9 @@ export default {
     margin: unit(1);
   }
   &__selection_header {
+  }
+  &__no-data-msg {
+    text-align: center;
   }
 }
 </style>
