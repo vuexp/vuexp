@@ -9,8 +9,9 @@ module.exports = {
         done();
       });
   },
-  '	C13840795 Check textfield textChange'() {
-    this.currentPage.setTextToTextField('textChange text').assert.containsText('@eventOutput', 'textChange');
+  'C13840783 Check textfield key Press'() {
+    this.currentPage.setTextToHint('keyPressTest').setValue('@textFieldInputField', this.client.Keys.ENTER);
+    this.currentPage.assert.containsText('@eventOutput', 'returnPress');
   },
 
   after: function(client, done) {
