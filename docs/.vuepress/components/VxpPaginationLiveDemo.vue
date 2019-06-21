@@ -78,7 +78,7 @@ export default {
     return {
       totalItems: '100',
       itemsPerPage: '10',
-      currentPage: '3',
+      currentPage: '1',
       showLastPage: true,
       showFirstPage: true,
       showNextPage: true,
