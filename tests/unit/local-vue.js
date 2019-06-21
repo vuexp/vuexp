@@ -83,6 +83,6 @@ localVue.component('WrapLayout', WrapLayout);
 localVue.directive('view', ViewDirective);
 
 // Register Plugins
-localVue.use(VxpPlugin);
+localVue.use(VxpPlugin, { context: {} });
 
 export default localVue;

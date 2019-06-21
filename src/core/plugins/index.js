@@ -5,14 +5,21 @@ import ViewDirective from '../directives/ViewDirective';
 import Modal from '../components/Modal/Modal';
 
 const VxpPlugin = {
-  install: Vue => {
+  install: (Vue, pluginOptions) => {
     // Show Modal
     Vue.prototype.$showModal = function(component, options = { context: null, fullscreen: false }) {
       return new Promise(resolve => {
         // eslint-disable-line
         const ContentComponent = Vue.extend(component);
         const ModalComponent = Vue.extend(Modal);
-        const ModalInstance = new ModalComponent();
+        const globalContext = typeof pluginOptions === 'object' && typeof pluginOptions.context === 'object' ? pluginOptions.context : null;
+        let localContext;
+        if (options && options.context && typeof options.context === 'object') {
+          localContext = options.context;
+        } else {
+          localContext = globalContext;
+        }
+        const ModalInstance = new ModalComponent(localContext);
         ContentComponent.prototype.$modal = {
           close(data) {
             ModalInstance.closeModal();
