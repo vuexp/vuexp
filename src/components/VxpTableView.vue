@@ -18,25 +18,26 @@
 
       <template v-if="!isLoadingLocal">
         <StackLayout
+          orientation="horizontal"
           class="vxp-table-view__cell vxp-table-view__cell__body"
           v-for="currentData in linearDataArray"
           :key="'cell_' + currentData.row + '_' + currentData.col"
           :row="currentData.row"
           :col="currentData.col"
-          :style="getCellStyle(currentData.row, currentData.col)"
+          :class="getCellClass(currentData.row, currentData.col)"
         >
           <VxpCheckbox
             v-if="currentData.isSelectionRow"
             v-on="currentData.events"
             :checked="rowSelections[currentData.row - (showHeaders ? 1 : 0)]"
-            style="margin-top:auto; margin-bottom:auto; "
+            :verticalAlignment="cellVerticalAlignment"
           />
           <component
             v-if="!currentData.isSelectionRow"
             :is="currentData.componentName"
             v-bind="currentData.data"
             v-on="currentData.events"
-            style="margin-top:auto; margin-bottom:auto; "
+            :verticalAlignment="cellVerticalAlignment"
           />
         </StackLayout>
         <Label v-if="data.length === 0" class="vxp-table-view__no-data-msg" :text="notFoundMsg" :col="0" :row="1" :colSpan="actualColCount" />
@@ -48,6 +49,7 @@
 </template>
 <script>
 import Vue from 'vue';
+import platform from '../platform';
 import GridLayout from '../layouts/GridLayout';
 import VxpLabel from './VxpLabel';
 import VxpCheckbox from './VxpCheckbox';
@@ -83,7 +85,7 @@ export default {
       type: Boolean,
       default: true,
     },
-    cellStyles: {
+    cellClasses: {
       type: Array,
     },
   },
@@ -106,11 +108,11 @@ export default {
     },
   },
   methods: {
-    getCellStyle(rowNumber, colNumber) {
-      if (this.cellStyles && this.cellStyles[rowNumber]) {
-        return this.cellStyles[rowNumber][colNumber];
+    getCellClass(rowNumber, colNumber) {
+      if (this.cellClasses && this.cellClasses[rowNumber]) {
+        return this.cellClasses[rowNumber][colNumber];
       }
-      return {};
+      return '';
     },
     onSelectAllCbChanged(checked /*,eventData*/) {
       for (let i = 0; i < this.rowSelections.length; i++) {
@@ -154,6 +156,9 @@ export default {
     },
   },
   computed: {
+    cellVerticalAlignment() {
+      return platform.platform === 'web' ? 'center' : '';
+    },
     areAllRowsChecked() {
       if (this.rowSelections.length == 0) {
         return false;
