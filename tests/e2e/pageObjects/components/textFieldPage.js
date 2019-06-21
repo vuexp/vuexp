@@ -50,12 +50,9 @@ module.exports = {
           .setValue('@hintInputField', text);
       },
       checkEditableTextField: function() {
-        this.waitForElementVisible('@textFieldInputField', 10000);
-        if (this.verify.attributeContains('@textFieldInputField', 'style', 'disabled: disabled;')) {
-          return 'false';
-        }
-        return 'true';
+        return this.waitForElementVisible('@editableCheckButton', 10000).click('@editableCheckButton');
       },
+
       setNumberToMaxLenght: function(lenght) {
         return this.waitForElementVisible('@maxLenghtInputField', 10000)
           .clearValue('@maxLenghtInputField')
@@ -104,6 +101,7 @@ module.exports = {
         this.waitForElementVisible('@textFieldInputField', 10000);
         return this.click('@textFieldInputField');
       },
+
       selectKeyboardTypeAsDatetime: function() {
         this.click('@datetime');
         this.waitForElementVisible('@textFieldInputField', 3000);
