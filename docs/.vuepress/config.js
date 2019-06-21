@@ -61,6 +61,7 @@ module.exports = {
             "components/vxpiconbutton.md",
             "components/vxpcheckbox.md",
             "components/vxp-textfield.md",
+            "components/vxp-pagination.md",
           ]
         },
         {
