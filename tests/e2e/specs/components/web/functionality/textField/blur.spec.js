@@ -1,9 +1,9 @@
 module.exports = {
-  tags: ['component', 'textfield'],
+  tags: ['component', 'Textfield'],
   before: function(client, done) {
-    this.currentPage = client.maximizeWindow().page.textFieldPage();
+    this.currentPage = client.maximizeWindow().page.textfieldPage();
     this.currentPage
-      .navigate('http://localhost:8080/components/textfield.html')
+      .navigate(client.globals.devUrl + 'components/textfield.html')
       .waitForElementVisible('body', 60000)
       .customPerform(function() {
         done();
@@ -11,8 +11,8 @@ module.exports = {
   },
   'C13840785 Check textfield blur'() {
     this.currentPage
-      .setTextToTextField('textfield blur')
-      .click('@textInputField')
+      .checkInitialElements()
+      .blur()
       .assert.containsText('@eventOutput', 'blur');
   },
   after: function(client, done) {
