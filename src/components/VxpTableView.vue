@@ -1,13 +1,13 @@
 <template>
   <StackLayout>
     <GridLayout class="vxp-table-view" :columns="colConfigStr" :rows="rowConfigStr" height="100%">
-      <StackLayout v-if="rowSelectionEnabled && showHeaders && !isLoadingLocal" class="vxp-table-view__cell vxp-table-view__selection_header" :row="0" :col="0">
+      <StackLayout v-if="rowSelectionEnabled && showHeaders && !isLoadingLocal" class="vxp-table-view__cell vxp-table-view__cell__header" :row="0" :col="0">
         <VxpCheckbox @change="onSelectAllCbChanged" :checked="areAllRowsChecked" v-show="multirowSelection" :disabled="data.length === 0" />
       </StackLayout>
 
       <template v-if="showHeaders && !isLoadingLocal">
         <VxpLabel
-          class="vxp-table-view__cell"
+          class="vxp-table-view__cell vxp-table-view__cell__header"
           v-for="(currentHeader, index) in headerFields"
           :text="currentHeader.label"
           :key="'header_' + index"
@@ -18,14 +18,26 @@
 
       <template v-if="!isLoadingLocal">
         <StackLayout
-          class="vxp-table-view__cell"
+          class="vxp-table-view__cell vxp-table-view__cell__body"
           v-for="currentData in linearDataArray"
           :key="'cell_' + currentData.row + '_' + currentData.col"
           :row="currentData.row"
           :col="currentData.col"
+          :style="getCellStyle(currentData.row, currentData.col)"
         >
-          <VxpCheckbox v-if="currentData.isSelectionRow" v-on="currentData.events" :checked="rowSelections[currentData.row - (showHeaders ? 1 : 0)]" />
-          <component v-if="!currentData.isSelectionRow" :is="currentData.componentName" v-bind="currentData.data" v-on="currentData.events" />
+          <VxpCheckbox
+            v-if="currentData.isSelectionRow"
+            v-on="currentData.events"
+            :checked="rowSelections[currentData.row - (showHeaders ? 1 : 0)]"
+            style="margin-top:auto; margin-bottom:auto; "
+          />
+          <component
+            v-if="!currentData.isSelectionRow"
+            :is="currentData.componentName"
+            v-bind="currentData.data"
+            v-on="currentData.events"
+            style="margin-top:auto; margin-bottom:auto; "
+          />
         </StackLayout>
         <Label v-if="data.length === 0" class="vxp-table-view__no-data-msg" :text="notFoundMsg" :col="0" :row="1" :colSpan="actualColCount" />
       </template>
@@ -71,6 +83,9 @@ export default {
       type: Boolean,
       default: true,
     },
+    cellStyles: {
+      type: Array,
+    },
   },
   data() {
     return {
@@ -91,6 +106,12 @@ export default {
     },
   },
   methods: {
+    getCellStyle(rowNumber, colNumber) {
+      if (this.cellStyles && this.cellStyles[rowNumber]) {
+        return this.cellStyles[rowNumber][colNumber];
+      }
+      return {};
+    },
     onSelectAllCbChanged(checked /*,eventData*/) {
       for (let i = 0; i < this.rowSelections.length; i++) {
         Vue.set(this.rowSelections, i, checked);
@@ -210,7 +231,7 @@ export default {
       }
 
       this.data.forEach(() => {
-        heightConfigArr.push('auto');
+        heightConfigArr.push('*');
       });
       return heightConfigArr.join(','); // like *,*,auto,*,*
     },
@@ -223,20 +244,31 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '../assets/styles/helpers.scss';
 @import url('/fonts/fontawesome.min.css');
 
 .vxp-table-view {
+  border-style: solid;
+  border-color: lightgray;
+  border-width: unit(1);
+  border-radius: unit(10);
+
   &__cell {
-    border-width: unit(1);
-    border-color: black;
-    border-style: solid;
-    padding: unit(3);
-    margin: unit(1);
+    // border-color: black;
+    // border-width: unit(3);
+
+    &__body {
+      padding: unit(10);
+    }
+
+    &__header {
+      padding: unit(10);
+      text-align: center;
+      background-color: #eff5fc;
+    }
   }
-  &__selection_header {
-  }
+
   &__no-data-msg {
     text-align: center;
   }
