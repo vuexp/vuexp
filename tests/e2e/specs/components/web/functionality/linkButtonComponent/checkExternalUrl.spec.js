@@ -10,9 +10,11 @@ module.exports = {
       });
   },
   'C13890239 - Probs:/ Name : External url'() {
+    let googleUrl = 'https://www.google.com/';
+
     this.currentPage
       .checkInitialElements()
-      .setExternalUrlText('https://www.google.com/')
+      .setExternalUrlText(googleUrl)
       .clickLinkLabel();
 
     // Handle with new tab
@@ -20,12 +22,8 @@ module.exports = {
       let googleTab = result.value[1]; // New Google tab index
       this.switchWindow(googleTab); // Switch to Google tab
     });
-    this.client.closeWindow(); // Close Google tab
-    // Handle with old tab
-    this.client.windowHandle(function(result) {
-      let oldTab = result.value[0]; // Old tab index
-      this.switchWindow(oldTab); // Switch to old tab
-    });
+    // Verify new tab is "Google" by taking a screenshot
+    this.currentPage.checkScreenshot();
   },
 
   after: function(client, done) {
