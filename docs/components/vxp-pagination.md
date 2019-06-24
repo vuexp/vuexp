@@ -21,7 +21,7 @@ This is an overview of the most common usage of `<VxpPagination>`.
 | ---------------- | ------- | ------- | --- | ------ | ----------- |
 | totalItems       | Number  | `-`     | ✔   | ✔      | Total number of items in the list that is paginated. |
 | itemsPerPage     | Number  |  10     | ✔   | ✔      | Number of items that are displayed in a page |
-| page             | Number  |  1      | ✔   | ✔      | Selected page in pagination component. |
+| page             | Number  |  1      | ✔   | ✔      | Selected page in pagination component. Page number starts from 1. [1, MaxPageNumber] |
 | showFirstPage    | Boolean | `true`  | ✔   | ✔      | Enables jump to first page button |
 | showLastPage     | Boolean | `true`  | ✔   | ✔      | Enables jump to last page button |
 | showNextPage     | Boolean | `true`  | ✔   | ✔      | Enables next page button |
