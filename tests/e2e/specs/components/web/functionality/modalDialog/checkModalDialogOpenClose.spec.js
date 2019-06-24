@@ -14,7 +14,7 @@ module.exports = {
       .checkInitialElements()
       .clickShowModalButton()
       .checkModalDialogElements()
-      .api.moveTo('#app > div > header')
+      .api.moveTo('@modalDialogOutsideArea')
       .mouseButtonDown('left')
       .mouseButtonUp('left');
   },

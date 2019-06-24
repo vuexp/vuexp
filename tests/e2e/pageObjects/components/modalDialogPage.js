@@ -8,6 +8,7 @@ module.exports = {
     showModalBaseButton: '#modalbase_component',
     fullScreenCheckbox: '#checkbox_fullscreen',
     modalDialogArea: 'div.vxp-modal > div',
+    modalDialogOutsideArea: '#app > div > header',
     modalLabel: '#label_modaldialog',
     modalVxpButton: '#button_modaldialog',
     modalCheckbox: '#checkbox_modaldialog_checkbox > div',
@@ -24,6 +25,7 @@ module.exports = {
 
       checkModalDialogElements: function() {
         return this.waitForElementVisible('@modalDialogArea', 3000)
+          .waitForElementVisible('@modalDialogOutsideArea', 3000)
           .waitForElementVisible('@modalLabel', 3000)
           .waitForElementVisible('@modalVxpButton', 3000)
           .waitForElementVisible('@modalCheckbox', 3000)
