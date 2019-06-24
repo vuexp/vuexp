@@ -10,17 +10,13 @@ module.exports = {
       });
   },
   'C13890285 Props : /Name : icon , type : String'() {
-    this.currentPage
-      .checkInitialElements()
-      .assert.containsText('@selected_icon', 'triangle')
-      .selectIconSmile()
-      .containsText('@selected_icon', 'smile')
-      .selectIconUser()
-      .assert.containsText('@selected_icon', 'user')
-      .selectIconTri()
-      .assert.containsText('@selected_icon', 'triangle')
-      .selectIconUser()
-      .assert.containsText('@selected_icon', 'user');
+    this.currentPage.assert.containsText('@selected_icon', 'triangle').selectIcon('smile');
+    this.client.pause(1000);
+    this.currentPage.assert.containsText('@selected_icon', 'smile').selectIcon('circle');
+    this.client.pause(1000);
+    this.currentPage.assert.containsText('@selected_icon', 'circle').selectIcon('triangle');
+    this.client.pause(1000);
+    this.currentPage.assert.containsText('@selected_icon', 'triangle');
   },
 
   after: function(client, done) {

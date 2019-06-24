@@ -40,23 +40,13 @@ module.exports = {
         switch (icon) {
           case 'smile':
             return this.setValue('@icon_Class', 'fa fa-smile-o');
-          case 'user':
+          case 'circle':
             return this.setValue('@icon_Class', 'fa fa-user-circle-o');
           case 'triangle':
             return this.setValue('@icon_Class', 'fa fa-exclamation-triangle');
           default:
             return 'icon can not be selected';
         }
-      },
-
-      selectIconSmile: function() {
-        this.waitForElementVisible('@icon_Class', 10000).setValue('@icon_Class', 'fa fa-smile-o');
-      },
-      selectIconUser: function() {
-        this.waitForElementVisible('@icon_Class', 10000).setValue('@icon_Class', 'fa fa-user-circle-o');
-      },
-      selectIconTri: function() {
-        this.waitForElementVisible('@icon_Class', 10000).setValue('@icon_Class', 'fa fa-exclamation-triangle');
       },
 
       isEnable: function() {
