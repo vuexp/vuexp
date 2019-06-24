@@ -1,20 +1,21 @@
 module.exports = {
-  tags: ['component', 'Textfield'],
+  tags: ['component', 'vxpSideMenu'],
   before: function(client, done) {
-    this.currentPage = client.maximizeWindow().page.textfieldPage();
+    this.currentPage = client.maximizeWindow().page.vxpSideDrawerPage();
     this.currentPage
-      .navigate(client.globals.devUrl + 'components/textfield.html')
+      .navigate(client.globals.devUrl + 'components/vxp-side-drawer.html')
       .waitForElementVisible('body', 60000)
       .customPerform(function() {
         done();
       });
   },
-  'C13840785 Check textfield blur'() {
+  'C13890565 Event : Tap to Open SideDrawer Component'() {
     this.currentPage
       .checkInitialElements()
-      .blur()
-      .assert.containsText('@eventOutput', 'blur');
+      .openSideMenu()
+      .assert.containsText('@event_label', 'true');
   },
+
   after: function(client, done) {
     client.end().customPerform(done);
   },

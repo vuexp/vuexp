@@ -43,4 +43,9 @@ describe('$showModal testing', () => {
 
     expect(typeof localVue.prototype.$showModal).to.equal('function');
   });
+
+  it('should have $showModal as function and uses our context', () => {
+    localVue.prototype.$showModal(component, { context: {}, fullscreen: true });
+    expect(typeof localVue.prototype.$showModal).to.equal('function');
+  });
 });
