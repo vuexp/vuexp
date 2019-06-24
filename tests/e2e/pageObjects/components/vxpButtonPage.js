@@ -24,11 +24,14 @@ module.exports = {
     medium_option: '#button_size_medium_option',
     small_class: '.vxp-button.Button.vxp-button.vxp-button--small.typ-button-1',
     medium_class: '.vxp-button.Button.vxp-button.vxp-button--medium.typ-button',
-    icon_smile: 'vxp-span fa-smile-o fa',
-    icon_user: 'vxp-span fa-user-circle-o fa',
-    icon_triangle: 'vxp-span fa-exclamation-triangle fa',
-    position_left: 'vxp-span fa-exclamation-triangle fa',
-    position_right: 'vxp-span fa-exclamation-triangle fa',
+    icon_smile: '#button_icon_smile_option',
+    icon_user: '#button_icon_circle_option',
+    icon_triangle: '#button_icon_triangle_option',
+    position_left: '#button_icon_pos_left_option',
+    position_right: '#button_icon_pos_right_option',
+    icon_class: '#button_iconClass_label',
+    icon_label: '#button_icon_label',
+    iconPos_label: '#button_icon_pos_label',
   },
 
   commands: [
@@ -79,16 +82,10 @@ module.exports = {
       },
       selectPrimary: function() {
         this.waitForElementVisible('@buttonComponent', 10000);
-        if (this.verify.attributeContains('@buttonComponent', 'class', 'primary')) {
-          return 'already primary selected';
-        }
         return this.click('@primary');
       },
       selectSecondary: function() {
         this.waitForElementVisible('@buttonComponent', 10000);
-        if (this.verify.attributeContains('@buttonComponent', 'class', 'secondary')) {
-          return 'already secondary selected';
-        }
         return this.click('@secondary');
       },
       selectSmall: function() {
@@ -110,19 +107,20 @@ module.exports = {
         this.waitForElementVisible('@icon', 10000);
         switch (icon) {
           case 'smile':
-            break;
+            return this.click('@icon_smile');
           case 'user':
-            break;
+            return this.click('@icon_user');
           case 'triangle':
-            break;
+            return this.click('@icon_triangle');
         }
       },
       selectPosition: function(position) {
+        this.waitForElementVisible('@iconPosition', 10000);
         switch (position) {
           case 'left':
-            break;
+            return this.click('@position_left');
           case 'right':
-            break;
+            return this.click('@position_right');
         }
       },
       perform: function(callback) {
