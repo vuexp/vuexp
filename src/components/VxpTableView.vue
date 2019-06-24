@@ -401,7 +401,7 @@ export default {
       cellData.colNo = colIndex;
 
       if (headerItem.type === 'image') {
-        cellData.data.src = dataRow[headerItem.name];
+        cellData.data.src = this.extractPathData(dataRow, headerItem.name);
         cellData.data.stretch = 'aspectFill';
         cellData.customCSS = {};
         cellData.customCSS['border-radius'] = '100%';
@@ -410,15 +410,15 @@ export default {
         cellData.customCSS['width'] = '75px';
         cellData.customCSS['height'] = '75px';
       } else if (headerItem.type === 'text') {
-        cellData.data.text = dataRow[headerItem.name];
+        cellData.data.text = this.extractPathData(dataRow, headerItem.name);
         cellData.data.textWrap = true;
       } else if (headerItem.type === 'checkbox') {
-        cellData.data.checked = dataRow[headerItem.name];
+        cellData.data.checked = this.extractPathData(dataRow, headerItem.name);
       } else if (headerItem.type === 'button') {
-        cellData.data.text = dataRow[headerItem.name];
+        cellData.data.text = this.extractPathData(dataRow, headerItem.name);
         cellData.data.primary = true;
       } else if (headerItem.type === 'link') {
-        cellData.data.text = dataRow[headerItem.name];
+        cellData.data.text = this.extractPathData(dataRow, headerItem.name);
       } else if (headerItem.type === 'icon') {
         cellData.data.icon = headerItem.label;
         cellData.data.iconName = 'fa';
@@ -428,6 +428,17 @@ export default {
         cellData.data.actionName = headerItem.name;
       }
       return cellData;
+    },
+    extractPathData(data, path) {
+      const pathArray = path.split('.');
+      let value = data;
+      for (let pathItem of pathArray) {
+        if (!value) {
+          return '';
+        }
+        value = value[pathItem];
+      }
+      return value;
     },
     /**
      * Returns horizontal alignment value of cell

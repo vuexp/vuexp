@@ -31,18 +31,12 @@ export default class FileUploader {
       this.xhr.addEventListener(
         'readystatechange',
         event => {
-          if (event && event.target) {
-            const { status, responseText, readyState, statusText } = event.target;
-            if (status && readyState && responseText && readyState === 4) {
-              if (status === 200) {
-                try {
-                  resolve(responseText);
-                } catch (e) {
-                  reject(e);
-                }
-              } else {
-                reject(`${status} - ${statusText}`);
-              }
+          const { status, responseText, readyState, statusText } = event.target;
+          if (status && readyState && responseText && readyState === 4) {
+            if (status === 200) {
+              resolve(responseText);
+            } else {
+              reject(`${status} - ${statusText}`);
             }
           }
         },

@@ -12,7 +12,7 @@ module.exports = {
     maxLenghtInputField: '#TextView_maxLength_textfield',
     returnKeyTypeSelect: '#TextView_returnKeyType_select',
     autoCorrectCheck: '#TextView_autocorrect_input',
-    eventOutput: '#TextView_eventOutput_Label',
+    eventOutput: '#VxpTextField_eventOutput_Label',
   },
 
   commands: [

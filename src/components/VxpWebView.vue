@@ -4,10 +4,10 @@
 </template>
 
 <script>
-import Gestures from '../../mixins/GestureMixin';
+import Gestures from '../core/mixins/GestureMixin';
 
 export default {
-  name: 'WebView',
+  name: 'VxpWebView',
   props: {
     src: String,
     html: String,

@@ -1,4 +1,4 @@
-const pickerTypes = Object.freeze({
+export const pickerTypes = Object.freeze({
   file: 'file',
   image: 'image',
   audio: 'audio',
@@ -7,19 +7,18 @@ const pickerTypes = Object.freeze({
 });
 
 class FilePicker {
-  constructor() {
-    this._inputElement = document.createElement('input');
+  constructor(input) {
+    this._inputElement = input || document.createElement('input');
     this._inputElement.type = 'file';
 
     this._inputElement.addEventListener('change', e => {
       const selectedFiles = e.target.files;
-
       if (selectedFiles.length > this.options.maxNumberFiles) {
-        if (this._errorEventHandler !== null && typeof this._errorEventHandler === 'function') {
+        if (this._errorEventHandler !== null) {
           this._errorEventHandler('max limit exceeded');
         }
       } else {
-        if (this._selectedEventHandler !== null && typeof this._selectedEventHandler === 'function') {
+        if (this._selectedEventHandler !== null) {
           this._selectedEventHandler(selectedFiles);
         }
       }
@@ -29,6 +28,7 @@ class FilePicker {
       maxNumberFiles: 1,
       extensions: [],
       maxDuration: 60, //for only native
+      pickerType: pickerTypes.file,
     };
     this._selectedEventHandler = null;
     this._errorEventHandler = null;
@@ -90,6 +90,9 @@ class FilePicker {
   }
 
   on(eventName, callBack) {
+    if (typeof callBack !== 'function') {
+      throw new Error('invalid argument: callback');
+    }
     switch (eventName) {
       case 'selected':
         this._selectedEventHandler = callBack;
@@ -100,5 +103,4 @@ class FilePicker {
     }
   }
 }
-
 export default FilePicker;
