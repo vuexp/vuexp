@@ -1,5 +1,6 @@
 module.exports = {
-  tags: ['component', 'textfield'],
+  '@disabled': true,
+  '@tags': ['component', 'textfield'],
   before: function(client, done) {
     this.currentPage = client.maximizeWindow().page.textFieldPage();
     this.currentPage
@@ -9,9 +10,14 @@ module.exports = {
         done();
       });
   },
-  'C13840784 Event / Name : focus'() {
-    this.currentPage.click('@textFieldInputField').assert.containsText('@eventOutput', 'focus');
+  'C13840783 Event / Name : returnPress'() {
+    this.currentPage
+      .click('@textFieldInputField')
+      //.setValue('@textFieldInputField', this.api.Keys.ENTER)
+      .keys(this.client.Keys.ENTER)
+      .assert.containsText('@eventOutput', 'returnPress');
   },
+
   after: function(client, done) {
     client.end().customPerform(done);
   },
