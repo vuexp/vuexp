@@ -11,7 +11,7 @@ module.exports = {
   },
   '	C13840810 Check textfield editable false'() {
     this.currentPage
-      .click('@editableCheckButton')
+      .checkEditableTextField()
       .waitForElementPresent('@textFieldInputField', 3000)
       .assert.attributeEquals('@textFieldInputField', 'disabled', 'true')
       .setTextToTextField('editablefa')
