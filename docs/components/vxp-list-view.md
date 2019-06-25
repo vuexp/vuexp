@@ -20,11 +20,11 @@ If you need to visualize one or more list items differently than the rest, you c
 
 ```html
 <VxpListView :items="itemList" :itemSelect="itemConditions">
-  <v-template>
-    <Label :text="item.text" />
+  <v-template slot-scope="{ item }" slot="showIfStateTrue">
+    <Label :text="item.text" color="black" />
   </v-template>
 
-  <v-template slot-scope="{ item }" slot="showIfStateTrue">
+  <v-template slot-scope="{ item }" slot="showIfStateFalse">
     <Label :text="item.text" color="red" />
   </v-template>
 </VxpListView>
