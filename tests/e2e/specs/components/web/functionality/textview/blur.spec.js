@@ -11,9 +11,8 @@ module.exports = {
   },
   'C13843257 Event / Name : blur'() {
     this.currentPage
-      .setTextToTextField('textview blur')
-      .click('@textview')
-      .click('@textInputField')
+      .checkInitialElements()
+      .blur()
       .assert.containsText('@eventOutput', 'blur');
   },
   after: function(client, done) {

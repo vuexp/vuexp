@@ -1,6 +1,7 @@
 <template>
   <StackLayout class="theme--vuexp">
     <VxpDatePicker
+      id="datePicker_docs"
       class="vxp-date-picker-doc"
       :label="label"
       :dayPlaceholder="dayPlaceholder"

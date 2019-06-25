@@ -1,5 +1,5 @@
 module.exports = {
-  tags: ['layout', 'wrap'],
+  tags: ['layouts', 'wrapLayout'],
   before: function(client, done) {
     this.currentPage = client.maximizeWindow().page.wrapLayoutPage();
     this.currentPage
