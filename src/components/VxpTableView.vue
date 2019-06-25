@@ -174,9 +174,6 @@ export default {
     actualColCount() {
       return this.headerFields.length + (this.rowSelectionEnabled ? 1 : 0);
     },
-    colCount() {
-      return this.headerFields.length;
-    },
     linearDataArray() {
       let linearDataArray = [];
 

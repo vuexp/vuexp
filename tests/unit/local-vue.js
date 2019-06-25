@@ -32,6 +32,7 @@ import WebView from '../../src/core/components/WebView/WebView';
 import VxpLink from '../../src/components/VxpLink';
 import VxpDropdownMenu from '../../src/components/menus/VxpDropdownMenu';
 import VxpDropdownItem from '../../src/components/menus/VxpDropdownItem';
+import VxpImage from '../../src/components/VxpImage';
 import ActionDialog from '../../src/core/dialogs/ActionDialog';
 import TextView from '../../src/core/components/TextView/TextView';
 
@@ -40,6 +41,7 @@ localVue.filter('fonticon', function(value) {
   return value + ' | fonticon';
 });
 localVue.component('Button', Button);
+localVue.component('VxpImage', VxpImage);
 localVue.component('VxpDropdownMenu', VxpDropdownMenu);
 localVue.component('VxpDropdownItem', VxpDropdownItem);
 localVue.component('Img', Img);
