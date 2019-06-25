@@ -9,8 +9,11 @@ module.exports = {
         done();
       });
   },
-  'Props:/Name: errors, Type: Array'() {
-    this.currentPage.assert;
+  'Probs: /Name : item(image&icon)'() {
+    this.currentPage
+      .addNewItem('@input4_title', '@input4_icon', 'new item added', 'fa-share')
+      .openDropdownMenu()
+      .assert.attributeContains('@added_item_icon', 'class', 'fa-share');
   },
   after: function(client, done) {
     client.end().customPerform(done);
