@@ -80,13 +80,17 @@ export default {
           }
         }
       } else {
-        if (e.object.actionName) {
+        if (e && e.object.actionName) {
           actionName = 'actioname="' + e.object.actionName + '"';
           sourceType = 'action';
         }
       }
 
-      let id = platform.platform === 'web' ? e.currentTarget.id : e.object.id;
+      let id = -1;
+      if (e !== null) {
+        id = platform.platform === 'web' ? e.currentTarget.id : e.object.id;
+      }
+
       if (sourceType === 'button') {
         this.$emit('buttonClicked', id);
       } else if (sourceType === 'link') {
