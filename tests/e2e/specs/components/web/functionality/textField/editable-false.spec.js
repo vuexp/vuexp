@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  '	C13840810 Check textfield editable false'() {
+  'C13840810 Props/Name: editable, type : Boolean , value : false'() {
     this.currentPage
       .checkEditableTextField()
       .waitForElementPresent('@textFieldInputField', 3000)

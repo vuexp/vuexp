@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'C13840774 Check textfield text'() {
+  'C13840774 Props /Name:text, type : String'() {
     this.currentPage.setTextToText('textfield-').assert.attributeContains('@textFieldInputField', 'value', 'textfield-');
   },
 
