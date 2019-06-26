@@ -1,7 +1,7 @@
 module.exports = {
-  tags: ['component', 'textfield'],
+  tags: ['component', 'Textfield'],
   before: function(client, done) {
-    this.currentPage = client.maximizeWindow().page.textFieldPage();
+    this.currentPage = client.maximizeWindow().page.textfieldPage();
     this.currentPage
       .navigate(client.globals.devUrl + 'components/textfield.html')
       .waitForElementVisible('body', 60000)
@@ -9,8 +9,8 @@ module.exports = {
         done();
       });
   },
-  'C13840784 Event / Name : focus'() {
-    this.currentPage.click('@textFieldInputField').assert.containsText('@eventOutput', 'focus');
+  'C13840784 Check textfield focus'() {
+    this.currentPage.focus().assert.containsText('@eventOutput', 'focus');
   },
   after: function(client, done) {
     client.end().customPerform(done);

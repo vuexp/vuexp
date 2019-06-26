@@ -1,7 +1,7 @@
 module.exports = {
-  tags: ['component', 'textfield'],
+  tags: ['component', 'Textfield'],
   before: function(client, done) {
-    this.currentPage = client.maximizeWindow().page.textFieldPage();
+    this.currentPage = client.maximizeWindow().page.textfieldPage();
     this.currentPage
       .navigate(client.globals.devUrl + 'components/textfield.html')
       .waitForElementVisible('body', 60000)
@@ -11,8 +11,8 @@ module.exports = {
   },
   'C13840785 Event / Name : blur'() {
     this.currentPage
-      .click('@textFieldInputField')
-      .click('@textInputField')
+      .checkInitialElements()
+      .blur()
       .assert.containsText('@eventOutput', 'blur');
   },
   after: function(client, done) {

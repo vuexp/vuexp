@@ -1,8 +1,7 @@
 module.exports = {
-  '@disabled': true,
-  '@tags': ['component', 'textfield'],
+  tags: ['component', 'Textfield'],
   before: function(client, done) {
-    this.currentPage = client.maximizeWindow().page.textFieldPage();
+    this.currentPage = client.maximizeWindow().page.textfieldPage();
     this.currentPage
       .navigate(client.globals.devUrl + 'components/textfield.html')
       .waitForElementVisible('body', 60000)
@@ -10,12 +9,9 @@ module.exports = {
         done();
       });
   },
-  'C13840783 Event / Name : returnPress'() {
-    this.currentPage
-      .click('@textFieldInputField')
-      //.setValue('@textFieldInputField', this.api.Keys.ENTER)
-      .keys(this.client.Keys.ENTER)
-      .assert.containsText('@eventOutput', 'returnPress');
+  'C13840783 Check textfield key Press'() {
+    this.currentPage.setTextToHint('keyPressTest').setValue('@textFieldInputField', this.client.Keys.ENTER);
+    this.currentPage.assert.containsText('@eventOutput', 'returnPress');
   },
 
   after: function(client, done) {

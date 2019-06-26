@@ -71,12 +71,28 @@ export default {
       default: null,
     },
     months: {
-      type: Array,
+      type: Object,
       default: () => {
-        return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        return {
+          label: 'value',
+          values: [
+            { id: 1, value: 'January' },
+            { id: 2, value: 'February' },
+            { id: 3, value: 'March' },
+            { id: 4, value: 'April' },
+            { id: 5, value: 'May' },
+            { id: 6, value: 'June' },
+            { id: 7, value: 'July' },
+            { id: 8, value: 'August' },
+            { id: 9, value: 'September' },
+            { id: 10, value: 'October' },
+            { id: 11, value: 'November' },
+            { id: 12, value: 'December' },
+          ],
+        };
       },
       validator: function(value) {
-        return value.length === 12;
+        return value.values.length === 12;
       },
     },
     minYear: {
@@ -105,28 +121,33 @@ export default {
   },
   computed: {
     days() {
-      let days = [];
-      let x = this.daysInMonth(this.selectedMonth, this.selectedYear);
-      for (let i = 1; i <= x; i++) {
-        days.push(i);
+      let days = { label: 'value' };
+      let daysValues = [];
+      let year = (this.selectedYear && this.selectedYear.value) || null;
+      let daysLength = this.daysInMonth(this.selectedMonth, year);
+      for (let i = 1; i <= daysLength; i++) {
+        daysValues.push({ value: i });
       }
+      days.values = daysValues;
       return days;
     },
     years() {
-      let years = [];
+      let years = { label: 'value' };
+      let yearsValues = [];
       for (let i = this.minYear; i <= this.maxYear; i++) {
-        years.push(i);
+        yearsValues.push({ value: i });
       }
-      return years.reverse();
+      years.values = yearsValues.reverse();
+      return years;
     },
     selectedDayIndex() {
-      return this.days.indexOf(this.day);
+      return this.days.values.findIndex(v => v.value === this.day) >= 0 ? this.days.values.findIndex(v => v.value === this.day) : null;
     },
     selectedMonthIndex() {
       return this.month === null ? null : this.month - 1;
     },
     selectedYearIndex() {
-      return this.years.indexOf(this.year);
+      return this.years.values.findIndex(v => v.value === this.year) >= 0 ? this.years.values.findIndex(v => v.value === this.year) : null;
     },
   },
   methods: {
@@ -146,8 +167,8 @@ export default {
       this.watchDate();
     },
     watchDate() {
-      if (this.selectedDay !== null && this.selectedMonth !== null && this.selectedYear !== null) {
-        this.$emit('dateChange', new Date(this.selectedYear, this.selectedMonth, this.selectedDay));
+      if (this.selectedDay && this.selectedMonth !== null && this.selectedMonth !== undefined && this.selectedYear) {
+        this.$emit('dateChange', new Date(this.selectedYear.value, this.selectedMonth, this.selectedDay.value));
       }
     },
   },
