@@ -33,10 +33,10 @@ switchValueChange: event => console.log(event);
 
 | Name    | Type    | Default | Web | Mobile | Description                                                             |
 | ------- | ------- | ------- | --- | ------ | ----------------------------------------------------------------------- |
-| checked | Boolean | `false` | ✔   | ✔      | Gets or sets the value of the switch selection. Default value: `false`. |
+| checked | Boolean | `false` | ✔   | ✔      | Gets or sets the value of the switcher selection. Default value: `false`. |
 
 ## Events
 
 | Name          | Web | Mobile | Description                                |
 | ------------- | --- | ------ | ------------------------------------------ |
-| checkedChange | ✔   | ✔      | Emitted when the switch selection changes. |
+| checkedChange | ✔   | ✔      | Emitted when the switcher selection changes. |
