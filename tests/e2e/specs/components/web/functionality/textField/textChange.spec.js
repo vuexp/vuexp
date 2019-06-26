@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  '	C13840795 Check textfield textChange'() {
+  'C13840795 Event / Name : textChange'() {
     this.currentPage.setTextToTextField('textChange text').assert.containsText('@eventOutput', 'textChange');
   },
 

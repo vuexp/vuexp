@@ -35,7 +35,6 @@ module.exports = {
     {
       checkInitialElements: function() {
         this.expect.element('@textFieldInputField').to.be.visible;
-
         return this;
       },
 
@@ -66,7 +65,7 @@ module.exports = {
       checkSecure: function() {
         this.waitForElementVisible('@textFieldInputField', 10000);
         if (this.verify.attributeContains('@textFieldInputField', 'type', 'password')) {
-          return true;
+          return this.click('@secureCheckButton');
         }
       },
       uncheckSecure: function() {

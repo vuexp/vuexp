@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'C13840785 Check textfield blur'() {
+  'C13840785 Event / Name : blur'() {
     this.currentPage
       .checkInitialElements()
       .blur()
