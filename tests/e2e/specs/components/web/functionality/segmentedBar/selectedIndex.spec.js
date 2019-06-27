@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'Props:/Name: selectedIndex, Type: Number'() {
+  'C13843433 Props:/Name: selectedIndex, Type: Number'() {
     this.currentPage
       .changeItemTitle(0)
       .assert.containsText('@segmen0_button_title', 'change 0')
