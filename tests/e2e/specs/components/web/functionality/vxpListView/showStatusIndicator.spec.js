@@ -9,14 +9,14 @@ module.exports = {
         done();
       });
   },
-  'C13890567  Events / Name : scrolled and Events / Name : loadMoreItems'() {
+  'C13890572  Methods / Name :showStatusIndicator(showIndicator, item)'() {
     this.currentPage
-      .editListHeight('100')
-      .addScroll('Item Text2')
-      .checkScrollEvent();
-    this.client.pause('10000');
-    this.currentPage.assert.containsText('#vxplistview_event1_label', 'Load more items');
-    //this.currentPage.assert.containsText('@scrollEventLabel', 'Load more items');
+      .showIndicator()
+      .assert.elementPresent('@loadingText')
+      .hideIndicator()
+      .assert.elementNotPresent('@loadingText')
+      .changeIndicatorState()
+      .assert.attributeContains('@loadingText', 'style', 'white-space: nowrap; color: red;');
   },
 
   after: function(client, done) {

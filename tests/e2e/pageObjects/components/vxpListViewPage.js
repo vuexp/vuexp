@@ -26,6 +26,12 @@ module.exports = {
     listViewLoadedLabel: '#vxplistview_event0_label',
     scrollToStart: '#vxplistview_scrolltostart_button',
     scrollToEnd: '#vxplistview_scrolltoend_button',
+    scrollToIndex: 'div[index="6"]',
+    indicatorTextField: '#vxplistview_indicator_textfield',
+    indicatorState: '#vxplistview_indicatorstate_cb',
+    indicatorShowButton: '#vxplistview_indicatorshow_button',
+    indicatorHideButton: '#vxplistview_indicatorhide_button',
+    loadingText: '#vxplistview_component_listview > div > div > div > span',
   },
 
   commands: [
@@ -91,7 +97,22 @@ module.exports = {
       clickScrollToEnd: function() {
         return this.waitForElementVisible('@scrollToEnd', 10000).click('@scrollToEnd');
       },
+      checkScrollEvent: function() {
+        return this.waitForElementVisible('@scrollToIndex', 10000);
+      },
+      showIndicator: function() {
+        return this.waitForElementVisible('@indicatorShowButton', 10000).click('@indicatorShowButton');
+      },
 
+      hideIndicator: function() {
+        return this.waitForElementVisible('@indicatorHideButton', 10000).click('@indicatorHideButton');
+      },
+
+      changeIndicatorState: function() {
+        return this.waitForElementVisible('@indicatorState', 10000)
+          .click('@indicatorState')
+          .click('@indicatorShowButton');
+      },
       perform: function(callback) {
         this.api.perform(callback);
         return this;

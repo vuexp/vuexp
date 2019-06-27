@@ -9,14 +9,13 @@ module.exports = {
         done();
       });
   },
-  'C13890567  Events / Name : scrolled and Events / Name : loadMoreItems'() {
+  'C13890571    Methods/ Name :scrollToIndex(index)'() {
     this.currentPage
       .editListHeight('100')
-      .addScroll('Item Text2')
-      .checkScrollEvent();
-    this.client.pause('10000');
-    this.currentPage.assert.containsText('#vxplistview_event1_label', 'Load more items');
-    //this.currentPage.assert.containsText('@scrollEventLabel', 'Load more items');
+      .addScroll('Item')
+      .clickScrollToEnd();
+    this.client.pause('2000');
+    this.currentPage.assert.elementPresent('@scrollToIndex').assert.containsText('@loadMoreItemsLabel', 'Load more items');
   },
 
   after: function(client, done) {
