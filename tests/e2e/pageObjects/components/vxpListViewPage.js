@@ -21,9 +21,11 @@ module.exports = {
     list: 'div[class="vxp-scrollview vxp-scrollview--vertical vxp-scrollable vxp-scrollable--undefined"]',
     listViewComponent: '#vxplistview_component_listview',
     scrollEventLabel: '#vxplistview_event2_label',
-    loadMoreItemsLabel: 'vxplistview_event1_label',
+    loadMoreItemsLabel: '#vxplistview_event1_label',
     scrollElement: '#vxplistview_component_listview > div > div:nth-child(5) > div > span',
     listViewLoadedLabel: '#vxplistview_event0_label',
+    scrollToStart: '#vxplistview_scrolltostart_button',
+    scrollToEnd: '#vxplistview_scrolltoend_button',
   },
 
   commands: [
@@ -79,7 +81,15 @@ module.exports = {
           .click('@addItemtoListButton')
           .clearValue('@itemTextField')
           .setValue('@itemTextField', text3)
+          .click('@addItemtoListButton')
+          .click('@addItemtoListButton')
           .click('@addItemtoListButton');
+      },
+      clickScrollToStart: function() {
+        return this.waitForElementVisible('@scrollToStart', 10000).click('@scrollToStart');
+      },
+      clickScrollToEnd: function() {
+        return this.waitForElementVisible('@scrollToEnd', 10000).click('@scrollToEnd');
       },
 
       perform: function(callback) {
