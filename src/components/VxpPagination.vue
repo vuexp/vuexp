@@ -72,7 +72,7 @@ export default {
   data() {
     return {
       perPage: this.itemsPerPage,
-      currPage: this.page < 1 ? 1 : this.page > this.lastPage ? this.lastPage : this.page,
+      currPage: this.boundaryCheckPage(this.page),
     };
   },
   computed: {
@@ -115,6 +115,9 @@ export default {
     },
   },
   methods: {
+    boundaryCheckPage(p) {
+      return p < 1 ? 1 : p > this.lastPage ? this.lastPage : p;
+    },
     pageClass(currentPage) {
       return this.currPage === currentPage ? `${this.css.paginationItem} selected` : this.css.paginationItem;
     },
@@ -148,7 +151,7 @@ export default {
     checkCurrentPageExist() {
       let nextPage = this.currPage;
       if (this.qntPages.indexOf(this.currPage) === -1) {
-        nextPage = this.qntPages.length ? this.qntPages.length : 0;
+        nextPage = this.qntPages.length;
       }
 
       this.currPage = nextPage < 1 ? 1 : nextPage > this.lastPage ? this.lastPage : nextPage;
