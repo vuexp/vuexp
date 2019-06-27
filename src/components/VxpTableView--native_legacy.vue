@@ -115,7 +115,7 @@ export default {
     };
   },
   mounted() {
-    if (platform !== null && typeof platform !== 'undefined') {
+    if (typeof platform !== 'undefined') {
       const self = this;
       platform.onGridChange(gridCol => {
         if (gridCol === 'col-1') {
