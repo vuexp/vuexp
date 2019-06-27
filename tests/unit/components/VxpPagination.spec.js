@@ -33,11 +33,11 @@ describe('VxpPagination', () => {
       const pages1 = [1, 2, '...', 10];
       expect(wrapper.vm.qntPages).to.deep.equal(pages1);
 
-      wrapper.vm.$props.page = 5;
+      wrapper.setProps({ page: 5 });
       const pages2 = [1, '...', 4, 5, 6, '...', 10];
       expect(wrapper.vm.qntPages).to.deep.equal(pages2);
 
-      wrapper.vm.$props.page = 10;
+      wrapper.setProps({ page: 10 });
       const pages3 = [1, '...', 9, 10];
       expect(wrapper.vm.qntPages).to.deep.equal(pages3);
     });
@@ -54,7 +54,7 @@ describe('VxpPagination', () => {
     });
 
     it('checks onUpdateCurrentPage', () => {
-      wrapper.vm.$props.itemsPerPage = 20;
+      wrapper.setProps({ itemsPerPage: 20 });
       expect(wrapper.emitted().onUpdateCurrentPage[0]).to.deep.equal([5]);
     });
   });
@@ -82,23 +82,23 @@ describe('VxpPagination', () => {
     });
 
     it('checks boundary values', () => {
-      wrapper.vm.$props.totalItems = 200;
+      wrapper.setProps({ totalItems: 200 });
       expect(wrapper.emitted().onUpdateCurrentPage[0][0]).to.deep.equal(5);
 
-      wrapper.vm.$props.itemsPerPage = 'asd';
+      wrapper.setProps({ itemsPerPage: 'asd' });
       expect(wrapper.vm.perPage).to.equal(10);
 
-      wrapper.vm.$props.totalItems = 0;
+      wrapper.setProps({ totalItems: 0 });
       expect(wrapper.vm.qntPages).to.deep.equal([0]);
-      wrapper.vm.$props.totalItems = 100;
+      wrapper.setProps({ totalItems: 100 });
 
-      wrapper.vm.$props.page = 'asd';
+      wrapper.setProps({ page: 'asd' });
       expect(wrapper.vm.currPage).to.equal(1);
 
-      wrapper.vm.$props.page = -1;
+      wrapper.setProps({ page: -1 });
       expect(wrapper.vm.currPage).to.equal(1);
 
-      wrapper.vm.$props.page = 100;
+      wrapper.setProps({ page: 100 });
       expect(wrapper.vm.currPage).to.equal(10);
     });
   });
