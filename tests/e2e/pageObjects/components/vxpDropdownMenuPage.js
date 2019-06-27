@@ -7,8 +7,12 @@ module.exports = {
   elements: {
     dropdown: '#dropdownmenu__title__label',
     dropdown_click: '#dropdownmenu__title__label div',
-    menu_title: '#dropdownmenu__title__input',
-    menu_icon: '#dropdownmenu__icon__select',
+    //menu
+    menu_title_input: '#dropdownmenu__title__input',
+    menu_title: '.vxp-dropdown__menu__title',
+    menu_icon: '.vxp-dropdown__menu__icon.undefined.fa.fa',
+    menu_icon_input: '#dropdownmenu__icon__select',
+    //items
     disable_checkbox: '#dropdownmenu__disabled__checkbox',
     addItem_button: '#dropdownmenu__additem__button',
     resetItems: '#dropdownmenu__resetitems__button',
@@ -27,6 +31,26 @@ module.exports = {
     item0: '#dropdownmenu__item(0)__label',
     item1: '#dropdownmenu__item(1)__label',
     item2: '#dropdownmenu__item(2)__label',
+    //menu icons
+    trash: '#dropdownmenu__icon__select > option:nth-child(1)',
+    plus_circle: '#dropdownmenu__icon__select > option:nth-child(2)',
+    calendar: '#dropdownmenu__icon__select > option:nth-child(3)',
+    pencil: '#dropdownmenu__icon__select > option:nth-child(4)',
+    share: '#dropdownmenu__icon__select > option:nth-child(5)',
+    times: '#dropdownmenu__icon__select > option:nth-child(6)',
+    refresh: '#dropdownmenu__icon__select > option:nth-child(7)',
+    smile: '#dropdownmenu__icon__select > option:nth-child(8)',
+    user_circle: '#dropdownmenu__icon__select > option:nth-child(9)',
+    triangle: '#dropdownmenu__icon__select > option:nth-child(10)',
+    //items
+    item1_title: '#dropdownmenu__item\\(0\\)__label > span.vxp-label.vxp-dropdown-item__title',
+    item1_icon: '#dropdownmenu__item\\(0\\)__label > span.vxp-label.vxp-dropdown-item__icon.fa',
+    item2_title: '#dropdownmenu__item\\(1\\)__label > span.vxp-label.vxp-dropdown-item__title',
+    item2_icon: '#dropdownmenu__item\\(1\\)__label > span.vxp-label.vxp-dropdown-item__icon.fa',
+    item3_title: '#dropdownmenu__item\\(2\\)__label > span.vxp-label.vxp-dropdown-item__title',
+    item3_icon: '#dropdownmenu__item\\(2\\)__label > span.vxp-label.vxp-dropdown-item__icon.fa',
+    item4_title: '#dropdownmenu__item\\(3\\)__label > span.vxp-label.vxp-dropdown-item__title',
+    item4_icon: '#dropdownmenu__item\\(3\\)__label > span.vxp-label.vxp-dropdown-item__icon.fa',
   },
 
   commands: [
@@ -42,7 +66,7 @@ module.exports = {
         return this.click('@disable_checkbox');
       },
       openDropdownMenu: function() {
-        this.waitForElementVisible('@dropdown', 10000);
+        this.waitForElementVisible('@dropdown_click', 10000);
         return this.click('@dropdown_click');
       },
       addNewItem: function(title, icon, text, icon_name) {
@@ -70,6 +94,73 @@ module.exports = {
       selectAddedItem: function() {
         this.waitForElementVisible('@added_id', 10000);
         return this.click('@added_id');
+      },
+      changeMenuTitle: function(title) {
+        return this.waitForElementVisible('@menu_title_input', 10000)
+          .clearValue('@menu_title_input')
+          .setValue('@menu_title_input', title);
+      },
+      changeMenuIcon: function(icon) {
+        this.waitForElementVisible('@menu_icon_input', 10000).click('@menu_icon_input');
+        switch (icon) {
+          case 'trash':
+            return this.click('@trash');
+          case 'plus_circle':
+            return this.click('@plus_circle');
+          case 'calendar':
+            return this.click('@calendar');
+          case 'pencil':
+            return this.click('@pencil');
+          case 'share':
+            return this.click('@share');
+          case 'times':
+            return this.click('@times');
+          case 'refresh':
+            return this.click('@refresh');
+          case 'smile':
+            return this.click('@smile');
+          case 'user_circle':
+            return this.click('@user_circle');
+          case 'triangle':
+            return this.click('@triangle');
+        }
+      },
+      changeItemTitle: function(item_no, title) {
+        switch (item_no) {
+          case 1:
+            return this.clearValue('@input1_title').setValue('@input1_title', title);
+          case 2:
+            return this.clearValue('@input2_title').setValue('@input2_title', title);
+          case 3:
+            return this.clearValue('@input3_title').setValue('@input3_title', title);
+          case 4:
+            return this.clearValue('@input4_title').setValue('@input4_title', title);
+        }
+      },
+      changeItemIcon: function(icon) {
+        this.waitForElementVisible('@menu_icon_input', 10000).click('@menu_icon_input');
+        switch (icon) {
+          case 'trash':
+            return this.click('@trash');
+          case 'plus_circle':
+            return this.click('@plus_circle');
+          case 'calendar':
+            return this.click('@calendar');
+          case 'pencil':
+            return this.click('@pencil');
+          case 'share':
+            return this.click('@share');
+          case 'times':
+            return this.click('@times');
+          case 'refresh':
+            return this.click('@refresh');
+          case 'smile':
+            return this.click('@smile');
+          case 'user_circle':
+            return this.click('@user_circle');
+          case 'triangle':
+            return this.click('@triangle');
+        }
       },
       perform: function(callback) {
         this.api.perform(callback);

@@ -11,10 +11,24 @@ module.exports = {
   },
   'Probs: /Name : item(image&icon)'() {
     this.currentPage
-      .addNewItem('@input4_title', '@input4_icon', 'new item added', 'fa-share')
+      .checkInitialElements()
       .openDropdownMenu()
-      .assert.attributeContains('@added_item_icon', 'class', 'fa-share');
+      .assert.containsText('@item1_title', 'Delete Selected Lead(s)')
+      .assert.attributeContains('@item1_icon', 'class', 'trash')
+      .assert.containsText('@item2_title', 'Clone Selected Lead(s)')
+      .assert.attributeContains('@item2_icon', 'class', 'plus-circle')
+      .assert.containsText('@item3_title', 'Schedule Appointment')
+      .assert.attributeContains('@item3_icon', 'class', 'calendar')
+      .changeItemTitle(1, 'new title for 1')
+      .assert.containsText('@item1_title', 'new title for 1')
+      .changeItemTitle(2, 'new title for 2')
+      .assert.containsText('@item1_title', 'new title for 1')
+      .changeItemTitle(3, 'new title for 3')
+      .assert.containsText('@item1_title', 'new title for 1');
+    //.changeMenuIcon('trash')
+    //.assert.attributeContains('@menu_icon', 'class', 'trash');
   },
+
   after: function(client, done) {
     client.end().customPerform(done);
   },

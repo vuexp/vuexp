@@ -9,19 +9,9 @@ module.exports = {
         done();
       });
   },
+
   'Events: tap'() {
-    this.currentPage
-      .checkInitialElements()
-      .openDropdownMenu()
-      //  .addNewItem('@input4_title', '@input4_icon', 'new item added', 'fa-share')
-      .selectAnItem('0');
-    this.client.pause('10000');
-    this.currentPage.assert.containsText('@selected_index', '0').selectAnItem('1');
-    this.client.pause('10000');
-    this.currentPage.assert.containsText('@selected_index', '1').selectAnItem('2');
-    this.client.pause('10000');
-    this.currentPage.assert.containsText('@selected_index', '2');
-    // this.currentPage.assert.containsText('@selected_index', '3');
+    this.currentPage;
   },
   after: function(client, done) {
     client.end().customPerform(done);
