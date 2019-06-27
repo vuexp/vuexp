@@ -10,7 +10,7 @@ module.exports = {
       });
   },
   'C13843256 Event / Name : focus'() {
-    this.currentPage.click('@textview').assert.containsText('@eventOutput', 'focus');
+    this.currentPage.focus().assert.containsText('@eventOutput', 'focus');
   },
   after: function(client, done) {
     client.end().customPerform(done);
