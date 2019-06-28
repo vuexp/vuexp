@@ -11,7 +11,7 @@ module.exports = {
   },
   'C13843248 Props/Name: editable, type : Boolean , value : false'() {
     this.currentPage
-      .click('@editableCheckButton')
+      .checkEditableTextField()
       .waitForElementPresent('@textview', 3000)
       .assert.attributeEquals('@textview', 'disabled', 'true')
       .setTextToTextField('editablefa')
