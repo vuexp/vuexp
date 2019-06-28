@@ -14,9 +14,9 @@ module.exports = {
       .editListHeight('100')
       .addScroll('Item Text2')
       .checkScrollEvent();
-    this.client.pause('10000');
+    this.client.execute("document.querySelector('#vxplistview_component_listview').scrollTop=100");
+    this.client.pause('4000');
     this.currentPage.assert.containsText('#vxplistview_event1_label', 'Load more items');
-    //this.currentPage.assert.containsText('@scrollEventLabel', 'Load more items');
   },
 
   after: function(client, done) {
