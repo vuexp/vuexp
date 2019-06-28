@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'Probs: /Name : item(image&icon)'() {
+  'C13899148 Probs: /Name : item(image&icon)'() {
     this.currentPage
       .checkInitialElements()
       .openDropdownMenu()
@@ -24,9 +24,18 @@ module.exports = {
       .changeItemTitle(2, 'new title for 2')
       .assert.containsText('@item1_title', 'new title for 1')
       .changeItemTitle(3, 'new title for 3')
-      .assert.containsText('@item1_title', 'new title for 1');
-    //.changeMenuIcon('trash')
-    //.assert.attributeContains('@menu_icon', 'class', 'trash');
+      .assert.containsText('@item1_title', 'new title for 1')
+      .changeItemIcon(1)
+      .assert.attributeContains('@item1_icon', 'class', 'times')
+      .addNewItem()
+      .assert.containsText('@item4_title', 'Sample title')
+      .assert.attributeContains('@item4_icon', 'class', 'smile')
+      .changeItemTitle(4, 'new title for 4')
+      .assert.containsText('@item4_title', 'new title for 4')
+      .changeItemIcon(4)
+      .assert.attributeContains('@item4_icon', 'class', 'share')
+      .resetItems()
+      .expect.element('@item4_title').to.not.be.present;
   },
 
   after: function(client, done) {

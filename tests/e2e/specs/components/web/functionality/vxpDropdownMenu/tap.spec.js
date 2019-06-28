@@ -10,8 +10,20 @@ module.exports = {
       });
   },
 
-  'Events: tap'() {
-    this.currentPage;
+  'C13899151 Events: tap'() {
+    this.currentPage
+      .addNewItem()
+      .openDropdownMenu()
+      .assert.containsText('@item4_title', 'Sample title')
+      .assert.attributeContains('@item4_icon', 'class', 'smile')
+      .selectAnItem(0)
+      .assert.containsText('@selected_index', '0')
+      //.selectAnItem(1);
+      // this.currentPage.assert.containsText('@selected_index', '1')
+      .selectAnItem(2)
+      .assert.containsText('@selected_index', '2')
+      .selectAnItem(3)
+      .assert.containsText('@selected_index', '3');
   },
   after: function(client, done) {
     client.end().customPerform(done);
