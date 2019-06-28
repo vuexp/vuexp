@@ -1,10 +1,10 @@
 <template>
   <Button
-    @tap="$emit('tap', $event)"
     :style="{ width: unit(size), height: unit(size), fontSize: unit(iconSize) }"
     :text="this.icon | fonticon"
     :class="`${nuIconButtonClass} ${iconName}`"
     :isEnabled="isEnabled"
+    v-on="$listeners"
   />
 </template>
 
