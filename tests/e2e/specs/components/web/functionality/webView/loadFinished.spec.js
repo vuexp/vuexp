@@ -11,7 +11,7 @@ module.exports = {
   },
   'C13839421 Events - Event : loadFinished'() {
     this.currentPage.loadFinishedPage('http://nativescript-vue.org/');
-    this.client.pause(30000);
+    this.client.pause(10000);
     this.currentPage.assert.containsText('@eventLabel', 'loadFinished').checkScreenshot('@image');
   },
 
