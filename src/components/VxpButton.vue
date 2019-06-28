@@ -1,5 +1,5 @@
 <template>
-  <Button :text="text" @tap="onTap" :textWrap="textWrap" :class="vxpButtonClass" :type="type" :isEnabled="!disabled">
+  <Button :text="text" @tap="onTap" :textWrap="textWrap" :class="vxpButtonClass" :type="type" :isEnabled="!disabled" v-on="filteredListeners">
     <FormattedString v-if="(icon || iconClass) && iconPosition === 'left'">
       <Span :text="icon | fonticon" :class="iconClass" />
       <Span text=" " />
@@ -15,7 +15,6 @@
 
 <script>
 import CommonDirective from '../core/directives/CommonDirective';
-import Gestures from '../core/mixins/GestureMixin';
 import Button from '../core/components/Button/Button';
 import FormattedString from '../core/components/FormattedString/FormattedString';
 import Span from '../core/components/Span/Span';
@@ -78,6 +77,10 @@ export default {
 
       return classList.join(' ');
     },
+    filteredListeners() {
+      let { tap, ...listeners } = this.$listeners;
+      return listeners;
+    },
   },
   methods: {
     onTap(event, cancelBubbling) {
@@ -88,7 +91,6 @@ export default {
   directives: {
     'common-directive': CommonDirective,
   },
-  mixins: [Gestures],
 };
 </script>
 
