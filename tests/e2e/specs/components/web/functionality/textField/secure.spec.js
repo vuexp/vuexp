@@ -9,11 +9,13 @@ module.exports = {
         done();
       });
   },
-  '	C13840778 Check textfield not secure'() {
-    this.currentPage.setTextToTextField('Not secure').uncheckSecure();
-  },
-  '	C13840778 Check textfield secure'() {
-    this.currentPage.setTextToTextField('Secure').checkSecure();
+  'C13840778 Props /Name: Secure , type : Boolean'() {
+    this.currentPage
+      .setTextToTextField('Not secure')
+      .checkScreenshot('@textFieldInputField')
+      .uncheckSecure()
+      .checkScreenshot('@textFieldInputField')
+      .checkSecure();
   },
 
   after: function(client, done) {

@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  'C13840776 Check textfield editable true as a default'() {
+  'C13840776	Props /Name: editable, type : Boolean , value : default(true)'() {
     this.currentPage
       .setTextToTextField('editabletu')
       .assert.attributeContains('@textFieldInputField', 'style', '')
