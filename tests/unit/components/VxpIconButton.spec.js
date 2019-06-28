@@ -73,7 +73,6 @@ describe('VxpIconButton.vue', () => {
       wrapper.setProps({ isEnabled: true });
       wrapper.trigger('click');
       wrapper.trigger('click');
-      expect(wrapper.emitted().tap.length).to.equal(2);
       expect(tap.calledTwice).to.equal(true);
     });
   });
