@@ -11,6 +11,7 @@ module.exports = {
     placeholder: '#image__placeholder__input',
     width: '#image__width__input',
     height: '#image__height__input',
+    event_label: '#image__event__label',
     //stretch modes
     none: '#image__stretchMode__select > option:nth-child(1)',
     aspectFill: '#image__stretchMode__select > option:nth-child(2)',
@@ -58,7 +59,7 @@ module.exports = {
         }
       },
       loadImage: function(source_url) {
-        this.waitForElementVisible('@url', 10000)
+        return this.waitForElementVisible('@url', 10000)
           .clearValue('@url')
           .setValue('@url', source_url);
       },

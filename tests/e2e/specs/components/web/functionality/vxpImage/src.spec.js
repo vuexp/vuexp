@@ -10,9 +10,16 @@ module.exports = {
       });
   },
   'C13843461 Props/ Name:src, Value: URL or ImageSource'() {
-    this.currentPage.loadImage(
-      'https://indigodergisi.com/wp-content/uploads/2017/05/1494118823_EpilepsiveBen_6_11Ya_____kincisi__Berat___pek-e1494238706926-265x198.jpg',
-    );
+    this.currentPage.assert
+      .containsText('@event_label', 'onLoad')
+      .loadImage('~/images/logo.png')
+      .assert.containsText('@event_label', 'onLoad')
+      .loadImage('~/images/logo.')
+      .assert.containsText('@event_label', 'onLoadError')
+      .loadImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGBMypM074-O79tpkh_d8K31vFOxo2dlju305peWkEbG-_r-I6Kg')
+      .assert.containsText('@event_label', 'onLoad')
+      .loadImage('https://encrypted-tbn0.gstatic.com/images?q=')
+      .assert.containsText('@event_label', 'onLoadError');
   },
 
   after: function(client, done) {
