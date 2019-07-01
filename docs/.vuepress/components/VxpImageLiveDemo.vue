@@ -1,7 +1,7 @@
 <template>
   <StackLayout style="width: 400px; margin:auto;">
     <StackLayout style="width: 400px; height: 200px;" class="stack-cell">
-      <VxpImage id="image" :src="src" :stretch="stretch" :placeholder="placeholder" :width="width" :height="height" />
+      <VxpImage id="image" :src="src" :stretch="stretch" :placeholder="placeholder" :width="width" :height="height" @onLoad="onLoad($event)" @onLoadError="onLoadError($event)" />
     </StackLayout>
 
     <Label text="Source URL: ">
@@ -24,6 +24,10 @@
     <Label text="Height: ">
       <TextField v-model="height" keyboard-type="number" id="image__height__input"></TextField>
     </Label>
+    <StackLayout orientation="horizontal">
+      <VxpLabel text="Event output:"></VxpLabel>
+      <VxpLabel :text="eventOutput" id="image__event__label"></VxpLabel>
+    </StackLayout>
   </StackLayout>
 </template>
 
@@ -32,6 +36,7 @@ import StackLayout from "../../../src/layouts/StackLayout";
 import Label from "../../../src/core/components/Label/Label";
 import VxpImage from "../../../src/components/VxpImage";
 import TextField from "../../../src/core/components/TextField/TextField";
+import VxpLabel from "../../../src/components/VxpLabel";
 
 export default {
   name: "VxpImageLiveDemo",
@@ -42,13 +47,23 @@ export default {
       placeholder: "",
       height: "100",
       width: "100",
+      eventOutput: null,
+    }
+  },
+  methods: {
+    onLoad() {
+      this.eventOutput = 'onLoad';
+    },
+    onLoadError() {
+      this.eventOutput = 'onLoadError';
     }
   },
   components: {
     TextField,
     StackLayout,
     Label,
-    VxpImage
+    VxpImage,
+    VxpLabel
   }
 };
 </script>
