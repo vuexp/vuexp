@@ -13,13 +13,12 @@ module.exports = {
     this.currentPage
       .editListHeight('100')
       .addScroll('Item')
-      .clickScrollToEnd();
-    this.client.pause('2000');
-    this.currentPage.clickScrollToStart();
-    this.client.pause('2000');
-    this.currentPage.assert
-      .elementPresent('@loadMoreItemsLabel')
-      .assert.containsText('@loadMoreItemsLabel', 'Load more items')
+      .clickScrollToEnd()
+      .checkEventLabelElements()
+      .assert.elementPresent('@componentEventLabel')
+      .assert.containsText('@componentEventLabel', 'Load more items')
+      .clickScrollToStart()
+      .checkEventLabelElements()
       .assert.elementPresent('@scrollEventLabel')
       .assert.containsText('@scrollEventLabel', 'List view is scrolled');
   },

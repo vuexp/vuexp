@@ -32,6 +32,7 @@ module.exports = {
     indicatorShowButton: '#vxplistview_indicatorshow_button',
     indicatorHideButton: '#vxplistview_indicatorhide_button',
     loadingText: '#vxplistview_component_listview > div > div > div > span',
+    componentEventLabel: '#vxplistview_event1_label',
   },
 
   commands: [
@@ -99,6 +100,9 @@ module.exports = {
       },
       checkScrollEvent: function() {
         return this.waitForElementVisible('@scrollToIndex', 10000);
+      },
+      checkEventLabelElements: function() {
+        return this.waitForElementVisible('@componentEventLabel', 10000);
       },
       showIndicator: function() {
         return this.waitForElementVisible('@indicatorShowButton', 10000).click('@indicatorShowButton');

@@ -13,9 +13,9 @@ module.exports = {
     this.currentPage
       .editListHeight('100')
       .addScroll('Item')
-      .clickScrollToEnd();
-    this.client.pause('2000');
-    this.currentPage.assert.elementPresent('@scrollToIndex').assert.containsText('@loadMoreItemsLabel', 'Load more items');
+      .clickScrollToEnd()
+      .checkEventLabelElements()
+      .assert.containsText('@loadMoreItemsLabel', 'Load more items');
   },
 
   after: function(client, done) {
