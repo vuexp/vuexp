@@ -2,6 +2,8 @@
 sidebarDepth: 0
 ---
 
+# TableView
+
 This is an overview of the most common usage of `<TableView>`.
 
 ## Live Demo

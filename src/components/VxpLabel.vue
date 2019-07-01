@@ -1,5 +1,5 @@
 <template>
-  <Label :text="text" :textWrap="textWrap" />
+  <Label :text="text" :textWrap="textWrap" v-on="$listeners" />
 </template>
 
 <script>
