@@ -15,15 +15,12 @@ module.exports = {
     this.currentPage
       .checkInitialElements()
       .setExternalUrlText(googleUrl)
-      .clickLinkLabel();
-
-    // Handle with new tab
-    this.client.windowHandles(function(result) {
-      let googleTab = result.value[1]; // New Google tab index
-      this.switchWindow(googleTab); // Switch to Google tab
-    });
-    // Verify new tab is "Google" by taking a screenshot
-    this.currentPage.checkScreenshot();
+      .clickLinkLabel()
+      .api.pause(3000)
+      .windowHandles(function(result) {
+        // Check there are 2 sessions which shows new tab is opened
+        this.assert.equal(result.value.length, 2, 'There should be two tabs open.');
+      });
   },
 
   after: function(client, done) {
