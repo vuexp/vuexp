@@ -21,7 +21,7 @@ module.exports = {
     disabledLabel: '#dropDown_checkbox_value_label',
 
     //items elements
-    itemsPlusButton: '#dropDown_items_plus_button',
+    itemsPlusButton: '#dropDown_items_plus_button_8',
     itemsMinusButton: '#dropDown_items_minus_button',
     itemsLabelField: '#dropDown_items_label_textField',
     selectIndexField: '#dropDown_items_index_textField',
@@ -34,6 +34,11 @@ module.exports = {
     dropdownaddedItemFirst: '#dropDown_docs > ul > li.hover',
     dropdownaddedItemSecond: '//*[@id="dropDown_docs"]/ul/li[11]',
     selectIndexLabel: '#dropDown_selectItem_label',
+    dropdownContainer: '#dropDown_docs > ul',
+
+    //placeholder elements
+    placeholderField: '#dropDown_placeholder_textField',
+    dropdownPlaceholder: '#dropDown_docs > div.vxp-drop-down__container > input',
   },
 
   commands: [
@@ -71,6 +76,11 @@ module.exports = {
       selectIndex: function(index) {
         return this.waitForElementVisible('@selectIndexField', 10000).setValue('@selectIndexField', index);
       },
+      selectIndexTwo: function(index2) {
+        return this.waitForElementVisible('@selectIndexField', 10000)
+          .clearValue('@selectIndexField')
+          .setValue('@selectIndexField', index2);
+      },
       addFirstItem: function(ItemName2) {
         return this.waitForElementVisible('@itemsPlusButton', 10000)
           .click('@itemsPlusButton')
@@ -90,6 +100,22 @@ module.exports = {
         return this.waitForElementVisible('@itemsMinusButton', 10000)
           .click('@itemsMinusButton')
           .click('@dropdownComponent');
+      },
+      selectDisabled: function() {
+        return this.waitForElementVisible('@disabledCheckbox', 10000).click('@disabledCheckbox');
+      },
+      openDropdown: function() {
+        return this.waitForElementVisible('@dropdownComponent', 10000).click('@dropdownComponent');
+      },
+      selectItemonDropdown: function() {
+        return this.waitForElementVisible('@dropdownComponent', 10000)
+          .click('@dropdownComponent')
+          .click('@dropdownItemLabelSecond');
+      },
+      editPlaceholder: function(placeholder) {
+        return this.waitForElementVisible('@placeholderField', 10000)
+          .clearValue('@placeholderField')
+          .setValue('@placeholderField', placeholder);
       },
 
       perform: function(callback) {

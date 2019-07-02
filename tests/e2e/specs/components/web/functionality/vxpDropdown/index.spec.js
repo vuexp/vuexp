@@ -9,19 +9,19 @@ module.exports = {
         done();
       });
   },
-  'C13890217  Props:/Name: items, Type: Array'() {
+  'C13890218  Props:/Name: index, Type: Number - Events / Name : changeIndex'() {
     this.currentPage
-      .editItem('England')
-      .assert.elementPresent('@dropdownItemLabelFirst')
-      .assert.containsText('@dropdownItemLabelFirst', 'England')
-      .closeDropdown()
       .addFirstItem('Spain')
       .assert.elementPresent('@addedItemField')
       .selectIndex('9')
       .assert.containsText('@selectIndexLabel', 'id":10,"value":"Spain')
-      .addSecondItem('Italy');
-    this.client.pause('10000');
-    this.currentPage.selectIndexTwo('10').assert.containsText('@selectIndexLabel', 'id":10,"value":"Italy');
+      .addSecondItem('Italy')
+      .selectIndexTwo('10')
+      .assert.containsText('@selectIndexLabel', 'id":10,"value":"Italy')
+      .selectItemonDropdown()
+      .assert.containsText('@selectIndexLabel', 'id":2,"value":"Algeria')
+      .deleteItem()
+      .assert.containsText('@dropdownItemLabelFirst', 'Algeria');
   },
 
   after: function(client, done) {
