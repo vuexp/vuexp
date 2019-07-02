@@ -16,7 +16,7 @@ module.exports = {
       .checkInitialElements()
       .setExternalUrlText(googleUrl)
       .clickLinkLabel()
-      .api.pause(3000)
+      .api.pause(500) // Pausing is necessary for session handling
       .windowHandles(function(result) {
         // Check there are 2 sessions which shows new tab is opened
         this.assert.equal(result.value.length, 2, 'There should be two tabs open.');
