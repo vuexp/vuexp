@@ -22,7 +22,7 @@ module.exports = {
 
     //items elements
     itemsPlusButton: '#dropDown_items_plus_button_8',
-    itemsMinusButton: '#dropDown_items_minus_button',
+    itemsMinusButton: '#dropDown_items_minus_button_5',
     itemsLabelField: '#dropDown_items_label_textField',
     selectIndexField: '#dropDown_items_index_textField',
     firstItemTextField: '#dropDown_items_textField_0',
@@ -32,6 +32,7 @@ module.exports = {
     dropdownItemLabelFirst: '#dropDown_docs > ul > li:nth-child(1)',
     dropdownItemLabelSecond: '#dropDown_docs > ul > li:nth-child(2)',
     dropdownaddedItemFirst: '#dropDown_docs > ul > li.hover',
+    deleteItem: '#dropDown_docs > ul > li:nth-child(6)',
     dropdownaddedItemSecond: '//*[@id="dropDown_docs"]/ul/li[11]',
     selectIndexLabel: '#dropDown_selectItem_label',
     dropdownContainer: '#dropDown_docs > ul',
@@ -99,7 +100,8 @@ module.exports = {
       deleteItem: function() {
         return this.waitForElementVisible('@itemsMinusButton', 10000)
           .click('@itemsMinusButton')
-          .click('@dropdownComponent');
+          .click('@dropdownComponent')
+          .waitForElementVisible('@deleteItem', 10000);
       },
       selectDisabled: function() {
         return this.waitForElementVisible('@disabledCheckbox', 10000).click('@disabledCheckbox');

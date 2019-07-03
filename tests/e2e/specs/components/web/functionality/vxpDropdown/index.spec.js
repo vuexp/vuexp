@@ -21,7 +21,7 @@ module.exports = {
       .selectItemonDropdown()
       .assert.containsText('@selectIndexLabel', 'id":2,"value":"Algeria')
       .deleteItem()
-      .assert.containsText('@dropdownItemLabelFirst', 'Algeria');
+      .assert.containsText('@deleteItem', 'United States');
   },
 
   after: function(client, done) {

@@ -35,7 +35,7 @@
     <StackLayout class="vxp-dropDown-doc_m-b-10" v-for="(item, index) in items.values" :key="index" orientation="horizontal">
       <TextField :id="`dropDown_items_textField_${index}`" v-model="item[items.label]" hint="This is placeholder" :editable="true" />
       <VxpButton :id="`dropDown_items_plus_button_${index}`" text="+" @tap="addItem" style="background:dodgerblue"></VxpButton>
-      <VxpButton id="`dropDown_items_minus_button_${index}`" text="-" @tap="removeItem(index)" v-show="items.values.length > 1"></VxpButton>
+      <VxpButton :id="`dropDown_items_minus_button_${index}`" text="-" @tap="removeItem(index)" v-show="items.values.length > 1"></VxpButton>
     </StackLayout>
     <VxpLabel id="dropDown_errors_label" class="vxp-dropDown-doc__margin_top" text="Errors :" width="100"></VxpLabel>
     <StackLayout class="vxp-dropDown-doc_m-b-10" v-for="(error, index) in errors" :key="'error' + index" orientation="horizontal">
