@@ -46,7 +46,7 @@ module.exports = {
     checkScreenshot(),
     {
       checkInitialElements: function() {
-        this.expect.element('@checkbox').to.be.visible;
+        this.expect.element('@dropdownComponent').to.be.visible;
         return this;
       },
       editError: function(errorName) {
