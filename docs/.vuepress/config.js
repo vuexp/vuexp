@@ -44,6 +44,7 @@ module.exports = {
             'components/progress.md',
             'components/segmented-bar.md',
             'components/tabview.md',
+            'components/vxp-badge.md',
             'components/vxp-image.md',
             'components/vxp-image-uploader.md',
             'components/vxp-side-drawer.md',
