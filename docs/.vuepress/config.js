@@ -51,6 +51,7 @@ module.exports = {
             'components/vxp-button.md',
             'components/vxpmultiselectdropdown.md',
             'components/vxp-link.md',
+            'components/vxp-panel.md',
             'components/vxp-list-view.md',
             'components/vxpiconbutton.md',
             'components/vxpcheckbox.md',

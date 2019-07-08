@@ -1,0 +1,60 @@
+<template>
+  <div class="vxp-action-item" :class="{ 'vxp-action-item--has-icon': webIcon }" @click="onTap($event)">
+    <span v-if="webIcon" class="vxp-action-item__icon" :class="webIcon"></span>
+    <span v-else class="vxp-action-item__text">{{ text }}</span>
+  </div>
+</template>
+
+<script>
+import Gestures from '../core/mixins/GestureMixin';
+
+export default {
+  name: 'VxpPanelItem',
+  props: {
+    text: String,
+    webIcon: {
+      type: String,
+    },
+  },
+  methods: {
+    onTap(event) {
+      this.$emit('tap', event);
+    },
+  },
+  mixins: [Gestures],
+};
+</script>
+
+<style lang="scss">
+.vxp-action-item {
+  display: flex;
+  order: 100;
+  min-width: 30px;
+  min-height: 30px;
+  align-items: center;
+  justify-content: center;
+  background-position: center;
+  transition: background 0.4s;
+  padding: 5px;
+  user-select: none;
+
+  &__icon {
+    color: #425574;
+  }
+
+  &--has-icon {
+    padding: 0;
+    border-radius: 50%;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.1) radial-gradient(circle, transparent 1%, rgba(255, 255, 255, 0.1) 1%) center/15000%;
+  }
+
+  &:active {
+    background-size: 100%;
+    transition: background 0s;
+  }
+}
+</style>
