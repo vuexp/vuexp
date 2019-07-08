@@ -18,7 +18,8 @@ This is an overview of the most common usage of `<VxpBadge>`.
 
 ## Props
 
-| Name  | Type          | Default | Web | Mobile | Minimum Value | Description                         |
-| ----- | ------------- | ------- | --- | ------ | ------------- | ----------------------------------- |
-| badge | String/Number | -       | ✔   | ✔     | -             | Gets or sets the text of the badge. |
-| width | Number        | 18      | ✔   | ✔     | 18            | Gets or sets the text of the badge. |
+| Name   | Type          | Default | Web | Mobile | Minimum Value | Description                   |
+| ------ | ------------- | ------- | --- | ------ | ------------- | ----------------------------- |
+| badge  | String/Number | -       | ✔   | ✔      | -             | Sets the text of the badge.   |
+| width  | Number        | 18      | ✔   | ✔      | 18            | Sets the width of the badge.  |
+| height | Number        | 18      | ✔   | ✔      | -             | Sets the height of the badge. |
