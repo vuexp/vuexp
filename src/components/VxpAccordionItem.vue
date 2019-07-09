@@ -1,10 +1,10 @@
 <template>
-  <StackLayout :class="card_classes">
-    <StackLayout class="card-header" @tap="notifyOfClick">
-      <VxpLabel class="card-header-title" :text="title" />
+  <StackLayout :class="item_class" :id="uniqueId">
+    <StackLayout class="item-header" @tap="notifyOfClick">
+      <VxpLabel class="item-header-title" :text="title" />
     </StackLayout>
     <StackLayout class="accordion-body" ref="body" :style="slideStyle">
-      <StackLayout v-show="isOpen" :class="card_content_classes" ref="bodyContent">
+      <StackLayout v-show="isOpen" :class="item_content_class" ref="bodyContent">
         <slot name="content"></slot>
       </StackLayout>
     </StackLayout>
@@ -18,7 +18,6 @@ import VxpLabel from './VxpLabel';
 export default {
   name: 'VxpAccordionItem',
   props: {
-    id: { default: null },
     title: String,
   },
   components: {
@@ -28,7 +27,7 @@ export default {
   data() {
     return {
       isOpen: false,
-      showCardContent: false,
+      showItemContent: false,
       uniqueId: null,
     };
   },
@@ -51,40 +50,16 @@ export default {
     },
   },
   computed: {
-    computedId() {
-      return this.id ? this.id : this.title.toLocaleLowerCase().replace(/ /g, '-');
-    },
-    config() {
-      const {
-        dropdown = false,
-        icon = 'caret',
-        slide = {
-          duration: '700ms',
-          timerFunc: 'ease',
-        },
-      } = this.$parent;
+    item_class() {
       return {
-        dropdown,
-        icon,
-        slide,
+        item: true,
+        'item-active': this.isOpen,
       };
     },
-    card_classes() {
+    item_content_class() {
       return {
-        card: true,
-        'card-active': this.isOpen,
-      };
-    },
-    card_content_classes() {
-      return {
-        'card-content': true,
-        'is-hidden': !this.showCardContent,
-      };
-    },
-    slideStyle() {
-      const c = this.config.slide;
-      return {
-        transition: `all ${c.duration} ${c.timerFunc}`,
+        'item-content': true,
+        'is-hidden': !this.showItemContent,
       };
     },
   },
@@ -116,13 +91,13 @@ export default {
 .accordion-body {
   overflow: hidden;
 }
-.card-header {
+.item-header {
   cursor: pointer;
 }
-.card-content {
+.item-content {
   background-color: #ffffff;
 }
-.card-header-title {
+.item-header-title {
   padding: unit(10, 10);
   font-weight: 600;
 }
