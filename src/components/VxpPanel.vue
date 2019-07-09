@@ -1,7 +1,7 @@
 <template>
   <StackLayout>
     <StackLayout class="vxp-panel-title">
-      <span v-if="title" class="vxp-panel-title__title">{{ title }}</span>
+      <VxpLabel v-if="title" class="vxp-panel-title__title" :text="title"></VxpLabel>
       <slot name="topbar"></slot>
     </StackLayout>
     <StackLayout class="vxp-panel-content">
@@ -12,11 +12,13 @@
 
 <script>
 import StackLayout from '../layouts/StackLayout';
+import VxpLabel from './VxpLabel';
 
 export default {
   name: 'VxpPanel',
   components: {
     StackLayout,
+    VxpLabel,
   },
   data() {
     return {};

@@ -3,11 +3,13 @@
     <VxpLabel class="demo-panel__title" text="Result" style="margin-bottom:20px"></VxpLabel>
     <VxpPanel :title="title">
       <FlexBoxLayout justifyContent="flex-end" slot="topbar">
-        <VxpPanelItem
+        <VxpIconButton
           v-for="(child, index) in children"
           :key="index"
+          primary
           @tap="onPanelIconClick($event)"
-          :webIcon="'fa ' + child.icon"
+          iconName="fa"
+          :icon="child.icon"
         />
       </FlexBoxLayout>
       <StackLayout slot="content"> 
@@ -63,14 +65,13 @@
 import StackLayout from '../../../src/layouts/StackLayout';
 import FlexBoxLayout from '../../../src/layouts/FlexBoxLayout';
 import VxpPanel from '../../../src/components/VxpPanel';
-import VxpPanelItem from '../../../src/components/VxpPanelItem';
 import VxpLabel from '../../../src/components/VxpLabel';
 import VxpTextField from '../../../src/components/VxpTextField';
 import VxpIconButton from '../../../src/components/VxpIconButton';
 
 export default {
   name: 'VxpPanelLiveDemo',
-  components: { StackLayout, VxpPanel, VxpPanelItem, FlexBoxLayout, VxpLabel, VxpTextField, VxpIconButton },
+  components: { StackLayout, VxpPanel,  FlexBoxLayout, VxpLabel, VxpTextField, VxpIconButton },
   data() {
     return {
       children: [{ icon: 'fa-share' }],
