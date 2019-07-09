@@ -1,5 +1,5 @@
 <template>
-  <StackLayout :class="item_class" :id="uniqueId">
+  <StackLayout :class="item_class" :id="item_id">
     <StackLayout class="item-header" @tap="notifyOfClick">
       <VxpLabel class="item-header-title" :text="title" />
     </StackLayout>
@@ -61,6 +61,9 @@ export default {
         'item-content': true,
         'is-hidden': !this.showItemContent,
       };
+    },
+    item_id() {
+      return 'item' + this.uniqueId;
     },
   },
   methods: {
