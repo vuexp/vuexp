@@ -20,9 +20,6 @@ export default {
     StackLayout,
     VxpLabel,
   },
-  data() {
-    return {};
-  },
   props: {
     title: String,
   },
