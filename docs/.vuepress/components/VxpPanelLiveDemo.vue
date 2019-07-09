@@ -37,9 +37,16 @@
       orientation="horizontal"
       :key="idx"
     >
-      <select style="height: 1.9rem;" id="vxpPanel__shareicon__select" v-model="child.icon">
+      <VxpDropDown
+        id="vxpPanel__shareicon__select"
+        :items="shareIcons"
+        placeholder="Select an Icon"
+        @changeIndex="onChangeIndex"
+        :index="getIndex"
+      />
+      <!-- <select style="height: 1.9rem;" id="vxpPanel__shareicon__select" v-model="child.icon">
         <option v-for="icon in shareIcons" v-bind:value="icon" :key="icon">{{ icon }}</option>
-      </select>
+      </select>-->
       <VxpLabel class="control-label p-l-2" text="Change Icon"></VxpLabel>
       <i class="bar"></i>
       <VxpIconButton
@@ -75,17 +82,26 @@ import VxpPanel from '../../../src/components/VxpPanel';
 import VxpLabel from '../../../src/components/VxpLabel';
 import VxpTextField from '../../../src/components/VxpTextField';
 import VxpIconButton from '../../../src/components/VxpIconButton';
+import VxpDropDown from '../../../src/components/VxpDropDown';
 
 export default {
   name: 'VxpPanelLiveDemo',
-  components: { StackLayout, VxpPanel, FlexboxLayout, VxpLabel, VxpTextField, VxpIconButton },
+  components: { StackLayout, VxpPanel, FlexboxLayout, VxpLabel, VxpTextField, VxpIconButton, VxpDropDown },
   data() {
     return {
       children: [{ icon: 'fa-share' }],
       selectedShareIcon: '',
       title: 'Panel',
-      shareIcons: ['fa-share', 'fa-share-alt', 'fa-share-square-o'],
+      shareIcons: {
+        label: 'value',
+        values: [{ id: 1, value: 'fa-share' }, { id: 2, value: 'fa-share-alt' }, { id: 3, value: 'fa-share-square-o' }],
+      },
     };
+  },
+  computed: {
+    getIndex() {
+      return this.index !== null ? Number(this.index) : null;
+    },
   },
   methods: {
     onPanelIconClick(index) {
@@ -100,6 +116,9 @@ export default {
     },
     removePanelIcon(e, idx) {
       this.children.splice(idx, 1);
+    },
+    onChangeIndex(index, item) {
+      this.selectedIndex = JSON.stringify(item);
     },
   },
 };
