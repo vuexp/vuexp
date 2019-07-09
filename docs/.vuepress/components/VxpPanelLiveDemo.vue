@@ -40,7 +40,7 @@
       <select style="height: 1.9rem;" id="vxpPanel__shareicon__select" v-model="child.icon">
         <option v-for="icon in shareIcons" v-bind:value="icon" :key="icon">{{ icon }}</option>
       </select>
-      <Label class="control-label p-l-2" text="Change Share Icon"></Label>
+      <VxpLabel class="control-label p-l-2" text="Change Icon"></VxpLabel>
       <i class="bar"></i>
       <VxpIconButton
         :id="'add_panelicon_'+idx"
@@ -106,19 +106,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.container {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  width: 100%;
-  height: 100%;
-  flex: 1;
-}
-
 .vxp-panel-title__icons {
   color: #425574;
   &__icon {

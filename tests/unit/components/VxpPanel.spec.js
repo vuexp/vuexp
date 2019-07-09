@@ -4,13 +4,10 @@ import { mount, shallowMount } from '@vue/test-utils';
 import VxpPanel from '../../../src/components/VxpPanel';
 import VxpLabel from '../../../src/components/VxpLabel';
 import VxpIconButton from '../../../src/components/VxpIconButton';
-// import StackLayout from '../../../../src/layouts/StackLayout.vue';
 
 describe('ActionItem', () => {
   const title = 'Panel title';
   const newTitle = 'New Panel Title';
-  //   const iconBtnClass = '';
-
   const VxpIconButtonWrapper = {
     render(h) {
       return h(VxpIconButton, {
