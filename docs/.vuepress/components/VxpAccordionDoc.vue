@@ -1,0 +1,123 @@
+<template>
+    <StackLayout style="margin-top:20px" class="demo-panel">
+        <VxpAccordion :autoCollapse="autoCollapse" :initialExpandedItems="initialItems" @collapsed="onCollapsed" @expanded="onExpanded">
+            <VxpAccordionItem title="Just a title">
+            </VxpAccordionItem>
+            <VxpAccordionItem title="A title with content">
+                <StackLayout style="margin: 50px" slot="content" orientation="horizontal">
+                    <VxpButton style="margin-left: 10px" text="Sample Button"/>
+                    <VxpButton style="margin-left: 10px" text="Sample Button"/>
+                    <VxpButton style="margin-left: 10px" text="Sample Button"/>
+                </StackLayout>
+            </VxpAccordionItem>
+            <VxpAccordionItem title="A title with content">
+                <p slot="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eos
+                    illo expedita asperiores rem iure aliquid dolore, pariatur
+                    dignissimos, minima inventore? Minima voluptatum nulla, error omnis
+                    laboriosam voluptatibus rem aperiam.
+                </p>
+            </VxpAccordionItem>
+            <VxpAccordionItem v-for="item in accordionItems" :key="item" :title="item">
+                <p slot="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eos
+                    illo expedita asperiores rem iure aliquid dolore, pariatur
+                    dignissimos, minima inventore? Minima voluptatum nulla, error omnis
+                    laboriosam voluptatibus rem aperiam.
+                </p>
+            </VxpAccordionItem>
+        </VxpAccordion>
+        <StackLayout style="margin-top:20px" orientation="horizontal">
+            <VxpLabel style="margin-left:10px" text="AutoCollapse:"/>
+            <VxpCheckbox style="margin-left:10px" :checked="autoCollapse" @change="autoCollapse = !autoCollapse"/>
+            <VxpLabel style="margin-left:10px" text="isAutoCollapsed:"/>
+            <VxpLabel style="margin-left:10px" :text="String(autoCollapse)"/>
+        </StackLayout>
+        <StackLayout style="margin-top:20px" orientation="horizontal">
+            <VxpLabel style="margin-left:10px" text="Expanded item index:"/>
+            <VxpLabel style="margin-left:10px" :text="lastExpanded"/>
+        </StackLayout>
+        <StackLayout style="margin-top:20px" orientation="horizontal">
+            <VxpLabel style="margin-left:10px" text="Collapsed item index:"/>
+            <VxpLabel style="margin-left:10px" :text="lastCollapsed"/>
+        </StackLayout>
+        <StackLayout style="margin-top:20px" orientation="horizontal">
+            <VxpLabel style="margin-left:10px" text="Initial Expanded Items:"/>
+            <VxpLabel style="margin-left:10px" :text="initialItems.toString()"/>
+        </StackLayout>
+        <StackLayout style="margin-top:20px" orientation="horizontal">
+            <VxpLabel style="margin-left:10px" text="Title:"/>
+            <VxpTextField v-model="itemTitle" style="margin-left:10px"/>
+            <VxpButton style="margin-left:10px" text="Add New Item" @tap="onButtonTap"/>
+        </StackLayout>
+    </StackLayout>
+</template>
+
+<script>
+    import Label from '../../../src/core/components/Label/Label';
+    import StackLayout from '../../../src/layouts/StackLayout';
+    import VxpAccordion from "../../../src/components/VxpAccordion";
+    import VxpTextField from "../../../src/components/VxpTextField";
+    import VxpButton from "../../../src/components/VxpButton";
+    import VxpLabel from "../../../src/components/VxpLabel";
+    import VxpAccordionItem from "../../../src/components/VxpAccordionItem";
+    import VxpCheckbox from "../../../src/components/VxpCheckbox";
+
+    export default {
+        name: 'VxpAccordionDoc',
+        components: {VxpCheckbox, VxpAccordion, VxpAccordionItem, Label, StackLayout, VxpButton, VxpTextField, VxpLabel },
+        data() {
+            return {
+                initialItems: [2,3],
+                accordionItems: [],
+                itemTitle: '',
+                currentIndex: 4,
+                autoCollapse: false,
+                lastExpanded: '',
+                lastCollapsed: '',
+            };
+        },
+        methods: {
+            onButtonTap() {
+                this.accordionItems.push(this.itemTitle);
+                this.itemTitle = '';
+                this.currentIndex++;
+            },
+            changed({ index }) {
+                this.selectedIndex = index;
+            },
+            titleChanged(evt, i) {
+                this.tabs[i].title = evt;
+            },
+            onExpanded(id) {
+                this.lastExpanded = id;
+            },
+            onCollapsed(id) {
+                this.lastCollapsed = id;
+            },
+        },
+    };
+</script>
+
+<style scoped lang="scss">
+    .container {
+        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: #2c3e50;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        height: 100%;
+        flex: 1;
+    }
+    .demo-panel {
+        border: #3c495e;
+        border-radius: 5px;
+        margin: 10px;
+        &__title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    }
+</style>
