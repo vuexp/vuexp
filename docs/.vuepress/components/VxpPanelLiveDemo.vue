@@ -2,8 +2,10 @@
   <StackLayout style="margin-top:20px" class="demo-panel">
     <VxpLabel class="demo-panel__title" text="Result" style="margin-bottom:20px"></VxpLabel>
     <VxpPanel :title="title">
-      <FlexboxLayout justifyContent="flex-end" slot="topbar">
+      <StackLayout orientation="horizontal" slot="topbar">
         <VxpIconButton
+          class="vxp-panel-title__icons"
+          alignSelf="flex-end"
           v-for="(child, index) in children"
           :key="index"
           primary
@@ -11,8 +13,8 @@
           iconName="fa"
           :icon="child.icon"
         />
-      </FlexboxLayout>
-      <StackLayout slot="content"> 
+      </StackLayout>
+      <StackLayout slot="content">
         <VxpLabel text="Label 1"></VxpLabel>
         <VxpLabel text="Label 2"></VxpLabel>
       </StackLayout>
@@ -29,7 +31,12 @@
       ></VxpTextField>
       <i class="bar"></i>
     </StackLayout>
-    <StackLayout class="form-group p-l-2" v-for="(child,idx) in children" orientation="horizontal" :key="idx">
+    <StackLayout
+      class="form-group p-l-2"
+      v-for="(child,idx) in children"
+      orientation="horizontal"
+      :key="idx"
+    >
       <select style="height: 1.9rem;" id="vxpPanel__shareicon__select" v-model="child.icon">
         <option v-for="icon in shareIcons" v-bind:value="icon" :key="icon">{{ icon }}</option>
       </select>
@@ -71,7 +78,7 @@ import VxpIconButton from '../../../src/components/VxpIconButton';
 
 export default {
   name: 'VxpPanelLiveDemo',
-  components: { StackLayout, VxpPanel,  FlexboxLayout, VxpLabel, VxpTextField, VxpIconButton },
+  components: { StackLayout, VxpPanel, FlexboxLayout, VxpLabel, VxpTextField, VxpIconButton },
   data() {
     return {
       children: [{ icon: 'fa-share' }],
@@ -94,7 +101,7 @@ export default {
     removePanelIcon(e, idx) {
       this.children.splice(idx, 1);
     },
-  }
+  },
 };
 </script>
 
@@ -110,6 +117,28 @@ export default {
   width: 100%;
   height: 100%;
   flex: 1;
+}
+
+.vxp-panel-title__icons {
+  color: #425574;
+  &__icon {
+    color: #425574;
+  }
+
+  &--has-icon {
+    padding: 0;
+    border-radius: 50%;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.1) radial-gradient(circle, transparent 1%, rgba(255, 255, 255, 0.1) 1%) center/15000%;
+  }
+
+  &:active {
+    background-size: 100%;
+    transition: background 0s;
+  }
 }
 
 @import url('/fonts/fontawesome.min.css');

@@ -1,9 +1,9 @@
 <template>
   <StackLayout>
-    <StackLayout class="vxp-panel-title">
-      <VxpLabel v-if="title" class="vxp-panel-title__title" :text="title"></VxpLabel>
-      <slot name="topbar"></slot>
-    </StackLayout>
+    <GridLayout class="vxp-panel-title" columns="*,auto">
+      <VxpLabel v-if="title" class="vxp-panel-title__title" :text="title" col="0"></VxpLabel>
+      <slot name="topbar" col="1"></slot>
+    </GridLayout>
     <StackLayout class="vxp-panel-content">
       <slot name="content"></slot>
     </StackLayout>
@@ -12,12 +12,14 @@
 
 <script>
 import StackLayout from '../layouts/StackLayout';
+import GridLayout from '../layouts/GridLayout';
 import VxpLabel from './VxpLabel';
 
 export default {
   name: 'VxpPanel',
   components: {
     StackLayout,
+    GridLayout,
     VxpLabel,
   },
   props: {
@@ -34,29 +36,17 @@ export default {
   padding: unit(0) unit(15);
 }
 .vxp-panel-title {
-  display: flex;
-  height: 40px;
+  height: unit(40);
   background-color: #c0cad8;
   color: #434855;
-  box-sizing: border-box;
-  flex-direction: row;
   width: 100%;
-  align-items: center;
   font-weight: bold;
+  padding-top: unit(5);
 
   &__title {
-    margin: 0 unit(5) 0 unit(15);
+    margin: unit(5) unit(5) 0 unit(15);
     white-space: nowrap;
     font-size: 18px;
-  }
-
-  & > * {
-    flex: 1;
-    align-items: center;
-  }
-  .vxp-panel-title-item,
-  .vxp-navigation-button {
-    flex: 0 1 auto;
   }
 }
 </style>
