@@ -1,6 +1,6 @@
 <template>
     <StackLayout style="margin-top:20px" class="demo-panel">
-        <VxpAccordion :autoCollapse="autoCollapse" :initialExpandedItems="initialItems" @collapsed="onCollapsed" @expanded="onExpanded">
+        <VxpAccordion id="accordion" :autoCollapse="autoCollapse" :initialExpandedItems="initialItems" @collapsed="onCollapsed" @expanded="onExpanded">
             <VxpAccordionItem title="Just a title">
             </VxpAccordionItem>
             <VxpAccordionItem title="A title with content">
@@ -27,17 +27,17 @@
         </VxpAccordion>
         <StackLayout style="margin-top:20px" orientation="horizontal">
             <VxpLabel style="margin-left:10px" text="AutoCollapse:"/>
-            <VxpCheckbox style="margin-left:10px" :checked="autoCollapse" @change="autoCollapse = !autoCollapse"/>
+            <VxpCheckbox id="accordion_autocollapse_checkbox" style="margin-left:10px" :checked="autoCollapse" @change="autoCollapse = !autoCollapse"/>
             <VxpLabel style="margin-left:10px" text="isAutoCollapsed:"/>
-            <VxpLabel style="margin-left:10px" :text="String(autoCollapse)"/>
+            <VxpLabel id="accordion_autocollapse_status_label" style="margin-left:10px" :text="String(autoCollapse)"/>
         </StackLayout>
         <StackLayout style="margin-top:20px" orientation="horizontal">
             <VxpLabel style="margin-left:10px" text="Expanded item index:"/>
-            <VxpLabel style="margin-left:10px" :text="lastExpanded"/>
+            <VxpLabel id="accordion_expanded_event_label" style="margin-left:10px" :text="lastExpanded"/>
         </StackLayout>
         <StackLayout style="margin-top:20px" orientation="horizontal">
             <VxpLabel style="margin-left:10px" text="Collapsed item index:"/>
-            <VxpLabel style="margin-left:10px" :text="lastCollapsed"/>
+            <VxpLabel id="accordion_collapsed_event_label" style="margin-left:10px" :text="lastCollapsed"/>
         </StackLayout>
         <StackLayout style="margin-top:20px" orientation="horizontal">
             <VxpLabel style="margin-left:10px" text="Initial Expanded Items:"/>
@@ -45,8 +45,8 @@
         </StackLayout>
         <StackLayout style="margin-top:20px" orientation="horizontal">
             <VxpLabel style="margin-left:10px" text="Title:"/>
-            <VxpTextField v-model="itemTitle" style="margin-left:10px"/>
-            <VxpButton style="margin-left:10px" text="Add New Item" @tap="onButtonTap"/>
+            <VxpTextField id="item_title_input" v-model="itemTitle" style="margin-left:10px"/>
+            <VxpButton id="item_add_new" style="margin-left:10px" text="Add New Item" @tap="onButtonTap"/>
         </StackLayout>
     </StackLayout>
 </template>
