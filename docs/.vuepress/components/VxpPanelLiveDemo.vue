@@ -74,11 +74,10 @@ import VxpPanel from '../../../src/components/VxpPanel';
 import VxpLabel from '../../../src/components/VxpLabel';
 import VxpTextField from '../../../src/components/VxpTextField';
 import VxpIconButton from '../../../src/components/VxpIconButton';
-import VxpDropDown from '../../../src/components/VxpDropDown';
 
 export default {
   name: 'VxpPanelLiveDemo',
-  components: { StackLayout, VxpPanel, VxpLabel, VxpTextField, VxpIconButton, VxpDropDown },
+  components: { StackLayout, VxpPanel, VxpLabel, VxpTextField, VxpIconButton },
   data() {
     return {
       children: [{ icon: 'fa-share' }],
