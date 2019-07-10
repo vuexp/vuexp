@@ -37,10 +37,11 @@
       orientation="horizontal"
       :key="idx"
     >
+      <VxpLabel class="control-label p-l-2" text="Change Icon"></VxpLabel>
+
       <select style="height: 1.9rem;" id="vxpPanel__shareicon__select" v-model="child.icon">
         <option v-for="icon in shareIcons" v-bind:value="icon" :key="icon">{{ icon }}</option>
       </select>
-      <VxpLabel class="control-label p-l-2" text="Change Icon"></VxpLabel>
       <i class="bar"></i>
       <VxpIconButton
         :id="'add_panelicon_'+idx"
@@ -83,10 +84,7 @@ export default {
       children: [{ icon: 'fa-share' }],
       selectedShareIcon: '',
       title: 'Panel',
-      shareIcons: {
-        label: 'value',
-        values: [{ id: 1, value: 'fa-share' }, { id: 2, value: 'fa-share-alt' }, { id: 3, value: 'fa-share-square-o' }],
-      },
+      shareIcons: ['fa-share', 'fa-share-alt', 'fa-share-square-o'],
     };
   },
   methods: {
