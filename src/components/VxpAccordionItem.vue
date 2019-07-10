@@ -3,7 +3,7 @@
     <StackLayout class="item-header" @tap="notifyOfClick">
       <VxpLabel class="item-header-title" :text="title" />
     </StackLayout>
-    <StackLayout class="accordion-body" ref="body" :style="slideStyle">
+    <StackLayout class="accordion-body" ref="body">
       <StackLayout v-show="isOpen" :class="item_content_class" ref="bodyContent">
         <slot name="content"></slot>
       </StackLayout>
@@ -76,9 +76,7 @@ export default {
       this.uniqueId = id;
     },
     notifyOfClick() {
-      if (this.uniqueId) {
-        this.$parent.$emit('child-clicked', this.uniqueId);
-      }
+      this.$parent.$emit('child-clicked', this.uniqueId);
     },
     toggleCollapsed() {
       this.isOpen = !this.isOpen;
