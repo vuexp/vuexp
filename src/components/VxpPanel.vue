@@ -46,7 +46,7 @@ export default {
   &__title {
     margin: unit(5) unit(5) 0 unit(15);
     white-space: nowrap;
-    font-size: 18px;
+    font-size: unit(18);
   }
 }
 </style>

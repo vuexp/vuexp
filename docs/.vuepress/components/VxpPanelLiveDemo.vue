@@ -37,16 +37,9 @@
       orientation="horizontal"
       :key="idx"
     >
-      <VxpDropDown
-        id="vxpPanel__shareicon__select"
-        :items="shareIcons"
-        placeholder="Select an Icon"
-        @changeIndex="onChangeIndex"
-        :index="getIndex"
-      />
-      <!-- <select style="height: 1.9rem;" id="vxpPanel__shareicon__select" v-model="child.icon">
+      <select style="height: 1.9rem;" id="vxpPanel__shareicon__select" v-model="child.icon">
         <option v-for="icon in shareIcons" v-bind:value="icon" :key="icon">{{ icon }}</option>
-      </select>-->
+      </select>
       <VxpLabel class="control-label p-l-2" text="Change Icon"></VxpLabel>
       <i class="bar"></i>
       <VxpIconButton
@@ -77,7 +70,6 @@
 
 <script>
 import StackLayout from '../../../src/layouts/StackLayout';
-import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
 import VxpPanel from '../../../src/components/VxpPanel';
 import VxpLabel from '../../../src/components/VxpLabel';
 import VxpTextField from '../../../src/components/VxpTextField';
@@ -86,7 +78,7 @@ import VxpDropDown from '../../../src/components/VxpDropDown';
 
 export default {
   name: 'VxpPanelLiveDemo',
-  components: { StackLayout, VxpPanel, FlexboxLayout, VxpLabel, VxpTextField, VxpIconButton, VxpDropDown },
+  components: { StackLayout, VxpPanel, VxpLabel, VxpTextField, VxpIconButton, VxpDropDown },
   data() {
     return {
       children: [{ icon: 'fa-share' }],
@@ -97,11 +89,6 @@ export default {
         values: [{ id: 1, value: 'fa-share' }, { id: 2, value: 'fa-share-alt' }, { id: 3, value: 'fa-share-square-o' }],
       },
     };
-  },
-  computed: {
-    getIndex() {
-      return this.index !== null ? Number(this.index) : null;
-    },
   },
   methods: {
     onPanelIconClick(index) {
