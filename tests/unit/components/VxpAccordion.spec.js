@@ -98,7 +98,7 @@ describe('VxpAccordion', () => {
     expect(spyChildClicked.called).to.be.true;
   });
 
-  it("should handle 'initialItems'", done => {
+  it("should handle expand event of 'initialItems'", done => {
     const spyHandleChildClicked = sinon.spy();
     const child = createMockChild(1, {});
     const itemIndex = [1];
