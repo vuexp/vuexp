@@ -10,16 +10,10 @@
         </StackLayout>
       </VxpAccordionItem>
       <VxpAccordionItem title="A title with content">
-        <p slot="content">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eos illo expedita asperiores rem iure aliquid dolore, pariatur dignissimos, minima
-          inventore? Minima voluptatum nulla, error omnis laboriosam voluptatibus rem aperiam.
-        </p>
+        <VxpLabel text-wrap slot="content" :text="labelDefaultText"/>
       </VxpAccordionItem>
       <VxpAccordionItem v-for="item in accordionItems" :key="item" :title="item">
-        <p slot="content">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eos illo expedita asperiores rem iure aliquid dolore, pariatur dignissimos, minima
-          inventore? Minima voluptatum nulla, error omnis laboriosam voluptatibus rem aperiam.
-        </p>
+        <VxpLabel text-wrap slot="content" :text="labelDefaultText"/>
       </VxpAccordionItem>
     </VxpAccordion>
     <StackLayout style="margin-top:20px" orientation="horizontal">
@@ -70,6 +64,9 @@ export default {
       autoCollapse: false,
       lastExpanded: '',
       lastCollapsed: '',
+      labelDefaultText:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eos illo expedita asperiores rem iure aliquid dolore, pariatur dignissimos, minima\n' +
+        '          inventore? Minima voluptatum nulla, error omnis laboriosam voluptatibus rem aperiam.',
     };
   },
   methods: {

@@ -6,24 +6,38 @@ sidebarDepth: 0
 
 This is an overview of the most common usage of `<VxpAccordion>`.
 
+`VxpAccordion` is used to show (and hide) HTML content.
+
 ## Live Demo
 
 <DocExampleBox codeBox="https://codesandbox.io/s/n5y3lym66p?module=%2Fsrc%2FApp.vue">
 
 ```html
-<VxpAccordion text="Button" size="medium" primary @tap="onButtonTap" />
+<VxpAccordion autoCollapse @collapsed="onCollapsed" @expanded="onExpanded" />
 ```
 
 ```js
- onButtonTap() {
-      console.log("clicked");
+ onCollapsed() {
+      console.log("collapsed");
+    }
+ onExpanded() {
+      console.log("expanded");
     }
 ```
 
 <VxpAccordionDoc />
 </DocExampleBox>
 
-`VxpAccordion` is a UI component that displays a button which reacts to a user gesture.
+## Example Usages
+
+```html
+<VxpAccordion autoCollapse>
+    <VxpAccordionItem title="Just a title"> </VxpAccordionItem>
+    <VxpAccordionItem title="A title with content">
+        <VxpButton text="Sample Button" />
+    </VxpAccordionItem>
+</VxpAccordion>
+```
 
 ## Props
 
@@ -31,7 +45,7 @@ This is an overview of the most common usage of `<VxpAccordion>`.
 | --------- | ------- | -------- | --- | ------ | -------------------------------------------------------------------------------------------------------------- |
 | initialExpandedItems      | Array  |  []        | ✔   | ✔      | Sets the initial expanded items with indexes.                                                                                  |
 | autoCollapse  | Boolean | `false`  | ✔   | ✔      | Single expanded item at a time |
-                                     |
+
 ## Events
 
 | Name | Web | Mobile | Description                        |
