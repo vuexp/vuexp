@@ -75,12 +75,9 @@ export default {
     openInitialItems(items_length) {
       const is = this.initialExpandedItems;
       if (is != null) {
-        is.forEach(item => {
-          const num_item = typeof item === 'number' ? item : parseInt(item, 10);
+        is.forEach(num_item => {
           if (num_item > 0 && num_item <= items_length) {
             this.handleChildClicked(String(num_item));
-          } else {
-            throw new Error(`There are only ${items_length} AccordionItems, ${num_item} is out of bounds. [indexing from 1]`);
           }
         });
       }
