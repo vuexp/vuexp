@@ -36,7 +36,7 @@ export default {
       delete this.children_toggle_status[child_id];
     });
     this.$nextTick(() => {
-      this.openInitialItems(this.$children.length);
+      this.openInitialItems(this.$children[0].$children.length);
     });
   },
   data() {
