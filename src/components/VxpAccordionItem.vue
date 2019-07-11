@@ -33,8 +33,8 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      this.$parent.$emit('child-registered', this);
-      this.$parent.$on('toggle-child', this.handleToggleRequest);
+      this.bubbleEvent('child-registered', this);
+      this.listenAccordion('toggle-child', this.handleToggleRequest);
     });
   },
   beforeDestroy() {
@@ -72,11 +72,31 @@ export default {
         this.toggleCollapsed();
       }
     },
+    bubbleEvent(event, param) {
+      let p = this.$parent;
+      while (p) {
+        if (p.$options.name === 'VxpAccordion') {
+          p.$emit(event, param);
+          break;
+        }
+        p = p.$parent;
+      }
+    },
+    listenAccordion(event, handler) {
+      let p = this.$parent;
+      while (p) {
+        if (p.$options.name === 'VxpAccordion') {
+          p.$on(event, handler);
+          break;
+        }
+        p = p.$parent;
+      }
+    },
     setUniqueId(id) {
       this.uniqueId = id;
     },
     notifyOfClick() {
-      this.$parent.$emit('child-clicked', this.uniqueId);
+      this.bubbleEvent('child-clicked', this.uniqueId);
     },
     toggleCollapsed() {
       this.isOpen = !this.isOpen;

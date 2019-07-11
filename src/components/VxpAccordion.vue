@@ -1,12 +1,15 @@
 <template>
-  <div class="accordion" @expanded="onExpanded" @collapsed="onCollapsed">
+  <StackLayout class="accordion">
     <slot></slot>
-  </div>
+  </StackLayout>
 </template>
 
 <script>
+import StackLayout from '../layouts/StackLayout';
+
 export default {
   name: 'VxpAccordion',
+  components: { StackLayout },
   props: {
     initialExpandedItems: {
       required: false,

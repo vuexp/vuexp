@@ -39,6 +39,7 @@ describe('VxpAccordionItem', () => {
 
   it('should activate card when parent emiitted a toggle-child event', done => {
     const parent = {
+      name: 'VxpAccordion',
       mounted() {
         this.$nextTick(() => {
           this.$emit('toggle-child', 1);
@@ -65,6 +66,7 @@ describe('VxpAccordionItem', () => {
   it("should notify parent with 'child-clicked' event when header is clicked with argument of its id", () => {
     const spy = sinon.spy();
     const parent = {
+      name: 'VxpAccordion',
       mounted() {
         this.$on('child-clicked', spy);
       },
@@ -120,6 +122,7 @@ describe('VxpAccordionItem', () => {
   it("should notify parent with 'child-removed' event when it is destroyed", () => {
     const spy = sinon.spy();
     const parent = {
+      name: 'VxpAccordion',
       mounted() {
         this.$on('child-removed', spy);
       },

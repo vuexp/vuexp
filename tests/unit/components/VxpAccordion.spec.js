@@ -21,13 +21,13 @@ describe('VxpAccordion', () => {
       },
       methods: {
         fireChildRegistered() {
-          this.$parent.$emit('child-registered', this);
+          this.$parent.$parent.$emit('child-registered', this);
         },
         fireChildClicked() {
-          this.$parent.$emit('child-clicked', this.uniqueId);
+          this.$parent.$parent.$emit('child-clicked', this.uniqueId);
         },
         fireChildRemoved() {
-          this.$parent.$emit('child-removed', this.uniqueId);
+          this.$parent.$parent.$emit('child-removed', this.uniqueId);
         },
         setUniqueId(nextId) {
           this.uniqueId = nextId;
@@ -38,7 +38,7 @@ describe('VxpAccordion', () => {
   }
 
   function getChild(wrapper, index) {
-    return wrapper.vm.$slots.default[index].componentInstance;
+    return wrapper.find('.accordion').vm.$children[0].$children[index];
   }
 
   beforeEach(() => {
