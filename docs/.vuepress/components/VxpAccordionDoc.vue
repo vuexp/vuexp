@@ -54,7 +54,7 @@ import VxpCheckbox from '../../../src/components/VxpCheckbox';
 
 export default {
   name: 'VxpAccordionDoc',
-  components: { VxpCheckbox, VxpAccordion, VxpAccordionItem, Label, StackLayout, VxpButton, VxpTextField, VxpLabel },
+  components: { VxpCheckbox, VxpAccordion, VxpAccordionItem, StackLayout, VxpButton, VxpTextField, VxpLabel },
   data() {
     return {
       initialItems: [2, 3],
