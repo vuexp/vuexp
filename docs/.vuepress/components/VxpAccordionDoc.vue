@@ -43,7 +43,6 @@
 </template>
 
 <script>
-import Label from '../../../src/core/components/Label/Label';
 import StackLayout from '../../../src/layouts/StackLayout';
 import VxpAccordion from '../../../src/components/VxpAccordion';
 import VxpTextField from '../../../src/components/VxpTextField';
