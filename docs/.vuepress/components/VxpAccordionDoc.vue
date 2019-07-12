@@ -64,8 +64,7 @@ export default {
       lastExpanded: '',
       lastCollapsed: '',
       labelDefaultText:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eos illo expedita asperiores rem iure aliquid dolore, pariatur dignissimos, minima\n' +
-        '          inventore? Minima voluptatum nulla, error omnis laboriosam voluptatibus rem aperiam.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     };
   },
   methods: {
