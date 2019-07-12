@@ -21,13 +21,13 @@ describe('VxpAccordion', () => {
       },
       methods: {
         fireChildRegistered() {
-          this.$parent.$parent.$emit('child-registered', this);
+          this.$parent.$parent.$emit('childRegistered', this);
         },
         fireChildClicked() {
-          this.$parent.$parent.$emit('child-clicked', this.uniqueId);
+          this.$parent.$parent.$emit('childClicked', this.uniqueId);
         },
         fireChildRemoved() {
-          this.$parent.$parent.$emit('child-removed', this.uniqueId);
+          this.$parent.$parent.$emit('childRemoved', this.uniqueId);
         },
         setUniqueId(nextId) {
           this.uniqueId = nextId;
@@ -38,7 +38,7 @@ describe('VxpAccordion', () => {
   }
 
   function getChild(wrapper, index) {
-    return wrapper.find('.accordion').vm.$children[0].$children[index];
+    return wrapper.find('.vxp-accordion').vm.$children[0].$children[index];
   }
 
   beforeEach(() => {
@@ -221,9 +221,9 @@ describe('VxpAccordion', () => {
     setTimeout(() => {
       const childInstance = getChild(wrapper, 0);
       childInstance.fireChildRegistered();
-      expect(wrapper.vm.$data.children_toggle_status[1]).to.be.false;
+      expect(wrapper.vm.$data.childrenToggleStatus[1]).to.be.false;
       childInstance.fireChildRemoved();
-      expect(wrapper.vm.$data.children_toggle_status[1]).to.be.eq(undefined);
+      expect(wrapper.vm.$data.childrenToggleStatus[1]).to.be.eq(undefined);
       done();
     }, 10);
   });

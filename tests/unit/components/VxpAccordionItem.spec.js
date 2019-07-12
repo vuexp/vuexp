@@ -42,7 +42,7 @@ describe('VxpAccordionItem', () => {
       name: 'VxpAccordion',
       mounted() {
         this.$nextTick(() => {
-          this.$emit('toggle-child', 1);
+          this.$emit('toggleChild', 1);
         });
       },
     };
@@ -68,7 +68,7 @@ describe('VxpAccordionItem', () => {
     const parent = {
       name: 'VxpAccordion',
       mounted() {
-        this.$on('child-clicked', spy);
+        this.$on('childClicked', spy);
       },
     };
 
@@ -82,7 +82,7 @@ describe('VxpAccordionItem', () => {
       parentComponent: parent,
     });
 
-    wrapper.find('.item-header').trigger('click');
+    wrapper.find('.vxp-accordion-item__header').trigger('click');
     expect(spy.called).to.be.true;
     expect(spy.getCall(0).args[0]).to.be.eq(1);
   });
@@ -124,7 +124,7 @@ describe('VxpAccordionItem', () => {
     const parent = {
       name: 'VxpAccordion',
       mounted() {
-        this.$on('child-removed', spy);
+        this.$on('childRemoved', spy);
       },
     };
 

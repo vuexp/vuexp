@@ -1,5 +1,5 @@
 <template>
-  <StackLayout class="accordion">
+  <StackLayout class="vxp-accordion">
     <slot></slot>
   </StackLayout>
 </template>
@@ -26,23 +26,15 @@ export default {
     },
   },
   mounted() {
-    this.$on('child-registered', child => {
-      const id = this.getNextId();
-      child.setUniqueId(id);
-      this.children_toggle_status[id] = false;
-    });
-    this.$on('child-clicked', this.handleChildClicked);
-    this.$on('child-removed', child_id => {
-      delete this.children_toggle_status[child_id];
-    });
-    this.$nextTick(() => {
-      this.openInitialItems(this.$children[0].$children.length);
-    });
+    this.$on('childRegistered', this.initializeChildItem);
+    this.$on('childClicked', this.handleChildClicked);
+    this.$on('childRemoved', this.destroyChildItem);
+    this.$nextTick(this.updateChildren);
   },
   data() {
     return {
-      next_id: 1,
-      children_toggle_status: {},
+      nextId: 1,
+      childrenToggleStatus: {},
     };
   },
   methods: {
@@ -52,33 +44,44 @@ export default {
     onCollapsed(event) {
       this.$emit('collapsed', event);
     },
+    initializeChildItem(child) {
+      const id = this.getNextId();
+      child.setUniqueId(id);
+      this.childrenToggleStatus[id] = false;
+    },
+    destroyChildItem(childId) {
+      delete this.childrenToggleStatus[childId];
+    },
+    updateChildren() {
+      this.openInitialItems(this.$children[0].$children.length);
+    },
     getNextId() {
-      const v = this.next_id.toString(10);
-      this.next_id += 1;
+      const v = this.nextId.toString(10);
+      this.nextId += 1;
       return v;
     },
     handleChildClicked(child_id) {
       if (this.autoCollapse) {
-        for (const id in this.children_toggle_status) {
-          if (this.children_toggle_status[id] && id !== child_id) {
-            this.$emit('toggle-child', id);
+        for (const id in this.childrenToggleStatus) {
+          if (this.childrenToggleStatus[id] && id !== child_id) {
+            this.$emit('toggleChild', id);
             this.onCollapsed(id);
-            this.children_toggle_status[id] = false;
+            this.childrenToggleStatus[id] = false;
           }
         }
       }
-      this.children_toggle_status[child_id] = !this.children_toggle_status[child_id];
-      this.$emit('toggle-child', child_id);
-      if (this.children_toggle_status[child_id]) {
+      this.childrenToggleStatus[child_id] = !this.childrenToggleStatus[child_id];
+      this.$emit('toggleChild', child_id);
+      if (this.childrenToggleStatus[child_id]) {
         this.onExpanded(child_id);
       } else {
         this.onCollapsed(child_id);
       }
     },
     openInitialItems(items_length) {
-      const is = this.initialExpandedItems;
-      if (is != null) {
-        is.forEach(num_item => {
+      const initialItems = this.initialExpandedItems;
+      if (initialItems != null) {
+        initialItems.forEach(num_item => {
           if (num_item > 0 && num_item <= items_length) {
             this.handleChildClicked(String(num_item));
           }
@@ -88,8 +91,10 @@ export default {
   },
 };
 </script>
-<style scoped>
-.accordion {
+<style lang="scss">
+@import '../themes/themes';
+@import '../assets/styles/helpers';
+.vxp-accordion {
   background-color: #c0cad8;
 }
 </style>

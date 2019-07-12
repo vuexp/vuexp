@@ -1,10 +1,10 @@
 <template>
-  <StackLayout :class="item_class" :id="item_id">
-    <StackLayout class="item-header" @tap="notifyOfClick">
-      <VxpLabel class="item-header-title" :text="title" />
+  <StackLayout :class="{ 'vxp-accordion-item': true, 'vxp-accordion-item__active': isOpen }" :id="item_id">
+    <StackLayout class="vxp-accordion-item__header" @tap="notifyOfClick">
+      <VxpLabel class="vxp-accordion-item__header__title" :text="title" />
     </StackLayout>
-    <StackLayout class="accordion-body" ref="body">
-      <StackLayout v-show="isOpen" :class="item_content_class" ref="bodyContent">
+    <StackLayout class="vxp-accordion-item__body" ref="body">
+      <StackLayout v-show="isOpen" :class="{ 'vxp-accordion-item__content': true, 'vxp-accordion-item__hidden': !showItemContent }" ref="bodyContent">
         <slot name="content"></slot>
       </StackLayout>
     </StackLayout>
@@ -33,12 +33,12 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      this.bubbleEvent('child-registered', this);
-      this.listenAccordion('toggle-child', this.handleToggleRequest);
+      this.bubbleEvent('childRegistered', this);
+      this.listenAccordion('toggleChild', this.handleToggleRequest);
     });
   },
   beforeDestroy() {
-    this.$parent.$emit('child-removed', this.uniqueId);
+    this.$parent.$emit('childRemoved', this.uniqueId);
   },
   watch: {
     isOpen(newStatus) {
@@ -50,18 +50,6 @@ export default {
     },
   },
   computed: {
-    item_class() {
-      return {
-        item: true,
-        'item-active': this.isOpen,
-      };
-    },
-    item_content_class() {
-      return {
-        'item-content': true,
-        'is-hidden': !this.showItemContent,
-      };
-    },
     item_id() {
       return 'item' + this.uniqueId;
     },
@@ -96,7 +84,7 @@ export default {
       this.uniqueId = id;
     },
     notifyOfClick() {
-      this.bubbleEvent('child-clicked', this.uniqueId);
+      this.bubbleEvent('childClicked', this.uniqueId);
     },
     toggleCollapsed() {
       this.isOpen = !this.isOpen;
@@ -109,17 +97,19 @@ export default {
 @import '../themes/themes';
 @import '../assets/styles/helpers';
 
-.accordion-body {
-  overflow: hidden;
-}
-.item-header {
-  cursor: pointer;
-}
-.item-content {
-  background-color: #ffffff;
-}
-.item-header-title {
-  padding: unit(10, 10);
-  font-weight: 600;
+.vxp-accordion-item {
+  &__body {
+    overflow: hidden;
+  }
+  &__header {
+    cursor: pointer;
+    &__title {
+      padding: unit(10, 10);
+      font-weight: 600;
+    }
+  }
+  &__content {
+    background-color: #ffffff;
+  }
 }
 </style>
