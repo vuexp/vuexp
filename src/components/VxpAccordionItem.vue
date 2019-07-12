@@ -32,10 +32,7 @@ export default {
     };
   },
   mounted() {
-    this.$nextTick(() => {
-      this.bubbleEvent('childRegistered', this);
-      this.listenAccordion('toggleChild', this.handleToggleRequest);
-    });
+    this.$nextTick(this.registerListeners);
   },
   beforeDestroy() {
     this.$parent.$emit('childRemoved', this.uniqueId);
@@ -59,6 +56,10 @@ export default {
       if (toggleId === this.uniqueId) {
         this.toggleCollapsed();
       }
+    },
+    registerListeners() {
+      this.bubbleEvent('childRegistered', this);
+      this.listenAccordion('toggleChild', this.handleToggleRequest);
     },
     bubbleEvent(event, param) {
       let p = this.$parent;
