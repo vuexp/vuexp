@@ -9,7 +9,7 @@ module.exports = {
         done();
       });
   },
-  ' Check that Badge component should be exposable as component '() {
+  'C13976152 Check that Badge component should be exposable as component '() {
     this.currentPage
       .checkInitialElements()
       .assert.containsText('@vxpBadge', '1')
