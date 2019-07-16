@@ -20,8 +20,8 @@ module.exports = {
     item5: '#item5 > div span',
     sample_button: '.vxp-stack-layout--vertical > div > div > button:nth-child(1)',
 
-    item2_contentArea: '#item2 > div.accordion-body',
-    item3_contentArea: '#item3 > div.accordion-body',
+    item2_contentArea: '#item2 > div.vxp-accordion-item__body',
+    item3_contentArea: '#item3 > div.vxp-accordion-item__body',
   },
   commands: [
     checkScreenshot(),
