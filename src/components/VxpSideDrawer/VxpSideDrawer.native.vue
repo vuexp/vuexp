@@ -1,5 +1,5 @@
 <template>
-  <RadSideDrawer ref="drawer" drawerLocation="Left" drawerContentSize="auto">
+  <RadSideDrawer ref="drawer" drawerLocation="Left">
     <StackLayout v-view:drawerContent>
       <slot name="drawerContent"></slot>
     </StackLayout>
@@ -27,4 +27,4 @@ export default {
   },
 };
 </script>
-<style lang="sass" scoped></style>
+<style lang="scss" scoped></style>
