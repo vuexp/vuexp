@@ -33,9 +33,6 @@ vue create brand-new-vuexp-project
 # go into the new project folder
 cd brand-new-vuexp-project
 
-# install dependencies
-npm i
-
 # add vue-cli-plugin-vuexp to the new project
 vue add vue-cli-plugin-vuexp
 ```
