@@ -39,7 +39,7 @@
     >
       <VxpLabel class="control-label p-l-2" text="Change Icon"></VxpLabel>
 
-      <select style="height: 1.9rem;" id="vxpPanel__shareicon__select" v-model="child.icon">
+      <select style="height: 1.9rem;" :id="`vxpPanel__shareicon__select__${idx}`" v-model="child.icon">
         <option v-for="icon in shareIcons" v-bind:value="icon" :key="icon">{{ icon }}</option>
       </select>
       <i class="bar"></i>
@@ -51,7 +51,7 @@
         primary
       />
       <VxpIconButton
-        :id="'remove_panelicon'+idx"
+        :id="'remove_panelicon_'+idx"
         @tap="removePanelIcon($event,idx)"
         iconName="fa"
         :icon="'fa-trash'"
