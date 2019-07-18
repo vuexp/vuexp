@@ -56,6 +56,7 @@ module.exports = {
             'components/vxpcheckbox.md',
             'components/vxp-textfield.md',
             "components/vxp-pagination.md",
+            'components/vxp-accordion.md',
           ],
         },
         {
