@@ -45,7 +45,7 @@ vue add vue-cli-plugin-vuexp
 # go into the new project folder
 cd existing-vuejs-project 
 
-# add vue-cli-plugin-vuexp to the new project
+# add vue-cli-plugin-vuexp to the project
 vue add vue-cli-plugin-vuexp
 ``` 
 
