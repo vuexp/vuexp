@@ -30,14 +30,14 @@
     <StackLayout class="form-group p-l-2" v-for="(child, idx) in children" orientation="horizontal" :key="idx">
       <VxpLabel class="control-label p-l-2" text="Change Icon"></VxpLabel>
 
-      <select style="height: 1.9rem;" id="vxpPanel__shareicon__select" v-model="child.icon">
+      <select style="height: 1.9rem;" :id="`vxpPanel__shareicon__select__${idx}`" v-model="child.icon">
         <option v-for="icon in shareIcons" v-bind:value="icon" :key="icon">{{ icon }}</option>
       </select>
       <i class="bar"></i>
       <VxpIconButton :size="30" :id="'add_panelicon_' + idx" @tap="addPanelIcon($event)" iconName="fa" :icon="'fa-plus'" primary />
-      <VxpIconButton :size="30" :id="'remove_panelicon' + idx" @tap="removePanelIcon($event, idx)" iconName="fa" :icon="'fa-trash'" primary />
+      <VxpIconButton :size="30" :id="'remove_panelicon_' + idx" @tap="removePanelIcon($event, idx)" iconName="fa" :icon="'fa-trash'" primary />
     </StackLayout>
-    <VxpIconButton :size="30" v-if="children.length == 0" :id="'add_panelicon_0'" @tap="addPanelIcon($event)" iconName="fa" :icon="'fa-plus'" primary />
+    <VxpIconButton :size="30" v-if="children.length === 0" :id="'add_panelicon_0'" @tap="addPanelIcon($event)" iconName="fa" :icon="'fa-plus'" primary />
   </StackLayout>
 </template>
 
@@ -64,7 +64,7 @@ export default {
       console.log(index);
     },
     addPanelIcon() {
-      if (this.children.length == 2) {
+      if (this.children.length === 2) {
         alert('You can add 2 icons');
         return;
       }

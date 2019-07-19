@@ -12,9 +12,9 @@ module.exports = {
     panelTitleInputField: '#vxpPanel__title__input > input',
     // First Panel Icon Selectbox's elements
     firstPanelIconSelectbox: '#vxpPanel__shareicon__select__0',
-    firstPanelIconSelectboxFirstOption: '#vxpPanel__shareicon__select > option:nth-child(1)',
-    firstPanelIconSelectboxSecondOption: '#vxpPanel__shareicon__select > option:nth-child(2)',
-    firstPanelIconSelectboxThirdOption: '#vxpPanel__shareicon__select > option:nth-child(3)',
+    firstPanelIconSelectboxFirstOption: '#vxpPanel__shareicon__select__0 > option:nth-child(1)',
+    firstPanelIconSelectboxSecondOption: '#vxpPanel__shareicon__select__0 > option:nth-child(2)',
+    firstPanelIconSelectboxThirdOption: '#vxpPanel__shareicon__select__0 > option:nth-child(3)',
     firstAddPanelIconButton: '#add_panelicon_0',
     firstRemovePanelIconButton: '#remove_panelicon_0',
     // Second Panel Icon selectbox's elements
