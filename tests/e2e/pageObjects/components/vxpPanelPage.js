@@ -6,15 +6,15 @@ module.exports = {
   },
   elements: {
     vxpPanelArea: 'div.demo-panel > div.vxp-stack-layout.vxp-stack-layout--vertical',
-    panelTitleSpan: 'div.vxp-grid-layout.vxp-panel-title > span',
-    panelHeaderFirstButton: 'div.vxp-grid-layout.vxp-panel-title > div > button:nth-child(1)',
-    panelHeaderSecondButton: 'div.vxp-grid-layout.vxp-panel-title > div > button:nth-child(2)',
+    panelTitleSpan: 'div.vxp-grid-layout.vxp-panel__title > span',
+    panelHeaderFirstButton: 'div.vxp-panel__title > div > div > button:nth-child(1)',
+    panelHeaderSecondButton: 'div.vxp-panel__title > div > div > button:nth-child(2)',
     panelTitleInputField: '#vxpPanel__title__input > input',
     // First Panel Icon Selectbox's elements
     firstPanelIconSelectbox: '#vxpPanel__shareicon__select__0',
-    firstPanelIconSelectboxFirstOption: '#vxpPanel__shareicon__select__0 > option:nth-child(1)',
-    firstPanelIconSelectboxSecondOption: '#vxpPanel__shareicon__select__0 > option:nth-child(2)',
-    firstPanelIconSelectboxThirdOption: '#vxpPanel__shareicon__select__0 > option:nth-child(3)',
+    firstPanelIconSelectboxFirstOption: '#vxpPanel__shareicon__select > option:nth-child(1)',
+    firstPanelIconSelectboxSecondOption: '#vxpPanel__shareicon__select > option:nth-child(2)',
+    firstPanelIconSelectboxThirdOption: '#vxpPanel__shareicon__select > option:nth-child(3)',
     firstAddPanelIconButton: '#add_panelicon_0',
     firstRemovePanelIconButton: '#remove_panelicon_0',
     // Second Panel Icon selectbox's elements
