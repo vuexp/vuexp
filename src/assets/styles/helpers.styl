@@ -1,0 +1,8 @@
+unit($webValue, $nativeValue = $webValue)
+  if $PLATFORM == 'android' or $PLATFORM == 'ios'
+    $nativeValue
+  else
+    if index($webValue, '%')
+      $webValue
+    else
+      $webValue + 0px;
