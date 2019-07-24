@@ -14,7 +14,7 @@
               @tap="removeSelection(selectedItem)"
               :key="index"
             >
-              <Label class="vxp-multiselectdropdown-native-modal__selected-item" :text="selectedItem[labelProp] + '  ×'"></Label>
+              <Label class="vxp-multiselectdropdown-native-modal__selected-item" :text="getLabel(selectedItem) + '  ×'"></Label>
             </StackLayout>
           </WrapLayout>
           <SearchBar
@@ -30,7 +30,7 @@
           <StackLayout v-if="displayItems.length">
             <ListView for="item in displayItems" height="100%">
               <v-template>
-                <Label class="vxp-multiselectdropdown-native-modal__selectable-item" @tap="selectItem(item)" :text="item[labelProp]"></Label>
+                <Label class="vxp-multiselectdropdown-native-modal__selectable-item" @tap="selectItem(item)" :text="getLabel(item)"></Label>
               </v-template>
             </ListView>
           </StackLayout>

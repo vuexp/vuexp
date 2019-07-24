@@ -16,7 +16,7 @@
       />
       <Button
         @tap="decrementValue"
-        id="progress__increment__button"
+        id="progress__decrement__button"
         text="Decrement"
         class="progress__button"
         value="Button"

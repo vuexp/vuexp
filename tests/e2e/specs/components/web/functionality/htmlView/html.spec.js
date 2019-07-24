@@ -3,7 +3,7 @@ module.exports = {
   before: function(client, done) {
     this.currentPage = client.maximizeWindow().page.WebViewHtmlViewPage();
     this.currentPage
-      .navigate(client.globals.devUrl + 'components/webview.html')
+      .navigate(client.globals.devUrl + 'components/vxp-webview.html')
       .waitForElementVisible('body', 60000)
       .customPerform(function() {
         done();

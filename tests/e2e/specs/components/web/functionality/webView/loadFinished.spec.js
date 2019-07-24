@@ -3,7 +3,7 @@ module.exports = {
   before: function(client, done) {
     this.currentPage = client.maximizeWindow().page.WebViewHtmlViewPage();
     this.currentPage
-      .navigate(client.globals.devUrl + 'components/webview.html')
+      .navigate(client.globals.devUrl + 'components/vxp-webview.html')
       .waitForElementVisible('body', 60000)
       .customPerform(function() {
         done();
@@ -11,7 +11,7 @@ module.exports = {
   },
   'C13839421 Events - Event : loadFinished'() {
     this.currentPage.loadFinishedPage('http://nativescript-vue.org/');
-    this.client.pause(30000);
+    this.client.pause(10000);
     this.currentPage.assert.containsText('@eventLabel', 'loadFinished').checkScreenshot('@image');
   },
 

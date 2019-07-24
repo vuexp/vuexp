@@ -1,17 +1,17 @@
 module.exports = {
-  tags: ['component', 'textfield'],
+  tags: ['component', 'Textfield'],
   before: function(client, done) {
-    this.currentPage = client.maximizeWindow().page.textFieldPage();
+    this.currentPage = client.maximizeWindow().page.textfieldPage();
     this.currentPage
-      .navigate('http://localhost:8080/components/textfield.html')
+      .navigate(client.globals.devUrl + 'components/textfield.html')
       .waitForElementVisible('body', 60000)
       .customPerform(function() {
         done();
       });
   },
-  '	C13840810 Check textfield editable false'() {
+  'C13840810 Props/Name: editable, type : Boolean , value : false'() {
     this.currentPage
-      .click('@editableCheckButton')
+      .checkEditableTextField()
       .waitForElementPresent('@textFieldInputField', 3000)
       .assert.attributeEquals('@textFieldInputField', 'disabled', 'true')
       .setTextToTextField('editablefa')
