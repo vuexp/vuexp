@@ -2,11 +2,9 @@
 sidebarDepth: 0
 ---
 
-# Switch
+# Switcher
 
-This is an overview of the most common usage of `<Switch>`.
-
-"Switcher" is being used in the implementation thus, Switch word is a reserved one for VueJs.
+This is an overview of the most common usage of `<Switcher>`.
 
 ```html
 <Switcher :checked="true" />
@@ -21,12 +19,7 @@ This is an overview of the most common usage of `<Switch>`.
 <DocExampleBox codeBox="https://codesandbox.io/s/p7wyk8xl3x?module=%2Fsrc%2FApp.vue">
 
 ```html
-<Switcher
-    width="75"
-    height="75"
-    v-model="value"
-    @checkedChange="switchValueChange"
-/>
+<Switcher width="75" height="75" v-model="value" @checkedChange="switchValueChange" />
 ```
 
 ```js
@@ -38,17 +31,12 @@ switchValueChange: event => console.log(event);
 
 ## Props
 
-| Name    | Type    | Default | Web | Mobile |
-| ------- | ------- | ------- | --- | ------ |
-| checked | Boolean | `false` | ✔   | ✔      |
+| Name    | Type    | Default | Web | Mobile | Description                                                             |
+| ------- | ------- | ------- | --- | ------ | ----------------------------------------------------------------------- |
+| checked | Boolean | `false` | ✔   | ✔      | Gets or sets the value of the switcher selection. Default value: `false`. |
 
 ## Events
 
-| Name          | Web | Mobile |
-| ------------- | --- | ------ |
-| checkedChange | ✔   | ✔      |
-
-## References
-
-> For more information about the available properties, methods, or events head over to the complete [NativeScript-Vue Documentation](https://nativescript-vue.org/en/docs/elements/components/switch/)
-> or [NativeScript Documentation](https://docs.nativescript.org/api-reference/classes/_ui_switch_.switch)
+| Name          | Web | Mobile | Description                                |
+| ------------- | --- | ------ | ------------------------------------------ |
+| checkedChange | ✔   | ✔      | Emitted when the switcher selection changes. |

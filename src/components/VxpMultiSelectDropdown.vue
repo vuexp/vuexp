@@ -9,7 +9,7 @@
           @tap="selectedItemTapped(selectedItem)"
           :key="index"
         >
-          <Label class="vxp-multiselectdropdown__pill-label" :text="selectedItem[labelProp]"></Label>
+          <Label class="vxp-multiselectdropdown__pill-label" :text="getLabel(selectedItem)"></Label>
           <Label v-if="!isNative" class="vxp-multiselectdropdown__pill-remove-text" text="×"></Label>
         </StackLayout>
       </WrapLayout>
@@ -55,7 +55,7 @@
           :key="index"
           @tap="selectableItemTapped(item)"
         >
-          <Label :text="item[labelProp]"></Label>
+          <Label :text="getLabel(item)"></Label>
         </StackLayout>
       </StackLayout>
       <StackLayout v-else-if="emptySuggestionsLabel">
@@ -124,7 +124,7 @@ export default {
       this.selectItem(item);
       this.focusSearchInput();
 
-      if (this.selected.length === this.items.length) {
+      if (this.selected.length === this.items.values.length) {
         this.deactivateSuggestions();
       }
     },
