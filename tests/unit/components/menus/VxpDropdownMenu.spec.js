@@ -54,12 +54,7 @@ describe('Vxp Dropdown Menu', () => {
     expect(wrapper.vm.isMenuOpen).to.be.true;
   });
   it(`should items be an empty array`, () => {
-    expect(
-      defaultWrapper
-        .props()
-        .items.values()
-        .next().value,
-    ).to.eql(undefined);
+    expect(defaultWrapper.props().items.length).to.eql(0);
   });
   it(`should call action method when platform is native`, () => {
     nativeScope(() => {

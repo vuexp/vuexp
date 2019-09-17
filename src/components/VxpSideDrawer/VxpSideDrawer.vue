@@ -1,9 +1,9 @@
 <template>
-  <SideDrawer ref="drawer">
+  <SideDrawer ref="drawer" class="vxp-side-drawer">
     <StackLayout v-view:drawerContent>
       <slot name="drawerContent"></slot>
     </StackLayout>
-    <StackLayout v-view:mainContent>
+    <StackLayout v-view:mainContent class="vxp-side-drawer__main-content">
       <slot name="mainContent"></slot>
     </StackLayout>
   </SideDrawer>
@@ -29,4 +29,10 @@ export default {
   },
 };
 </script>
-<style lang="sass" scoped></style>
+<style lang="scss">
+.vxp-side-drawer {
+  &__main-content {
+    width: 100%;
+  }
+}
+</style>

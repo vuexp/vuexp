@@ -1,9 +1,9 @@
 <template>
-  <RadSideDrawer ref="drawer" drawerLocation="Left" drawerContentSize="auto">
+  <RadSideDrawer ref="drawer" drawerLocation="Left" class="vxp-side-drawer">
     <StackLayout v-view:drawerContent>
       <slot name="drawerContent"></slot>
     </StackLayout>
-    <StackLayout v-view:mainContent>
+    <StackLayout v-view:mainContent class="vxp-side-drawer__main-content">
       <slot name="mainContent"></slot>
     </StackLayout>
   </RadSideDrawer>
@@ -27,4 +27,4 @@ export default {
   },
 };
 </script>
-<style lang="sass" scoped></style>
+<style lang="scss" scoped></style>
