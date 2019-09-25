@@ -9,6 +9,11 @@
       alignItems: alignItems,
       alignContent: alignContent,
     }"
+    :flex-direction="flexDirection"
+    :flex-wrap="flexWrap"
+    :justify-content="justifyContent"
+    :align-items="alignItems"
+    :align-content="alignContent"
   >
     <slot></slot>
   </div>
@@ -37,5 +42,11 @@ export default {
 <style lang="scss">
 .vxp-flexbox-layout {
   display: flex;
+
+  &[flex-direction='column'] {
+    * {
+      max-width: 100%;
+    }
+  }
 }
 </style>
