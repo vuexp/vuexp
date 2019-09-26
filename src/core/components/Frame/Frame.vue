@@ -12,3 +12,9 @@ export default {
   mixins: [Gestures],
 };
 </script>
+
+<style lang="scss">
+.vxp-frame {
+  height: 100%;
+}
+</style>
