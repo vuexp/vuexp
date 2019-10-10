@@ -1,8 +1,6 @@
 <template>
   <span v-common-directive class="vxp-label" :class="fontClass" :style="{ 'white-space': textWrap ? 'normal' : 'nowrap' }">
-    <template v-if="textValue">
-      {{ textValue }}
-    </template>
+    <template v-if="textValue">{{ textValue }}</template>
     <slot v-else />
   </span>
 </template>
