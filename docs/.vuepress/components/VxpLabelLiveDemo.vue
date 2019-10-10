@@ -22,26 +22,26 @@
     <StackLayout class="demo-panel">
       <VxpLabel text="Styling the label" class="demo-panel__title" />
       <FlexboxLayout justifyContent="space-between" flexDirection="row">
-        <input type="text" v-model="formattedStringItemText" />
+        <VxpTextField type="text" v-model="formattedStringItemText" />
 
         <FlexboxLayout>
           <VxpLabel text="Bold: " />
-          <input id="label_bold" type="checkbox" v-model="bold" />
+          <VxpCheckbox id="label_bold" class="checkbox" v-model="bold" />
         </FlexboxLayout>
 
         <FlexboxLayout>
           <VxpLabel text="Italic: " />
-          <input id="label_italic" type="checkbox" v-model="italic" />
+          <VxpCheckbox id="label_italic" class="checkbox" v-model="italic" />
         </FlexboxLayout>
 
         <FlexboxLayout>
           <VxpLabel text="Underline: " />
-          <input id="label_underline" type="checkbox" v-model="underline" />
+          <VxpCheckbox id="label_underline" class="checkbox" v-model="underline" />
         </FlexboxLayout>
 
         <FlexboxLayout>
           <VxpLabel text="Colored: " />
-          <input id="label_colored" type="checkbox" v-model="colored" />
+          <VxpCheckbox id="label_colored" class="checkbox" v-model="colored" />
         </FlexboxLayout>
 
         <VxpButton text="Add" @tap="addItem" />
@@ -72,6 +72,7 @@
 
 <script>
 import VxpLabel from '../../../src/components/VxpLabel';
+import VxpTextField from '../../../src/components/VxpTextField';
 import VxpIconButton from '../../../src/components/VxpIconButton';
 import VxpButton from '../../../src/components/VxpButton';
 import StackLayout from '../../../src/layouts/StackLayout';
@@ -80,6 +81,7 @@ import FormattedString from '../../../src/core/components/FormattedString/Format
 import Span from '../../../src/core/components/Span/Span';
 import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
 import GridLayout from '../../../src/layouts/GridLayout';
+import VxpCheckbox from "../../../src/components/VxpCheckbox";
 
 export default {
   name: 'VxpLabelLiveDemo',
@@ -121,6 +123,8 @@ export default {
     };
   },
   components: {
+    VxpTextField,
+    VxpCheckbox,
     FlexboxLayout,
     GridLayout,
     VxpButton,
@@ -158,6 +162,10 @@ export default {
 <style lang="scss" scoped>
 .flexbox {
   color: #2c3e50;
+}
+
+.checkbox{
+  margin-left: 10px;
 }
 
 .demo-panel {
