@@ -22,7 +22,7 @@
     <StackLayout class="demo-panel">
       <VxpLabel text="Styling the label" class="demo-panel__title" />
       <FlexboxLayout justifyContent="space-between" flexDirection="row">
-        <VxpTextField type="text" v-model="formattedStringItemText" />
+        <VxpTextField type="text" id="formattedStringItemText" v-model="formattedStringItemText" />
 
         <FlexboxLayout>
           <VxpLabel text="Bold: " />
@@ -44,7 +44,7 @@
           <VxpCheckbox id="label_colored" class="checkbox" v-model="colored" />
         </FlexboxLayout>
 
-        <VxpButton text="Add" @tap="addItem" />
+        <VxpButton id="add_formatted_item" text="Add" @tap="addItem" />
       </FlexboxLayout>
 
       <FlexboxLayout flexDirection="column" alignItems="flex-start">
