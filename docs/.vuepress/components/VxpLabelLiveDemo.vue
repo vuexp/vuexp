@@ -18,14 +18,68 @@
       <VxpLabel text="Rendered Result" class="demo-panel__title" />
       <VxpLabel id="label_component" :text="labelValue" :textWrap="textWrap" />
     </StackLayout>
+
+    <StackLayout class="demo-panel">
+      <VxpLabel text="Styling the label" class="demo-panel__title" />
+      <FlexboxLayout justifyContent="space-between" flexDirection="row">
+        <input type="text" v-model="formattedStringItemText" />
+
+        <FlexboxLayout>
+          <VxpLabel text="Bold: " />
+          <input id="label_bold" type="checkbox" v-model="bold" />
+        </FlexboxLayout>
+
+        <FlexboxLayout>
+          <VxpLabel text="Italic: " />
+          <input id="label_italic" type="checkbox" v-model="italic" />
+        </FlexboxLayout>
+
+        <FlexboxLayout>
+          <VxpLabel text="Underline: " />
+          <input id="label_underline" type="checkbox" v-model="underline" />
+        </FlexboxLayout>
+
+        <FlexboxLayout>
+          <VxpLabel text="Colored: " />
+          <input id="label_colored" type="checkbox" v-model="colored" />
+        </FlexboxLayout>
+
+        <VxpButton text="Add" @tap="addItem" />
+      </FlexboxLayout>
+
+      <FlexboxLayout flexDirection="column" alignItems="flex-start">
+        <FlexboxLayout v-for="(item, key) in formattedStringItems" :key="key" alignItems="center" style="backgroundColor: #CCC; margin: 3px 0; padding: 0 10px; font-size: 12px">
+          <VxpLabel :textWrap="true">
+            <FormattedString>
+              <Span :text="item.text" :style="item.style" />
+            </FormattedString>
+          </VxpLabel>
+          <VxpIconButton :size="30" :id="'remove_item_' + key" @tap="removeItem(key)" iconName="fa" :icon="'fa-minus'" primary />
+        </FlexboxLayout>
+      </FlexboxLayout>
+    </StackLayout>
+
+    <StackLayout class="demo-panel">
+      <VxpLabel text="Rendered Result" class="demo-panel__title" />
+      <VxpLabel :textWrap="true">
+        <FormattedString>
+          <Span :text="item.text" v-for="(item, key) in formattedStringItems" :key="key" :style="item.style" />
+        </FormattedString>
+      </VxpLabel>
+    </StackLayout>
   </StackLayout>
 </template>
 
 <script>
 import VxpLabel from '../../../src/components/VxpLabel';
+import VxpIconButton from '../../../src/components/VxpIconButton';
+import VxpButton from '../../../src/components/VxpButton';
 import StackLayout from '../../../src/layouts/StackLayout';
 import TextField from '../../../src/core/components/TextField/TextField';
+import FormattedString from '../../../src/core/components/FormattedString/FormattedString';
+import Span from '../../../src/core/components/Span/Span';
 import FlexboxLayout from '../../../src/layouts/FlexboxLayout';
+import GridLayout from '../../../src/layouts/GridLayout';
 
 export default {
   name: 'VxpLabelLiveDemo',
@@ -33,13 +87,70 @@ export default {
     return {
       labelValue: 'Hello world!',
       textWrap: false,
+      bold: false,
+      italic: false,
+      underline: false,
+      colored: false,
+      formattedStringItemText: '',
+      formattedStringItems: [
+        {
+          text: 'This text has a ',
+        },
+        {
+          text: 'red ',
+          style: {
+            color: 'red',
+          },
+        },
+        {
+          text: 'piece of text. ',
+        },
+        {
+          text: 'Also, this bit is italic, ',
+          style: {
+            fontStyle: 'italic',
+          },
+        },
+        {
+          text: 'and this bit is bold.',
+          style: {
+            fontWeight: 'bold',
+          },
+        },
+      ],
     };
   },
   components: {
     FlexboxLayout,
+    GridLayout,
+    VxpButton,
     VxpLabel,
     StackLayout,
     TextField,
+    FormattedString,
+    Span,
+    VxpIconButton,
+  },
+  methods: {
+    addItem() {
+      this.formattedStringItems.push({
+        text: this.formattedStringItemText,
+        style: {
+          fontWeight: this.bold ? 'bold' : undefined,
+          fontStyle: this.italic ? 'italic' : undefined,
+          textDecoration: this.underline ? 'underline' : undefined,
+          color: this.colored ? 'red' : undefined,
+        },
+      });
+      this.formattedStringItemText = '';
+      this.bold = false;
+      this.italic = false;
+      this.underline = false;
+      this.colored = false;
+    },
+    removeItem(key) {
+      this.formattedStringItems = this.formattedStringItems.filter((item, index) => index !== key);
+    },
   },
 };
 </script>
@@ -51,7 +162,6 @@ export default {
 
 .demo-panel {
   padding: 10px;
-  border: #3c495e;
   border-radius: 5px;
   margin: 10px;
   border: 1px solid #f1f1f1;
@@ -100,4 +210,6 @@ button {
   padding-right: 5px;
   min-width: unset;
 }
+
+@import url('/fonts/fontawesome.min.css');
 </style>
