@@ -26,7 +26,7 @@
     "register-service-worker": "1.6.2",
     "string-replace-loader": "2.1.1",
     "nativescript-orientation": "2.2.1",
-    "nativescript-ui-sidedrawer": "^7.0.0"
+    "nativescript-ui-sidedrawer": "^8.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.4.0",
