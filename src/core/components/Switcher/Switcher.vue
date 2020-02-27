@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       check: false,
-      width: '20px',
+      width: '35px',
     };
   },
   props: {
@@ -104,6 +104,7 @@ export default {
   display: inline-block;
   width: 100%;
   background: transparent !important;
+  height: 40px;
   input {
     opacity: 0;
     width: 0;
@@ -139,7 +140,7 @@ export default {
       border-radius: 50%;
       height: calc(100% - 10px);
       margin: 5px 5px;
-      width: var(--width);
+      width: calc(var(--width) - 5px);
     }
   }
 }
