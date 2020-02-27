@@ -11,19 +11,19 @@ const AttributeProps = {
   },
   backgroundColor: {
     getProperty(value) {
-      return `background-color: ${value}`;
+      return `background-color: ${value};`;
     },
   },
   flexShrink: {
     parents: ['FlexboxLayout'],
     getProperty(value) {
-      return `flex-shrink: ${value}`;
+      return `flex-shrink: ${value};`;
     },
   },
   flexGrow: {
     parents: ['FlexboxLayout'],
     getProperty(value) {
-      return `flex-grow: ${value}`;
+      return `flex-grow: ${value};`;
     },
   },
   flexWrapBefore: {
@@ -35,7 +35,7 @@ const AttributeProps = {
   order: {
     parents: ['FlexboxLayout'],
     getProperty(value) {
-      return `order: ${value}`;
+      return `order: ${value};`;
     },
   },
   top: {
@@ -53,7 +53,7 @@ const AttributeProps = {
   alignSelf: {
     parents: ['FlexboxLayout'],
     getProperty(value) {
-      return `align-self: ${value}`;
+      return `align-self: ${value};`;
     },
   },
   row: {
@@ -71,28 +71,28 @@ const AttributeProps = {
   rowSpan: {
     parents: ['GridLayout'],
     getProperty(value) {
-      return `grid-row-end: span  ${value}`;
+      return `grid-row-end: span ${value};`;
     },
   },
   colSpan: {
     parents: ['GridLayout'],
     getProperty(value) {
-      return `grid-column-end: span ${value}`;
+      return `grid-column-end: span ${value};`;
     },
   },
   fontStyle: {
     getProperty(value) {
-      return `font-style: ${value}`;
+      return `font-style: ${value};`;
     },
   },
   fontWeight: {
     getProperty(value) {
-      return `font-weight: ${value}`;
+      return `font-weight: ${value};`;
     },
   },
   color: {
     getProperty(value) {
-      return `color: ${value}`;
+      return `color: ${value};`;
     },
   },
 };
@@ -108,7 +108,14 @@ const Attributes = {
         if (AttributeProps[attr] && AttributeProps[attr].hasOwnProperty('parents') && AttributeProps[attr].parents.includes(parentComponentName)) {
           cssString += AttributeProps[attr].getProperty($attrs[attr]);
         }
+      } else {
+        if (AttributeProps[attr] && !AttributeProps[attr].hasOwnProperty('parents')) {
+          cssString += AttributeProps[attr].getProperty($attrs[attr]);
+        }
       }
+    }
+
+    if ($el && $el.style) {
       $el.style.cssText += ';' + cssString;
     }
   },

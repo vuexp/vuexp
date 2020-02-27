@@ -1,7 +1,7 @@
 <template>
   <span v-common-directive :class="fontClass" class="vxp-span">
-    {{ textValue }}
-    <slot />
+    <template v-if="textValue">{{ textValue }}</template>
+    <slot v-else />
   </span>
 </template>
 

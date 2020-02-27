@@ -17,11 +17,24 @@ describe('Page.vue', () => {
       });
     },
   };
-  const wrapper = mount(Page, {
-    name: 'Page',
-    slots: {
-      default: [LabelWrapper],
-    },
+  let wrapper;
+  beforeEach(() => {
+    wrapper = mount(Page, {
+      name: 'Page',
+      slots: {
+        default: [LabelWrapper],
+      },
+    });
+  });
+
+  describe('Page load unload events.', () => {
+    it('loaded', () => {
+      expect(wrapper.emitted('loaded').length).to.equal(1);
+    });
+    it('unloaded', () => {
+      wrapper.destroy();
+      expect(wrapper.emitted('unloaded').length).to.equal(1);
+    });
   });
   describe('the component contains exactly one div.', () => {
     it('there is one div.', () => {

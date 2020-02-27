@@ -5,8 +5,8 @@ module.exports = {
     return this.api.launchUrl;
   },
   elements: {
-    srcInput: '#WebView_src_textfield',
-    htmlInput: '#WebView_html_textfield',
+    srcInput: '#WebView_src_textfield input',
+    htmlInput: '#WebView_html_textfield input',
     eventLabel: '#WebView_eventOutput_Label',
     image: '#app > div > div.page > div.content > div.nudoc-example > div.nudoc-example__content',
   },

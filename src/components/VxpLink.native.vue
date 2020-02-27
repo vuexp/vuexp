@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { openUrl } from '../utils'; // eslint-disable-line
+import utils from '../utils'; // eslint-disable-line
 
 export default {
   name: 'VxpLink',
@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     onTap() {
-      openUrl(this.externalUrl);
+      utils.openUrl(this.externalUrl);
     },
   },
 };

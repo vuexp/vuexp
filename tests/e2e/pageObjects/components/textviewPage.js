@@ -5,14 +5,20 @@ module.exports = {
     return this.api.launchUrl;
   },
   elements: {
-    textview: '#TextView textarea',
-    textInputField: '#TextView_text_textfield',
-    hintInputField: '#TextView_hint_textfield',
-    editableCheckButton: '#TextView_editable_input',
-    maxLenghtInputField: '#TextView_maxLength_textfield',
-    returnKeyTypeSelect: '#TextView_returnKeyType_select',
-    autoCorrectCheck: '#TextView_autocorrect_input',
-    eventOutput: '#TextView_eventOutput_Label',
+    textview: '#textview textarea',
+    textInputField: '#textview__text__input',
+    hintInputField: '#textview__hint__input',
+    editableCheckButton: '#textview__editable__input',
+    maxLenghtInputField: '#textview___maxlength__input',
+    autoCorrectCheck: '#textview__autocorrect__input',
+    eventOutput: '#textview__eventOutput__label',
+
+    retunKeyType: '#textview__returnKeyType__select',
+    done: '#TextView_returnKeyType_done_option',
+    next: '#TextView_returnKeyType_next_option',
+    go: '#TextView_returnKeyType_go_option',
+    search: '#TextView_returnKeyType_search_option',
+    send: '#TextView_returnKeyType_send_option',
   },
 
   commands: [
@@ -20,7 +26,7 @@ module.exports = {
     {
       checkInitialElements: function() {
         this.expect.element('@textview').to.be.visible;
-        this.expect.element('@editableCheckButton').to.be.visible;
+
         return this;
       },
 
@@ -35,11 +41,7 @@ module.exports = {
           .setValue('@hintInputField', text);
       },
       checkEditableTextField: function() {
-        this.waitForElementVisible('@textview', 10000);
-        if (this.verify.attributeContains('@textview', 'style', 'disabled: disabled;')) {
-          return 'false';
-        }
-        return 'true';
+        return this.waitForElementVisible('@editableCheckButton', 10000).click('@editableCheckButton');
       },
       setNumberToMaxLenght: function(lenght) {
         return this.waitForElementVisible('@maxLenghtInputField', 10000)
@@ -51,6 +53,76 @@ module.exports = {
           .clearValue('@textview')
           .setValue('@textview', text);
       },
+      checkSecure: function() {
+        this.waitForElementVisible('@textview', 10000);
+        if (this.verify.attributeContains('@textview', 'type', 'password')) {
+          return true;
+        }
+      },
+      uncheckSecure: function() {
+        if (this.verify.attributeContains('@textview', 'type', 'email')) {
+          return this.click('@secureCheckButton');
+        }
+      },
+      selectKeyBoardType: function(type) {
+        switch (type) {
+          case 'datetime':
+            this.click('@datetime_option');
+            break;
+          case 'phone':
+            this.click('@phone_option');
+            break;
+          case 'number':
+            this.click('@number_option');
+            break;
+          case 'url':
+            this.click('@url_option');
+            break;
+          case 'email':
+            this.click('@email_option');
+            break;
+        }
+      },
+      blur: function() {
+        this.waitForElementVisible('@textview', 10000).click('@textview');
+        return this.click('@textInputField');
+      },
+      focus: function() {
+        this.waitForElementVisible('@textview', 10000);
+        return this.click('@textview');
+      },
+      selectKeyboardTypeAsDatetime: function() {
+        this.click('@datetime');
+        this.waitForElementVisible('@textview', 3000);
+        return this;
+      },
+      selectKeyboardType: function(type) {
+        switch (type) {
+          case 'phone':
+            return this.click('@phone');
+          case 'number':
+            return this.click('@number');
+          case 'url':
+            return this.click('@url');
+          case 'email':
+            return this.click('@email');
+        }
+      },
+      selectReturnkeyType: function(type) {
+        switch (type) {
+          case 'done':
+            return this.click('@done');
+          case 'next':
+            return this.click('@next');
+          case 'go':
+            return this.click('@go');
+          case 'search':
+            return this.click('@search');
+          case 'send':
+            return this.click('@send');
+        }
+      },
+
       perform: function(callback) {
         this.api.perform(callback);
         return this;

@@ -3,17 +3,20 @@ module.exports = {
   before: function(client, done) {
     this.currentPage = client.maximizeWindow().page.textFieldPage();
     this.currentPage
-      .navigate('http://localhost:8080/components/textfield.html')
+      .navigate(client.globals.devUrl + 'components/textfield.html')
       .waitForElementVisible('body', 60000)
       .customPerform(function() {
         done();
       });
   },
-  'Check textfield  autoCorrect ON'() {
-    this.currentPage.setTextToTextField('hllbbbbbbbbbbo').checkScreenshot('@textFieldInputField');
-  },
-  'Check textfield autoCorrect OFF'() {
-    this.currentPage.setTextToTextField('hllo').checkScreenshot('@textFieldInputField');
+  'C13840781 Props /Name: autocorrect, type : Boolean'() {
+    this.currentPage
+      .setTextToTextField('hllbbbbbbbbbbo ')
+      .checkScreenshot('@textFieldInputField')
+      .click('@autoCorrectCheck')
+      .waitForElementVisible('@textFieldInputField', 1000)
+      .click('@textFieldInputField')
+      .checkScreenshot('@textFieldInputField');
   },
   after: function(client, done) {
     client.end().customPerform(done);
