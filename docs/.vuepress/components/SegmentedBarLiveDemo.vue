@@ -13,14 +13,18 @@
     </StackLayout>
     <StackLayout class="demo-panel">
       <Label text="Manage Segmented Bar Items" class="demo-panel__title"/>
-      <StackLayout orientation="horizontal">
-        <Label text="Selected Tab Background Color:" for="segmentedBar__selectedBackgroundColor__label"></Label>
-        <input
-          type="color"
-          v-model="selectedTabColor"
-          class="m-l-10"
-          id="segmentedBar__selectedBackgroundColor__label"
-        >
+      <StackLayout orientation="horizontal" class="editor-param">
+        <Label class="editor-param-title" text="Color: "/>
+        <select id="segmentedBar__selectedBackgroundColor__select" v-model="selectedTabColor">
+          <option disabled value>Color</option>
+          <option>red</option>
+          <option>green</option>
+          <option>blue</option>
+          <option>yellow</option>
+          <option>cyan</option>
+          <option>orange</option>
+          <option>gray</option>
+        </select>
       </StackLayout>
       <Label :text="selectedIndexTitle" id="segmentedBar__selectedIndex__label" class="m-b-10"></Label>
 
@@ -70,7 +74,7 @@ export default {
     return {
       segments: [{ name: 'Segment 1' }, { name: 'Segment 2' }, { name: 'Segment 3' }],
       selectedIndex: 0,
-      selectedTabColor: '#f08d49',
+      selectedTabColor: 'red',
     };
   },
   computed: {

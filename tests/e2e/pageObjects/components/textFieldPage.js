@@ -16,18 +16,18 @@ module.exports = {
     autoCorrectCheck: '#TextField_autocorrect_input',
     eventOutput: '#TextField_eventOutput_Label',
 
-    datetime_option: '#TextField_keyboardType_dateTime_option',
-    phone_option: '#TextField_keyboardType_phone_option',
-    number_option: '#TextField_keyboardType_number_option',
-    url_option: '#TextField_keyboardType_url_option',
-    email_option: '#TextField_keyboardType_email_option',
+    datetime: '#TextField_keyboardType_dateTime_option',
+    phone: '#TextField_keyboardType_phone_option',
+    number: '#TextField_keyboardType_number_option',
+    url: '#TextField_keyboardType_url_option',
+    email: '#TextField_keyboardType_email_option',
 
     retunKeyType: '#TextField_returnKeyType_select',
-    done_option: '#TextField_returnKeyType_done_option',
-    next_option: '#TextField_returnKeyType_next_option',
-    go_option: '#TextField_returnKeyType_go_option',
-    search_option: '#TextField_returnKeyType_search_option',
-    send_option: '#TextField_returnKeyType_send_option',
+    done: '#TextField_returnKeyType_done_option',
+    next: '#TextField_returnKeyType_next_option',
+    go: '#TextField_returnKeyType_go_option',
+    search: '#TextField_returnKeyType_search_option',
+    send: '#TextField_returnKeyType_send_option',
   },
 
   commands: [
@@ -35,27 +35,6 @@ module.exports = {
     {
       checkInitialElements: function() {
         this.expect.element('@textFieldInputField').to.be.visible;
-        this.expect.element('@textInputField').to.be.visible;
-        this.expect.element('@hintInputField').to.be.visible;
-        this.expect.element('@editableCheckButton').to.be.visible;
-        this.expect.element('@maxLenghtInputField').to.be.visible;
-        this.expect.element('@secureCheckButton').to.be.visible;
-        this.expect.element('@keyboardTypeSelect').to.be.visible;
-        this.expect.element('@returnKeyTypeSelect').to.be.visible;
-        this.expect.element('@autoCorrectCheck').to.be.visible;
-        this.expect.element('@eventOutput').to.be.visible;
-        this.expect.element('@datetime_option').to.be.visible;
-        this.expect.element('@phone_option').to.be.visible;
-        this.expect.element('@number_option').to.be.visible;
-        this.expect.element('@url_option').to.be.visible;
-        this.expect.element('@email_option').to.be.visible;
-        this.expect.element('@retunKeyType').to.be.visible;
-        this.expect.element('@done_option').to.be.visible;
-        this.expect.element('@next_option').to.be.visible;
-        this.expect.element('@go_option').to.be.visible;
-        this.expect.element('@search_option').to.be.visible;
-        this.expect.element('@send_option').to.be.visible;
-
         return this;
       },
 
@@ -70,12 +49,9 @@ module.exports = {
           .setValue('@hintInputField', text);
       },
       checkEditableTextField: function() {
-        this.waitForElementVisible('@textFieldInputField', 10000);
-        if (this.verify.attributeContains('@textFieldInputField', 'style', 'disabled: disabled;')) {
-          return 'false';
-        }
-        return 'true';
+        return this.waitForElementVisible('@editableCheckButton', 10000).click('@editableCheckButton');
       },
+
       setNumberToMaxLenght: function(lenght) {
         return this.waitForElementVisible('@maxLenghtInputField', 10000)
           .clearValue('@maxLenghtInputField')
@@ -89,7 +65,7 @@ module.exports = {
       checkSecure: function() {
         this.waitForElementVisible('@textFieldInputField', 10000);
         if (this.verify.attributeContains('@textFieldInputField', 'type', 'password')) {
-          return true;
+          return this.click('@secureCheckButton');
         }
       },
       uncheckSecure: function() {
@@ -114,6 +90,46 @@ module.exports = {
           case 'email':
             this.click('@email_option');
             break;
+        }
+      },
+      blur: function() {
+        this.waitForElementVisible('@textFieldInputField', 10000).click('@textFieldInputField');
+        return this.click('@textInputField');
+      },
+      focus: function() {
+        this.waitForElementVisible('@textFieldInputField', 10000);
+        return this.click('@textFieldInputField');
+      },
+
+      selectKeyboardTypeAsDatetime: function() {
+        this.click('@datetime');
+        this.waitForElementVisible('@textFieldInputField', 3000);
+        return this;
+      },
+      selectKeyboardType: function(type) {
+        switch (type) {
+          case 'phone':
+            return this.click('@phone');
+          case 'number':
+            return this.click('@number');
+          case 'url':
+            return this.click('@url');
+          case 'email':
+            return this.click('@email');
+        }
+      },
+      selectReturnkeyType: function(type) {
+        switch (type) {
+          case 'done':
+            return this.click('@done');
+          case 'next':
+            return this.click('@next');
+          case 'go':
+            return this.click('@go');
+          case 'search':
+            return this.click('@search');
+          case 'send':
+            return this.click('@send');
         }
       },
       perform: function(callback) {

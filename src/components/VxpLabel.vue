@@ -1,5 +1,7 @@
 <template>
-  <Label :text="text" :textWrap="textWrap" />
+  <Label :text="text" :textWrap="textWrap" v-on="$listeners">
+    <slot />
+  </Label>
 </template>
 
 <script>

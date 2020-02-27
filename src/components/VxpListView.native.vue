@@ -59,7 +59,9 @@ export default {
       const { $scopedSlots, itemSelect } = this;
       const vTemplateSlots = Object.keys($scopedSlots).map(slotName => {
         const scopedSlot = $scopedSlots[slotName];
-        const template = scopedSlot({ item: {}, index: -1 });
+        // scopedSlot() always returns as array
+        // https://github.com/vuejs/vue/blob/ab50e8e1da2f4f944af683252481728485fedf16/test/unit/features/component/component-scoped-slot.spec.js#L447
+        const [template] = scopedSlot({ item: {}, index: -1 });
         return h('v-template', {
           attrs: {
             if: itemSelect ? itemSelect[slotName].toString() : 'true',
