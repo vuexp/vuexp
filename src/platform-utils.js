@@ -35,15 +35,15 @@ function getBrowser(navigator) {
   };
 }
 
-function getOrientation(window) {
+function getOrientation() {
   return typeof window !== 'undefined' ? (window.innerWidth > window.innerHeight ? 'landscape' : 'portrait') : 'landscape';
 }
 
-function getScreenWidth(window) {
+function getScreenWidth() {
   return typeof window !== 'undefined' ? window.innerWidth : 1024;
 }
 
-function getScreenHeight(window) {
+function getScreenHeight() {
   return typeof window !== 'undefined' ? window.innerHeight : 768;
 }
 
