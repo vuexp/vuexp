@@ -10,7 +10,7 @@ import Gestures from '../../mixins/GestureMixin';
 export default {
   name: 'Page',
   mixins: [Gestures],
-  created() {
+  mounted() {
     this.$emit('loaded');
   },
   destroyed() {
