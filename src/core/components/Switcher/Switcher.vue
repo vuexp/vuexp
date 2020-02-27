@@ -1,7 +1,7 @@
 <template>
   <label ref="slider" class="vxp-switch">
-    <input type="checkbox" :checked="checked" @change="$emit('checkedChange', $event)" @click="updateValue" />
-    <span :style="{ '--background-color': backgroundColor, '--button-color': buttonColor }" class="slider round"></span>
+    <input type="checkbox" :checked="checked" @change="$emit('checkedChange', $event)" @click="updateValue" :disabled="disabled" />
+    <span :style="checkControl" class="slider round"></span>
   </label>
 </template>
 
@@ -15,10 +15,11 @@ export default {
     event: 'input',
     prop: 'checked',
   },
+
   data() {
     return {
-      backgroundColor: '#ccc',
-      buttonColor: 'white',
+      check: false,
+      width: '20px',
     };
   },
   props: {
@@ -26,6 +27,28 @@ export default {
       type: Boolean,
       default: false,
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    backgroundColor: {
+      type: String,
+      default: '#2196f3',
+    },
+    offBackgroundColor: {
+      type: String,
+      default: '#ccc',
+    },
+    color: {
+      type: String,
+      default: '#ffffff',
+    },
+    buttonSize: {
+      type: String,
+    },
+  },
+  created() {
+    this.check = this.checked;
   },
   updated() {
     this.setStyle();
@@ -36,13 +59,36 @@ export default {
   methods: {
     updateValue: function(event) {
       this.$emit('input', event.target.checked);
+      this.check = event.target.checked;
     },
     setStyle() {
-      if (this.$refs.slider.style.color) {
-        this.buttonColor = this.$refs.slider.style.color;
+      if (this.$refs.slider.style.height) {
+        this.width = this.$refs.slider.style.height;
       }
-      if (this.$refs.slider.style.background) {
-        this.backgroundColor = this.$refs.slider.style.background;
+    },
+  },
+  watch: {
+    buttonSize() {
+      this.width = this.buttonSize;
+    },
+    checked() {
+      this.check = this.checked;
+    },
+  },
+  computed: {
+    checkControl() {
+      if (this.check) {
+        return {
+          'background-color': this.backgroundColor,
+          '--button-color': this.color,
+          '--width': this.width,
+        };
+      } else {
+        return {
+          'background-color': this.offBackgroundColor,
+          '--button-color': this.color,
+          '--width': this.width,
+        };
       }
     },
   },
@@ -56,8 +102,7 @@ export default {
 .vxp-switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 100%;
   background: transparent !important;
   input {
     opacity: 0;
@@ -71,9 +116,7 @@ export default {
     box-shadow: 0 0 1px #2196f3;
   }
   input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+    left: calc(98% - var(--width));
   }
   .slider {
     position: absolute;
@@ -90,14 +133,13 @@ export default {
     &:before {
       position: absolute;
       content: '';
-      height: 26px;
-      width: 26px;
-      left: 4px;
-      bottom: 4px;
       background-color: var(--button-color);
       -webkit-transition: 0.4s;
       transition: 0.4s;
       border-radius: 50%;
+      height: calc(100% - 10px);
+      margin: 5px 5px;
+      width: var(--width);
     }
   }
 }
