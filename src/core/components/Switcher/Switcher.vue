@@ -1,6 +1,6 @@
 <template>
   <label ref="slider" class="vxp-switch" :style="checkControl">
-    <input type="checkbox" :checked="checked" @change="$emit('checkedChange', $event)" @click="updateValue" :disabled="disabled" />
+    <input type="checkbox" :checked="checked" @change="$emit('checkedChange', $event)" @click="updateValue" :disabled="!isEnabled" />
     <span class="slider round"></span>
   </label>
 </template>
@@ -26,9 +26,9 @@ export default {
       type: Boolean,
       default: false,
     },
-    disabled: {
+    isEnabled: {
       type: Boolean,
-      default: false,
+      default: true,
     },
     backgroundColor: {
       type: String,
@@ -63,19 +63,12 @@ export default {
   },
   computed: {
     checkControl() {
-      if (this.localChecked) {
-        return {
-          '--toggle-circle-background-color': this.backgroundColor,
-          '--button-color': this.color,
-          '--toggle-circle-size': this.buttonSize,
-        };
-      } else {
-        return {
-          '--toggle-circle-background-color': this.offBackgroundColor,
-          '--button-color': this.color,
-          '--toggle-circle-size': this.buttonSize,
-        };
-      }
+      return {
+        '--background-color': this.backgroundColor,
+        '--off-background-color': this.offBackgroundColor,
+        '--circle-color': this.color,
+        '--circle-size': this.buttonSize,
+      };
     },
   },
   directives: {
@@ -90,20 +83,17 @@ export default {
   display: inline-block;
   width: 60px;
   background: transparent !important;
-  height: calc(var(--toggle-circle-size) + 10px);
+  height: calc(var(--circle-size) + 10px);
   input {
     opacity: 0;
     width: 0;
     height: 0;
   }
   input:checked + .slider {
-    background-color: #2196f3;
-  }
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196f3;
+    background-color: var(--background-color);
   }
   input:checked + .slider:before {
-    left: calc(100% - var(--toggle-circle-size) - 10px);
+    left: calc(100% - var(--circle-size) - 10px);
   }
   .slider {
     position: absolute;
@@ -112,7 +102,7 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--toggle-circle-background-color);
+    background-color: var(--off-background-color);
     -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 34px;
@@ -120,13 +110,13 @@ export default {
     &:before {
       position: absolute;
       content: '';
-      background-color: var(--button-color);
+      background-color: var(--circle-color);
       -webkit-transition: 0.4s;
       transition: 0.4s;
       border-radius: 50%;
       margin: 5px 5px;
-      width: var(--toggle-circle-size);
-      height: var(--toggle-circle-size);
+      width: var(--circle-size);
+      height: var(--circle-size);
       left: 0;
     }
   }
