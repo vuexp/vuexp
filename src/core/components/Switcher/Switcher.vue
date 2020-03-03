@@ -88,7 +88,7 @@ export default {
 .vxp-switch {
   position: relative;
   display: inline-block;
-  width: 100%;
+  width: 60px;
   background: transparent !important;
   height: calc(var(--toggle-circle-size) + 10px);
   input {
