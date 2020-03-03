@@ -1,7 +1,7 @@
 <template>
-  <label ref="slider" class="vxp-switch">
+  <label ref="slider" class="vxp-switch" :style="checkControl">
     <input type="checkbox" :checked="checked" @change="$emit('checkedChange', $event)" @click="updateValue" :disabled="disabled" />
-    <span :style="checkControl" class="slider round"></span>
+    <span class="slider round"></span>
   </label>
 </template>
 
@@ -18,8 +18,7 @@ export default {
 
   data() {
     return {
-      check: false,
-      width: '35px',
+      localChecked: false,
     };
   },
   props: {
@@ -45,49 +44,36 @@ export default {
     },
     buttonSize: {
       type: String,
+      default: '26px',
     },
-  },
-  created() {
-    this.check = this.checked;
-  },
-  updated() {
-    this.setStyle();
-  },
-  mounted() {
-    this.setStyle();
   },
   methods: {
     updateValue: function(event) {
       this.$emit('input', event.target.checked);
-      this.check = event.target.checked;
-    },
-    setStyle() {
-      if (this.$refs.slider.style.height) {
-        this.width = this.$refs.slider.style.height;
-      }
+      this.localChecked = event.target.checked;
     },
   },
   watch: {
-    buttonSize() {
-      this.width = this.buttonSize;
-    },
-    checked() {
-      this.check = this.checked;
+    checked: {
+      handler: function() {
+        this.localChecked = this.checked;
+      },
+      immediate: true,
     },
   },
   computed: {
     checkControl() {
-      if (this.check) {
+      if (this.localChecked) {
         return {
-          'background-color': this.backgroundColor,
+          '--toggle-circle-background-color': this.backgroundColor,
           '--button-color': this.color,
-          '--width': this.width,
+          '--toggle-circle-size': this.buttonSize,
         };
       } else {
         return {
-          'background-color': this.offBackgroundColor,
+          '--toggle-circle-background-color': this.offBackgroundColor,
           '--button-color': this.color,
-          '--width': this.width,
+          '--toggle-circle-size': this.buttonSize,
         };
       }
     },
@@ -104,7 +90,7 @@ export default {
   display: inline-block;
   width: 100%;
   background: transparent !important;
-  height: 40px;
+  height: calc(var(--toggle-circle-size) + 10px);
   input {
     opacity: 0;
     width: 0;
@@ -117,7 +103,7 @@ export default {
     box-shadow: 0 0 1px #2196f3;
   }
   input:checked + .slider:before {
-    left: calc(98% - var(--width));
+    left: calc(100% - var(--toggle-circle-size) - 10px);
   }
   .slider {
     position: absolute;
@@ -126,7 +112,7 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--background-color);
+    background-color: var(--toggle-circle-background-color);
     -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 34px;
@@ -138,8 +124,10 @@ export default {
       -webkit-transition: 0.4s;
       transition: 0.4s;
       border-radius: 50%;
-      height: calc(100% - 10px);
-      width: calc(var(--width) - 5px);
+      margin: 5px 5px;
+      width: var(--toggle-circle-size);
+      height: var(--toggle-circle-size);
+      left: 0;
     }
   }
 }
