@@ -139,7 +139,6 @@ export default {
       transition: 0.4s;
       border-radius: 50%;
       height: calc(100% - 10px);
-      margin: 5px 10px;
       width: calc(var(--width) - 5px);
     }
   }
