@@ -84,6 +84,8 @@ export default {
   width: 60px;
   background: transparent !important;
   height: calc(var(--circle-size) + 10px);
+  border-radius: var(--circle-size);
+
   input {
     opacity: 0;
     width: 0;
