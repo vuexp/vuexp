@@ -42,9 +42,13 @@ export default {
       type: String,
       default: '#ffffff',
     },
-    buttonSize: {
+    width: {
       type: String,
-      default: '26px',
+      default: '60px',
+    },
+    height: {
+      type: String,
+      default: '35px',
     },
   },
   methods: {
@@ -67,7 +71,8 @@ export default {
         '--background-color': this.backgroundColor,
         '--off-background-color': this.offBackgroundColor,
         '--circle-color': this.color,
-        '--circle-size': this.buttonSize,
+        '--switch-width': this.width,
+        '--switch-height': this.height,
       };
     },
   },
@@ -81,10 +86,10 @@ export default {
 .vxp-switch {
   position: relative;
   display: inline-block;
-  width: 60px;
+  width: var(--switch-width);
+  height: var(--switch-height);
   background: transparent !important;
-  height: calc(var(--circle-size) + 10px);
-  border-radius: var(--circle-size);
+  border-radius: var(--switch-height);
 
   input {
     opacity: 0;
@@ -95,7 +100,7 @@ export default {
     background-color: var(--background-color);
   }
   input:checked + .slider:before {
-    left: calc(100% - var(--circle-size) - 10px);
+    left: calc(100% - var(--switch-height));
   }
   .slider {
     position: absolute;
@@ -117,8 +122,8 @@ export default {
       transition: 0.4s;
       border-radius: 50%;
       margin: 5px 5px;
-      width: var(--circle-size);
-      height: var(--circle-size);
+      width: calc(var(--switch-height) - 10px);
+      height: calc(var(--switch-height) - 10px);
       left: 0;
     }
   }
