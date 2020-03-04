@@ -61,7 +61,8 @@ describe('Switcher', () => {
     const backgroundColor = 'blue';
     const offBackgroundColor = 'gray';
     let color = 'purple';
-    let buttonSize = '30px';
+    let width = '60px';
+    let height = '30px';
     let wrapper;
 
     before(() => {
@@ -70,7 +71,8 @@ describe('Switcher', () => {
           backgroundColor,
           offBackgroundColor,
           color,
-          buttonSize,
+          width,
+          height,
         },
       });
     });
@@ -87,8 +89,12 @@ describe('Switcher', () => {
       expect(wrapper.props().color).to.equal(color);
     });
 
-    it(`buttonSize prop should change the button size of the circle to ${buttonSize}`, () => {
-      expect(wrapper.props().buttonSize).to.equal(buttonSize);
+    it(`width prop should change the button size of the circle to ${width}`, () => {
+      expect(wrapper.props().width).to.equal(width);
+    });
+
+    it(`height prop should change the button size of the circle to ${height}`, () => {
+      expect(wrapper.props().height).to.equal(height);
     });
   });
 });
