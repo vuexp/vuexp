@@ -57,40 +57,44 @@ describe('Switcher', () => {
       expect(wrapper.emitted().checkedChange.length).to.equal(1);
     });
   });
-  describe('The Switcher component applies CSS rules set on implementation.', () => {
-    const backgroundColor = 'rgb(188, 124, 124)';
-    const buttonColor = 'rgb(255, 0, 0)';
-    let testWrapper = null;
+  describe('The Switcher component applies background props set on implementation.', () => {
+    const backgroundColor = 'blue';
+    const offBackgroundColor = 'gray';
+    let color = 'purple';
+    let width = '60px';
+    let height = '30px';
+    let wrapper;
 
     before(() => {
-      const TestSwitcher = {
-        template: `<Switcher style="color: ${buttonColor}; background: ${backgroundColor}" v-model="value" @checkedChange="switchValueChange"/>`,
-        components: {
-          Switcher,
+      wrapper = mount(Switcher, {
+        propsData: {
+          backgroundColor,
+          offBackgroundColor,
+          color,
+          width,
+          height,
         },
-        data() {
-          return {
-            value: true,
-            labelText: 'Switcher On',
-          };
-        },
-        methods: {
-          switchValueChange: function() {
-            this.labelText = this.value === true ? 'Switcher On' : 'Switcher Off';
-          },
-        },
-        listeners: {
-          checkedChange,
-        },
-      };
-      testWrapper = mount(TestSwitcher);
+      });
     });
 
-    it(`Background prop should change the background of the component to ${backgroundColor}`, () => {
-      expect(testWrapper.find(Switcher).vm.$data.backgroundColor).to.equal(backgroundColor);
+    it(`background prop should change the background of the component to ${backgroundColor}`, () => {
+      expect(wrapper.props().backgroundColor).to.equal(backgroundColor);
     });
-    it(`Button color prop should change the button color of the component to ${buttonColor}`, () => {
-      expect(testWrapper.find(Switcher).vm.$data.buttonColor).to.equal(buttonColor);
+
+    it(`offBackgroundColor prop should change the background of the component to ${offBackgroundColor} on off state`, () => {
+      expect(wrapper.props().offBackgroundColor).to.equal(offBackgroundColor);
+    });
+
+    it(`color prop should change the color of the circle to ${color}`, () => {
+      expect(wrapper.props().color).to.equal(color);
+    });
+
+    it(`width prop should change the button size of the circle to ${width}`, () => {
+      expect(wrapper.props().width).to.equal(width);
+    });
+
+    it(`height prop should change the button size of the circle to ${height}`, () => {
+      expect(wrapper.props().height).to.equal(height);
     });
   });
 });

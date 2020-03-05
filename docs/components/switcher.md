@@ -34,6 +34,7 @@ switchValueChange: event => console.log(event);
 | Name    | Type    | Default | Web | Mobile | Description                                                             |
 | ------- | ------- | ------- | --- | ------ | ----------------------------------------------------------------------- |
 | checked | Boolean | `false` | ✔   | ✔      | Gets or sets the value of the switcher selection. Default value: `false`. |
+| isEnabled | Boolean | `true` | ✔   | ✔      | Sets the disability of the Switcher. Default value: `true`. |
 
 ## Events
 

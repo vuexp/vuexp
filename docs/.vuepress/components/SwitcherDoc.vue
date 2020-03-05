@@ -1,6 +1,6 @@
 <template>
   <StackLayout>
-    <Switcher v-model="value" @checkedChange="switchValueChange"/>
+    <Switcher v-model="value" @checkedChange="switchValueChange" />
     <Label id="switcher__value__label" style="margin-top: 20px;" :text="labelText"></Label>
   </StackLayout>
 </template>
@@ -30,6 +30,4 @@ export default {
   },
 };
 </script>
-<style lang="scss">
-</style>
-
+<style lang="scss"></style>
