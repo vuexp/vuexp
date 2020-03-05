@@ -21,6 +21,10 @@ const applyCss = function(el, binding, vnode) {
     cssString += $attrs.fontStyle ? `font-style: ${$attrs.fontStyle};` : '';
     cssString += $attrs.fontWeight ? `font-weight: ${$attrs.fontWeight};` : '';
     cssString += $attrs.color ? `color: ${$attrs.color};` : '';
+    cssString += $attrs.marginTop ? `margin-top: ${$attrs.marginTop};` : '';
+    cssString += $attrs.marginRight ? `margin-right: ${$attrs.marginRight};` : '';
+    cssString += $attrs.marginBottom ? `margin-bottom: ${$attrs.marginBottom};` : '';
+    cssString += $attrs.marginLeft ? `margin-left: ${$attrs.marginLeft};` : '';
 
     el.style.cssText += ';' + cssString;
   }
