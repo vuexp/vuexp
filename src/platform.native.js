@@ -42,6 +42,8 @@ const platform = {
   screenWidth: getScreenWidth,
   screenHeight: getScreenHeight,
   onGridChange: onGridChange,
+  addGridChangeListener: onGridChange,
+  removeGridChangeListener: () => {},
   screenScale: getScreenScale,
 };
 
