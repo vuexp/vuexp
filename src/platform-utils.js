@@ -57,19 +57,31 @@ function updateGridColumn(window, platform, deviceType, screenWidth, callBack) {
   const gridColumn = getGridColumn(orientation, platform, deviceType, screenWidth);
   callBack(gridColumn);
 }
+const gridChangeListeners = {};
 
-function onGridChange(window, platform, deviceType, screenWidth, callBack) {
+function addGridChangeListener(window, platform, deviceType, screenWidth, callBack) {
   // Triggered once
   updateGridColumn(window, platform, deviceType, screenWidth, callBack);
 
   if (typeof window !== 'undefined') {
-    window.addEventListener('resize', () => {
+    const token = Symbol('Grid Listener Function');
+    gridChangeListeners[token] = () => {
       // Triggered on orientation change
       debounce(() => {
         updateGridColumn(window, platform, deviceType, screenWidth, callBack);
       }, 500)();
-    });
+    };
+    window.addEventListener('resize', gridChangeListeners[token]);
+    return token;
   }
+  return false;
+}
+
+function removeGridChangeListener(token) {
+  if (typeof window !== 'undefined' && token in gridChangeListeners) {
+    return window.removeEventListener('resize', gridChangeListeners[token]);
+  }
+  return false;
 }
 
 function getOsName(navigator) {
@@ -90,6 +102,8 @@ const platformUtils = {
   getScreenWidth,
   getScreenHeight,
   getScreenScale,
-  onGridChange,
+  onGridChange: addGridChangeListener, // TODO: Remove after major version change
+  addGridChangeListener,
+  removeGridChangeListener,
 };
 export default platformUtils;
