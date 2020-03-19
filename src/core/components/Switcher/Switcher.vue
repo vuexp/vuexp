@@ -73,6 +73,7 @@ export default {
         '--circle-color': this.color,
         '--switch-width': this.width,
         '--switch-height': this.height,
+        'opacity': isEnabled ? 1 : 0
       };
     },
   },
