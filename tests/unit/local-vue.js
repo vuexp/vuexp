@@ -32,6 +32,7 @@ import VxpWebView from '../../src/components/VxpWebView';
 import VxpLink from '../../src/components/VxpLink';
 import VxpDropdownMenu from '../../src/components/menus/VxpDropdownMenu';
 import VxpDropdownItem from '../../src/components/menus/VxpDropdownItem';
+import VxpImage from '../../src/components/VxpImage';
 import ActionDialog from '../../src/core/dialogs/ActionDialog';
 import TextView from '../../src/core/components/TextView/TextView';
 import VxpPlugin from '../../src/core/plugins/index';
@@ -44,6 +45,7 @@ localVue.filter('fonticon', function(value) {
 
 // Register Components
 localVue.component('Button', Button);
+localVue.component('VxpImage', VxpImage);
 localVue.component('VxpDropdownMenu', VxpDropdownMenu);
 localVue.component('VxpDropdownItem', VxpDropdownItem);
 localVue.component('Img', Img);
